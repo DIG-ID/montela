@@ -1,0 +1,72 @@
+{
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "editor.detectIndentation": false,
+
+  "[php]": {
+    "editor.insertSpaces": false,
+    "editor.tabSize": 2
+  },
+  "[sass]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  "[scss]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  "[css]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  }
+  "intelephense.stubs": [
+    "apache",
+    "bcmath",
+    "bz2",
+    "calendar",
+    "Core",
+    "ctype",
+    "curl",
+    "date",
+    "dom",
+    "fileinfo",
+    "filter",
+    "ftp",
+    "gd",
+    "hash",
+    "iconv",
+    "imap",
+    "json",
+    "libxml",
+    "mbstring",
+    "mysqli",
+    "mysql",
+    "openssl",
+    "pcre",
+    "PDO",
+    "Phar",
+    "posix",
+    "readline",
+    "Reflection",
+    "session",
+    "SimpleXML",
+    "soap",
+    "sockets",
+    "SPL",
+    "sqlite3",
+    "standard",
+    "tokenizer",
+    "xml",
+    "xmlreader",
+    "xmlwriter",
+    "zip",
+    "zlib",
+    "wordpress"
+  ],
+  "intelephense.environment.includePaths": [
+    "vendor/php-stubs/wordpress-stubs",
+    "vendor/php-stubs/acf-pro-stubs"
+  ]
+}
+
