@@ -11,6 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.1.0] — 2026-10-26
+
+### Changed
+- JavaScript split into a small critical bundle (`main.js`) and separate, non-critical bundles, so WP Rocket can delay everything except `main.js`.
+- GSAP, ScrollTrigger and Lenis moved to their own `animations.js` bundle.
+- Swiper, Fancybox and Isotope are now optional modules, loaded (with their CSS) only on pages that use them via `montela_enqueue_module()`.
+- Swiper and Fancybox CSS removed from the main stylesheet.
+- The theme no longer loads jQuery for its main script.
+
+### Fixed
+- Google Maps init script now declares its jQuery dependency.
+
 ## [1.0.0] — 2026-10-26
 
 ### Added

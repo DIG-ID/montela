@@ -1,9 +1,55 @@
 {
+  "_helpers-CQhMBWwg.js": {
+    "file": "js/helpers-CQhMBWwg.js",
+    "name": "helpers"
+  },
+  "assets/js/animations.js": {
+    "file": "js/animations-C1aF9qcI.js",
+    "name": "animations",
+    "src": "assets/js/animations.js",
+    "isEntry": true,
+    "imports": [
+      "_helpers-CQhMBWwg.js"
+    ]
+  },
   "assets/js/main.js": {
-    "file": "js/main-H1POtJgu.js",
+    "file": "js/main-BXZVwhbq.js",
     "name": "main",
     "src": "assets/js/main.js",
     "isEntry": true
+  },
+  "assets/js/modules/fancybox.js": {
+    "file": "js/fancybox-DhS2o6ZH.js",
+    "name": "fancybox",
+    "src": "assets/js/modules/fancybox.js",
+    "isEntry": true,
+    "imports": [
+      "_helpers-CQhMBWwg.js"
+    ],
+    "css": [
+      "css/fancybox-CoKszE5m.css"
+    ]
+  },
+  "assets/js/modules/isotope.js": {
+    "file": "js/isotope-BJgrhC8J.js",
+    "name": "isotope",
+    "src": "assets/js/modules/isotope.js",
+    "isEntry": true,
+    "imports": [
+      "_helpers-CQhMBWwg.js"
+    ]
+  },
+  "assets/js/modules/swiper.js": {
+    "file": "js/swiper-CTecVsbz.js",
+    "name": "swiper",
+    "src": "assets/js/modules/swiper.js",
+    "isEntry": true,
+    "imports": [
+      "_helpers-CQhMBWwg.js"
+    ],
+    "css": [
+      "css/swiper-CAdlRkR4.css"
+    ]
   },
   "assets/sass/admin-bar.sass": {
     "file": "css/admin-bar-9uh3rxBj.css",
@@ -33,7 +79,7 @@
     "isEntry": true
   },
   "assets/sass/main.sass": {
-    "file": "css/main-BE7ESHcU.css",
+    "file": "css/main-CiUV3ZT3.css",
     "name": "main",
     "names": [
       "main.css"

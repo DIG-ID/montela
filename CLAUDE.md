@@ -84,6 +84,11 @@ npm run php:fix
   ```
   Em produção lê `dist/.vite/manifest.json`; em dev (`npm run dev`, ambiente `local`/`development`) carrega do servidor Vite com HMR. Os scripts são ES modules (`type="module"`).
 - **Dev server**: HTTPS com os certificados do Local, no hostname `DEV_HOST` (fallback em `vite.config.mjs`, override por máquina em `.env.local`, gitignored). Alterações a `.php` fazem full reload. O servidor escreve `dist/hot` enquanto corre; se ficar órfão, o PHP ignora-o (testa a porta).
+- **Divisão do JS (WP Rocket / PageSpeed)**: o `main.js` é o bundle **crítico** — pequeno, sem bibliotecas nem jQuery, só o que o site precisa antes de qualquer interacção (menu, mega-menu, header). É o **único** JS do tema que pode ficar nas excepções do *Delay JavaScript execution* do WP Rocket. Tudo o resto é entry separada:
+  - `assets/js/animations.js` — GSAP + ScrollTrigger + Lenis, global mas não crítico (pode ser atrasado). O conteúdo tem de ser visível sem este ficheiro: estados iniciais via GSAP (`gsap.from()`), nunca `opacity: 0` no CSS; o hero/LCP não depende de animação de entrada.
+  - `assets/js/modules/*.js` — Swiper, Fancybox, Isotope (cada um importa o seu CSS). Enqueue **só onde são usados** com `montela_enqueue_module( 'swiper' )`; para módulos acima da dobra, chamar no `wp_enqueue_scripts` (CSS no `<head>`).
+  - Módulo novo = ficheiro em `assets/js/modules/`, entry em `vite.config.mjs` e nome no mapa de `montela_enqueue_module()`. Nunca importar bibliotecas no `main.js` nem o CSS delas no `main.sass`.
+  - Código que possa ser atrasado usa `domReady()` (`utils/helpers.js`) em vez de `DOMContentLoaded` — com Delay JS o evento já pode ter disparado.
 - **jQuery**: usar o jQuery do WordPress (`window.jQuery`, dependência `'jquery'` no enqueue) — não há `jquery` no npm nem autoload.
 - **`url()` no Sass**: relativo ao ficheiro `.sass` fonte (ex.: `assets/fonts/...`); o Vite copia para `dist/assets/` com hash.
 - **Sass**: os partials ainda usam `@import` (aviso de deprecação silenciado em `vite.config.mjs`). Código novo pode usar módulos `sass:*` (`@use "sass:color"`) em vez de funções globais (`darken()`, etc.).
