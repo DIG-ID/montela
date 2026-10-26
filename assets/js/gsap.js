@@ -17,7 +17,6 @@ function initLenis() {
   const lenis = new Lenis({
     duration: 1.35,          // adjust per project — higher = longer glide
     easing: easeExpoOut,
-    smooth: true,
     smoothWheel: true,
     wheelMultiplier: 0.85,   // lower = softer on high-res/trackpad devices
   });

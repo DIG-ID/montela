@@ -98,7 +98,7 @@ if ( ! function_exists( 'montela_enqueue_google_maps' ) ) :
 		wp_enqueue_script(
 			'montela-google-maps-init',
 			get_theme_file_uri( '/assets/js/google-maps.js' ),
-			array(),
+			array( 'jquery' ),
 			$theme_version,
 			true
 		);
@@ -122,6 +122,44 @@ endif;
 
 add_action( 'wp_enqueue_scripts', 'montela_enqueue_google_maps' );
 
+if ( ! function_exists( 'montela_enqueue_module' ) ) :
+	/**
+	 * Enqueues an optional front-end module (JS plus its CSS), built as a
+	 * separate Vite entry so it only loads where it is used and can be
+	 * delayed by WP Rocket independently of the critical bundle.
+	 *
+	 * For modules rendered above the fold, call it on wp_enqueue_scripts
+	 * (see montela_enqueue_assets()) so the CSS is printed in <head>. Calling
+	 * it from a template part also works, but the CSS is then printed in the
+	 * footer, which may cause a flash of unstyled content.
+	 *
+	 * @since 1.1.0
+	 *
+	 * @param string $module Module name: 'swiper', 'fancybox' or 'isotope'.
+	 * @return bool True if the module was enqueued.
+	 */
+	function montela_enqueue_module( $module ) {
+		$modules = array(
+			'swiper'   => 'assets/js/modules/swiper.js',
+			'fancybox' => 'assets/js/modules/fancybox.js',
+			'isotope'  => 'assets/js/modules/isotope.js',
+		);
+
+		if ( ! isset( $modules[ $module ] ) ) {
+			_doing_it_wrong(
+				__FUNCTION__,
+				/* translators: %s: module name. */
+				sprintf( esc_html__( 'Unknown theme module "%s".', 'montela' ), esc_html( $module ) ),
+				'1.1.0'
+			);
+
+			return false;
+		}
+
+		return montela_vite_enqueue_script( 'montela-' . $module, $modules[ $module ] );
+	}
+endif;
+
 /**
  * Registers and enqueues the theme's main CSS and JS.
  *
@@ -130,7 +168,21 @@ add_action( 'wp_enqueue_scripts', 'montela_enqueue_google_maps' );
  */
 function montela_enqueue_assets() {
 	montela_vite_enqueue_style( 'theme-styles', 'assets/sass/main.sass' );
-	montela_vite_enqueue_script( 'theme-scripts', 'assets/js/main.js', array( 'jquery' ) );
+
+	// Critical bundle — keep it small and library-free. The only theme JS
+	// that may be excluded from WP Rocket's "Delay JavaScript execution".
+	montela_vite_enqueue_script( 'theme-scripts', 'assets/js/main.js' );
+
+	// Non-critical: GSAP, ScrollTrigger and Lenis. Safe to delay with WP Rocket.
+	montela_vite_enqueue_script( 'theme-animations', 'assets/js/animations.js' );
+
+	/*
+	 * Optional modules — enqueue only where they are used, e.g.:
+	 *
+	 * if ( is_page_template( 'page-templates/page-home.php' ) ) {
+	 *     montela_enqueue_module( 'swiper' );
+	 * }
+	 */
 }
 
 add_action( 'wp_enqueue_scripts', 'montela_enqueue_assets' );

@@ -9,8 +9,18 @@ import autoprefixer from 'autoprefixer';
 
 // Entry points — each one is resolved by key in dist/.vite/manifest.json
 // from inc/vite.php (e.g. montela_vite_enqueue_style( 'x', 'assets/sass/main.sass' )).
+//
+// JS is split so WP Rocket's "Delay JavaScript execution" only needs to skip
+// the small critical bundle (main.js). Animations and feature modules are
+// separate entries, enqueued globally (animations) or only where used
+// (modules, via montela_enqueue_module()). Each module imports its own CSS,
+// which inc/vite.php enqueues from the manifest.
 const entries = [
   'assets/js/main.js',
+  'assets/js/animations.js',
+  'assets/js/modules/swiper.js',
+  'assets/js/modules/fancybox.js',
+  'assets/js/modules/isotope.js',
   'assets/sass/main.sass',
   'assets/sass/admin-login.sass',
   'assets/sass/admin-dashboard.sass',
