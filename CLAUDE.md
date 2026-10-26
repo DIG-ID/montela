@@ -275,6 +275,24 @@ O tema segue **Semantic Versioning** (`MAJOR.MINOR.PATCH`) e mantém um `CHANGEL
 
 ---
 
+## Convenções de Escrita de Código
+
+> Vivem em `.claude/rules/` — ficheiros carregados automaticamente em cada
+> sessão, com a mesma prioridade deste ficheiro.
+>
+> | Ficheiro | Cobre | Carrega |
+> |---|---|---|
+> | `php.md` | escaping, campos ACF, template parts, hooks | sempre |
+> | `sass.md` | `@apply`, naming, breakpoints, padrões de layout, colapso de margens | ao tocar em `assets/sass/` ou `tailwind.config.js` |
+> | `js.md` | entry point, jQuery em IIFE, Alpine, enqueue via Vite | ao tocar em `assets/js/` |
+> | `editor-content.md` | safelist do Tailwind, imagens do editor, markup e locale do CF7 | sempre |
+> | `figma.md` | a grelha do projecto e como achar a coluna | sempre |
+>
+> A grelha em `figma.md` ainda está por preencher — fazer isso com os frames
+> reais antes da primeira secção.
+
+---
+
 ## Convenções Gerais
 
 - Não usar plugins desnecessários — preferir código no tema.

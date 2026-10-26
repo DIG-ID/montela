@@ -17,3 +17,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 - Project bootstrapped from dig.id Theme Starter Vite v2.0.2.
 - Montela colour palette (cream, sage, mustard, walnut) in Tailwind and CSS custom properties.
 - Navigation menus: Main Menu, Mega Menu, Footer Menu.
+- Coding conventions for Claude Code in `.claude/rules/` (PHP, SASS, JS, editor content, Figma grid), taken from Theme Starter Vite v2.3.0.

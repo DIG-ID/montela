@@ -12,6 +12,7 @@ Usage:
     figma_tree.py <dump> clusters              recurring blocks + their copy
     figma_tree.py <dump> signals [kw-file]     interaction affordances
     figma_tree.py <dump> segment <page-id>     boundary guess for flat pages
+    figma_tree.py <dump> match <id> <id>...    pair sections across breakpoints
 
 The dump may be raw XML or the JSON array wrapper the MCP writes.
 """
@@ -254,9 +255,150 @@ def cmd_segment(roots, _by_id, args):
         prev = y
 
 
+def _block_copy(block):
+    """The set of real copy strings inside a block, lowercased.
+
+    Placeholder layer names carry no copy, so they are dropped — matching on
+    "frame 42" would pair every unnamed block with every other one.
+    """
+    out = set()
+    for t in texts_of(block):
+        name = t["name"].strip().lower()
+        if name and not PLACEHOLDER_RE.match(name):
+            out.add(name)
+    return out
+
+
+def _overlap(a, b):
+    """Jaccard index of two copy sets. Two empty sets score 0, not 1."""
+    if not a or not b:
+        return 0.0
+    return len(a & b) / len(a | b)
+
+
+def _blocks(page):
+    return sorted(page["kids"], key=lambda n: n["y"])
+
+
+def cmd_match(roots, _by_id, args):
+    """Pair each section with its counterpart on the other breakpoints.
+
+    Takes the page ids of one screen at two or three widths — the caller picks
+    them from `pages`, because deciding which mobile frame belongs to which
+    desktop frame is a judgement call, not a measurement.
+
+    Our designs are 1:1 across breakpoints: same sections, same order, same
+    copy, re-laid out. So the widest screen is the reference and alignment by
+    position is the first guess, checked against the copy each block contains.
+    Anything that does not line up is REPORTED, never forced — a section that
+    splits, merges or disappears on mobile is a design decision, and the person
+    who made it has to say how it should be built.
+    """
+    if len(args) < 2:
+        sys.exit("match: dar 2 ou 3 page ids (ver `pages`)")
+
+    pages = {p["id"]: p for p in page_frames(roots)}
+    unknown = [a for a in args if a not in pages]
+    if unknown:
+        sys.exit("match: page id desconhecido: " + ", ".join(unknown))
+
+    # Widest first. Labels follow width rank, not layer names, which are not
+    # reliably spelled "Desktop"/"Tablet"/"Mobile".
+    screens = sorted((pages[a] for a in args), key=lambda p: -p["w"])
+    if len(screens) == 3:
+        labels = ["desktop", "tablet", "mobile"]
+    elif len(screens) == 2:
+        labels = ["desktop", "mobile"]
+    else:
+        labels = ["w%.0f" % p["w"] for p in screens]
+
+    ref, others = screens[0], screens[1:]
+    ref_blocks = _blocks(ref)
+    warnings = []
+
+    print("")
+    print("=" * 72)
+    for lab, p in zip(labels, screens):
+        print("%-9s %-34s [%s]  %.0fpx  %d blocos"
+              % (lab, p["name"][:34], p["id"], p["w"], len(_blocks(p))))
+    print("=" * 72)
+
+    counts = [(lab, len(_blocks(p))) for lab, p in zip(labels, screens)]
+    if len({c for _, c in counts}) > 1:
+        warnings.append(
+            "Os ecrãs não têm o mesmo número de blocos ("
+            + ", ".join("%s %d" % c for c in counts)
+            + "). Alguma secção parte-se, funde-se ou desaparece — ver os "
+              "SEM PAR abaixo e decidir caso a caso.")
+
+    taken = {p["id"]: set() for p in others}
+
+    for i, rb in enumerate(ref_blocks):
+        ref_copy = _block_copy(rb)
+        print("")
+        print("### %s" % rb["name"][:46])
+        print("  %-9s %-14s y=%.0f h=%.0f" % (labels[0], rb["id"], rb["y"], rb["h"]))
+
+        for lab, p in zip(labels[1:], others):
+            cands = _blocks(p)
+            best, best_score, best_parts, best_j = None, -1.0, None, -1
+            for j, cb in enumerate(cands):
+                if cb["id"] in taken[p["id"]]:
+                    continue
+                copy = _overlap(ref_copy, _block_copy(cb))
+                same_name = rb["name"].strip().lower() == cb["name"].strip().lower()
+                aligned = (i == j)
+                score = copy + (0.35 if same_name else 0) + (0.25 if aligned else 0)
+                if score > best_score:
+                    best, best_score = cb, score
+                    best_parts, best_j = (copy, same_name, aligned), j
+
+            if best is None:
+                print("  %-9s — SEM PAR" % lab)
+                warnings.append("%s: sem par em %s" % (rb["name"][:30], lab))
+                continue
+
+            copy, same_name, aligned = best_parts
+            if copy >= 0.6 or (same_name and aligned):
+                conf = "alta"
+            elif copy >= 0.3 or same_name or aligned:
+                conf = "media"
+            else:
+                conf = "BAIXA"
+                warnings.append(
+                    "%s <-> %s (%s): confianca baixa, confirmar a vista"
+                    % (rb["name"][:30], best["name"][:30], lab))
+
+            taken[p["id"]].add(best["id"])
+            parts = "copy %.0f%%" % (copy * 100)
+            if same_name:
+                parts += " · nome"
+            if aligned:
+                parts += " · ordem"
+            extra = "" if aligned else ("  [posicao %d vs %d]" % (best_j, i))
+            print("  %-9s %-14s %-6s (%s)%s" % (lab, best["id"], conf, parts, extra))
+
+    for lab, p in zip(labels[1:], others):
+        for b in _blocks(p):
+            if b["id"] not in taken[p["id"]]:
+                warnings.append("%s: bloco sem par — %s [%s] y=%.0f"
+                                % (lab, b["name"][:30], b["id"], b["y"]))
+
+    print("")
+    print("=" * 72)
+    if warnings:
+        print("AVISOS (%d) — rever com o utilizador antes de construir:" % len(warnings))
+        for w in warnings:
+            print("  ! %s" % w)
+    else:
+        print("1:1 em todos os blocos, sem avisos.")
+    print("=" * 72)
+
+
 COMMANDS = {
     "probe": cmd_probe, "pages": cmd_pages, "map": cmd_map,
     "clusters": cmd_clusters, "signals": cmd_signals, "segment": cmd_segment,
+    "match": cmd_match,
 }
 
 

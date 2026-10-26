@@ -59,6 +59,36 @@ mobile e tablet são o mesmo conteúdo noutro layout e entram como variantes
 responsivas das mesmas secções, não como páginas novas. Confirmar com o
 utilizador se o padrão de nomes não for claro.
 
+### 2b. Emparelhar os breakpoints
+
+Os três ecrãs do mesmo conteúdo — desktop, tablet, mobile — são **a mesma
+secção em três layouts**, e cada um tem o seu nodeId. Emparelhá-los agora é o
+que permite depois construir uma secção responsiva de uma vez, em vez de uma
+tela de cada vez.
+
+```bash
+python3 $S <dump> match <id-desktop> <id-tablet> <id-mobile>
+```
+
+Os ids vêm do passo 2. O `match` toma o ecrã **mais largo** como referência e
+alinha por posição, confirmando contra o **copy** que cada bloco contém — o
+copy é o sinal forte, porque sobrevive a camadas mal nomeadas. Devolve, por
+secção, o id em cada breakpoint e uma confiança (`alta` / `media` / `BAIXA`).
+
+**Estes designs são 1:1** — mesmas secções, mesma ordem, mesmo copy. Quando não
+são, o `match` **avisa** em vez de forçar: número de blocos diferente, blocos
+sem par, ou confiança baixa. Nesse caso **parar e levar os avisos ao
+utilizador** — uma secção que se parte, funde ou desaparece no mobile é uma
+decisão de design, e quem a tomou tem de dizer como deve ser construída.
+
+Uma correspondência pode ser boa com a posição trocada (o `match` marca
+`[posicao N vs M]`) — isso é normal quando uma secção muda de ordem no mobile e
+não é motivo para alarme; o copy é que manda.
+
+**Guardar os três ids.** É o ponto todo do passo: sem eles, daqui a semanas o
+mapa diz que a secção existe mas não onde está, e volta a ser preciso colar
+links à mão.
+
 ### 3. Secções — catálogo por repetição
 
 `clusters` agrupa os blocos por **geometria**, não por nome: o mesmo bloco
@@ -125,7 +155,18 @@ usar variáveis Figma, registar isso e extrair as cores dos próprios nós.
    404, legais. Se muitas páginas partilharem secções, sinalizar que templates
    fixos por página são inviáveis e propor secções partilhadas / flexible content.
 8. **Mapa página → secções** — a tabela ordenada do passo 4, para todas as
-   páginas. É isto que as skills de scaffold consomem.
+   páginas. É isto que as skills de scaffold consomem. Cada secção leva os
+   **nodeIds dos três breakpoints** (passo 2b) e a confiança do
+   emparelhamento, no formato:
+   ```
+   ### hero-section
+     desktop  180:5356
+     tablet   2645:65
+     mobile   2645:309
+     confianca: alta (copy 100% · nome · ordem)
+   ```
+   Quando a secção for construída, repetir os três ids no docblock do
+   template part — é lá que o próximo a mexer vai procurar.
 9. **Sugestão de custom fields** — por secção e por template/CPT.
 10. **Template tags** — helpers funcionais (datas `<time>`, ícones, links ACF).
 11. **Decisões em aberto** — o que precisa de resposta do designer/cliente.
