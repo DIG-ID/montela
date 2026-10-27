@@ -2,8 +2,8 @@
 /**
  * The Section for the Footer Default Template.
  *
- * Figma "full-footer-desktop" (5581:5814) and "full-footer-tablet"
- * (5475:24966): a cream call-to-action box
+ * Figma "full-footer-desktop" (5581:5814), "full-footer-tablet" (5475:24966)
+ * and "full-footer-mobile" (5895:18039): a cream call-to-action box
  * overlapping the top of the sage footer, then the logo, four columns
  * (newsletter, contact, navigation, partner logos) and the copyright bar.
  *
@@ -78,6 +78,8 @@ $footer_has_form = function_exists( 'mc4wp_show_form' );
 
 		<div class="theme-container footer-main__content">
 
+			<div class="footer-main__info">
+
 			<?php if ( $footer_news_text || $footer_has_form ) : ?>
 				<div class="footer-main__newsletter">
 					<?php if ( $footer_news_text ) : ?>
@@ -116,6 +118,8 @@ $footer_has_form = function_exists( 'mc4wp_show_form' );
 				<?php endif; ?>
 			</address>
 			<?php endif; ?>
+
+			</div>
 
 			<?php if ( has_nav_menu( 'footer-menu' ) ) : ?>
 				<nav class="footer-main__nav" aria-label="<?php esc_attr_e( 'Footer navigation', 'montela' ); ?>">

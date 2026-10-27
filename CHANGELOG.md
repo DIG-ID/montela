@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.11.1] — 2026-10-27
+
+### Fixed
+- Footer on tablet: newsletter and contact details stay side by side at every tablet width.
+- Footer on mobile, now built to the design: full-width call-to-action box, everything centred, the footer menu as two columns of four, partner logos one per row and the legal links above the copyright.
+
 ## [1.11.0] — 2026-10-27
 
 ### Added

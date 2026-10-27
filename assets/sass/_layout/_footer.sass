@@ -20,7 +20,12 @@
 // the width, the partner logos centred. Side margins are the frame's 50px
 // (the grid's tablet margin is 64px).
 //
-// Below md: provisional until the mobile frame is built.
+// Mobile (< md, Figma "full-footer-mobile" 5895:18039): everything stacked
+// and centred. The cream box is full width (80px / 32px padding, top shadow only) and the
+// sage starts below it, no overlap. In the sage (96px padding, blocks 48px
+// apart): logo, newsletter text, the e-mail field, contact, the footer menu
+// as two centred columns of four, the partner logos one per 128px row, then
+// the copyright bar (legal links above the copyright). Text 14/22.
 //
 // Mailchimp for WP form — its markup lives in the plugin (Forms → Form),
 // so the theme styles it here. Template to paste there:
@@ -31,15 +36,16 @@
 // The submit is visually hidden (Enter submits); it shows on keyboard focus.
 
 // -- Call to action ------------------------------------------------------------
-// The box is 694px wide at 70px from the edges on tablet.
-.footer-main__cta-wrap
-  @apply relative z-10 md:px-[70px] xl:px-[50px]
+// Full width on mobile (no container margins), 694px wide at 70px from the
+// edges on tablet. Two classes to beat .theme-container's padding.
+.footer-main .footer-main__cta-wrap
+  @apply relative z-10 px-0 md:px-[70px] xl:px-[50px]
 
 // Desktop: title (787px), 28px, then the row — text (439px) and the button
 // pushed right. Tablet: title on top, 32px, then the row — text and button
 // 64px apart, aligned on their bottom edge. 32px padding on tablet.
 .footer-main__cta
-  @apply flex flex-col xl:flex-row xl:items-start gap-6 md:gap-8 xl:gap-7 px-8 py-10 md:p-8 xl:px-16 xl:py-16 2xl:px-[103px] bg-montela-cream border-2 border-montela-cream text-montela-walnut shadow-[0_0_2px_rgba(0,0,0,0.25),4px_-4px_2px_rgba(0,0,0,0.25),0_4px_2px_rgba(0,0,0,0.25)]
+  @apply flex flex-col xl:flex-row xl:items-start gap-4 md:gap-8 xl:gap-7 px-8 py-20 md:p-8 xl:px-16 xl:py-16 2xl:px-[103px] bg-montela-cream md:border-2 md:border-solid md:border-montela-cream text-montela-walnut shadow-[4px_-4px_2px_rgba(0,0,0,0.25)] md:shadow-[0_0_2px_rgba(0,0,0,0.25),4px_-4px_2px_rgba(0,0,0,0.25),0_4px_2px_rgba(0,0,0,0.25)]
 
 // The tablet frame keeps the desktop H3 size here (90/80), not the
 // tablet one (80/76). Two classes to beat .title-h3, emitted after this file.
@@ -47,10 +53,10 @@
   @apply md:text-[90px] md:leading-[80px] xl:shrink xl:basis-[787px]
 
 .footer-main__cta-row
-  @apply flex flex-col gap-6 md:flex-row md:items-end md:gap-16 xl:items-start xl:grow xl:justify-between xl:gap-7
+  @apply flex flex-col gap-11 md:flex-row md:items-end md:gap-16 xl:items-start xl:grow xl:justify-between xl:gap-7
 
 .footer-main__cta-text
-  @apply md:flex-1 xl:flex-none xl:shrink xl:basis-[439px]
+  @apply text-[12px] leading-[20px] md:text-[length:inherit] md:leading-[inherit] md:flex-1 xl:flex-none xl:shrink xl:basis-[439px]
 
 .footer-main__cta-btn
   @apply shrink-0 self-start md:self-auto xl:self-start
@@ -58,14 +64,14 @@
 // -- Sage body -----------------------------------------------------------------
 // Under the box, the sage starts 60px above the box's bottom edge.
 .footer-main__body
-  @apply flex flex-col items-center bg-montela-sage text-montela-cream font-primary font-light text-[15px] leading-[25px] tracking-[0.5px] pt-16 xl:pt-[128px]
+  @apply flex flex-col items-center bg-montela-sage text-montela-cream font-primary font-light text-[14px] leading-[22px] md:text-[15px] md:leading-[25px] tracking-[0.5px] pt-24 pb-24 md:pt-16 md:pb-0 xl:pt-[128px]
   // Sage behind the box: 60px up (desktop), 280px (tablet). The logo then
   // sits 128px (desktop) / 40px (tablet) below the box.
   .footer-main--has-cta &
-    @apply -mt-[60px] pt-[124px] md:-mt-[280px] md:pt-[320px] xl:-mt-[60px] xl:pt-[188px]
+    @apply md:-mt-[280px] md:pt-[320px] xl:-mt-[60px] xl:pt-[188px]
 
 .footer-main__logo
-  @apply block w-[187px] mb-16 md:mb-24 xl:mb-[128px]
+  @apply block w-[192px] md:w-[187px] mb-8 md:mb-24 xl:mb-[128px]
   img
     @apply w-full h-auto
 
@@ -77,11 +83,20 @@
   &:focus-visible
     @apply outline outline-2 outline-offset-4 outline-montela-mustard
 
+// -- Newsletter + contact -----------------------------------------------------
+// One block that never wraps, 101px apart from tablet up (as the columns
+// around it). Below 834px (the tablet frame) the pair no longer fits at full
+// width: the newsletter column narrows instead of the contact dropping below.
+.footer-main__info
+  @apply flex flex-col gap-12 md:flex-row md:items-start md:gap-[101px]
+
 // -- Newsletter ----------------------------------------------------------------
 .footer-main__newsletter
-  @apply flex flex-col gap-[42px] w-full max-w-[346px] shrink-0
+  @apply flex flex-col gap-12 md:gap-[42px] w-full md:w-auto md:max-w-[346px] md:basis-[346px] md:shrink md:min-w-0
+  > p
+    @apply text-center md:text-left
   input[type="email"]
-    @apply block w-full pl-[14px] pb-3 bg-transparent border-0 border-b border-solid border-montela-cream rounded-none text-[15px] leading-[25px] tracking-[0.5px] text-montela-cream placeholder:text-montela-cream placeholder:opacity-100
+    @apply block w-full p-3 md:pt-0 md:pr-0 md:pl-[14px] bg-transparent border-0 border-b border-solid border-montela-cream rounded-none text-[14px] leading-[22px] md:text-[15px] md:leading-[25px] tracking-[0.5px] text-montela-cream placeholder:text-montela-cream placeholder:opacity-100
     &:focus
       @apply outline-none border-montela-mustard
   input[type="submit"]
@@ -93,7 +108,7 @@
 
 // -- Contact -------------------------------------------------------------------
 .footer-main__contact
-  @apply flex flex-col gap-[22px] not-italic shrink-0
+  @apply flex flex-col gap-4 md:gap-[22px] items-center text-center md:items-start md:text-left not-italic shrink-0
   a:hover
     @apply text-montela-mustard
 
@@ -106,9 +121,15 @@
   @apply md:basis-full xl:basis-auto
 
 .footer-main__menu
-  @apply grid grid-rows-4 grid-flow-col auto-cols-max gap-x-16 gap-y-6 md:grid-rows-none md:grid-flow-row md:grid-cols-[repeat(4,124px)] md:justify-between md:gap-y-8 xl:grid-rows-4 xl:grid-flow-col xl:grid-cols-none xl:justify-start xl:gap-y-6
+  @apply grid grid-cols-1 justify-items-center gap-y-4 md:justify-items-stretch md:grid-rows-none md:grid-flow-row md:grid-cols-[repeat(4,124px)] md:justify-between md:gap-y-8 xl:grid-rows-4 xl:grid-flow-col xl:grid-cols-none xl:justify-start xl:gap-y-6
+  // Mobile: the two columns of four swap places (the frame lists the
+  // desktop's second column first), 48px apart.
+  li:nth-child(-n+4)
+    @apply max-md:order-2
+  li:first-child
+    @apply max-md:mt-8
   a
-    @apply flex items-center w-[124px] h-10 px-2 whitespace-nowrap
+    @apply flex items-center justify-center md:justify-start px-2 whitespace-nowrap md:w-[124px] md:h-10
     &:hover
       @apply bg-montela-cream/30
   .current-menu-item > a
@@ -120,22 +141,22 @@
 // rather than given one height — see .claude/rules/editor-content.md.
 // Centred on its own row on tablet.
 .footer-main__partners
-  @apply grid grid-cols-2 gap-x-16 gap-y-14 shrink-0 md:mx-auto xl:mx-0
+  @apply grid grid-cols-1 gap-y-4 w-full md:w-auto md:grid-cols-2 md:gap-x-16 md:gap-y-14 shrink-0 md:mx-auto xl:mx-0
 
 .footer-main__partner
-  @apply flex items-center justify-center w-[150px] h-[82px] md:w-[192px] md:h-[96px]
+  @apply flex items-center justify-center w-full h-32 md:w-[192px] md:h-[96px]
 
 .footer-main__partner-img
   @apply w-auto h-auto max-w-[150px] max-h-[82px] object-contain
 
 // -- Copyright bar -------------------------------------------------------------
 .footer-main__bottom
-  @apply w-full mt-16 md:mt-24 xl:mt-[128px] border-t border-montela-cream
+  @apply w-[calc(100%-64px)] md:w-full mt-12 md:mt-24 xl:mt-[128px] border-t border-montela-cream
 
 .footer-main__bottom-inner
-  @apply flex flex-col gap-4 md:flex-row md:items-center md:justify-between py-[30px] md:px-[50px]
+  @apply flex flex-col-reverse items-center gap-8 md:flex-row md:justify-between md:gap-4 py-[30px] md:px-[50px]
 
 .footer-main__legal
-  @apply flex flex-wrap gap-x-10 gap-y-2 md:gap-x-16 xl:gap-x-[120px]
+  @apply flex flex-wrap justify-center gap-x-11 gap-y-2 md:justify-start md:gap-x-16 xl:gap-x-[120px]
   a:hover
     @apply text-montela-mustard
