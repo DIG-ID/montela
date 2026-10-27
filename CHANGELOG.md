@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.12.1] — 2026-10-27
+
+### Fixed
+- Footer on tablet: the call-to-action box and text keep the design's width at every tablet size.
+
 ## [1.12.0] — 2026-10-27
 
 ### Added
