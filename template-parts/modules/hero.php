@@ -1,15 +1,21 @@
 <?php
 /**
- * Hero module: full-screen image (or video) with the page title.
+ * Hero module: background image (or video) with the page title in up to
+ * three lines.
  *
  * Fields: acf-json/group_module_hero.json, cloned into each page's field
- * group. Figma: hero-desktop 5594:16771, hero-tablet 5426:4317,
+ * group. Each title line has a desktop position field (left / indented /
+ * centre / right). Figma: hero-child-page-desktop 5618:10003 (default),
+ * hero-desktop 5594:16771 (homepage), hero-tablet 5426:4317,
  * hero-mobile 5594:16778.
  *
  * Arguments ($args):
  * - post_id (int|string) Optional. Where to read the fields from. Default: current post.
  * - prefix  (string)     Optional. Clone field prefix, when the clone uses
  *                        "Prefix field names" — e.g. 'hero_' for a clone named 'hero'.
+ * - variant (string)     Optional. 'home' for the homepage exception (full
+ *                        screen on desktop, bigger first line, see _hero.sass).
+ *                        Chosen by the template, not by the editor.
  *
  * @package montela
  * @subpackage Section
@@ -22,6 +28,7 @@ if ( ! function_exists( 'get_field' ) ) {
 
 $hero_ctx    = ! empty( $args['post_id'] ) ? $args['post_id'] : get_the_ID();
 $hero_prefix = ! empty( $args['prefix'] ) ? $args['prefix'] : '';
+$hero_class  = 'section-hero' . ( ! empty( $args['variant'] ) && 'home' === $args['variant'] ? ' section-hero--home' : '' );
 
 $hero_image = get_field( $hero_prefix . 'section_hero_image', $hero_ctx );
 $hero_video = get_field( $hero_prefix . 'section_hero_video', $hero_ctx );
@@ -33,12 +40,20 @@ $hero_lines = array_filter(
 	)
 );
 
+// Desktop position of each line; anything unexpected falls back to the default.
+$hero_aligns   = array( 'left', 'indent', 'center', 'right' );
+$hero_defaults = array(
+	1 => 'left',
+	2 => 'left',
+	3 => 'right',
+);
+
 // No title and no image: nothing worth drawing.
 if ( ! $hero_lines && ! $hero_image ) {
 	return;
 }
 ?>
-<section class="section-hero">
+<section class="<?php echo esc_attr( $hero_class ); ?>">
 	<div class="section-hero__media" aria-hidden="true">
 		<?php
 		if ( $hero_image ) :
@@ -75,9 +90,11 @@ if ( ! $hero_lines && ! $hero_image ) {
 				foreach ( $hero_lines as $hero_n => $hero_line ) :
 					// Keep hyphenated words whole ("Saas-Fee/"): at these sizes the
 					// browser would otherwise wrap after the hyphen.
-					$hero_line = preg_replace( '/(\S+-\S+)/u', '<span class="whitespace-nowrap">$1</span>', esc_html( $hero_line ) );
+					$hero_line  = preg_replace( '/(\S+-\S+)/u', '<span class="whitespace-nowrap">$1</span>', esc_html( $hero_line ) );
+					$hero_align = get_field( $hero_prefix . 'section_hero_title_line_' . $hero_n . '_align', $hero_ctx );
+					$hero_align = in_array( $hero_align, $hero_aligns, true ) ? $hero_align : $hero_defaults[ $hero_n ];
 					?>
-					<span class="section-hero__line section-hero__line--<?php echo esc_attr( $hero_n ); ?>"><?php echo wp_kses( $hero_line, array( 'span' => array( 'class' => array() ) ) ); ?></span>
+					<span class="section-hero__line section-hero__line--<?php echo esc_attr( $hero_n ); ?> section-hero__line--<?php echo esc_attr( $hero_align ); ?>"><?php echo wp_kses( $hero_line, array( 'span' => array( 'class' => array() ) ) ); ?></span>
 				<?php endforeach; ?>
 			</h1>
 		</div>

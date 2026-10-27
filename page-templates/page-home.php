@@ -15,7 +15,7 @@ if ( have_posts() ) :
 	while ( have_posts() ) :
 		the_post();
 		do_action( 'before_main_content' );
-			get_template_part( 'template-parts/modules/hero' );
+			get_template_part( 'template-parts/modules/hero', null, array( 'variant' => 'home' ) );
 			get_template_part( 'template-parts/modules/intro' );
 			get_template_part( 'template-parts/pages/home/find-apartment' );
 			get_template_part( 'template-parts/pages/home/direct-book' );

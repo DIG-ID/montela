@@ -1,15 +1,19 @@
 // Hero module (template-parts/modules/hero.php).
 //
-// Full viewport height on every breakpoint — the Figma frames are exactly
-// one screen tall (1080 / 1160 / 852). svh, so mobile browser bars don't
-// push the bottom of the hero off screen.
+// Default (every page — Figma hero-child-page-desktop 5618:10003):
+//   - full screen on mobile and tablet (frames 852 / 1160 tall), 900px on
+//     desktop. svh, so mobile browser bars don't push the bottom off screen.
+//   - title: .title-h1 sizes on mobile and tablet; on desktop every line is
+//     123/111. Line 3 is italic on every breakpoint.
+//   - each line's desktop position comes from the editor (left / indented
+//     128px / centre / right); mobile and tablet are always left-aligned.
 //
-// Title: .title-h1 sizes on mobile and tablet, where the three lines are
-// plain stacked blocks. Desktop changes lines 2 and 3 to 123/111, indents
-// line 2 by 128px and sets line 3 italic, right-aligned.
+// Homepage exception (.section-hero--home — Figma hero-desktop 5594:16771):
+// full screen on desktop too, line 1 keeps the .title-h1 desktop size
+// (150/125), line 3 italic on desktop only.
 
 .section-hero
-  @apply relative flex items-center min-h-[100svh] overflow-hidden text-montela-cream
+  @apply relative flex items-center min-h-[100svh] xl:min-h-[900px] overflow-hidden text-montela-cream
 
 // Image, optional video and the walnut 40% veil, all behind the title.
 .section-hero__media
@@ -31,10 +35,27 @@
   @apply relative
 
 .section-hero__line
-  @apply block
-
-.section-hero__line--2
-  @apply xl:pl-[128px] xl:text-[123px] xl:leading-[111px]
+  @apply block xl:text-[123px] xl:leading-[111px]
 
 .section-hero__line--3
-  @apply xl:text-right xl:italic xl:text-[123px] xl:leading-[111px]
+  @apply italic
+
+// -- Desktop position, set per line in the editor --
+.section-hero__line--indent
+  @apply xl:pl-[128px]
+
+.section-hero__line--center
+  @apply xl:text-center
+
+.section-hero__line--right
+  @apply xl:text-right
+
+// -- Homepage exception ($args['variant'] = 'home') --
+.section-hero--home
+  @apply xl:min-h-[100svh]
+
+.section-hero--home .section-hero__line--1
+  @apply xl:text-[150px] xl:leading-[125px]
+
+.section-hero--home .section-hero__line--3
+  @apply not-italic xl:italic

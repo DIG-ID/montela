@@ -129,8 +129,8 @@ volta no JSON; depois de um deploy, fazer Sync.
 |-----------|------|----|-------|
 | `season` — Seasons | `taxonomy_season.json` | `activity` | Hierárquica (checkboxes no editor), sem URLs públicos, coluna na lista do admin. Termos **`sommer`** e **`winter`** — os slugs são usados no código (filtro Sommer/Winter); criar em cada ambiente, não renomear os slugs. Uma actividade pode ter as duas. |
 
-### Templates por implementar
-- **Single Activity** (`single-activity.php`) — Figma: desktop
+### Templates
+- **Single Activity** (`single-activity.php`) — em curso: hero + intro. Campos no grupo `group_cpt_activity` (um tab por módulo, clones Seamless). Figma: desktop
   [5426:15217](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-15217&m=dev),
   tablet [5426:17534](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-17534&m=dev),
   mobile [5426:16593](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-16593&m=dev).
@@ -161,7 +161,7 @@ no clone e passar o prefixo ao módulo:
 
 | Grupo | Módulo | Campos |
 |-------|--------|--------|
-| `group_module_hero` — Module — Hero | `modules/hero.php` | `section_hero_image` (image, ID), `section_hero_video` (file mp4, URL, opcional), `section_hero_title_line_1` (text), `section_hero_title_line_2` (text), `section_hero_title_line_3` (text) |
+| `group_module_hero` — Module — Hero | `modules/hero.php` | `section_hero_image` (image, ID), `section_hero_video` (file mp4, URL, opcional), `section_hero_title_line_{1,2,3}` (text) + `section_hero_title_line_{1,2,3}_align` (button group: left / indent / center / right — posição em desktop). Padrão = páginas interiores (900px em desktop); a homepage passa `array( 'variant' => 'home' )` (ecrã inteiro, linha 1 maior). |
 | `group_module_intro` — Module — Intro | `modules/intro.php` | `section_intro_title` (textarea, `new_lines: br`), `section_intro_text` (textarea) |
 | `group_module_explore` — Module — Explore | `modules/explore.php` | `section_explore_title` (text), `section_explore_image` (image), `section_explore_text` (textarea), `section_explore_button` (link), `section_explore_slides` (gallery) |
 | `group_module_image_band` — Module — Image band | `modules/image-band.php` | `section_image_band_image` (image) |
@@ -173,6 +173,7 @@ tab clona o grupo do módulo (Seamless, sem prefixo).
 | Grupo | Template | Tabs → clone |
 |-------|----------|--------------|
 | `group_page_home` — Page — Home | `page-templates/page-home.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Apartments (campos próprios, `pages/home/find-apartment.php`) · Direct booking (campos próprios, `pages/home/direct-book.php`) · Gallery (campos próprios, `pages/home/gallery.php`) · Explore → `group_module_explore` · Image band → `group_module_image_band` |
+| `group_cpt_activity` — Activity | `single-activity.php` (post type `activity`) | Hero → `group_module_hero` · Intro → `group_module_intro` |
 
 Secções só de uma página têm os campos **directamente no grupo da página** (no
 seu tab), com o prefixo da secção: `section_find_apartment_*`,

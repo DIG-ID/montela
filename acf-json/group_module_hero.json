@@ -61,7 +61,7 @@
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "70",
                 "class": "",
                 "id": ""
             },
@@ -74,16 +74,43 @@
             "append": ""
         },
         {
+            "key": "field_module_hero_title_line_1_align",
+            "label": "Line 1 — position",
+            "name": "section_hero_title_line_1_align",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "Desktop only.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "choices": {
+                "left": "Left",
+                "indent": "Indented",
+                "center": "Centre",
+                "right": "Right"
+            },
+            "default_value": "left",
+            "return_format": "value",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "layout": "horizontal"
+        },
+        {
             "key": "field_module_hero_title_line_2",
             "label": "Title — line 2",
             "name": "section_hero_title_line_2",
             "aria-label": "",
             "type": "text",
-            "instructions": "Optional. Indented on desktop.",
+            "instructions": "Optional.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "70",
                 "class": "",
                 "id": ""
             },
@@ -96,16 +123,43 @@
             "append": ""
         },
         {
+            "key": "field_module_hero_title_line_2_align",
+            "label": "Line 2 — position",
+            "name": "section_hero_title_line_2_align",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "Desktop only.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "choices": {
+                "left": "Left",
+                "indent": "Indented",
+                "center": "Centre",
+                "right": "Right"
+            },
+            "default_value": "left",
+            "return_format": "value",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "layout": "horizontal"
+        },
+        {
             "key": "field_module_hero_title_line_3",
             "label": "Title — line 3",
             "name": "section_hero_title_line_3",
             "aria-label": "",
             "type": "text",
-            "instructions": "Optional. Italic and right-aligned on desktop.",
+            "instructions": "Optional. Shown in italic.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "70",
                 "class": "",
                 "id": ""
             },
@@ -113,9 +167,36 @@
             "default_value": "",
             "maxlength": "",
             "allow_in_bindings": 0,
-            "placeholder": "Ferienregion Saas-Fee\/ Saas Tal",
+            "placeholder": "Ferienregion Saas-Fee/ Saas Tal",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_module_hero_title_line_3_align",
+            "label": "Line 3 — position",
+            "name": "section_hero_title_line_3_align",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "Desktop only.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "choices": {
+                "left": "Left",
+                "indent": "Indented",
+                "center": "Centre",
+                "right": "Right"
+            },
+            "default_value": "right",
+            "return_format": "value",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "layout": "horizontal"
         }
     ],
     "location": [
@@ -139,6 +220,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793098446,
+    "modified": 1793106261,
     "acfml_field_group_mode": "advanced"
 }

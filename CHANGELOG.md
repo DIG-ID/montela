@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.9.0] — 2026-10-27
+
+### Added
+- Activity single page template, starting with the hero and intro modules, and an "Activity" field group (one tab per module).
+- Hero: a desktop position for each title line (left, indented, centre or right), set in the editor.
+
+### Changed
+- Hero: the standard layout is now the inner-page one (900px tall on desktop, all lines the same size, last line in italic). The homepage keeps its full-screen hero as an exception.
+
 ## [1.8.0] — 2026-10-27
 
 ### Added
