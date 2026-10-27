@@ -1,0 +1,26 @@
+// Icon list (template-parts/components/icon-list.php).
+//
+// Typography shared by every icon list in the design: light text, bold title
+// at the same size — 14/22 mobile, 17/23 tablet ("Tablet/Text small"), 20/32
+// desktop. No colour: it inherits from the section.
+//
+// Default layout: 68px icon column, 16px (mobile) / 20px gap to the text,
+// items 32px (mobile) / 72px apart. Sections override it with two classes
+// (.section-foo .icon-list__item), see .claude/rules/sass.md.
+
+.icon-list
+  @apply flex flex-col gap-8 md:gap-[72px]
+
+.icon-list__item
+  @apply grid grid-cols-[68px_1fr] gap-x-4 md:gap-x-5 items-start
+
+.icon-list__icon
+  @apply block
+  img
+    @apply w-full h-auto
+
+.icon-list__text
+  @apply font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[17px] md:leading-[23px] xl:text-[20px] xl:leading-[32px]
+
+.icon-list__title
+  @apply font-bold

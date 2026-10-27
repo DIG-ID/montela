@@ -40,7 +40,7 @@ montela/
 ├── page-templates/         # Page templates WordPress
 ├── acf-json/               # field groups do ACF (Local JSON)
 ├── template-parts/
-│   ├── components/       # button.php, button-icon.php
+│   ├── components/       # button.php, button-icon.php, icon-list.php
 │   ├── modules/          # secções reutilizadas (hero, intro…)
 │   ├── pages/            # secções de uma só página
 │   ├── footer-main.php
@@ -156,7 +156,11 @@ tab clona o grupo do módulo (Seamless, sem prefixo).
 
 | Grupo | Template | Tabs → clone |
 |-------|----------|--------------|
-| `group_page_home` — Page — Home | `page-templates/page-home.php` | Hero → `group_module_hero` · Intro → `group_module_intro` |
+| `group_page_home` — Page — Home | `page-templates/page-home.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Apartments (campos próprios, `pages/home/find-apartment.php`) · Direct booking (campos próprios, `pages/home/direct-book.php`) · Gallery (campos próprios, `pages/home/gallery.php`) |
+
+Secções só de uma página têm os campos **directamente no grupo da página** (no
+seu tab), com o prefixo da secção: `section_find_apartment_*`,
+`section_direct_book_*`, `section_gallery_*`. Listas com ícone (repeater → `icon`, `title`, `text`) usam o componente `components/icon-list.php`.
 
 > **A preencher** com os field groups das restantes páginas e dos CPTs.
 

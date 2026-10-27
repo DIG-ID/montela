@@ -178,13 +178,10 @@ function montela_enqueue_assets() {
 	// Non-critical: GSAP, ScrollTrigger and Lenis. Safe to delay with WP Rocket.
 	montela_vite_enqueue_script( 'theme-animations', 'assets/js/animations.js' );
 
-	/*
-	 * Optional modules — enqueue only where they are used, e.g.:
-	 *
-	 * if ( is_page_template( 'page-templates/page-home.php' ) ) {
-	 *     montela_enqueue_module( 'swiper' );
-	 * }
-	 */
+	// Optional modules — enqueue only where they are used.
+	if ( is_page_template( 'page-templates/page-home.php' ) ) {
+		montela_enqueue_module( 'swiper' ); // Gallery slider.
+	}
 }
 
 add_action( 'wp_enqueue_scripts', 'montela_enqueue_assets' );

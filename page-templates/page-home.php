@@ -17,6 +17,9 @@ if ( have_posts() ) :
 		do_action( 'before_main_content' );
 			get_template_part( 'template-parts/modules/hero' );
 			get_template_part( 'template-parts/modules/intro' );
+			get_template_part( 'template-parts/pages/home/find-apartment' );
+			get_template_part( 'template-parts/pages/home/direct-book' );
+			get_template_part( 'template-parts/pages/home/gallery' );
 		do_action( 'after_main_content' );
 	endwhile;
 endif;

@@ -11,6 +11,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.5.0] — 2026-10-27
+
+### Added
+- Homepage "Find your apartment" section: title, text, button and two photos.
+- Homepage "Direct booking" section: benefits list with icons on a sage background.
+- Homepage "Premium Hotel Stay" section: photos, services list with icons and a full-width photo slider with arrows.
+- Reusable icon list component (icon, bold title, text) shared by the homepage sections.
+- Homepage field group tabs for the three new sections.
+
+### Changed
+- Slider arrows can sit outside the slider element (e.g. below it on mobile).
+- The Swiper slider is now loaded on the homepage.
+
 ## [1.4.0] — 2026-10-27
 
 ### Added

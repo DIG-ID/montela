@@ -98,6 +98,24 @@
   &::before
     @apply rotate-90
 
+// -- Slider arrows -------------------------------------------------------------
+// 40px cream squares with a sage border and chevron (homepage gallery,
+// Figma 5426:5087). The SVGs carry the whole drawing, so they are plain
+// backgrounds. No hover state in the design.
+.slider-nav
+  @apply flex gap-4
+
+.slider-nav__btn
+  @apply block w-10 h-10 shrink-0 bg-no-repeat bg-center bg-contain disabled:opacity-40 disabled:cursor-default
+  &:focus-visible
+    @apply outline outline-2 outline-offset-4 outline-montela-mustard
+
+.slider-nav__btn--prev
+  background-image: url("../../svg/icons/slider-prev.svg")
+
+.slider-nav__btn--next
+  background-image: url("../../svg/icons/slider-next.svg")
+
 // The hero button has a softer drop shadow than the arrow buttons.
 .btn-icon--home
   @apply shadow-none drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)]
