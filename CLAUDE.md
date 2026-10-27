@@ -115,11 +115,25 @@ Antes de entregar código PHP, verificar com `npm run php:lint`. Usar `npm run p
 
 ## Custom Post Types
 
-> **A preencher** com os CPTs reais do Montela (depois do `/figma-analysis`).
+Registados pelo **ACF Pro** (Local JSON, `acf-json/post_type_*.json`) — não há
+`register_post_type()` no tema. Editar no admin (ACF → Post Types) grava de
+volta no JSON; depois de um deploy, fazer Sync.
 
-| Slug | Descrição |
-|------|-----------|
-| —    | —         |
+| Post type | JSON | URL | Suporta | Notas |
+|-----------|------|-----|---------|-------|
+| `activity` — Activities | `post_type_activity.json` | `/aktivitaeten/{slug}/` (sem arquivo) | título, imagem destacada ("Card image"), excerto, revisões | Sem editor de blocos: o conteúdo do single é feito de módulos ACF. Lido por uma secção da homepage. |
+
+### Taxonomias
+
+| Taxonomia | JSON | Em | Notas |
+|-----------|------|----|-------|
+| `season` — Seasons | `taxonomy_season.json` | `activity` | Hierárquica (checkboxes no editor), sem URLs públicos, coluna na lista do admin. Termos **`sommer`** e **`winter`** — os slugs são usados no código (filtro Sommer/Winter); criar em cada ambiente, não renomear os slugs. Uma actividade pode ter as duas. |
+
+### Templates por implementar
+- **Single Activity** (`single-activity.php`) — Figma: desktop
+  [5426:15217](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-15217&m=dev),
+  tablet [5426:17534](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-17534&m=dev),
+  mobile [5426:16593](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-16593&m=dev).
 
 ---
 

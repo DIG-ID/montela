@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.8.0] — 2026-10-27
+
+### Added
+- "Activities" custom post type (`/aktivitaeten/…`), registered through ACF: title, card image, excerpt and revisions; content built from ACF modules.
+- "Seasons" taxonomy for activities (Sommer / Winter), used to filter them.
+
 ## [1.7.0] — 2026-10-27
 
 ### Added
