@@ -1,0 +1,107 @@
+// Typography — Roboto (font-primary) for body text, FreightBig Pro
+// (font-secondary) for headings. Weights available in the Adobe Fonts kit:
+//   roboto          300, 300i, 400, 700
+//   freight-big-pro 400, 400i, 500, 500i
+// Any other weight is faux-rendered by the browser — stick to these.
+//
+// Colour is deliberately NOT set here, except on inline links: set it on the
+// container so children — including the <p> wpautop generates — inherit it.
+// See .claude/rules/php.md.
+//
+// Breakpoints: mobile-first base value, then md: (tablet) and xl: (desktop).
+//
+// Values come from the Figma text styles of the same name, as applied in the
+// homepage frames — desktop 5980:17214, tablet 5426:4308, mobile 5426:4185.
+// The Design System frame (5470:16706) matches for desktop but also carries
+// leftover styles from another project (Inria Serif, Montserrat, DM Sans,
+// Funnel Sans) — ignore those. Class names mirror the
+// Figma style names and are independent of the HTML tag: an <h2> can carry
+// .title-h3 when the page hierarchy calls for it.
+
+// -- Base ----------------------------------------------------------------------
+// 100% (16px by default) rather than a fixed 16px, so the user's browser font
+// size setting is respected. Tailwind's rem-based spacing assumes this root.
+html
+  font-size: 100%
+
+// Font family and colour come from _base-styles (CSS custom properties).
+// Same scale as .body-text, so unstyled text already matches the design.
+body
+  @apply font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[20px] xl:leading-[32px]
+
+// No heading reset needed: Tailwind's preflight already sets h1–h6 to
+// font-size/font-weight: inherit and margin: 0, so the semantic level never
+// dictates the look — the classes below do.
+
+// -- Titles --------------------------------------------------------------------
+// Figma "H1".
+.title-h1
+  @apply font-secondary font-medium tracking-[0.5px] xl:tracking-[3px] text-[40px] leading-[50px] md:text-[90px] md:leading-[90px] xl:text-[150px] xl:leading-[125px]
+
+// Figma "H2" — small italic title, same size on every breakpoint.
+.title-h2
+  @apply font-secondary font-normal italic tracking-[1px] text-[25px] leading-[30px]
+
+// Figma "H3".
+.title-h3
+  @apply font-secondary font-medium tracking-[0.5px] text-[36px] leading-[38px] md:text-[80px] md:leading-[76px] xl:text-[90px] xl:leading-[80px]
+
+// Figma "H4" — Roboto, not FreightBig. The tablet and mobile frames use the
+// desktop style unchanged.
+.title-h4
+  @apply font-primary font-bold tracking-[0.5px] text-[20px] leading-[32px]
+
+// Figma "Intro title".
+.title-intro
+  @apply font-secondary font-normal italic tracking-[0.5px] text-[40px] leading-[35px] md:text-[70px] md:leading-[70px] xl:text-[90px] xl:leading-[76px]
+
+// -- Text styles ---------------------------------------------------------------
+// Figma "Intro text".
+.body-intro
+  @apply font-primary font-light tracking-[0.5px] text-[20px] leading-[30px] md:text-[30px] md:leading-[40px] xl:text-[35px] xl:leading-[55px]
+
+// Figma "Quote".
+.body-quote
+  @apply font-primary font-light italic tracking-[0.5px] text-[20px] leading-[30px] md:text-[25px] md:leading-[40px] xl:text-[35px] xl:leading-[55px]
+
+// Figma "Text small - footer" (desktop and tablet) and "Mobile/text".
+// Section-level deviations stay in the section's own SASS, not here: the
+// direct-booking section uses 17/23 on tablet ("Tablet/Text small") and the
+// find-apartment section uses this mobile size where other breakpoints use
+// .body-text.
+.body-small
+  @apply font-primary font-light tracking-[0.5px] text-[12px] leading-[20px] md:text-[15px] md:leading-[25px]
+
+// Figma "Text". Rich text from the editor (WYSIWYG / textarea with wpautop):
+// apply on a wrapper, so the <p> children wpautop generates inherit it.
+.body-text
+  @apply font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[20px] xl:leading-[32px]
+  p
+    @apply mb-4 last:mb-0
+
+  // _base-styles strips list markers site-wide, so a bullet list from a
+  // WYSIWYG field arrives as unmarked plain lines until they are put back here.
+  // Unclassed lists only: what the editor writes carries no class, while the
+  // theme's own markup does and has to stay unmarked.
+  ul:not([class]),
+  ol:not([class])
+    @apply mb-4 last:mb-0 pl-[18px]
+    list-style-position: outside
+
+  ul:not([class])
+    list-style-type: disc
+
+  ol:not([class])
+    list-style-type: decimal
+
+  // Tighter than paragraphs.
+  ul:not([class]) li,
+  ol:not([class]) li
+    @apply mb-1 last:mb-0
+
+  strong, b
+    @apply font-bold
+
+// -- Links ---------------------------------------------------------------------
+// The one place a typography class may set a colour.
+// (to be defined from the design system)

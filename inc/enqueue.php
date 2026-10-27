@@ -66,6 +66,8 @@ if ( ! function_exists( 'montela_font_resource_hints' ) ) :
 				'href'        => 'https://use.typekit.net',
 				'crossorigin' => 'crossorigin',
 			);
+			// The kit CSS @imports a tracking stylesheet from this host.
+			$urls[] = 'https://p.typekit.net';
 		}
 
 		return $urls;

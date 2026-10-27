@@ -12,13 +12,13 @@
 // Font provider configuration — set per project.
 // Options: 'google' | 'adobe' | 'none'.
 if ( ! defined( 'MONTELA_FONT_PROVIDER' ) ) {
-	define( 'MONTELA_FONT_PROVIDER', 'none' );
+	define( 'MONTELA_FONT_PROVIDER', 'adobe' );
 }
 if ( ! defined( 'MONTELA_GOOGLE_FONTS_URL' ) ) {
 	define( 'MONTELA_GOOGLE_FONTS_URL', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap' );
 }
 if ( ! defined( 'MONTELA_ADOBE_FONTS_ID' ) ) {
-	define( 'MONTELA_ADOBE_FONTS_ID', '' ); // Typekit kit ID, e.g. 'abc1234'.
+	define( 'MONTELA_ADOBE_FONTS_ID', 'eju2iqq' ); // FreightBig Pro + Roboto.
 }
 
 // Google Maps API key — define the real key in wp-config.php. Empty = disabled.

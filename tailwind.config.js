@@ -15,8 +15,8 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      primary: ['Inter', 'sans-serif'],   // replace per project
-      secondary: ['Inter', 'sans-serif'], // replace per project
+      primary: ['roboto', 'sans-serif'],         // body — Adobe Fonts: 300, 300i, 400, 700
+      secondary: ['freight-big-pro', 'serif'],  // headings — Adobe Fonts: 400, 400i, 500, 500i
     },
 
     extend: {

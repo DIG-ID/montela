@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.2.0] — 2026-10-27
+
+### Added
+- Typography classes from the design system: `.title-h1`–`.title-h4`, `.title-intro`, `.body-intro`, `.body-quote`, `.body-text` and `.body-small`, with mobile, tablet and desktop sizes.
+
+### Changed
+- Theme fonts set to FreightBig Pro (headings) and Roboto (body) via Adobe Fonts.
+- Default body text now follows the design system's text style.
+
 ## [1.1.0] — 2026-10-26
 
 ### Changed
