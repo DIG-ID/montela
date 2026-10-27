@@ -10,6 +10,15 @@
 import { gsap, ScrollTrigger, lenis } from './gsap.js';
 import { domReady } from './utils/helpers.js';
 
+// The mega menu (main.js) locks the page behind it: pause the smooth scroll.
+document.addEventListener('montela:menu', (event) => {
+  if (event.detail.open) {
+    lenis.stop();
+  } else {
+    lenis.start();
+  }
+});
+
 // Delayed by WP Rocket, this may run after DOMContentLoaded has fired.
 domReady(() => {
 

@@ -1,1 +1,141 @@
-// Footer styles
+// Footer — Figma "full-footer-desktop" (5581:5814) and "full-footer-tablet"
+// (5475:24966). Markup in template-parts/footer-main.php.
+//
+// A cream call-to-action box (Figma "pre-footer") sits on the top edge of
+// the sage footer: its last 60px overlap the sage. In the frame the box
+// also reaches 40px into the section above; here it starts at the footer's
+// top, as the section above is not known.
+//
+// Sage part, 128px apart: logo, the four columns (101px apart: newsletter
+// 346px, contact, navigation, partner logos), the copyright bar. All text is
+// Roboto Light 15/25, cream.
+//
+// Desktop from 2xl (the frame needs ~1656px of content). Between xl and
+// 2xl the partner logos wrap to a second row — interpolated, not designed.
+//
+// Tablet (md–xl): the box stacks — title on top, text and button side by
+// side below — and the sage reaches 280px up behind it. Blocks 96px apart
+// (logo, content, copyright); in the content, 101px apart: newsletter and
+// contact side by side, the navigation as two rows of four spread across
+// the width, the partner logos centred. Side margins are the frame's 50px
+// (the grid's tablet margin is 64px).
+//
+// Below md: provisional until the mobile frame is built.
+//
+// Mailchimp for WP form — its markup lives in the plugin (Forms → Form),
+// so the theme styles it here. Template to paste there:
+//
+//   <input type="email" name="EMAIL" placeholder="E-Mail*" aria-label="E-Mail" required>
+//   <input type="submit" value="Anmelden">
+//
+// The submit is visually hidden (Enter submits); it shows on keyboard focus.
+
+// -- Call to action ------------------------------------------------------------
+// The box is 694px wide at 70px from the edges on tablet.
+.footer-main__cta-wrap
+  @apply relative z-10 md:px-[70px] xl:px-[50px]
+
+// Desktop: title (787px), 28px, then the row — text (439px) and the button
+// pushed right. Tablet: title on top, 32px, then the row — text and button
+// 64px apart, aligned on their bottom edge. 32px padding on tablet.
+.footer-main__cta
+  @apply flex flex-col xl:flex-row xl:items-start gap-6 md:gap-8 xl:gap-7 px-8 py-10 md:p-8 xl:px-16 xl:py-16 2xl:px-[103px] bg-montela-cream border-2 border-montela-cream text-montela-walnut shadow-[0_0_2px_rgba(0,0,0,0.25),4px_-4px_2px_rgba(0,0,0,0.25),0_4px_2px_rgba(0,0,0,0.25)]
+
+// The tablet frame keeps the desktop H3 size here (90/80), not the
+// tablet one (80/76). Two classes to beat .title-h3, emitted after this file.
+.footer-main .footer-main__cta-title
+  @apply md:text-[90px] md:leading-[80px] xl:shrink xl:basis-[787px]
+
+.footer-main__cta-row
+  @apply flex flex-col gap-6 md:flex-row md:items-end md:gap-16 xl:items-start xl:grow xl:justify-between xl:gap-7
+
+.footer-main__cta-text
+  @apply md:flex-1 xl:flex-none xl:shrink xl:basis-[439px]
+
+.footer-main__cta-btn
+  @apply shrink-0 self-start md:self-auto xl:self-start
+
+// -- Sage body -----------------------------------------------------------------
+// Under the box, the sage starts 60px above the box's bottom edge.
+.footer-main__body
+  @apply flex flex-col items-center bg-montela-sage text-montela-cream font-primary font-light text-[15px] leading-[25px] tracking-[0.5px] pt-16 xl:pt-[128px]
+  // Sage behind the box: 60px up (desktop), 280px (tablet). The logo then
+  // sits 128px (desktop) / 40px (tablet) below the box.
+  .footer-main--has-cta &
+    @apply -mt-[60px] pt-[124px] md:-mt-[280px] md:pt-[320px] xl:-mt-[60px] xl:pt-[188px]
+
+.footer-main__logo
+  @apply block w-[187px] mb-16 md:mb-24 xl:mb-[128px]
+  img
+    @apply w-full h-auto
+
+.footer-main__content
+  @apply flex flex-col gap-12 md:flex-row md:flex-wrap md:items-start md:gap-[101px] md:px-[50px] xl:gap-x-10 xl:gap-y-16 2xl:flex-nowrap 2xl:gap-x-[101px]
+
+.footer-main a
+  @apply transition-colors duration-300 ease-out
+  &:focus-visible
+    @apply outline outline-2 outline-offset-4 outline-montela-mustard
+
+// -- Newsletter ----------------------------------------------------------------
+.footer-main__newsletter
+  @apply flex flex-col gap-[42px] w-full max-w-[346px] shrink-0
+  input[type="email"]
+    @apply block w-full pl-[14px] pb-3 bg-transparent border-0 border-b border-solid border-montela-cream rounded-none text-[15px] leading-[25px] tracking-[0.5px] text-montela-cream placeholder:text-montela-cream placeholder:opacity-100
+    &:focus
+      @apply outline-none border-montela-mustard
+  input[type="submit"]
+    @apply sr-only
+    &:focus
+      @apply not-sr-only mt-4 px-4 py-2 bg-montela-cream text-montela-walnut font-bold uppercase text-[14px]
+  .mc4wp-response
+    @apply mt-3
+
+// -- Contact -------------------------------------------------------------------
+.footer-main__contact
+  @apply flex flex-col gap-[22px] not-italic shrink-0
+  a:hover
+    @apply text-montela-mustard
+
+// -- Navigation ----------------------------------------------------------------
+// Each link a 124×40 box, 30% cream on hover (the frame shows it on
+// "Über uns"). Desktop: four per column, columns 64px apart. Tablet: the
+// same columns turned into rows — four per row spread across the width,
+// rows 32px apart.
+.footer-main__nav
+  @apply md:basis-full xl:basis-auto
+
+.footer-main__menu
+  @apply grid grid-rows-4 grid-flow-col auto-cols-max gap-x-16 gap-y-6 md:grid-rows-none md:grid-flow-row md:grid-cols-[repeat(4,124px)] md:justify-between md:gap-y-8 xl:grid-rows-4 xl:grid-flow-col xl:grid-cols-none xl:justify-start xl:gap-y-6
+  a
+    @apply flex items-center w-[124px] h-10 px-2 whitespace-nowrap
+    &:hover
+      @apply bg-montela-cream/30
+  .current-menu-item > a
+    @apply bg-montela-cream/30
+
+// -- Partner logos -------------------------------------------------------------
+// 2 × 2 cells of 192×96, 64px / 56px apart. Uploaded logos differ in shape,
+// so each one is fitted into a 150×82 box (the largest the frame uses)
+// rather than given one height — see .claude/rules/editor-content.md.
+// Centred on its own row on tablet.
+.footer-main__partners
+  @apply grid grid-cols-2 gap-x-16 gap-y-14 shrink-0 md:mx-auto xl:mx-0
+
+.footer-main__partner
+  @apply flex items-center justify-center w-[150px] h-[82px] md:w-[192px] md:h-[96px]
+
+.footer-main__partner-img
+  @apply w-auto h-auto max-w-[150px] max-h-[82px] object-contain
+
+// -- Copyright bar -------------------------------------------------------------
+.footer-main__bottom
+  @apply w-full mt-16 md:mt-24 xl:mt-[128px] border-t border-montela-cream
+
+.footer-main__bottom-inner
+  @apply flex flex-col gap-4 md:flex-row md:items-center md:justify-between py-[30px] md:px-[50px]
+
+.footer-main__legal
+  @apply flex flex-wrap gap-x-10 gap-y-2 md:gap-x-16 xl:gap-x-[120px]
+  a:hover
+    @apply text-montela-mustard

@@ -1,1 +1,171 @@
-// Header styles
+// Header — Figma "main-navigation" (desktop 5567:15709),
+// "main-navigation-tablet" (5567:15754) and "main-navigation-mobile"
+// (5567:15708). Markup in template-parts/header-main.php.
+//
+// Sits over the hero (absolute, transparent), so everything is cream. Logo
+// on the left; on the right, 16px apart: bordered menu (desktop only),
+// booking button (tablet+), language switcher, menu toggle. The controls
+// are 44px boxes on mobile and tablet, 60px boxes on desktop. The logo is
+// 128px wide on mobile, 137px from tablet up (same SVG, scaled).
+//
+// The 1920 frame needs 1346px of content; at 1280 the container gives
+// 1180px. Between xl and 2xl the menu and booking-button paddings shrink
+// to fit — interpolated, not measured. The frame values apply from 2xl.
+//
+// Hover states are not designed: they follow the buttons (mustard).
+// The arrow is an SVG mask painted with currentColor, as in _buttons.sass;
+// the tablet frame uses the same glyph scaled down. The menu / close icon
+// is three CSS bars instead, so it can morph from one into the other.
+
+// -- Icon masks ----------------------------------------------------------------
+.header-main__cta-icon::before
+  mask: url("../../svg/icons/arrow-cta.svg") center / contain no-repeat
+
+// -- Skip link -----------------------------------------------------------------
+.skip-link
+  @apply sr-only
+  &:focus
+    @apply not-sr-only fixed top-4 left-4 z-[100] px-4 py-2 bg-montela-walnut text-montela-cream font-primary text-[15px]
+
+// -- Bar -----------------------------------------------------------------------
+.header-main
+  @apply absolute inset-x-0 top-0 z-40 text-montela-cream
+  // Shared focus ring for every control in the bar.
+  a,
+  button
+    &:focus-visible
+      @apply outline outline-2 outline-offset-4 outline-montela-mustard
+
+// Logged in: the admin bar pushes <html> down with a margin, which an
+// absolute top-0 ignores — move the header below the bar (46px below 783px,
+// 32px above, as in WordPress core).
+.admin-bar .header-main
+  @apply top-[46px] min-[783px]:top-[32px]
+
+.header-main__inner
+  @apply flex items-center justify-between gap-4 md:gap-10 pt-[26px] pb-[24px] md:py-[36px]
+
+// Mobile: the frame gives the logo a 56px slot but the SVG is 58px tall and
+// overflows it by 2px — hence 26/24 padding, for the frame's 108px bar.
+.header-main__logo
+  @apply shrink-0 w-[128px] md:w-[137px]
+  img
+    @apply w-full h-auto
+
+.header-main__actions
+  @apply flex items-stretch gap-4 h-[44px] xl:h-[60px]
+
+// -- Menu ----------------------------------------------------------------------
+// Bordered box: 32px inner padding, 32px between items, 32px around each
+// label (frame values, 2xl+).
+.header-main__nav
+  @apply hidden xl:flex
+
+.header-main__menu
+  @apply flex items-center border border-montela-cream xl:px-4 2xl:px-8 2xl:gap-8
+  a
+    @apply flex items-center py-[14px] font-primary font-normal text-[15px] leading-[32px] tracking-[0.5px] uppercase whitespace-nowrap transition-colors duration-300 ease-out xl:px-5 2xl:px-8
+    &:hover
+      @apply text-montela-mustard
+  .current-menu-item > a,
+  .current-menu-ancestor > a
+    @apply text-montela-mustard
+
+// -- Booking button ------------------------------------------------------------
+// Cream label + 4px gap + arrow box (44px tablet, 60px desktop).
+// Figma "Desktop/Button" type on both.
+.header-main__cta
+  @apply hidden md:flex items-stretch gap-[4px] text-montela-walnut drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)]
+  &:hover
+    .header-main__cta-label,
+    .header-main__cta-icon
+      @apply bg-montela-mustard
+
+.header-main__cta-label
+  @apply flex items-center justify-center bg-montela-cream font-primary font-bold text-[14px] leading-none tracking-[0.84px] uppercase whitespace-nowrap transition-colors duration-300 ease-out px-8 2xl:px-[56px]
+
+.header-main__cta-icon
+  @apply flex w-[44px] xl:w-[60px] shrink-0 bg-montela-cream transition-colors duration-300 ease-out
+  &::before
+    content: ""
+    @apply m-auto w-[20px] h-[21.43px] xl:w-[28px] xl:h-[30px] bg-current
+
+// -- Language switcher ---------------------------------------------------------
+// One box (44px tablet, 60px desktop) with the current language; it opens the other languages as
+// the same boxes stacked below. The open state is not designed.
+// border-solid: the base reset sets `border: none` on buttons.
+.header-main__lang-switcher
+  @apply relative
+
+// Staircase: the boxes drop in one after another (--i = position, set in
+// the markup) and leave in reverse order (--n = number of boxes). Closed
+// boxes are `invisible`, so they are skipped by Tab and screen readers.
+.header-main__langs
+  @apply absolute left-0 top-full flex flex-col gap-2 pt-2 pointer-events-none
+  li
+    @apply invisible opacity-0 -translate-y-3 transition-[opacity,transform,visibility] duration-300 ease-out-expo delay-[calc((var(--n)-1-var(--i))*50ms)] motion-reduce:transition-none
+  &.is-open
+    @apply pointer-events-auto
+    li
+      @apply visible opacity-100 translate-y-0 duration-500 delay-[calc(var(--i)*80ms)]
+
+.header-main__lang
+  @apply flex items-center justify-center w-[44px] h-[44px] xl:w-[60px] xl:h-[60px] border border-solid border-montela-cream font-primary text-[15px] leading-[32px] tracking-[0.5px] transition-colors duration-300 ease-out
+  &:hover,
+  &[aria-expanded="true"]
+    @apply text-montela-mustard
+
+// -- Menu toggle ---------------------------------------------------------------
+// Opens the mega menu (main.js). The icon is the Figma hamburger drawn as
+// three bars. Figma has 26×16.8 with 1.5px bars (mobile, tablet) and 32×21
+// with 1.88px bars (desktop); those fractions land the bars on different
+// sub-pixels and one renders thinner, so the geometry is snapped to whole
+// pixels: bars every 7px in a 16px box, and 2px bars every 10px in a 22px
+// box. Open, the outer bars slide to the middle and turn into the X of the
+// close icon (24.9px square on desktop: 35.2px arms, hence the 1.1
+// stretch) while the middle one shrinks away.
+.header-main__toggle
+  @apply flex items-center justify-center w-[44px] xl:w-[60px] border border-solid border-montela-cream text-montela-cream transition-colors duration-300 ease-out
+  &:hover
+    @apply text-montela-mustard
+
+// --toggle-shift: the step between bars, whole pixels. Even box heights
+// keep the icon on a whole pixel inside the 42 / 58px of the bordered box.
+.header-main__toggle-icon
+  @apply relative block w-[26px] h-[16px] xl:w-[32px] xl:h-[22px] [--toggle-shift:7px] xl:[--toggle-shift:10px]
+
+.header-main__toggle-bar
+  @apply absolute left-0 w-full h-[1.5px] xl:h-[2px] bg-current transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] motion-reduce:transition-none
+  &:nth-child(1)
+    @apply top-0
+  &:nth-child(2)
+    @apply top-[var(--toggle-shift)]
+  &:nth-child(3)
+    @apply top-[calc(var(--toggle-shift)*2)]
+
+// -- Mega menu open ------------------------------------------------------------
+// The header stays on top of the mega menu (z-40 over z-30). Fixed while the
+// menu is open and while it closes (`.is-menu-closing`, until the curtain is
+// up), so it does not jump if the page was scrolled. The page scrollbar is
+// hidden meanwhile; --scroll-lock-gap (main.js) keeps the controls where
+// they were. The bordered menu is not in the menu frame: hidden at once,
+// back with a fade once the menu has closed. The toggle's bars morph into
+// the close X.
+.is-menu-open,
+.is-menu-closing
+  .header-main
+    @apply fixed right-[var(--scroll-lock-gap,0px)]
+  .header-main__nav
+    @apply invisible opacity-0 duration-200
+
+.is-menu-open
+  .header-main__toggle-bar
+    &:nth-child(1)
+      @apply translate-y-[var(--toggle-shift)] rotate-45 xl:scale-x-110
+    &:nth-child(2)
+      @apply opacity-0 scale-x-0
+    &:nth-child(3)
+      @apply -translate-y-[var(--toggle-shift)] -rotate-45 xl:scale-x-110
+
+.header-main__nav
+  @apply transition-[opacity,visibility] duration-300 ease-out

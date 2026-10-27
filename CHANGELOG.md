@@ -11,6 +11,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.10.0] — 2026-10-27
+
+### Added
+- Header on desktop, tablet and mobile: logo, main menu (desktop), "Book now" button, language switcher and menu button. It sits over the hero and stays in place below the admin bar.
+- WPML language switcher: the current language in a box that opens the other languages one after another.
+- Mega menu, opened by the menu button: a full-screen panel with a photo and the "Mega Menu" links. Items with sub-pages open their own view with a back button. Animated opening and closing, the menu icon turning into a close icon, and the page behind locked while it is open. Built for desktop, tablet and mobile.
+- Footer on desktop and tablet: call-to-action box, logo, newsletter (Mailchimp for WP), contact details, socials, footer navigation, partner logos, copyright and legal links.
+- "Theme Settings" options page with the header and footer content, and a new "Legal Menu" location.
+
+### Changed
+- The "Theme Settings" options page and its fields are defined in `acf-json/`: after deploying, run **Sync** in ACF → Options Pages and ACF → Field Groups.
+- The theme logo (Montela, cream) is used when no custom logo is set.
+
 ## [1.9.0] — 2026-10-27
 
 ### Added

@@ -4,7 +4,7 @@
     "name": "helpers"
   },
   "assets/js/animations.js": {
-    "file": "js/animations-C1aF9qcI.js",
+    "file": "js/animations-Cn1gWfKT.js",
     "name": "animations",
     "src": "assets/js/animations.js",
     "isEntry": true,
@@ -13,7 +13,7 @@
     ]
   },
   "assets/js/main.js": {
-    "file": "js/main-BXZVwhbq.js",
+    "file": "js/main-CI0OWZKe.js",
     "name": "main",
     "src": "assets/js/main.js",
     "isEntry": true
@@ -79,7 +79,7 @@
     "isEntry": true
   },
   "assets/sass/main.sass": {
-    "file": "css/main-DgbLG-vY.css",
+    "file": "css/main-C4Hlhlp1.css",
     "name": "main",
     "names": [
       "main.css"
@@ -87,6 +87,8 @@
     "src": "assets/sass/main.sass",
     "isEntry": true,
     "assets": [
+      "assets/arrow-cta-CMgpcRWj.svg",
+      "assets/arrow-back-tz3BBcEc.svg",
       "assets/mountains-BtNTc39q.svg",
       "assets/arrow-forward-aO82Prq-.svg",
       "assets/home-and-garden-ltii5Ith.svg",
@@ -95,6 +97,14 @@
       "assets/slider-prev-sage-CRYbWYmP.svg",
       "assets/slider-next-sage-B0mM5aXy.svg"
     ]
+  },
+  "assets/svg/icons/arrow-back.svg": {
+    "file": "assets/arrow-back-tz3BBcEc.svg",
+    "src": "assets/svg/icons/arrow-back.svg"
+  },
+  "assets/svg/icons/arrow-cta.svg": {
+    "file": "assets/arrow-cta-CMgpcRWj.svg",
+    "src": "assets/svg/icons/arrow-cta.svg"
   },
   "assets/svg/icons/arrow-forward.svg": {
     "file": "assets/arrow-forward-aO82Prq-.svg",

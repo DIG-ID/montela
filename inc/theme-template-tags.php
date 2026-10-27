@@ -53,7 +53,10 @@ add_action( 'after_post_content', 'montela_after_post_content' );
 
 /**
  * Outputs the site logo.
- * Uses the WP custom logo if set; falls back to the site name as a link.
+ * Uses the WP custom logo if set; falls back to the theme's Montela logo
+ * (cream, drawn for the dark hero), linked to the home page.
+ *
+ * @return void
  */
 function montela_logo() {
 	if ( has_custom_logo() ) {
@@ -61,7 +64,7 @@ function montela_logo() {
 	} else {
 		?>
 		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="site-logo" rel="home">
-			<?php bloginfo( 'name' ); ?>
+			<img src="<?php echo esc_url( get_theme_file_uri( '/assets/svg/logo-montela.svg' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" width="137" height="62">
 		</a>
 		<?php
 	}

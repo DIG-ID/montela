@@ -179,6 +179,26 @@ Secções só de uma página têm os campos **directamente no grupo da página**
 seu tab), com o prefixo da secção: `section_find_apartment_*`,
 `section_direct_book_*`, `section_gallery_*`. Listas com ícone (repeater → `icon`, `title`, `text`) usam o componente `components/icon-list.php`.
 
+### Theme Settings (options page)
+A própria página de opções também vive no `acf-json/` — sem código PHP:
+`ui_options_page_theme_settings.json` (slug `montela-theme-settings`,
+capability `edit_theme_options`, autoload). Chega aos outros ambientes pelo
+**Sync** do ACF (ACF → Options Pages), como os field groups. Ler os campos com
+`get_field( 'campo', 'option' )`.
+
+Um só grupo para a página, `group_options_theme_settings` — Options — Theme
+Settings, com um tab por zona. Campos novos do site inteiro entram aqui, num tab
+próprio.
+
+| Tab | Usado em | Campos |
+|-----|----------|--------|
+| Header | `template-parts/header-main.php`, `template-parts/mega-menu.php` | `header_booking_link` (link, array — botão "Jetzt buchen"; vazio = escondido), `header_menu_image` (image, ID — foto do mega-menu, desktop) |
+| Footer: Call to action | `template-parts/footer-main.php` | `footer_cta_title` (text, `<br>` permitido; vazio = sem caixa), `footer_cta_text`, `footer_cta_link` (link) |
+| Footer: Newsletter & contact | `template-parts/footer-main.php` | `footer_newsletter_text`, `footer_address` (textarea, `br`), `footer_phone`, `footer_email`, `socials_facebook`, `socials_instagram` (url) |
+| Footer: Partner logos | `template-parts/footer-main.php` | `footer_partners` (repeater: `image` ID, `link`) |
+
+Menus: `main-menu` (header desktop), `mega-menu` (mega-menu; 2 níveis), `footer-menu` (footer, 4 por coluna), `legal-menu` (barra de copyright).
+
 > **A preencher** com os field groups das restantes páginas e dos CPTs.
 
 ---

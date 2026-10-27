@@ -17,6 +17,7 @@ function montela_theme_setup() {
 			'main-menu'   => __( 'Main Menu', 'montela' ),
 			'mega-menu'   => __( 'Mega Menu', 'montela' ),
 			'footer-menu' => __( 'Footer Menu', 'montela' ),
+			'legal-menu'  => __( 'Legal Menu', 'montela' ),
 		)
 	);
 

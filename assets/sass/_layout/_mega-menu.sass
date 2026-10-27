@@ -1,0 +1,167 @@
+// Mega menu — Figma "menu_desktop": closed state 5895:18352, a sub-menu
+// open 5895:18398. Markup in template-parts/mega-menu.php, behaviour in
+// main.js (initMenuToggle).
+//
+// A full-screen sage panel under the header (the header turns fixed on top
+// of it while open, see _header.sass). Image on the left (832 of 1789px),
+// 55px gap, links on the right (902px): a 2-column grid of 130px boxes,
+// 20px / 24px apart. An item with children opens a single-column view —
+// its own link, the children in one box, "Back" — 21px apart.
+//
+// Hover from the design ("hoover" annotation): 20% cream fill and the
+// 0 4 4 drop shadow; a sub-menu row also shows its arrow.
+//
+// Open and close are not designed. Opening: the panel comes down from the
+// top like a curtain (clip-path), then the image fades in and the grid
+// boxes drop in one after the other, like the language switcher. Closing is
+// the same played in reverse, with the mirrored (ease-in) curve: the boxes
+// leave last-first, the photo fades out, then the curtain goes back up —
+// its lower edge rising over the boxes that already left. Timings below;
+// reduced motion skips it all.
+//
+// Tablet (menu-open-tablet 5895:18194): no image; the 2-column grid of
+// 340×130px boxes, vertically centred under the header. Mobile (Home_mobile
+// 5895:18141): one column of 70px boxes, 10px apart, 19px type, from 170px.
+// The sub-menu view is only designed on desktop; tablet and mobile use the
+// same proportions with their own box sizes — not designed.
+//
+// The mobile frame lists the items with children first; the code keeps the
+// WordPress menu order on every breakpoint.
+
+// -- Icon masks ----------------------------------------------------------------
+.mega-menu__sub-icon
+  mask: url("../../svg/icons/arrow-cta.svg") center / contain no-repeat
+
+.mega-menu__back-icon
+  mask: url("../../svg/icons/arrow-back.svg") center / contain no-repeat
+
+// Switching views (the grid ↔ a sub-menu): the old one leaves (out), then
+// the new one's pieces come in one after the other (in). main.js waits for
+// the 250ms "out" before swapping them.
+@keyframes mega-menu-in
+  from
+    opacity: 0
+    transform: translateY(16px)
+
+@keyframes mega-menu-out
+  to
+    opacity: 0
+    transform: translateY(-8px)
+
+// -- Panel ---------------------------------------------------------------------
+// Closed: clipped to nothing at the top edge. Closing waits 350ms for the
+// boxes and photo to be mostly gone, takes 550ms, and only then turns
+// invisible (900ms — main.js resets the sub-menu and _header.sass brings the
+// header menu back after that). Opening: 800ms, no wait.
+.mega-menu
+  @apply fixed inset-0 z-30 overflow-y-auto overscroll-contain bg-montela-sage text-montela-cream invisible [clip-path:inset(0_0_100%_0)] transition-[clip-path,visibility] duration-[550ms,0s] delay-[350ms,900ms] ease-[cubic-bezier(0.76,0,0.24,1)] motion-reduce:transition-none
+  .is-menu-open &
+    @apply visible [clip-path:inset(0_0_0_0)] duration-[800ms,0s] delay-0
+
+// Logged in: start below the admin bar, like the header (_header.sass), or
+// the header moves down and eats into the gap above the first box.
+.admin-bar .mega-menu
+  @apply top-[46px] min-[783px]:top-[32px]
+
+// Top padding clears the header: 170px on mobile and 172px on desktop are
+// the frames' offsets. Tablet centres the grid in the space below the
+// 134px header (+40px clearance) — the frame has it 30px lower, close enough.
+.mega-menu__inner
+  @apply flex items-start gap-[55px] pt-[170px] pb-[52px] md:min-h-full md:items-center md:pt-[174px] md:pb-10 xl:items-start xl:pt-[172px] xl:pb-[87px] xl:pl-[83px]
+
+.mega-menu__media
+  @apply hidden xl:block shrink grow-0 basis-[832px] aspect-[832/591] overflow-hidden shadow-[0_4px_4px_rgba(0,0,0,0.25)] bg-montela-walnut
+
+// Opening: fades in once the curtain is nearly down (500ms). Closing: from
+// 100ms, fades out in 400ms. Fade only — no zoom.
+.mega-menu__media
+  @apply opacity-0 transition-opacity duration-[400ms] delay-100 ease-[cubic-bezier(0.7,0,0.84,0)] motion-reduce:transition-none
+  .is-menu-open &
+    @apply opacity-100 duration-700 delay-500 ease-out
+
+.mega-menu__img
+  @apply w-full h-full object-cover
+
+.mega-menu__nav
+  @apply grow shrink basis-[902px]
+
+// -- Shared box ----------------------------------------------------------------
+// Label left, "+" (or nothing) right. Buttons get border-solid: the base
+// reset sets `border: none` on them. Two-line labels (tablet) are 35px apart.
+//
+// Two indents, as in all three frames: items with "+" start at 31 / 41 /
+// 53px (the frames vary by a few px, the first item's value is used), plain
+// links further in at 43 / 44 / 57px.
+.mega-menu__item
+  @apply flex items-center justify-between gap-4 w-full h-[70px] md:h-[130px] pl-[31px] pr-[34px] md:pl-[41px] md:pr-[35px] xl:pl-[53px] xl:pr-[45px] border border-solid border-montela-cream font-primary font-normal text-[19px] md:text-[24px] leading-[35px] tracking-[0.5px] uppercase text-left transition-[background-color,box-shadow] duration-300 ease-out
+  &:hover
+    @apply bg-montela-cream/20 shadow-[0_4px_4px_rgba(0,0,0,0.25)]
+  &:focus-visible
+    @apply outline outline-2 outline-offset-4 outline-montela-mustard
+
+.mega-menu__plus
+  @apply font-light text-[44px] leading-[55px]
+
+// Plain links in the grid (no "+"): the deeper indent.
+.mega-menu__grid a.mega-menu__item
+  @apply pl-[43px] md:pl-[44px] xl:pl-[57px]
+
+// -- Grid (closed state) -------------------------------------------------------
+.mega-menu__grid
+  @apply grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-[10px] md:gap-y-6
+  // Opening: from 350ms (curtain mostly down), 60ms apart, first to last.
+  // Closing: at once, 35ms apart, last to first (--n = number of boxes), each
+  // dropping back 16px in 300ms.
+  li
+    @apply opacity-0 translate-y-4 transition-[opacity,transform] duration-300 delay-[calc((var(--n)-1-var(--i))*35ms)] ease-[cubic-bezier(0.7,0,0.84,0)] motion-reduce:transition-none
+    .is-menu-open &
+      @apply opacity-100 translate-y-0 duration-700 delay-[calc(350ms+var(--i)*60ms)] ease-out-expo
+  .mega-menu__nav.is-sub &
+    @apply hidden
+
+// -- Sub-menu view -------------------------------------------------------------
+// Coming in: the parent's link, then the box of children, then "Back",
+// 70ms apart. `backwards` holds the start state only during the delay, so
+// the opening/closing transitions are never overridden afterwards.
+.mega-menu__sub
+  @apply hidden flex-col gap-[10px] md:gap-[21px]
+  &.is-open
+    @apply flex
+    > *
+      @apply motion-safe:animate-[mega-menu-in_600ms_cubic-bezier(0.16,1,0.3,1)_backwards]
+    > :nth-child(2)
+      @apply [animation-delay:70ms]
+    > :nth-child(3)
+      @apply [animation-delay:140ms]
+
+// Back from a sub-menu: the grid boxes come in one after the other.
+.mega-menu__nav.is-back .mega-menu__grid li
+  // Delay inside the shorthand: a separate animation-delay would be reset by it.
+  @apply motion-safe:animate-[mega-menu-in_600ms_cubic-bezier(0.16,1,0.3,1)_calc(var(--i)*40ms)_backwards]
+
+// Going out (main.js adds .is-leaving to the grid or the open sub-menu).
+.mega-menu__grid.is-leaving,
+.mega-menu__sub.is-leaving
+  @apply motion-safe:animate-[mega-menu-out_250ms_cubic-bezier(0.7,0,0.84,0)_forwards] pointer-events-none
+
+// The children share one bordered box; each row is a third of its 281px.
+.mega-menu__sub-list
+  @apply border border-montela-cream
+
+.mega-menu__sub-link
+  @apply flex items-center justify-between gap-4 h-[60px] md:h-[93px] pl-[30px] pr-[34px] md:pl-[40px] md:pr-[74px] font-primary font-normal text-[19px] md:text-[24px] leading-[35px] tracking-[0.5px] uppercase transition-[background-color,box-shadow] duration-300 ease-out
+  &:hover
+    @apply bg-montela-cream/20 shadow-[inset_0_0_0_1px_#F8F8F2,0_4px_4px_rgba(0,0,0,0.25)]
+    .mega-menu__sub-icon
+      @apply opacity-100
+  &:focus-visible
+    @apply outline outline-2 -outline-offset-4 outline-montela-mustard
+
+.mega-menu__sub-icon
+  @apply shrink-0 w-[28px] h-[30px] bg-current opacity-0 transition-opacity duration-300 ease-out
+
+.mega-menu__back
+  @apply justify-start gap-[25px] md:pl-[53px]
+
+.mega-menu__back-icon
+  @apply shrink-0 w-[24.77px] h-[25.1px] bg-current rotate-180
