@@ -1,0 +1,28 @@
+// Intro module (template-parts/modules/intro.php).
+//
+// Desktop: 224px vertical padding, content on columns 4–9 (899px), 56px gap.
+// Tablet: 192px, full container width, text narrowed to 603px, 40px gap.
+// Mobile: 128px, text narrowed to 276px, 40px gap.
+
+// The mountains line drawing (assets/svg/mountains.svg — one file, the three
+// Figma variants are the same shape at different scales) sits behind the
+// text, vertically centred and shifted right of centre. Raw CSS: the sizes
+// and calc() offsets have no Tailwind equivalent.
+.section-intro
+  @apply relative overflow-hidden py-[128px] md:py-[192px] xl:py-[224px] text-montela-walnut text-center
+  background-image: url("../../svg/mountains.svg")
+  background-repeat: no-repeat
+  background-size: 1121px 254px
+  background-position: calc(50% + 164px) calc(50% - 67.5px)
+  @media (min-width: 768px)
+    background-size: 1678px 380px
+    background-position: calc(50% + 312px) 50%
+  @media (min-width: 1280px)
+    background-size: 2370px 536px
+    background-position: calc(50% + 180px) 50%
+
+.section-intro__content
+  @apply col-span-full xl:col-start-4 xl:col-span-6 flex flex-col items-center gap-10 xl:gap-14
+
+.section-intro__text
+  @apply max-w-[276px] md:max-w-[603px] xl:max-w-none

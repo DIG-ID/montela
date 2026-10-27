@@ -11,6 +11,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.4.0] — 2026-10-27
+
+### Added
+- Hero module: full-screen background image with an optional looping video and a three-line page title.
+- Intro module: centred title and lead text over the mountains line drawing.
+- ACF field groups as Local JSON (`acf-json/`): "Module — Hero" and "Module — Intro" for cloning, and "Page — Home" with one tab per section. All groups use WPML Expert mode (images/video copied, text translated).
+
+### Changed
+- The homepage template is now built from the hero and intro modules.
+
+### Removed
+- Starter example hero section on the homepage.
+
 ## [1.3.0] — 2026-10-27
 
 ### Added

@@ -38,9 +38,11 @@ montela/
 ├── dist/                   # compiled assets (não editar directamente)
 ├── inc/                    # PHP includes do tema (vite.php = loader de assets)
 ├── page-templates/         # Page templates WordPress
+├── acf-json/               # field groups do ACF (Local JSON)
 ├── template-parts/
-│   ├── pages/
-│   │   └── home/
+│   ├── components/       # button.php, button-icon.php
+│   ├── modules/          # secções reutilizadas (hero, intro…)
+│   ├── pages/            # secções de uma só página
 │   ├── footer-main.php
 │   ├── header-main.php
 ├── functions.php
@@ -123,11 +125,40 @@ Antes de entregar código PHP, verificar com `npm run php:lint`. Usar `npm run p
 
 ## ACF Field Groups
 
-> **A preencher** com os field groups reais (CPTs e page templates), no formato:
->
-> ### CPT `slug` — grupo `group_name`
-> | Campo | Tipo | Notas |
-> |-------|------|-------|
+Os field groups vivem em **`acf-json/`** (Local JSON do ACF): versionados no git,
+chegam a produção com o deploy e o ACF grava lá as alterações feitas no admin.
+Depois de editar um grupo noutro ambiente, usar **Sync** no admin.
+
+- **`description` de cada field group: no máximo 50 caracteres.**
+- **WPML (ACFML):** todos os grupos em modo **Expert** —
+  `"acfml_field_group_mode": "advanced"` — com a preferência em cada campo
+  (`wpml_cf_preferences`): imagens e vídeo **copy** (`1`), o resto **translate**
+  (`2`). Tabs não levam preferência; clones levam `1` (são contentores — os
+  campos de um clone Seamless herdam a preferência definida no grupo do módulo).
+- Ao editar um JSON à mão, actualizar o `modified` (timestamp Unix), senão o ACF
+  não oferece o Sync em ambientes onde o grupo já está na base de dados.
+
+### Módulos — grupos inactivos, para clonar
+Cada módulo (`template-parts/modules/`) tem o seu grupo, **inactivo** (não aparece
+sozinho em nenhum ecrã). A página clona o grupo inteiro (Display: Seamless).
+Se o mesmo módulo entrar duas vezes na mesma página, activar "Prefix field names"
+no clone e passar o prefixo ao módulo:
+`get_template_part( 'template-parts/modules/hero', null, array( 'prefix' => 'hero_' ) );`
+
+| Grupo | Módulo | Campos |
+|-------|--------|--------|
+| `group_module_hero` — Module — Hero | `modules/hero.php` | `section_hero_image` (image, ID), `section_hero_video` (file mp4, URL, opcional), `section_hero_title_line_1` (text), `section_hero_title_line_2` (text), `section_hero_title_line_3` (text) |
+| `group_module_intro` — Module — Intro | `modules/intro.php` | `section_intro_title` (textarea, `new_lines: br`), `section_intro_text` (textarea) |
+
+### Páginas
+Um grupo por page template, com um **tab por secção**, na ordem da página; cada
+tab clona o grupo do módulo (Seamless, sem prefixo).
+
+| Grupo | Template | Tabs → clone |
+|-------|----------|--------------|
+| `group_page_home` — Page — Home | `page-templates/page-home.php` | Hero → `group_module_hero` · Intro → `group_module_intro` |
+
+> **A preencher** com os field groups das restantes páginas e dos CPTs.
 
 ---
 

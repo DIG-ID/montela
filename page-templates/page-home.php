@@ -1,7 +1,9 @@
 <?php
 /**
- *
  * Template Name: Home Template
+ *
+ * Homepage: assembled from modules (template-parts/modules/), whose fields
+ * are cloned into this page's field group.
  *
  * @package montela
  * @subpackage Template
@@ -13,7 +15,8 @@ if ( have_posts() ) :
 	while ( have_posts() ) :
 		the_post();
 		do_action( 'before_main_content' );
-			get_template_part( 'template-parts/pages/home/hero' );
+			get_template_part( 'template-parts/modules/hero' );
+			get_template_part( 'template-parts/modules/intro' );
 		do_action( 'after_main_content' );
 	endwhile;
 endif;

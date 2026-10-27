@@ -79,7 +79,7 @@
     "isEntry": true
   },
   "assets/sass/main.sass": {
-    "file": "css/main-C-gdtMNC.css",
+    "file": "css/main-BHFOwdD0.css",
     "name": "main",
     "names": [
       "main.css"
@@ -87,6 +87,7 @@
     "src": "assets/sass/main.sass",
     "isEntry": true,
     "assets": [
+      "assets/mountains-BtNTc39q.svg",
       "assets/arrow-forward-aO82Prq-.svg",
       "assets/home-and-garden-ltii5Ith.svg"
     ]
@@ -98,5 +99,9 @@
   "assets/svg/icons/home-and-garden.svg": {
     "file": "assets/home-and-garden-ltii5Ith.svg",
     "src": "assets/svg/icons/home-and-garden.svg"
+  },
+  "assets/svg/mountains.svg": {
+    "file": "assets/mountains-BtNTc39q.svg",
+    "src": "assets/svg/mountains.svg"
   }
 }

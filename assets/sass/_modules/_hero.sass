@@ -1,0 +1,40 @@
+// Hero module (template-parts/modules/hero.php).
+//
+// Full viewport height on every breakpoint — the Figma frames are exactly
+// one screen tall (1080 / 1160 / 852). svh, so mobile browser bars don't
+// push the bottom of the hero off screen.
+//
+// Title: .title-h1 sizes on mobile and tablet, where the three lines are
+// plain stacked blocks. Desktop changes lines 2 and 3 to 123/111, indents
+// line 2 by 128px and sets line 3 italic, right-aligned.
+
+.section-hero
+  @apply relative flex items-center min-h-[100svh] overflow-hidden text-montela-cream
+
+// Image, optional video and the walnut 40% veil, all behind the title.
+.section-hero__media
+  @apply absolute inset-0
+  &::after
+    content: ""
+    @apply absolute inset-0 bg-montela-walnut/40
+
+// Classes beat the img/video element reset in _base-styles (height: auto).
+.section-hero__img,
+.section-hero__video
+  @apply absolute inset-0 w-full h-full object-cover
+
+// "Reduce motion" turned on in the OS: no looping video, the image stays.
+.section-hero__video
+  @apply motion-reduce:hidden
+
+.section-hero__content
+  @apply relative
+
+.section-hero__line
+  @apply block
+
+.section-hero__line--2
+  @apply xl:pl-[128px] xl:text-[123px] xl:leading-[111px]
+
+.section-hero__line--3
+  @apply xl:text-right xl:italic xl:text-[123px] xl:leading-[111px]
