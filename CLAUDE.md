@@ -43,7 +43,6 @@ montela/
 │   │   └── home/
 │   ├── footer-main.php
 │   ├── header-main.php
-│   └── design-system.php
 ├── functions.php
 ├── vite.config.mjs
 ├── tailwind.config.js
@@ -293,8 +292,8 @@ O tema segue **Semantic Versioning** (`MAJOR.MINOR.PATCH`) e mantém um `CHANGEL
 > | `editor-content.md` | safelist do Tailwind, imagens do editor, markup e locale do CF7 | sempre |
 > | `figma.md` | a grelha do projecto e como achar a coluna | sempre |
 >
-> A grelha em `figma.md` ainda está por preencher — fazer isso com os frames
-> reais antes da primeira secção.
+> A grelha em `figma.md` está preenchida (12/6/2 colunas, gutter 20px) e
+> implementada em `assets/sass/_layout/_grid.sass`.
 
 ---
 

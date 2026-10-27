@@ -79,12 +79,24 @@
     "isEntry": true
   },
   "assets/sass/main.sass": {
-    "file": "css/main-CYCrBxka.css",
+    "file": "css/main-C-gdtMNC.css",
     "name": "main",
     "names": [
       "main.css"
     ],
     "src": "assets/sass/main.sass",
-    "isEntry": true
+    "isEntry": true,
+    "assets": [
+      "assets/arrow-forward-aO82Prq-.svg",
+      "assets/home-and-garden-ltii5Ith.svg"
+    ]
+  },
+  "assets/svg/icons/arrow-forward.svg": {
+    "file": "assets/arrow-forward-aO82Prq-.svg",
+    "src": "assets/svg/icons/arrow-forward.svg"
+  },
+  "assets/svg/icons/home-and-garden.svg": {
+    "file": "assets/home-and-garden-ltii5Ith.svg",
+    "src": "assets/svg/icons/home-and-garden.svg"
   }
 }

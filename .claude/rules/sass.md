@@ -11,7 +11,7 @@ paths:
 - Tailwind para layout/spacing/responsive; SASS para componentes custom — não duplicar.
 - Classes custom em kebab-case, semânticas. BEM-inspired em componentes complexos: `menu-toggle`, `menu-toggle__bars`, `bar bar--top`.
 - Secções: `.section-{nome}` · Botões: `.btn`, `.btn-primary`… · Cards: `.card-{tipo}`.
-- Wrappers de layout: `.theme-container` (largura máxima + margens) e `.theme-grid` (as 12/6/2 colunas). **Ainda não existem no Montela** — são o primeiro ficheiro a criar em `_layout/` quando a grelha do projecto estiver definida (ver `figma.md`).
+- Wrappers de layout: `.theme-container` (largura máxima + margens) e `.theme-grid` (as 12/6/2 colunas), em `_layout/_grid.sass` — valores na tabela do `figma.md`.
 - Manter a ordem de imports do `main.sass` já existente; adicionar módulos/secções na pasta correspondente (`_modules/`, `_components/`, `_pages/`…).
 
 ### @apply (estilo da casa)

@@ -1,0 +1,50 @@
+// Design System page (page-templates/page-design-system.php). Internal style
+// guide — layout only; every sample uses the real classes and components.
+
+.page-design-system
+  @apply py-16 xl:py-24 text-montela-walnut
+
+.page-design-system__title
+  @apply mb-8 xl:mb-12
+
+// -- Sections ------------------------------------------------------------------
+.ds-section
+  @apply py-12 xl:py-16 border-t-[0.5px] border-montela-walnut/30
+
+.ds-section__title
+  @apply mb-8 xl:mb-12
+
+// Raw font-family: the theme replaces Tailwind's font stacks, so there is no
+// font-mono utility.
+.ds-code
+  @apply text-montela-sage
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace
+
+// -- Colours -------------------------------------------------------------------
+// Circles as in the Figma design system.
+.ds-colors
+  @apply grid grid-cols-2 md:grid-cols-4 gap-8
+
+.ds-colors__item
+  @apply flex items-center gap-4
+
+// Cream is the page background — the hairline keeps its circle visible.
+.ds-colors__swatch
+  @apply w-[72px] h-[72px] xl:w-[100px] xl:h-[100px] shrink-0 rounded-full border-[0.5px] border-montela-walnut/30
+
+.ds-colors__meta
+  @apply flex flex-col
+
+// -- Typography ----------------------------------------------------------------
+.ds-type
+  @apply py-6 border-b-[0.5px] border-montela-walnut/15 last:border-b-0
+
+.ds-type__meta
+  @apply flex flex-wrap gap-x-4 mb-3 text-montela-sage
+
+// -- Buttons -------------------------------------------------------------------
+.ds-buttons
+  @apply flex flex-wrap gap-8 mb-10 last:mb-0
+
+.ds-buttons__item
+  @apply flex flex-col items-start gap-3

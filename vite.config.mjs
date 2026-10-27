@@ -152,6 +152,10 @@ export default defineConfig(({ mode }) => {
       emptyOutDir: true,
       manifest: true,
       sourcemap: mode !== 'production',
+      // Keep SVGs as separate (cached) files instead of data URIs: icons used
+      // as CSS masks would otherwise be inlined into the render-blocking
+      // main.css, twice each once autoprefixer adds -webkit-mask.
+      assetsInlineLimit: (file) => (file.endsWith('.svg') ? false : undefined),
       rolldownOptions: {
         input: entries,
         output: {

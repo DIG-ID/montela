@@ -1,0 +1,105 @@
+// Buttons — Figma design system: text buttons (node 5470:16798), arrow-only
+// (5470:16824) and hero button (5470:16845). Same size on every breakpoint —
+// the tablet and mobile homepage frames use the desktop component unchanged.
+// Pressed states are not designed: :active reuses the hover colours.
+//
+// Markup lives in template-parts/components/button.php and button-icon.php.
+//
+// Icons are SVG files used as masks painted with currentColor, so one file
+// serves every colour and hover state — change the text colour, the icon
+// follows. Raw CSS: Tailwind v3 has no mask utilities.
+//
+// Vite inlines small SVGs as data URIs, so each icon URL is written ONCE (one
+// grouped rule per icon) to keep the stylesheet small. No -webkit-mask by
+// hand: autoprefixer adds it when the browserslist targets need it.
+
+// -- Icon masks ----------------------------------------------------------------
+.btn__icon::before,
+.btn-icon--arrow-right::before,
+.btn-icon--arrow-down::before
+  mask: url("../../svg/icons/arrow-forward.svg") center / contain no-repeat
+
+.btn-icon--home::before
+  mask: url("../../svg/icons/home-and-garden.svg") center / contain no-repeat
+
+// -- Text button with arrow ----------------------------------------------------
+// Label box + 2px gap + 45px arrow box, both painted by the variant.
+.btn
+  @apply inline-flex items-stretch gap-[2px] font-primary font-bold text-[14px] leading-[16px] tracking-[0.84px] uppercase text-center drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)] transition-colors duration-300 ease-out
+  &:focus-visible
+    @apply outline outline-2 outline-offset-4 outline-montela-mustard
+
+.btn__label
+  @apply flex items-center justify-center px-[22px] py-[14px] whitespace-nowrap transition-colors duration-300 ease-out
+
+.btn__icon
+  @apply flex w-[45px] shrink-0 transition-colors duration-300 ease-out
+  &::before
+    content: ""
+    // The arrow fills ~57% of its 43×44 SVG; 37×38 makes the glyph itself
+    // the 21×22 of the design.
+    @apply m-auto w-[37px] h-[38px] bg-current
+
+// Figma "Standart" — walnut.
+.btn-primary
+  @apply text-montela-cream
+  .btn__label,
+  .btn__icon
+    @apply bg-montela-walnut
+
+// Figma "Standart 2" — sage.
+.btn-secondary
+  @apply text-montela-cream
+  .btn__label,
+  .btn__icon
+    @apply bg-montela-sage
+
+// Figma "Hoover 1" — shared hover of primary and secondary.
+.btn-primary,
+.btn-secondary
+  &:hover,
+  &:active
+    @apply text-montela-walnut
+    .btn__label,
+    .btn__icon
+      @apply bg-montela-mustard
+
+// Figma "Standart 3", hover "Hoover 2" — cream with a hairline border.
+.btn-outline
+  @apply text-montela-sage
+  .btn__label,
+  .btn__icon
+    @apply bg-montela-cream border-[0.5px] border-montela-walnut
+  &:hover,
+  &:active
+    @apply text-montela-mustard
+
+// -- Icon-only button ----------------------------------------------------------
+// 50px sage square; the icon turns mustard on hover. Pick the icon with a
+// modifier: --arrow-right (e.g. slider next), --arrow-down (scroll cue),
+// --home (Figma "hero button").
+.btn-icon
+  @apply inline-flex items-center justify-center w-[50px] h-[50px] shrink-0 bg-montela-sage text-montela-cream shadow-[0_4px_4px_rgba(0,0,0,0.25)] transition-colors duration-300 ease-out
+  &::before
+    content: ""
+    @apply bg-current
+  &:hover,
+  &:active
+    @apply text-montela-mustard
+  &:focus-visible
+    @apply outline outline-2 outline-offset-4 outline-montela-mustard
+
+.btn-icon--arrow-right,
+.btn-icon--arrow-down
+  &::before
+    @apply w-[43px] h-[44px]
+
+.btn-icon--arrow-down
+  &::before
+    @apply rotate-90
+
+// The hero button has a softer drop shadow than the arrow buttons.
+.btn-icon--home
+  @apply shadow-none drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)]
+  &::before
+    @apply w-[38px] h-[38px]

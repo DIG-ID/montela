@@ -1,0 +1,20 @@
+// Layout wrappers — the project grid (see .claude/rules/figma.md).
+//
+//   Breakpoint  Canvas  Container  Columns  Column    Gutter  Margins
+//   Desktop     1920    1820       12       133.33px  20px    50px
+//   Tablet       834     706        6       101px     20px    64px
+//   Mobile       393     329        2       154.5px   20px    32px
+//
+// Desktop measured on the homepage frame: columns 2–11 start at x=203 and
+// span 1514px. Between 1280 and 1920 the 50px margin is kept and the
+// container shrinks — not designed, the 1920 frame is the only desktop step.
+
+// Max width + side margins. Border-box, so max-w includes the padding:
+// 1920 − 2 × 50 = the 1820px content width; wider screens centre it.
+.theme-container
+  @apply w-full mx-auto px-8 md:px-16 xl:px-[50px] max-w-[1920px]
+
+// The 12/6/2 columns. Column gap only: vertical spacing between rows
+// differs per section, so it is set where the grid is used.
+.theme-grid
+  @apply grid grid-cols-2 gap-x-5 md:grid-cols-6 xl:grid-cols-12

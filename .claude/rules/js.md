@@ -7,27 +7,29 @@ paths:
 
 # JavaScript — convenções de escrita
 
-### Entry point
-O `assets/js/main.js` traz o GSAP sempre e as restantes libs comentadas — descomentar por projecto, em vez de importar tudo:
+### Entry points
+O JS está dividido para o WP Rocket poder atrasar tudo menos o crítico (desde a
+v1.1.0 — ver a secção Build do `CLAUDE.md`):
+
+- `assets/js/main.js` — **só o crítico** (menu, mega-menu, header). Sem
+  bibliotecas nem jQuery. É o único que pode ficar nas excepções do Delay JS.
+- `assets/js/animations.js` — GSAP + ScrollTrigger + Lenis (setup em `gsap.js`).
+  Global, mas atrasável: o conteúdo tem de ser visível sem ele.
+- `assets/js/modules/*.js` — Swiper, Fancybox, Isotope. Cada um importa o seu
+  CSS e é carregado só onde é usado, com `montela_enqueue_module( 'swiper' )`.
+
+Código que possa ser atrasado usa `domReady()` (`utils/helpers.js`) em vez de
+`DOMContentLoaded` — com o Delay JS o evento pode já ter disparado:
 
 ```javascript
-import './gsap.js';
-// import './swiper.js';
-// import './fancybox.js';
-import { debounce, isTouchDevice } from './utils/helpers.js';
+import { domReady } from './utils/helpers.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+domReady(() => {
   // Project-specific initialisation goes here
 });
 ```
 
-O `google-maps.js` não entra aqui: é enfileirado só nos templates que precisam dele (ver `inc/enqueue.php`).
-
-> O Montela arrancou do Theme Starter Vite v2.0.2. A partir da v2.2.0 o starter
-> divide o JS em `main.js` (só o crítico), `animations.js` (GSAP + Lenis) e
-> `modules/*.js` (Swiper, Fancybox, Isotope, carregados só onde são usados),
-> para o WP Rocket poder atrasar tudo menos o crítico. O Montela **ainda não tem
-> essa divisão** — se for adoptada, esta secção passa a seguir a do starter.
+O `google-maps.js` não passa pelo Vite: é enfileirado só nos templates que precisam dele (ver `inc/enqueue.php`).
 
 ### jQuery sempre em IIFE
 Não há `jquery` no npm: usar o do WordPress (`window.jQuery`), com `'jquery'` nas dependências do enqueue.
@@ -48,7 +50,7 @@ montela_vite_enqueue_script( 'theme-foo', 'assets/js/foo.js', array( 'jquery' ) 
 ```
 O loader já os põe no footer, como ES modules (`type="module"`).
 
-A dependência `array( 'jquery' )` do `theme-scripts` é herdada do starter, mas **não é obrigatória**: GSAP, Lenis e Swiper não precisam de jQuery. Se o `main.js` não a usar, tirar — são ~30 KB a mais em cada página.
+O `theme-scripts` (`main.js`) já não depende de jQuery. Só acrescentar `array( 'jquery' )` a um entry que o use mesmo — são ~30 KB a mais nas páginas onde carrega.
 
 ### Comentários
 Em **inglês (en-EN)**, como todo o código.

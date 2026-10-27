@@ -11,6 +11,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.3.0] — 2026-10-27
+
+### Added
+- Layout grid: `.theme-container` (1820px max content width, 32/64/50px side margins) and `.theme-grid` (2/6/12 columns, 20px gutter).
+- Buttons from the design system: `.btn-primary`, `.btn-secondary` and `.btn-outline` text buttons with arrow, and `.btn-icon` square buttons (arrow right, arrow down, home), with hover and keyboard focus states.
+- Reusable button components: `template-parts/components/button.php` (takes an ACF Link field) and `button-icon.php`.
+- "Design System" page template showing the theme's colours, typography classes and buttons.
+
+### Changed
+- SVG icons are served as separate cached files instead of being inlined into the main stylesheet.
+
+### Removed
+- Unused Google Fonts (Inter) default URL.
+
 ## [1.2.0] — 2026-10-27
 
 ### Added

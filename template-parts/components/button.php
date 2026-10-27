@@ -1,0 +1,46 @@
+<?php
+/**
+ * Text button with arrow (Figma "Buttons"), rendered as a link.
+ *
+ * Takes an ACF Link array merged with the style, so url, title and target
+ * all come through:
+ *
+ *     get_template_part(
+ *         'template-parts/components/button',
+ *         null,
+ *         array_merge( $cta_link, array( 'style' => 'secondary' ) )
+ *     );
+ *
+ * Arguments ($args):
+ * - url    (string) Required. Link URL.
+ * - title  (string) Required. Link text.
+ * - target (string) Optional. '_blank' opens in a new tab.
+ * - style  (string) Optional. 'primary' (default), 'secondary' or 'outline'.
+ * - class  (string) Optional. Extra classes for the link.
+ *
+ * @package montela
+ * @subpackage Component
+ * @since 1.3.0
+ */
+
+$btn_url   = ! empty( $args['url'] ) ? $args['url'] : '';
+$btn_title = ! empty( $args['title'] ) ? $args['title'] : '';
+
+// Nothing to link to, or nothing to say: draw nothing.
+if ( ! $btn_url || ! $btn_title ) {
+	return;
+}
+
+$btn_target = ! empty( $args['target'] ) ? $args['target'] : '';
+$btn_style  = ( ! empty( $args['style'] ) && in_array( $args['style'], array( 'primary', 'secondary', 'outline' ), true ) ) ? $args['style'] : 'primary';
+$btn_class  = 'btn btn-' . $btn_style . ( ! empty( $args['class'] ) ? ' ' . $args['class'] : '' );
+?>
+<a class="<?php echo esc_attr( $btn_class ); ?>" href="<?php echo esc_url( $btn_url ); ?>"<?php echo '_blank' === $btn_target ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>>
+	<span class="btn__label">
+		<?php echo esc_html( $btn_title ); ?>
+		<?php if ( '_blank' === $btn_target ) : ?>
+			<span class="sr-only"><?php esc_html_e( '(opens in a new tab)', 'montela' ); ?></span>
+		<?php endif; ?>
+	</span>
+	<span class="btn__icon" aria-hidden="true"></span>
+</a>

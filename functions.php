@@ -3,6 +3,8 @@
  * Theme functions and definitions.
  *
  * @package montela
+ * @subpackage Core
+ * @since 1.0.0
  */
 
 // Theme constants: safe defaults only. Each can be overridden per
@@ -15,7 +17,7 @@ if ( ! defined( 'MONTELA_FONT_PROVIDER' ) ) {
 	define( 'MONTELA_FONT_PROVIDER', 'adobe' );
 }
 if ( ! defined( 'MONTELA_GOOGLE_FONTS_URL' ) ) {
-	define( 'MONTELA_GOOGLE_FONTS_URL', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap' );
+	define( 'MONTELA_GOOGLE_FONTS_URL', '' ); // Unused: fonts come from Adobe Fonts.
 }
 if ( ! defined( 'MONTELA_ADOBE_FONTS_ID' ) ) {
 	define( 'MONTELA_ADOBE_FONTS_ID', 'eju2iqq' ); // FreightBig Pro + Roboto.

@@ -10,15 +10,19 @@ tem de ser calculada à mão a partir dos pixéis.
 
 ## A grelha deste projecto
 
-Preencher no arranque, a partir dos frames reais, **antes** de escrever a
-primeira secção. **Ainda por preencher no Montela**; é isto que define o
-`.theme-container` e o `.theme-grid` em `assets/sass/_layout/`.
+É isto que define o `.theme-container` e o `.theme-grid` em
+`assets/sass/_layout/_grid.sass`. Frames da homepage: desktop `5980:17214`,
+tablet `5426:4308`, mobile `5426:4185`.
 
 | Breakpoint | Canvas | Container | Colunas | Coluna | Margens | Tailwind |
 |---|---|---|---|---|---|---|
-| Desktop | | | | | | `grid-cols-12 gap-5` |
-| Tablet | | | | | | `grid-cols-6 gap-5` |
-| Mobile | | | | | | `grid-cols-2 gap-5` |
+| Desktop | 1920 | 1820 | 12 | 133.33px | 50px | `grid-cols-12 gap-x-5` |
+| Tablet | 834 | 706 | 6 | 101px | 64px | `grid-cols-6 gap-x-5` |
+| Mobile | 393 | 329 | 2 | 154.5px | 32px | `grid-cols-2 gap-x-5` |
+
+Desktop confirmado na geometria (colunas 2–11 = x 203, 1514px de largura).
+Gutter de 20px em todos os breakpoints; o `.theme-grid` só define o gap entre
+colunas — o espaço entre linhas é de cada secção.
 
 O gutter costuma ser constante em todos os breakpoints (`gap-5` = 20px nos
 projectos recentes) — confirmar no frame antes de assumir.
