@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.13.0] — 2026-10-27
+
+### Added
+- Homepage hero title animation on desktop: after a few seconds the title wipes away line by line and comes back smaller in the bottom-left corner. Visitors who prefer reduced motion see the final layout straight away.
+
 ## [1.12.1] — 2026-10-27
 
 ### Fixed

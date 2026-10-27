@@ -59,3 +59,74 @@
 
 .section-hero--home .section-hero__line--3
   @apply not-italic xl:italic
+
+// -- Homepage title animation (desktop only) --
+// Figma "Home_desktop_after animation" 5426:5266. The big title holds for
+// 3s, then each line is wiped away to the left — a wall per line, 150ms
+// apart. The small title (the real <h1>, 70/65, line 3 italic) then comes
+// in the same way in the bottom-left corner, 62px above the bottom edge.
+// Pure CSS, so it starts on page load: animations.js is delayed by WP
+// Rocket until the first interaction.
+//
+// Below desktop only the big title shows (the <h1> is screen-reader text).
+// With "reduce motion" the end state shows straight away.
+// sr-only on the title, not the container: not-sr-only would also reset
+// the container's padding.
+.section-hero__end
+  @apply absolute inset-x-0 bottom-[62px]
+
+.section-hero__title--end
+  @apply sr-only xl:not-sr-only font-secondary font-medium tracking-[3px] whitespace-nowrap
+
+// Three classes: beat the homepage line sizes above.
+.section-hero--home .section-hero__title--end .section-hero__line
+  @apply text-[70px] leading-[65px] not-italic
+
+.section-hero--home .section-hero__title--end .section-hero__line--3
+  @apply italic
+
+.section-hero__line--1
+  --hero-line: 0
+
+.section-hero__line--2
+  --hero-line: 1
+
+.section-hero__line--3
+  --hero-line: 2
+
+@media (min-width: 1280px)
+  // Lines as wide as their text, so the wall takes the same time over each.
+  .section-hero__title--intro .section-hero__line,
+  .section-hero__title--end .section-hero__line
+    width: fit-content
+
+  .section-hero__title--intro .section-hero__line--center
+    @apply mx-auto
+
+  .section-hero__title--intro .section-hero__line--right
+    @apply ml-auto
+
+@media (min-width: 1280px) and (prefers-reduced-motion: no-preference)
+  .section-hero__title--intro .section-hero__line
+    animation: hero-wall-out 0.9s cubic-bezier(0.65, 0, 0.35, 1) calc(3s + var(--hero-line) * 0.15s) both
+
+  .section-hero__title--end .section-hero__line
+    animation: hero-wall-in 0.9s cubic-bezier(0.65, 0, 0.35, 1) calc(4.4s + var(--hero-line) * 0.15s) both
+
+@media (min-width: 1280px) and (prefers-reduced-motion: reduce)
+  .section-hero__title--intro
+    @apply invisible
+
+// The clip box reaches past the line box so italic overhangs and
+// descenders aren't cut while the line is fully shown.
+@keyframes hero-wall-out
+  from
+    clip-path: inset(-25% -5% -25% -5%)
+  to
+    clip-path: inset(-25% 105% -25% -5%)
+
+@keyframes hero-wall-in
+  from
+    clip-path: inset(-25% 105% -25% -5%)
+  to
+    clip-path: inset(-25% -5% -25% -5%)

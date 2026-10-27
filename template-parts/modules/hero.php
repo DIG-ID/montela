@@ -52,6 +52,21 @@ $hero_defaults = array(
 if ( ! $hero_lines && ! $hero_image ) {
 	return;
 }
+
+$hero_is_home = ! empty( $args['variant'] ) && 'home' === $args['variant'];
+
+// Each line's markup. Hyphenated words are kept whole ("Saas-Fee/"): at
+// these sizes the browser would otherwise wrap after the hyphen.
+$hero_rendered = array();
+foreach ( $hero_lines as $hero_n => $hero_line ) {
+	$hero_align = get_field( $hero_prefix . 'section_hero_title_line_' . $hero_n . '_align', $hero_ctx );
+
+	$hero_rendered[ $hero_n ] = array(
+		'text'  => preg_replace( '/(\S+-\S+)/u', '<span class="whitespace-nowrap">$1</span>', esc_html( $hero_line ) ),
+		'align' => in_array( $hero_align, $hero_aligns, true ) ? $hero_align : $hero_defaults[ $hero_n ],
+	);
+}
+$hero_kses = array( 'span' => array( 'class' => array() ) );
 ?>
 <section class="<?php echo esc_attr( $hero_class ); ?>">
 	<div class="section-hero__media" aria-hidden="true">
@@ -83,18 +98,36 @@ if ( ! $hero_lines && ! $hero_image ) {
 		<?php endif; ?>
 	</div>
 
-	<?php if ( $hero_lines ) : ?>
+	<?php if ( $hero_rendered && ! $hero_is_home ) : ?>
 		<div class="theme-container section-hero__content">
 			<h1 class="title-h1 section-hero__title">
-				<?php
-				foreach ( $hero_lines as $hero_n => $hero_line ) :
-					// Keep hyphenated words whole ("Saas-Fee/"): at these sizes the
-					// browser would otherwise wrap after the hyphen.
-					$hero_line  = preg_replace( '/(\S+-\S+)/u', '<span class="whitespace-nowrap">$1</span>', esc_html( $hero_line ) );
-					$hero_align = get_field( $hero_prefix . 'section_hero_title_line_' . $hero_n . '_align', $hero_ctx );
-					$hero_align = in_array( $hero_align, $hero_aligns, true ) ? $hero_align : $hero_defaults[ $hero_n ];
-					?>
-					<span class="section-hero__line section-hero__line--<?php echo esc_attr( $hero_n ); ?> section-hero__line--<?php echo esc_attr( $hero_align ); ?>"><?php echo wp_kses( $hero_line, array( 'span' => array( 'class' => array() ) ) ); ?></span>
+				<?php foreach ( $hero_rendered as $hero_n => $hero_line ) : ?>
+					<span class="section-hero__line section-hero__line--<?php echo esc_attr( $hero_n ); ?> section-hero__line--<?php echo esc_attr( $hero_line['align'] ); ?>"><?php echo wp_kses( $hero_line['text'], $hero_kses ); ?></span>
+				<?php endforeach; ?>
+			</h1>
+		</div>
+	<?php elseif ( $hero_rendered ) : ?>
+		<?php
+		/*
+		 * Homepage: on desktop the big title wipes away after a few seconds
+		 * and comes back smaller in the bottom-left corner (_hero.sass). The
+		 * big one is a decorative copy, hidden from assistive technology; the
+		 * real <h1> is the small one, there from the start. Below desktop
+		 * the big copy is the only one shown, and the <h1> is screen-reader
+		 * text.
+		 */
+		?>
+		<div class="theme-container section-hero__content">
+			<div class="title-h1 section-hero__title section-hero__title--intro" aria-hidden="true">
+				<?php foreach ( $hero_rendered as $hero_n => $hero_line ) : ?>
+					<span class="section-hero__line section-hero__line--<?php echo esc_attr( $hero_n ); ?> section-hero__line--<?php echo esc_attr( $hero_line['align'] ); ?>"><?php echo wp_kses( $hero_line['text'], $hero_kses ); ?></span>
+				<?php endforeach; ?>
+			</div>
+		</div>
+		<div class="theme-container section-hero__end">
+			<h1 class="section-hero__title section-hero__title--end">
+				<?php foreach ( $hero_rendered as $hero_n => $hero_line ) : ?>
+					<span class="section-hero__line section-hero__line--<?php echo esc_attr( $hero_n ); ?>"><?php echo wp_kses( $hero_line['text'], $hero_kses ); ?></span>
 				<?php endforeach; ?>
 			</h1>
 		</div>
