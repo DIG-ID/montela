@@ -18,6 +18,15 @@
     "src": "assets/js/main.js",
     "isEntry": true
   },
+  "assets/js/modules/activities.js": {
+    "file": "js/activities-COFce8Sa.js",
+    "name": "activities",
+    "src": "assets/js/modules/activities.js",
+    "isEntry": true,
+    "imports": [
+      "_helpers-CQhMBWwg.js"
+    ]
+  },
   "assets/js/modules/fancybox.js": {
     "file": "js/fancybox-DhS2o6ZH.js",
     "name": "fancybox",
@@ -79,7 +88,7 @@
     "isEntry": true
   },
   "assets/sass/main.sass": {
-    "file": "css/main-C4Hlhlp1.css",
+    "file": "css/main-rDTkOAzP.css",
     "name": "main",
     "names": [
       "main.css"
@@ -90,6 +99,8 @@
       "assets/arrow-cta-CMgpcRWj.svg",
       "assets/arrow-back-tz3BBcEc.svg",
       "assets/mountains-BtNTc39q.svg",
+      "assets/season-summer-C2o0q19u.svg",
+      "assets/season-winter-DX7E2spa.svg",
       "assets/arrow-forward-aO82Prq-.svg",
       "assets/home-and-garden-ltii5Ith.svg",
       "assets/slider-prev-BgkI7qkP.svg",
@@ -113,6 +124,14 @@
   "assets/svg/icons/home-and-garden.svg": {
     "file": "assets/home-and-garden-ltii5Ith.svg",
     "src": "assets/svg/icons/home-and-garden.svg"
+  },
+  "assets/svg/icons/season-summer.svg": {
+    "file": "assets/season-summer-C2o0q19u.svg",
+    "src": "assets/svg/icons/season-summer.svg"
+  },
+  "assets/svg/icons/season-winter.svg": {
+    "file": "assets/season-winter-DX7E2spa.svg",
+    "src": "assets/svg/icons/season-winter.svg"
   },
   "assets/svg/icons/slider-next-sage.svg": {
     "file": "assets/slider-next-sage-B0mM5aXy.svg",

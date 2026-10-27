@@ -74,6 +74,22 @@
   &:active
     @apply text-montela-mustard
 
+// Cream hairline outline on sage, no shadow (activity cards, Figma
+// 5679:16639). The label stretches to fill its row; 34px tall below desktop,
+// 44px on desktop. Hover is not designed: mustard, like the outline button.
+.btn-ghost
+  @apply gap-1 text-montela-cream drop-shadow-none
+  .btn__label,
+  .btn__icon
+    @apply border border-current
+  .btn__label
+    @apply flex-1 py-[8px] xl:py-[13px]
+  .btn__icon
+    @apply w-9 xl:w-11
+  &:hover,
+  &:active
+    @apply text-montela-mustard
+
 // -- Icon-only button ----------------------------------------------------------
 // 50px sage square; the icon turns mustard on hover. Pick the icon with a
 // modifier: --arrow-right (e.g. slider next), --arrow-down (scroll cue),

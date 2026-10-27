@@ -21,6 +21,7 @@ const entries = [
   'assets/js/modules/swiper.js',
   'assets/js/modules/fancybox.js',
   'assets/js/modules/isotope.js',
+  'assets/js/modules/activities.js',
   'assets/sass/main.sass',
   'assets/sass/admin-login.sass',
   'assets/sass/admin-dashboard.sass',

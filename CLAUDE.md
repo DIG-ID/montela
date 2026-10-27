@@ -165,6 +165,7 @@ no clone e passar o prefixo ao módulo:
 | `group_module_intro` — Module — Intro | `modules/intro.php` | `section_intro_title` (textarea, `new_lines: br`), `section_intro_text` (textarea) |
 | `group_module_explore` — Module — Explore | `modules/explore.php` | `section_explore_title` (text), `section_explore_image` (image), `section_explore_text` (textarea), `section_explore_button` (link), `section_explore_slides` (gallery) |
 | `group_module_image_band` — Module — Image band | `modules/image-band.php` | `section_image_band_image` (image) |
+| `group_module_activities` — Module — Activities | `modules/activities.php` | `section_activities_title` (text), `section_activities_text` (textarea), `section_activities_button` (link), `section_activities_summer` / `section_activities_winter` (relationship → `activity`, filtrado por Season `sommer` / `winter`, máx. 4, IDs; vazio = as 4 primeiras da estação). Cards: `components/card-activity.php` (imagem destacada, título, excerpt, permalink). Estação aberta ao carregar: inverno de Dezembro a Abril. |
 
 ### Páginas
 Um grupo por page template, com um **tab por secção**, na ordem da página; cada
@@ -172,7 +173,7 @@ tab clona o grupo do módulo (Seamless, sem prefixo).
 
 | Grupo | Template | Tabs → clone |
 |-------|----------|--------------|
-| `group_page_home` — Page — Home | `page-templates/page-home.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Apartments (campos próprios, `pages/home/find-apartment.php`) · Direct booking (campos próprios, `pages/home/direct-book.php`) · Gallery (campos próprios, `pages/home/gallery.php`) · Explore → `group_module_explore` · Image band → `group_module_image_band` |
+| `group_page_home` — Page — Home | `page-templates/page-home.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Apartments (campos próprios, `pages/home/find-apartment.php`) · Direct booking (campos próprios, `pages/home/direct-book.php`) · Gallery (campos próprios, `pages/home/gallery.php`) · Explore → `group_module_explore` · Image band → `group_module_image_band` · Activities → `group_module_activities` |
 | `group_cpt_activity` — Activity | `single-activity.php` (post type `activity`) | Hero → `group_module_hero` · Intro → `group_module_intro` |
 
 Secções só de uma página têm os campos **directamente no grupo da página** (no

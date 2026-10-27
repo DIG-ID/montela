@@ -1,0 +1,44 @@
+// Activity card (template-parts/components/card-activity.php).
+// Figma: the cards of "Activities_with slider SW" — desktop 5679:16639,
+// tablet 5679:15677, mobile 5679:16603.
+//
+// The photo fills the whole card (403×421 desktop, 325 tall below); a panel
+// sits over its bottom edge. Open, the panel is sage with the title, the
+// excerpt (4 lines at most) and the link. Closed, only the title shows, in a
+// cream bar (76px desktop, 58px below).
+//
+// Open is the default, and what touch screens always get: they have no
+// hover. Devices with a mouse close the card until it is hovered or a
+// keyboard focus lands inside it. The excerpt and link fold away through a
+// 0fr → 1fr grid row, so the panel animates to its content height.
+.card-activity
+  @apply relative h-[325px] xl:h-[421px] overflow-hidden
+
+.card-activity__media
+  @apply absolute inset-0 m-0
+
+.card-activity__img
+  @apply w-full h-full object-cover
+
+.card-activity__panel
+  @apply absolute inset-x-0 bottom-0 border border-montela-sage bg-montela-sage text-montela-cream text-center px-[15px] pt-3 pb-[13px] xl:px-[19px] xl:pt-[15px] xl:pb-4 transition-[background-color,color,padding] duration-[400ms] ease-out motion-reduce:transition-none
+
+.card-activity__more
+  @apply grid grid-rows-[1fr] transition-[grid-template-rows] duration-[400ms] ease-out motion-reduce:transition-none
+
+.card-activity__more-inner
+  @apply min-h-0 overflow-hidden
+
+// Figma "Tablet/Text" below desktop, "Text" on desktop.
+.card-activity__excerpt
+  @apply font-primary font-light tracking-[0.5px] text-[18px] leading-[25px] xl:mt-2 xl:text-[20px] xl:leading-[32px] line-clamp-4
+
+.card-activity__link
+  @apply flex mt-[22px] xl:mt-[30px]
+
+@media (hover: hover) and (pointer: fine)
+  .card-activity:not(:hover):not(:focus-within)
+    .card-activity__panel
+      @apply bg-montela-cream text-montela-sage pb-3 xl:pt-[21px] xl:pb-[21px]
+    .card-activity__more
+      @apply grid-rows-[0fr]

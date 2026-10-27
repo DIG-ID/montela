@@ -23,6 +23,7 @@ if ( have_posts() ) :
 			// Map section: design not final yet.
 			get_template_part( 'template-parts/modules/explore' );
 			get_template_part( 'template-parts/modules/image-band' );
+			get_template_part( 'template-parts/modules/activities' );
 		do_action( 'after_main_content' );
 	endwhile;
 endif;

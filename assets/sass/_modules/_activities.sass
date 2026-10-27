@@ -1,0 +1,123 @@
+// Activities module (template-parts/modules/activities.php).
+// Figma "Activities_with slider SW": desktop 5679:16639, tablet 5679:15677,
+// mobile 5679:16603. Cards: _components/_card-activity.sass.
+//
+//   Desktop  two halves: switch, title, text and button on the left; the
+//            cards in a 2×2 grid on the right half, starting 220px down
+//   Tablet   stacked: intro, then the 2×2 grid
+//   Mobile   stacked: intro, then one card at a time (scroll-snap carousel,
+//            arrows below — not in the Figma frame, same as the gallery)
+//
+// A thin sage frame runs behind it all (.section-activities__frame); the
+// cream copy block and the cards hide the parts of it the design hides.
+// Its bottom edge is measured from the section's bottom, so it lands inside
+// the first row of cards — with two rows (3–4 cards, the usual case). With a
+// single row it ends higher up, above the cards on tablet.
+//
+// Spacing: 183px above on desktop (192 tablet, 111 mobile) — the image band
+// above has no bottom margin; 224px below on desktop (192 tablet, 128
+// mobile), measured to the testimonials in the homepage frames.
+// Tablet deviations from the shared text styles, as drawn in the frame: the
+// title stays at the desktop size (90/80, not .title-h3's 80/76) and the text
+// at 20/32 (not .body-text's 18/25).
+.section-activities
+  @apply mt-[111px] mb-[128px] md:mt-[192px] md:mb-[192px] xl:mt-[183px] xl:mb-[224px] overflow-hidden text-montela-walnut
+
+.section-activities__inner
+  @apply relative xl:grid xl:grid-cols-2 xl:gap-x-5 xl:items-start
+
+// Mobile: 7px past the container on each side, from 113px down.
+// Tablet: from 19% of the width to the right edge, from the top.
+// Desktop: 9.56% to 63.54% of the width, from the top.
+.section-activities__frame
+  @apply absolute border border-montela-sage -left-[7px] -right-[7px] top-[113px] bottom-[278px] md:left-[19%] md:right-0 md:top-0 md:bottom-[526px] xl:left-[9.56%] xl:right-[36.46%] xl:bottom-[226px]
+
+// -- Intro --
+.section-activities__intro
+  @apply relative md:pt-[54px] xl:pt-[71px]
+
+.section-activities__copy
+  @apply flex flex-col items-start bg-montela-cream pt-[30px] md:mt-[21px] md:pt-[45px] md:max-w-[608px] xl:mt-0 xl:pt-[62px] xl:pb-[23px] xl:max-w-[788px]
+
+.section-activities__copy .section-activities__title
+  @apply md:text-[90px] md:leading-[80px]
+
+.section-activities__text
+  @apply mt-[30px] md:mt-[46px] md:max-w-[585px]
+
+.section-activities__copy .section-activities__text
+  @apply md:text-[20px] md:leading-[32px]
+
+.section-activities__copy .btn
+  @apply mt-8 md:mt-[53px] xl:mt-[65px]
+
+// -- Summer / Winter switch --
+// Sage pill with two tabs; the selected one is a cream pill. Full width on
+// mobile, 340px on tablet, sized by its content on desktop.
+//
+// The cream pill slides from one tab to the other: activities.js measures
+// the selected tab into --indicator-* and adds .is-ready, which hands the
+// cream background over from the tab to .section-activities__indicator.
+// Until then (no JS yet — WP Rocket delays it) the tab paints it itself.
+.section-activities__switch
+  @apply relative flex gap-4 w-full md:w-[340px] xl:w-auto xl:inline-flex px-2 py-[3px] xl:py-[6px] rounded-[81px] bg-montela-sage
+
+.section-activities__indicator
+  @apply absolute left-0 top-0 hidden rounded-[32px] bg-montela-cream
+  width: var(--indicator-w)
+  height: var(--indicator-h)
+  transform: translate(var(--indicator-x), var(--indicator-y))
+
+.section-activities__switch.is-ready .section-activities__indicator
+  @apply block
+
+.section-activities__switch.is-animated .section-activities__indicator
+  @apply transition-[transform,width] duration-[400ms] ease-in-out motion-reduce:transition-none
+
+.section-activities__tab
+  @apply relative z-[1] flex flex-1 xl:flex-none items-center justify-center gap-2 h-[38px] xl:h-11 px-4 rounded-[32px] font-primary font-light text-[20px] leading-[32px] tracking-[0.5px] text-montela-cream transition-colors duration-300 ease-out
+  &::before
+    content: ""
+    @apply w-8 h-8 shrink-0 bg-current
+  &:hover
+    @apply text-montela-mustard
+  &[aria-selected="true"]
+    @apply bg-montela-cream text-montela-sage
+  .is-ready > &
+    @apply bg-transparent
+  &:focus-visible
+    @apply outline outline-2 outline-offset-2 outline-montela-mustard
+
+.section-activities__tab--summer::before
+  mask: url("../../svg/icons/season-summer.svg") center / contain no-repeat
+
+.section-activities__tab--winter::before
+  mask: url("../../svg/icons/season-winter.svg") center / contain no-repeat
+
+// -- Cards --
+// Fades in when the switch shows it.
+.section-activities__panel
+  @apply relative mt-[66px] md:mt-9 xl:mt-[220px] xl:col-start-2 xl:row-start-1
+  animation: section-activities-in 0.4s ease-out
+  @media (prefers-reduced-motion: reduce)
+    animation: none
+
+@keyframes section-activities-in
+  from
+    opacity: 0
+
+// Mobile: a horizontal scroll-snap track, one card per view. Tablet and
+// desktop: the 2×2 grid (403px cards 94px apart on desktop — the right
+// half is 900px wide at 1920).
+.section-activities__cards
+  @apply flex gap-5 overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 md:gap-x-5 md:gap-y-[22px] md:overflow-visible xl:gap-x-[94px] xl:gap-y-[51px]
+  scrollbar-width: none
+  &::-webkit-scrollbar
+    display: none
+
+.section-activities__cards .card-activity
+  @apply w-full shrink-0 snap-start
+
+// Two classes: .slider-nav (display: flex) is emitted after this partial.
+.section-activities__panel .section-activities__nav
+  @apply justify-center mt-8 md:hidden

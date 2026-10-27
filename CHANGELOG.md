@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.11.0] — 2026-10-27
+
+### Added
+- Activities module on the homepage: title, text and button beside up to four activity cards, with a Sommer/Winter switch that swaps the cards (the selection slides between the two seasons). Winter opens by default from December to April.
+- Activity cards: card image and title; on hover (always on touch screens) they open to show the excerpt and a link to the activity. One card at a time on mobile, with arrows.
+- "Summer activities" and "Winter activities" fields to pick up to four cards per season; left empty, the first four activities of the season are shown.
+
 ## [1.10.0] — 2026-10-27
 
 ### Added

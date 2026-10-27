@@ -14,9 +14,12 @@
  * Arguments ($args):
  * - url    (string) Required. Link URL.
  * - title  (string) Required. Link text.
- * - target (string) Optional. '_blank' opens in a new tab.
- * - style  (string) Optional. 'primary' (default), 'secondary' or 'outline'.
- * - class  (string) Optional. Extra classes for the link.
+ * - target  (string) Optional. '_blank' opens in a new tab.
+ * - style   (string) Optional. 'primary' (default), 'secondary', 'outline' or
+ *                    'ghost' (cream outline, for sage backgrounds).
+ * - class   (string) Optional. Extra classes for the link.
+ * - context (string) Optional. Screen-reader-only words after the title, for
+ *                    links that repeat on a page ("Learn more" + card title).
  *
  * @package montela
  * @subpackage Component
@@ -31,13 +34,17 @@ if ( ! $btn_url || ! $btn_title ) {
 	return;
 }
 
-$btn_target = ! empty( $args['target'] ) ? $args['target'] : '';
-$btn_style  = ( ! empty( $args['style'] ) && in_array( $args['style'], array( 'primary', 'secondary', 'outline' ), true ) ) ? $args['style'] : 'primary';
-$btn_class  = 'btn btn-' . $btn_style . ( ! empty( $args['class'] ) ? ' ' . $args['class'] : '' );
+$btn_target  = ! empty( $args['target'] ) ? $args['target'] : '';
+$btn_style   = ( ! empty( $args['style'] ) && in_array( $args['style'], array( 'primary', 'secondary', 'outline', 'ghost' ), true ) ) ? $args['style'] : 'primary';
+$btn_class   = 'btn btn-' . $btn_style . ( ! empty( $args['class'] ) ? ' ' . $args['class'] : '' );
+$btn_context = ! empty( $args['context'] ) ? $args['context'] : '';
 ?>
 <a class="<?php echo esc_attr( $btn_class ); ?>" href="<?php echo esc_url( $btn_url ); ?>"<?php echo '_blank' === $btn_target ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>>
 	<span class="btn__label">
 		<?php echo esc_html( $btn_title ); ?>
+		<?php if ( $btn_context ) : ?>
+			<span class="sr-only">: <?php echo esc_html( $btn_context ); ?></span>
+		<?php endif; ?>
 		<?php if ( '_blank' === $btn_target ) : ?>
 			<span class="sr-only"><?php esc_html_e( '(opens in a new tab)', 'montela' ); ?></span>
 		<?php endif; ?>
