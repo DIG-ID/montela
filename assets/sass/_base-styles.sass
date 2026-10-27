@@ -9,10 +9,19 @@ html
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
 
+// Arrow cursor over text too (text stays selectable). The cursor is
+// inherited, so fields that take typing get the I-beam back below; links and
+// buttons keep their pointer (browser default / the button rule).
 body
   font-family: var(--font-primary)
   color: var(--color-text)
   background-color: var(--color-bg)
+  cursor: default
+
+input:not([type="checkbox"], [type="radio"], [type="submit"], [type="button"], [type="reset"], [type="range"], [type="file"], [type="color"], [type="image"]),
+textarea,
+[contenteditable]:not([contenteditable="false"])
+  cursor: text
 
 img, video
   max-width: 100%

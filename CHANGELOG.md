@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.12.0] — 2026-10-27
+
+### Added
+- Testimonials: new post type (author and quote) to manage guest reviews in one place.
+- Testimonials module on the homepage: a framed slider of the selected reviews, which cross-fade, with arrows.
+
+### Changed
+- Text keeps the arrow cursor on hover (it stays selectable); typing fields keep the text cursor.
+
 ## [1.11.1] — 2026-10-27
 
 ### Fixed

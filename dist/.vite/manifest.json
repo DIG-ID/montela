@@ -49,7 +49,7 @@
     ]
   },
   "assets/js/modules/swiper.js": {
-    "file": "js/swiper-Bolz7qPA.js",
+    "file": "js/swiper-Bzagw1SY.js",
     "name": "swiper",
     "src": "assets/js/modules/swiper.js",
     "isEntry": true,
@@ -57,7 +57,7 @@
       "_helpers-CQhMBWwg.js"
     ],
     "css": [
-      "css/swiper-CAdlRkR4.css"
+      "css/swiper-PbXm7WWU.css"
     ]
   },
   "assets/sass/admin-bar.sass": {
@@ -88,7 +88,7 @@
     "isEntry": true
   },
   "assets/sass/main.sass": {
-    "file": "css/main-CjxENcAO.css",
+    "file": "css/main-h09hATSR.css",
     "name": "main",
     "names": [
       "main.css"
@@ -101,12 +101,15 @@
       "assets/mountains-BtNTc39q.svg",
       "assets/season-summer-C2o0q19u.svg",
       "assets/season-winter-DX7E2spa.svg",
+      "assets/quote-BED75e32.svg",
       "assets/arrow-forward-aO82Prq-.svg",
       "assets/home-and-garden-ltii5Ith.svg",
       "assets/slider-prev-BgkI7qkP.svg",
       "assets/slider-next-B52SPkO5.svg",
       "assets/slider-prev-sage-CRYbWYmP.svg",
-      "assets/slider-next-sage-B0mM5aXy.svg"
+      "assets/slider-next-sage-B0mM5aXy.svg",
+      "assets/slider-prev-walnut-Dr4u8bNN.svg",
+      "assets/slider-next-walnut-BF6QV3Oz.svg"
     ]
   },
   "assets/svg/icons/arrow-back.svg": {
@@ -125,6 +128,10 @@
     "file": "assets/home-and-garden-ltii5Ith.svg",
     "src": "assets/svg/icons/home-and-garden.svg"
   },
+  "assets/svg/icons/quote.svg": {
+    "file": "assets/quote-BED75e32.svg",
+    "src": "assets/svg/icons/quote.svg"
+  },
   "assets/svg/icons/season-summer.svg": {
     "file": "assets/season-summer-C2o0q19u.svg",
     "src": "assets/svg/icons/season-summer.svg"
@@ -137,6 +144,10 @@
     "file": "assets/slider-next-sage-B0mM5aXy.svg",
     "src": "assets/svg/icons/slider-next-sage.svg"
   },
+  "assets/svg/icons/slider-next-walnut.svg": {
+    "file": "assets/slider-next-walnut-BF6QV3Oz.svg",
+    "src": "assets/svg/icons/slider-next-walnut.svg"
+  },
   "assets/svg/icons/slider-next.svg": {
     "file": "assets/slider-next-B52SPkO5.svg",
     "src": "assets/svg/icons/slider-next.svg"
@@ -144,6 +155,10 @@
   "assets/svg/icons/slider-prev-sage.svg": {
     "file": "assets/slider-prev-sage-CRYbWYmP.svg",
     "src": "assets/svg/icons/slider-prev-sage.svg"
+  },
+  "assets/svg/icons/slider-prev-walnut.svg": {
+    "file": "assets/slider-prev-walnut-Dr4u8bNN.svg",
+    "src": "assets/svg/icons/slider-prev-walnut.svg"
   },
   "assets/svg/icons/slider-prev.svg": {
     "file": "assets/slider-prev-BgkI7qkP.svg",

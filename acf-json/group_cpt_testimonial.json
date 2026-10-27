@@ -1,0 +1,51 @@
+{
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "testimonial"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Quote; the post title is the author.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1793116986,
+    "acfml_field_group_mode": "advanced",
+    "key": "group_cpt_testimonial",
+    "title": "Testimonial",
+    "fields": [
+        {
+            "key": "field_cpt_testimonial_quote",
+            "label": "Quote",
+            "name": "testimonial_quote",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "The review text, without quotation marks.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 5,
+            "placeholder": "",
+            "new_lines": ""
+        }
+    ]
+}

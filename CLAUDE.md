@@ -122,6 +122,7 @@ volta no JSON; depois de um deploy, fazer Sync.
 | Post type | JSON | URL | Suporta | Notas |
 |-----------|------|-----|---------|-------|
 | `activity` — Activities | `post_type_activity.json` | `/aktivitaeten/{slug}/` (sem arquivo) | título, imagem destacada ("Card image"), excerto, revisões | Sem editor de blocos: o conteúdo do single é feito de módulos ACF. Lido por uma secção da homepage. |
+| `testimonial` — Testimonials | `post_type_testimonial.json` | nenhum (não público: sem single nem arquivo) | título, revisões | Título = linha do autor ("Martin Ahrens 5* bei Google"); a quote é o campo `testimonial_quote` (grupo `group_cpt_testimonial`). Lido pelo módulo Testimonials. |
 
 ### Taxonomias
 
@@ -166,6 +167,7 @@ no clone e passar o prefixo ao módulo:
 | `group_module_explore` — Module — Explore | `modules/explore.php` | `section_explore_title` (text), `section_explore_image` (image), `section_explore_text` (textarea), `section_explore_button` (link), `section_explore_slides` (gallery) |
 | `group_module_image_band` — Module — Image band | `modules/image-band.php` | `section_image_band_image` (image) |
 | `group_module_activities` — Module — Activities | `modules/activities.php` | `section_activities_title` (text), `section_activities_text` (textarea), `section_activities_button` (link), `section_activities_summer` / `section_activities_winter` (relationship → `activity`, filtrado por Season `sommer` / `winter`, máx. 4, IDs; vazio = as 4 primeiras da estação). Cards: `components/card-activity.php` (imagem destacada, título, excerpt, permalink). Estação aberta ao carregar: inverno de Dezembro a Abril. |
+| `group_module_testimonials` — Module — Testimonials | `modules/testimonials.php` | `section_testimonials_title` (text), `section_testimonials_items` (relationship → `testimonial`, IDs, pela ordem escolhida; vazio = todos). Slider Swiper em fade, com loop e sem autoplay. |
 
 ### Páginas
 Um grupo por page template, com um **tab por secção**, na ordem da página; cada
@@ -173,7 +175,7 @@ tab clona o grupo do módulo (Seamless, sem prefixo).
 
 | Grupo | Template | Tabs → clone |
 |-------|----------|--------------|
-| `group_page_home` — Page — Home | `page-templates/page-home.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Apartments (campos próprios, `pages/home/find-apartment.php`) · Direct booking (campos próprios, `pages/home/direct-book.php`) · Gallery (campos próprios, `pages/home/gallery.php`) · Explore → `group_module_explore` · Image band → `group_module_image_band` · Activities → `group_module_activities` |
+| `group_page_home` — Page — Home | `page-templates/page-home.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Apartments (campos próprios, `pages/home/find-apartment.php`) · Direct booking (campos próprios, `pages/home/direct-book.php`) · Gallery (campos próprios, `pages/home/gallery.php`) · Explore → `group_module_explore` · Image band → `group_module_image_band` · Activities → `group_module_activities` · Testimonials → `group_module_testimonials` |
 | `group_cpt_activity` — Activity | `single-activity.php` (post type `activity`) | Hero → `group_module_hero` · Intro → `group_module_intro` |
 
 Secções só de uma página têm os campos **directamente no grupo da página** (no

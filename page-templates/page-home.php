@@ -24,6 +24,7 @@ if ( have_posts() ) :
 			get_template_part( 'template-parts/modules/explore' );
 			get_template_part( 'template-parts/modules/image-band' );
 			get_template_part( 'template-parts/modules/activities' );
+			get_template_part( 'template-parts/modules/testimonials' );
 		do_action( 'after_main_content' );
 	endwhile;
 endif;

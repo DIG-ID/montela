@@ -11,17 +11,19 @@
 //   .swiper-button-prev / .swiper-button-next — Swiper's default arrows
 //   .swiper-pagination
 // Only the Swiper modules imported below are bundled — add more as needed.
+// EffectFade: pass {"effect": "fade", "fadeEffect": {"crossFade": true}}.
 // =============================================================================
 import Swiper from 'swiper';
-import { A11y, Navigation, Pagination } from 'swiper/modules';
+import { A11y, EffectFade, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/a11y';
+import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { domReady } from '../utils/helpers.js';
 
 const defaults = {
-  modules: [A11y, Navigation, Pagination],
+  modules: [A11y, EffectFade, Navigation, Pagination],
   slidesPerView: 1,
   spaceBetween: 16,
 };

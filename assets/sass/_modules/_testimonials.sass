@@ -1,0 +1,72 @@
+// Testimonials module (template-parts/modules/testimonials.php).
+// Figma: section-testimonials-desktop 5588:16241, tablet 5426:4570,
+// mobile 5460:15447.
+//
+// A sage hairline frame (walnut on tablet and mobile in Figma — sage on
+// every breakpoint, as agreed) around the title, the slider and its arrows.
+// Content centred, 60px apart: title (.title-h2), quote (.body-quote),
+// author (.body-text). Only the quote and author cross-fade; the title stays.
+//
+//   Desktop  frame min. 688px tall; arrows on the sides, 155px in, centred
+//            vertically; quote up to 1206px wide, with quote marks
+//   Tablet   frame min. 596px, arrows 89px in; quote 376px wide
+//   Mobile   arrows centred below the author
+//
+// Slides take the height of the tallest (Swiper's .swiper-slide height is
+// overridden), so the frame doesn't jump when a shorter review fades in.
+//
+// Spacing: 191px below on desktop (110 tablet, 128 mobile) — to the top of
+// the footer's call-to-action box, which in the frames starts 40px above the
+// footer on desktop. The 224px above comes from the activities module.
+.section-testimonials
+  @apply mb-[128px] md:mb-[110px] xl:mb-[191px] text-montela-walnut
+
+.section-testimonials__frame
+  @apply relative flex flex-col items-center justify-center text-center border border-montela-sage px-7 pt-[34px] pb-[33px] md:min-h-[596px] md:px-[89px] md:py-[89px] xl:min-h-[688px] xl:px-[155px] xl:py-[88px]
+
+.section-testimonials__title
+  @apply mb-[60px] max-w-[420px] xl:max-w-none
+
+// Two classes: swiper.css (loaded after main.css) sets .swiper's margins.
+.section-testimonials__frame .section-testimonials__swiper
+  @apply w-full m-0
+
+.section-testimonials__swiper .section-testimonials__slide
+  @apply flex flex-col items-center justify-center h-auto m-0
+
+.section-testimonials__quote
+  @apply m-0 md:max-w-[376px] xl:max-w-[1206px]
+
+// Desktop only: quote marks around the text, the opening one mirrored.
+.section-testimonials__quote p
+  @media (min-width: 1280px)
+    &::before,
+    &::after
+      content: ""
+      display: inline-block
+      background-color: currentColor
+      mask: url("../../svg/icons/quote.svg") center / contain no-repeat
+    &::before
+      width: 35px
+      height: 24px
+      margin-right: 8px
+      transform: scaleX(-1)
+    &::after
+      width: 32px
+      height: 22px
+      margin-left: 12px
+      vertical-align: -0.35em
+
+.section-testimonials__author
+  @apply mt-[60px]
+
+// Mobile: centred under the author. Tablet and desktop: one arrow on each
+// side, the row centred on the frame and letting clicks through between them.
+// Two classes: .slider-nav (display: flex) is emitted after this partial.
+// z-10: the slider spans the frame's full width and swiper.css gives it
+// z-index 1, which would sit on top of the arrows and swallow the clicks.
+.section-testimonials__frame .section-testimonials__nav
+  @apply z-10 justify-center mt-[60px] md:absolute md:inset-x-[89px] md:top-1/2 md:-translate-y-1/2 md:mt-0 md:justify-between md:pointer-events-none xl:inset-x-[155px]
+
+.section-testimonials__nav .slider-nav__btn
+  @apply pointer-events-auto

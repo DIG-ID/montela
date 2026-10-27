@@ -181,7 +181,7 @@ function montela_enqueue_assets() {
 
 	// Optional modules — enqueue only where they are used.
 	if ( is_page_template( 'page-templates/page-home.php' ) ) {
-		montela_enqueue_module( 'swiper' ); // Gallery slider.
+		montela_enqueue_module( 'swiper' ); // Gallery, Explore and Testimonials sliders.
 	}
 }
 
