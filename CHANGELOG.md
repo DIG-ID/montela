@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.6.0] — 2026-10-27
+
+### Added
+- Explore module: sage text panel (title, small photo, text, button) beside a photo slider; slider on top on tablet and mobile.
+- "Module — Explore" field group for cloning, and an Explore tab on the homepage.
+- Sage slider arrows for use over photos.
+
 ## [1.5.0] — 2026-10-27
 
 ### Added

@@ -149,6 +149,7 @@ no clone e passar o prefixo ao módulo:
 |-------|--------|--------|
 | `group_module_hero` — Module — Hero | `modules/hero.php` | `section_hero_image` (image, ID), `section_hero_video` (file mp4, URL, opcional), `section_hero_title_line_1` (text), `section_hero_title_line_2` (text), `section_hero_title_line_3` (text) |
 | `group_module_intro` — Module — Intro | `modules/intro.php` | `section_intro_title` (textarea, `new_lines: br`), `section_intro_text` (textarea) |
+| `group_module_explore` — Module — Explore | `modules/explore.php` | `section_explore_title` (text), `section_explore_image` (image), `section_explore_text` (textarea), `section_explore_button` (link), `section_explore_slides` (gallery) |
 
 ### Páginas
 Um grupo por page template, com um **tab por secção**, na ordem da página; cada
@@ -156,7 +157,7 @@ tab clona o grupo do módulo (Seamless, sem prefixo).
 
 | Grupo | Template | Tabs → clone |
 |-------|----------|--------------|
-| `group_page_home` — Page — Home | `page-templates/page-home.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Apartments (campos próprios, `pages/home/find-apartment.php`) · Direct booking (campos próprios, `pages/home/direct-book.php`) · Gallery (campos próprios, `pages/home/gallery.php`) |
+| `group_page_home` — Page — Home | `page-templates/page-home.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Apartments (campos próprios, `pages/home/find-apartment.php`) · Direct booking (campos próprios, `pages/home/direct-book.php`) · Gallery (campos próprios, `pages/home/gallery.php`) · Explore → `group_module_explore` |
 
 Secções só de uma página têm os campos **directamente no grupo da página** (no
 seu tab), com o prefixo da secção: `section_find_apartment_*`,

@@ -1,0 +1,53 @@
+// Explore module (template-parts/modules/explore.php).
+// Figma "Explore with photo": desktop 5685:17337, tablet 5685:17362,
+// mobile 5685:17389. Full bleed — no .theme-container.
+//
+//   Desktop  two halves 18px apart: sage panel on the left (content 608px wide,
+//            centred), slider on the right, as tall as the panel; arrows in its
+//            top-right corner (76px / 51px in)
+//   Tablet   slider on top (400px, arrows bottom-right), panel below
+//   Mobile   slider on top (400px, arrows centred at the bottom), panel below
+//
+// Panel spacing per breakpoint comes from the Figma frames. Tablet and mobile
+// are drawn with absolute positions and irregular gaps; the values below are
+// the measured ones, except mobile text → button (0 in Figma, the button
+// overlaps the text) which is set to 24px.
+// Explicit single column below desktop: an implicit auto track would size to
+// content and leave Swiper (which measures its container) at 0px wide.
+.section-explore
+  @apply grid grid-cols-1 xl:grid-cols-2 xl:gap-x-[18px]
+
+// -- Slider --
+.section-explore__slider
+  @apply relative h-[400px] xl:h-auto xl:order-2
+
+// Desktop: absolutely filled, so the photos never set the row height — the
+// panel does, and the slider matches it. Two classes: swiper.css (loaded
+// after main.css) sets .swiper { position: relative }.
+.section-explore__slider .section-explore__swiper
+  @apply h-full xl:absolute xl:inset-0
+
+.section-explore__swiper .section-explore__slide
+  @apply h-full
+
+.section-explore__img
+  @apply w-full h-full object-cover
+
+.section-explore__nav
+  @apply absolute z-10 bottom-[28px] left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-[58px] md:bottom-[35px] xl:bottom-auto xl:top-[76px] xl:right-[51px]
+
+// -- Panel --
+.section-explore__panel
+  @apply flex flex-col items-center text-center bg-montela-sage text-montela-cream px-8 pt-[52px] pb-[54px] md:px-16 md:pt-[76px] md:pb-[144px] xl:order-1 xl:px-0 xl:pb-[51px]
+
+.section-explore__title
+  @apply max-w-[701px] xl:max-w-[608px]
+
+.section-explore__photo
+  @apply m-0 mt-5 w-full h-[150px] overflow-hidden md:mt-20 md:w-[460px] md:h-[200px] xl:mt-16 xl:w-[506px] xl:h-[300px]
+
+.section-explore__text
+  @apply mt-[30px] md:mt-[50px] md:max-w-[453px] xl:mt-16 xl:max-w-[485px]
+
+.section-explore__panel .btn
+  @apply mt-6 md:mt-[30px] xl:mt-16

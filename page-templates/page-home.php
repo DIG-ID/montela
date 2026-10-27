@@ -20,6 +20,8 @@ if ( have_posts() ) :
 			get_template_part( 'template-parts/pages/home/find-apartment' );
 			get_template_part( 'template-parts/pages/home/direct-book' );
 			get_template_part( 'template-parts/pages/home/gallery' );
+			// Map section: design not final yet.
+			get_template_part( 'template-parts/modules/explore' );
 		do_action( 'after_main_content' );
 	endwhile;
 endif;
