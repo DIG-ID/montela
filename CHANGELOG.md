@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.7.0] — 2026-10-27
+
+### Added
+- Image band module: a full-width photo between sections, cropped per screen size.
+- "Module — Image band" field group for cloning, and an Image band tab on the homepage.
+
 ## [1.6.0] — 2026-10-27
 
 ### Added

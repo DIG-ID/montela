@@ -1,0 +1,13 @@
+// Image band module (template-parts/modules/image-band.php).
+// Figma "Rectangle 71": desktop 5426:5003, tablet 5426:4501, mobile 5458:15111.
+//
+// Full-bleed photo, frame ratio per breakpoint: 393×300 mobile, 834×651
+// tablet, 1920×815 desktop. object-position reproduces the Figma crops, which
+// keep the lower part of the photo (the buildings): 50% 80% mobile, 88% 86%
+// tablet, 50% 95% desktop.
+// 20px above: the gap the design leaves after the Explore module.
+.section-image-band
+  @apply m-0 mt-5 aspect-[393/300] md:aspect-[834/651] xl:aspect-[1920/815] overflow-hidden
+
+.section-image-band__img
+  @apply w-full h-full object-cover object-[50%_80%] md:object-[88%_86%] xl:object-[50%_95%]

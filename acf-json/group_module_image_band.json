@@ -1,0 +1,56 @@
+{
+    "key": "group_module_image_band",
+    "title": "Module — Image band",
+    "fields": [
+        {
+            "key": "field_module_image_band_image",
+            "label": "Image",
+            "name": "section_image_band_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Full-width photo. Landscape, at least 1920 px wide; cropped from the centre-bottom on smaller screens.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "jpg, jpeg, png, webp",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "Module: clone it into a page field group.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1793104102,
+    "acfml_field_group_mode": "advanced"
+}
