@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.23.3] — 2026-10-28
+
+### Changed
+- Preview cards on mobile and tablet: the photo shows whole, with the panel below it, and the description is always visible.
+
 ## [1.23.2] — 2026-10-28
 
 ### Changed

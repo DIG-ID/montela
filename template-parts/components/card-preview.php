@@ -1,9 +1,10 @@
 <?php
 /**
- * Preview card: a post's card image with a sage panel at the bottom — the
- * title and a "learn more" link when closed; on hover or keyboard focus the
- * panel grows over the photo and shows the excerpt. Always open on touch
- * screens (_card-preview.sass).
+ * Preview card: a post's card image with a sage panel — title, excerpt and
+ * a "learn more" link. Mobile and tablet: the photo whole on top, the panel
+ * below, always open. Desktop: the panel over the photo's bottom, closed
+ * (title and link) until hover or keyboard focus opens it to show the
+ * excerpt (_card-preview.sass).
  *
  * Content comes from the post: featured image ("Card image" / "Kartenbild"),
  * title, excerpt and permalink. Figma: "Card Offers and Packages" 5470:17071.
