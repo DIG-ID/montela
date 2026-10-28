@@ -22,8 +22,8 @@ if ( have_posts() ) :
 			get_template_part( 'template-parts/modules/intro' );
 			get_template_part( 'template-parts/pages/region/place' );
 			get_template_part( 'template-parts/modules/cards-icon' );
-			// Map section and "Ausflüge ab Saas-Grund" (image cards from a post type
-			// still to be created): skipped for now.
+			// Map section: skipped for now (design not approved).
+			get_template_part( 'template-parts/pages/region/trips' );
 			get_template_part( 'template-parts/modules/box-text' );
 			get_template_part( 'template-parts/modules/activities' );
 		do_action( 'after_main_content' );

@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.23.0] — 2026-10-28
+
+### Added
+- Unsere Region: "Ausflüge ab Saas-Grund" — a slider of day trip cards (card image, title, excerpt and a link), picked and ordered in the page or all day trips by default.
+
+### Changed
+- Day trips now live under the Unsere Region page: /erkunden/unsere-region/{trip}/. Old /tagesausflug/ links redirect to the new address.
+
 ## [1.22.0] — 2026-10-28
 
 ### Added

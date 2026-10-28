@@ -56,7 +56,7 @@
     "show_in_nav_menus": true,
     "show_in_rest": true,
     "rest_base": "",
-    "rest_namespace": "wp/v2",
+    "rest_namespace": "wp\/v2",
     "rest_controller_class": "WP_REST_Posts_Controller",
     "menu_position": 24,
     "menu_icon": {
@@ -77,7 +77,7 @@
     "has_archive_slug": "",
     "rewrite": {
         "permalink_rewrite": "custom_permalink",
-        "slug": "tagesausflug",
+        "slug": "erkunden\/unsere-region",
         "feeds": "0",
         "pages": "1",
         "with_front": "0"
@@ -88,5 +88,5 @@
     "delete_with_user": false,
     "register_meta_box_cb": "",
     "enter_title_here": "Name des Ausflugs",
-    "modified": 1793202519
+    "modified": 1793204125
 }

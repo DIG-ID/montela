@@ -58,3 +58,82 @@
 
 .section-place .icon-list__text
   @apply font-bold text-[14px] leading-[20px] md:text-[20px] md:leading-[32px]
+
+// -- Ausflüge ab Saas-Grund (template-parts/pages/region/trips.php) --
+// Figma "Cards with image section": desktop 5753:14981, tablet 5753:15055,
+// mobile 5753:15098.
+//
+// Centred title and text (24px apart; 16 on tablet; 594px wide on desktop),
+// then a Swiper slider of day trip cards — 96px below on desktop, 44 on
+// tablet, 36 on mobile — and walnut arrows centred below it (hidden when
+// every card is in view).
+//
+//   Desktop  4 cards on columns 2–11, 20px apart (16 in Figma): photo
+//            366:225, sage panel 276px tall (26 / 24px padding)
+//   Tablet   1 card, 468px wide, centred: photo 436:201, panel 233px
+//            (16 / 30px padding)
+//   Mobile   1 card, full width; as tablet
+//
+// Panel: title 20/32 bold and the excerpt 15/25, cream; the button (ghost,
+// 44px tall) pinned to the bottom. Cards stretch to the tallest one.
+//
+// Spacing: none above (the section before ends with its own margin);
+// 192px below on tablet and desktop, 128 on mobile.
+.section-trips
+  @apply mb-[128px] md:mb-[192px] text-montela-walnut
+
+.section-trips__inner
+  @apply col-span-full flex flex-col items-center xl:col-start-2 xl:col-span-10
+
+.section-trips__head
+  @apply flex flex-col items-center gap-6 text-center md:gap-4 xl:gap-6
+
+.section-trips__text
+  @apply xl:max-w-[594px]
+
+// Two classes: swiper.css (loaded after main.css) sets .swiper's margins.
+// Bottom padding leaves room for the panels' shadow.
+.section-trips__inner .section-trips__swiper
+  @apply w-full m-0 mt-9 pb-2 md:mt-11 xl:mt-24
+
+.section-trips__swiper .section-trips__slide
+  @apply flex justify-center h-auto
+
+.trip-card
+  @apply flex flex-col w-full md:max-w-[468px] xl:max-w-none
+
+.trip-card__photo
+  @apply m-0 overflow-hidden aspect-[436/201] xl:aspect-[366/225]
+
+.trip-card__img
+  @apply w-full h-full object-cover
+
+.trip-card__panel
+  @apply flex flex-1 flex-col min-h-[233px] px-[30px] pt-4 pb-[17px] bg-montela-sage text-montela-cream drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)] xl:min-h-[276px] xl:px-6 xl:py-[26px]
+
+.trip-card__title
+  @apply font-primary font-bold tracking-[0.5px] text-[20px] leading-[32px]
+
+.trip-card__text
+  @apply font-primary font-light tracking-[0.5px] text-[15px] leading-[25px]
+
+// The button is pinned to the bottom, at least 48px (72 on desktop) below
+// the text — kept by the text's own margin, not the button's padding.
+.trip-card__panel > :has(+ .trip-card__btn)
+  @apply mb-12 xl:mb-[72px]
+
+// The ghost button is 34px tall below desktop elsewhere; here it is 44.
+.trip-card__panel .trip-card__btn
+  @apply flex mt-auto
+
+.trip-card__btn .btn__label
+  @apply py-[13px]
+
+.trip-card__btn .btn__icon
+  @apply w-11
+
+.section-trips__inner .section-trips__nav
+  @apply justify-center mt-9 md:mt-11
+  // Every card in view: Swiper hides both arrows; drop the row too.
+  &:has(.swiper-button-lock)
+    @apply hidden
