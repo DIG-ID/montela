@@ -107,3 +107,29 @@ if ( ! function_exists( 'montela_get_page_by_template' ) ) :
 		return $pages ? $pages[0] : null;
 	}
 endif;
+
+if ( ! function_exists( 'montela_get_offer_validity' ) ) :
+	/**
+	 * Returns an offer's validity as text — "12.06.2026 - 16.10.2026" —
+	 * from its "Valid from" / "Valid until" date fields. Either date alone is
+	 * shown on its own; no dates, an empty string.
+	 *
+	 * @since 1.21.0
+	 *
+	 * @param int    $post_id Offer ID.
+	 * @param string $format  PHP date format: 'd.m.Y' (single page) or 'd.m.y' (cards).
+	 * @return string
+	 */
+	function montela_get_offer_validity( $post_id, $format = 'd.m.Y' ) {
+		$dates = array();
+		foreach ( array( 'section_offer_valid_from', 'section_offer_valid_to' ) as $field ) {
+			$raw  = function_exists( 'get_field' ) ? get_field( $field, $post_id ) : '';
+			$date = $raw ? DateTime::createFromFormat( 'Ymd', $raw ) : false;
+			if ( $date ) {
+				$dates[] = $date->format( $format );
+			}
+		}
+
+		return implode( ' - ', $dates );
+	}
+endif;

@@ -31,14 +31,6 @@ if ( ! $gal_title && ! $gal_text && ! $gal_images ) {
 
 $gal_title_id = wp_unique_id( 'section-gallery-title-' );
 
-// Slides: auto width (set per slide in CSS), 4px apart on mobile, 23px above.
-$gal_swiper = array(
-	'slidesPerView' => 'auto',
-	'spaceBetween'  => 4,
-	'breakpoints'   => array(
-		768 => array( 'spaceBetween' => 23 ),
-	),
-);
 ?>
 <section class="section-gallery"<?php echo $gal_title ? ' aria-labelledby="' . esc_attr( $gal_title_id ) . '"' : ''; ?>>
 	<div class="theme-container">
@@ -104,38 +96,14 @@ $gal_swiper = array(
 		</div>
 	</div>
 
-	<?php if ( $gal_images ) : ?>
-		<div class="section-gallery__slider" data-swiper-root>
-			<div class="swiper section-gallery__swiper" data-swiper="<?php echo esc_attr( wp_json_encode( $gal_swiper ) ); ?>">
-				<div class="swiper-wrapper">
-					<?php foreach ( $gal_images as $gal_image ) : ?>
-						<div class="swiper-slide section-gallery__slide">
-							<?php
-							echo wp_get_attachment_image(
-								$gal_image,
-								'large',
-								false,
-								array(
-									'class' => 'section-gallery__img',
-									'sizes' => '(min-width: 1280px) 50vw, (min-width: 768px) 76vw, 56vw',
-								)
-							);
-							?>
-						</div>
-					<?php endforeach; ?>
-				</div>
-			</div>
-
-			<?php if ( count( $gal_images ) > 1 ) : ?>
-				<div class="section-gallery__nav">
-					<div class="theme-container">
-						<div class="slider-nav section-gallery__nav-buttons">
-							<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-swiper-prev aria-label="<?php esc_attr_e( 'Previous photo', 'montela' ); ?>"></button>
-							<button class="slider-nav__btn slider-nav__btn--next" type="button" data-swiper-next aria-label="<?php esc_attr_e( 'Next photo', 'montela' ); ?>"></button>
-						</div>
-					</div>
-				</div>
-			<?php endif; ?>
-		</div>
-	<?php endif; ?>
+	<?php
+	get_template_part(
+		'template-parts/components/gallery-slider',
+		null,
+		array(
+			'images' => $gal_images,
+			'class'  => 'section-gallery__slider',
+		)
+	);
+	?>
 </section>

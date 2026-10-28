@@ -42,10 +42,7 @@ $cards_swiper   = array(
 	'spaceBetween'  => 20,
 	'breakpoints'   => array(
 		768  => array( 'slidesPerView' => 2 ),
-		1280 => array(
-			'slidesPerView' => 4,
-			'spaceBetween'  => 17,
-		),
+		1280 => array( 'slidesPerView' => 4 ),
 	),
 );
 ?>

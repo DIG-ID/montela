@@ -1,0 +1,65 @@
+// Services comparison module (template-parts/modules/services.php).
+// Figma: desktop 5679:16769, tablet 5679:16905, mobile 5679:16983.
+//
+// Head: title, text and button — stacked below desktop (16 / 32px apart);
+// on desktop the title (810px) beside the text and button (585px, 11px
+// apart), 110px between. Then the plans, 44px below (91 on desktop):
+// a Swiper slider — one plan on mobile and tablet with walnut arrows
+// centred below (44px), both side by side on desktop (20px apart, arrows
+// hidden: every plan is in view).
+//
+// Plan: photo (205 / 467px tall) over a box, both with a sage hairline;
+// box padding 19 / 26px (mobile), 51 / 40px (desktop); bold title (14/22,
+// 20/32, 24/32), subtitle 16px below, then the checklist 32px below — items
+// 14px apart, a mustard check (20 / 32px) 16px before the text. Text 14/22,
+// 18/25, 20/32. Plans stretch to the taller one.
+//
+// Spacing below: 128px (mobile), 192 (tablet, desktop).
+.section-services
+  @apply mb-[128px] md:mb-[192px] text-montela-walnut
+
+.section-services__inner
+  @apply col-span-full flex flex-col xl:col-start-2 xl:col-span-10
+
+.section-services__head
+  @apply flex flex-col gap-4 xl:grid xl:grid-cols-[810fr_585fr] xl:gap-x-[110px]
+
+.section-services__intro
+  @apply flex flex-col items-start gap-8 xl:gap-[11px]
+
+// Two classes: swiper.css (loaded after main.css) sets .swiper's margins.
+.section-services__inner .section-services__swiper
+  @apply w-full m-0 mt-11 xl:mt-[91px]
+
+.section-services__swiper .section-services__plan
+  @apply flex flex-col h-auto
+
+.section-services__photo
+  @apply m-0 h-[205px] overflow-hidden border border-montela-sage md:h-[467px]
+
+.section-services__img
+  @apply w-full h-full object-cover
+
+.section-services__box
+  @apply flex-1 border border-t-0 border-montela-sage px-[26px] pt-[19px] pb-8 md:px-10 md:pt-[51px] md:pb-12 font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[20px] xl:leading-[32px]
+
+.section-services__plan-title
+  @apply font-bold md:text-[20px] md:leading-[32px] xl:text-[24px]
+
+.section-services__subtitle
+  @apply mt-4
+
+.section-services__features
+  @apply flex flex-col gap-[14px] mt-8
+  li
+    @apply flex gap-4
+    &::before
+      content: ""
+      @apply w-5 h-5 shrink-0 mt-px bg-montela-mustard md:w-8 md:h-8 md:-mt-1 xl:mt-0
+      mask: url("../../svg/icons/check.svg") center / contain no-repeat
+
+.section-services__inner .section-services__nav
+  @apply justify-center mt-11
+  // Every plan in view (desktop): Swiper hides both arrows; drop the row too.
+  &:has(.swiper-button-lock)
+    @apply hidden

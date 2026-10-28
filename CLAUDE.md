@@ -40,7 +40,7 @@ montela/
 ├── page-templates/         # Page templates WordPress
 ├── acf-json/               # field groups do ACF (Local JSON)
 ├── template-parts/
-│   ├── components/       # button.php, button-icon.php, icon-list.php
+│   ├── components/       # button.php, button-icon.php, icon-list.php, gallery-slider.php…
 │   ├── modules/          # secções reutilizadas (hero, intro…)
 │   ├── pages/            # secções de uma só página
 │   ├── footer-main.php
@@ -132,11 +132,11 @@ volta no JSON; depois de um deploy, fazer Sync.
 | `season` — Seasons | `taxonomy_season.json` | `activity` | Hierárquica (checkboxes no editor), sem URLs públicos, coluna na lista do admin. Termos **`sommer`** e **`winter`** — os slugs são usados no código (filtro Sommer/Winter); criar em cada ambiente, não renomear os slugs. Uma actividade pode ter as duas. |
 
 ### Templates
-- **Single Offer** (`single-offer.php`, CPT `offer`) — em curso: hero (módulo) + "Zurück zur Übersicht" (vai para a página com o template das ofertas — `montela_get_page_by_template()`, `inc/helpers.php`) + intro própria (título, caixa de preço, texto). Campos no grupo `group_cpt_offer`. Figma: desktop
+- **Single Offer** (`single-offer.php`, CPT `offer`) — hero (módulo) + "Zurück zur Übersicht" (vai para a página com o template das ofertas — `montela_get_page_by_template()`, `inc/helpers.php`) + intro (título, caixa de preço, texto) + "Im Package enthalten" (lista com ícones e foto só desktop) com a galeria + condições e validade + Text with photos (módulo). Secções em `template-parts/offer/`. Campos no grupo `group_cpt_offer`. Figma: desktop
   [5426:14430](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-14430&m=dev),
   tablet [5426:17370](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-17370&m=dev),
   mobile [5426:16423](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-16423&m=dev).
-- **Angebote & Packages / Offers** (`page-templates/page-offers.php`, "Offers Template"; `/angebote-packages/`) — em curso: hero (Full screen) + intro. Campos no grupo `group_page_offers`. Figma: desktop
+- **Angebote & Packages / Offers** (`page-templates/page-offers.php`, "Offers Template"; `/angebote-packages/`) — hero (Full screen), intro, cards das ofertas (uma linha por oferta activa — "Valid until" hoje ou depois, ou sem data — por ordem de "Valid from"; lado alterna em desktop), comparação de serviços. Campos no grupo `group_page_offers`. Figma: desktop
   [5426:14165](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-14165&m=dev),
   tablet [5426:18068](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-18068&m=dev),
   mobile [5426:17172](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-17172&m=dev).
@@ -192,6 +192,7 @@ no clone e passar o prefixo ao módulo:
 | `group_module_box_text` — Module — Box text | `modules/box-text.php` | `section_box_text_style` (button group: `box` — caixa com moldura walnut, título e texto lado a lado em desktop / `band` — faixa sage a toda a largura, texto creme, texto numa coluna à direita em desktop), `section_box_text_eyebrow` (text, título pequeno em itálico), `section_box_text_title` (text), `section_box_text_text` (textarea, `wpautop` — linha vazia = parágrafo novo). |
 | `group_module_cards_icon` — Module — Cards with icon | `modules/cards-icon.php` | `section_cards_icon_title` (text), `section_cards_icon_items` (repeater: `icon` image, `title`, `subtitle`, `text`). Slider Swiper: 4 cards em desktop, 2 em tablet, 1 em mobile; setas escondem-se quando cabem todos. |
 | `group_module_text_photos` — Module — Text with photos | `modules/text-photos.php` | `section_find_apartment_title` (textarea, `br`), `_text`, `_button` (link), `_image_1`, `_image_2` (opcional). Título, texto e botão ao lado de 1 ou 2 fotos — o layout de tablet/mobile segue o número de fotos. Os nomes e as chaves (`field_page_home_find_apartment_*`) vêm de quando era secção só da homepage: **não mudar**, o conteúdo existente depende deles. |
+| `group_module_services` — Module — Services comparison | `modules/services.php` | `section_services_title` (textarea, `br`), `_text`, `_button` (link), `_plans` (repeater: `image`, `title`, `subtitle`, `features` — textarea, uma linha por item, cada uma com visto). Duas colunas em desktop, slider abaixo. |
 
 ### Páginas
 Um grupo por page template, com um **tab por secção**, na ordem da página; cada
@@ -203,8 +204,8 @@ tab clona o grupo do módulo (Seamless, sem prefixo).
 | `group_page_explore` — Page — Explore | `page-templates/page-explore.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Region (campos próprios, `pages/explore/region.php`: `section_region_title` (textarea, `br`), `_text`, `_button`, `_image_large` (só desktop), `_image_1`, `_image_2`) · Activities → `group_module_activities` · Box text → `group_module_box_text` |
 | `group_page_region` — Page — Our Region | `page-templates/page-region.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Saas-Grund (campos próprios, `pages/region/place.php`: `section_place_title`, `_text`, `_image_1`, `_image_2`, `_items` repeater `icon` + `title`) · Highlights → `group_module_cards_icon` · SaastalCard → `group_module_box_text` (style `band`) · Activities → `group_module_activities` |
 | `group_page_activities` — Page — Activities | `page-templates/page-activities.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Summer / Winter (campos próprios, `pages/activities/season.php` chamado duas vezes com `array( 'season' => 'summer' \| 'winter' )`: `section_{summer,winter}_eyebrow`, `_title`, `_text`, `_activities` — relationship sem máximo, filtrado pela estação; vazio = todas da estação; mais de 4 = slider em páginas de 4) · Saas-Grund → `group_module_text_photos` |
-| `group_page_offers` — Page — Offers | `page-templates/page-offers.php` | Hero → `group_module_hero` · Intro → `group_module_intro` |
-| `group_cpt_offer` — Offer | `single-offer.php` (post type `offer`) | Hero → `group_module_hero` · Intro (campos próprios, `template-parts/offer/intro.php`: `section_offer_intro_title` (textarea, `br`), `section_offer_intro_text` (textarea, `wpautop`), `section_offer_price` ("CHF 799"; o "Ab" é string do tema), `section_offer_price_unit` ("/ Person"), `section_offer_booking` (link; vazio = `header_booking_link` das Theme Settings)) |
+| `group_page_offers` — Page — Offers | `page-templates/page-offers.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · (cards das ofertas — sem campos: `pages/offers/cards.php` lê o CPT `offer`) · Services → `group_module_services` |
+| `group_cpt_offer` — Offer | `single-offer.php` (post type `offer`) | Hero → `group_module_hero` · Intro (campos próprios, `template-parts/offer/intro.php`: `section_offer_intro_title` (textarea, `br`), `section_offer_intro_text` (textarea, `wpautop`), `section_offer_price` ("CHF 799"; o "Ab" é string do tema), `section_offer_price_unit` ("/ Person"), `section_offer_booking` (link; vazio = `header_booking_link` das Theme Settings)) · Included (`section_offer_package_title`, `_package_image` (só desktop), `_package_items` repeater `icon` / `title` / `text`) · Gallery (`section_offer_gallery`, slider `components/gallery-slider.php`) · Conditions (`section_offer_extra_title`, `_extra_text`, `section_offer_conditions` repeater `title` / `text` (`wpautop`), `section_offer_valid_from` / `_valid_to` (date picker, `Ymd` — formatados por `montela_get_offer_validity()`)) · Text with photos → `group_module_text_photos` · Card (`section_offer_duration` — "3 Nächte"; o card usa também o título, a imagem destacada, o excerto e as datas) |
 | `group_cpt_activity` — Activity | `single-activity.php` (post type `activity`) | Hero → `group_module_hero` · Intro → `group_module_intro` |
 
 Secções só de uma página têm os campos **directamente no grupo da página** (no

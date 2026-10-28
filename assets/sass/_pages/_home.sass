@@ -80,21 +80,7 @@
 .section-gallery__list
   @apply col-span-full order-5 md:col-span-4 xl:col-start-2 xl:col-span-3 xl:row-start-5
 
-// -- Gallery slider --
+// -- Gallery slider (components/gallery-slider.php, _components/_gallery-slider.sass) --
+// Only its distance from the content above is set here.
 .section-gallery__slider
-  @apply relative mt-8 md:mt-[192px] xl:mt-32
-
-// Two classes: Swiper's own .swiper-slide (width/height 100%) loads later.
-.section-gallery__swiper .section-gallery__slide
-  @apply w-auto h-[192px] md:h-[552px] xl:h-[832px] aspect-[951/832] even:aspect-[746/832]
-
-// Mobile: below the slider, centred. Tablet+: over its bottom-right corner;
-// the overlay lets drags through to the slider, only the buttons are clickable.
-.section-gallery__nav
-  @apply mt-8 md:mt-0 md:absolute md:inset-x-0 md:bottom-[37px] md:z-10 md:pointer-events-none
-
-.section-gallery__nav-buttons
-  @apply justify-center md:justify-end
-
-.section-gallery__nav .slider-nav__btn
-  @apply pointer-events-auto
+  @apply mt-8 md:mt-[192px] xl:mt-32

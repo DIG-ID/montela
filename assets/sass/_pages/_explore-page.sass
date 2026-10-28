@@ -6,7 +6,7 @@
 //
 //   Mobile   stacked, 64px apart: title, text + button (24px), photo 1,
 //            photo 2 (both 699:600). The large photo is desktop only.
-//   Tablet   two columns 19px apart, rows 44px apart: title across both;
+//   Tablet   two columns 20px apart (19 in Figma), rows 44px apart: title across both;
 //            text + button (40px) beside photo 1 (340×251); photo 2
 //            (344×246) below on the left. .section-region__copy turns into
 //            `display: contents` so its title and body sit in the grid.
@@ -27,7 +27,7 @@
   @apply mb-[128px] md:mb-[192px] text-montela-walnut
 
 .section-region__grid
-  @apply flex flex-col gap-16 md:grid md:grid-cols-2 md:gap-x-[19px] md:gap-y-[44px] xl:grid-cols-[595fr_1072fr] xl:gap-x-0 xl:gap-y-[77px] xl:pl-[calc((100%-220px)/12+20px)]
+  @apply flex flex-col gap-16 md:grid md:grid-cols-2 md:gap-x-5 md:gap-y-[44px] xl:grid-cols-[595fr_1072fr] xl:gap-x-0 xl:gap-y-[77px] xl:pl-[calc((100%-220px)/12+20px)]
 
 .section-region__copy
   @apply flex flex-col gap-16 md:contents xl:flex xl:col-start-1 xl:row-start-1 xl:self-end xl:gap-[71px]

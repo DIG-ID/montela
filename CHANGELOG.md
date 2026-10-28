@@ -11,6 +11,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.21.0] — 2026-10-28
+
+### Added
+- Offer single: included items with icons, a photo slider, conditions with the offer's validity dates, and Text with photos.
+- Angebote & Packages: offer cards built from the active offers (expired offers hide themselves), and a Services comparison module.
+
+### Changed
+- The homepage photo slider became a shared component, also used on the offer single.
+- Consistent 20px spacing between columns, cards and slides across all sections.
+
 ## [1.20.0] — 2026-10-28
 
 ### Added

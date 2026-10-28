@@ -24,6 +24,13 @@ Desktop confirmado na geometria (colunas 2–11 = x 203, 1514px de largura).
 Gutter de 20px em todos os breakpoints; o `.theme-grid` só define o gap entre
 colunas — o espaço entre linhas é de cada secção.
 
+**Espaço horizontal entre colunas, cards e slides: sempre 20px** (o gutter da
+grelha), mesmo quando o Figma desenha 17, 18, 19, 23 ou 25px — a regra é a
+consistência, não o valor exacto do frame. Vale para grelhas próprias das
+secções (`gap-x-5`) e para o `spaceBetween` dos sliders Swiper. Excepção: a
+galeria (`components/gallery-slider.php`) mantém 4px em mobile. Ao seguir o
+Figma, anotar no comentário do SASS o valor original ("20px — 18 in Figma").
+
 O gutter costuma ser constante em todos os breakpoints (`gap-5` = 20px nos
 projectos recentes) — confirmar no frame antes de assumir.
 

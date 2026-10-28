@@ -1,0 +1,26 @@
+// Gallery slider (template-parts/components/gallery-slider.php).
+// Full-bleed: slides alternate 951 and 746 wide by 832 tall on desktop (same
+// ratios at 552 tall on tablet, 192 on mobile), 20px apart — the grid gutter
+// (4 on mobile; Figma draws 23).
+// The arrows sit over its bottom-right corner, aligned with the container
+// (desktop, tablet), or centred below it (mobile). The section using it sets
+// the space above (homepage gallery, offer single).
+.gallery-slider
+  @apply relative
+
+// Two classes: Swiper's own .swiper-slide (width/height 100%) loads later.
+.gallery-slider__swiper .gallery-slider__slide
+  @apply w-auto h-[192px] md:h-[552px] xl:h-[832px] aspect-[951/832] even:aspect-[746/832]
+
+.gallery-slider__img
+  @apply w-full h-full object-cover
+
+// The overlay lets drags through to the slider; only the buttons are clickable.
+.gallery-slider__nav
+  @apply mt-8 md:mt-0 md:absolute md:inset-x-0 md:bottom-[37px] md:z-10 md:pointer-events-none
+
+.gallery-slider__nav-buttons
+  @apply justify-center md:justify-end
+
+.gallery-slider__nav .slider-nav__btn
+  @apply pointer-events-auto

@@ -2,9 +2,10 @@
 // Figma "Explore with photo": desktop 5685:17337, tablet 5685:17362,
 // mobile 5685:17389. Full bleed — no .theme-container.
 //
-//   Desktop  two halves 18px apart: sage panel on the left (content 608px wide,
-//            centred), slider on the right, as tall as the panel; arrows in its
-//            top-right corner (76px / 51px in)
+//   Desktop  two halves 20px apart (the grid gutter; 18 in Figma): sage
+//            panel on the left (content 608px wide, centred), slider on the
+//            right, as tall as the panel; arrows in its top-right corner
+//            (76px / 51px in)
 //   Tablet   slider on top (400px, arrows bottom-right), panel below
 //   Mobile   slider on top (400px, arrows centred at the bottom), panel below
 //
@@ -15,7 +16,7 @@
 // Explicit single column below desktop: an implicit auto track would size to
 // content and leave Swiper (which measures its container) at 0px wide.
 .section-explore
-  @apply grid grid-cols-1 xl:grid-cols-2 xl:gap-x-[18px]
+  @apply grid grid-cols-1 xl:grid-cols-2 xl:gap-x-5
 
 // -- Slider --
 .section-explore__slider

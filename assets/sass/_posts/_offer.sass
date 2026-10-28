@@ -54,3 +54,84 @@
     @apply mb-0
   p + p
     @apply mt-[30px] md:mt-[25px] xl:mt-8
+
+// -- Im Package enthalten + slider (template-parts/offer/package.php) --
+// Figma: desktop 5833:15950, tablet 5607:23359, mobile 5607:23136.
+//
+//   Mobile   title, then 32px to a one-column list (items 32px apart); the
+//            slider 44px below; 128px below the section
+//   Tablet   the same, 44 / 36px; the slider 44px below
+//   Desktop  photo (607:608) on columns 1–4 — desktop only — title and a
+//            two-column list (438px each, rows 77px apart) on 6–12, 45px
+//            apart; the slider 128px below
+//
+// List: the icon list component, title-only bold line + text — 58px icons
+// (56 tall on desktop), 41px (51 on desktop) to the text; text 14/22,
+// 17/23, 15/25 ("Text small - footer" on desktop).
+.section-offer-package
+  @apply pb-[128px] md:pb-0 text-montela-walnut
+
+.section-offer-package__photo
+  @apply hidden m-0 overflow-hidden xl:block xl:col-span-4 xl:aspect-[607/608] xl:self-start
+
+.section-offer-package__img
+  @apply w-full h-full object-cover
+
+.section-offer-package__content
+  @apply col-span-full flex flex-col gap-8 md:gap-11 xl:col-start-6 xl:col-span-7 xl:gap-[45px]
+
+.section-offer-package .icon-list
+  @apply gap-8 md:gap-9 xl:grid xl:grid-cols-[minmax(0,438px)_minmax(0,438px)] xl:justify-between xl:gap-y-[77px]
+
+.section-offer-package .icon-list__item
+  @apply grid-cols-[58px_1fr] gap-x-[41px] xl:gap-x-[51px] md:max-w-[460px] xl:max-w-none
+
+.section-offer-package .icon-list__icon img
+  @apply w-auto max-w-full h-[58px] xl:h-[56px]
+
+.section-offer-package .icon-list__text
+  @apply text-[14px] leading-[22px] md:text-[17px] md:leading-[23px] xl:text-[15px] xl:leading-[25px]
+
+.section-offer-package__slider
+  @apply mt-11 xl:mt-32
+
+// -- Noch ein bisschen mehr Genuss? (template-parts/offer/conditions.php) --
+// Figma: desktop 5778:17192, tablet 5609:23487, mobile 5609:23486.
+//
+// Everything centred: title, text (1053px on desktop), "Konditionen", the
+// sage boxes (two side by side from tablet — 899px on desktop — stacked on
+// mobile, 16px apart), the validity. Gaps: title → text 16 (mobile) / 36,
+// then 44, 36, 36. Type: text, box text and validity 14/22, 18/25, 20/32;
+// "Konditionen" 12/20 below desktop, 20/32 on desktop; box title bold.
+//
+// Spacing: 192px above and below on tablet and desktop; on mobile none
+// above (the section before ends with 128px), 128 below.
+.section-offer-conditions
+  @apply pb-[128px] md:py-[192px] text-montela-walnut text-center
+
+.section-offer-conditions__inner
+  @apply flex flex-col items-center
+
+.section-offer-conditions__text
+  @apply mt-4 md:mt-9 xl:max-w-[1053px]
+
+.section-offer-conditions__label
+  @apply mt-11 font-primary font-bold tracking-[0.5px] text-[12px] leading-[20px] xl:text-[20px] xl:leading-[32px]
+
+.section-offer-conditions__boxes
+  @apply grid w-full gap-4 mt-9 md:grid-cols-2 md:gap-5 xl:max-w-[899px]
+
+.section-offer-conditions__box
+  @apply flex flex-col justify-center min-h-[215px] md:min-h-[244px] xl:min-h-[250px] pl-[35px] pr-[49px] py-10 md:pl-9 md:pr-9 xl:pl-[45px] xl:pr-[45px] bg-montela-sage text-montela-cream text-left shadow-[0_4px_4px_rgba(0,0,0,0.25)] font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[20px] xl:leading-[32px]
+
+.section-offer-conditions__box-title
+  @apply font-bold
+
+.section-offer-conditions__box-text
+  p + p
+    @apply mt-[22px] md:mt-[25px] xl:mt-8
+
+.section-offer-conditions__validity
+  @apply mt-9 font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[20px] xl:leading-[32px]
+  strong
+    @apply block font-bold

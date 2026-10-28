@@ -1,0 +1,54 @@
+// Angebote & Packages (page-templates/page-offers.php).
+
+// -- Offer cards (template-parts/pages/offers/cards.php) --
+// Figma: desktop 5679:16726, tablet 5607:22922, mobile 5607:22885.
+//
+// One full-bleed row per offer: a sage panel and the card image.
+//   Mobile   stacked, 10px apart: panel 501px tall (34 / 32px padding), photo 180px
+//   Tablet   stacked, 16px apart: panel 686px (42 / 65px padding), photo 401px
+//   Desktop  side by side, 20px apart (rows too — the grid gutter; 18 in
+//            Figma), 600px tall; every other row puts the
+//            photo first. Panel padding 64px top and bottom; 130px at the
+//            sides (Figma's title box is 651px — 150px at 1920 — but that
+//            wraps the title a line earlier with a scrollbar)
+//
+// Panel, all centred: title (.title-h3), dates, duration, excerpt, button
+// (outline). Text 14/22, 18/25, 20/32. Gaps title → dates → duration →
+// excerpt → button: 12 / 72 / 12 / 12 (mobile), 44 / 44 / 36 / 36 (tablet),
+// 8 / 40 / 10 / 50 (desktop).
+//
+// Spacing below: 64px (mobile), 115 (tablet), 192 (desktop).
+.section-offers
+  @apply flex flex-col gap-2.5 md:gap-4 xl:gap-5 mb-16 md:mb-[115px] xl:mb-[192px]
+
+.offer-card
+  @apply flex flex-col xl:grid xl:grid-cols-2 xl:gap-x-5
+
+.offer-card__panel
+  @apply flex flex-col items-center text-center min-h-[501px] px-8 py-[34px] bg-montela-sage text-montela-cream md:min-h-[686px] md:px-[65px] md:py-[42px] xl:min-h-[600px] xl:px-[130px] xl:py-16
+
+.offer-card__dates,
+.offer-card__duration,
+.offer-card__excerpt
+  @apply font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[20px] xl:leading-[32px]
+
+.offer-card__dates
+  @apply mt-3 md:mt-11 xl:mt-2
+
+.offer-card__duration
+  @apply mt-[72px] md:mt-11 xl:mt-10
+
+.offer-card__excerpt
+  @apply mt-3 md:mt-9 md:max-w-[459px] xl:mt-2.5 xl:max-w-[517px]
+
+.offer-card__panel .offer-card__btn
+  @apply mt-3 md:mt-9 xl:mt-[50px]
+
+.offer-card__photo
+  @apply m-0 h-[180px] overflow-hidden md:h-[401px] xl:h-[600px]
+
+.offer-card:nth-child(even) .offer-card__photo
+  @apply xl:order-first
+
+.offer-card__img
+  @apply w-full h-full object-cover

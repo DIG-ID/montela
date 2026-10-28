@@ -186,6 +186,12 @@ function montela_enqueue_assets() {
 	if ( is_page_template( 'page-templates/page-region.php' ) ) {
 		montela_enqueue_module( 'swiper' ); // Cards with icon slider.
 	}
+	if ( is_singular( 'offer' ) ) {
+		montela_enqueue_module( 'swiper' ); // Gallery slider.
+	}
+	if ( is_page_template( 'page-templates/page-offers.php' ) ) {
+		montela_enqueue_module( 'swiper' ); // Services comparison slider.
+	}
 }
 
 add_action( 'wp_enqueue_scripts', 'montela_enqueue_assets' );

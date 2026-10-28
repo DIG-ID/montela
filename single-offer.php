@@ -1,7 +1,9 @@
 <?php
 /**
  * Single Offer ("Angebote & Packages"): hero (module), a "back to the
- * overview" link and the offer's intro (title, price box, text).
+ * overview" link and the offer's intro (title, price box, text), what the
+ * package includes with a photo slider, the conditions, and Text with photos
+ * (module).
  *
  * Fields: acf-json/group_cpt_offer.json. Figma: desktop 5426:14430, tablet
  * 5426:17370, mobile 5426:16423.
@@ -18,6 +20,9 @@ if ( have_posts() ) :
 		do_action( 'before_main_content' );
 			get_template_part( 'template-parts/modules/hero' );
 			get_template_part( 'template-parts/offer/intro' );
+			get_template_part( 'template-parts/offer/package' );
+			get_template_part( 'template-parts/offer/conditions' );
+			get_template_part( 'template-parts/modules/text-photos' );
 		do_action( 'after_main_content' );
 	endwhile;
 endif;

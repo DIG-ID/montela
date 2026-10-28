@@ -88,7 +88,7 @@
     "isEntry": true
   },
   "assets/sass/main.sass": {
-    "file": "css/main-BsA-G1Rf.css",
+    "file": "css/main-DS_0QzbU.css",
     "name": "main",
     "names": [
       "main.css"
@@ -104,6 +104,7 @@
       "assets/season-summer-C2o0q19u.svg",
       "assets/season-winter-DX7E2spa.svg",
       "assets/quote-BED75e32.svg",
+      "assets/check-BaB_T-sr.svg",
       "assets/slider-prev-BgkI7qkP.svg",
       "assets/slider-next-B52SPkO5.svg",
       "assets/slider-prev-sage-CRYbWYmP.svg",
@@ -123,6 +124,10 @@
   "assets/svg/icons/arrow-forward.svg": {
     "file": "assets/arrow-forward-aO82Prq-.svg",
     "src": "assets/svg/icons/arrow-forward.svg"
+  },
+  "assets/svg/icons/check.svg": {
+    "file": "assets/check-BaB_T-sr.svg",
+    "src": "assets/svg/icons/check.svg"
   },
   "assets/svg/icons/home-and-garden.svg": {
     "file": "assets/home-and-garden-ltii5Ith.svg",

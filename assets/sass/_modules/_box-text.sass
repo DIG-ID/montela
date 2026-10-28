@@ -19,7 +19,7 @@
 //            title → title 44px, title → text 50px
 //   Desktop  grid columns 2–11 (1514px), 84px / 155px padding; the small
 //            title on top (10px), then title and text side by side, 566px
-//            each, 25px apart, centred in the box (1157px)
+//            each, 20px apart (the grid gutter; 25 in Figma), centred in the box
 //
 // Type: the title stays at 80/76 on desktop (Figma "Tablet/H3", not
 // .title-h3's 90/80); the text is 14/22 on mobile and 18/25 above (also on
@@ -41,7 +41,7 @@
 
 // Columns cap at 566px and shrink together below 1920.
 .section-box-text--box .section-box-text__inner
-  @apply flex flex-col gap-2.5 md:gap-0 xl:grid xl:grid-cols-[minmax(0,566px)_minmax(0,566px)] xl:gap-x-[25px] xl:gap-y-2.5 xl:justify-center
+  @apply flex flex-col gap-2.5 md:gap-0 xl:grid xl:grid-cols-[minmax(0,566px)_minmax(0,566px)] xl:gap-x-5 xl:gap-y-2.5 xl:justify-center
 
 .section-box-text--box .section-box-text__eyebrow
   @apply xl:col-span-2
