@@ -1,0 +1,60 @@
+// Unsere Region (page-templates/page-region.php).
+
+// -- Saas-Grund section (template-parts/pages/region/place.php) --
+// Figma: desktop 5780:17201, tablet 5585:5978, mobile 5585:6173.
+//
+//   Mobile   title, photo 1 (320:246), text, photo 2 (331:223), list —
+//            36 / 32 / 32 / 36px apart (CSS order: photo 1 moves up)
+//   Tablet   title, text (578px, 20/32 as on desktop), photo 1 (706:606),
+//            list, photo 2 (706:319), 44px apart
+//   Desktop  12-column grid. Photo 1 (747×787, columns 2–6) beside the
+//            title and text (column 8 on; text 440px, 46px below the
+//            title); then the list (columns 2–5) bottom-aligned with photo 2
+//            (660×556 from column 8)
+//
+// List: title-only icon list — icons 42 / 52 / 45px tall (editor uploads,
+// sized by height), bold text 14/20 mobile, 20/32 above; items 16 / 24 /
+// 44px apart.
+//
+// Spacing: 192px above on desktop only (tablet and mobile start right after
+// the intro, as drawn); 192px below on tablet and desktop, 128 on mobile.
+.section-place
+  @apply mb-[128px] md:mb-[192px] xl:mt-[192px] text-montela-walnut
+
+.section-place__grid
+  @apply flex flex-col xl:grid xl:grid-cols-12 xl:grid-rows-[auto_1fr_auto] xl:gap-x-5
+
+.section-place__title
+  @apply order-1 xl:col-start-8 xl:col-span-5 xl:row-start-1
+
+// Two classes: .body-text is emitted after this partial.
+.section-place__grid .section-place__text
+  @apply order-3 mt-8 md:order-2 md:mt-11 md:max-w-[578px] md:text-[20px] md:leading-[32px] xl:col-start-8 xl:col-span-5 xl:row-start-2 xl:self-start xl:mt-[46px] xl:max-w-[440px]
+
+.section-place__photo
+  @apply m-0 overflow-hidden
+
+.section-place__img
+  @apply w-full h-full object-cover
+
+.section-place__photo--1
+  @apply order-2 mt-9 aspect-[320/246] md:order-3 md:mt-11 md:aspect-[706/606] xl:mt-0 xl:col-start-2 xl:col-span-5 xl:row-start-1 xl:row-span-2 xl:aspect-[747/787]
+
+.section-place__list
+  @apply order-5 mt-9 md:order-4 md:mt-11 xl:mt-0 xl:col-start-2 xl:col-span-4 xl:row-start-3 xl:self-end
+
+.section-place__photo--2
+  @apply order-4 mt-8 aspect-[331/223] md:order-5 md:mt-11 md:aspect-[706/319] xl:mt-0 xl:col-start-8 xl:col-span-5 xl:row-start-3 xl:w-[88.4%] xl:aspect-[660/556]
+
+// -- The list (two classes beat the icon-list defaults) --
+.section-place .icon-list
+  @apply gap-4 md:gap-6 xl:gap-11
+
+.section-place .icon-list__item
+  @apply grid-cols-[42px_1fr] gap-x-[30px] items-center md:grid-cols-[52px_1fr] md:gap-x-9 xl:grid-cols-[51px_1fr] xl:gap-x-6
+
+.section-place .icon-list__icon img
+  @apply w-auto max-w-full h-[42px] md:h-[52px] xl:h-[45px]
+
+.section-place .icon-list__text
+  @apply font-bold text-[14px] leading-[20px] md:text-[20px] md:leading-[32px]

@@ -131,6 +131,10 @@ volta no JSON; depois de um deploy, fazer Sync.
 | `season` — Seasons | `taxonomy_season.json` | `activity` | Hierárquica (checkboxes no editor), sem URLs públicos, coluna na lista do admin. Termos **`sommer`** e **`winter`** — os slugs são usados no código (filtro Sommer/Winter); criar em cada ambiente, não renomear os slugs. Uma actividade pode ter as duas. |
 
 ### Templates
+- **Unsere Region / Our Region** (`page-templates/page-region.php`, "Our Region Template"; subpágina da Erkunden) — hero, intro, Saas-Grund, Highlights, SaastalCard (faixa verde), activities. Por fazer: o mapa (design por aprovar) e "Ausflüge ab Saas-Grund" (cards com imagem, de um CPT ainda por criar), entre os Highlights e a faixa verde. Campos no grupo `group_page_region`. Figma: desktop
+  [5426:14763](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-14763&m=dev),
+  tablet [5426:17416](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-17416&m=dev),
+  mobile [5426:16474](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-16474&m=dev).
 - **Erkunden / Explore** (`page-templates/page-explore.php`, "Explore Template") — hero (Full screen), intro, region, activities, box text. Campos no grupo `group_page_explore` (um tab por módulo, clones Seamless). Figma: desktop
   [5426:16171](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-16171&m=dev),
   tablet [5426:17252](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-17252&m=dev),
@@ -172,7 +176,8 @@ no clone e passar o prefixo ao módulo:
 | `group_module_image_band` — Module — Image band | `modules/image-band.php` | `section_image_band_image` (image) |
 | `group_module_activities` — Module — Activities | `modules/activities.php` | `section_activities_title` (text), `section_activities_text` (textarea), `section_activities_button` (link), `section_activities_summer` / `section_activities_winter` (relationship → `activity`, filtrado por Season `sommer` / `winter`, máx. 4, IDs; vazio = as 4 primeiras da estação). Cards: `components/card-activity.php` (imagem destacada, título, excerpt, permalink). Estação aberta ao carregar: inverno de Dezembro a Abril. |
 | `group_module_testimonials` — Module — Testimonials | `modules/testimonials.php` | `section_testimonials_title` (text), `section_testimonials_items` (relationship → `testimonial`, IDs, pela ordem escolhida; vazio = todos). Slider Swiper em fade, com loop e sem autoplay. |
-| `group_module_box_text` — Module — Box text | `modules/box-text.php` | `section_box_text_eyebrow` (text, título pequeno em itálico), `section_box_text_title` (text), `section_box_text_text` (textarea, `wpautop` — linha vazia = parágrafo novo). Caixa com moldura walnut; título e texto lado a lado em desktop. |
+| `group_module_box_text` — Module — Box text | `modules/box-text.php` | `section_box_text_style` (button group: `box` — caixa com moldura walnut, título e texto lado a lado em desktop / `band` — faixa sage a toda a largura, texto creme, texto numa coluna à direita em desktop), `section_box_text_eyebrow` (text, título pequeno em itálico), `section_box_text_title` (text), `section_box_text_text` (textarea, `wpautop` — linha vazia = parágrafo novo). |
+| `group_module_cards_icon` — Module — Cards with icon | `modules/cards-icon.php` | `section_cards_icon_title` (text), `section_cards_icon_items` (repeater: `icon` image, `title`, `subtitle`, `text`). Slider Swiper: 4 cards em desktop, 2 em tablet, 1 em mobile; setas escondem-se quando cabem todos. |
 
 ### Páginas
 Um grupo por page template, com um **tab por secção**, na ordem da página; cada
@@ -182,6 +187,7 @@ tab clona o grupo do módulo (Seamless, sem prefixo).
 |-------|----------|--------------|
 | `group_page_home` — Page — Home | `page-templates/page-home.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Apartments (campos próprios, `pages/home/find-apartment.php`) · Direct booking (campos próprios, `pages/home/direct-book.php`) · Gallery (campos próprios, `pages/home/gallery.php`) · Explore → `group_module_explore` · Image band → `group_module_image_band` · Activities → `group_module_activities` · Testimonials → `group_module_testimonials` |
 | `group_page_explore` — Page — Explore | `page-templates/page-explore.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Region (campos próprios, `pages/explore/region.php`: `section_region_title` (textarea, `br`), `_text`, `_button`, `_image_large` (só desktop), `_image_1`, `_image_2`) · Activities → `group_module_activities` · Box text → `group_module_box_text` |
+| `group_page_region` — Page — Our Region | `page-templates/page-region.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Saas-Grund (campos próprios, `pages/region/place.php`: `section_place_title`, `_text`, `_image_1`, `_image_2`, `_items` repeater `icon` + `title`) · Highlights → `group_module_cards_icon` · SaastalCard → `group_module_box_text` (style `band`) · Activities → `group_module_activities` |
 | `group_cpt_activity` — Activity | `single-activity.php` (post type `activity`) | Hero → `group_module_hero` · Intro → `group_module_intro` |
 
 Secções só de uma página têm os campos **directamente no grupo da página** (no

@@ -23,6 +23,11 @@
 .section-activities
   @apply mt-[111px] mb-[128px] md:mt-[192px] md:mb-[192px] xl:mt-[183px] xl:mb-[224px] overflow-hidden text-montela-walnut
 
+// Last section of the page (Unsere Region): 152px on desktop to the
+// footer's call-to-action box, as drawn there.
+.main-content > .section-activities:last-child
+  @apply xl:mb-[152px]
+
 .section-activities__inner
   @apply relative xl:grid xl:grid-cols-2 xl:gap-x-5 xl:items-start
 

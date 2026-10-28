@@ -1,7 +1,17 @@
 // Box text module (template-parts/modules/box-text.php).
-// Figma: desktop 5767:15892, tablet 5767:15900, mobile 5767:15910.
+// Small italic title (.title-h2), title, text. Two styles, picked by the
+// editor: .section-box-text--box and .section-box-text--band.
 //
-// A walnut hairline box: small italic title (.title-h2), title, text.
+// Text: paragraphs one line apart.
+
+.section-box-text__text
+  @apply font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px]
+  p + p
+    @apply mt-[22px] md:mt-[25px]
+
+// -- Box ----------------------------------------------------------------------
+// Figma: desktop 5767:15892, tablet 5767:15900, mobile 5767:15910.
+// A walnut hairline box.
 //
 //   Mobile   329px, padding 24px top, 20px left and bottom, 10px right;
 //            10px apart
@@ -13,33 +23,68 @@
 //
 // Type: the title stays at 80/76 on desktop (Figma "Tablet/H3", not
 // .title-h3's 90/80); the text is 14/22 on mobile and 18/25 above (also on
-// desktop), paragraphs one line apart.
+// desktop).
 //
 // Spacing: 192px above on desktop, tablet and mobile 192 / 128 — the
 // activities module above has the same bottom margin on tablet and mobile;
 // on desktop its 224px is brought down to 192 when this box follows it.
 // Below: 190px on desktop (to the footer's call-to-action box, which starts
 // 40px above the footer in the frames), 216 tablet, 144 mobile.
-.section-box-text
+.section-box-text--box
   @apply mt-[128px] mb-[144px] md:mt-[192px] md:mb-[216px] xl:mb-[190px] text-montela-walnut
 
-.section-activities:has(+ .section-box-text)
+.section-activities:has(+ .section-box-text--box)
   @apply xl:mb-[192px]
 
-.section-box-text__box
+.section-box-text--box .section-box-text__box
   @apply col-span-full border border-montela-walnut pt-6 pl-5 pr-2.5 pb-5 md:pt-11 md:pr-5 xl:col-start-2 xl:col-span-10 xl:px-[155px] xl:py-[84px]
 
 // Columns cap at 566px and shrink together below 1920.
-.section-box-text__inner
+.section-box-text--box .section-box-text__inner
   @apply flex flex-col gap-2.5 md:gap-0 xl:grid xl:grid-cols-[minmax(0,566px)_minmax(0,566px)] xl:gap-x-[25px] xl:gap-y-2.5 xl:justify-center
 
-.section-box-text__eyebrow
+.section-box-text--box .section-box-text__eyebrow
   @apply xl:col-span-2
 
-.section-box-text__inner .section-box-text__title
+.section-box-text--box .section-box-text__title
   @apply md:mt-11 xl:mt-0 xl:text-[80px] xl:leading-[76px]
 
-.section-box-text__text
-  @apply font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:mt-[50px] md:max-w-[566px] md:text-[18px] md:leading-[25px] xl:mt-0
+.section-box-text--box .section-box-text__text
+  @apply md:mt-[50px] md:max-w-[566px] xl:mt-0
+
+// -- Green band ---------------------------------------------------------------
+// Figma "Section Green Background_with h2": desktop 5679:15246, tablet
+// 5679:15254, mobile 5679:15232. Full-width sage, cream text.
+//
+//   Mobile   112px top and bottom padding, 44px apart; text 14/22
+//   Tablet   100px top and bottom padding, 44px apart; text 18/25, 462px
+//   Desktop  600px tall, content centred: small title and title on columns
+//            2–6 (42px apart), the text on columns 8–11, level with the
+//            small title; text 20/32
+//
+// Spacing: 192px around on desktop. Tablet and mobile: none above (it
+// follows the image-cards section directly in the frames — on Unsere Region
+// the cards-with-icon module's own margin applies until that section is
+// built), 192 / 128 below.
+.section-box-text--band
+  @apply mb-[128px] md:mb-[192px] xl:my-[192px] py-28 md:py-[100px] xl:py-0 xl:min-h-[600px] xl:flex xl:items-center bg-montela-sage text-montela-cream
+
+.section-box-text--band .theme-container
+  @apply px-[30px] md:px-16 xl:px-[50px]
+
+.section-box-text--band .section-box-text__box
+  @apply col-span-full
+
+.section-box-text--band .section-box-text__inner
+  @apply flex flex-col gap-11 xl:grid xl:grid-cols-12 xl:gap-x-5 xl:gap-y-[42px]
+
+.section-box-text--band .section-box-text__eyebrow
+  @apply xl:col-start-2 xl:col-span-5 xl:row-start-1
+
+.section-box-text--band .section-box-text__title
+  @apply xl:col-start-2 xl:col-span-5 xl:row-start-2
+
+.section-box-text--band .section-box-text__text
+  @apply md:max-w-[462px] xl:max-w-none xl:col-start-8 xl:col-span-4 xl:row-start-1 xl:row-span-2 xl:self-start xl:text-[20px] xl:leading-[32px]
   p + p
-    @apply mt-[22px] md:mt-[25px]
+    @apply xl:mt-8

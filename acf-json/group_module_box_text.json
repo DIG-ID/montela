@@ -3,6 +3,31 @@
     "title": "Module — Box text",
     "fields": [
         {
+            "key": "field_module_box_text_style",
+            "label": "Style",
+            "name": "section_box_text_style",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "Box: walnut frame. Green band: full-width sage background.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "choices": {
+                "box": "Box",
+                "band": "Green band"
+            },
+            "default_value": "box",
+            "return_format": "value",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "layout": "horizontal"
+        },
+        {
             "key": "field_module_box_text_eyebrow",
             "label": "Small title",
             "name": "section_box_text_eyebrow",
@@ -90,6 +115,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793182902,
+    "modified": 1793186127,
     "acfml_field_group_mode": "advanced"
 }

@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.17.0] — 2026-10-28
+
+### Added
+- Unsere Region page template (a child page of Erkunden): hero, intro, a Saas-Grund section with photos and an icon list, highlights, a SaastalCard band and activities.
+- Cards with icon module: a slider of framed cards, each with an icon, a title, a short line and a text.
+- Box text module: a "Green band" style — a full-width sage band — next to the framed box.
+
 ## [1.16.0] — 2026-10-28
 
 ### Added

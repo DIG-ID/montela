@@ -183,6 +183,9 @@ function montela_enqueue_assets() {
 	if ( is_page_template( 'page-templates/page-home.php' ) ) {
 		montela_enqueue_module( 'swiper' ); // Gallery, Explore and Testimonials sliders.
 	}
+	if ( is_page_template( 'page-templates/page-region.php' ) ) {
+		montela_enqueue_module( 'swiper' ); // Cards with icon slider.
+	}
 }
 
 add_action( 'wp_enqueue_scripts', 'montela_enqueue_assets' );

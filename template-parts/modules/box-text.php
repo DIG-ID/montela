@@ -1,11 +1,16 @@
 <?php
 /**
- * Box text module: a framed block with a small italic title, a title and a
- * text — title and text side by side on desktop, stacked below.
+ * Box text module: a small italic title, a title and a text, in one of two
+ * styles chosen by the editor:
+ * - box:  a walnut-framed block — title and text side by side on desktop.
+ *         Figma: Box_text_desktop 5767:15892, tablet 5767:15900, mobile 5767:15910.
+ * - band: a full-width sage band, cream text — text in a column on the right
+ *         on desktop. Figma: "Section Green Background_with h2" desktop
+ *         5679:15246, tablet 5679:15254, mobile 5679:15232.
+ * Stacked below desktop in both.
  *
  * Fields: acf-json/group_module_box_text.json, cloned into each page's field
- * group. Figma: Box_text_desktop 5767:15892, tablet 5767:15900, mobile
- * 5767:15910.
+ * group.
  *
  * Arguments ($args):
  * - post_id (int|string) Optional. Where to read the fields from. Default: current post.
@@ -24,6 +29,7 @@ if ( ! function_exists( 'get_field' ) ) {
 $box_ctx    = ! empty( $args['post_id'] ) ? $args['post_id'] : get_the_ID();
 $box_prefix = ! empty( $args['prefix'] ) ? $args['prefix'] : '';
 
+$box_style   = 'band' === get_field( $box_prefix . 'section_box_text_style', $box_ctx ) ? 'band' : 'box';
 $box_eyebrow = get_field( $box_prefix . 'section_box_text_eyebrow', $box_ctx );
 $box_title   = get_field( $box_prefix . 'section_box_text_title', $box_ctx );
 $box_text    = get_field( $box_prefix . 'section_box_text_text', $box_ctx );
@@ -34,7 +40,7 @@ if ( ! $box_title && ! $box_text ) {
 
 $box_title_id = wp_unique_id( 'section-box-text-title-' );
 ?>
-<section class="section-box-text"<?php echo $box_title ? ' aria-labelledby="' . esc_attr( $box_title_id ) . '"' : ''; ?>>
+<section class="section-box-text section-box-text--<?php echo esc_attr( $box_style ); ?>"<?php echo $box_title ? ' aria-labelledby="' . esc_attr( $box_title_id ) . '"' : ''; ?>>
 	<div class="theme-container">
 		<div class="theme-grid">
 			<div class="section-box-text__box">

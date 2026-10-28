@@ -1,0 +1,56 @@
+// Cards with icon module (template-parts/modules/cards-icon.php).
+// Figma: "Cards with icon section" — desktop 5753:15123, tablet 5753:15154,
+// mobile 5753:15179.
+//
+// Centred title, a Swiper slider of cards, walnut arrows centred below —
+// 36 / 44 / 96px apart (mobile / tablet / desktop).
+//
+//   Card    sage hairline frame with a soft shadow, 35px side padding; the
+//           icon centred on top, the text left-aligned below it
+//   Mobile  1 card, 404px tall, 40px top padding, icon 88px, 59px to text;
+//           text 14/22
+//   Tablet  2 cards (340px, 20px apart), 500px, 60px top padding, icon
+//           88px, 75px to text; text 18/25, title too
+//   Desktop 4 cards (366px, 17px apart) on columns 2–11, 500px, 76px top
+//           padding, icon 68px, 120px to text; title 20/32 bold, the rest
+//           15/25
+//
+// Icons are editor uploads (SVG), sized by height. Cards stretch to the
+// tallest one. The arrows hide themselves when every card is in view
+// (Swiper's watchOverflow).
+//
+// Spacing: none above (the section before closes with its own margin);
+// 192px below on tablet and desktop, 128 on mobile — provisional: the map
+// section that follows on Unsere Region isn't built yet.
+.section-cards-icon
+  @apply mb-[128px] md:mb-[192px] text-montela-walnut
+
+.section-cards-icon__inner
+  @apply col-span-full flex flex-col items-center gap-9 md:gap-11 xl:col-start-2 xl:col-span-10 xl:gap-24
+
+.section-cards-icon__title
+  @apply text-center xl:max-w-[1217px]
+
+// Two classes: swiper.css (loaded after main.css) sets .swiper's margins
+// and overflow. Bottom padding leaves room for the cards' shadow.
+.section-cards-icon__inner .section-cards-icon__swiper
+  @apply w-full m-0 pb-2
+
+.section-cards-icon__swiper .section-cards-icon__card
+  @apply flex flex-col items-center h-auto min-h-[404px] md:min-h-[500px] px-[35px] pt-10 pb-10 md:pt-[60px] xl:pt-[76px] border border-montela-sage shadow-[0_4px_4px_rgba(0,0,0,0.25)]
+
+.section-cards-icon__icon
+  @apply w-auto max-w-full h-[88px] xl:h-[68px] shrink-0
+
+.section-cards-icon__body
+  @apply self-stretch mt-[59px] md:mt-[75px] xl:mt-[120px] font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[15px] xl:leading-[25px]
+
+.section-cards-icon__card-title
+  @apply font-bold xl:text-[20px] xl:leading-[32px]
+
+.section-cards-icon__inner .section-cards-icon__nav
+  @apply justify-center
+  // Every card in view: Swiper hides both arrows (.swiper-button-lock);
+  // drop the row too, or its gap is left behind.
+  &:has(.swiper-button-lock)
+    @apply hidden
