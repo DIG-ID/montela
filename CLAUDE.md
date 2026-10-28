@@ -121,7 +121,7 @@ volta no JSON; depois de um deploy, fazer Sync.
 
 | Post type | JSON | URL | Suporta | Notas |
 |-----------|------|-----|---------|-------|
-| `activity` — Activities | `post_type_activity.json` | `/aktivitaeten/{slug}/` (sem arquivo) | título, imagem destacada ("Card image"), excerto, revisões | Sem editor de blocos: o conteúdo do single é feito de módulos ACF. Lido por uma secção da homepage. |
+| `activity` — Activities | `post_type_activity.json` | `/erkunden/aktivitaeten/{slug}/` (sem arquivo) — por baixo da página Aktivitäten. O slug repete o caminho da página: se a Erkunden ou a Aktivitäten mudarem de slug, mudar também aqui. Noutras línguas, traduzir o slug no WPML (Post Types Translation). | título, imagem destacada ("Card image"), excerto, revisões | Sem editor de blocos: o conteúdo do single é feito de módulos ACF. Lido por uma secção da homepage. |
 | `testimonial` — Testimonials | `post_type_testimonial.json` | nenhum (não público: sem single nem arquivo) | título, revisões | Título = linha do autor ("Martin Ahrens 5* bei Google"); a quote é o campo `testimonial_quote` (grupo `group_cpt_testimonial`). Lido pelo módulo Testimonials. |
 
 ### Taxonomias
@@ -131,6 +131,10 @@ volta no JSON; depois de um deploy, fazer Sync.
 | `season` — Seasons | `taxonomy_season.json` | `activity` | Hierárquica (checkboxes no editor), sem URLs públicos, coluna na lista do admin. Termos **`sommer`** e **`winter`** — os slugs são usados no código (filtro Sommer/Winter); criar em cada ambiente, não renomear os slugs. Uma actividade pode ter as duas. |
 
 ### Templates
+- **Aktivitäten / Activities** (`page-templates/page-activities.php`, "Activities Template"; subpágina da Erkunden, `/erkunden/aktivitaeten/` — os singles do CPT `activity` ficam por baixo dela) — em curso: hero + intro. Campos no grupo `group_page_activities`. Figma: desktop
+  [5426:14590](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-14590&m=dev),
+  tablet [5426:17294](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-17294&m=dev),
+  mobile [5426:16343](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-16343&m=dev).
 - **Unsere Region / Our Region** (`page-templates/page-region.php`, "Our Region Template"; subpágina da Erkunden) — hero, intro, Saas-Grund, Highlights, SaastalCard (faixa verde), activities. Por fazer: o mapa (design por aprovar) e "Ausflüge ab Saas-Grund" (cards com imagem, de um CPT ainda por criar), entre os Highlights e a faixa verde. Campos no grupo `group_page_region`. Figma: desktop
   [5426:14763](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-14763&m=dev),
   tablet [5426:17416](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-17416&m=dev),
@@ -188,6 +192,7 @@ tab clona o grupo do módulo (Seamless, sem prefixo).
 | `group_page_home` — Page — Home | `page-templates/page-home.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Apartments (campos próprios, `pages/home/find-apartment.php`) · Direct booking (campos próprios, `pages/home/direct-book.php`) · Gallery (campos próprios, `pages/home/gallery.php`) · Explore → `group_module_explore` · Image band → `group_module_image_band` · Activities → `group_module_activities` · Testimonials → `group_module_testimonials` |
 | `group_page_explore` — Page — Explore | `page-templates/page-explore.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Region (campos próprios, `pages/explore/region.php`: `section_region_title` (textarea, `br`), `_text`, `_button`, `_image_large` (só desktop), `_image_1`, `_image_2`) · Activities → `group_module_activities` · Box text → `group_module_box_text` |
 | `group_page_region` — Page — Our Region | `page-templates/page-region.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Saas-Grund (campos próprios, `pages/region/place.php`: `section_place_title`, `_text`, `_image_1`, `_image_2`, `_items` repeater `icon` + `title`) · Highlights → `group_module_cards_icon` · SaastalCard → `group_module_box_text` (style `band`) · Activities → `group_module_activities` |
+| `group_page_activities` — Page — Activities | `page-templates/page-activities.php` | Hero → `group_module_hero` · Intro → `group_module_intro` |
 | `group_cpt_activity` — Activity | `single-activity.php` (post type `activity`) | Hero → `group_module_hero` · Intro → `group_module_intro` |
 
 Secções só de uma página têm os campos **directamente no grupo da página** (no

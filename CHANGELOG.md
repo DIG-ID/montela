@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.18.0] — 2026-10-28
+
+### Added
+- Aktivitäten page template (a child page of Erkunden), with the hero and intro sections.
+
+### Changed
+- Activity pages now live under the Aktivitäten page: /erkunden/aktivitaeten/{activity}/. Old /aktivitaeten/{activity}/ links redirect to the new address.
+
 ## [1.17.0] — 2026-10-28
 
 ### Added
