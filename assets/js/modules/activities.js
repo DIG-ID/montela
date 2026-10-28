@@ -5,10 +5,11 @@
 // - Season switch: an ARIA tablist ([data-activities-tabs]). Click, or the
 //   arrow / Home / End keys, select a season and show its cards panel; the
 //   cream pill (.section-activities__indicator) slides to the selected tab.
-// - Mobile carousel: each panel's [data-activities-track] is a scroll-snap
-//   row (CSS does the sliding); [data-activities-prev] / [-next] scroll it by
-//   one card and are disabled at either end. From tablet up the track is a
-//   grid and the arrows are hidden.
+// - Carousel: each [data-activities-carousel]'s [data-activities-track] is
+//   a scroll-snap row (CSS does the sliding); [data-activities-prev] /
+//   [-next] scroll it by one view and are disabled at either end. Homepage
+//   module: one card on mobile, a grid from tablet up (arrows hidden).
+//   Aktivitäten page: also pages of four cards on tablet and desktop.
 // No library: a native scroll-snap track keeps working while hidden behind
 // the switch, where a JS slider would measure 0px.
 // =============================================================================
@@ -95,12 +96,10 @@ function initCarousel(panel) {
     return;
   }
 
-  // One card plus the gap between cards.
-  const step = () => {
-    const card = track.firstElementChild;
-    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-    return card ? card.offsetWidth + gap : track.clientWidth;
-  };
+  // One view plus the gap: a single card on mobile, a page of four on the
+  // Aktivitäten page (template-parts/pages/activities/season.php) — the
+  // scrolled items are always as wide as the track.
+  const step = () => track.clientWidth + (parseFloat(getComputedStyle(track).columnGap) || 0);
 
   const update = () => {
     const max = track.scrollWidth - track.clientWidth - 1;

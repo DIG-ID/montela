@@ -60,39 +60,11 @@ foreach ( $act_seasons as $act_key => $act_season ) {
 		$act_seasons[ $act_key ]['label'] = $act_term->name;
 	}
 
-	$act_ids = get_field( $act_prefix . $act_season['field'], $act_ctx );
-
-	// Nothing picked: fall back to the season's first activities.
-	if ( ! $act_ids ) {
-		$act_ids = get_posts(
-			array(
-				'post_type'        => 'activity',
-				'posts_per_page'   => 4,
-				'fields'           => 'ids',
-				'orderby'          => array(
-					'menu_order' => 'ASC',
-					'title'      => 'ASC',
-				),
-				'suppress_filters' => false, // Let WPML keep the current language.
-				'tax_query'        => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
-					array(
-						'taxonomy' => 'season',
-						'field'    => 'slug',
-						'terms'    => $act_season['term'],
-					),
-				),
-			)
-		);
-	}
-
-	$act_ids = array_filter(
-		(array) $act_ids,
-		function ( $act_id ) {
-			return 'publish' === get_post_status( $act_id );
-		}
+	$act_seasons[ $act_key ]['ids'] = montela_get_season_activities(
+		get_field( $act_prefix . $act_season['field'], $act_ctx ),
+		$act_season['term'],
+		4
 	);
-
-	$act_seasons[ $act_key ]['ids'] = array_slice( $act_ids, 0, 4 );
 }
 
 // Drop the seasons without cards; no cards at all, no section.

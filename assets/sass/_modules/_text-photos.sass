@@ -1,0 +1,61 @@
+// Text with photos module (template-parts/modules/text-photos.php).
+// No top padding: the section above already ends with its own.
+//
+// Two photos (homepage, Figma desktop 5588:16261, tablet 5453:8586, mobile
+// 5426:4201):
+//   Desktop  title cols 2–11 · text+button cols 2–4 · photos cols 5–11, 600px tall
+//   Tablet   title full width · text+button cols 1–3 · photos cols 4–6, stacked
+//   Mobile   everything stacked, 64px apart; text 12/20 ("Mobile/text")
+// Tablet photos: Figma draws them 360px wide, 17px past the container edge —
+// snapped to cols 4–6 (343px) instead.
+//
+// One photo (.section-text-photos--single — Aktivitäten, Figma desktop
+// 5778:17124, tablet 5561:11940, mobile 5561:11955):
+//   Desktop  as above, the one photo filling the 1053×600 area
+//   Tablet   text+button cols 1–2 (the button label may wrap) · photo cols
+//            3–6 (463:314); 44px apart
+//   Mobile   title, then 44px to the text (14/22), 20px to the button and
+//            20px to the photo (326:268)
+.section-text-photos
+  @apply pb-[128px] md:pb-[192px] xl:pb-[224px] text-montela-walnut
+
+.section-text-photos__grid
+  @apply gap-y-16 md:gap-y-10 xl:gap-y-16
+
+.section-text-photos__title
+  @apply col-span-full xl:col-start-2 xl:col-span-10
+
+.section-text-photos__content
+  @apply col-span-full md:col-span-3 xl:col-start-2 xl:col-span-3 flex flex-col items-start gap-6 md:gap-10 xl:gap-16
+
+.section-text-photos__text
+  @apply text-[12px] leading-[20px] md:text-[18px] md:leading-[25px] xl:text-[20px] xl:leading-[32px]
+
+.section-text-photos__photos
+  @apply col-span-full md:col-start-4 md:col-span-3 xl:col-start-5 xl:col-span-7 flex flex-col gap-16 md:gap-5 xl:flex-row xl:gap-[18px]
+
+.section-text-photos__photo
+  @apply m-0 aspect-[699/600] md:aspect-[360/246] xl:aspect-auto xl:h-[600px] xl:flex-1 overflow-hidden
+
+.section-text-photos__img
+  @apply w-full h-full object-cover
+
+// -- One photo --
+.section-text-photos--single .section-text-photos__grid
+  @apply gap-y-11 xl:gap-y-16
+
+// col-span resets the start column: repeat it.
+.section-text-photos--single .section-text-photos__content
+  @apply gap-5 md:col-span-2 md:gap-11 xl:col-start-2 xl:col-span-3 xl:gap-16
+
+.section-text-photos--single .section-text-photos__text
+  @apply text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[20px] xl:leading-[32px]
+
+.section-text-photos--single .btn__label
+  @apply md:whitespace-normal xl:whitespace-nowrap
+
+.section-text-photos--single .section-text-photos__photos
+  @apply -mt-6 md:mt-0 md:col-start-3 md:col-span-4 xl:col-start-5 xl:col-span-7
+
+.section-text-photos--single .section-text-photos__photo
+  @apply aspect-[326/268] md:aspect-[463/314] xl:aspect-auto

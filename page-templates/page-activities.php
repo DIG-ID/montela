@@ -21,6 +21,9 @@ if ( have_posts() ) :
 		do_action( 'before_main_content' );
 			get_template_part( 'template-parts/modules/hero' );
 			get_template_part( 'template-parts/modules/intro' );
+			get_template_part( 'template-parts/pages/activities/season', null, array( 'season' => 'summer' ) );
+			get_template_part( 'template-parts/pages/activities/season', null, array( 'season' => 'winter' ) );
+			get_template_part( 'template-parts/modules/text-photos' );
 		do_action( 'after_main_content' );
 	endwhile;
 endif;

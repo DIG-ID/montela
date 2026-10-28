@@ -1,0 +1,68 @@
+// Aktivitäten (page-templates/page-activities.php). Named activities-page to
+// keep it apart from the Activities module (_modules/_activities.sass).
+
+// -- Season sections (template-parts/pages/activities/season.php) --
+// Figma "Activities_with arrows": desktop 5679:16044, tablet 5679:16089,
+// mobile 5679:16157. One for summer, one for winter.
+//
+// The homepage Activities module's layout without the switch and button,
+// plus a small title and sage arrows. Same cards and the same thin frame
+// behind (its bottom edge measured from the section's bottom).
+//
+//   Mobile   cream copy block (36px padding, 30px apart): small title,
+//            title, text, arrows; then one card at a time
+//   Tablet   copy 185px down, 608px wide, 44px apart, arrows below the
+//            text; 128px below it, a page of 2×2 cards
+//   Desktop  copy on the left half (716px, 45px down, 46px apart), the
+//            arrows top-right (level with the small title, 153px in from
+//            the right); a page of 2×2 cards on the right half, 504px down
+//
+// Slider: the track scrolls by pages of four on tablet and desktop
+// (.section-season__page is a 2×2 grid) and by single cards on mobile (the
+// page turns into `display: contents`). The arrows show on tablet and
+// desktop only with more than four cards (.section-season--paged, set in
+// PHP); on mobile with more than one.
+//
+// Spacing: 192px around on desktop; tablet 53px above (as drawn, after the
+// intro), 192 below; mobile 128.
+.section-season
+  @apply mt-[128px] mb-[128px] md:mt-[53px] md:mb-[192px] xl:my-[192px] overflow-hidden text-montela-walnut
+
+// flow-root: the copy's top margin (tablet) would otherwise collapse through
+// this box and push the frame down with it. isolate: the frame sits behind
+// (negative z-index) inside this box, so the copy's cream background covers
+// it even where the copy isn't positioned (desktop, see the arrows below).
+.section-season__inner
+  @apply relative isolate flow-root xl:grid xl:grid-cols-2 xl:gap-x-5 xl:items-start
+
+.section-season__frame
+  @apply absolute -z-10 border border-montela-sage -left-[7px] -right-[7px] top-[128px] bottom-[207px] md:left-[19.14%] md:right-[0.43%] md:top-0 md:bottom-[557px] xl:left-[9.56%] xl:right-[7.33%] xl:bottom-[510px]
+
+// -- Copy --
+.section-season__copy
+  @apply relative flex flex-col items-start gap-[30px] py-9 bg-montela-cream md:mt-[185px] md:py-0 md:gap-11 md:max-w-[608px] xl:static xl:mt-[45px] xl:py-[45px] xl:gap-[46px] xl:max-w-[716px]
+
+.section-season__text
+  @apply md:max-w-[585px]
+
+// Desktop: the copy is left static, so the arrows are placed against the
+// whole section (top right) rather than the copy's half.
+// Two classes: .slider-nav is emitted after this partial.
+.section-season__copy .section-season__nav
+  @apply xl:absolute xl:top-[90px] xl:right-[153px] xl:z-10
+
+.section-season:not(.section-season--paged) .section-season__nav
+  @apply md:hidden
+
+// -- Cards --
+.section-season__track
+  @apply flex gap-5 mt-1 overflow-x-auto snap-x snap-mandatory md:mt-32 xl:mt-[504px]
+  scrollbar-width: none
+  &::-webkit-scrollbar
+    display: none
+
+.section-season__page
+  @apply contents md:grid md:grid-cols-2 md:gap-x-5 md:gap-y-[22px] md:w-full md:shrink-0 md:snap-start xl:gap-x-[94px] xl:gap-y-[51px]
+
+.section-season__track .card-activity
+  @apply w-full shrink-0 snap-start

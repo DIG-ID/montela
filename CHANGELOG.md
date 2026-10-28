@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.19.0] — 2026-10-28
+
+### Added
+- Aktivitäten page: summer and winter sections with the season's activities (a slider in pages of four when there are more than four), and a "Saas-Grund als Ausgangspunkt" section.
+- Text with photos module, made from the homepage apartments section: title, text and button beside one or two photos — the layout adapts to the number of photos. The homepage keeps its content.
+
 ## [1.18.0] — 2026-10-28
 
 ### Added
