@@ -25,6 +25,28 @@
             "append": ""
         },
         {
+            "key": "field_module_cards_icon_text",
+            "label": "Text",
+            "name": "section_cards_icon_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Optional, under the title.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
             "key": "field_module_cards_icon_items",
             "label": "Cards",
             "name": "section_cards_icon_items",
@@ -170,6 +192,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793185560,
+    "modified": 1793202519,
     "acfml_field_group_mode": "advanced"
 }

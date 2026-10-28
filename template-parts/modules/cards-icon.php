@@ -1,8 +1,8 @@
 <?php
 /**
- * Cards with icon module: a centred title over a slider of framed cards —
- * icon, title, a short line and a text in each. Four cards in view on
- * desktop, two on tablet, one on mobile; arrows below.
+ * Cards with icon module: a centred title (and optional text) over a slider
+ * of framed cards — icon, title, a short line and a text in each. Four
+ * cards in view on desktop, two on tablet, one on mobile; arrows below.
  *
  * Fields: acf-json/group_module_cards_icon.json, cloned into each page's
  * field group. Figma: "Cards with icon section" — desktop 5753:15123,
@@ -26,6 +26,7 @@ $cards_ctx    = ! empty( $args['post_id'] ) ? $args['post_id'] : get_the_ID();
 $cards_prefix = ! empty( $args['prefix'] ) ? $args['prefix'] : '';
 
 $cards_title = get_field( $cards_prefix . 'section_cards_icon_title', $cards_ctx );
+$cards_text  = get_field( $cards_prefix . 'section_cards_icon_text', $cards_ctx );
 $cards_items = get_field( $cards_prefix . 'section_cards_icon_items', $cards_ctx );
 
 if ( ! $cards_items ) {
@@ -50,8 +51,15 @@ $cards_swiper   = array(
 	<div class="theme-container">
 		<div class="theme-grid">
 			<div class="section-cards-icon__inner" data-swiper-root>
-				<?php if ( $cards_title ) : ?>
-					<h2 id="<?php echo esc_attr( $cards_title_id ); ?>" class="title-h3 section-cards-icon__title"><?php echo esc_html( $cards_title ); ?></h2>
+				<?php if ( $cards_title || $cards_text ) : ?>
+					<div class="section-cards-icon__head">
+						<?php if ( $cards_title ) : ?>
+							<h2 id="<?php echo esc_attr( $cards_title_id ); ?>" class="title-h3 section-cards-icon__title"><?php echo esc_html( $cards_title ); ?></h2>
+						<?php endif; ?>
+						<?php if ( $cards_text ) : ?>
+							<p class="body-text section-cards-icon__text"><?php echo esc_html( $cards_text ); ?></p>
+						<?php endif; ?>
+					</div>
 				<?php endif; ?>
 
 				<div class="swiper section-cards-icon__swiper" data-swiper="<?php echo esc_attr( wp_json_encode( $cards_swiper ) ); ?>">

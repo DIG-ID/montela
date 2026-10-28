@@ -1,0 +1,56 @@
+// Single Tagesausflug (single-tagesausflug.php, template-parts/day-trip/).
+
+// -- Über das Reiseziel + slider (template-parts/day-trip/destination.php) --
+// Figma: desktop 5787:17868, tablet 5593:20515, mobile 5593:20546.
+//
+//   Mobile   title, text (12px below), photo (320:246), highlights — 44px
+//            apart; items 16px apart; the slider 44px below
+//   Tablet   the same, title → text 44px; photo 698:452; items 72px apart
+//   Desktop  photo (900×538) on columns 1–6, title and text (440px wide,
+//            46px below the title) on 8–12; the highlights 96px below, in
+//            two columns on 6–12 (rows 121px apart); the slider 96px below
+//
+// Highlights: the icon list — 68px icon column, 20px to the text; bold title
+// and text, 14/22 and 17/23 (component defaults), on desktop title 20/32
+// and text 15/25.
+//
+// Spacing: none above (the intro ends with its own padding); 192px below
+// on tablet and desktop, 128 on mobile.
+.section-destination
+  @apply pb-[128px] md:pb-[192px] text-montela-walnut
+
+.section-destination__grid
+  @apply xl:grid-rows-[auto_1fr_auto]
+
+.section-destination__title
+  @apply col-span-full xl:col-start-8 xl:col-span-5 xl:row-start-1
+
+.section-destination__text
+  @apply col-span-full mt-3 md:mt-11 md:max-w-[578px] xl:col-start-8 xl:col-span-5 xl:row-start-2 xl:mt-[46px] xl:max-w-[440px]
+
+.section-destination__photo
+  @apply col-span-full m-0 mt-11 overflow-hidden aspect-[320/246] md:aspect-[698/452] xl:col-start-1 xl:col-span-6 xl:row-start-1 xl:row-span-2 xl:mt-0 xl:aspect-[900/538] xl:self-start
+
+.section-destination__img
+  @apply w-full h-full object-cover
+
+.section-destination__list
+  @apply col-span-full mt-11 xl:col-start-6 xl:col-span-7 xl:row-start-3 xl:mt-24
+
+.section-destination .icon-list
+  @apply gap-4 md:gap-[72px] xl:grid xl:grid-cols-2 xl:gap-x-5 xl:gap-y-[121px]
+
+.section-destination .icon-list__item
+  @apply md:max-w-[467px] xl:max-w-[449px]
+
+.section-destination .icon-list__icon img
+  @apply w-auto max-w-full h-[52px] md:h-[67px] xl:h-[60px]
+
+.section-destination .icon-list__text
+  @apply xl:text-[15px] xl:leading-[25px]
+
+.section-destination .icon-list__title
+  @apply xl:text-[20px] xl:leading-[32px]
+
+.section-destination__slider
+  @apply mt-11 xl:mt-24

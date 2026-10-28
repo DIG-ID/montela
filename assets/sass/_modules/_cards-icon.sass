@@ -28,8 +28,12 @@
 .section-cards-icon__inner
   @apply col-span-full flex flex-col items-center gap-9 md:gap-11 xl:col-start-2 xl:col-span-10 xl:gap-24
 
-.section-cards-icon__title
-  @apply text-center xl:max-w-[1217px]
+.section-cards-icon__head
+  @apply flex flex-col items-center gap-4 text-center xl:gap-6 xl:max-w-[1217px]
+
+// Optional text under the title (Tagesausflug, Figma 5787:17940): 957px on desktop.
+.section-cards-icon__text
+  @apply xl:max-w-[957px]
 
 // Two classes: swiper.css (loaded after main.css) sets .swiper's margins
 // and overflow. Bottom padding leaves room for the cards' shadow.

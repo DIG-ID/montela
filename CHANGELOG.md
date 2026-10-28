@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.22.0] — 2026-10-28
+
+### Added
+- Tagesausflüge (day trips) post type, under /tagesausflug/{trip}/, and its single page: hero, intro, the destination with highlights and a photo slider, how to get there, and what to experience.
+- Cards with icon module: an optional text under the title.
+
 ## [1.21.0] — 2026-10-28
 
 ### Added
