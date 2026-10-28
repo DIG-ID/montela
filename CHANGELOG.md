@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.14.0] — 2026-10-28
+
+### Added
+- Sticky call-to-action on every page: a corner button that opens a card with a title, text and a button (Theme Settings → Sticky CTA). Closes with its arrow, Esc or a click outside, and hides while the footer is on screen.
+
+### Fixed
+- Homepage activities: the frame line no longer touches the season switch on desktop.
+
 ## [1.13.0] — 2026-10-27
 
 ### Added

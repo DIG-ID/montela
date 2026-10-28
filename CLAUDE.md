@@ -196,6 +196,7 @@ próprio.
 | Tab | Usado em | Campos |
 |-----|----------|--------|
 | Header | `template-parts/header-main.php`, `template-parts/mega-menu.php` | `header_booking_link` (link, array — botão "Jetzt buchen"; vazio = escondido), `header_menu_image` (image, ID — foto do mega-menu, desktop) |
+| Sticky CTA | `template-parts/sticky-cta.php` (em todas as páginas, via `footer.php`) | `sticky_cta_title` (text), `sticky_cta_text` (textarea), `sticky_cta_link` (link). Sem título nem botão = não aparece. Botão fixo no canto inferior direito que abre o cartão; comportamento em `main.js`. |
 | Footer: Call to action | `template-parts/footer-main.php` | `footer_cta_title` (text, `<br>` permitido; vazio = sem caixa), `footer_cta_text`, `footer_cta_link` (link) |
 | Footer: Newsletter & contact | `template-parts/footer-main.php` | `footer_newsletter_text`, `footer_address` (textarea, `br`), `footer_phone`, `footer_email`, `socials_facebook`, `socials_instagram` (url) |
 | Footer: Partner logos | `template-parts/footer-main.php` | `footer_partners` (repeater: `image` ID, `link`) |

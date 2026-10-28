@@ -2,7 +2,7 @@
 // Critical entry — loaded on every page and safe to exclude from WP Rocket's
 // "Delay JavaScript execution". Keep it small and library-free: only what the
 // site needs to work before any user interaction (navigation, mega menu,
-// sticky header, accessibility helpers).
+// sticky header, sticky CTA, accessibility helpers).
 //
 // Non-essential features live in their own entries so WP Rocket can delay
 // them (see vite.config.mjs and montela_enqueue_module() in inc/enqueue.php):
@@ -37,7 +37,7 @@ function initMegaMenu() {
   const menu = document.getElementById('mega-menu');
   const nav = menu ? menu.querySelector('.mega-menu__nav') : null;
   const header = document.getElementById('header-main');
-  const background = document.querySelectorAll('#main-content, .footer-main');
+  const background = document.querySelectorAll('#main-content, .footer-main, .sticky-cta');
 
   const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
   const openSub = () => (nav ? nav.querySelector('.mega-menu__sub.is-open') : null);
@@ -214,10 +214,70 @@ function initLangSwitcher() {
 }
 
 // =============================================================================
+// Sticky CTA
+// =============================================================================
+// The corner button (template-parts/sticky-cta.php) opens and closes the
+// card above it with `.is-open`. Also closes on Esc and on a click outside.
+// While the footer is on screen the whole thing hides (`.is-hidden`) and
+// closes, so it never covers the footer's links.
+function initStickyCta() {
+  const cta = document.querySelector('[data-sticky-cta]');
+  if (!cta) {
+    return;
+  }
+
+  const toggle = cta.querySelector('.sticky-cta__toggle');
+  const panel = cta.querySelector('.sticky-cta__panel');
+
+  const isOpen = () => cta.classList.contains('is-open');
+
+  const setOpen = (open) => {
+    cta.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? toggle.dataset.labelClose : toggle.dataset.labelOpen);
+    // Closed, the card's link stays out of the tab order.
+    panel.inert = !open;
+  };
+
+  setOpen(false);
+
+  toggle.addEventListener('click', () => {
+    setOpen(!isOpen());
+  });
+
+  document.addEventListener('click', (event) => {
+    if (isOpen() && !cta.contains(event.target)) {
+      setOpen(false);
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !event.defaultPrevented && isOpen()) {
+      // Handled: the mega menu's Esc listener leaves it alone.
+      event.preventDefault();
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+
+  const footer = document.querySelector('.footer-main');
+  if (footer && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      cta.classList.toggle('is-hidden', entry.isIntersecting);
+      if (entry.isIntersecting) {
+        setOpen(false);
+      }
+    }).observe(footer);
+  }
+}
+
+// =============================================================================
 // DOM ready
 // =============================================================================
 document.addEventListener('DOMContentLoaded', () => {
-  // Language switcher first: its Esc listener must run before the menu's.
+  // Language switcher and sticky CTA first: their Esc listeners must run
+  // before the menu's.
   initLangSwitcher();
+  initStickyCta();
   initMegaMenu();
 });

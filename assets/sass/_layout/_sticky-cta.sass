@@ -1,0 +1,61 @@
+// Sticky CTA (template-parts/sticky-cta.php, behaviour in main.js).
+// Figma: closed 5594:17195 (the "hero button"), open 5426:5271.
+//
+// Fixed in the bottom-right corner on every page: 51px from the edges on
+// desktop, 72px / 37px on tablet, 32px on mobile (measured on the homepage
+// hero frames). Above the page, below the header and mega menu (z-20).
+//
+// Open (.is-open): a 287px sage card 4px above the button — title (Roboto
+// 25/40), text (20/32) and a full-width cream button. Only drawn for desktop;
+// tablet and mobile use the same card. The button keeps its place: in the
+// Figma frame the open state's arrow sits 11px higher, aligned with nothing
+// else, so it isn't followed.
+//
+// .is-hidden while the footer is on screen, so it never covers the legal
+// links in the footer's bottom-right corner.
+// flex: the toggle is inline-flex, which would sit on a text line and leave
+// the descender's few pixels under it.
+.sticky-cta
+  @apply fixed z-20 flex right-8 bottom-8 md:right-[72px] md:bottom-[37px] xl:right-[51px] xl:bottom-[51px] transition-[opacity,visibility] duration-300 ease-out
+  &.is-hidden
+    @apply invisible opacity-0
+
+// -- Card --
+.sticky-cta__panel
+  @apply absolute right-0 bottom-[calc(100%+4px)] w-[287px] max-w-[calc(100vw-64px)] px-[25px] pt-6 pb-[25px] bg-montela-sage text-montela-cream shadow-[0_4px_4px_rgba(0,0,0,0.25)] origin-bottom-right invisible opacity-0 translate-y-2 transition-[opacity,transform,visibility] duration-300 ease-out motion-reduce:transition-none
+  .is-open &
+    @apply visible opacity-100 translate-y-0
+
+.sticky-cta__title
+  @apply font-primary font-normal text-[25px] leading-[40px] tracking-[1px]
+
+.sticky-cta__text
+  @apply mt-4 font-primary font-light text-[20px] leading-[32px] tracking-[0.5px]
+
+.sticky-cta__btn
+  @apply flex items-center justify-center w-full min-h-[44px] mt-[51px] px-4 py-3 bg-montela-cream text-montela-walnut font-primary font-bold text-[14px] leading-[16px] tracking-[0.84px] uppercase text-center shadow-[0_4px_4px_rgba(0,0,0,0.25)] transition-colors duration-300 ease-out
+  &:hover,
+  &:active
+    @apply bg-montela-mustard
+  &:focus-visible
+    @apply outline outline-2 outline-offset-4 outline-montela-mustard
+
+// Text only, no button: no gap left for it.
+.sticky-cta__title + .sticky-cta__btn
+  @apply mt-6
+
+// -- Toggle --
+// The .btn-icon square: house icon closed (as .btn-icon--home), down arrow
+// open (as .btn-icon--arrow-down). Two classes: .btn-icon is emitted after
+// this partial.
+.sticky-cta .sticky-cta__toggle
+  @apply shadow-none drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)]
+  &::before
+    @apply w-[38px] h-[38px]
+    mask: url("../../svg/icons/home-and-garden.svg") center / contain no-repeat
+
+.sticky-cta.is-open .sticky-cta__toggle
+  @apply shadow-[0_4px_4px_rgba(0,0,0,0.25)] drop-shadow-none
+  &::before
+    @apply w-[43px] h-[44px] rotate-90
+    mask: url("../../svg/icons/arrow-forward.svg") center / contain no-repeat

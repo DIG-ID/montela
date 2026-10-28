@@ -8,6 +8,7 @@
  */
 
 get_template_part( 'template-parts/footer', 'main' );
+get_template_part( 'template-parts/sticky-cta' );
 ?>
 		<?php wp_footer(); ?>
 	</body>

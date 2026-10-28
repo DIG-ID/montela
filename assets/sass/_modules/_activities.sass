@@ -33,8 +33,11 @@
   @apply absolute border border-montela-sage -left-[7px] -right-[7px] top-[113px] bottom-[278px] md:left-[19%] md:right-0 md:top-0 md:bottom-[526px] xl:left-[9.56%] xl:right-[36.46%] xl:bottom-[226px]
 
 // -- Intro --
+// Desktop: cream from 50px down (21px above the switch), hiding the end of
+// the frame's left line, so the line stops short of the switch as in the
+// design. On tablet the frame draws the line down to the switch.
 .section-activities__intro
-  @apply relative md:pt-[54px] xl:pt-[71px]
+  @apply relative md:pt-[54px] xl:mt-[50px] xl:pt-[21px] xl:bg-montela-cream
 
 .section-activities__copy
   @apply flex flex-col items-start bg-montela-cream pt-[30px] md:mt-[21px] md:pt-[45px] md:max-w-[608px] xl:mt-0 xl:pt-[62px] xl:pb-[23px] xl:max-w-[788px]

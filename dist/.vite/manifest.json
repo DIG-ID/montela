@@ -13,7 +13,7 @@
     ]
   },
   "assets/js/main.js": {
-    "file": "js/main-CI0OWZKe.js",
+    "file": "js/main-CIyEP25T.js",
     "name": "main",
     "src": "assets/js/main.js",
     "isEntry": true
@@ -88,7 +88,7 @@
     "isEntry": true
   },
   "assets/sass/main.sass": {
-    "file": "css/main-D6TiedD5.css",
+    "file": "css/main-5BLYm0NY.css",
     "name": "main",
     "names": [
       "main.css"
@@ -98,12 +98,12 @@
     "assets": [
       "assets/arrow-cta-CMgpcRWj.svg",
       "assets/arrow-back-tz3BBcEc.svg",
+      "assets/home-and-garden-ltii5Ith.svg",
+      "assets/arrow-forward-aO82Prq-.svg",
       "assets/mountains-BtNTc39q.svg",
       "assets/season-summer-C2o0q19u.svg",
       "assets/season-winter-DX7E2spa.svg",
       "assets/quote-BED75e32.svg",
-      "assets/arrow-forward-aO82Prq-.svg",
-      "assets/home-and-garden-ltii5Ith.svg",
       "assets/slider-prev-BgkI7qkP.svg",
       "assets/slider-next-B52SPkO5.svg",
       "assets/slider-prev-sage-CRYbWYmP.svg",
