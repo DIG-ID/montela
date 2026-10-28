@@ -1,8 +1,13 @@
 <?php
 /**
  * Unsere Region — "Ausflüge ab Saas-Grund": centred title and text over a
- * slider of day trip cards (card image, title, excerpt, "learn more"). Four
- * cards in view on desktop, one on tablet and mobile; arrows below.
+ * slider of day trip cards. Four cards in view on desktop, one on tablet
+ * and mobile; arrows below.
+ *
+ * Card (Figma "Card Offers and Packages" 5470:17071): the card image with
+ * a sage panel at the bottom — title and "learn more" when closed; on hover
+ * or keyboard focus the panel grows over the photo and shows the excerpt.
+ * Always open on touch screens (_region.sass).
  *
  * Content: the Tagesausflüge post type — the ones picked in the "Day trips"
  * relationship, in that order, or all of them (oldest first) when it is
@@ -106,7 +111,11 @@ $trips_swiper   = array(
 									<div class="trip-card__panel">
 										<h3 class="trip-card__title"><?php echo esc_html( $trips_name ); ?></h3>
 										<?php if ( $trips_excerpt ) : ?>
-											<p class="trip-card__text"><?php echo esc_html( $trips_excerpt ); ?></p>
+											<div class="trip-card__more">
+												<div class="trip-card__more-inner">
+													<p class="trip-card__text"><?php echo esc_html( $trips_excerpt ); ?></p>
+												</div>
+											</div>
 										<?php endif; ?>
 										<?php
 										get_template_part(

@@ -68,14 +68,20 @@
 // tablet, 36 on mobile — and walnut arrows centred below it (hidden when
 // every card is in view).
 //
-//   Desktop  4 cards on columns 2–11, 20px apart (16 in Figma): photo
-//            366:225, sage panel 276px tall (26 / 24px padding)
-//   Tablet   1 card, 468px wide, centred: photo 436:201, panel 233px
-//            (16 / 30px padding)
-//   Mobile   1 card, full width; as tablet
+//   Desktop  4 cards on columns 2–11, 20px apart (16 in Figma)
+//   Tablet   1 card, 468px wide, centred
+//   Mobile   1 card, full width
 //
-// Panel: title 20/32 bold and the excerpt 15/25, cream; the button (ghost,
-// 44px tall) pinned to the bottom. Cards stretch to the tallest one.
+// Card (Figma "Card Offers and Packages" 5470:17071, drawn for the offers
+// and used here): 420px tall, the photo filling it, a sage panel at the
+// bottom — title (20/32 bold, centred) and the ghost button (44px), 26px
+// apart, 14 / 18 / 16px padding: 132px closed. Open, the excerpt (centred,
+// light) shows under the title and the panel grows up over the photo.
+//
+// Open is the default, and what touch screens always get (no hover). With
+// a mouse the card is closed until hovered or a keyboard focus lands inside
+// it; the excerpt folds through a 0fr → 1fr grid row, so the panel animates
+// to its content height. Same technique as the activity cards.
 //
 // Spacing: none above (the section before ends with its own margin);
 // 192px below on tablet and desktop, 128 on mobile.
@@ -100,37 +106,43 @@
   @apply flex justify-center h-auto
 
 .trip-card
-  @apply flex flex-col w-full md:max-w-[468px] xl:max-w-none
+  @apply relative w-full h-[420px] overflow-hidden md:max-w-[468px] xl:max-w-none
 
 .trip-card__photo
-  @apply m-0 overflow-hidden aspect-[436/201] xl:aspect-[366/225]
+  @apply absolute inset-0 m-0
 
 .trip-card__img
   @apply w-full h-full object-cover
 
 .trip-card__panel
-  @apply flex flex-1 flex-col min-h-[233px] px-[30px] pt-4 pb-[17px] bg-montela-sage text-montela-cream drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)] xl:min-h-[276px] xl:px-6 xl:py-[26px]
+  @apply absolute inset-x-0 bottom-0 flex flex-col px-[18px] pt-[14px] pb-4 bg-montela-sage text-montela-cream text-center border border-montela-sage
 
 .trip-card__title
   @apply font-primary font-bold tracking-[0.5px] text-[20px] leading-[32px]
 
-.trip-card__text
-  @apply font-primary font-light tracking-[0.5px] text-[15px] leading-[25px]
+.trip-card__more
+  @apply grid grid-rows-[1fr] transition-[grid-template-rows] duration-[400ms] ease-out motion-reduce:transition-none
 
-// The button is pinned to the bottom, at least 48px (72 on desktop) below
-// the text — kept by the text's own margin, not the button's padding.
-.trip-card__panel > :has(+ .trip-card__btn)
-  @apply mb-12 xl:mb-[72px]
+.trip-card__more-inner
+  @apply min-h-0 overflow-hidden
+
+// Figma "Text" on desktop; the house body sizes below.
+.trip-card__text
+  @apply font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[20px] xl:leading-[32px] line-clamp-5
+
+.trip-card__panel .trip-card__btn
+  @apply flex mt-[26px]
 
 // The ghost button is 34px tall below desktop elsewhere; here it is 44.
-.trip-card__panel .trip-card__btn
-  @apply flex mt-auto
-
 .trip-card__btn .btn__label
   @apply py-[13px]
 
 .trip-card__btn .btn__icon
   @apply w-11
+
+@media (hover: hover) and (pointer: fine)
+  .trip-card:not(:hover):not(:focus-within) .trip-card__more
+    @apply grid-rows-[0fr]
 
 .section-trips__inner .section-trips__nav
   @apply justify-center mt-9 md:mt-11

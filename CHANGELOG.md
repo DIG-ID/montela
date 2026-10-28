@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.23.1] — 2026-10-28
+
+### Changed
+- Unsere Region day trip cards: closed by default (photo, title and link); on hover or keyboard focus the panel grows over the photo and shows the description. Always open on touch screens.
+
 ## [1.23.0] — 2026-10-28
 
 ### Added
