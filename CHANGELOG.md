@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.23.2] — 2026-10-28
+
+### Changed
+- The day trip card became a reusable preview card component (no visible change).
+
 ## [1.23.1] — 2026-10-28
 
 ### Changed

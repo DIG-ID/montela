@@ -1,0 +1,53 @@
+// Preview card (template-parts/components/card-preview.php).
+// Figma "Card Offers and Packages" 5470:17071 — drawn for the offers, used
+// for the Unsere Region day trips.
+//
+// 420px tall, the photo filling it, a sage panel at the bottom — title
+// (20/32 bold, centred) and the ghost button (44px), 26px apart, 14 / 18 /
+// 16px padding: 132px closed. Open, the excerpt (centred, light, 5 lines at
+// most) shows under the title and the panel grows up over the photo.
+//
+// Open is the default, and what touch screens always get (no hover). With
+// a mouse the card is closed until hovered or a keyboard focus lands inside
+// it; the excerpt folds through a 0fr → 1fr grid row, so the panel animates
+// to its content height. Same technique as the activity cards. Width comes
+// from where it is placed.
+
+.card-preview
+  @apply relative w-full h-[420px] overflow-hidden
+
+.card-preview__photo
+  @apply absolute inset-0 m-0
+
+.card-preview__img
+  @apply w-full h-full object-cover
+
+.card-preview__panel
+  @apply absolute inset-x-0 bottom-0 flex flex-col px-[18px] pt-[14px] pb-4 bg-montela-sage text-montela-cream text-center border border-montela-sage
+
+.card-preview__title
+  @apply font-primary font-bold tracking-[0.5px] text-[20px] leading-[32px]
+
+.card-preview__more
+  @apply grid grid-rows-[1fr] transition-[grid-template-rows] duration-[400ms] ease-out motion-reduce:transition-none
+
+.card-preview__more-inner
+  @apply min-h-0 overflow-hidden
+
+// Figma "Text" on desktop; the house body sizes below.
+.card-preview__text
+  @apply font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[20px] xl:leading-[32px] line-clamp-5
+
+.card-preview__panel .card-preview__btn
+  @apply flex mt-[26px]
+
+// The ghost button is 34px tall below desktop elsewhere; here it is 44.
+.card-preview__btn .btn__label
+  @apply py-[13px]
+
+.card-preview__btn .btn__icon
+  @apply w-11
+
+@media (hover: hover) and (pointer: fine)
+  .card-preview:not(:hover):not(:focus-within) .card-preview__more
+    @apply grid-rows-[0fr]

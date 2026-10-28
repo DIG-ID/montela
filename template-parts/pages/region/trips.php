@@ -4,10 +4,7 @@
  * slider of day trip cards. Four cards in view on desktop, one on tablet
  * and mobile; arrows below.
  *
- * Card (Figma "Card Offers and Packages" 5470:17071): the card image with
- * a sage panel at the bottom — title and "learn more" when closed; on hover
- * or keyboard focus the panel grows over the photo and shows the excerpt.
- * Always open on touch screens (_region.sass).
+ * Cards: components/card-preview.php (closed, they open on hover).
  *
  * Content: the Tagesausflüge post type — the ones picked in the "Day trips"
  * relationship, in that order, or all of them (oldest first) when it is
@@ -83,55 +80,9 @@ $trips_swiper   = array(
 
 				<div class="swiper section-trips__swiper" data-swiper="<?php echo esc_attr( wp_json_encode( $trips_swiper ) ); ?>">
 					<div class="swiper-wrapper">
-						<?php
-						foreach ( $trips_ids as $trips_id ) :
-							$trips_name    = get_the_title( $trips_id );
-							$trips_excerpt = has_excerpt( $trips_id ) ? get_the_excerpt( $trips_id ) : '';
-							$trips_image   = get_post_thumbnail_id( $trips_id );
-							?>
+						<?php foreach ( $trips_ids as $trips_id ) : ?>
 							<div class="swiper-slide section-trips__slide">
-								<article class="trip-card">
-									<?php if ( $trips_image ) : ?>
-										<figure class="trip-card__photo">
-											<?php
-											echo wp_get_attachment_image(
-												$trips_image,
-												'large',
-												false,
-												array(
-													'class' => 'trip-card__img',
-													'alt' => '',
-													'sizes' => '(min-width: 1280px) 19vw, (min-width: 768px) 468px, 100vw',
-												)
-											);
-											?>
-										</figure>
-									<?php endif; ?>
-
-									<div class="trip-card__panel">
-										<h3 class="trip-card__title"><?php echo esc_html( $trips_name ); ?></h3>
-										<?php if ( $trips_excerpt ) : ?>
-											<div class="trip-card__more">
-												<div class="trip-card__more-inner">
-													<p class="trip-card__text"><?php echo esc_html( $trips_excerpt ); ?></p>
-												</div>
-											</div>
-										<?php endif; ?>
-										<?php
-										get_template_part(
-											'template-parts/components/button',
-											null,
-											array(
-												'url'     => get_permalink( $trips_id ),
-												'title'   => __( 'Learn more', 'montela' ),
-												'context' => $trips_name,
-												'style'   => 'ghost',
-												'class'   => 'trip-card__btn',
-											)
-										);
-										?>
-									</div>
-								</article>
+								<?php get_template_part( 'template-parts/components/card-preview', null, array( 'post_id' => $trips_id ) ); ?>
 							</div>
 						<?php endforeach; ?>
 					</div>
