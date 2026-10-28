@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.16.0] — 2026-10-28
+
+### Added
+- Erkunden page: region section (title, text, button and up to three photos — the large one on desktop only), activities and a box text section.
+- Box text module: a framed block with a small italic title, a title and a text, reusable on any page.
+
 ## [1.15.0] — 2026-10-28
 
 ### Added

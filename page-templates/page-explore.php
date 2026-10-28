@@ -20,6 +20,9 @@ if ( have_posts() ) :
 		do_action( 'before_main_content' );
 			get_template_part( 'template-parts/modules/hero' );
 			get_template_part( 'template-parts/modules/intro' );
+			get_template_part( 'template-parts/pages/explore/region' );
+			get_template_part( 'template-parts/modules/activities' );
+			get_template_part( 'template-parts/modules/box-text' );
 		do_action( 'after_main_content' );
 	endwhile;
 endif;

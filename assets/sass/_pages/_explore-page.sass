@@ -1,0 +1,57 @@
+// Erkunden (page-templates/page-explore.php). Named explore-page to keep it
+// apart from the Explore module (_modules/_explore.sass).
+
+// -- Region section (template-parts/pages/explore/region.php) --
+// Figma: desktop 5767:15887, tablet 5767:15926, mobile 5550:10758.
+//
+//   Mobile   stacked, 64px apart: title, text + button (24px), photo 1,
+//            photo 2 (both 699:600). The large photo is desktop only.
+//   Tablet   two columns 19px apart, rows 44px apart: title across both;
+//            text + button (40px) beside photo 1 (340×251); photo 2
+//            (344×246) below on the left. .section-region__copy turns into
+//            `display: contents` so its title and body sit in the grid.
+//   Desktop  columns 595 / 1072 from grid column 2 (x 203 at 1920 —
+//            proportional below that): the copy bottom-aligned beside the
+//            large photo (1072×664); 77px below, photo 2 (540×455) on the
+//            left and photo 1 (746×629) 20px into the right column, 199px
+//            lower. Title → text → button 71px apart. The title box is 800px
+//            wide in Figma (its lines reach the photo's edge): it may run
+//            16px past its column.
+//
+// Spacing: none above (the intro closes with its own padding); 192px below
+// on tablet and desktop, 128 on mobile — collapsing with the activities
+// module's own top margin (111 / 192 / 183).
+// Text: 18/25 on mobile too (the frame reuses the homepage's apartments
+// block, which is 18/25 on mobile), 20/32 on desktop.
+.section-region
+  @apply mb-[128px] md:mb-[192px] text-montela-walnut
+
+.section-region__grid
+  @apply flex flex-col gap-16 md:grid md:grid-cols-2 md:gap-x-[19px] md:gap-y-[44px] xl:grid-cols-[595fr_1072fr] xl:gap-x-0 xl:gap-y-[77px] xl:pl-[calc((100%-220px)/12+20px)]
+
+.section-region__copy
+  @apply flex flex-col gap-16 md:contents xl:flex xl:col-start-1 xl:row-start-1 xl:self-end xl:gap-[71px]
+
+.section-region__title
+  @apply md:col-span-2 xl:mr-[-16px]
+
+.section-region__body
+  @apply flex flex-col items-start gap-6 md:gap-10 xl:gap-[71px]
+
+.section-region__copy .section-region__text
+  @apply text-[18px] leading-[25px] xl:text-[20px] xl:leading-[32px] md:max-w-[344px] xl:max-w-[440px]
+
+.section-region__photo
+  @apply m-0 overflow-hidden
+
+.section-region__img
+  @apply w-full h-full object-cover
+
+.section-region__photo--large
+  @apply hidden xl:block xl:col-start-2 xl:row-start-1 xl:aspect-[1072/664]
+
+.section-region__photo--photo1
+  @apply aspect-[699/600] md:aspect-[340/251] xl:col-start-2 xl:row-start-2 xl:ml-5 xl:mt-[199px] xl:w-[69.6%] xl:aspect-[746/629]
+
+.section-region__photo--photo2
+  @apply aspect-[699/600] md:aspect-[344/246] md:col-start-1 xl:row-start-2 xl:w-[90.8%] xl:aspect-[540/455]
