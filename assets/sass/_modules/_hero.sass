@@ -6,7 +6,10 @@
 //   - title: .title-h1 sizes on mobile and tablet; on desktop every line is
 //     123/111. Line 3 is italic on every breakpoint.
 //   - each line's desktop position comes from the editor (left / indented
-//     128px / centre / right); mobile and tablet are always left-aligned.
+//     128px / custom indent in px / centre / right); mobile and tablet are
+//     always left-aligned.
+//   - "Full screen" (.section-hero--full) fills the screen on desktop too,
+//     like the homepage (e.g. Erkunden, Figma 5426:16171).
 //
 // Homepage exception (.section-hero--home — Figma hero-desktop 5594:16771):
 // full screen on desktop too, line 1 keeps the .title-h1 desktop size
@@ -44,15 +47,23 @@
 .section-hero__line--indent
   @apply xl:pl-[128px]
 
+// Custom: the editor's indent in px, set inline as --hero-indent.
+.section-hero__line--custom
+  @apply xl:pl-[var(--hero-indent,128px)]
+
 .section-hero__line--center
   @apply xl:text-center
 
 .section-hero__line--right
   @apply xl:text-right
 
-// -- Homepage exception ($args['variant'] = 'home') --
-.section-hero--home
+// -- Full screen on desktop: the homepage always, other pages when the
+// editor turns "Full screen" on (.section-hero--full). --
+.section-hero--home,
+.section-hero--full
   @apply xl:min-h-[100svh]
+
+// -- Homepage exception ($args['variant'] = 'home') --
 
 .section-hero--home .section-hero__line--1
   @apply xl:text-[150px] xl:leading-[125px]

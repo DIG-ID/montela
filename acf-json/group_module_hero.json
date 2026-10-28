@@ -52,6 +52,28 @@
             "allow_in_bindings": 0
         },
         {
+            "key": "field_module_hero_fullscreen",
+            "label": "Full screen",
+            "name": "section_hero_fullscreen",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Desktop: full screen instead of 900px. The homepage is always full screen.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_module_hero_title_line_1",
             "label": "Title — line 1",
             "name": "section_hero_title_line_1",
@@ -61,7 +83,7 @@
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "70",
+                "width": "55",
                 "class": "",
                 "id": ""
             },
@@ -79,7 +101,7 @@
             "name": "section_hero_title_line_1_align",
             "aria-label": "",
             "type": "button_group",
-            "instructions": "Desktop only.",
+            "instructions": "Desktop only. Custom: set the indent.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -91,6 +113,7 @@
             "choices": {
                 "left": "Left",
                 "indent": "Indented",
+                "custom": "Custom",
                 "center": "Centre",
                 "right": "Right"
             },
@@ -99,6 +122,38 @@
             "allow_null": 0,
             "allow_in_bindings": 0,
             "layout": "horizontal"
+        },
+        {
+            "key": "field_module_hero_title_line_1_indent",
+            "label": "Line 1 — indent",
+            "name": "section_hero_title_line_1_indent",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "In px, from the left edge.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_module_hero_title_line_1_align",
+                        "operator": "==",
+                        "value": "custom"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "15",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "default_value": 128,
+            "min": 0,
+            "max": 1400,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "px"
         },
         {
             "key": "field_module_hero_title_line_2",
@@ -110,7 +165,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "70",
+                "width": "55",
                 "class": "",
                 "id": ""
             },
@@ -128,7 +183,7 @@
             "name": "section_hero_title_line_2_align",
             "aria-label": "",
             "type": "button_group",
-            "instructions": "Desktop only.",
+            "instructions": "Desktop only. Custom: set the indent.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -140,6 +195,7 @@
             "choices": {
                 "left": "Left",
                 "indent": "Indented",
+                "custom": "Custom",
                 "center": "Centre",
                 "right": "Right"
             },
@@ -148,6 +204,38 @@
             "allow_null": 0,
             "allow_in_bindings": 0,
             "layout": "horizontal"
+        },
+        {
+            "key": "field_module_hero_title_line_2_indent",
+            "label": "Line 2 — indent",
+            "name": "section_hero_title_line_2_indent",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "In px, from the left edge.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_module_hero_title_line_2_align",
+                        "operator": "==",
+                        "value": "custom"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "15",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "default_value": 128,
+            "min": 0,
+            "max": 1400,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "px"
         },
         {
             "key": "field_module_hero_title_line_3",
@@ -159,7 +247,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "70",
+                "width": "55",
                 "class": "",
                 "id": ""
             },
@@ -177,7 +265,7 @@
             "name": "section_hero_title_line_3_align",
             "aria-label": "",
             "type": "button_group",
-            "instructions": "Desktop only.",
+            "instructions": "Desktop only. Custom: set the indent.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -189,6 +277,7 @@
             "choices": {
                 "left": "Left",
                 "indent": "Indented",
+                "custom": "Custom",
                 "center": "Centre",
                 "right": "Right"
             },
@@ -197,6 +286,38 @@
             "allow_null": 0,
             "allow_in_bindings": 0,
             "layout": "horizontal"
+        },
+        {
+            "key": "field_module_hero_title_line_3_indent",
+            "label": "Line 3 — indent",
+            "name": "section_hero_title_line_3_indent",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "In px, from the left edge.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_module_hero_title_line_3_align",
+                        "operator": "==",
+                        "value": "custom"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "15",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "default_value": 128,
+            "min": 0,
+            "max": 1400,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "px"
         }
     ],
     "location": [
@@ -220,6 +341,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793106261,
+    "modified": 1793180668,
     "acfml_field_group_mode": "advanced"
 }

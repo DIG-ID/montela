@@ -41,7 +41,7 @@ $cta_label_close = sprintf( __( 'Close: %s', 'montela' ), $cta_name );
 <aside class="sticky-cta" aria-label="<?php echo esc_attr( $cta_name ); ?>" data-sticky-cta>
 	<div id="sticky-cta-panel" class="sticky-cta__panel">
 		<?php if ( $cta_title ) : ?>
-			<p class="sticky-cta__title"><?php echo esc_html( $cta_title ); ?></p>
+			<h2 class="sticky-cta__title"><?php echo esc_html( $cta_title ); ?></h2>
 		<?php endif; ?>
 
 		<?php if ( $cta_text ) : ?>

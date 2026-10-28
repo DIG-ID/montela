@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.15.0] — 2026-10-28
+
+### Added
+- Erkunden (Explore) page template, with the hero and intro sections.
+- Hero: a "Full screen" option, so pages other than the homepage can fill the screen on desktop, and a "Custom" position with an indent in px for each title line.
+
+### Changed
+- Sticky call-to-action: its title is now a heading (h2).
+
 ## [1.14.0] — 2026-10-28
 
 ### Added
