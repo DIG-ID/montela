@@ -12,11 +12,12 @@
  *     );
  *
  * Arguments ($args):
- * - url    (string) Required. Link URL.
- * - title  (string) Required. Link text.
+ * - url     (string) Required. Link URL.
+ * - title   (string) Required. Link text.
  * - target  (string) Optional. '_blank' opens in a new tab.
- * - style   (string) Optional. 'primary' (default), 'secondary', 'outline' or
- *                    'ghost' (cream outline, for sage backgrounds).
+ * - style   (string) Optional. 'primary' (default), 'secondary', 'outline',
+ *                    'ghost' (cream outline, for sage backgrounds) or 'back'
+ *                    (sage, arrow on the left pointing back).
  * - class   (string) Optional. Extra classes for the link.
  * - context (string) Optional. Screen-reader-only words after the title, for
  *                    links that repeat on a page ("Learn more" + card title).
@@ -35,7 +36,7 @@ if ( ! $btn_url || ! $btn_title ) {
 }
 
 $btn_target  = ! empty( $args['target'] ) ? $args['target'] : '';
-$btn_style   = ( ! empty( $args['style'] ) && in_array( $args['style'], array( 'primary', 'secondary', 'outline', 'ghost' ), true ) ) ? $args['style'] : 'primary';
+$btn_style   = ( ! empty( $args['style'] ) && in_array( $args['style'], array( 'primary', 'secondary', 'outline', 'ghost', 'back' ), true ) ) ? $args['style'] : 'primary';
 $btn_class   = 'btn btn-' . $btn_style . ( ! empty( $args['class'] ) ? ' ' . $args['class'] : '' );
 $btn_context = ! empty( $args['context'] ) ? $args['context'] : '';
 ?>

@@ -4,7 +4,8 @@
 //   - full screen on mobile and tablet (frames 852 / 1160 tall), 900px on
 //     desktop. svh, so mobile browser bars don't push the bottom off screen.
 //   - title: .title-h1 sizes on mobile and tablet; on desktop every line is
-//     123/111. Line 3 is italic on every breakpoint.
+//     123/111. The last line (3, or 2 with two lines) is italic on every
+//     breakpoint (.section-hero__line--last).
 //   - each line's desktop position comes from the editor (left / indented
 //     128px / custom indent in px / centre / right); mobile and tablet are
 //     always left-aligned.
@@ -13,7 +14,7 @@
 //
 // Homepage exception (.section-hero--home — Figma hero-desktop 5594:16771):
 // full screen on desktop too, line 1 keeps the .title-h1 desktop size
-// (150/125), line 3 italic on desktop only.
+// (150/125), the last line italic on desktop only.
 
 .section-hero
   @apply relative flex items-center min-h-[100svh] xl:min-h-[900px] overflow-hidden text-montela-cream
@@ -40,7 +41,7 @@
 .section-hero__line
   @apply block xl:text-[123px] xl:leading-[111px]
 
-.section-hero__line--3
+.section-hero__line--last
   @apply italic
 
 // -- Desktop position, set per line in the editor --
@@ -68,13 +69,13 @@
 .section-hero--home .section-hero__line--1
   @apply xl:text-[150px] xl:leading-[125px]
 
-.section-hero--home .section-hero__line--3
+.section-hero--home .section-hero__line--last
   @apply not-italic xl:italic
 
 // -- Homepage title animation (desktop only) --
 // Figma "Home_desktop_after animation" 5426:5266. The big title holds for
 // 3s, then each line is wiped away to the left — a wall per line, 150ms
-// apart. The small title (the real <h1>, 70/65, line 3 italic) then comes
+// apart. The small title (the real <h1>, 70/65, last line italic) then comes
 // in the same way in the bottom-left corner, 62px above the bottom edge.
 // Pure CSS, so it starts on page load: animations.js is delayed by WP
 // Rocket until the first interaction.
@@ -93,7 +94,7 @@
 .section-hero--home .section-hero__title--end .section-hero__line
   @apply text-[70px] leading-[65px] not-italic
 
-.section-hero--home .section-hero__title--end .section-hero__line--3
+.section-hero--home .section-hero__title--end .section-hero__line--last
   @apply italic
 
 .section-hero__line--1

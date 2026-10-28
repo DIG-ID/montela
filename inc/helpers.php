@@ -78,3 +78,32 @@ if ( ! function_exists( 'montela_get_season_activities' ) ) :
 		return $limit > 0 ? array_slice( $ids, 0, $limit ) : $ids;
 	}
 endif;
+
+if ( ! function_exists( 'montela_get_page_by_template' ) ) :
+	/**
+	 * Returns the first published page that uses a page template, in the
+	 * current language — e.g. the offers overview, for the "back" link of
+	 * an offer. Lets the link survive slug changes and translations.
+	 *
+	 * @since 1.20.0
+	 *
+	 * @param string $template Template file, relative to the theme: 'page-templates/page-offers.php'.
+	 * @return WP_Post|null The page, or null when none uses the template.
+	 */
+	function montela_get_page_by_template( $template ) {
+		$pages = get_posts(
+			array(
+				'post_type'        => 'page',
+				'post_status'      => 'publish',
+				'posts_per_page'   => 1,
+				'orderby'          => 'menu_order',
+				'order'            => 'ASC',
+				'suppress_filters' => false, // Let WPML keep the current language.
+				'meta_key'         => '_wp_page_template', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+				'meta_value'       => $template, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
+			)
+		);
+
+		return $pages ? $pages[0] : null;
+	}
+endif;

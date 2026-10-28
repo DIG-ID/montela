@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.20.0] — 2026-10-28
+
+### Added
+- Angebote & Packages page template, with the hero and intro sections.
+- Offers post type ("Angebote & Packages"), under /angebote-packages/{offer}/, and its single page: hero, a "back to the overview" link and an intro with a price box and booking button.
+
+### Changed
+- Hero: the last title line is now the italic one, also when there are only two lines.
+
 ## [1.19.0] — 2026-10-28
 
 ### Added

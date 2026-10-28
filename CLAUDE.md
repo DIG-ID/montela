@@ -122,6 +122,7 @@ volta no JSON; depois de um deploy, fazer Sync.
 | Post type | JSON | URL | Suporta | Notas |
 |-----------|------|-----|---------|-------|
 | `activity` — Activities | `post_type_activity.json` | `/erkunden/aktivitaeten/{slug}/` (sem arquivo) — por baixo da página Aktivitäten. O slug repete o caminho da página: se a Erkunden ou a Aktivitäten mudarem de slug, mudar também aqui. Noutras línguas, traduzir o slug no WPML (Post Types Translation). | título, imagem destacada ("Card image"), excerto, revisões | Sem editor de blocos: o conteúdo do single é feito de módulos ACF. Lido por uma secção da homepage. |
+| `offer` — Angebote & Packages | `post_type_offer.json` | `/angebote-packages/{slug}/` (sem arquivo) — por baixo da página Angebote & Packages, como as activities | título, imagem destacada ("Card image"), excerto, revisões | Single: `single-offer.php` (hero + `template-parts/offer/intro.php`). O slug repete o caminho da página; noutras línguas, traduzir no WPML. Os cards da página de listagem são feitos a partir dos posts (por fazer). |
 | `testimonial` — Testimonials | `post_type_testimonial.json` | nenhum (não público: sem single nem arquivo) | título, revisões | Título = linha do autor ("Martin Ahrens 5* bei Google"); a quote é o campo `testimonial_quote` (grupo `group_cpt_testimonial`). Lido pelo módulo Testimonials. |
 
 ### Taxonomias
@@ -131,6 +132,14 @@ volta no JSON; depois de um deploy, fazer Sync.
 | `season` — Seasons | `taxonomy_season.json` | `activity` | Hierárquica (checkboxes no editor), sem URLs públicos, coluna na lista do admin. Termos **`sommer`** e **`winter`** — os slugs são usados no código (filtro Sommer/Winter); criar em cada ambiente, não renomear os slugs. Uma actividade pode ter as duas. |
 
 ### Templates
+- **Single Offer** (`single-offer.php`, CPT `offer`) — em curso: hero (módulo) + "Zurück zur Übersicht" (vai para a página com o template das ofertas — `montela_get_page_by_template()`, `inc/helpers.php`) + intro própria (título, caixa de preço, texto). Campos no grupo `group_cpt_offer`. Figma: desktop
+  [5426:14430](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-14430&m=dev),
+  tablet [5426:17370](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-17370&m=dev),
+  mobile [5426:16423](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-16423&m=dev).
+- **Angebote & Packages / Offers** (`page-templates/page-offers.php`, "Offers Template"; `/angebote-packages/`) — em curso: hero (Full screen) + intro. Campos no grupo `group_page_offers`. Figma: desktop
+  [5426:14165](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-14165&m=dev),
+  tablet [5426:18068](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-18068&m=dev),
+  mobile [5426:17172](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-17172&m=dev).
 - **Aktivitäten / Activities** (`page-templates/page-activities.php`, "Activities Template"; subpágina da Erkunden, `/erkunden/aktivitaeten/` — os singles do CPT `activity` ficam por baixo dela) — hero, intro, secções Sommer e Winter, "Saas-Grund als Ausgangspunkt" (Text with photos, 1 foto). A escolha das activities por estação é a função `montela_get_season_activities()` (`inc/helpers.php`), partilhada com o módulo Activities. Campos no grupo `group_page_activities`. Figma: desktop
   [5426:14590](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-14590&m=dev),
   tablet [5426:17294](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-17294&m=dev),
@@ -174,7 +183,7 @@ no clone e passar o prefixo ao módulo:
 
 | Grupo | Módulo | Campos |
 |-------|--------|--------|
-| `group_module_hero` — Module — Hero | `modules/hero.php` | `section_hero_image` (image, ID), `section_hero_video` (file mp4, URL, opcional), `section_hero_fullscreen` (true/false — ecrã inteiro em desktop em vez de 900px), `section_hero_title_line_{1,2,3}` (text) + `section_hero_title_line_{1,2,3}_align` (button group: left / indent 128px / custom / center / right — posição em desktop) + `section_hero_title_line_{1,2,3}_indent` (number, px, só com custom). Padrão = 900px em desktop; a homepage passa `array( 'variant' => 'home' )` (sempre ecrã inteiro, linha 1 maior). |
+| `group_module_hero` — Module — Hero | `modules/hero.php` | `section_hero_image` (image, ID), `section_hero_video` (file mp4, URL, opcional), `section_hero_fullscreen` (true/false — ecrã inteiro em desktop em vez de 900px), `section_hero_title_line_{1,2,3}` (text) + `section_hero_title_line_{1,2,3}_align` (button group: left / indent 128px / custom / center / right — posição em desktop) + `section_hero_title_line_{1,2,3}_indent` (number, px, só com custom). A última linha preenchida é a itálica. Padrão = 900px em desktop; a homepage passa `array( 'variant' => 'home' )` (sempre ecrã inteiro, linha 1 maior). |
 | `group_module_intro` — Module — Intro | `modules/intro.php` | `section_intro_title` (textarea, `new_lines: br`), `section_intro_text` (textarea) |
 | `group_module_explore` — Module — Explore | `modules/explore.php` | `section_explore_title` (text), `section_explore_image` (image), `section_explore_text` (textarea), `section_explore_button` (link), `section_explore_slides` (gallery) |
 | `group_module_image_band` — Module — Image band | `modules/image-band.php` | `section_image_band_image` (image) |
@@ -194,6 +203,8 @@ tab clona o grupo do módulo (Seamless, sem prefixo).
 | `group_page_explore` — Page — Explore | `page-templates/page-explore.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Region (campos próprios, `pages/explore/region.php`: `section_region_title` (textarea, `br`), `_text`, `_button`, `_image_large` (só desktop), `_image_1`, `_image_2`) · Activities → `group_module_activities` · Box text → `group_module_box_text` |
 | `group_page_region` — Page — Our Region | `page-templates/page-region.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Saas-Grund (campos próprios, `pages/region/place.php`: `section_place_title`, `_text`, `_image_1`, `_image_2`, `_items` repeater `icon` + `title`) · Highlights → `group_module_cards_icon` · SaastalCard → `group_module_box_text` (style `band`) · Activities → `group_module_activities` |
 | `group_page_activities` — Page — Activities | `page-templates/page-activities.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Summer / Winter (campos próprios, `pages/activities/season.php` chamado duas vezes com `array( 'season' => 'summer' \| 'winter' )`: `section_{summer,winter}_eyebrow`, `_title`, `_text`, `_activities` — relationship sem máximo, filtrado pela estação; vazio = todas da estação; mais de 4 = slider em páginas de 4) · Saas-Grund → `group_module_text_photos` |
+| `group_page_offers` — Page — Offers | `page-templates/page-offers.php` | Hero → `group_module_hero` · Intro → `group_module_intro` |
+| `group_cpt_offer` — Offer | `single-offer.php` (post type `offer`) | Hero → `group_module_hero` · Intro (campos próprios, `template-parts/offer/intro.php`: `section_offer_intro_title` (textarea, `br`), `section_offer_intro_text` (textarea, `wpautop`), `section_offer_price` ("CHF 799"; o "Ab" é string do tema), `section_offer_price_unit` ("/ Person"), `section_offer_booking` (link; vazio = `header_booking_link` das Theme Settings)) |
 | `group_cpt_activity` — Activity | `single-activity.php` (post type `activity`) | Hero → `group_module_hero` · Intro → `group_module_intro` |
 
 Secções só de uma página têm os campos **directamente no grupo da página** (no

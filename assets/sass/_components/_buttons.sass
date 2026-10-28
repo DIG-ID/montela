@@ -90,6 +90,27 @@
   &:active
     @apply text-montela-mustard
 
+// "Back" — sage, the arrow box on the left pointing back, 58px tall
+// (offer single "Zurück zur Übersicht", Figma 5426:14464). Hover as
+// primary/secondary.
+.btn-back
+  @apply flex-row-reverse text-montela-cream
+  .btn__label,
+  .btn__icon
+    @apply bg-montela-sage
+  .btn__label
+    @apply min-w-[237px] py-[21px]
+  .btn__icon
+    @apply w-11
+    &::before
+      @apply rotate-180
+  &:hover,
+  &:active
+    @apply text-montela-walnut
+    .btn__label,
+    .btn__icon
+      @apply bg-montela-mustard
+
 // -- Icon-only button ----------------------------------------------------------
 // 50px sage square; the icon turns mustard on hover. Pick the icon with a
 // modifier: --arrow-right (e.g. slider next), --arrow-down (scroll cue),

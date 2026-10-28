@@ -1,0 +1,56 @@
+// Single Offer (single-offer.php, template-parts/offer/).
+
+// -- Back link + intro (template-parts/offer/intro.php) --
+// Figma: desktop 5778:17177 (back link 5426:14464), tablet 5607:23300,
+// mobile 5607:23443.
+//
+// Back link ("Zurück zur Übersicht", .btn-back): 102 / 94 / 44px below the
+// hero (mobile / tablet / desktop); the intro's content starts 70px below it
+// on mobile and tablet, 192px on desktop.
+//
+//   Mobile   price box (stacked: amount, then the button), title, text —
+//            44px apart; text 20/30 ("Mobile/Intro text")
+//   Tablet   the same order, price box in a row (amount left, button right)
+//   Desktop  title (.title-intro) and, 50px below, the price box on columns
+//            2–6; the text on columns 8–11, level with the title
+//
+// Price box: cream with a soft right/bottom shadow; "Ab" over the amount
+// (30/32) and its unit (20/32), all bold and uppercase.
+.offer-back
+  @apply mt-[102px] md:mt-[94px] xl:mt-11
+
+.section-offer-intro
+  @apply pt-[70px] pb-[128px] md:pb-[192px] xl:pt-[192px] text-montela-walnut
+
+.section-offer-intro__grid
+  @apply gap-y-11 xl:gap-y-[50px]
+
+.section-offer-intro__title
+  @apply order-2 col-span-full xl:order-none xl:col-start-2 xl:col-span-5 xl:row-start-1
+
+.section-offer-intro__price
+  @apply order-1 col-span-full flex flex-col items-start gap-[21px] pt-[22px] pb-[21px] px-3 bg-montela-cream border border-montela-cream shadow-[4px_0_4px_rgba(0,0,0,0.25),0_4px_4px_rgba(0,0,0,0.25)] md:flex-row md:items-center md:justify-between md:h-[100px] md:py-0 md:pl-6 md:pr-[21px] xl:order-none xl:col-start-2 xl:col-span-5 xl:row-start-2 xl:pl-[26px] xl:pr-[23px]
+
+.section-offer-intro__amount
+  @apply font-primary font-bold tracking-[0.5px] uppercase text-[20px] leading-[32px]
+
+.section-offer-intro__from
+  @apply block
+
+.section-offer-intro__value
+  @apply text-[30px]
+
+// Two classes: .btn__label's own padding is emitted after this partial.
+.section-offer-intro__price .btn__label
+  @apply min-w-[219px] md:min-w-[237px]
+
+.section-offer-intro__text
+  @apply order-3 col-span-full md:max-w-[579px] xl:order-none xl:col-start-8 xl:col-span-4 xl:row-start-1 xl:row-span-2 xl:self-start xl:max-w-none
+
+// Two classes: .body-text is emitted after this partial.
+.section-offer-intro__grid .section-offer-intro__text
+  @apply text-[20px] leading-[30px] md:text-[18px] md:leading-[25px] xl:text-[20px] xl:leading-[32px]
+  p
+    @apply mb-0
+  p + p
+    @apply mt-[30px] md:mt-[25px] xl:mt-8
