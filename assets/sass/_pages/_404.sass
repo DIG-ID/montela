@@ -1,1 +1,43 @@
-// 404 page styles
+// 404 page (404.php). Figma "404": desktop 5426:5441, tablet 5617:25900,
+// mobile 5617:25860.
+//
+// No hero: the header sits on the cream page, drawn dark (`header-dark`,
+// _layout/_header.sass). Under it, a walnut frame — the container's width
+// (700px on tablet in Figma, the container's 706 here), 900px tall (576 on
+// mobile), from 148px down (124 on mobile) — holding, centred: the big
+// "404" (FreightBig 192 / 320 / 400px), the title and text (14/22, 18/25,
+// 35/55 bold over 20/32; 330 / 420 / 652px wide, one empty line between)
+// and the walnut button with a wide label, about 100–120px apart.
+//
+// The mountains line drawing (the intro's, assets/svg/mountains.svg) runs
+// behind, scaled to 3148×712 and anchored 468px left of the page and 240px
+// down on every breakpoint, as in the three frames.
+//
+// Below: the footer's booking box, 12px under the frame on mobile, 20 on
+// tablet, touching it on desktop.
+.section-404
+  @apply relative overflow-hidden pt-[124px] mb-3 text-montela-walnut md:pt-[148px] md:mb-5 xl:mb-0
+  background: url("../../svg/mountains.svg") no-repeat -468px 240px / 3148px 712px
+
+.section-404__frame
+  @apply flex flex-col items-center justify-center min-h-[576px] px-5 py-12 border border-montela-walnut text-center md:min-h-[900px]
+
+// Two classes for the code: .sr-only text sits inside it.
+.section-404__code
+  @apply font-secondary font-medium tracking-[3px] text-[192px] leading-[0.75] md:text-[320px] xl:text-[400px]
+
+.section-404__copy
+  @apply max-w-[330px] mt-[100px] font-primary tracking-[0.5px] md:max-w-[420px] md:mt-[110px] xl:max-w-[652px]
+
+.section-404__title
+  @apply mb-[22px] font-bold text-[14px] leading-[22px] md:mb-[25px] md:text-[18px] md:leading-[25px] xl:mb-[32px] xl:text-[35px] xl:leading-[55px]
+
+.section-404__text
+  @apply font-light text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[20px] xl:leading-[32px]
+
+// The wide label of the frames (115px on each side; less on mobile).
+// Two classes: .btn__label's padding is set in _buttons.sass.
+.section-404 .section-404__btn
+  @apply max-w-full mt-[70px] md:mt-[110px] xl:mt-[120px]
+  .btn__label
+    @apply px-6 whitespace-normal md:px-[115px] md:whitespace-nowrap

@@ -169,3 +169,41 @@
 
 .header-main__nav
   @apply transition-[opacity,visibility] duration-300 ease-out
+
+// -- Dark header ---------------------------------------------------------------
+// Pages with no hero under the header (the 404 page — `header-dark` on
+// <body>, set by montela_header_dark() in inc/theme-setup.php): walnut on
+// cream, as in the 404 frames (desktop 5426:5441). The bordered menu, the
+// language box and the toggle turn walnut; the booking button becomes the
+// walnut button (cream label and arrow); the logo swaps to its walnut file.
+// While the mega menu (sage) is open or closing, the cream header is back.
+.site-logo__img--dark
+  @apply hidden
+
+.header-dark:not(.is-menu-open):not(.is-menu-closing)
+  .header-main
+    @apply text-montela-walnut
+  .site-logo__img
+    @apply hidden
+  .site-logo__img--dark
+    @apply block
+  .header-main__menu,
+  .header-main__lang,
+  .header-main__toggle
+    @apply border-montela-walnut
+  .header-main__toggle
+    @apply text-montela-walnut
+  .header-main__cta
+    @apply text-montela-cream
+    .header-main__cta-label,
+    .header-main__cta-icon
+      @apply bg-montela-walnut
+    &:hover
+      @apply text-montela-walnut
+      .header-main__cta-label,
+      .header-main__cta-icon
+        @apply bg-montela-mustard
+  .header-main__menu a:hover,
+  .header-main__lang:hover,
+  .header-main__toggle:hover
+    @apply text-montela-mustard

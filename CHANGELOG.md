@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.30.0] — 2026-10-29
+
+### Added
+- 404 page redesigned: a framed "404" with a short text and a button to the homepage, over the mountains drawing. Title, text and button label are edited in Theme Settings → 404.
+- Dark header (walnut on cream) for pages without a hero image — used on the 404 page.
+
 ## [1.29.1] — 2026-10-29
 
 ### Changed

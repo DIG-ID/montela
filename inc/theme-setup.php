@@ -92,3 +92,36 @@ function montela_lower_yoast_metabox_priority() {
 }
 
 add_filter( 'wpseo_metabox_prio', 'montela_lower_yoast_metabox_priority' );
+
+if ( ! function_exists( 'montela_header_dark' ) ) :
+	/**
+	 * Whether the header is drawn dark (walnut on cream) — for pages with no
+	 * hero image under it. For now only the 404 page.
+	 *
+	 * @since 1.30.0
+	 *
+	 * @return bool
+	 */
+	function montela_header_dark() {
+		return (bool) apply_filters( 'montela_header_dark', is_404() );
+	}
+endif;
+
+/**
+ * Adds the `header-dark` body class where the header is drawn dark
+ * (montela_header_dark(); styles in _layout/_header.sass).
+ *
+ * @since 1.30.0
+ *
+ * @param string[] $classes Body classes.
+ * @return string[]
+ */
+function montela_header_dark_body_class( $classes ) {
+	if ( montela_header_dark() ) {
+		$classes[] = 'header-dark';
+	}
+
+	return $classes;
+}
+
+add_filter( 'body_class', 'montela_header_dark_body_class' );

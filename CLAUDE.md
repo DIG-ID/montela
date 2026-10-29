@@ -163,6 +163,10 @@ volta no JSON; depois de um deploy, fazer Sync.
   [5426:15899](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-15899&m=dev),
   tablet [5426:17907](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-17907&m=dev),
   mobile [5426:17003](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-17003&m=dev).
+- **404** (`404.php`) — moldura walnut com o "404" grande, título, texto e botão para a homepage, sobre o desenho das montanhas. Sem hero: o cabeçalho fica escuro (walnut sobre creme — classe `header-dark` no `<body>`, `montela_header_dark()` em `inc/theme-setup.php`, filtrável; logo walnut `assets/svg/logo-montela-walnut.svg`); com o mega-menu aberto volta ao creme. Textos nas Theme Settings, tab 404 (vazios = strings do tema). Figma: desktop
+  [5426:5441](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-5441&m=dev),
+  tablet [5617:25900](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5617-25900&m=dev),
+  mobile [5617:25860](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5617-25860&m=dev).
 - **Angebote & Packages / Offers** (`page-templates/page-offers.php`, "Offers Template"; `/angebote-packages/`) — hero (Full screen), intro, cards das ofertas (uma linha por oferta activa — "Valid until" hoje ou depois, ou sem data — por ordem de "Valid from"; lado alterna em desktop), comparação de serviços. Campos no grupo `group_page_offers`. Figma: desktop
   [5426:14165](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-14165&m=dev),
   tablet [5426:18068](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-18068&m=dev),
@@ -264,6 +268,7 @@ próprio.
 | Sticky CTA | `template-parts/sticky-cta.php` (em todas as páginas, via `footer.php`) | `sticky_cta_title` (text), `sticky_cta_text` (textarea), `sticky_cta_link` (link). Sem título nem botão = não aparece. Botão fixo no canto inferior direito que abre o cartão; comportamento em `main.js`. |
 | Footer: Call to action | `template-parts/footer-main.php` | `footer_cta_title` (text, `<br>` permitido; vazio = sem caixa), `footer_cta_text`, `footer_cta_link` (link) |
 | Footer: Newsletter & contact | `template-parts/footer-main.php` | `footer_newsletter_text`, `footer_address` (textarea, `br`), `footer_phone`, `footer_email`, `socials_facebook`, `socials_instagram` (url) |
+| 404 | `404.php` | `error_404_title` (text), `error_404_text` (textarea), `error_404_button` (text — o rótulo; o botão vai sempre para a homepage). Vazios = strings do tema. |
 | Footer: Partner logos | `template-parts/footer-main.php` | `footer_partners` (repeater: `image` ID, `link`) |
 
 Menus: `main-menu` (header desktop), `mega-menu` (mega-menu; 2 níveis), `footer-menu` (footer, 4 por coluna), `legal-menu` (barra de copyright).
