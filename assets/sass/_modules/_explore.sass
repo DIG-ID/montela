@@ -52,3 +52,19 @@
 
 .section-explore__panel .btn
   @apply mt-6 md:mt-[30px] xl:mt-16
+
+// -- Last section, under the footer's booking box --
+// Figma (single Tagesausflug, "Before footer"): the section runs on behind
+// the footer's call-to-action box — 217px on desktop, 160 on tablet, none on
+// mobile. The box's height changes with the screen width, and the footer's
+// sage starts 60px (desktop) / 280px (tablet) above its bottom edge, so the
+// overlap is set to the deepest case — 320px desktop (box 372px tall at
+// 1280), 160 tablet: no cream strip shows between this section and the sage;
+// any extra runs behind the sage. The panel's bottom padding grows by the
+// same amount, so its content stays clear of the box.
+// The footer side: _footer.sass (.footer-main__body is positioned at
+// z-index 1, so it paints over this section's slider).
+body:has(.footer-main--has-cta) .main-content > .section-explore:last-child
+  @apply md:-mb-[160px] xl:-mb-[320px]
+  .section-explore__panel
+    @apply md:pb-[304px] xl:pb-[371px]

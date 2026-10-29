@@ -66,8 +66,11 @@
 
 // -- Sage body -----------------------------------------------------------------
 // Under the box, the sage starts 60px above the box's bottom edge.
+// Positioned, z-index 1, so it paints over a section that runs on behind
+// the footer (the Explore module as the last section, _explore.sass) —
+// including its Swiper, which swiper.css puts at z-index 1.
 .footer-main__body
-  @apply flex flex-col items-center bg-montela-sage text-montela-cream font-primary font-light text-[14px] leading-[22px] md:text-[15px] md:leading-[25px] tracking-[0.5px] pt-24 pb-24 md:pt-16 md:pb-0 xl:pt-[128px]
+  @apply relative z-[1] flex flex-col items-center bg-montela-sage text-montela-cream font-primary font-light text-[14px] leading-[22px] md:text-[15px] md:leading-[25px] tracking-[0.5px] pt-24 pb-24 md:pt-16 md:pb-0 xl:pt-[128px]
   // Sage behind the box: 60px up (desktop), 280px (tablet). The logo then
   // sits 128px (desktop) / 40px (tablet) below the box.
   .footer-main--has-cta &

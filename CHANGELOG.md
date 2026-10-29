@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.25.1] — 2026-10-29
+
+### Changed
+- Day trip pages: the last section (Explore) now runs on behind the footer's booking box, as in the design.
+
 ## [1.25.0] — 2026-10-29
 
 ### Added
