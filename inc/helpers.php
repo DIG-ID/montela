@@ -79,6 +79,33 @@ if ( ! function_exists( 'montela_get_season_activities' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'montela_get_activity_seasons' ) ) :
+	/**
+	 * Returns an activity's seasons as the Activities module's keys — the
+	 * Season terms 'sommer' / 'winter' become 'summer' / 'winter'. Lets an
+	 * activity single show only its own season's cards.
+	 *
+	 * @since 1.24.0
+	 *
+	 * @param int $post_id Activity ID.
+	 * @return string[] 'summer' and/or 'winter'; empty when it has no season.
+	 */
+	function montela_get_activity_seasons( $post_id ) {
+		$slugs = wp_get_post_terms( $post_id, 'season', array( 'fields' => 'slugs' ) );
+		if ( is_wp_error( $slugs ) ) {
+			return array();
+		}
+
+		// Translated terms keep their slug in WPML, so the slugs can be compared.
+		$keys = array(
+			'sommer' => 'summer',
+			'winter' => 'winter',
+		);
+
+		return array_values( array_intersect_key( $keys, array_flip( $slugs ) ) );
+	}
+endif;
+
 if ( ! function_exists( 'montela_get_page_by_template' ) ) :
 	/**
 	 * Returns the first published page that uses a page template, in the

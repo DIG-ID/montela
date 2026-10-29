@@ -1,0 +1,63 @@
+// Text with checklist module (template-parts/modules/text-list.php).
+// Figma (Single Activity): desktop 5787:18260 / 5787:18261, tablet
+// 5604:21813 / 5604:21814, mobile 5601:21532 / 5605:21865.
+//
+// One grid: the title on top, then the photo on one side and the text with
+// the checklist on the other (photo left by default, --right flips it).
+//
+//   Mobile   all stacked: title, 16px, text, 32px, photo (320:246), 32px,
+//            checklist
+//   Tablet   title, 44px, photo cols 1–3 (340:440) · text and checklist
+//            cols 4–6, 32px apart
+//   Desktop  title from col 2, 44px; then
+//            left   photo cols 2–7 (833:673 — 833 of the 900px span, kept
+//                   to the left) · text and checklist cols 8–11, 36px apart
+//            right  text and checklist cols 2–5 · photo cols 7–11 (693:722,
+//                   kept to the right)
+//            Figma narrows the right-hand variant's text to 440px; the code
+//            gives both variants the same 4 columns.
+//
+// Checklist: a mustard check (32px) 16px before each item, items 14px apart.
+// The second photo block on desktop stacks three photos in Figma; only the
+// top one is visible and tablet/mobile show one, so the field is one image.
+//
+// No top padding (the section above closes with its own); 128px below on
+// mobile, 192 from tablet.
+.section-text-list
+  @apply mb-[128px] md:mb-[192px] text-montela-walnut
+
+.section-text-list__grid
+  @apply gap-y-8 md:grid-rows-[auto_auto_1fr] xl:gap-y-9
+
+.section-text-list__title
+  @apply col-span-full -mb-4 md:row-start-1 md:mb-3 xl:col-start-2 xl:col-span-10 xl:mb-2
+
+.section-text-list__text,
+.section-text-list__items
+  @apply col-span-full md:col-start-4 md:col-span-3 xl:col-start-8 xl:col-span-4
+
+.section-text-list__text
+  @apply md:row-start-2
+
+.section-text-list__items
+  @apply flex flex-col gap-[14px] md:row-start-3
+  li
+    @apply flex gap-4
+    &::before
+      content: ""
+      @apply w-8 h-8 shrink-0 bg-montela-mustard
+      mask: url("../../svg/icons/check.svg") center / contain no-repeat
+
+.section-text-list__photo
+  @apply col-span-full m-0 aspect-[320/246] overflow-hidden md:col-start-1 md:col-span-3 md:row-start-2 md:row-span-2 md:aspect-[340/440] xl:col-start-2 xl:col-span-6 xl:w-[92.6%] xl:aspect-[833/673]
+
+.section-text-list__img
+  @apply w-full h-full object-cover
+
+// Photo on the right.
+.section-text-list--right
+  .section-text-list__text,
+  .section-text-list__items
+    @apply md:col-start-1 xl:col-start-2
+  .section-text-list__photo
+    @apply md:col-start-4 xl:col-start-7 xl:col-span-5 xl:justify-self-end xl:w-[92.8%] xl:aspect-[693/722]

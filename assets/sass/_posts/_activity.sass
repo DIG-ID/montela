@@ -1,0 +1,54 @@
+// Single Activity (single-activity.php).
+
+// -- Info cards (template-parts/activity/info.php) --
+// Figma "Activities all_flip over": desktop 5787:18947, tablet 5601:21318,
+// mobile 5601:21423. Cards: _components/_card-activity.sass.
+//
+// The Activities module (_modules/_activities.sass) mirrored on desktop,
+// with the same thin sage frame behind, its bottom edge measured from the
+// section's bottom so it lands inside the last row of cards.
+//
+//   Mobile   title 36px down, text and sage arrows 30px apart, no cream
+//            behind (the frame shows through, from 128px down); 133px
+//            below, one card at a time
+//   Tablet   copy 150px down, 608px wide, 44px apart, on cream (it breaks
+//            the frame's left line); 128px below, the cards 2 per row,
+//            20 / 22px apart; no arrows
+//   Desktop  cards on cols 1–6 from 220px down (403px, 94 / 51px apart —
+//            as the Activities section below, not the 20px gutter: both
+//            sections share the card size); copy on cols 9–12, 155px down,
+//            45px padding, on cream; no arrows
+//
+// Spacing: none above (Cards with icon closes with its own); 192px below
+// from tablet, 128 on mobile.
+.section-activity-info
+  @apply mb-[128px] md:mb-[192px] overflow-hidden text-montela-walnut
+
+// flow-root: the copy's top margin would otherwise collapse through this
+// box. isolate: the frame sits behind (negative z-index) inside it.
+.section-activity-info__inner
+  @apply relative isolate flow-root xl:grid xl:grid-cols-12 xl:gap-x-5 xl:items-start
+
+.section-activity-info__frame
+  @apply absolute -z-10 border border-montela-sage -left-[7px] -right-[7px] top-[128px] bottom-[207px] md:left-[19.14%] md:right-[0.43%] md:top-0 md:bottom-[165px] xl:left-[28.8%] xl:right-[17.22%] xl:bottom-[226px]
+
+// -- Copy --
+.section-activity-info__copy
+  @apply flex flex-col items-start gap-[30px] pt-9 md:mt-[150px] md:pt-0 md:gap-11 md:max-w-[608px] md:bg-montela-cream xl:col-start-9 xl:col-span-4 xl:row-start-1 xl:mt-[155px] xl:py-[45px] xl:gap-[46px] xl:max-w-none
+
+.section-activity-info__text
+  @apply md:max-w-[585px]
+
+// Two classes: .slider-nav (display: flex) is emitted after this partial.
+.section-activity-info__copy .section-activity-info__nav
+  @apply md:hidden
+
+// -- Cards --
+.section-activity-info__cards
+  @apply flex gap-5 mt-[133px] overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 md:gap-y-[22px] md:mt-32 md:overflow-visible xl:col-start-1 xl:col-span-6 xl:row-start-1 xl:mt-[220px] xl:gap-x-[94px] xl:gap-y-[51px]
+  scrollbar-width: none
+  &::-webkit-scrollbar
+    display: none
+
+.section-activity-info__cards .card-activity
+  @apply w-full shrink-0 snap-start

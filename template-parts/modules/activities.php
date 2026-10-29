@@ -17,6 +17,10 @@
  * - post_id (int|string) Optional. Where to read the fields from. Default: current post.
  * - prefix  (string)     Optional. Clone field prefix, when the clone uses
  *                        "Prefix field names" — e.g. 'activities_' for a clone named 'activities'.
+ * - seasons (string[])   Optional. Only these seasons ('summer', 'winter') — one
+ *                        season left means no switch. Default: both.
+ * - exclude (int)        Optional. An activity to leave out of the cards — the
+ *                        one being viewed, on an activity single.
  *
  * @package montela
  * @subpackage Section
@@ -33,6 +37,8 @@ $act_prefix = ! empty( $args['prefix'] ) ? $args['prefix'] : '';
 $act_title  = get_field( $act_prefix . 'section_activities_title', $act_ctx );
 $act_text   = get_field( $act_prefix . 'section_activities_text', $act_ctx );
 $act_button = get_field( $act_prefix . 'section_activities_button', $act_ctx );
+$act_only   = ! empty( $args['seasons'] ) ? (array) $args['seasons'] : array();
+$act_skip   = ! empty( $args['exclude'] ) ? (int) $args['exclude'] : 0;
 
 // Season => Relationship field, Season term slug and fallback label.
 $act_seasons = array(
@@ -48,6 +54,10 @@ $act_seasons = array(
 	),
 );
 
+if ( $act_only ) {
+	$act_seasons = array_intersect_key( $act_seasons, array_flip( $act_only ) );
+}
+
 foreach ( $act_seasons as $act_key => $act_season ) {
 	// Switch label: the Season term's name ("Sommer"), so it follows the
 	// site language and is translated with the taxonomy in WPML. The theme
@@ -60,11 +70,14 @@ foreach ( $act_seasons as $act_key => $act_season ) {
 		$act_seasons[ $act_key ]['label'] = $act_term->name;
 	}
 
-	$act_seasons[ $act_key ]['ids'] = montela_get_season_activities(
+	// One extra, in case the excluded activity is among them.
+	$act_ids = montela_get_season_activities(
 		get_field( $act_prefix . $act_season['field'], $act_ctx ),
 		$act_season['term'],
-		4
+		$act_skip ? 5 : 4
 	);
+
+	$act_seasons[ $act_key ]['ids'] = array_slice( array_values( array_diff( $act_ids, array( $act_skip ) ) ), 0, 4 );
 }
 
 // Drop the seasons without cards; no cards at all, no section.

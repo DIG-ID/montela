@@ -11,6 +11,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.24.0] — 2026-10-29
+
+### Added
+- Activity single: two text sections with a photo and a checklist, "Cards with icon", info cards and the Activities section.
+- "Text with checklist" module: title, text, checklist and a photo on the left or right.
+- Activity info cards: 2 to 4 cards written in each activity, with an optional button (a page, another site or a PDF).
+
+### Changed
+- Activities section on an activity: shows the other activities of the same season, without the switch.
+
 ## [1.23.4] — 2026-10-29
 
 ### Fixed
