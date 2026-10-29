@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.23.4] — 2026-10-29
+
+### Fixed
+- "Ausflüge ab Saas-Grund" title: line breaks entered in the editor now show as line breaks.
+
 ## [1.23.3] — 2026-10-28
 
 ### Changed

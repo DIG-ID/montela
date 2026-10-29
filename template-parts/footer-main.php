@@ -8,8 +8,9 @@
  * (newsletter, contact, navigation, partner logos) and the copyright bar.
  *
  * Content:
- * - Theme Settings → Footer (acf-json/group_options_footer.json): call to
- *   action, newsletter text, address, phone, e-mail, socials, partner logos.
+ * - Theme Settings, "Footer: …" tabs (acf-json/group_options_theme_settings.json):
+ *   call to action, newsletter text, address, phone, e-mail, socials,
+ *   partner logos.
  * - Newsletter form: Mailchimp for WP (default form), when the plugin is active.
  * - Menus: "Footer Menu" (one level, four per column) and "Legal Menu".
  *
