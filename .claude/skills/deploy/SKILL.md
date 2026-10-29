@@ -74,6 +74,12 @@ como ponto de partida e só confirmar que continua válido.
     manter o trabalho dos dois lados e mostrar ao utilizador como ficou. Nos
     ficheiros compilados (`dist/`, manifest) não vale a pena juntar à mão:
     ficar com a versão do remoto e recompilar no passo 6.
+    **Atenção: num rebase os lados do git estão invertidos** — `--ours` é o
+    remoto (a base onde os commits locais estão a ser reaplicados) e
+    `--theirs` é o trabalho local. Para ficar com o do remoto:
+    `git checkout --ours -- <ficheiro>`. Ficheiros com hash que o remoto
+    apagou e o local renomeou (`deleted by us`) removem-se com `git rm`; o
+    build volta a gerar os certos.
   - Só depois do pull se olha para a última versão do `CHANGELOG.md` e do
     `style.css` (passo 4). Nunca propor uma versão que já está no remoto.
 - `git status`: se houver alterações **não relacionadas** misturadas, alertar e
