@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.29.1] — 2026-10-29
+
+### Changed
+- FAQ: the arrow in each question turns into the cross (and back) with an animation.
+
 ## [1.29.0] — 2026-10-29
 
 ### Added

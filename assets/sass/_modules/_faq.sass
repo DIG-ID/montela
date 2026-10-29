@@ -67,15 +67,26 @@
 .section-faq__question-text
   @apply max-w-[246px] font-primary font-bold tracking-[0.5px] text-[12px] leading-[20px] md:max-w-[425px] md:text-[18px] md:leading-[28px] xl:max-w-[578px] xl:text-[20px] xl:leading-[32px]
 
+// The chevron (::before) and the cross (::after) are two layers, so the
+// swap can be animated (a mask image can't be): opening, the chevron turns
+// a quarter and fades out while the cross turns into place and fades in;
+// closing plays it back. Same 0.4s as the answer's box.
 .section-faq__icon
   @apply relative shrink-0 w-[34px] h-[28px] border border-current text-montela-walnut md:w-[53px] md:h-11 xl:h-[53px] xl:text-montela-sage
-  &::before
+  &::before,
+  &::after
     content: ""
-    @apply absolute inset-0 m-auto w-[10px] h-[18px] bg-current md:w-[15px] md:h-[27px]
+    @apply absolute inset-0 m-auto bg-current transition-[transform,opacity] duration-[400ms] ease-out motion-reduce:transition-none
+  &::before
+    @apply w-[10px] h-[18px] md:w-[15px] md:h-[27px]
     mask: url("../../svg/icons/chevron-right.svg") center / contain no-repeat
+  &::after
+    @apply w-[19px] h-[19px] opacity-0 -rotate-90 scale-50 md:w-[27px] md:h-[27px] xl:w-[37px] xl:h-[37px]
+    mask: url("../../svg/icons/close.svg") center / contain no-repeat
   .section-faq__item[open] &::before
-    @apply w-[19px] h-[19px] md:w-[27px] md:h-[27px] xl:w-[37px] xl:h-[37px]
-    mask-image: url("../../svg/icons/close.svg")
+    @apply opacity-0 rotate-90 scale-50
+  .section-faq__item[open] &::after
+    @apply opacity-100 rotate-0 scale-100
 
 .section-faq__answer
   @apply px-3 pb-[27px] max-w-[270px] font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:-mt-[6px] md:px-[35px] md:pb-9 md:max-w-[495px] md:text-[18px] md:leading-[25px] xl:mt-0 xl:pb-[73px] xl:max-w-[648px] xl:text-[15px] xl:leading-[25px]
