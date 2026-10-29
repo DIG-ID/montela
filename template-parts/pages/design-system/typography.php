@@ -45,7 +45,7 @@ $ds_styles = array(
 	array(
 		'class'  => 'body-intro',
 		'figma'  => 'Intro text',
-		'spec'   => 'Roboto 300 · 20/30 · 30/40 · 35/55',
+		'spec'   => 'Roboto 300 · 20/30 · 30/40 · 24/40',
 		'sample' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 	),
 	array(

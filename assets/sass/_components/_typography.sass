@@ -56,9 +56,11 @@ body
   @apply font-secondary font-normal italic tracking-[0.5px] text-[40px] leading-[35px] md:text-[70px] md:leading-[70px] xl:text-[90px] xl:leading-[76px]
 
 // -- Text styles ---------------------------------------------------------------
-// Figma "Intro text".
+// Figma "Intro text". Desktop deviates from the Figma style on purpose
+// (35/55 there): text-2xl with leading-10, 24/40 — the frames are left as
+// they are.
 .body-intro
-  @apply font-primary font-light tracking-[0.5px] text-[20px] leading-[30px] md:text-[30px] md:leading-[40px] xl:text-[35px] xl:leading-[55px]
+  @apply font-primary font-light tracking-[0.5px] text-[20px] leading-[30px] md:text-[30px] md:leading-[40px] xl:text-2xl xl:leading-10
 
 // Figma "Quote".
 .body-quote

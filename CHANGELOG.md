@@ -11,6 +11,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.26.0] — 2026-10-29
+
+### Added
+- Aufenthalt (Stay) page template: hero, intro, "Viel Raum für gemeinsame Ferien" (text, button, two photos and a list with icons), the services comparison, "Alles da, was Ferien einfacher macht" and the guest reviews slider.
+- Box text module, green band style: an optional button under the title and a list with icons below (two columns on desktop).
+
+### Changed
+- Intro text on desktop is smaller (24px), on every page.
+- Box text green band without the small title: the title now starts level with the text on desktop.
+- Services comparison on tablet: the text is narrower and evenly spaced between the title and the button, as in the design (also on Angebote & Packages).
+
 ## [1.25.1] — 2026-10-29
 
 ### Changed

@@ -1,0 +1,55 @@
+// Aufenthalt (page-templates/page-stay.php).
+
+// -- Viel Raum für gemeinsame Ferien (template-parts/pages/stay/space.php) --
+// Figma: desktop 5767:15879, tablet 5466:16170, mobile 5466:16083.
+//
+//   Mobile   stacked: title, text (16px), button (32), photo 1 (320:246,
+//            32), photo 2 (660:556, 32), the list (16) — items 16px apart
+//   Tablet   title across; 40px below, text + button (40px apart) on columns
+//            1–3 beside photo 1 (360:246) on 4–6; photo 2 (360:246) on 1–3,
+//            20px below; the list 36px below, 464px wide, centred
+//   Desktop  title on columns 2–12; 75px below, text + button (440px, 75px
+//            apart) on 2–4 beside photo 1 (1050×632) on 6–12; 75px below,
+//            photo 2 (540×455, from column 2) beside the list (496px, from
+//            column 7)
+//
+// Tablet photos: Figma draws them 360px wide, 17px past the container edge —
+// snapped to three columns (343px) instead, as in Text with photos.
+//
+// List: the icon list component — 14/22 and 17/23 (component defaults), on
+// desktop 15/25 ("Text small - footer"); items 72px apart from tablet up (73
+// in the desktop frame).
+//
+// Spacing: none above (the intro ends with its own padding); 192px below on
+// tablet and desktop, 128 on mobile.
+.section-space
+  @apply pb-[128px] md:pb-[192px] text-montela-walnut
+
+.section-space__title
+  @apply col-span-full xl:col-start-2 xl:col-span-11
+
+.section-space__content
+  @apply col-span-full flex flex-col items-start gap-8 mt-4 md:col-span-3 md:row-start-2 md:gap-10 md:mt-10 xl:col-start-2 xl:gap-[75px] xl:mt-[75px]
+
+.section-space__photo
+  @apply m-0 overflow-hidden
+
+.section-space__img
+  @apply w-full h-full object-cover
+
+.section-space__photo--1
+  @apply col-span-full mt-8 aspect-[320/246] md:col-start-4 md:col-span-3 md:row-start-2 md:mt-10 md:aspect-[360/246] xl:col-start-6 xl:col-span-7 xl:mt-[75px] xl:aspect-[1050/632]
+
+// Desktop: 540px of the four columns' 593.
+.section-space__photo--2
+  @apply col-span-full mt-8 aspect-[660/556] md:col-start-1 md:col-span-3 md:row-start-3 md:mt-5 md:aspect-[360/246] xl:col-start-2 xl:col-span-4 xl:mt-[75px] xl:w-[91.06%] xl:aspect-[540/455]
+
+.section-space__list
+  @apply col-span-full mt-4 md:row-start-4 md:justify-self-center md:w-[464px] md:mt-9 xl:col-start-7 xl:col-span-4 xl:row-start-3 xl:justify-self-stretch xl:w-auto xl:max-w-[496px] xl:mt-[75px]
+
+// Two classes beat the icon-list defaults.
+.section-space .icon-list
+  @apply gap-4 md:gap-[72px]
+
+.section-space .icon-list__text
+  @apply xl:text-[15px] xl:leading-[25px]

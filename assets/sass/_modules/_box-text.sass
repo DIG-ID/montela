@@ -62,12 +62,32 @@
 //            2–6 (42px apart), the text on columns 8–11, level with the
 //            small title; text 20/32
 //
+// Optional button and list ("Section Green Background_with logos", Stay
+// page — desktop 5679:15089, tablet 5679:15112, mobile 5679:15145):
+//
+//   Mobile   the button 24px below the text, the list 24px below it; items
+//            72px apart, icons fill a 52px column, 10px to the text
+//   Tablet   button 24px below the text, the list 44px below it, 467px wide;
+//            icons fill a 68px column, 20px to the text; text 18/25
+//   Desktop  the button under the title (22px), the list 106px below it in
+//            two columns: icon on columns 2 / 8 (102px), text on 3–5 /
+//            9–11, rows 100px apart; 140px top and bottom padding
+//
+// The tablet frame sets the band's text at 20/32 (Desktop/Text); it keeps the
+// band's 18/25 here, as on Unsere Region. The tablet and mobile frames draw
+// the icons as loose vectors, out of line with the items (the component's own
+// icons are dark and invisible): the columns follow the component, the glyph
+// sizes (42–60px) roughly the vectors.
+//
 // Spacing: 192px around on desktop. Tablet and mobile: none above (it
 // follows the image-cards section directly in the frames — on Unsere Region
 // the cards-with-icon module's own margin applies until that section is
-// built), 192 / 128 below.
+// built; on Aufenthalt the services module's), 192 / 128 below.
 .section-box-text--band
   @apply mb-[128px] md:mb-[192px] xl:my-[192px] py-28 md:py-[100px] xl:py-0 xl:min-h-[600px] xl:flex xl:items-center bg-montela-sage text-montela-cream
+
+.section-box-text--band.section-box-text--has-list
+  @apply xl:py-[140px]
 
 .section-box-text--band .theme-container
   @apply px-[30px] md:px-16 xl:px-[50px]
@@ -75,16 +95,35 @@
 .section-box-text--band .section-box-text__box
   @apply col-span-full
 
+// Spacing by margins, not gap: the button sits closer than the rest. On
+// desktop the left column (small title, title, button) is auto-placed
+// beside the text, so it starts level with it whether or not there is a
+// small title; the list then drops below both.
 .section-box-text--band .section-box-text__inner
-  @apply flex flex-col gap-11 xl:grid xl:grid-cols-12 xl:gap-x-5 xl:gap-y-[42px]
+  @apply flex flex-col xl:grid xl:grid-cols-12 xl:gap-x-5
+  > * + *
+    @apply mt-11 xl:mt-[42px]
 
-.section-box-text--band .section-box-text__eyebrow
-  @apply xl:col-start-2 xl:col-span-5 xl:row-start-1
-
+.section-box-text--band .section-box-text__eyebrow,
 .section-box-text--band .section-box-text__title
-  @apply xl:col-start-2 xl:col-span-5 xl:row-start-2
+  @apply xl:col-start-2 xl:col-span-5
 
 .section-box-text--band .section-box-text__text
-  @apply md:max-w-[462px] xl:max-w-none xl:col-start-8 xl:col-span-4 xl:row-start-1 xl:row-span-2 xl:self-start xl:text-[20px] xl:leading-[32px]
+  @apply md:max-w-[462px] xl:max-w-none xl:mt-0 xl:col-start-8 xl:col-span-4 xl:row-start-1 xl:row-span-2 xl:self-start xl:text-[20px] xl:leading-[32px]
   p + p
     @apply xl:mt-8
+
+.section-box-text--band .section-box-text__button
+  @apply mt-6 xl:mt-[22px] xl:col-start-2 xl:col-span-5 xl:self-start
+
+.section-box-text--band .section-box-text__list
+  @apply mt-6 gap-[72px] md:mt-11 md:max-w-[467px] xl:max-w-none xl:mt-[106px] xl:col-start-2 xl:col-span-10 xl:grid xl:grid-cols-10 xl:gap-x-5 xl:gap-y-[100px]
+
+.section-box-text--band .icon-list__item
+  @apply grid-cols-[52px_1fr] gap-x-[10px] md:grid-cols-[68px_1fr] md:gap-x-5 xl:col-span-4 xl:grid-cols-4 xl:odd:col-start-1 xl:even:col-start-7
+
+.section-box-text--band .icon-list__icon
+  @apply xl:w-[102px]
+
+.section-box-text--band .icon-list__text
+  @apply md:text-[18px] md:leading-[25px] xl:col-span-3 xl:text-[20px] xl:leading-[32px]

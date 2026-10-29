@@ -195,8 +195,8 @@ function montela_enqueue_assets() {
 	if ( is_singular( 'activity' ) ) {
 		montela_enqueue_module( 'swiper' ); // Cards with icon slider.
 	}
-	if ( is_page_template( 'page-templates/page-offers.php' ) ) {
-		montela_enqueue_module( 'swiper' ); // Services comparison slider.
+	if ( is_page_template( array( 'page-templates/page-offers.php', 'page-templates/page-stay.php' ) ) ) {
+		montela_enqueue_module( 'swiper' ); // Services comparison (+ Testimonials on Stay) sliders.
 	}
 }
 
