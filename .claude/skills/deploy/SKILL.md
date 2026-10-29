@@ -62,10 +62,20 @@ como ponto de partida e só confirmar que continua válido.
 ### 2. Pré-check do repositório
 
 - Confirmar que a branch actual é a de produção detectada.
-- `git fetch` e comparar com o remoto (`git rev-list --count HEAD..origin/<branch>`).
-  Se houver commits novos no remoto (um colega fez push), parar e avisar —
-  integrar com `git pull` antes de continuar. Nunca construir sobre uma branch
-  desactualizada nem sobrepor trabalho alheio.
+- **Fazer sempre pull primeiro, antes de qualquer outro passo** (lint, versão,
+  build): `git pull --rebase --autostash origin <branch>`. O `--autostash`
+  guarda e repõe as alterações por commitar. Mais do que uma pessoa faz deploy
+  ao mesmo repositório: um colega pode ter publicado entretanto, e a versão,
+  o `CHANGELOG.md` e o `dist/` dependem do que já está no remoto.
+  - Antes do pull, ver o que entra (`git fetch` +
+    `git log --oneline HEAD..origin/<branch>`) e **dizê-lo ao utilizador**:
+    quem publicou, que versão, que ficheiros.
+  - Havendo conflitos, resolvê-los **agora**, antes de escolher a versão:
+    manter o trabalho dos dois lados e mostrar ao utilizador como ficou. Nos
+    ficheiros compilados (`dist/`, manifest) não vale a pena juntar à mão:
+    ficar com a versão do remoto e recompilar no passo 6.
+  - Só depois do pull se olha para a última versão do `CHANGELOG.md` e do
+    `style.css` (passo 4). Nunca propor uma versão que já está no remoto.
 - `git status`: se houver alterações **não relacionadas** misturadas, alertar e
   sugerir separá-las.
 - Lembrar: **push à branch de produção = site live imediato**.
@@ -165,6 +175,10 @@ editar só o compilado perde-se no build seguinte.
 
 ### 8. Push = deploy (só com confirmação explícita)
 
+Imediatamente antes do push, `git fetch` outra vez: se entrou um commit novo
+no remoto desde o passo 2, **não fazer push** — voltar ao passo 2 (pull,
+conflitos, versão, build) e só depois pedir a luz verde.
+
 Antes de pedir luz verde, mostrar um resumo:
 - versão (antes → depois) e ficheiros sincronizados;
 - build corrido (ou "projecto sem build") e assets incluídos no commit;
@@ -210,7 +224,8 @@ Só criar com o acordo do utilizador, e incluir no commit de deploy.
 
 - **Detectar antes de agir**: nunca assumir scripts, branch, pasta de output ou
   localização da versão.
-- **Sempre** `git fetch` e verificar o remoto antes de começar.
+- **Sempre** `git pull --rebase --autostash` antes de começar — conflitos
+  resolvidos antes de escolher a versão — e `git fetch` outra vez antes do push.
 - **Nunca** `git push` (nem push de tags) sem confirmação explícita.
 - **Sempre** compilar em modo produção antes do commit, quando o projecto tem build.
 - **Versão sobe antes do build**, no ficheiro-fonte.
