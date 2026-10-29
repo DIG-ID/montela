@@ -1,0 +1,61 @@
+// Features module (template-parts/modules/features.php).
+// Figma "Section Green Background_with logos" (Anreise & Lage): desktop
+// 5747:13926 (cream) / 5679:15353 (sage), tablet 5747:13980 / 5679:15376,
+// mobile 5747:13948 / 5679:15409.
+//
+// A full-width band: cream (walnut text) or sage (cream text).
+//
+//   Mobile   112px padding; title, 44px, text, 24px, the features one per
+//            row, 72px apart: icon in a 52px column, 10px to the text
+//            (14/22)
+//   Tablet   100px padding; title, 44px, text (462px), 44px, features 72px
+//            apart: 68px icon column, 20px to the text (467px, 18/25)
+//   Desktop  140px padding; title on cols 2–6 beside the text on cols 8–11;
+//            172px below the title, the features in two columns (cols 2–5
+//            and 8–11), rows 126px apart: 102px icon box, 52px to the text
+//            — bold title 20/32, text 15/25
+//
+// Icons are editor uploads with uneven artboards (49 to 104px wide in the
+// design): each sits centred in its box at its own size, never larger than
+// the box.
+//
+// Spacing: the cream band sits on the page colour and closes with its own
+// padding, so it adds no margin; the sage band keeps the usual 128px /
+// 192px below.
+.section-features
+  @apply py-28 md:py-[100px] xl:py-[140px]
+
+.section-features--cream
+  @apply bg-montela-cream text-montela-walnut
+
+.section-features--sage
+  @apply mb-[128px] md:mb-[192px] bg-montela-sage text-montela-cream
+
+.section-features__grid
+  @apply items-start
+
+.section-features__title
+  @apply col-span-full xl:col-start-2 xl:col-span-5 xl:row-start-1
+
+.section-features__text
+  @apply col-span-full mt-11 md:max-w-[462px] xl:col-start-8 xl:col-span-4 xl:row-start-1 xl:mt-0 xl:max-w-none
+
+// Two classes: beat the component's own layout (_icon-list.sass).
+.section-features .section-features__list
+  @apply col-span-full mt-6 gap-[72px] md:mt-11 xl:col-start-2 xl:col-span-10 xl:mt-[172px] xl:grid xl:grid-cols-10 xl:gap-x-5 xl:gap-y-[126px]
+
+.section-features .icon-list__item
+  @apply grid-cols-[52px_1fr] gap-x-[10px] md:grid-cols-[68px_1fr] md:max-w-[467px] md:gap-x-5 xl:col-span-4 xl:max-w-none xl:grid-cols-[102px_1fr] xl:gap-x-[52px]
+  &:nth-child(even)
+    @apply xl:col-start-7
+
+.section-features .icon-list__icon
+  @apply flex items-center justify-center h-[67px] md:h-[68px] xl:h-[102px]
+  img
+    @apply w-auto h-auto max-w-full max-h-full
+
+.section-features .icon-list__text
+  @apply md:text-[18px] md:leading-[25px] xl:text-[15px] xl:leading-[25px]
+
+.section-features .icon-list__title
+  @apply xl:text-[20px] xl:leading-[32px]

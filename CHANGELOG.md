@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.27.0] — 2026-10-29
+
+### Added
+- "Anreise & Lage" page template ("Arrival Template"): hero, intro, short distances, arriving by car and by train, SBB luggage service and "Direkt zu Montela" with the address and a photo slider of places nearby.
+- Features module: a cream or sage band with a title, a text and features with icons.
+
 ## [1.26.0] — 2026-10-29
 
 ### Added

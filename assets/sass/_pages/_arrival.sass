@@ -1,0 +1,105 @@
+// Anreise & Lage (page-templates/page-arrival.php).
+
+// -- Luggage service (template-parts/pages/arrival/luggage.php) --
+// Figma: desktop 5767:16127, tablet 5611:23996, mobile 5611:24002.
+//
+//   Mobile   title, 44px, text, 20px, button
+//   Tablet   title, 44px, text (460px), 44px, button
+//   Desktop  title on cols 2–6 with the button 116px under it; the text on
+//            cols 8–11, vertically centred against them
+// Links in the text are underlined (the design underlines one sentence).
+// Spacing: none above (the sage band closes with its own margin), 128px /
+// 192px below.
+.section-luggage
+  @apply mb-[128px] md:mb-[192px] text-montela-walnut
+
+.section-luggage__grid
+  @apply xl:items-center
+
+.section-luggage__title
+  @apply col-span-full xl:col-start-2 xl:col-span-5 xl:row-start-1
+
+.section-luggage__text
+  @apply col-span-full mt-11 md:max-w-[460px] xl:col-start-8 xl:col-span-4 xl:row-start-1 xl:row-span-2 xl:mt-0 xl:max-w-none
+  a
+    @apply underline underline-offset-2 hover:text-montela-sage
+
+.section-luggage__button
+  @apply col-span-full mt-5 md:mt-11 xl:col-start-2 xl:col-span-5 xl:row-start-2 xl:mt-[116px]
+
+// -- Location (template-parts/pages/arrival/location.php) --
+// Figma "Next to footer_explore": desktop 5769:16301, tablet 5769:16291,
+// mobile 5769:16282. Full bleed — no .theme-container.
+//
+//   Mobile   cream panel (28px padding; title, address and button 51px
+//            apart), then the slider, 324px tall
+//   Tablet   panel: title 120px down, address 150px under it, button 36px
+//            under that, 76px below; then the slider, 400px tall
+//   Desktop  two halves 20px apart (18 in Figma): the panel on the left —
+//            title 76px down (608px wide), address 236px under it, button
+//            34px under that, 314px below — and the slider on the right, as
+//            tall as the panel
+//
+// Address: bold name over the lines, one empty line between (14/22, 18/25);
+// on desktop the name is regular 25/40. Slider: not designed (a placeholder
+// with a note) — photos with their place's name top-left over a soft
+// shade, sage arrows top-right (bottom-centre on mobile), as in Explore;
+// both kept at the top because the footer's box covers the bottom.
+.section-location
+  @apply grid grid-cols-1 text-montela-walnut xl:grid-cols-2 xl:gap-x-5
+
+.section-location__panel
+  @apply flex flex-col items-center gap-[51px] text-center bg-montela-cream px-8 py-7 md:gap-0 md:pt-[120px] md:pb-[76px] xl:pt-[76px] xl:pb-[314px]
+
+.section-location__title
+  @apply max-w-[701px] xl:max-w-[608px]
+
+.section-location__address
+  @apply not-italic font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:mt-[150px] md:text-[18px] md:leading-[25px] xl:mt-[236px] xl:text-[20px] xl:leading-[32px]
+
+.section-location__name
+  @apply block mb-[22px] font-bold md:mb-[25px] xl:mb-10 xl:font-normal xl:text-[25px] xl:leading-[40px] xl:tracking-[1px]
+
+.section-location__lines
+  @apply block
+
+// The frames draw this outline button with a walnut label (the design
+// system's "Standart 3" is sage).
+.section-location__panel .btn
+  @apply md:mt-9 xl:mt-[34px]
+  &.btn-outline:not(:hover)
+    @apply text-montela-walnut
+
+.section-location__slider
+  @apply relative h-[324px] md:h-[400px] xl:h-auto
+
+// Desktop: absolutely filled, so the photos never set the row height — the
+// panel does. Two classes: swiper.css (loaded after main.css) sets
+// .swiper { position: relative }.
+.section-location__slider .section-location__swiper
+  @apply h-full xl:absolute xl:inset-0
+
+.section-location__swiper .section-location__slide
+  @apply relative m-0 h-full
+  &::after
+    content: ""
+    @apply absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-montela-walnut/50 to-transparent pointer-events-none
+
+.section-location__img
+  @apply w-full h-full object-cover
+
+.section-location__caption
+  @apply absolute z-[1] left-8 top-7 right-8 text-montela-cream md:left-[58px] md:top-[35px] md:right-[180px] xl:left-[51px] xl:top-[76px]
+
+.section-location__nav
+  @apply absolute z-10 bottom-[28px] left-1/2 -translate-x-1/2 md:bottom-auto md:left-auto md:translate-x-0 md:right-[58px] md:top-[35px] xl:top-[76px] xl:right-[51px]
+
+// Last section: on tablet and desktop the section runs on behind the
+// footer's booking box, as the Explore module does on the day trips (see
+// _explore.sass for the numbers). Tablet: the slider is below, so the box
+// covers its lower part (as drawn); desktop: the panel's bottom padding
+// grows by the overlap, keeping its content clear.
+body:has(.footer-main--has-cta) .main-content > .section-location:last-child
+  @apply md:-mb-[160px] xl:-mb-[320px]
+  .section-location__panel
+    @apply xl:pb-[634px]
