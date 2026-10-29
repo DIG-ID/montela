@@ -210,6 +210,12 @@ Depois de editar um grupo noutro ambiente, usar **Sync** no admin.
   campos de um clone Seamless herdam a preferência definida no grupo do módulo).
 - Ao editar um JSON à mão, actualizar o `modified` (timestamp Unix), senão o ACF
   não oferece o Sync em ambientes onde o grupo já está na base de dados.
+- **Importar um grupo em local por WP-CLI** (em vez do Sync no admin): ir buscar o
+  ID do grupo à base de dados com `acf_get_field_group_post( $key )`, **nunca**
+  com `acf_get_field_group( $key )['ID']` — esta devolve a cópia do JSON (ID 0)
+  e o `acf_import_field_group()` cria um grupo **duplicado** a cada import. Depois
+  de importar, confirmar que não há chaves repetidas:
+  `wp post list --post_type=acf-field-group --field=post_name | sort | uniq -d`.
 
 ### Módulos — grupos inactivos, para clonar
 Cada módulo (`template-parts/modules/`) tem o seu grupo, **inactivo** (não aparece
@@ -220,7 +226,7 @@ no clone e passar o prefixo ao módulo:
 
 | Grupo | Módulo | Campos |
 |-------|--------|--------|
-| `group_module_hero` — Module — Hero | `modules/hero.php` | `section_hero_image` (image, ID), `section_hero_video` (file mp4, URL, opcional), `section_hero_fullscreen` (true/false — ecrã inteiro em desktop em vez de 900px), `section_hero_title_line_{1,2,3}` (text) + `section_hero_title_line_{1,2,3}_align` (button group: left / indent 128px / custom / center / right — posição em desktop) + `section_hero_title_line_{1,2,3}_indent` (number, px, só com custom). A última linha preenchida é a itálica. Padrão = 900px em desktop; a homepage passa `array( 'variant' => 'home' )` (sempre ecrã inteiro, linha 1 maior). |
+| `group_module_hero` — Module — Hero | `modules/hero.php` | `section_hero_image` (image, ID), `section_hero_video` (file mp4, URL, opcional), `section_hero_fullscreen` (true/false — ecrã inteiro em desktop em vez de 900px), `section_hero_title_line_{1,2,3}` (text) + `section_hero_title_line_{1,2,3}_align` (button group: left / indent 128px / custom / center / right — posição em desktop) + `section_hero_title_line_{1,2,3}_indent` (number, px, só com custom). A última linha preenchida é a itálica. Padrão = 900px em desktop; a homepage passa `array( 'variant' => 'home' )` (sempre ecrã inteiro, linha 1 maior). O frame "Home_desktop_after animation" (5426:5266) escurece o véu para 60% depois da animação do título: **ignorado de propósito** (fica nos 40%); o cartão sage desse frame é o Sticky CTA. |
 | `group_module_intro` — Module — Intro | `modules/intro.php` | `section_intro_title` (textarea, `new_lines: br`), `section_intro_text` (textarea) |
 | `group_module_explore` — Module — Explore | `modules/explore.php` | `section_explore_title` (text), `section_explore_image` (image), `section_explore_text` (textarea), `section_explore_button` (link), `section_explore_slides` (gallery) |
 | `group_module_image_band` — Module — Image band | `modules/image-band.php` | `section_image_band_image` (image) |
