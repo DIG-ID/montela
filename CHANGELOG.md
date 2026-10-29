@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.31.0] — 2026-10-29
+
+### Added
+- Text pages (default page template — Datenschutz, AGB and any other page without a template): the title on a sage band and the editor content styled as running text (section titles, sub-headings, paragraphs, lists, links).
+- "Impressum Template": the same title band and boxes with an icon, a title and a short text.
+
+### Fixed
+- Contact boxes: web addresses keep the text as typed ("www.dig.id", not "http://www.dig.id").
+
 ## [1.30.0] — 2026-10-29
 
 ### Added

@@ -5,7 +5,7 @@
  * desktop; two, then the third full width, on tablet; stacked on mobile.
  *
  * E-mail addresses, links and phone numbers in the text become clickable
- * (montela_link_phone_numbers(): tel:, or a WhatsApp chat after the word
+ * (montela_make_clickable(): tel:, or a WhatsApp chat after the word
  * "WhatsApp"). Fields: tab "Contact boxes" of
  * acf-json/group_page_contact.json. Figma: desktop 5426:15850, tablet
  * 5613:24222, mobile 5613:24223.
@@ -35,7 +35,7 @@ if ( ! $info_boxes ) {
 							<h2 class="section-contact-info__title"><?php echo esc_html( $info_box['title'] ); ?></h2>
 						<?php endif; ?>
 						<?php if ( ! empty( $info_box['text'] ) ) : ?>
-							<p class="section-contact-info__text"><?php echo wp_kses_post( montela_link_phone_numbers( make_clickable( $info_box['text'] ) ) ); ?></p>
+							<p class="section-contact-info__text"><?php echo wp_kses_post( montela_make_clickable( $info_box['text'] ) ); ?></p>
 						<?php endif; ?>
 					</div>
 				<?php endforeach; ?>

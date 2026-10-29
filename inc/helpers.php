@@ -117,6 +117,26 @@ if ( ! function_exists( 'montela_link_phone_numbers' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'montela_make_clickable' ) ) :
+	/**
+	 * Turns e-mail addresses, URLs and phone numbers in a short text into
+	 * links (make_clickable() + montela_link_phone_numbers()), keeping the
+	 * text as it was typed: make_clickable() shows "www.dig.id" as
+	 * "http://www.dig.id", so the scheme it adds is dropped from the label.
+	 *
+	 * @since 1.31.0
+	 *
+	 * @param string $text Text or simple HTML.
+	 * @return string
+	 */
+	function montela_make_clickable( $text ) {
+		$text = make_clickable( $text );
+		$text = preg_replace( '#(<a [^>]*href="https?://www\.[^"]*"[^>]*>)https?://(www\.)#i', '$1$2', $text );
+
+		return montela_link_phone_numbers( $text );
+	}
+endif;
+
 if ( ! function_exists( 'montela_get_activity_seasons' ) ) :
 	/**
 	 * Returns an activity's seasons as the Activities module's keys — the

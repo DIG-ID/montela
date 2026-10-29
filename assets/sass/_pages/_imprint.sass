@@ -1,0 +1,38 @@
+// Impressum (page-templates/page-imprint.php) — the boxes
+// (template-parts/pages/imprint/boxes.php). The title band is the default
+// page's (_layout/_page.sass). Figma: desktop 5781:17553, tablet
+// 5623:26902, mobile 5623:26901.
+//
+//   Mobile   44px under the band, full width, 24px apart; each box 44px
+//            padding, icon, 72px, the text — centred
+//   Tablet   128px under the band, 461px wide and centred, 24px apart;
+//            icon, 44px, the text (left-aligned, 397px)
+//   Desktop  192px under the band, three in a row on cols 2–11 (20px
+//            apart — 22 in Figma), 500px tall: icon centred 70px down, the
+//            text at the bottom, 47 / 45px in, 56px up
+// Sage hairline and a soft shadow. Title bold 20/32, one empty line, then
+// the lines 15/25.
+.section-imprint
+  @apply mt-11 mb-32 text-montela-walnut md:mt-32 md:mb-48 xl:mt-48
+
+.section-imprint__boxes
+  @apply col-span-full flex flex-col gap-6 md:items-center xl:col-start-2 xl:col-span-10 xl:grid xl:grid-cols-3 xl:gap-5
+
+.section-imprint__box
+  @apply flex flex-col items-center gap-[72px] py-11 pl-[47px] pr-[45px] border border-montela-sage shadow-[0_4px_4px_rgba(0,0,0,0.25)] md:w-[461px] md:gap-11 xl:w-auto xl:min-h-[500px] xl:justify-between xl:pt-[70px] xl:pb-14
+
+.section-imprint__icon
+  @apply flex items-center justify-center h-[68px]
+  img
+    @apply w-auto h-full max-w-[92px]
+
+.section-imprint__copy
+  @apply w-full text-center md:text-left
+
+.section-imprint__title
+  @apply mb-8 font-primary font-bold tracking-[0.5px] text-[20px] leading-[32px]
+
+.section-imprint__text
+  @apply font-primary font-light tracking-[0.5px] text-[15px] leading-[25px]
+  a
+    @apply underline underline-offset-2 hover:text-montela-sage

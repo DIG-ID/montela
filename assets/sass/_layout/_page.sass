@@ -1,0 +1,72 @@
+// Default page (page.php) and the Impressum template: a sage band with the
+// title, then the editor content as running text. Figma: Impressum desktop
+// 5426:5833, tablet 5617:26635, mobile 5617:26598; Datenschutz desktop
+// 5426:5647, tablet 5623:27058, mobile 5623:27038; AGB 5846:19127.
+
+// -- Title band (template-parts/pages/page-header.php) --
+// 256 / 384 / 600px tall, the header over its top; the title (.title-h1 —
+// 40, 90, 150px) sits at the bottom, 56 / 58 / 151px up, from col 2 on
+// desktop. The Datenschutz and AGB desktop frames set it in 123px italic;
+// the tablet and mobile frames and the Impressum use the regular H1 — the
+// H1 is used for all three.
+.page-header
+  @apply flex items-end min-h-[256px] pb-14 bg-montela-sage text-montela-cream md:min-h-[384px] md:pb-[58px] xl:min-h-[600px] xl:pb-[151px]
+  .theme-container
+    @apply w-full
+
+.page-header__title
+  @apply col-span-full xl:col-start-2 xl:col-span-11
+
+// -- Editor content (template-parts/pages/page-content.php) --
+// Datenschutz / AGB: sections of an italic H2 (25/30, "H2" style), then
+// the text — paragraphs, bold H3 sub-headings, lists. Cols 2–7 on desktop
+// (897px in Figma), 580px on tablet, full width on mobile.
+//
+//   Above the first section  128 / 192 / 264px
+//   Between sections         128 / 96 / 192px (before each H2)
+//   H2 → text                44 / 44 / 32px
+//   Between sub-sections     44px (before each H3)
+//   H3 → its text            8 / 8 / 30px (the frames run them on below
+//                            desktop; a small gap reads better)
+// Paragraphs are 16px apart — the frames stack them with none, which
+// reads as one block in long legal text.
+.page-content
+  @apply mt-32 mb-32 text-montela-walnut md:mt-48 md:mb-48 xl:mt-[264px]
+
+.page-content__body
+  @apply col-span-full break-words font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:max-w-[580px] md:text-[18px] md:leading-[25px] xl:col-start-2 xl:col-span-6 xl:max-w-none xl:text-[20px] xl:leading-[32px]
+  > :first-child
+    @apply mt-0
+  > :last-child
+    @apply mb-0
+
+  h2
+    @apply mt-32 mb-11 font-secondary font-normal italic tracking-[1px] text-[25px] leading-[30px] md:mt-24 xl:mt-48 xl:mb-8
+
+  h3,
+  h4
+    @apply mt-11 mb-2 font-bold xl:mb-[30px]
+
+  // A sub-heading straight after the section title: the H2's own gap is
+  // enough.
+  h2 + h3,
+  h2 + h4
+    @apply mt-0
+
+  p,
+  ul,
+  ol
+    @apply mb-4 xl:mb-5
+
+  ul
+    @apply pl-[30px] list-disc
+
+  ol
+    @apply pl-[30px] list-decimal
+
+  a
+    @apply underline underline-offset-2 break-words hover:text-montela-sage
+
+  strong,
+  b
+    @apply font-bold
