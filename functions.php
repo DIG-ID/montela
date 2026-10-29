@@ -51,3 +51,6 @@ require get_template_directory() . '/inc/performance.php';
 
 // Security hardening.
 require get_template_directory() . '/inc/security.php';
+
+// Structured data, through Yoast SEO's Schema API.
+require get_template_directory() . '/inc/schema.php';

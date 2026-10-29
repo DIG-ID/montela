@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.29.0] — 2026-10-29
+
+### Added
+- FAQ page template ("FAQ Template"): hero, intro and the questions in groups, each an accordion.
+- FAQ structured data on the FAQ page (FAQPage with its questions and answers), through Yoast SEO.
+
+### Changed
+- FAQ module: can also be filled from a list of groups (used by the FAQ page).
+
 ## [1.28.0] — 2026-10-29
 
 ### Added

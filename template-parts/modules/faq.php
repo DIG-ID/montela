@@ -12,23 +12,36 @@
  * - post_id (int|string) Optional. Where to read the fields from. Default: current post.
  * - prefix  (string)     Optional. Clone field prefix, when the clone uses
  *                        "Prefix field names" — e.g. 'faq_' for a clone named 'faq'.
+ * - data    (array)      Optional. The content itself, instead of the fields:
+ *                        'title', 'text', 'button' (ACF link array) and 'items'
+ *                        (rows with 'question' and 'answer'). For pages that
+ *                        list several FAQ groups from a repeater (FAQ page).
  *
  * @package montela
  * @subpackage Section
  * @since 1.28.0
  */
 
-if ( ! function_exists( 'get_field' ) ) {
-	return;
+$faq_data = ( ! empty( $args['data'] ) && is_array( $args['data'] ) ) ? $args['data'] : null;
+
+if ( $faq_data ) {
+	$faq_title  = ! empty( $faq_data['title'] ) ? $faq_data['title'] : '';
+	$faq_text   = ! empty( $faq_data['text'] ) ? $faq_data['text'] : '';
+	$faq_button = ! empty( $faq_data['button'] ) ? $faq_data['button'] : null;
+	$faq_items  = ! empty( $faq_data['items'] ) ? $faq_data['items'] : array();
+} else {
+	if ( ! function_exists( 'get_field' ) ) {
+		return;
+	}
+
+	$faq_ctx    = ! empty( $args['post_id'] ) ? $args['post_id'] : get_the_ID();
+	$faq_prefix = ! empty( $args['prefix'] ) ? $args['prefix'] : '';
+
+	$faq_title  = get_field( $faq_prefix . 'section_faq_title', $faq_ctx );
+	$faq_text   = get_field( $faq_prefix . 'section_faq_text', $faq_ctx );
+	$faq_button = get_field( $faq_prefix . 'section_faq_button', $faq_ctx );
+	$faq_items  = get_field( $faq_prefix . 'section_faq_items', $faq_ctx );
 }
-
-$faq_ctx    = ! empty( $args['post_id'] ) ? $args['post_id'] : get_the_ID();
-$faq_prefix = ! empty( $args['prefix'] ) ? $args['prefix'] : '';
-
-$faq_title  = get_field( $faq_prefix . 'section_faq_title', $faq_ctx );
-$faq_text   = get_field( $faq_prefix . 'section_faq_text', $faq_ctx );
-$faq_button = get_field( $faq_prefix . 'section_faq_button', $faq_ctx );
-$faq_items  = get_field( $faq_prefix . 'section_faq_items', $faq_ctx );
 
 $faq_items = array_values(
 	array_filter(
