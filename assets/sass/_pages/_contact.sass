@@ -1,0 +1,133 @@
+// Info & Kontakt (page-templates/page-contact.php).
+
+// -- Contact boxes (template-parts/pages/contact/info.php) --
+// Figma: desktop 5426:15850, tablet 5613:24222, mobile 5613:24223.
+//
+//   Mobile   stacked, 16px apart, 215px tall, content vertically centred,
+//            35px in; title 12/20, text 14/22
+//   Tablet   two boxes (20px apart — 21 in Figma), the third full width
+//            44px below (45 in Figma, its content vertically centred);
+//            244px tall, content 18px down and 36px in; title 18/28, 18/25
+//   Desktop  three in a row on cols 2–11, as drawn: 462 / 326 / 460px with
+//            133px between (kept as proportions); 300px tall, content 23 /
+//            21px in; title 20/32, text 20/32
+// One empty line between title and text, as in the frames. Walnut frame.
+.section-contact-info
+  @apply mb-[128px] md:mb-[192px] text-montela-walnut
+
+.section-contact-info__boxes
+  @apply col-span-full flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-x-5 md:gap-y-11 xl:col-start-2 xl:col-span-10 xl:grid-cols-[462fr_326fr_460fr] xl:gap-x-[8.8%]
+
+.section-contact-info__box
+  @apply flex flex-col justify-center min-h-[215px] px-[35px] py-8 border border-montela-walnut md:justify-start md:min-h-[244px] md:px-9 md:pt-[18px] xl:min-h-[300px] xl:px-[21px] xl:pt-[23px]
+  &:nth-child(3)
+    @apply md:col-span-2 md:justify-center xl:col-span-1 xl:justify-start
+
+.section-contact-info__title
+  @apply mb-[22px] font-primary font-bold tracking-[0.5px] text-[12px] leading-[20px] md:mb-[25px] md:text-[18px] md:leading-[28px] xl:mb-[31px] xl:text-[20px] xl:leading-[32px]
+
+.section-contact-info__text
+  @apply font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[20px] xl:leading-[32px]
+  a
+    @apply hover:text-montela-sage
+
+// -- Contact form (template-parts/pages/contact/form.php) --
+// Figma: desktop 5426:15826, tablet 5613:24183, mobile 5613:24221.
+//
+// The form is a Contact Form 7 form; its template lives in the database
+// (Contact → Contact Forms), so the classes it uses are declared here. Keep
+// this copy of the template in step with the one in the admin:
+//
+//   <div class="contact-form">
+//   <div class="contact-form__fields">
+//   [text* your-name placeholder "Name"]
+//   [text* your-subject placeholder "Betreff"]
+//   [email* your-email placeholder "Email"]
+//   [tel your-phone placeholder "Telefonnummer"]
+//   </div>
+//   <div class="contact-form__message">[textarea* your-message placeholder "Nachricht"]</div>
+//   <div class="contact-form__submit">[submit "Jetzt senden"]</div>
+//   </div>
+//
+//   Mobile   title, 44px, the fields stacked (60px tall, 12px apart), the
+//            message (236px), 44px, the button centred
+//   Tablet   title, 44px, fields (80px, 27px apart) on cols 1–3 beside the
+//            message (300px) on cols 4–6; the button bottom-right, level
+//            with the last field
+//   Desktop  as tablet on cols 2–6 / 7–11 (28px apart), title 46px above
+// Sage hairline fields, walnut text; placeholders 14 / 18 / 20px.
+// Validation tips: out of the flow, under each field, from tablet up (27px
+// gaps fit the 20px tip); on mobile the gaps are 12px, so they stay in it.
+.section-contact-form
+  @apply mb-[128px] md:mb-[192px] text-montela-walnut
+
+.section-contact-form__title
+  @apply col-span-full xl:col-start-2 xl:col-span-10
+
+.section-contact-form__form
+  @apply col-span-full mt-11 xl:col-start-2 xl:col-span-10 xl:mt-[46px]
+
+.contact-form
+  @apply flex flex-col gap-3 md:grid md:grid-cols-2 md:gap-x-5 md:gap-y-0
+
+.contact-form__fields
+  @apply flex flex-col gap-3 md:row-span-2 md:gap-[27px] xl:gap-7
+
+.contact-form__message
+  @apply md:col-start-2 md:row-start-1
+
+// The submit looks like .btn-secondary (_buttons.sass) — label box, 2px gap,
+// 45px arrow box — but an input can't hold the arrow box. So the input runs
+// under both boxes (its right padding makes room for the arrow), and the
+// wrapper paints on top of it: ::after the 2px cream gap, ::before the arrow
+// (a mask, like the .btn arrows). The whole button stays clickable, and
+// hover turns both boxes mustard and the label and arrow walnut, as
+// "Hoover 1" does on the other buttons.
+.contact-form__submit
+  @apply relative inline-flex self-center mt-8 drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)] md:col-start-2 md:row-start-2 md:self-end md:justify-self-end md:mt-0
+  &::after
+    content: ""
+    @apply absolute z-[1] top-0 bottom-0 right-[45px] w-[2px] bg-montela-cream pointer-events-none
+  &::before
+    content: ""
+    @apply absolute z-[1] right-0 top-0 bottom-0 w-[45px] bg-montela-cream pointer-events-none transition-colors duration-300 ease-out
+    // Same file and size as .btn__icon::before (_buttons.sass).
+    mask: url("../../svg/icons/arrow-forward.svg") center / 37px 38px no-repeat
+  &:hover::before
+    @apply bg-montela-walnut
+
+.section-contact-form
+  .wpcf7-form-control-wrap
+    @apply block relative
+
+  .wpcf7-text,
+  .wpcf7-email,
+  .wpcf7-tel,
+  .wpcf7-textarea
+    @apply block w-full h-[60px] px-3 border border-montela-sage bg-transparent font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] text-montela-walnut placeholder:text-montela-walnut md:h-20 md:px-3 md:text-[18px] md:leading-[25px] xl:px-[27px] xl:text-[20px] xl:leading-[30px]
+    &:focus
+      @apply outline outline-2 outline-offset-2 outline-montela-mustard
+
+  .wpcf7-textarea
+    @apply h-[236px] py-[18px] resize-none md:h-[300px] md:py-6
+
+  // 22px label padding + 2px gap + 45px arrow box on the right.
+  .wpcf7-submit
+    @apply pl-[22px] pr-[69px] py-[14px] bg-montela-sage text-montela-cream font-primary font-bold text-[14px] leading-[16px] tracking-[0.84px] uppercase cursor-pointer transition-colors duration-300 ease-out
+    &:hover,
+    &:active
+      @apply bg-montela-mustard text-montela-walnut
+    &:focus-visible
+      @apply outline outline-2 outline-offset-4 outline-montela-mustard
+
+  .wpcf7-spinner
+    @apply absolute left-full top-1/2 -translate-y-1/2 ml-3
+
+  .wpcf7-not-valid-tip
+    @apply mt-1 font-primary text-[12px] leading-[16px] text-red-700 md:absolute md:left-0 md:top-full
+
+  // CF7's own stylesheet insets this box (margin: 2em .5em 1em) with a more
+  // specific selector; this one matches it. The border colour stays the
+  // plugin's — it signals the state (sent, invalid, failed).
+  .wpcf7 form .wpcf7-response-output
+    @apply mx-0 mt-8 mb-0 px-4 py-3 font-primary text-[14px] leading-[22px] md:mt-11

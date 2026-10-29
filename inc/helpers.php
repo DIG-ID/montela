@@ -79,6 +79,44 @@ if ( ! function_exists( 'montela_get_season_activities' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'montela_link_phone_numbers' ) ) :
+	/**
+	 * Turns the international phone numbers in a text ("+41 27 957 70 00",
+	 * "+41 (0) 27 957 70 00") into links: tel: for calls, or a WhatsApp chat
+	 * (wa.me) when the word "WhatsApp" comes just before the number — the
+	 * contact boxes list a WhatsApp number that takes no calls.
+	 *
+	 * Only numbers starting with "+" are matched, so postcodes and years stay
+	 * text. The text is expected to be escaped already (or to be safe HTML).
+	 *
+	 * @since 1.28.0
+	 *
+	 * @param string $text Text or simple HTML.
+	 * @return string The text with the numbers linked.
+	 */
+	function montela_link_phone_numbers( $text ) {
+		return preg_replace_callback(
+			'/\+\d{1,3}(?:[ \x{00A0}]?(?:\(0\)|\d+))+/u',
+			function ( $matches ) use ( $text ) {
+				$number = $matches[0][0];
+				$digits = preg_replace( '/[^0-9+]/', '', str_replace( '(0)', '', $number ) );
+				$before = substr( $text, max( 0, $matches[0][1] - 40 ), min( 40, $matches[0][1] ) );
+
+				if ( false !== stripos( $before, 'whatsapp' ) ) {
+					$href = 'https://wa.me/' . ltrim( $digits, '+' );
+					return '<a href="' . esc_url( $href ) . '" target="_blank" rel="noopener noreferrer">' . $number . '<span class="sr-only"> ' . esc_html__( '(WhatsApp, opens in a new tab)', 'montela' ) . '</span></a>';
+				}
+
+				return '<a href="' . esc_url( 'tel:' . $digits, array( 'tel' ) ) . '">' . $number . '</a>';
+			},
+			$text,
+			-1,
+			$count,
+			PREG_OFFSET_CAPTURE
+		);
+	}
+endif;
+
 if ( ! function_exists( 'montela_get_activity_seasons' ) ) :
 	/**
 	 * Returns an activity's seasons as the Activities module's keys — the

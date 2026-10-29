@@ -1,0 +1,83 @@
+// FAQ module (template-parts/modules/faq.php).
+// Figma (Info & Kontakt): desktop 5769:16438, tablet 5613:24350, mobile
+// 5613:24441.
+//
+//   Head     mobile: title, text and button centred, 16px apart, the button
+//            full width; tablet: the same, left-aligned (text 551px);
+//            desktop: title and text (856px, 30px apart) on the left, the
+//            button top-right
+//   List     44px below; questions 12px apart (10 on desktop, cols 3–10)
+//   Item     closed: 64 / 80 / 100px tall, bold question (12/20, 18/28,
+//            20/32) and an icon box (34×28, 53×44, 53×53) with a chevron;
+//            open: the answer under the question (14/22, 18/25, 15/25; 246 /
+//            425 / 578px wide) and a cross in the box
+// Walnut frames below desktop, sage on desktop; a soft shadow from tablet.
+// Open / close animated in CSS (see .section-faq__item).
+.section-faq
+  @apply mb-[128px] md:mb-[192px] text-montela-walnut
+
+.section-faq__head
+  @apply col-span-full flex flex-col items-center gap-4 text-center md:items-start md:text-left xl:col-start-2 xl:col-span-10 xl:flex-row xl:justify-between xl:gap-5
+
+.section-faq__copy
+  @apply flex flex-col gap-4 xl:gap-[30px]
+
+.section-faq__text
+  @apply md:max-w-[551px] xl:max-w-[856px]
+
+// Mobile: the button fills the row, its label wrapping (as drawn).
+// Two classes: .btn is emitted after this partial.
+.section-faq__head .btn
+  @apply w-full md:w-auto xl:shrink-0
+  .btn__label
+    @apply flex-1 justify-start text-left whitespace-normal md:flex-none md:whitespace-nowrap
+
+.section-faq__list
+  @apply col-span-full flex flex-col gap-3 mt-11 xl:col-start-3 xl:col-span-8 xl:gap-[10px]
+
+.section-faq__item
+  @apply border border-montela-walnut md:shadow-[0_4px_4px_rgba(0,0,0,0.25)] xl:border-montela-sage
+  // Open / close: the answer's box grows from 0 to its height. CSS only —
+  // ::details-content (the part of <details> after the summary) with
+  // interpolate-size, so `auto` can be animated; content-visibility is
+  // discrete, held until the close ends. Browsers without them (older
+  // Firefox) open and close at once, as before.
+  interpolate-size: allow-keywords
+  &::details-content
+    block-size: 0
+    overflow-y: clip
+    transition: block-size 0.4s ease-out, content-visibility 0.4s allow-discrete
+  &[open]::details-content
+    block-size: auto
+  @media (prefers-reduced-motion: reduce)
+    &::details-content
+      transition: none
+
+.section-faq__question
+  @apply flex items-center justify-between gap-5 min-h-[64px] px-3 py-[18px] cursor-pointer list-none md:min-h-20 md:px-[35px] xl:min-h-[100px] xl:pr-[44px]
+  &::-webkit-details-marker
+    display: none
+  &:focus-visible
+    @apply outline outline-2 -outline-offset-4 outline-montela-mustard
+  // Open: the question and the icon go to the top; no minimum height, so
+  // the answer follows 18px under the question (the summary's padding).
+  .section-faq__item[open] &
+    @apply items-start min-h-0 md:min-h-0 md:pt-9 xl:min-h-0 xl:pt-[27px]
+
+.section-faq__question-text
+  @apply max-w-[246px] font-primary font-bold tracking-[0.5px] text-[12px] leading-[20px] md:max-w-[425px] md:text-[18px] md:leading-[28px] xl:max-w-[578px] xl:text-[20px] xl:leading-[32px]
+
+.section-faq__icon
+  @apply relative shrink-0 w-[34px] h-[28px] border border-current text-montela-walnut md:w-[53px] md:h-11 xl:h-[53px] xl:text-montela-sage
+  &::before
+    content: ""
+    @apply absolute inset-0 m-auto w-[10px] h-[18px] bg-current md:w-[15px] md:h-[27px]
+    mask: url("../../svg/icons/chevron-right.svg") center / contain no-repeat
+  .section-faq__item[open] &::before
+    @apply w-[19px] h-[19px] md:w-[27px] md:h-[27px] xl:w-[37px] xl:h-[37px]
+    mask-image: url("../../svg/icons/close.svg")
+
+.section-faq__answer
+  @apply px-3 pb-[27px] max-w-[270px] font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:-mt-[6px] md:px-[35px] md:pb-9 md:max-w-[495px] md:text-[18px] md:leading-[25px] xl:mt-0 xl:pb-[73px] xl:max-w-[648px] xl:text-[15px] xl:leading-[25px]
+  p
+    @apply mb-3 last:mb-0

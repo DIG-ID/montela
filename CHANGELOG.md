@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.28.0] — 2026-10-29
+
+### Added
+- "Info & Kontakt" page template ("Contact Template"): hero, intro, contact boxes (phone numbers and e-mails are links), a Contact Form 7 contact form and an FAQ.
+- FAQ module: title, text, button and an accordion of questions that opens and closes with an animation.
+
 ## [1.27.0] — 2026-10-29
 
 ### Added

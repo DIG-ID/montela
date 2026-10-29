@@ -1,0 +1,162 @@
+{
+    "key": "group_module_faq",
+    "title": "Module — FAQ",
+    "fields": [
+        {
+            "key": "field_module_faq_title",
+            "label": "Title",
+            "name": "section_faq_title",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Press Enter to force a line break.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": "br"
+        },
+        {
+            "key": "field_module_faq_text",
+            "label": "Text",
+            "name": "section_faq_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 3,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_module_faq_button",
+            "label": "Button",
+            "name": "section_faq_button",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "E.g. to the full FAQ page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "return_format": "array",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_module_faq_items",
+            "label": "Questions",
+            "name": "section_faq_items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Shown as an accordion, all closed.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_module_faq_items_question",
+            "button_label": "Add question",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_module_faq_items_question",
+                    "label": "Question",
+                    "name": "question",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "wpml_cf_preferences": 2,
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_module_faq_items"
+                },
+                {
+                    "key": "field_module_faq_items_answer",
+                    "label": "Answer",
+                    "name": "answer",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "wpml_cf_preferences": 2,
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": "wpautop",
+                    "parent_repeater": "field_module_faq_items"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "Module: clone it into a page field group.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1793280644,
+    "acfml_field_group_mode": "advanced"
+}

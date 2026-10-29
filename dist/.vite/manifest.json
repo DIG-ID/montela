@@ -88,7 +88,7 @@
     "isEntry": true
   },
   "assets/sass/main.sass": {
-    "file": "css/main-CtyfenGN.css",
+    "file": "css/main-BjyB1Qkq.css",
     "name": "main",
     "names": [
       "main.css"
@@ -105,6 +105,8 @@
       "assets/season-winter-DX7E2spa.svg",
       "assets/quote-BED75e32.svg",
       "assets/check-BaB_T-sr.svg",
+      "assets/chevron-right-B1FOhrQk.svg",
+      "assets/close-DvdTjRAm.svg",
       "assets/slider-prev-BgkI7qkP.svg",
       "assets/slider-next-B52SPkO5.svg",
       "assets/slider-prev-sage-CRYbWYmP.svg",
@@ -128,6 +130,14 @@
   "assets/svg/icons/check.svg": {
     "file": "assets/check-BaB_T-sr.svg",
     "src": "assets/svg/icons/check.svg"
+  },
+  "assets/svg/icons/chevron-right.svg": {
+    "file": "assets/chevron-right-B1FOhrQk.svg",
+    "src": "assets/svg/icons/chevron-right.svg"
+  },
+  "assets/svg/icons/close.svg": {
+    "file": "assets/close-DvdTjRAm.svg",
+    "src": "assets/svg/icons/close.svg"
   },
   "assets/svg/icons/home-and-garden.svg": {
     "file": "assets/home-and-garden-ltii5Ith.svg",
