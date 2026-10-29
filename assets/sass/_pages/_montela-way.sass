@@ -1,0 +1,178 @@
+// Der Montela Weg (page-templates/page-montela-way.php).
+//
+// Spacing below each section: 192px from tablet, 128 on mobile (the mobile
+// frame draws 192 — kept at 128 like every other section on the site).
+
+// -- Values (template-parts/pages/montela-way/values.php) --
+// Figma: desktop 5767:15933, tablet 5609:23696, mobile 5609:23697.
+//
+//   Head     title over the text (44px; text 461px wide on tablet); on
+//            desktop the title on cols 2–8 and the text on cols 9–11,
+//            vertically centred
+//   Rows     44px apart (and below the head). Photo 3:2 on desktop (cols
+//            2–7, or 6–11 when reversed), 339:271 on tablet (3 columns),
+//            326:268 on mobile with the texts 20px below it. Texts on the
+//            other 3 columns, bottom-aligned with the photo — desktop cols
+//            9–12 (474px at most) or 2–4 (reversed). Every second row is
+//            reversed (.section-values__row--reverse).
+//   Texts    bold title over a paragraph; 20px apart on mobile, 44 above
+.section-values
+  @apply mb-[128px] md:mb-[192px] text-montela-walnut
+
+.section-values__head
+  @apply gap-y-11 xl:items-center
+
+.section-values__title
+  @apply col-span-full xl:col-start-2 xl:col-span-7
+
+.section-values__text
+  @apply col-span-full md:max-w-[461px] xl:col-start-9 xl:col-span-3 xl:max-w-none
+
+.section-values__row
+  @apply mt-11 gap-y-5 items-end
+
+.section-values__photo
+  @apply col-span-full m-0 aspect-[326/268] overflow-hidden md:col-span-3 md:row-start-1 md:aspect-[339/271] xl:col-start-2 xl:col-span-6 xl:aspect-[3/2]
+
+.section-values__img
+  @apply w-full h-full object-cover
+
+.section-values__texts
+  @apply col-span-full flex flex-col gap-5 md:col-start-4 md:col-span-3 md:row-start-1 md:gap-11 xl:col-start-9 xl:col-span-4 xl:max-w-[474px]
+
+.section-values__item-title
+  @apply font-bold
+
+.section-values__row--reverse
+  .section-values__photo
+    @apply md:col-start-4 xl:col-start-6
+  .section-values__texts
+    @apply md:col-start-1 xl:col-start-2 xl:col-span-3
+
+// -- History (template-parts/pages/montela-way/history.php) --
+// Figma "Horizontal section": desktop 5767:15946, tablet 5767:15957, mobile
+// 5767:16113.
+//
+//   Mobile   photo (329:205, sage hairline), 44px, title, 16px, text, 32px,
+//            the highlighted paragraph
+//   Tablet   photo 703:518, 24px (25 in Figma), title full width, 44px, the
+//            text (cols 1–3) beside the highlight (cols 4–6)
+//   Desktop  photo across the container (1820:632), 44px, title on cols
+//            2–6 beside the text and the highlight on cols 8–11, 44px apart
+.section-history
+  @apply mb-[128px] md:mb-[192px] text-montela-walnut
+
+.section-history__photo
+  @apply col-span-full m-0 aspect-[329/205] overflow-hidden border border-montela-sage md:aspect-[703/518] md:border-0 xl:aspect-[1820/632]
+
+.section-history__img
+  @apply w-full h-full object-cover
+
+.section-history__title
+  @apply col-span-full mt-11 md:mt-6 xl:col-start-2 xl:col-span-5 xl:row-start-2 xl:row-span-2 xl:mt-11 xl:self-start
+
+.section-history__text
+  @apply col-span-full mt-4 md:col-span-3 md:row-start-3 md:mt-11 xl:col-start-8 xl:col-span-4 xl:row-start-2
+
+.section-history__highlight
+  @apply col-span-full mt-8 md:col-start-4 md:col-span-3 md:row-start-3 md:mt-11 xl:col-start-8 xl:col-span-4 xl:row-start-3
+
+.section-history__highlight-title
+  @apply font-bold
+
+// -- Timeline (template-parts/pages/montela-way/timeline.php) --
+// Figma: desktop 5745:13795, tablet 5745:13774, mobile 5745:13756.
+//
+// Full width, out of the container. One year per slide, cross-fading.
+//
+//   Mobile   photo 400px tall, then the sage panel: 44px padding, year
+//            (36/38), 12px, title, 44px, text (14/22, 328px), 44px, arrows
+//   Tablet   photo 400px tall, then the panel: 53 / 65px padding, year
+//            (80/76), 16px, title, 96px, text (18/25, 453px), 96px, arrows
+//   Desktop  panel and photo side by side, 900px tall, 20px apart (18 in
+//            Figma); year 76px down, title 50px under it, text 15/25
+//            (485px) from 489px down; arrows centred on the panel, 97px
+//            from the bottom
+//
+// The arrows sit once over the slider (not in every slide), in the room
+// the panel's bottom padding keeps for them. Slides stretch to the tallest.
+.section-timeline
+  @apply mb-[128px] md:mb-[192px] text-montela-cream
+
+.section-timeline__inner
+  @apply relative
+
+// Two classes: swiper.css (loaded after main.css) sets .swiper's margins.
+.section-timeline__inner .section-timeline__swiper
+  @apply m-0
+
+.section-timeline__swiper .section-timeline__slide
+  @apply flex flex-col h-auto xl:grid xl:grid-cols-2 xl:gap-x-5
+
+.section-timeline__panel
+  @apply flex flex-1 flex-col items-center bg-montela-sage text-center px-8 pt-11 pb-[127px] md:px-[65px] md:pt-[53px] md:pb-[188px] xl:min-h-[900px] xl:pt-[76px] xl:pb-[200px]
+
+.section-timeline__title
+  @apply mt-3 md:mt-4 xl:mt-[50px]
+
+.section-timeline__text
+  @apply mt-11 max-w-[328px] font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:mt-24 md:max-w-[453px] md:text-[18px] md:leading-[25px] xl:mt-[253px] xl:max-w-[485px] xl:text-[15px]
+
+.section-timeline__photo
+  @apply order-first m-0 h-[400px] overflow-hidden xl:order-none xl:h-auto
+
+.section-timeline__img
+  @apply w-full h-full object-cover
+
+.section-timeline__nav
+  @apply absolute z-10 inset-x-0 bottom-11 justify-center md:bottom-[53px] xl:right-[calc(50%+10px)] xl:bottom-[97px]
+
+// -- Future (template-parts/pages/montela-way/future.php) --
+// Figma: desktop 5767:16125, tablet 5609:23488, mobile 5609:23502.
+//
+//   Mobile   title, 44px, text, 20px, list, 20px, photo (326:268)
+//   Tablet   title, 44px, text (cols 1–3) beside the list (cols 4–6), 44px,
+//            photo (702:476)
+//   Desktop  copy on cols 2–5 (title, then text and list 51px apart; text
+//            485px), bottom-aligned with the photo on cols 6–12 at 95%
+//            (1001px of 1053 — Figma 1001:648)
+// List: bullets 30px in, one empty line between items (as drawn).
+.section-future
+  @apply mb-[128px] md:mb-[192px] text-montela-walnut
+
+.section-future__grid
+  @apply xl:items-end
+
+.section-future__copy
+  @apply col-span-full md:grid md:grid-cols-2 md:gap-x-5 xl:col-start-2 xl:col-span-4 xl:flex xl:flex-col
+
+.section-future__title
+  @apply md:col-span-2
+
+.section-future__text
+  @apply mt-11 xl:mt-[51px] xl:max-w-[485px]
+
+.section-future__items
+  @apply flex flex-col gap-[22px] mt-5 pl-[30px] list-disc md:gap-[25px] md:mt-11 xl:gap-8 xl:mt-[51px] xl:max-w-[471px]
+
+.section-future__photo
+  @apply col-span-full m-0 mt-5 aspect-[326/268] overflow-hidden md:mt-11 md:aspect-[702/476] xl:col-start-6 xl:col-span-7 xl:mt-0 xl:w-[95%] xl:aspect-[1001/648]
+
+.section-future__img
+  @apply w-full h-full object-cover
+
+// -- Closing (template-parts/pages/montela-way/closing.php) --
+// Figma: desktop 5426:15547, tablet 5609:23601, mobile 5609:23609.
+// Title over the text (44px; text 460px wide on tablet); on desktop the
+// title on cols 2–6 and the text on cols 8–11, both top-aligned.
+.section-closing
+  @apply mb-[128px] md:mb-[192px] text-montela-walnut
+
+.section-closing__grid
+  @apply gap-y-11 xl:items-start
+
+.section-closing__title
+  @apply col-span-full xl:col-start-2 xl:col-span-5
+
+.section-closing__text
+  @apply col-span-full md:max-w-[460px] xl:col-start-8 xl:col-span-4 xl:max-w-none

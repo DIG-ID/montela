@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.25.0] — 2026-10-29
+
+### Added
+- "Der Montela Weg" page template ("Montela Way Template"): hero, intro, values with photos, the Montela story, a year-by-year timeline slider, plans for the future and closing words.
+
 ## [1.24.0] — 2026-10-29
 
 ### Added
