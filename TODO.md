@@ -40,18 +40,6 @@ alteração no `CHANGELOG.md`. Os nodes do Figma de cada template estão no
 - [ ] **Timeline do Montela Weg** — os anos 2020–2026 ainda estão em Lorem
   Ipsum (conteúdo, no tab Timeline da página).
 
-## Correcções
-
-- [ ] **Headings das páginas do Resort** (Bruno) — a regra mudou na 1.32.2
-  (`.claude/rules/figma.md`, "Tags de título": secções em `<h2>`, a classe
-  segue o Figma). Ainda em `<h3>`: `modules/resort-sections.php`,
-  `green-text.php`, `horizontal.php` e as secções em `pages/bike-hotel/`,
-  `kids-playground/`, `lounge-bar/`, `meetings-groups/room-info.php`, `shop/`.
-  Saltos de nível no Fitnessroom: `fitness-info.php` ("Auf einen Blick" em
-  `<h4>` logo a seguir à intro) e as caixas de `fitness-usage.php` em `<h4>`
-  depois de um `<h2>`. Os cards de `shop-products.php`, `shop-producers.php` e
-  `group-details.php` passam a `<h3>` quando o título da secção for `<h2>`.
-
 ## A verificar
 
 - [ ] **Testimonials** — o conteúdo actual é provisório (vão ser reviews
