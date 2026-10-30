@@ -272,6 +272,47 @@ function initStickyCta() {
 }
 
 // =============================================================================
+// Sticky header
+// =============================================================================
+// Once the header has scrolled out of view, it comes back fixed at the top as
+// a compact sage bar (`.is-header-stuck` on <body>, _header.sass), and turns
+// back into the normal header at the top of the page. While the mega menu
+// locks the page, the state does not change.
+function initStickyHeader() {
+  const header = document.getElementById('header-main');
+  if (!header) {
+    return;
+  }
+
+  const body = document.body;
+  // The normal header's height: measured while it is not stuck.
+  let threshold = header.offsetHeight;
+  let ticking = false;
+
+  const update = () => {
+    ticking = false;
+    if (body.classList.contains('is-menu-open') || body.classList.contains('is-menu-closing')) {
+      return;
+    }
+    if (!body.classList.contains('is-header-stuck')) {
+      threshold = header.offsetHeight;
+    }
+    body.classList.toggle('is-header-stuck', window.scrollY > threshold);
+  };
+
+  const onScroll = () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  update();
+}
+
+// =============================================================================
 // DOM ready
 // =============================================================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -280,4 +321,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initLangSwitcher();
   initStickyCta();
   initMegaMenu();
+  initStickyHeader();
 });

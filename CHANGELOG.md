@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.35.0] — 2026-10-30
+
+### Added
+- Sticky header: once the header scrolls out of view it comes back fixed at the top as a compact sage bar (80px on desktop and tablet, 76 on mobile), with the current menu item on a light background. Back at the top of the page, the normal header returns.
+
 ## [1.34.0] — 2026-10-30
 
 ### Added
