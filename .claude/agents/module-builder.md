@@ -35,9 +35,10 @@ a "nicer" number or a guess because it looks odd. Only snapping to the grid
 (≤ a few px) is allowed; anything you think is a design mistake goes in the
 report as a question, built as drawn. Measured values go in the SASS
 header comment; interpolated ones are labelled as such.
-**Heading tags follow the Figma text style**: "…/H3" → `<h3 class="title-h3">`,
-H2 → `<h2>`, H4 → `<h4>` — never chosen by page order (see `figma.md` →
-"Tags de título"). Sizes stay as drawn per frame.
+**Heading tags follow the page structure, classes follow the Figma style**:
+a section title is an `<h2>` whatever its look ("…/H3" → `<h2 class="title-h3">`),
+titles inside a section are `<h3>`, no skipped levels, eyebrows are `<p>`
+(see `figma.md` → "Tags de título"). Sizes stay as drawn per frame.
 
 ## Step 1 — reuse before you build (mandatory)
 Before writing anything, check whether the section already exists:

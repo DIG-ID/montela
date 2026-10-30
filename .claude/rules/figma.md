@@ -60,12 +60,24 @@ O inset usado pela maioria das secções (colunas 2 a 11 de 12) é
 - Um frame desenhado a 1920 dá um único passo. Os valores para os breakpoints intermédios são **interpolados**, e isso deve ficar escrito no comentário — para o próximo que lá mexer saber que não foi medido.
 - Os números do frame podem não fechar: já aconteceu um grupo de 1514px conter 1515px de conteúdo. Quando a soma não dá, é o desenho que está à mão, não o código que está errado — tratar a medida como tecto e deixar o CSS ceder.
 
-## Tags de título: manda o nome do estilo
+## Tags de título: a tag segue a estrutura, a classe segue o Figma
 
-O Figma diz o nível de cada título no estilo de texto (no Dev Mode, o
-comentário em Typography: `/* Tablet/H3 */`). **A tag HTML segue esse
-nível**: estilo H1 → `<h1>`, H2 → `<h2>`, H3 → `<h3>`, H4 → `<h4>` — com a
-classe correspondente (`.title-h3` num `<h3>`). Não escolher a tag pela
-ordem da página (Bruno, Outubro 2026, por SEO).
+O Figma diz o **aspecto** de cada título no estilo de texto (no Dev Mode, o
+comentário em Typography: `/* Tablet/H3 */`) — isso dá a **classe**
+(`.title-h3`). A **tag** segue a estrutura da página, não o estilo:
+
+- `<h1>`: um por página (o hero, ou a faixa do título).
+- `<h2>`: o título de **cada secção** — irmãs lado a lado, a intro incluída.
+  É o caso normal de um título com estilo H3: `<h2 class="title-h3">`.
+- `<h3>`: títulos **dentro** de uma secção (cards, itens de lista, blocos);
+  `<h4>` só dentro de um `<h3>`.
+- Nunca saltar níveis (`h2` → `h4`). Um "eyebrow" (linha pequena por cima do
+  título, ex.: "SaastalCard") não é título: `<p class="title-h2">`.
+- Um componente com título (cards, `icon-list`) não fixa o nível: recebe-o por
+  argumento (`title_tag`), com o default do caso mais comum.
+
+Porquê (Daniel, Outubro 2026): com as secções em `<h3>` debaixo do `<h2>` da
+intro, um leitor de ecrã que navega por `<h2>` só encontra a intro — a página
+parece ter uma secção. O SEO não ganha nada com a tag a seguir o tamanho.
 O tamanho continua a ser o desenhado em cada frame: um frame de tablet com
 "Desktop/H3" fica com 90/80, anotado no SASS.
