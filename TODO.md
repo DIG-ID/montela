@@ -22,42 +22,49 @@ alteração no `CHANGELOG.md`. Os nodes do Figma de cada template estão no
   Em produção: Sync do CPT, da taxonomia e dos grupos; criar a página
   Apartments (filha da Aufenthalt) e preencher os tabs Services (o conteúdo da Aufenthalt), Included ("Inklusive Leistungen", estilo Cream band, ícones walnut) e Testimonials (título); criar os 11 termos com os slugs do
   `CLAUDE.md` e os ícones. O botão "Zu allen Services" aponta para `#` — falta a página de destino (como na Aufenthalt).
-- [ ] **Mapa** — design por aprovar. Entra em dois sítios:
+- [ ] **Mapa** — design por aprovar. Entra em vários sítios:
   - homepage, entre a Gallery e o Explore (`page-templates/page-home.php`);
-  - Unsere Region, entre os Highlights e os Tagesausflüge (`page-templates/page-region.php`).
+  - Unsere Region, entre os Highlights e os Tagesausflüge (`page-templates/page-region.php`);
+  - Aufenthalt, entre o Extras e os Testimonials;
+  - Unser Resort e Shop ("mapa adiado" no `CLAUDE.md`).
   Ao construir: chave em `wp-config.php` (`MONTELA_GOOGLE_MAPS_API_KEY`) e o
   template na lista de `montela_enqueue_google_maps()` (`inc/enqueue.php`).
   Rever as margens das secções vizinhas, que hoje são provisórias por causa do
-  mapa (`_cards-icon.sass`, `_box-text.sass`).
+  mapa — desde a 1.32.0 estão no PHP (`modules/cards-icon.php`,
+  `modules/box-text.php`, classes por omissão ou `$args['class']`).
 - [ ] **Animações** — `assets/js/animations.js` ainda não tem animações do
   projecto (só o setup do GSAP/Lenis). Lembrar: estados iniciais via
   `gsap.from()`, nunca `opacity: 0` no CSS.
 - [ ] **Estilo dos links inline** — `_typography.sass` tem a secção "Links" por
   definir a partir do design system.
-- [ ] **Página 404** — `_pages/_404.sass` está vazio; o template ainda é o do starter.
+- [ ] **Timeline do Montela Weg** — os anos 2020–2026 ainda estão em Lorem
+  Ipsum (conteúdo, no tab Timeline da página).
 
 ## Correcções
 
-- [ ] `template-parts/footer-main.php` — o docblock refere
-  `acf-json/group_options_footer.json`; o grupo é o
-  `group_options_theme_settings.json`.
-- [ ] `CLAUDE.md` — na tabela de CPTs, o `offer` ainda diz que os cards da
-  página de listagem estão "por fazer"; já existem
-  (`template-parts/pages/offers/cards.php`, v1.21.0).
-- [ ] `404.php` e `archive.php` — strings fonte em alemão; a regra do projecto
-  é inglês por omissão (as traduções vêm do WPML / `.pot`).
+- [ ] **Headings das páginas do Resort** (Bruno) — a regra mudou na 1.32.2
+  (`.claude/rules/figma.md`, "Tags de título": secções em `<h2>`, a classe
+  segue o Figma). Ainda em `<h3>`: `modules/resort-sections.php`,
+  `green-text.php`, `horizontal.php` e as secções em `pages/bike-hotel/`,
+  `kids-playground/`, `lounge-bar/`, `meetings-groups/room-info.php`, `shop/`.
+  Saltos de nível no Fitnessroom: `fitness-info.php` ("Auf einen Blick" em
+  `<h4>` logo a seguir à intro) e as caixas de `fitness-usage.php` em `<h4>`
+  depois de um `<h2>`. Os cards de `shop-products.php`, `shop-producers.php` e
+  `group-details.php` passam a `<h3>` quando o título da secção for `<h2>`.
 
 ## A verificar
 
 - [ ] **Testimonials** — o conteúdo actual é provisório (vão ser reviews
   escolhidas de várias fontes e inseridas à mão). O testimonial 212 não tem
-  título, por isso aparece sem a linha do autor. A homepage não tem o título
-  "Was Gäste an Montela lieben" preenchido; a Aufenthalt tem.
-
-- [ ] **Redirects dos URLs antigos** — o changelog (1.18.0 e 1.23.0) diz que
-  `/aktivitaeten/{slug}/` e `/tagesausflug/{slug}/` redireccionam para os novos.
-  Não há código no tema para isso: confirmar que o WordPress o faz sozinho
-  (palpite de URL nos 404) ou criar os redirects.
+  título, por isso aparece sem a linha do autor. No staging, a homepage não
+  tem o título "Was Gäste an Montela lieben" preenchido (em local tem; a
+  Aufenthalt tem).
+- [ ] **Sticky CTA** — o título nas Theme Settings é "TITLE (H2)" (local e
+  staging) e sai como `<h2>` em todas as páginas: preencher ou esvaziar.
+- [ ] **WP Pusher no staging** — o Push-to-Deploy não está a actualizar sozinho
+  (o staging ficou na 1.31.0 até um "Update theme" manual a 2026-10-30): ver o
+  webhook do GitHub e o Deploy log. Depois de cada deploy, Sync do ACF
+  (grupos, CPTs e taxonomias novos da 1.32.0 e da 1.33.0).
 - [ ] **Safelist do Tailwind** — os títulos aceitam `<br class="…">` vindo do
   editor (ver `.claude/rules/editor-content.md`). Confirmar que as classes
   usadas no conteúdo existem no CSS compilado; senão criar o `safelist`.
@@ -66,7 +73,8 @@ alteração no `CHANGELOG.md`. Os nodes do Figma de cada template estão no
 
 - [ ] Preencher no `CLAUDE.md` o mapeamento contexto → schema (Yoast Schema
   API) e implementar: p.ex. `offer` → `Offer`, `activity` / `tagesausflug`
-  → `TouristAttraction`, testimonials → `Review`.
+  → `TouristAttraction`, testimonials → `Review`. Já feito: página FAQ →
+  `FAQPage` (`inc/schema.php`, v1.29.0).
 
 ## Antes do lançamento
 
@@ -76,7 +84,8 @@ alteração no `CHANGELOG.md`. Os nodes do Figma de cada template estão no
 - [ ] WP Rocket: "Delay JavaScript execution" activo, com o `main.js` como
   única excepção do tema.
 - [ ] SG Security activo.
-- [ ] Formulários CF7 (quando existirem): locale `de_CH` (ver
+- [ ] CF7 (o formulário da Info & Kontakt já existe): locale `de_CH`, para
+  as mensagens de validação saírem formais e sem "ß" (ver
   `.claude/rules/editor-content.md`).
 - [ ] Criar os termos `sommer` e `winter` da taxonomia Season e fazer o Sync
   dos grupos ACF em cada ambiente.

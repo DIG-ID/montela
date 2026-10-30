@@ -103,7 +103,8 @@ no ficheiro indicado em "No starter".
              acf_import_internal_post_type(). Depois de importar:
              wp post list --post_type=acf-field-group --field=post_name | sort | uniq -d
   No starter CLAUDE.md, secção "ACF Field Groups".
-  No Montela CLAUDE.md (só a parte dos grupos — falta a dos CPTs).
+  No Montela CLAUDE.md, secção "ACF Field Groups" (grupos, CPTs e
+             taxonomias — a dos CPTs acrescentada a 2026-10-30).
   Estado     POR PASSAR
 
 [2026-10-29] A6. Yoast com posts criados em local
@@ -171,6 +172,39 @@ no ficheiro indicado em "No starter".
              sobretudo condições e listas de variantes; verificar a página.
   No starter skill /deploy, passo 2 (pré-check do repositório).
   No Montela template-parts/modules/box-text.php (ramo 'box' explícito).
+  Estado     POR PASSAR
+
+[2026-10-30] A12. Nível dos headings: estrutura, não estilo do Figma
+  Problema   Na 1.32.0 a tag passou a seguir o estilo de texto do Figma
+             ("…/H3" → <h3>). As secções ficaram todas em <h3> debaixo do <h2>
+             da intro: um leitor de ecrã que navega por <h2> só encontrava a
+             intro. Os cards em <h4> criaram saltos (h2 → h4, h1 → h3 no 404).
+             Revertido na 1.32.2.
+  Regra      "A classe segue o estilo do Figma (.title-h3); a tag segue a
+             estrutura: <h1> um por página, <h2> o título de cada secção
+             (irmãs, a intro incluída), <h3> dentro da secção, sem saltar
+             níveis. Eyebrows são <p>. Componentes com título recebem o nível
+             por argumento (title_tag)."
+  No starter .claude/rules/figma.md e CLAUDE.md, secção "Semântica HTML5".
+  No Montela .claude/rules/figma.md, "Tags de título";
+             template-parts/components/card-activity.php (title_tag).
+  Estado     POR PASSAR
+
+[2026-10-30] A13. Mudar um componente partilhado
+  Problema   Na 1.32.0, alterações a icon-list, card-activity, box-text e
+             cards-icon (defaults novos, tags) mudaram páginas já feitas —
+             ícones mais pequenos na homepage, linhas afastadas na Unsere
+             Region — sem ninguém dar por isso: eram 1–2 linhas por ficheiro
+             num commit de 110.
+  Regra      "Antes de mudar um componente partilhado: grep dos sítios onde é
+             usado e screenshots antes/depois dessas páginas (393 / 834 /
+             1920). Um default novo entra como opção ($args), ou as páginas
+             antigas ajustam-se no mesmo commit. Alterações a componentes e
+             regras num commit próprio (ou PR), separado da funcionalidade
+             nova, e registadas no CHANGELOG em Changed."
+  No starter CLAUDE.md, "Convenções Gerais"; .claude/rules/php.md (template
+             parts); skill /deploy, passo de lint/verificação.
+  No Montela correcções na 1.32.1 (_home.sass, _region.sass).
   Estado     POR PASSAR
 
 
@@ -272,6 +306,28 @@ o cliente.
              do módulo mexeria nas outras páginas.
   Confirma   designer (5426:8963).
   Onde       assets/sass/_modules/_box-text.sass (.section-box-text--cream).
+  Estado     POR CONFIRMAR
+
+[2026-10-30] B8. Botão dos cards do Bike Hotel
+  O quê      rótulo por omissão do botão dos cards (Bike experiences /
+             partners), quando o link não tem texto.
+  Figma      "Link to subpage" (placeholder em inglês).
+  Feito      "Mehr erfahren", como nos outros cards do site.
+  Porquê     regra A1; o texto do Figma é um placeholder.
+  Confirma   designer ou folha de conteúdo.
+  Onde       template-parts/pages/bike-hotel/bike-experiences.php ($bx_label).
+  Estado     POR CONFIRMAR
+
+[2026-10-30] B9. Mensagens dos sliders para leitores de ecrã
+  O quê      o que o Swiper anuncia no primeiro e no último slide e nos
+             pontos da paginação (eram as mensagens em inglês do Swiper).
+  Figma      sem texto.
+  Feito      "Das ist das erste Element.", "Das ist das letzte Element.",
+             "Zu Element {{index}}".
+  Porquê     regra A1; "Element" serve para todos os sliders (fotos, cards,
+             anos, pacotes).
+  Confirma   cliente ou folha de conteúdo.
+  Onde       inc/enqueue.php (montela_enqueue_module()).
   Estado     POR CONFIRMAR
 
 
