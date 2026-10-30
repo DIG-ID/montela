@@ -5,8 +5,8 @@
  *
  * Fields: "Gallery" tab of acf-json/group_page_home.json. Figma:
  * section-gallery-desktop 5466:15471, tablet 5426:4383, mobile 5453:8475.
- * The slider needs the Swiper module (enqueued for the homepage template in
- * inc/enqueue.php).
+ * The slider is the shared components/photo-slider.php (Swiper module,
+ * enqueued for the homepage template in inc/enqueue.php).
  *
  * @package montela
  * @subpackage Section
@@ -36,9 +36,9 @@ $gal_title_id = wp_unique_id( 'section-gallery-title-' );
 	<div class="theme-container">
 		<div class="theme-grid section-gallery__grid">
 			<?php if ( $gal_title ) : ?>
-				<h2 id="<?php echo esc_attr( $gal_title_id ); ?>" class="title-h3 section-gallery__title">
+				<h3 id="<?php echo esc_attr( $gal_title_id ); ?>" class="title-h3 section-gallery__title">
 					<?php echo wp_kses( $gal_title, array( 'br' => array( 'class' => array() ) ) ); ?>
-				</h2>
+				</h3>
 			<?php endif; ?>
 
 			<?php if ( $gal_image_1 ) : ?>

@@ -30,8 +30,10 @@
 // on desktop its 224px is brought down to 192 when this box follows it.
 // Below: 190px on desktop (to the footer's call-to-action box, which starts
 // 40px above the footer in the frames), 216 tablet, 144 mobile.
+// These margins are the default in box-text.php; a page can pass its own
+// ($args['class']) — Kids Playground and Lounge & Bar: 44 / 96 / 128 around.
 .section-box-text--box
-  @apply mt-[128px] mb-[144px] md:mt-[192px] md:mb-[216px] xl:mb-[190px] text-montela-walnut
+  @apply text-montela-walnut
 
 .section-activities:has(+ .section-box-text--box)
   @apply xl:mb-[192px]
@@ -46,8 +48,13 @@
 .section-box-text--box .section-box-text__eyebrow
   @apply xl:col-span-2
 
+// The 44px gap on tablet sits under the small title; without one the title
+// starts at the box's own 44px top padding (Kids, Lounge, Shop tablet frames).
 .section-box-text--box .section-box-text__title
-  @apply md:mt-11 xl:mt-0 xl:text-[80px] xl:leading-[76px]
+  @apply xl:text-[80px] xl:leading-[76px]
+
+.section-box-text--box .section-box-text__eyebrow + .section-box-text__title
+  @apply md:mt-11 xl:mt-0
 
 .section-box-text--box .section-box-text__text
   @apply md:mt-[50px] md:max-w-[566px] xl:mt-0
@@ -82,9 +89,10 @@
 // Spacing: 192px around on desktop. Tablet and mobile: none above (it
 // follows the image-cards section directly in the frames — on Unsere Region
 // the cards-with-icon module's own margin applies until that section is
-// built; on Aufenthalt the services module's), 192 / 128 below.
+// built; on Aufenthalt the services module's), 192 / 128 below. Margins in
+// box-text.php.
 .section-box-text--band
-  @apply mb-[128px] md:mb-[192px] xl:my-[192px] py-28 md:py-[100px] xl:py-0 xl:min-h-[600px] xl:flex xl:items-center bg-montela-sage text-montela-cream
+  @apply py-28 md:py-[100px] xl:py-0 xl:min-h-[600px] xl:flex xl:items-center bg-montela-sage text-montela-cream
 
 .section-box-text--band.section-box-text--has-list
   @apply xl:py-[140px]

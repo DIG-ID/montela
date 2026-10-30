@@ -22,9 +22,11 @@ $header_book_ok = is_array( $header_booking ) && ! empty( $header_booking['url']
 $header_book_tg = ( $header_book_ok && ! empty( $header_booking['target'] ) ) ? $header_booking['target'] : '';
 
 // WPML returns null when the plugin is inactive; the switcher is then skipped.
-// Split into the current language (shown in the box) and the others (the
-// dropdown). Codes can carry a region ("en-us"): only the language is shown.
-$header_languages = apply_filters( 'wpml_active_languages', null, array( 'skip_missing' => 0 ) );
+// Only languages this page is translated into are listed (skip_missing), so
+// with no translations the switcher is hidden. Split into the current
+// language (shown in the box) and the others (the dropdown). Codes can carry
+// a region ("en-us"): only the language is shown.
+$header_languages = apply_filters( 'wpml_active_languages', null, array( 'skip_missing' => 1 ) );
 $header_lang_now  = null;
 $header_lang_alts = array();
 if ( is_array( $header_languages ) ) {

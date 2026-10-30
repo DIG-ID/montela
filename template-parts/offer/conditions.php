@@ -32,7 +32,7 @@ $cond_title_id = wp_unique_id( 'section-offer-conditions-title-' );
 	<div class="theme-container">
 		<div class="section-offer-conditions__inner">
 			<?php if ( $cond_title ) : ?>
-				<h2 id="<?php echo esc_attr( $cond_title_id ); ?>" class="title-h3 section-offer-conditions__title"><?php echo esc_html( $cond_title ); ?></h2>
+				<h3 id="<?php echo esc_attr( $cond_title_id ); ?>" class="title-h3 section-offer-conditions__title"><?php echo esc_html( $cond_title ); ?></h3>
 			<?php endif; ?>
 
 			<?php if ( $cond_text ) : ?>

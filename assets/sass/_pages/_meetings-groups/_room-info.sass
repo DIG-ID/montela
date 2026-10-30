@@ -1,0 +1,42 @@
+// Meetings & Groups — room info (template-parts/pages/meetings-groups/room-info.php).
+// Title, photo, text, bullet list and button; then the photo strip
+// (_components/_photo-slider.sass, .photo-slider--subpage — slide sizes
+// and arrow positions measured identical to Kids, Lounge & Bar and Shop:
+// 951 / 746 × 832, 631 / 495 × 552, 168 / 172 × 192; arrows 21px from the
+// bottom on desktop, 19 in the variant).
+// Figma "section-find-apartment": desktop 5895:19981, tablet 5895:20756,
+// mobile 5895:20640; strip 5895:19972 / 5895:20766 / 5895:20648.
+//
+//   Desktop  title cols 2–11 (90/80); 64px below it the photo on cols 2–8
+//            (1053 × 600, x 203) beside the text column on cols 9–11
+//            (Figma x 1281, 438px; the column starts at 1277, 440 wide):
+//            text, 64px, list, 64px, button
+//   Tablet   title full width, 90/80 as drawn (".title-h3" is 80/76 on
+//            tablet; Shop's title is 80/76); 36px below it the photo on cols 1–3
+//            (343 × 536) beside cols 4–6 (Figma x 363, 339px; 343 on the
+//            grid): text, 44px, list, 44px, button
+//   Mobile   photo first (326 × 268 in Figma — full container, 329, here),
+//            32px to the title (36/38), 32px to the text (14/22), 20px to
+//            the list; no button in the mobile frame (built as drawn)
+// Text and list .body-text (20/32, 18/25, 14/22). List: disc bullets,
+// indented 30 / 27 / 21px, no space between items, measured.
+//
+// Spacing: none above (follows the Intro module). Photo → strip 44px on
+// every breakpoint (desktop: the photo is taller than the text column).
+// Strip → group details 192px desktop and tablet, 128 mobile, measured.
+// Layout (grid columns, spacing) is in the PHP as Tailwind classes.
+
+// The class on the <ul> keeps .body-text's editor-list rules (and the
+// site-wide reset) from applying, so the bullets are set here.
+.section-room-info__list
+  @apply pl-[21px] md:pl-[27px] xl:pl-[30px]
+  list-style: disc outside
+
+// Tablet title 90/80 as drawn ("Desktop/H3" in the tablet frame). Two
+// classes to beat .title-h3.
+.section-room-info .section-room-info__title
+  @apply md:text-[90px] md:leading-[80px]
+
+// Smaller disc than the font's default (Bruno); the indent stays as measured.
+.section-room-info__list li::marker
+  font-size: 0.7em

@@ -1,0 +1,42 @@
+// Kids Playground — playground info (template-parts/pages/kids-playground/playground-info.php).
+// Photo, title, text and icon list; then the photo strip
+// (_components/_photo-slider.sass, .photo-slider--subpage) and the opening
+// hours box (_modules/_box-text.sass, which sets its own spacing).
+// Figma (Kids Playground): desktop 5895:19892, tablet 5895:20506, mobile 5895:20297.
+//
+//   Desktop  photo cols 2–6 (747 × 470) beside title + text on cols 8–11;
+//            then the list, 2 × 2: items on cols 2–4 and 7–9
+//   Tablet   title, text, photo (706 × 452), list — stacked, 44px apart;
+//            text → photo 112px (Bruno); on tablet the spacing is the
+//            photo's and the list's top margins, no grid gap
+//   Mobile   same order (photo 329 × 246), 44px apart
+//
+// Title → text: 12 / 52 / 36px (mobile / tablet / desktop). Text max 578px on
+// tablet, 440px on desktop. Desktop title + text on cols 8–12, title up to
+// 660px — drawn at x 1091 (121px into col 7), snapped to col 8 (x 1123),
+// as Bruno asked for columns instead of offsets.
+//
+// List: 467px wide on tablet; items 16px apart on mobile, 72px on tablet (the icon-list default);
+// on desktop the rows' tops are 218px apart with 92px of text, a 126px gap;
+// the list frame is 324px tall (14px below the last row). Desktop items on
+// cols 2–4 and 7–9 (440px) — drawn 456.5px wide, the right-hand ones 9.5px
+// into col 7; snapped to the columns.
+// Text stays at 17/23 on desktop ("Tablet/Text small" in the frame).
+//
+// Layout (grid columns, spacing, max-widths) is in the PHP as Tailwind
+// classes; this file keeps the measurements and the type override.
+//
+// No top spacing: it follows the Intro module, whose padding gives the gap.
+// 44px between the list and the photo strip.
+.section-playground-info .icon-list__text
+  @apply xl:text-[17px] xl:leading-[23px]
+
+// Opening hours box (modules/box-text.php): this page's frame draws it at
+// 90/80 title and 20/32 text from tablet up (Figma 5895:20545 / 5895:19924), where the module's
+// own frame has 80/76 and 18/25. Three classes to beat the module's
+// .section-box-text--box .section-box-text__title.
+.section-playground-info .section-box-text--box .section-box-text__title
+  @apply md:text-[90px] md:leading-[80px]
+
+.section-playground-info .section-box-text--box .section-box-text__text
+  @apply md:text-[20px] md:leading-[32px]

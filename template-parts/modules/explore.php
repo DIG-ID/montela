@@ -1,15 +1,22 @@
 <?php
 /**
- * Explore module: a sage text panel (title, small photo, text, button)
- * beside a photo slider — side by side on desktop, slider on top below that.
+ * Explore module: a sage text panel (overline, title, small photo, text,
+ * button) beside a photo slider — side by side on desktop, slider on top
+ * below that. The overline and the small photo are optional; without the
+ * photo the panel spaces its text as in the Bike Hotel frames.
  *
- * Fields: acf-json/group_module_explore.json, cloned into each page's field
- * group. Figma: "Explore with photo" desktop 5685:17337, tablet 5685:17362,
- * mobile 5685:17389. Enqueues the Swiper module itself when there are slides;
- * for the CSS to land in <head>, also enqueue it on wp_enqueue_scripts for the
- * templates that use this module (see inc/enqueue.php).
+ * Fields: acf-json/group_module_explore.json — cloned into a page's field
+ * group, or used as a Flexible Content layout. Figma: "Explore with photo"
+ * desktop 5685:17337, tablet 5685:17362, mobile 5685:17389; without the
+ * photo, with an overline ("Next to footer_explore", Bike Hotel): desktop
+ * 5895:19865, tablet 5895:20547, mobile 5895:20377. Enqueues the Swiper
+ * module itself when there are slides; for the CSS to land in <head>, also
+ * enqueue it on wp_enqueue_scripts for the templates that use this module
+ * (see inc/enqueue.php).
  *
  * Arguments ($args):
+ * - row     (bool)       Optional. True inside a Flexible Content loop (fields
+ *                        read with get_sub_field()). Since 1.13.0.
  * - post_id (int|string) Optional. Where to read the fields from. Default: current post.
  * - prefix  (string)     Optional. Clone field prefix, when the clone uses
  *                        "Prefix field names" — e.g. 'explore_' for a clone named 'explore'.
@@ -19,18 +26,18 @@
  * @since 1.6.0
  */
 
-if ( ! function_exists( 'get_field' ) ) {
+if ( ! function_exists( 'montela_module_field' ) ) {
 	return;
 }
 
-$exp_ctx    = ! empty( $args['post_id'] ) ? $args['post_id'] : get_the_ID();
-$exp_prefix = ! empty( $args['prefix'] ) ? $args['prefix'] : '';
+$exp_args = isset( $args ) && is_array( $args ) ? $args : array();
 
-$exp_title  = get_field( $exp_prefix . 'section_explore_title', $exp_ctx );
-$exp_image  = get_field( $exp_prefix . 'section_explore_image', $exp_ctx );
-$exp_text   = get_field( $exp_prefix . 'section_explore_text', $exp_ctx );
-$exp_button = get_field( $exp_prefix . 'section_explore_button', $exp_ctx );
-$exp_slides = get_field( $exp_prefix . 'section_explore_slides', $exp_ctx );
+$exp_overline = montela_module_field( 'section_explore_overline', $exp_args );
+$exp_title    = montela_module_field( 'section_explore_title', $exp_args );
+$exp_image    = montela_module_field( 'section_explore_image', $exp_args );
+$exp_text     = montela_module_field( 'section_explore_text', $exp_args );
+$exp_button   = montela_module_field( 'section_explore_button', $exp_args );
+$exp_slides   = montela_module_field( 'section_explore_slides', $exp_args );
 
 if ( ! $exp_title && ! $exp_text && ! $exp_slides ) {
 	return;
@@ -44,12 +51,15 @@ if ( $exp_slides && function_exists( 'montela_enqueue_module' ) ) {
 }
 
 $exp_title_id = wp_unique_id( 'section-explore-title-' );
-$exp_swiper   = array(
+// The arrows always show, as drawn — even with one photo (disabled then;
+// Swiper would hide them when locked, hence watchOverflow off).
+$exp_swiper = array(
 	'slidesPerView' => 1,
 	'spaceBetween'  => 0,
+	'watchOverflow' => false,
 );
 ?>
-<section class="section-explore"<?php echo $exp_title ? ' aria-labelledby="' . esc_attr( $exp_title_id ) . '"' : ''; ?>>
+<section class="section-explore<?php echo $exp_image ? '' : ' section-explore--no-photo'; ?>"<?php echo $exp_title ? ' aria-labelledby="' . esc_attr( $exp_title_id ) . '"' : ''; ?>>
 	<?php if ( $exp_slides ) : ?>
 		<div class="section-explore__slider" data-swiper-root>
 			<div class="swiper section-explore__swiper" data-swiper="<?php echo esc_attr( wp_json_encode( $exp_swiper ) ); ?>">
@@ -72,18 +82,20 @@ $exp_swiper   = array(
 				</div>
 			</div>
 
-			<?php if ( count( $exp_slides ) > 1 ) : ?>
-				<div class="slider-nav slider-nav--sage section-explore__nav">
-					<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-swiper-prev aria-label="<?php esc_attr_e( 'Previous photo', 'montela' ); ?>"></button>
-					<button class="slider-nav__btn slider-nav__btn--next" type="button" data-swiper-next aria-label="<?php esc_attr_e( 'Next photo', 'montela' ); ?>"></button>
-				</div>
-			<?php endif; ?>
+			<div class="slider-nav slider-nav--sage section-explore__nav">
+				<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-swiper-prev aria-label="<?php esc_attr_e( 'Previous photo', 'montela' ); ?>"></button>
+				<button class="slider-nav__btn slider-nav__btn--next" type="button" data-swiper-next aria-label="<?php esc_attr_e( 'Next photo', 'montela' ); ?>"></button>
+			</div>
 		</div>
 	<?php endif; ?>
 
 	<div class="section-explore__panel">
+		<?php if ( $exp_overline ) : ?>
+			<h2 class="title-h2 section-explore__overline"><?php echo esc_html( $exp_overline ); ?></h2>
+		<?php endif; ?>
+
 		<?php if ( $exp_title ) : ?>
-			<h2 id="<?php echo esc_attr( $exp_title_id ); ?>" class="title-h3 section-explore__title"><?php echo esc_html( $exp_title ); ?></h2>
+			<h3 id="<?php echo esc_attr( $exp_title_id ); ?>" class="title-h3 section-explore__title"><?php echo esc_html( $exp_title ); ?></h3>
 		<?php endif; ?>
 
 		<?php if ( $exp_image ) : ?>

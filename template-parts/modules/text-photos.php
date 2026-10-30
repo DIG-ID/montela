@@ -49,9 +49,9 @@ $apt_class    = 'section-text-photos' . ( 1 === count( $apt_images ) ? ' section
 	<div class="theme-container">
 		<div class="theme-grid section-text-photos__grid">
 			<?php if ( $apt_title ) : ?>
-				<h2 id="<?php echo esc_attr( $apt_title_id ); ?>" class="title-h3 section-text-photos__title">
+				<h3 id="<?php echo esc_attr( $apt_title_id ); ?>" class="title-h3 section-text-photos__title">
 					<?php echo wp_kses( $apt_title, array( 'br' => array( 'class' => array() ) ) ); ?>
-				</h2>
+				</h3>
 			<?php endif; ?>
 
 			<div class="section-text-photos__content">

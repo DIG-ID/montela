@@ -93,6 +93,10 @@ body
   ul:not([class])
     list-style-type: disc
 
+  // Smaller disc than the font's default (Bruno; as .section-room-info__list).
+  ul:not([class]) li::marker
+    font-size: 0.7em
+
   ol:not([class])
     list-style-type: decimal
 
@@ -107,3 +111,19 @@ body
 // -- Links ---------------------------------------------------------------------
 // The one place a typography class may set a colour.
 // (to be defined from the design system)
+
+// Titles come from editors: a word longer than its column (German compounds)
+// breaks inside the box instead of overflowing it. Only kicks in when a word
+// does not fit — normal titles wrap at spaces as before. `anywhere` (not
+// `break-word`) so the word also stops setting the box's minimum width:
+// in a centred flex column the intro title grew past the viewport instead.
+// Card titles and icon-list lines are editor copy in narrow boxes too.
+.title-h1,
+.title-h2,
+.title-h3,
+.title-h4,
+.title-intro,
+.section-cards-icon__card-title,
+.icon-list__title,
+.icon-list__text
+  overflow-wrap: anywhere

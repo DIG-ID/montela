@@ -1,0 +1,49 @@
+// Fitnessroom — fitness usage (template-parts/pages/fitnessroom/fitness-usage.php).
+// Photo strip (_components/_photo-slider.sass, .photo-slider--subpage),
+// then the usage boxes (.info-box, _components/_info-box.sass) and a
+// centred sage button.
+// Figma: strip "Group 1000006320" — desktop 5895:20015, tablet 5895:20840,
+// mobile 5895:20679; boxes "Frame 1000006603" — 5895:20024 / 5895:20784 /
+// 5895:20668.
+//
+// Strip: slides 951 / 746 × 832, 631 / 495 × 552, 168 / 172 × 192 — the
+// subpage variant's sizes. Arrows drawn 27px from the bottom on desktop and
+// 10px on tablet (the variant has 19 / 12, measured on Kids and Lounge);
+// none on mobile. Built with the variant — see the report.
+//
+//   Desktop  boxes on cols 2–6 (747) and 7–11 (745; 747 on the grid): two
+//            200px boxes 20px apart on the left, one 420px box on the
+//            right. Title at 24 / 24px from the box corner (2px border +
+//            22), 20/32 bold, 425px wide; text 20/32 light, 570px wide,
+//            38px under the title; 40px (+2 border) under the text — the
+//            200px boxes come out of that with the Figma copy.
+//   Tablet   cols 1–3 and 4–6 (340 drawn, 343 on the grid), 20px apart;
+//            title at 23 / 26px (2px border + 21 / 24), 18/28 bold, 267px;
+//            text 18/25, 271px (right padding 44px); title → text 24px,
+//            52 in the right box. Heights as drawn (Bruno): 225 + 283 left
+//            (min-heights, so longer text still fits), 528 right.
+//   Mobile   stacked, 20px apart, full container (328 drawn). Title 12/20
+//            bold ("Mobile/H4"), 255px; text 14/22, 271px (right padding
+//            32px); title → text 24px; 24px under the text.
+// Mobile, as drawn (Bruno): title → text 24 / 36 / 52px and heights 166 /
+// 153 / 389 in the three boxes (min-heights). Figma's mobile heights (166 / 153 / 389) are fixed frames.
+// Paragraphs: a blank line in Figma — one line height between them; the
+// bold sub-heads ("Öffnungszeiten") are <strong> lines in the text.
+//
+// Spacing: none above the strip (Cards with icon has 128 / 192 / 128px
+// below); strip → boxes 192px desktop and tablet, 128 mobile; boxes →
+// button 44px (20 on mobile); 192px below on desktop and tablet, 128 on
+// mobile, to the footer — measured.
+// Layout (grid columns, paddings, gaps, max-widths) is in the PHP as
+// Tailwind classes; here only the type.
+
+// Two classes to beat .title-h4 (20/32 on every breakpoint).
+.section-fitness-usage__box .section-fitness-usage__title
+  @apply text-[12px] leading-[20px] md:text-[18px] md:leading-[28px] xl:text-[20px] xl:leading-[32px]
+
+.section-fitness-usage__text
+  @apply font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[20px] xl:leading-[32px]
+  p
+    @apply mb-[22px] last:mb-0 md:mb-[25px] xl:mb-8
+  strong
+    @apply font-bold

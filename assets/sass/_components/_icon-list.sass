@@ -4,20 +4,29 @@
 // at the same size — 14/22 mobile, 17/23 tablet ("Tablet/Text small"), 20/32
 // desktop. No colour: it inherits from the section.
 //
+// Icons: every glyph at the same height, 50px — the height the Figma
+// glyphs share (Bike Hotel and Kids: 43–62px tall, most 48–51), at their own
+// width (capped by the column), centred in a 68px box the width of the icon
+// column — as Figma centres each glyph in its 68px frame, which lines the
+// icons up with the title. Upload icons cropped to the drawing: an SVG
+// exported with its 68px frame shows a smaller glyph. Sizing by width made
+// tall and frameless icons larger than the rest.
+//
 // Default layout: 68px icon column, 16px (mobile) / 20px gap to the text,
-// items 32px (mobile) / 72px apart. Sections override it with two classes
-// (.section-foo .icon-list__item), see .claude/rules/sass.md.
+// items 32px (mobile) / 72px apart. In the components layer, so a section's
+// layout classes in the PHP (class / item_class args) override it.
 
-.icon-list
-  @apply flex flex-col gap-8 md:gap-[72px]
+@layer components
+  .icon-list
+    @apply flex flex-col gap-8 md:gap-[72px]
 
-.icon-list__item
-  @apply grid grid-cols-[68px_1fr] gap-x-4 md:gap-x-5 items-start
+  .icon-list__item
+    @apply grid grid-cols-[68px_1fr] gap-x-4 md:gap-x-5 items-start
 
 .icon-list__icon
-  @apply block
+  @apply flex items-center justify-center h-[68px]
   img
-    @apply w-full h-auto
+    @apply w-auto h-[50px] max-w-full object-contain
 
 .icon-list__text
   @apply font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[17px] md:leading-[23px] xl:text-[20px] xl:leading-[32px]

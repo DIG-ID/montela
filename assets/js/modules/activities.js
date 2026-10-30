@@ -1,6 +1,8 @@
 // =============================================================================
 // Activities module — enqueued by template-parts/modules/activities.php:
 //   montela_enqueue_module( 'activities' );
+// The carousel part is also used by template-parts/pages/bike-hotel/bike-experiences.php
+// (no tabs there; from tablet up its arrows page a two-row grid track).
 //
 // - Season switch: an ARIA tablist ([data-activities-tabs]). Click, or the
 //   arrow / Home / End keys, select a season and show its cards panel; the

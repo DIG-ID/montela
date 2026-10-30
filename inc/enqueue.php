@@ -201,6 +201,9 @@ function montela_enqueue_assets() {
 	if ( is_page_template( array( 'page-templates/page-offers.php', 'page-templates/page-stay.php' ) ) ) {
 		montela_enqueue_module( 'swiper' ); // Services comparison (+ Testimonials on Stay) sliders.
 	}
+	if ( is_page_template( array( 'page-templates/page-bike-hotel.php', 'page-templates/page-kids-playground.php', 'page-templates/page-lounge-bar.php', 'page-templates/page-shop.php', 'page-templates/page-meetings-groups.php', 'page-templates/page-fitnessroom.php' ) ) ) {
+		montela_enqueue_module( 'swiper' ); // Explore slider (Bike Hotel), photo strips (Kids, Lounge, Shop, Meetings, Fitnessroom), Shop card sliders, Fitnessroom cards.
+	}
 }
 
 add_action( 'wp_enqueue_scripts', 'montela_enqueue_assets' );

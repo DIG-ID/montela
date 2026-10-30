@@ -44,11 +44,21 @@ domReady(() => {
       prevEl: root.querySelector('[data-swiper-prev], .swiper-button-prev'),
     };
     const pagination = root.querySelector('.swiper-pagination');
+    // A11y writes its own (English) labels on the arrows: keep the theme's
+    // translated aria-label when the button has one.
+    const a11y = {};
+    if (navigation.prevEl?.getAttribute('aria-label')) {
+      a11y.prevSlideMessage = navigation.prevEl.getAttribute('aria-label');
+    }
+    if (navigation.nextEl?.getAttribute('aria-label')) {
+      a11y.nextSlideMessage = navigation.nextEl.getAttribute('aria-label');
+    }
 
     new Swiper(el, {
       ...defaults,
       ...(navigation.nextEl && navigation.prevEl ? { navigation } : {}),
       ...(pagination ? { pagination: { el: pagination, clickable: true } } : {}),
+      a11y,
       ...options,
     });
   });

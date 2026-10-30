@@ -45,7 +45,7 @@
   @apply max-w-[701px] xl:max-w-[608px]
 
 .section-explore__photo
-  @apply m-0 mt-5 w-full h-[150px] overflow-hidden md:mt-20 md:w-[460px] md:h-[200px] xl:mt-16 xl:w-[506px] xl:h-[300px]
+  @apply m-0 mt-5 w-full h-[150px] overflow-hidden md:mt-20 md:max-w-[460px] md:h-[200px] xl:mt-16 xl:max-w-[506px] xl:h-[300px]
 
 .section-explore__text
   @apply mt-[30px] md:mt-[50px] md:max-w-[453px] xl:mt-16 xl:max-w-[485px]
@@ -68,3 +68,20 @@ body:has(.footer-main--has-cta) .main-content > .section-explore:last-child
   @apply md:-mb-[160px] xl:-mb-[320px]
   .section-explore__panel
     @apply md:pb-[304px] xl:pb-[371px]
+
+// -- Overline and no-photo variant (since 1.16.0) --
+// Figma "Next to footer_explore" (Bike Hotel): desktop 5895:19865, tablet
+// 5895:20547, mobile 5895:20377. Overline = "H2" style (.title-h2), right
+// above the title: 0 on desktop, 14px on tablet, 51px on mobile (all
+// measured; mobile follows the frame's auto-layout gap, Bruno's call).
+.section-explore__overline
+  @apply max-w-[701px] xl:max-w-[608px] mb-[51px] md:mb-[14px] xl:mb-0
+
+// Without the small photo (.section-explore--no-photo) the text keeps the
+// panel's composition: title → text 51px mobile, 116px tablet, 267px
+// desktop; text → button 51px mobile, 44px tablet, 50px desktop (measured).
+.section-explore--no-photo .section-explore__text
+  @apply mt-[51px] md:mt-[116px] xl:mt-[267px]
+
+.section-explore--no-photo .section-explore__panel .btn
+  @apply mt-[51px] md:mt-11 xl:mt-[50px]

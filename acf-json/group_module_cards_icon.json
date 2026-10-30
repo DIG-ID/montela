@@ -3,6 +3,31 @@
     "title": "Module — Cards with icon",
     "fields": [
         {
+            "key": "field_module_cards_icon_style",
+            "label": "Card style",
+            "name": "section_cards_icon_style",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "Frame: cream cards with a sage hairline (Unsere Region). Filled: sage cards with cream text (Fitnessroom) — upload the icons in cream.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "choices": {
+                "frame": "Frame",
+                "filled": "Filled"
+            },
+            "default_value": "frame",
+            "return_format": "value",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "layout": "horizontal"
+        },
+        {
             "key": "field_module_cards_icon_title",
             "label": "Title",
             "name": "section_cards_icon_title",
@@ -75,7 +100,7 @@
                     "name": "icon",
                     "aria-label": "",
                     "type": "image",
-                    "instructions": "SVG in the dark (walnut) colour, square artboard with the same padding as the other icons.",
+                    "instructions": "SVG, square artboard with the same padding as the other icons. Walnut for the Frame style, cream for Filled.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -192,6 +217,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793202519,
+    "modified": 1793275065,
     "acfml_field_group_mode": "advanced"
 }

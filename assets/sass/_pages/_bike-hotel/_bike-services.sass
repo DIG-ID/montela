@@ -1,0 +1,36 @@
+// Bike Hotel — bike services (template-parts/pages/bike-hotel/bike-services.php).
+// Figma (Bike Hotel "Gut vorbereitet auf jeden Trail"): desktop 5895:19819,
+// tablet 5895:20551, mobile 5895:20337.
+//
+//   Desktop  title from column 2 (x 204), 44px above the body. Body: left
+//            on columns 1–4 — the text on columns 2–4 (440px, as drawn) and,
+//            138px lower, the portrait photo (3:4); right on columns 6–12
+//            (1053px) — the wide photo (1002:632) and, 101px lower, the icon
+//            list on columns 6–8 and 10–12 (rows 72px apart, text 15/25)
+//   Tablet   title, 40px, then text on columns 1–3 beside the wide photo on
+//            columns 4–6 (both 246px tall), the portrait photo 20px below on
+//            columns 1–3, the list 88px below across all six (2 columns)
+//   Mobile   one column, 44px apart: title + text (36px), wide photo (246px),
+//            list (36px rows), portrait photo (660:556)
+//
+// Everything sits on the grid columns (Bruno: columns, not offsets). Snapped
+// from the frame: the desktop left block is drawn 613px (columns 1–4 + one
+// gutter) and is 593px here; the tablet photos are drawn 360px, running 17px
+// past the container, and are 3 columns (343px) here.
+//
+// Layout (grid columns, spacing, max-widths) is in the PHP as Tailwind
+// classes. The two body columns are display: contents below desktop, so
+// their children join the body grid and can be reordered for tablet and
+// mobile; on desktop they are subgrids of columns 1–4 and 6–12, so the text
+// (columns 2–4) and the list items (columns 6–8 and 10–12) stay on the grid
+// at every width.
+// Tablet list rows are drawn with fixed 145px boxes; the 40px row gap is
+// chosen to keep the same 155px rhythm with real text.
+// Desktop list: items drawn 434px wide and 180px apart — snapped to 3
+// columns each with column 9 between them.
+// Mobile title capped at 300px, so "jeden" moves to the second line on
+// wide phones too (Bruno): "Gut vorbereitet auf" is 272px at 36px.
+// Spacing below: 128px mobile, 192px tablet and desktop (measured). Nothing
+// above — the intro before it carries the space.
+.section-bike-services .icon-list__text
+  @apply xl:text-[15px] xl:leading-[25px]

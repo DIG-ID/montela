@@ -1,0 +1,45 @@
+// Lounge & Bar — lounge info (template-parts/pages/lounge-bar/lounge-info.php).
+// Box and photo; then the photo strip (_components/_photo-slider.sass,
+// .photo-slider--subpage) and the opening hours box (_modules/_box-text.sass,
+// which sets its own spacing).
+// Figma (Lounge & Bar): desktop 5895:20872, tablet 5895:20476, mobile 5895:20253.
+//
+//   Desktop  box cols 1–5 (747 × 600) beside the photo on cols 6–12
+//            (1053 × 600); the box stretches to the photo's height and the
+//            button sits at its bottom
+//   Tablet   box (full container), photo 706 × 292 below, 24px apart
+//   Mobile   box, photo 329 × 204 below, 24px apart
+//
+// Box: 1px walnut border. Padding (inside the border) 26 / 12 / 16px mobile,
+// 46 / 22 / 26px tablet, 69 / 102 / 64 / 71px desktop (top / right / bottom /
+// left). Title → text 16 / 56 / 55px; text → button 16 / 36px, desktop pushed
+// to the bottom. Text max 574px (the desktop text column).
+//
+// Layout (grid columns, spacing, paddings, max-widths) is in the PHP as
+// Tailwind classes; this file keeps the measurements and the ratio spacer.
+//
+// No top spacing: it follows the Intro module, whose padding gives the gap.
+// Between the photo and the strip: 24px mobile, 41px tablet (rounded to
+// 40), 20px desktop.
+
+// Desktop: the photo stretches to the row (so it matches a taller box) but
+// never gets shorter than 1053:600 of its own width. The ratio comes from a
+// padding spacer, not aspect-ratio — aspect-ratio plus a stretched height
+// derived the width from the height and pushed the page sideways (1280–1536).
+.section-lounge-info__photo
+  @media (min-width: 1280px)
+    &::before
+      content: ''
+      display: block
+      padding-top: 56.98%
+
+// Opening hours box (modules/box-text.php): this page's frames draw a 90/80
+// title from tablet up and 20/32 text on desktop only (Figma 5895:20901;
+// tablet 5895:20497 keeps the module's 18/25), where the module's own frame
+// has 80/76. Three classes to beat the module's
+// .section-box-text--box .section-box-text__title.
+.section-lounge-info .section-box-text--box .section-box-text__title
+  @apply md:text-[90px] md:leading-[80px]
+
+.section-lounge-info .section-box-text--box .section-box-text__text
+  @apply xl:text-[20px] xl:leading-[32px]

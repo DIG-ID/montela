@@ -1,0 +1,38 @@
+// Fitnessroom — fitness info (template-parts/pages/fitnessroom/fitness-info.php).
+// Figma "Frame 1000006605": desktop 5895:20037, tablet 5895:20797, mobile
+// 5895:20685.
+//
+//   Desktop  title "Auf einen Blick:" (20/32 bold, .title-h4) and the list on
+//            cols 2–7 (Figma x 202, 859 wide); title → list 68px. List 3 × 2:
+//            items on cols 2–4 and 5–7 (second column drawn at x 657–663,
+//            col 5 starts at 663). Row tops 111.6 / 103px apart with 48–57px
+//            tall icons: 57px between 50px rows here. Photo on cols 8–11,
+//            top-aligned with the title, 660:556 — drawn 660px wide from
+//            x 1122 (to 1782, between the ends of col 11, 1717, and col 12,
+//            1870): snapped to cols 8–11 (593px, so 500px tall).
+//   Tablet   title and list on cols 1–3 (Figma 339 / 315px; 343 on the
+//            grid), title → list 40px, items 80.5px apart: 37px icons
+//            (36.8 × 37 in Figma — Bruno) and 44px between rows. Photo cols 4–6, 340 × 512 drawn (343 here, same ratio),
+//            6.5px below the title's top in Figma — top-aligned here.
+//   Mobile   title, list, photo (329 × 246) stacked, 24px apart; items
+//            62px apart (12px frame gap, 50px frames) with 37px icons
+//            (Bruno, as tablet) — 25px between rows.
+//
+// Items: icon column 37 / 37 / 52px, text from 65 / 68 / 76px (mobile /
+// tablet / desktop; Figma 65, 66.7–69.8, 76); text centred on the icon.
+// Text 15/25 light on every breakpoint ("Desktop/Text small - footer").
+// Icons 37px tall on mobile and tablet, 50 on desktop, in a box their width
+// instead of 68.
+// Note: the tablet and mobile frames show placeholder glyphs (wifi, sofa,
+// crib…) — the desktop frame has the fitness icons; same icons everywhere.
+//
+// Spacing: none above (follows the Intro module); 192px below on every
+// breakpoint, to the Cards with icon module (none above), measured.
+// Layout (grid columns, gaps) is in the PHP as Tailwind classes.
+
+.section-fitness-info .icon-list__icon
+  @apply h-[37px] xl:h-[50px]
+
+// Two classes to beat .icon-list__text (14/22, 17/23, 20/32).
+.section-fitness-info .icon-list__text
+  @apply text-[15px] leading-[25px]

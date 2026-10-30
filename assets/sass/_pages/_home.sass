@@ -29,6 +29,14 @@
 .section-direct-book .icon-list__icon
   @apply xl:justify-self-center xl:w-[102px]
 
+// Direct booking keeps its icons at the column width (52 / 68 / 102px), as
+// built before the icon-list default moved to a fixed height.
+.section-direct-book .icon-list__icon
+  @apply block h-auto
+
+.section-direct-book .icon-list__icon img
+  @apply w-full h-auto
+
 .section-direct-book .icon-list__text
   @apply xl:col-span-3
 
@@ -42,10 +50,8 @@
 //   Mobile   title, photo 1, text, button, list — stacked, 32px apart
 //   Photo 2 is desktop only.
 //
-// Then a full-bleed slider: slides alternate 951 and 746 wide by 832 tall on
-// desktop (same ratios at 552 tall on tablet, 192 on mobile). The arrows sit
-// over its bottom-right corner, aligned with the container (desktop, tablet),
-// or centred below it (mobile). No bottom padding — the slider ends the section.
+// Then the full-bleed photo slider (shared component, see
+// _components/_photo-slider.sass). No bottom padding — the slider ends the section.
 //
 // Mobile has no button in Figma; it is kept here (likely a design omission).
 // Tablet title is drawn at the desktop size (90/80) in Figma; .title-h3 keeps

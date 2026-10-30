@@ -44,9 +44,9 @@ $footer_has_form = function_exists( 'mc4wp_show_form' );
 	<?php if ( $footer_cta_title ) : ?>
 		<div class="theme-container footer-main__cta-wrap">
 			<div class="footer-main__cta">
-				<h2 class="title-h3 footer-main__cta-title">
+				<h3 class="title-h3 footer-main__cta-title">
 					<?php echo wp_kses( $footer_cta_title, array( 'br' => array( 'class' => array() ) ) ); ?>
-				</h2>
+				</h3>
 				<div class="footer-main__cta-row">
 					<?php if ( $footer_cta_text ) : ?>
 						<p class="footer-main__cta-text"><?php echo esc_html( $footer_cta_text ); ?></p>

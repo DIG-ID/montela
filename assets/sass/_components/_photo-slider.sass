@@ -1,0 +1,39 @@
+// Photo slider (template-parts/components/photo-slider.php).
+// Figma: homepage gallery strip — desktop 5466:15471, tablet 5426:4383,
+// mobile 5453:8475; same strip under Kids Playground 5895:19891 and Lounge &
+// Bar 5895:20871 (slide sizes and gaps measured identical).
+//
+// Full bleed: slides alternate 951 and 746 wide by 832 tall on desktop (same
+// ratios at 552 tall on tablet, 192 on mobile), 20px apart — 23 in Figma, the gutter rule (4px on mobile —
+// set in the Swiper options in the PHP). The arrows sit over the bottom-right
+// corner, aligned with the container (desktop, tablet), or centred below the
+// strip (mobile). No outer spacing: the section that uses it sets it through
+// the component's 'class' argument.
+//
+.photo-slider
+  @apply relative
+
+// Two classes: Swiper's own .swiper-slide (width/height 100%) loads later.
+.photo-slider__swiper .photo-slider__slide
+  @apply w-auto h-[192px] md:h-[552px] xl:h-[832px] aspect-[951/832] even:aspect-[746/832]
+
+.photo-slider__img
+  @apply w-full h-full object-cover
+
+// Mobile: below the slider, centred. Tablet+: over its bottom-right corner;
+// the overlay lets drags through to the slider, only the buttons are clickable.
+.photo-slider__nav
+  @apply mt-8 md:mt-0 md:absolute md:inset-x-0 md:bottom-[37px] md:z-10 md:pointer-events-none
+
+.photo-slider__nav-buttons
+  @apply justify-center md:justify-end
+
+.photo-slider__nav .slider-nav__btn
+  @apply pointer-events-auto
+
+// Variant .photo-slider--subpage (pass it in 'class'): the Resort sub-page
+// frames (Kids Playground, Lounge & Bar) put the arrows 19px (desktop) /
+// 12px (tablet) from the bottom and leave them out on mobile. The homepage
+// keeps 37px and its mobile arrows.
+.photo-slider--subpage .photo-slider__nav
+  @apply hidden md:block md:bottom-[12px] xl:bottom-[19px]

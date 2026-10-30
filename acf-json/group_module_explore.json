@@ -3,6 +3,28 @@
     "title": "Module — Explore",
     "fields": [
         {
+            "key": "field_module_explore_overline",
+            "label": "Overline",
+            "name": "section_explore_overline",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Optional. Small italic line above the title.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_module_explore_title",
             "label": "Title",
             "name": "section_explore_title",
@@ -30,7 +52,7 @@
             "name": "section_explore_image",
             "aria-label": "",
             "type": "image",
-            "instructions": "Small landscape photo under the title.",
+            "instructions": "Optional. Small landscape photo under the title.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -143,6 +165,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793103248,
+    "modified": 1793181504,
     "acfml_field_group_mode": "advanced"
 }

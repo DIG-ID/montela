@@ -26,7 +26,7 @@ $book_title_id = wp_unique_id( 'section-direct-book-title-' );
 <section class="section-direct-book"<?php echo $book_title ? ' aria-labelledby="' . esc_attr( $book_title_id ) . '"' : ''; ?>>
 	<div class="theme-container">
 		<?php if ( $book_title ) : ?>
-			<h2 id="<?php echo esc_attr( $book_title_id ); ?>" class="title-h3 section-direct-book__title"><?php echo esc_html( $book_title ); ?></h2>
+			<h3 id="<?php echo esc_attr( $book_title_id ); ?>" class="title-h3 section-direct-book__title"><?php echo esc_html( $book_title ); ?></h3>
 		<?php endif; ?>
 
 		<?php

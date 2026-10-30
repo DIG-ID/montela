@@ -3,7 +3,11 @@
 // mobile 5753:15179.
 //
 // Centred title, a Swiper slider of cards, walnut arrows centred below —
-// 36 / 44 / 96px apart (mobile / tablet / desktop).
+// 36 / 44 / 96px apart (mobile / tablet / desktop); filled style: cards →
+// arrows 44px on desktop (Bruno, from the Fitnessroom frame), the rest as
+// the frame style. The cards' 8px shadow room counts in those gaps.
+// Title → text 16 / 16 / 24px; filled style 24px on every breakpoint
+// (Bruno, from the Fitnessroom mobile frame).
 //
 //   Card    sage hairline frame with a soft shadow, 35px side padding; the
 //           icon centred on top, the text left-aligned below it
@@ -19,21 +23,21 @@
 // tallest one. The arrows hide themselves when every card is in view
 // (Swiper's watchOverflow).
 //
+// Filled style (Fitnessroom, Figma 5895:20061 / 5895:20837 / 5895:20722):
+// sage card, cream text, same sizes; padding above the icon 40 / 43 / 44px
+// and icon → text 59 / 95 / 74px (mobile / tablet / desktop). Side padding
+// 35px (34 tablet / 36 desktop in Figma), 20px from 1280 to 1535 —
+// interpolated: four cards there leave 158px of text, less than
+// "Ausdauertraining" at 20px. Mobile shadow drawn with a 2px
+// blur there, 4 here as in the frame style. Figma centres the three cards
+// and draws the arrows below them, so this style keeps them (disabled) when
+// every card is in view (centerInsufficientSlides centres the cards).
+//
 // Spacing: none above (the section before closes with its own margin);
-// 192px below on tablet and desktop, 128 on mobile — provisional: the map
-// section that follows on Unsere Region isn't built yet.
-.section-cards-icon
-  @apply mb-[128px] md:mb-[192px] text-montela-walnut
-
-.section-cards-icon__inner
-  @apply col-span-full flex flex-col items-center gap-9 md:gap-11 xl:col-start-2 xl:col-span-10 xl:gap-24
-
-.section-cards-icon__head
-  @apply flex flex-col items-center gap-4 text-center xl:gap-6 xl:max-w-[1217px]
-
-// Optional text under the title (Tagesausflug, Figma 5787:17940): 957px on desktop.
-.section-cards-icon__text
-  @apply xl:max-w-[957px]
+// 192px below on tablet and desktop, 128 on mobile by default — a page can
+// pass its own through the 'class' argument (Fitnessroom: 128 on desktop).
+// Layout (columns, gaps, max-widths, card padding, margins) is in the PHP as
+// Tailwind classes; here the card frame, the type and the arrows' row.
 
 // Two classes: swiper.css (loaded after main.css) sets .swiper's margins
 // and overflow. Bottom padding leaves room for the cards' shadow.
@@ -41,13 +45,13 @@
   @apply w-full m-0 pb-2
 
 .section-cards-icon__swiper .section-cards-icon__card
-  @apply flex flex-col items-center h-auto min-h-[404px] md:min-h-[500px] px-[35px] pt-10 pb-10 md:pt-[60px] xl:pt-[76px] border border-montela-sage shadow-[0_4px_4px_rgba(0,0,0,0.25)]
+  @apply flex flex-col items-center h-auto min-h-[404px] md:min-h-[500px] border border-montela-sage shadow-[0_4px_4px_rgba(0,0,0,0.25)]
 
 .section-cards-icon__icon
   @apply w-auto max-w-full h-[88px] xl:h-[68px] shrink-0
 
 .section-cards-icon__body
-  @apply self-stretch mt-[59px] md:mt-[75px] xl:mt-[120px] font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[15px] xl:leading-[25px]
+  @apply self-stretch font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[15px] xl:leading-[25px]
 
 .section-cards-icon__card-title
   @apply font-bold xl:text-[20px] xl:leading-[32px]
@@ -55,6 +59,7 @@
 .section-cards-icon__inner .section-cards-icon__nav
   @apply justify-center
   // Every card in view: Swiper hides both arrows (.swiper-button-lock);
-  // drop the row too, or its gap is left behind.
+  // drop the row too, or its gap is left behind. Not on the filled style,
+  // which keeps them (watchOverflow off in cards-icon.php).
   &:has(.swiper-button-lock)
     @apply hidden

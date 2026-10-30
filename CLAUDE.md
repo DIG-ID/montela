@@ -40,7 +40,7 @@ montela/
 ├── page-templates/         # Page templates WordPress
 ├── acf-json/               # field groups do ACF (Local JSON)
 ├── template-parts/
-│   ├── components/       # button.php, button-icon.php, icon-list.php, gallery-slider.php, card-activity.php, card-preview.php…
+│   ├── components/       # button.php (+ icon arrow-down), button-icon.php, icon-list.php, gallery-slider.php, photo-slider.php, card-activity.php, card-preview.php…
 │   ├── modules/          # secções reutilizadas (hero, intro…)
 │   ├── pages/            # secções de uma só página
 │   ├── footer-main.php
@@ -186,6 +186,14 @@ volta no JSON; depois de um deploy, fazer Sync.
   tablet [5426:17416](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-17416&m=dev),
   mobile [5426:16474](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-16474&m=dev).
 - **Erkunden / Explore** (`page-templates/page-explore.php`, "Explore Template") — hero (Full screen), intro, region, activities, box text. Campos no grupo `group_page_explore` (um tab por módulo, clones Seamless). Figma: desktop
+- **Unser Resort** (`page-templates/page-our-resort.php`, "Our Resort Template") — hero (variante `home`) + intro + resort sections; mapa adiado. Grupo `group_page_our_resort`. Figma: desktop 5895:20065, tablet 5895:20381, mobile 5895:20157.
+- **Sub-páginas do Resort** (filhas de Unser Resort) — **um template por página**, secções por ordem fixa, campos num grupo por página (um tab por secção). Secções só dessa página em `template-parts/pages/{página}/` + `_pages/_{página}/`; o que aparece noutras páginas é módulo. O Swiper é carregado cedo para as quatro (`inc/enqueue.php`). Meetings e Fitness seguem o mesmo modelo.
+  - **Bike Hotel** (`page-templates/page-bike-hotel.php`) — hero, intro, `bike-services`, `modules/green-text`, `bike-experiences` ×2 (cartões à direita / à esquerda), `modules/explore` (a caixa CTA do footer sobrepõe-se ao explore). Figma: 5895:19816 / 5895:20546 / 5895:20332.
+  - **Kids Playground** (`page-templates/page-kids-playground.php`) — hero, intro, `playground-info` (foto, título, lista de ícones, faixa de fotos, caixa Öffnungszeiten), Holiday = `modules/horizontal`. Figma: 5895:19871 / 5895:20503 / 5895:20279.
+  - **Lounge & Bar** (`page-templates/page-lounge-bar.php`) — hero, intro, `lounge-info` (caixa + foto, faixa de fotos, caixa Öffnungszeiten). Figma: 5895:20851 / 5895:20470 / 5895:20247.
+  - **Meetings & Groups** (`page-templates/page-meetings-groups.php`) — hero, intro, `room-info` (título, foto, texto, lista, botão — sem botão em mobile —, faixa de fotos), `group-details` (caixas creme título + texto, duas lado a lado a partir de tablet), Horizontal = `modules/horizontal`. Figma: 5895:19941 / 5895:20752 / 5895:20634.
+  - **Shop** (`page-templates/page-shop.php`) — hero, intro, `shop-info` (título, texto + foto, faixa de fotos, caixa Öffnungszeiten), `shop-products` (slider de cartões de produto), `shop-producers` (slider de cartões de texto dos produtores); mapa adiado. Figma: 5895:19770 / 5895:20724 / 5895:20610.
+  - **Fitnessroom** (`page-templates/page-fitnessroom.php`) — hero, intro, `fitness-info` ("Auf einen Blick": lista de ícones 3 × 2 em desktop + foto), `modules/cards-icon` (estilo `filled`; 128px por baixo em desktop via `class`), `fitness-usage` (faixa de fotos, caixas de utilização — a última à direita a partir de tablet —, botão "Nutzungsregeln"). Figma: 5895:19995 / 5895:20780 / 5895:20662.
   [5426:16171](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-16171&m=dev),
   tablet [5426:17252](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-17252&m=dev),
   mobile [5426:16296](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-16296&m=dev).
@@ -228,17 +236,20 @@ no clone e passar o prefixo ao módulo:
 |-------|--------|--------|
 | `group_module_hero` — Module — Hero | `modules/hero.php` | `section_hero_image` (image, ID), `section_hero_video` (file mp4, URL, opcional), `section_hero_fullscreen` (true/false — ecrã inteiro em desktop em vez de 900px), `section_hero_title_line_{1,2,3}` (text) + `section_hero_title_line_{1,2,3}_align` (button group: left / indent 128px / custom / center / right — posição em desktop) + `section_hero_title_line_{1,2,3}_indent` (number, px, só com custom). A última linha preenchida é a itálica. Padrão = 900px em desktop; a homepage passa `array( 'variant' => 'home' )` (sempre ecrã inteiro, linha 1 maior). O frame "Home_desktop_after animation" (5426:5266) escurece o véu para 60% depois da animação do título: **ignorado de propósito** (fica nos 40%); o cartão sage desse frame é o Sticky CTA. |
 | `group_module_intro` — Module — Intro | `modules/intro.php` | `section_intro_title` (textarea, `new_lines: br`), `section_intro_text` (textarea) |
-| `group_module_explore` — Module — Explore | `modules/explore.php` | `section_explore_title` (text), `section_explore_image` (image), `section_explore_text` (textarea), `section_explore_button` (link), `section_explore_slides` (gallery) |
+| `group_module_explore` — Module — Explore | `modules/explore.php` | `section_explore_overline` (text, opcional — linha em itálico por cima do título), `section_explore_title` (text), `section_explore_image` (image, opcional — sem ela usa o espaçamento do Bike Hotel), `section_explore_text` (textarea), `section_explore_button` (link), `section_explore_slides` (gallery) |
 | `group_module_image_band` — Module — Image band | `modules/image-band.php` | `section_image_band_image` (image) |
 | `group_module_activities` — Module — Activities | `modules/activities.php` | `section_activities_title` (text), `section_activities_text` (textarea), `section_activities_button` (link), `section_activities_summer` / `section_activities_winter` (relationship → `activity`, filtrado por Season `sommer` / `winter`, máx. 4, IDs; vazio = as 4 primeiras da estação). Args opcionais: `seasons` (só essas estações; uma só = sem switch) e `exclude` (uma activity a tirar dos cards). Cards: `components/card-activity.php` (imagem destacada, título, excerpt, permalink). Estação aberta ao carregar: inverno de Dezembro a Abril. |
 | `group_module_testimonials` — Module — Testimonials | `modules/testimonials.php` | `section_testimonials_title` (text), `section_testimonials_items` (relationship → `testimonial`, IDs, pela ordem escolhida; vazio = todos). Slider Swiper em fade, com loop e sem autoplay. |
-| `group_module_box_text` — Module — Box text | `modules/box-text.php` | `section_box_text_style` (button group: `box` — caixa com moldura walnut, título e texto lado a lado em desktop / `band` — faixa sage a toda a largura, texto creme, texto numa coluna à direita em desktop), `section_box_text_eyebrow` (text, título pequeno em itálico), `section_box_text_title` (text), `section_box_text_text` (textarea, `wpautop` — linha vazia = parágrafo novo); só no `band`: `section_box_text_button` (link, botão `outline` por baixo do título) e `section_box_text_items` (repeater `icon` (SVG creme) / `title` / `text` — lista com ícone, duas colunas em desktop). |
-| `group_module_cards_icon` — Module — Cards with icon | `modules/cards-icon.php` | `section_cards_icon_title` (text), `section_cards_icon_text` (textarea, opcional), `section_cards_icon_items` (repeater: `icon` image, `title`, `subtitle`, `text`). Slider Swiper: 4 cards em desktop, 2 em tablet, 1 em mobile; setas escondem-se quando cabem todos. |
+| `group_module_box_text` — Module — Box text | `modules/box-text.php` | `section_box_text_style` (button group: `box` — caixa com moldura walnut, título e texto lado a lado em desktop / `band` — faixa sage a toda a largura, texto creme, texto numa coluna à direita em desktop), `section_box_text_eyebrow` (text, título pequeno em itálico), `section_box_text_title` (text), `section_box_text_text` (textarea, `wpautop` — linha vazia = parágrafo novo); só no `band`: `section_box_text_button` (link, botão `outline` por baixo do título) e `section_box_text_items` (repeater `icon` (SVG creme) / `title` / `text` — lista com ícone, duas colunas em desktop). Margens no PHP, por estilo; a página pode passar outras em `$args['class']` (Kids e Lounge: `my-11 md:my-24 xl:my-32`). |
+| `group_module_cards_icon` — Module — Cards with icon | `modules/cards-icon.php` | `section_cards_icon_title` (text), `section_cards_icon_text` (textarea, opcional), `section_cards_icon_items` (repeater: `icon` image, `title`, `subtitle`, `text`). Slider Swiper: 4 cards em desktop, 2 em tablet, 1 em mobile; setas escondem-se quando cabem todos; menos cards do que cabem = centrados. `section_cards_icon_style` (button group: `frame` — creme com filete sage, por omissão / `filled` — sage com texto creme, ícones creme). `$args['class']` substitui as margens (por omissão 128 / 192px por baixo). |
 | `group_module_text_photos` — Module — Text with photos | `modules/text-photos.php` | `section_find_apartment_title` (textarea, `br`), `_text`, `_button` (link), `_image_1`, `_image_2` (opcional). Título, texto e botão ao lado de 1 ou 2 fotos — o layout de tablet/mobile segue o número de fotos. Os nomes e as chaves (`field_page_home_find_apartment_*`) vêm de quando era secção só da homepage: **não mudar**, o conteúdo existente depende deles. |
 | `group_module_text_list` — Module — Text with checklist | `modules/text-list.php` | `section_text_list_layout` (button group: `left` / `right` — lado da foto em tablet/desktop), `_title` (textarea, `br`), `_text` (textarea, `wpautop`), `_items` (textarea, uma linha por item, cada uma com visto), `_image`. Título por cima; foto de um lado, texto + checklist do outro; em mobile a foto fica entre o texto e a lista. |
 | `group_module_features` — Module — Features | `modules/features.php` | `section_features_style` (button group: `cream` / `sage` — faixa a toda a largura), `_title` (textarea, `br`), `_text`, `_items` (repeater `icon` (SVG) / `title` / `text`, via `components/icon-list.php`). Duas colunas de itens em desktop, uma abaixo. A faixa sage leva margem por baixo; a creme não. |
 | `group_module_faq` — Module — FAQ | `modules/faq.php` | `section_faq_title` (textarea, `br`), `_text`, `_button` (link — p. ex. para a página de FAQ), `_items` (repeater `question` / `answer` (textarea, `wpautop`)). Também aceita o conteúdo por argumento (`data`: `title`, `text`, `button`, `items`) — usado pela página FAQ. Acordeão com `<details>` nativos (sem JS), um aberto de cada vez; abre e fecha com animação em CSS (`::details-content` + `interpolate-size` — sem suporte, abre sem animação). Sem schema FAQPage por agora (a fazer pela API do Yoast). |
 | `group_module_services` — Module — Services comparison | `modules/services.php` | `section_services_title` (textarea, `br`), `_text`, `_button` (link), `_plans` (repeater: `image`, `title`, `subtitle`, `features` — textarea, uma linha por item, cada uma com visto). Duas colunas em desktop, slider abaixo. |
+| `group_module_resort_sections` — Module — Resort sections | `modules/resort-sections.php` | `section_resort_sections_items` (repeater: `title` textarea, `text`, `link`, `image_inner`, `image_outer`). Blocos alternados texto + duas fotos. |
+| `group_module_green_text` — Module — Green text | `modules/green-text.php` | `section_green_text_title` (textarea, `br`), `section_green_text_text` (textarea, um ou mais parágrafos). Faixa sage a toda a largura, sem margem exterior. |
+| `group_module_horizontal` — Module — Horizontal | `modules/horizontal.php` | `section_horizontal_image` (image), `_title` (textarea, `br`), `_button` (link), `_text` (textarea). Foto a toda a largura, depois título + botão à esquerda e texto à direita. |
 
 ### Páginas
 Um grupo por page template, com um **tab por secção**, na ordem da página; cada
@@ -259,7 +270,34 @@ tab clona o grupo do módulo (Seamless, sem prefixo).
 | `group_page_imprint` — Page — Impressum | `page-templates/page-imprint.php` | Boxes (campos próprios: `section_imprint_boxes` repeater `icon` (SVG) / `title` / `text` (textarea, `br`; e-mails, URLs e telefones clicáveis — `montela_make_clickable()`, `inc/helpers.php`)) |
 | `group_cpt_offer` — Offer | `single-offer.php` (post type `offer`) | Hero → `group_module_hero` · Intro (campos próprios, `template-parts/offer/intro.php`: `section_offer_intro_title` (textarea, `br`), `section_offer_intro_text` (textarea, `wpautop`), `section_offer_price` ("CHF 799"; o "Ab" é string do tema), `section_offer_price_unit` ("/ Person"), `section_offer_booking` (link; vazio = `header_booking_link` das Theme Settings)) · Included (`section_offer_package_title`, `_package_image` (só desktop), `_package_items` repeater `icon` / `title` / `text`) · Gallery (`section_offer_gallery`, slider `components/gallery-slider.php`) · Conditions (`section_offer_extra_title`, `_extra_text`, `section_offer_conditions` repeater `title` / `text` (`wpautop`), `section_offer_valid_from` / `_valid_to` (date picker, `Ymd` — formatados por `montela_get_offer_validity()`)) · Text with photos → `group_module_text_photos` · Card (`section_offer_duration` — "3 Nächte"; o card usa também o título, a imagem destacada, o excerto e as datas) |
 | `group_cpt_day_trip` — Tagesausflug | `single-tagesausflug.php` (post type `tagesausflug`) | Hero → `group_module_hero` · Intro → `group_module_intro` · Destination (`section_destination_title`, `_text` (`wpautop`), `_image`, `_items` repeater `icon` / `title` / `text`) · Gallery (`section_destination_gallery`) · Getting there → `group_module_cards_icon` · Experience → `group_module_explore` |
+| `group_page_our_resort` — Page — Our Resort | `page-templates/page-our-resort.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Sections → `group_module_resort_sections` |
+| `group_page_bike_hotel` — Page — Bike Hotel | `page-templates/page-bike-hotel.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Bike services (campos próprios) · Green text → `group_module_green_text` · Bike experiences (campos próprios) · Bike partners (campos próprios) · Explore → `group_module_explore` |
+| `group_page_kids_playground` — Page — Kids Playground | `page-templates/page-kids-playground.php` | Hero · Intro · Playground info (campos próprios + clone `group_module_box_text` no mesmo tab) · Holiday → `group_module_horizontal` |
+| `group_page_lounge_bar` — Page — Lounge & Bar | `page-templates/page-lounge-bar.php` | Hero · Intro · Lounge info (campos próprios + clone `group_module_box_text` no mesmo tab) |
+| `group_page_meetings_groups` — Page — Meetings & Groups | `page-templates/page-meetings-groups.php` | Hero · Intro · Room info (campos próprios) · Group details (campos próprios) · Horizontal → `group_module_horizontal` |
+| `group_page_shop` — Page — Shop | `page-templates/page-shop.php` | Hero · Intro · Shop info (campos próprios + clone `group_module_box_text` no mesmo tab) · Products (campos próprios) · Producers (campos próprios) |
+| `group_page_fitnessroom` — Page — Fitnessroom | `page-templates/page-fitnessroom.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Fitness info (campos próprios) · Training → `group_module_cards_icon` · Fitness usage (campos próprios) |
 | `group_cpt_activity` — Activity | `single-activity.php` (post type `activity`) | Hero → `group_module_hero` · Intro → `group_module_intro` · Text block 1 / Text block 2 → `group_module_text_list` (clones com "Prefix field names": `activity_block_1` / `activity_block_2`) · Cards with icon → `group_module_cards_icon` · Info cards (campos próprios, `template-parts/activity/info.php`: `section_activity_info_title` (textarea, `br`), `_text`, `_items` repeater de 2 a 4: `image`, `title`, `text`, `link` (opcional — sem link, sem botão; para um PDF, colar o URL do ficheiro)) · Activities → `group_module_activities` (o template passa `seasons` e `exclude` ao módulo) |
+
+**Leitura nos módulos:** `montela_module_field( 'section_foo_title', $args )`
+(`inc/helpers.php`) — respeita `prefix` e `post_id` dos `$args` (e `row`, para
+um Flexible Content futuro). Secções de uma só página usam `get_field()`.
+
+**Secções das sub-páginas do Resort** (campos no tab da secção, no grupo da página):
+
+| Secção | Ficheiro | Campos |
+|--------|----------|--------|
+| Bike services | `pages/bike-hotel/bike-services.php` | `section_bike_services_title` (text), `_text` (textarea), `_image_tall` / `_image_wide` (image, ID), `_items` (repeater `icon`/`title`/`text`, `components/icon-list.php`). "Gut vorbereitet auf jeden Trail". |
+| Bike experiences | `pages/bike-hotel/bike-experiences.php` | Usada duas vezes: `section_bike_experiences_*` e `section_bike_partners_*` (`$args['fields']`), cada uma com `_title` (text), `_text` (textarea), `_cards` (repeater `image`/`title`/`text`/`link`). Lado dos cartões em desktop por `$args['layout']` (right / left). Cartões `components/card-preview.php` com os campos à mão (`image`/`title`/`text`/`url`/`target`/`label`; botão = texto do link, por omissão "Link to subpage"); setas sempre visíveis; carrossel de `modules/activities.js`. |
+| Playground info | `pages/kids-playground/playground-info.php` | `section_playground_info_title` (text, `<br>`), `_text` (textarea), `_image` (image), `_items` (repeater `icon`/`title`/`text`, 2×2 em desktop), `_slider` (gallery → `components/photo-slider.php`, variante `photo-slider--subpage`), + `section_box_text_*` (clone → `modules/box-text.php`). |
+| Lounge info | `pages/lounge-bar/lounge-info.php` | `section_lounge_info_title` (text, `<br>`), `_text` (textarea), `_button` (link) + `_button_icon` (arrow-right / arrow-down), `_image` (image), `_slider` (gallery), + `section_box_text_*` (clone). |
+| Room info | `pages/meetings-groups/room-info.php` | `section_room_info_title` (text, `<br>`), `_text` (textarea), `_list` (textarea, um item por linha → bullets), `_button` (link; escondido em mobile, como no Figma), `_image` (image), `_slider` (gallery → `components/photo-slider.php`, `photo-slider--subpage`). "Mehrzweckraum im Haus C". |
+| Group details | `pages/meetings-groups/group-details.php` | `section_group_details_items` (repeater `title` text / `text` textarea `wpautop`). Caixas creme com sombra (`.info-box`, estilo da caixa CTA do footer); os textos alinham entre caixas (subgrid). |
+| Fitness info | `pages/fitnessroom/fitness-info.php` | `section_fitness_info_title` (text — "Auf einen Blick:"), `_items` (repeater `icon` (SVG) / `text`, `components/icon-list.php`; 2 colunas em desktop, por linhas), `_image` (image). |
+| Fitness usage | `pages/fitnessroom/fitness-usage.php` | `section_fitness_usage_slider` (gallery → `components/photo-slider.php`, `photo-slider--subpage`), `_items` (repeater `title` text / `text` textarea `wpautop` — sub-títulos a negrito com `<strong>`), `_button` (link, centrado, `secondary`). Caixas `.info-box` (`_components/_info-box.sass`, partilhado com Group details). |
+| Shop info | `pages/shop/shop-info.php` | `section_shop_info_title` (text, `<br>`), `_text` (textarea), `_image` (image — primeiro em mobile), `_slider` (gallery → `components/photo-slider.php`, variante `photo-slider--subpage`), + `section_box_text_*` (clone). |
+| Shop products | `pages/shop/shop-products.php` | `section_shop_products_title` (text, `<br>`), `_items` (repeater `image`/`title`/`text`). Slider Swiper: 3 cartões em desktop, 1 abaixo; setas sempre visíveis. Sem cartões = sem secção. |
+| Shop producers | `pages/shop/shop-producers.php` | `section_shop_producers_title` (text, `<br>`), `_text` (textarea), `_items` (repeater `title`/`text`). Cartões de texto com moldura sage; slider como o dos produtos. Sem cartões = sem secção. |
 
 Secções só de uma página têm os campos **directamente no grupo da página** (no
 seu tab), com o prefixo da secção: `section_direct_book_*`, `section_gallery_*`. Listas com ícone (repeater → `icon`, `title`, `text`) usam o componente `components/icon-list.php`.
@@ -453,6 +491,29 @@ O tema segue **Semantic Versioning** (`MAJOR.MINOR.PATCH`) e mantém um `CHANGEL
 >
 > A grelha em `figma.md` está preenchida (12/6/2 colunas, gutter 20px) e
 > implementada em `assets/sass/_layout/_grid.sass`.
+
+---
+
+## Agentes (`.claude/agents/`)
+
+Fluxo por página: **module-builder** (módulos em falta) → **page-assembler**
+(template + field group) → **content-editor** (página, campos, imagens no WP
+local) → **qa-reviewer** (tenta partir o layout; só reporta). A sessão principal
+orquestra, revê e faz os commits — nenhum agente faz commit nem push.
+
+| Agente | Modelo | Ferramentas próprias |
+|---|---|---|
+| `module-builder` | opus | `.claude/tools/fig.py` (MCP do Figma Desktop) |
+| `page-assembler` | opus | — |
+| `content-editor` | sonnet | WP-CLI local, `cwebp`, arquivo de imagens fora do tema |
+| `qa-reviewer` | sonnet | `.claude/tools/qa-check.mjs` (varrimento de larguras via CDP) |
+
+Links para páginas que ainda não existem ficam com `#` no wp-admin.
+
+Antes de criar uma secção, o module-builder procura um módulo com **o mesmo
+design e estrutura** e reutiliza-o; só cria de raiz se nada coincidir. Uma
+secção só de uma página que passa a aparecer noutra é **promovida a módulo**
+(`pages/` → `modules/`, campos para um grupo de módulo, com os mesmos nomes).
 
 ---
 

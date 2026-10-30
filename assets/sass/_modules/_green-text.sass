@@ -1,0 +1,39 @@
+// Green text module (template-parts/modules/green-text.php).
+// Figma "Section Green Background" — Bike Hotel desktop 5895:19868, tablet
+// 5895:20607, mobile 5895:20378.
+//
+// Full-width sage band, cream text. No outer margin: the band butts against
+// its neighbours in every frame.
+//
+// Desktop: 600px tall at 1920 with the content 181px from the top and
+// 195px from the bottom — kept as padding, so longer copy grows the band.
+// Title on columns 2–6 (x 203, 747px), text on columns 8–11 (Figma x 1130,
+// 585px — snapped to column 8, x 1123, but capped at 585px: at 593px the
+// Bike Hotel copy wraps a line shorter than drawn).
+//
+// Tablet: 100px vertical padding, stacked, 44px from title to text, text
+// on columns 1–4 (Figma 462px; 4 columns = 464px).
+//
+// Mobile: 112px vertical padding, stacked, 44px gap, full width (Figma
+// 30px side margins — snapped to the container's 32px); text capped at
+// 333px (Bruno), set in the PHP.
+//
+// Paragraphs are separated by one empty line in Figma (= one line height),
+// not the 16px .body-text default.
+
+.section-green-text
+  @apply bg-montela-sage text-montela-cream py-28 md:py-[100px] xl:pt-[181px] xl:pb-[195px]
+
+.section-green-text__title
+  @apply col-span-full xl:col-start-2 xl:col-span-5
+
+.section-green-text__text
+  @apply col-span-full mt-11 md:col-span-4 xl:col-start-8 xl:col-span-4 xl:row-start-1 xl:mt-0
+
+// Two classes to beat `.body-text p`. The last-child reset is its own rule,
+// after the md:/xl: values — inside the same @apply it would be emitted
+// before their media queries and lose.
+.section-green-text .body-text p
+  @apply mb-[22px] md:mb-[25px] xl:mb-8
+  &:last-child
+    @apply mb-0

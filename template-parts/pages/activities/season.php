@@ -52,11 +52,11 @@ $season_class    = 'section-season' . ( count( $season_ids ) > 4 ? ' section-sea
 
 			<div class="section-season__copy">
 				<?php if ( $season_eyebrow ) : ?>
-					<p class="title-h2 section-season__eyebrow"><?php echo esc_html( $season_eyebrow ); ?></p>
+					<h2 class="title-h2 section-season__eyebrow"><?php echo esc_html( $season_eyebrow ); ?></h2>
 				<?php endif; ?>
 
 				<?php if ( $season_title ) : ?>
-					<h2 id="<?php echo esc_attr( $season_title_id ); ?>" class="title-h3 section-season__title"><?php echo esc_html( $season_title ); ?></h2>
+					<h3 id="<?php echo esc_attr( $season_title_id ); ?>" class="title-h3 section-season__title"><?php echo esc_html( $season_title ); ?></h3>
 				<?php endif; ?>
 
 				<?php if ( $season_text ) : ?>

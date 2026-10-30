@@ -1,0 +1,42 @@
+// Meetings & Groups — group details (template-parts/pages/meetings-groups/group-details.php).
+// Figma "Group 1000005748": desktop 5895:19961, tablet 5895:20771, mobile
+// 5895:20653. The box is the footer CTA box's style ("PRE FOOTER DESKTOP"):
+// cream fill, 2px cream border, three soft shadows.
+//
+//   Desktop  two boxes on cols 2–6 and 7–11 (Figma x 203 / 973, 747 / 744
+//            wide; the columns are 747 each at 1920), 450px tall. Title at
+//            24 / 24px from the box's top-left corner (2px border + 22),
+//            bold 20/32, 425px wide; text 20/32, 570px wide, starting 114px
+//            below the box top in both boxes (title → text 26px under the
+//            two-line title); 48px below the taller text (box 2) — the
+//            450px height comes out of that with the Figma copy.
+//   Tablet   two boxes of 340 (343 on the grid: cols 1–3 and 4–6), 20px
+//            apart, 528px tall; title at 23 / 26px (2px border + 21 / 24),
+//            bold 18/28, 267px wide; text 18/25, 271px (right padding
+//            44px), starting at 106px in both boxes (title → text 24px
+//            under the two-line title); 24px below the taller text.
+//   Mobile   stacked, 20px apart, full container (328; 329 here). Same
+//            type, paddings and title → text as tablet (title 255px wide;
+//            right padding 16px — Bruno; 32 in Figma for the 271px text). Figma draws box 1
+//            445px tall (124px under its text) and box 2 528px (24px):
+//            here both hug their text with 24px below — see the report.
+// Texts start on the same line in both boxes from tablet up: the boxes
+// share the rows of the grid (subgrid), so the taller title sets the gap.
+// Paragraphs: a blank line in Figma — one line height between them.
+//
+// Spacing: none above (the room info section has 192 / 128px below);
+// 192px below desktop and tablet, 128 mobile, to the Horizontal module
+// (which has none above), measured.
+// Layout (grid columns, paddings, gaps, max-widths) is in the PHP as
+// Tailwind classes; the box style is .info-box (_components/_info-box.sass);
+// here only the type.
+
+// Two classes to beat .title-h4 (20/32 on every breakpoint).
+.section-group-details__box .section-group-details__title
+  @apply text-[18px] leading-[28px] xl:text-[20px] xl:leading-[32px]
+
+// Figma "Tablet/Text" on mobile too (not .body-text's 14/22).
+.section-group-details__text
+  @apply font-primary font-light tracking-[0.5px] text-[18px] leading-[25px] xl:text-[20px] xl:leading-[32px]
+  p
+    @apply mb-[25px] last:mb-0 xl:mb-8

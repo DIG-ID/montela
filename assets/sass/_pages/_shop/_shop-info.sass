@@ -1,0 +1,36 @@
+// Shop — shop info (template-parts/pages/shop/shop-info.php).
+// Title, text and photo; then the photo strip (_components/_photo-slider.sass,
+// .photo-slider--subpage — slide sizes and arrow positions measured identical
+// to Lounge & Bar) and the opening hours box (_modules/_box-text.sass).
+// Figma (Shop): desktop 5895:19805, tablet 5895:20731, mobile 5895:20616;
+// strip 5895:19790 / 5895:20738 / 5895:20622; box 5895:19813 / 5895:20744 /
+// 5895:20631.
+//
+//   Desktop  title cols 2–11 (90/80); 64px below it the text on cols 2–4
+//            (438px in Figma, 440 on the grid) beside the photo on cols 5–11
+//            (1053 × 600; Figma x 666, the column starts at 663)
+//   Tablet   title full width (80/76); 44px below it the text on cols 1–2
+//            (219px; 222 on the grid) beside the photo on cols 3–6 (463 × 347).
+//            The text fills the photo's height at 834; when it wraps to
+//            one more line, the photo stretches to the text (crop) instead
+//            of the text running past it
+//   Mobile   photo first (326 × 268 in Figma — full container, 329, here),
+//            32px to the title (36/38), 32px to the text (14/22)
+// No button (the Text with photos module has one, and puts the photo last on
+// mobile and at 463 × 314 on tablet — hence a section of its own).
+//
+// No top spacing: it follows the Intro module, whose padding gives the gap.
+// Photo → strip 44px on every breakpoint. Box: 44 / 96 / 128px above and
+// below (strip → box, box → "Ein Stück Wallis"), measured.
+//
+// Layout (grid columns, spacing) is in the PHP as Tailwind classes.
+
+// Opening hours box (modules/box-text.php): this frame draws the title at
+// 90/80 from tablet up (module: 80/76) and the text at 20/32 on desktop
+// (module: 18/25; tablet 18/25 as the module). Three classes to beat the
+// module's .section-box-text--box .section-box-text__title.
+.section-shop-info .section-box-text--box .section-box-text__title
+  @apply md:text-[90px] md:leading-[80px]
+
+.section-shop-info .section-box-text--box .section-box-text__text
+  @apply xl:text-[20px] xl:leading-[32px]

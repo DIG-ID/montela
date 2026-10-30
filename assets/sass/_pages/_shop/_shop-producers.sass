@@ -1,0 +1,45 @@
+// Shop — shop producers (template-parts/pages/shop/shop-producers.php).
+// Figma "Section Card Shop_region": desktop 5895:19815, tablet 5895:20746,
+// mobile 5895:20632.
+//
+//   Desktop  title (90/80, 650px) on columns 2–7 (2–6 in Figma: at
+//            1280–1440 "Mit Leidenschaft." broke into 3–4 lines) and text (20/32, 588px drawn; capped at 555px — Bruno) on
+//            columns 8–11 (Figma x 1129, the column starts at 1123), bottoms
+//            aligned; 123px to a row of three cards with the arrows at
+//            either side, centred on the cards. Figma: arrows at x 143 /
+//            1738 (right edge of column 1, left edge of column 12); cards
+//            3 × 439 + 2 × 21 = 1360px centred (x 280–1640), between the grid
+//            columns — built as columns 2–11 with 82px padding each side
+//            and 21px between the cards, as the products (Bruno)
+//   Tablet   title (80/76) and text (18/25, 580px) centred, 36px apart; 44px
+//            to one card (460px centred in Figma, x 199 — columns 2–5 with
+//            12px padding each side — Bruno: 440px); 44px; arrows centred below (20px apart)
+//   Mobile   title (36/38) and text (14/22, capped at 329px — Bruno) centred, 16px apart; 44px, one
+//            card (329), 44px, arrows below
+//
+// Card: 1px sage frame, shadow 0 4px 4px rgba(0,0,0,.25), left-aligned text.
+// Desktop 410px tall (min-height here), padding 47 / 41 / 26 / 42px, title
+// → text 10px; title 20/32 bold, text 15/25. Tablet padding 32 / 44px,
+// 16px apart, title 18/28 bold, text 18/25. Mobile padding 32 / 31 / 16 /
+// 31px, 10px apart, title 12/20 bold, text 14/22, capped at 260px (Bruno).
+//
+// Spacing: none above (the products section above has 192 / 192 / 128px
+// below); 192px below on every breakpoint, to the resort map in the frames
+// (map not built yet — the footer follows), measured.
+// Layout (grid columns, spacing, card padding) is in the PHP as Tailwind
+// classes; here only what has to beat swiper.css (loaded after main.css,
+// so two classes) and the type overrides.
+
+// Bottom padding leaves room for the cards' shadow inside the swiper's
+// overflow; the negative margin gives it back to the layout.
+.section-shop-producers .section-shop-producers__swiper
+  @apply m-0 w-full pb-2 -mb-2
+
+.section-shop-producers__swiper .section-shop-producers__slide
+  @apply h-auto
+
+.section-shop-producers__card .section-shop-producers__card-title
+  @apply text-[12px] leading-[20px] md:text-[18px] md:leading-[28px] xl:text-[20px] xl:leading-[32px]
+
+.section-shop-producers__card-text
+  @apply font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[15px] xl:leading-[25px]

@@ -14,8 +14,20 @@ paths:
 - Wrappers de layout: `.theme-container` (largura máxima + margens) e `.theme-grid` (as 12/6/2 colunas), em `_layout/_grid.sass` — valores na tabela do `figma.md`.
 - Manter a ordem de imports do `main.sass` já existente; adicionar módulos/secções na pasta correspondente (`_modules/`, `_components/`, `_pages/`…).
 
-### @apply (estilo da casa)
-As classes custom nos ficheiros SASS constroem-se com utilitários Tailwind via **`@apply`**, não com propriedades CSS soltas:
+### Layout no PHP, não no SASS (Bruno, Outubro 2026)
+- **Colunas, paddings, margens, gaps e `max-w` das secções escrevem-se no PHP**, como classes Tailwind no markup — não em `@apply` no SASS.
+- **Posição horizontal de texto e imagens = colunas da grelha** (`col-start-*` / `col-span-*`), nunca `pl-*`, `ml-*`, larguras em `%`/`calc()` ou larguras fixas. Para alinhar um bloco interior às colunas usar `grid-cols-subgrid` (Tailwind 3.4). Uma subgrid herda o gap de colunas do pai **só se não lhe deres outro** — um `gap-*` no elemento também muda o das colunas: usar `gap-y-*` ou repor `gap-x-5`.
+- `max-w-*` só para limitar **caixas de texto** dentro das colunas.
+- Valores do Figma que caem fora das colunas → arredondar para a coluna e escrever no comentário do SASS o que estava desenhado.
+- Uma variante (ex.: `--reverse`) troca as classes no PHP com uma condição, em vez de regras no SASS.
+- **Uma propriedade vive num só sítio.** Um `md:max-w-none` no PHP ganhou a um `xl:max-w-[585px]` do SASS (green-text) — a ordem entre utilitários responsivos e parciais não é fiável. Ao pôr uma propriedade no PHP, tirar do SASS todos os breakpoints dela.
+- Componentes partilhados (ex.: `icon-list`) levam os defaults de layout em `@layer components` no SASS, para as classes passadas pelo PHP (`class`, `item_class`) ganharem.
+- O SASS da secção fica com: o comentário das medidas (Figma ids, valores desenhados vs. arredondados), sobreposições de tipografia com duas classes, e CSS que não tem utilitário (pseudo-elementos, `:has()`, spacers).
+
+Secções já neste modelo: `bike-services`, `playground-info`, `lounge-info`, `resort-sections`. As restantes ainda têm o layout em `@apply` — migrar ao tocar nelas.
+
+### @apply (componentes e o que não é layout de secção)
+Componentes e regras custom no SASS constroem-se com utilitários Tailwind via **`@apply`**, não com propriedades CSS soltas:
 
 ```sass
 .title-main

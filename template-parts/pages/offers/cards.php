@@ -58,7 +58,7 @@ asort( $offers, SORT_STRING );
 		?>
 		<article class="offer-card">
 			<div class="offer-card__panel">
-				<h2 class="title-h3 offer-card__title"><?php echo esc_html( $offers_title ); ?></h2>
+				<h3 class="title-h3 offer-card__title"><?php echo esc_html( $offers_title ); ?></h3>
 
 				<?php if ( $offers_validity ) : ?>
 					<p class="offer-card__dates"><?php echo esc_html( $offers_validity ); ?></p>

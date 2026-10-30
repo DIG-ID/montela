@@ -19,6 +19,11 @@
  * - post_id (int|string) Optional. Where to read the fields from. Default: current post.
  * - prefix  (string)     Optional. Clone field prefix, when the clone uses
  *                        "Prefix field names" — e.g. 'box_' for a clone named 'box'.
+ * - class   (string)     Optional. Margins around the section, replacing the
+ *                        style's default (box: 128 / 192 / 192 above and
+ *                        144 / 216 / 190 below; band: 128 / 192 below, 192
+ *                        around on desktop) — e.g. Kids Playground and Lounge
+ *                        & Bar, where the box closes a page section.
  *
  * @package montela
  * @subpackage Section
@@ -47,6 +52,15 @@ if ( ! $box_title && ! $box_text ) {
 
 $box_class = 'section-box-text section-box-text--' . $box_style . ( $box_items ? ' section-box-text--has-list' : '' );
 
+// Margins per style; a page can pass its own in $args['class'].
+if ( ! empty( $args['class'] ) ) {
+	$box_class .= ' ' . $args['class'];
+} elseif ( 'band' === $box_style ) {
+	$box_class .= ' mb-[128px] md:mb-[192px] xl:my-[192px]';
+} else {
+	$box_class .= ' mt-[128px] mb-[144px] md:mt-[192px] md:mb-[216px] xl:mb-[190px]';
+}
+
 $box_title_id = wp_unique_id( 'section-box-text-title-' );
 ?>
 <section class="<?php echo esc_attr( $box_class ); ?>"<?php echo $box_title ? ' aria-labelledby="' . esc_attr( $box_title_id ) . '"' : ''; ?>>
@@ -55,11 +69,11 @@ $box_title_id = wp_unique_id( 'section-box-text-title-' );
 			<div class="section-box-text__box">
 				<div class="section-box-text__inner">
 					<?php if ( $box_eyebrow ) : ?>
-						<p class="title-h2 section-box-text__eyebrow"><?php echo esc_html( $box_eyebrow ); ?></p>
+						<h2 class="title-h2 section-box-text__eyebrow"><?php echo esc_html( $box_eyebrow ); ?></h2>
 					<?php endif; ?>
 
 					<?php if ( $box_title ) : ?>
-						<h2 id="<?php echo esc_attr( $box_title_id ); ?>" class="title-h3 section-box-text__title"><?php echo esc_html( $box_title ); ?></h2>
+						<h3 id="<?php echo esc_attr( $box_title_id ); ?>" class="title-h3 section-box-text__title"><?php echo esc_html( $box_title ); ?></h3>
 					<?php endif; ?>
 
 					<?php if ( $box_text ) : ?>

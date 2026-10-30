@@ -1,0 +1,265 @@
+FIGMA → ARQUITECTURA DO TEMA — Montela
+========================================================================
+
+Ficheiro   f3bMaIW2Y0RPvteAzqmGKa ("Design (cópia)")
+Página     HIFI ON GOING DESIGN DEVS (5895:17153) — secção "Website" (5895:17828)
+Data       2026-10-27
+Estado     Inventário do site completo. Detalhe por secção: área Our Resort.
+           As outras áreas ficam "a detalhar" — acrescentar aqui quando
+           chegar a vez delas (não reescrever).
+
+Sondas
+  - Nomes das camadas de texto: 99% com o copy real → secções nomeáveis
+    por parsing.
+  - 96 frames na secção Website, 64 agrupados. As páginas são uma lista de
+    instâncias (hero, intro, …) + frames soltos "Frame 1000…" / "Group 1000…"
+    para as secções próprias de cada página — estas pedem screenshot.
+  - Os blocos são instâncias: o get_metadata da página não mostra o texto
+    de dentro, por isso o emparelhamento de breakpoints (match) fica em
+    confiança "media" (só ordem). Confirmado à mão para o Our Resort.
+
+Como ler os ids: desktop / tablet / mobile. Frame Figma de cada página =
+o primeiro par de ids; secções = linhas "###".
+
+
+1. VISÃO GERAL
+------------------------------------------------------------------------
+Apartment-hotel & resort em Saas-Grund. Site em DE (WPML: DE/EN/FR).
+Sem loja online (WooCommerce não usado). CPTs: activity (feito),
+testimonial (feito); apartamentos, ofertas e daily trips a decidir.
+
+Áreas (mega menu, 2 níveis) e páginas no Figma:
+
+  Home                    5895:18239 / 5895:18181 / 5895:17987   (feita)
+  Stay                    5895:19000 / 5895:19433 / 5895:19123
+    Apartments Overview   5895:18828 / 5895:19595 / 5895:19250
+    Premium Stay          5895:18799 / 5895:19585 / 5895:19239
+    Services              5895:18742 / 5895:19499 / 5895:19190
+    Apartment (single)    5895:18849 / 5895:19630 / 5895:19298
+  Our Resort              5895:20065 / 5895:20381 / 5895:20157   ← a seguir
+    Bike Hotel            5895:19816 / 5895:20546 / 5895:20332
+    Kids Playground       5895:19871 / 5895:20503 / 5895:20279
+    Lounge & Bar          5895:20851 / 5895:20470 / 5895:20247
+    Shop                  5895:19770 / 5895:20724 / 5895:20610
+    Meetings & Groups     5895:19941 / 5895:20752 / 5895:20634
+    Fitnessroom           5895:19995 / 5895:20780 / 5895:20662
+  Explore                 5895:21326 / 5895:21822 / 5895:21349
+    Our Region            5895:21017 / 5895:21955 / 5895:21462
+    Activities            5895:20999 / 5895:21856 / 5895:21364
+    Activity (single)     5895:21165 / 5895:21990 / 5895:21499   (hero+intro feitos)
+    Daily Trip (single)   5895:21127 / 5895:22150 / 5895:21630
+  Offers & Packages       5895:20906 / 5895:22316 / 5895:21807
+    Offer (single)        5895:20917 / 5895:21876 / 5895:21380
+  The Montela Way         5895:21227 / 5895:22187 / 5895:21675
+  Getting Here            5895:23141 / 5895:22233 / 5895:21716
+  Info & Kontakt          5895:21268 / 5895:22266 / 5895:21752
+  FAQ                     5895:21314 / 5895:22254 / 5895:21738
+  Impressum               5895:18534 / 5895:22829 / 5895:22391
+  Data Policy             5895:18486 / 5895:22846 / 5895:22411
+  AGB                     5895:18465 / 5895:22972 / 5895:22611
+  404                     5895:18433 / 5895:22367 / 5895:22330
+
+  Atenção: há frames duplicados/mal nomeados (2× "Offers & Packages_tablet",
+  2× "The Montela Way_desktop", e o FAQ tablet/mobile chama-se
+  "The Montela Way_*"). Usar os ids acima.
+
+
+2. GLOBAIS (feitos)
+------------------------------------------------------------------------
+  header        template-parts/header-main.php
+  mega menu     template-parts/mega-menu.php
+  footer        template-parts/footer-main.php
+  "sticky menu bar_desktop" (5895:18432) — header compacto ao fazer
+  scroll; ainda não construído.
+
+
+3. SECÇÕES PARTILHADAS — onde aparecem (desktop)
+------------------------------------------------------------------------
+  hero (ecrã inteiro, 1080)      9 páginas: Home, Stay, Our Resort,
+                                 Explore, Offers, Montela Way, Getting
+                                 Here, Info, FAQ
+                                 → modules/hero.php variant 'home' (existe;
+                                   renomear a variante p/ 'full'?)
+  hero-child-page (900)          15 páginas (todas as sub-páginas)
+                                 → modules/hero.php por omissão (existe)
+  section-intro                  22 páginas → modules/intro.php (existe)
+  section-map (mapa do resort)   4: Home, Stay, Our Resort, Our Region
+                                 → NOVO module
+  section-find-apartment         5: Home, Shop, Meetings, Offer single,
+                                 Activities
+                                 → existe em pages/home/ — MOVER para
+                                   modules/ (regra: ≥2 páginas)
+  Sections Resort (alternadas)   2: Our Resort (×6), Services (×3)
+                                 → NOVO module
+  Cards with icon section        7: Services, Premium Stay, Fitness,
+                                 Our Region, Daily Trip, Activity, Getting
+                                 Here → NOVO module
+  Horizontal section             4: Services, Kids, Meetings, Montela Way
+                                 → NOVO module
+  Box_text                       4: Shop, Kids, Lounge, Explore
+                                 → NOVO module (título/texto em caixa)
+  Section Green Background       Stay, Apartments, Apartment single,
+                                 Bike Hotel, Our Region, Getting Here
+                                 → NOVO module
+  Next to footer_explore         Bike Hotel, Getting Here → module explore?
+                                 (a confirmar)
+  Activities_with arrows /       Bike Hotel → modules/activities.php
+  Activities all_flip over       (existe) + variante?
+
+
+4. ÁREA OUR RESORT — DETALHE
+------------------------------------------------------------------------
+
+## Our Resort (page template novo: page-templates/page-our-resort.php)
+
+### hero — modules/hero.php, variant ecrã inteiro (1080)
+  desktop  5895:20066   tablet 5895:20383   mobile 5895:20162 (hero+intro)
+  Copy: "Ihr Apartment-Resort / in Saas-Grund"
+
+### intro — modules/intro.php
+  desktop  5895:20069   tablet 5895:20387   mobile (dentro de 5895:20162)
+  Copy: "Ein kleines Feriendorf mitten im Saastal"
+
+### resort-map — NOVO modules/resort-map.php  (Module: JS)
+  desktop  5895:20078   tablet 5895:20395   mobile 5895:20172
+  Título "Alles nah: Häuser, Services und Erlebnisse" + texto à direita.
+  Mapa ilustrado em duas versões (SOMMER / WINTER), botões de estação,
+  controlos (zoom?) à direita, popup com texto e botão sobre o mapa.
+  Por baixo, faixa de ícones (USP): Fünf Häuser mit Resort-Charakter ·
+  Direkt im Saastal · Parkplatz inklusive · 5 Min. zur Hohsaas-Bahn ·
+  Indoor-Spielbereich · Ski- & Bike-Infrastruktur · Hunde willkommen
+  (+2 escondidos no frame: Lounge, Shop & Komfort · PostBus).
+  Também na Home, Stay e Our Region — construir como módulo.
+  Relacionados soltos no canvas: season-map 5895:23165,
+  map-overlay-winter 5895:23226 (estado de interacção desenhado).
+
+### resort-sections — NOVO modules/resort-sections.php
+  desktop  5895:20070 (6 × "Sections Resort desktop" 5895:20071…20076)
+  tablet   5895:20388   mobile 5895:20164
+  Cada bloco: título (H2), texto, botão, duas fotos; alternam o lado.
+  Ordem no frame: Bikeferien direkt am Hohsaas → Regional einkaufen,
+  direkt im Resort → Ankommen, anstossen, zusammensitzen → Aktiv
+  bleiben auch nach dem Bergtag → Indoor-Spielbereich für Kinder bis
+  14 Jahre → Mehrzweckraum für Gruppen, Seminare und Events
+  = um bloco por sub-página (Bike, Shop, Lounge, Fitness, Kids, Meetings).
+  Também em Services (×3).
+
+### footer — global
+
+
+## Sub-páginas (todas: hero-child-page 900 + intro no topo)
+
+### Bike Hotel
+  1. hero-child-page · 2. intro
+  3. Frame 1000006577 (5895:19819) — 3 blocos texto+imagem: "Kurze Wege
+     zu Hohsaas", "Viel Platz im Apartment", "Saas-Fee bequem erreichbar"
+  4. Section Green Background (5895:19868)
+  5. Activities_with arrows (5895:19869) — slider de actividades
+  6. Activities all_flip over (5895:19870)
+  7. Next to footer_explore (5895:19865) · footer
+
+### Kids Playground
+  1. hero · 2. intro
+  3. Group 1000006318 (5895:19891) — 3 blocos: "Familienfreundliche
+     Apartments", "Direkt im Resort", "Für Kinder bis 14 Jahre"
+  4. Box_text (5895:19924) · 5. Horizontal section (5895:19923)
+  6. Group 1000006319 (5895:19875) — placeholder ("Lorem ipsum", "H2
+     title") + footer
+
+### Lounge & Bar
+  1. hero · 2. intro
+  3. Frame 1000006594 (5895:20871) — "Lounge & Bar", "UNSERE
+     GETRÄNKEKARTE" (link p/ a carta — PDF?)
+  4. Box_text (5895:20901) · 5. Group 1000006312 (5895:20896) + footer
+
+### Shop
+  1. hero · 2. intro
+  3. section-find-apartment (5895:19805) — "Praktisch, regional und
+     direkt im Resort"
+  4. Group 1000005448 (5895:19790) — galeria/slider de fotos (como Home)
+  5. Box_text (5895:19813)
+  6. Section Card Shop (5895:19814) · 7. Section Card Shop_region
+     (5895:19815) — cartões de produtos/produtores
+  8. Group 1000006308 (5895:19800) + footer
+
+### Meetings & Groups
+  1. hero · 2. intro
+  3. section-find-apartment (5895:19981) — "Mehrzweckraum im Haus C",
+     "Rund 140 m² Fläche"
+  4. Group 1000005448 (5895:19972) — galeria/slider
+  5. Group 1000005748 (5895:19961) — "Für welche Anlässe geeignet?"
+  6. Horizontal section (5895:19971) · footer
+
+### Fitnessroom
+  1. hero · 2. intro
+  3. Frame 1000006605 (5895:20037) — 3 colunas: "Für aktive Ferien im
+     Saastal", "Bei jedem Wetter", "Ideal für kurze Workouts"
+  4. Cards with icon section (5895:20061)
+  5. Group 1000006320 (5895:20015) — fotos
+  6. Frame 1000006603 (5895:20024) — "Nutzung auf eigene Verantwortung"
+     (regras de uso) · footer
+
+  Repetem-se entre as sub-páginas: "3 blocos texto+imagem" (Bike, Kids,
+  Fitness — confirmar se é o mesmo desenho) e a galeria de 832px (Shop,
+  Meetings). Confirmar por screenshot ao construir cada página.
+
+
+5. COMPONENTES
+------------------------------------------------------------------------
+  existentes: button, button-icon, icon-list, card-activity
+  novos prováveis:
+    resort-section-card  ($args: title, text, link, image_1, image_2,
+                          reverse) — dentro de resort-sections
+    usp-item             ($args: icon, text) — faixa de ícones do mapa
+                          (ou reutilizar icon-list sem o título)
+
+
+6. MODULES (com JS)
+------------------------------------------------------------------------
+  resort-map    estação Sommer/Winter + popup + zoom? → JS próprio
+                (sem lib; o switch de estação do activities.js pode ser
+                reaproveitado). Evidência: SOMMER/WINTER sobrepostos,
+                "controls", "popup", map-button-summer/winter.
+  galeria 832px (Shop, Meetings) → Swiper (já em modules/swiper.js)
+
+
+7. MAPEAMENTO WORDPRESS
+------------------------------------------------------------------------
+  Our Resort           page-templates/page-our-resort.php
+                       group_page_our_resort (tabs: Hero · Intro · Map ·
+                       Sections)
+  Sub-páginas (6)      cada uma tem um desenho próprio, mas são feitas de
+                       módulos partilhados → recomendação: UM template
+                       "Resort subpage" com ACF Flexible Content (ou um
+                       template por página, se o cliente não for editar a
+                       ordem). Decidir antes de começar as sub-páginas.
+  Hierarquia           páginas filhas de Our Resort (URLs
+                       /unser-resort/bike-hotel/ …)
+
+
+8. CAMPOS ACF SUGERIDOS
+------------------------------------------------------------------------
+  group_module_resort_map
+    section_resort_map_title (textarea br), section_resort_map_text,
+    section_resort_map_image_summer, section_resort_map_image_winter
+    (image), section_resort_map_points (repeater: x, y, title, text, link
+    — se houver pins), section_resort_map_usps (repeater: icon, text)
+  group_module_resort_sections
+    section_resort_sections_items (repeater: title, text, link, image_1,
+    image_2) — o lado alterna sozinho
+  group_page_our_resort  tabs → clones Seamless dos módulos acima +
+                         hero + intro
+
+
+9. DECISÕES
+------------------------------------------------------------------------
+  Tomadas (2026-10-27):
+  - Mapa do resort: adiado — o Our Resort sai sem ele por agora.
+  - Resort sections: repeater manual (título, texto, link, duas fotos).
+  - Sub-páginas: um template com ACF Flexible Content, módulos à escolha.
+
+  Em aberto:
+  1. Mapa do resort: como funciona (estação, pins/popup, zoom)?
+  2. Hero do Our Resort é ecrã inteiro (1080) como a Home — confirmar.
+  3. "UNSERE GETRÄNKEKARTE" (Lounge) — link para PDF?
+  6. Kids Playground tem placeholders (Lorem ipsum / H2 title) no fim.

@@ -1,0 +1,115 @@
+// Bike Hotel — bike experiences (template-parts/pages/bike-hotel/bike-experiences.php).
+// Figma (Bike Hotel): layout 'right' "Activities_with arrows" — desktop
+// 5895:19869, tablet 5895:20609, mobile 5895:20379; layout 'left'
+// "Activities all_flip over" — desktop 5895:19870, tablet 5895:20608,
+// mobile 5895:20380. Cards: _components/_card-preview.sass.
+//
+//   Desktop 'right'  copy (columns 1–5) 45px down, 45px padding; cards on
+//                    columns 7–12 from 504px down; arrows 90px down, 8.43%
+//                    in from the right; frame 9.56% → 7.33%, 888px tall
+//   Desktop 'left'   cards on columns 1–6 from 220px down; copy on columns
+//                    9–12 from 155px down; frame 28.8% → 17.22%, 888px tall
+//   Tablet (both)    copy from 185px down (608px max), 44px gaps, arrows;
+//                    cards 128px lower in a 2 × 2 grid (20 / 22px gaps);
+//                    frame from 19% to the right edge, from the top
+//   Mobile (both)    copy (36px padding, 30px gaps), arrows 30px lower,
+//                    one card at a time 89px lower; frame 7px past the
+//                    container, from 128px down
+//
+// Cards: components/card-preview.php, 420px tall (Bruno: the preview card
+// instead of the activity card). Desktop: 403 wide, 94px / 51px apart (the
+// right or left half of the container).
+//
+// The frame's bottom edge lands inside the first row of cards: on mobile
+// and tablet it is measured from the bottom of the cards, so that it ends
+// 118px (mobile) / 265px (tablet) into the first row of 420px cards: 302px
+// mobile; 597px tablet with two rows, 155px with one (.--one-row, 1–2
+// cards). On desktop from the top (888px), since the cards start at a
+// fixed height.
+// With a single row in the 'left' layout it hangs below the cards — not in
+// the design.
+//
+// More than 4 cards (.--paged): from tablet up the grid becomes a two-row
+// track, one column per arrow click. The arrows always show (Bruno, for now,
+// as drawn on desktop) — disabled by the carousel when there is nothing to
+// page. Arrows in the 'left' layout sit in the frame's top-right corner like
+// 'right' — not in the design.
+//
+// Spacing (Bike Hotel, measured): mobile 128px above and below. Tablet:
+// 192px above 'right', 150px between the two, 175px below 'left'. Desktop:
+// 192px above 'right', 128px between, 192px below 'left'. Margins collapse,
+// so the gap between the two is the larger of 'right' bottom and 'left' top
+// — keep both at the "between" value.
+.section-bike-experiences
+  @apply my-32 overflow-hidden text-montela-walnut
+
+.section-bike-experiences--right
+  @apply md:mt-[192px] md:mb-[150px] xl:mt-48 xl:mb-32
+
+.section-bike-experiences--left
+  @apply md:mt-[150px] md:mb-[175px] xl:mt-32 xl:mb-48
+
+.section-bike-experiences__inner
+  @apply relative flex flex-col xl:grid xl:grid-cols-12 xl:gap-x-5 xl:items-start
+
+// -- Frame --
+.section-bike-experiences__frame
+  @apply absolute border border-montela-sage -left-[7px] -right-[7px] top-[128px] bottom-[302px] md:left-[19%] md:right-0 md:top-0 md:bottom-[597px] xl:bottom-auto xl:h-[888px]
+
+.section-bike-experiences--one-row .section-bike-experiences__frame
+  @apply md:bottom-[155px] xl:bottom-auto
+
+.section-bike-experiences--right .section-bike-experiences__frame
+  @apply xl:left-[9.56%] xl:right-[7.33%]
+
+.section-bike-experiences--left .section-bike-experiences__frame
+  @apply xl:left-[28.8%] xl:right-[17.22%]
+
+// -- Copy --
+// Cream ground, positioned: it hides the frame where the design hides it.
+.section-bike-experiences__copy
+  @apply relative flex flex-col items-start gap-[30px] bg-montela-cream pt-9 md:gap-11 md:pt-0 md:mt-[185px] md:max-w-[608px] xl:gap-[46px] xl:py-[45px] xl:row-start-1
+
+.section-bike-experiences--right .section-bike-experiences__copy
+  @apply xl:col-start-1 xl:col-span-5 xl:mt-[45px]
+
+.section-bike-experiences--left .section-bike-experiences__copy
+  @apply xl:col-start-9 xl:col-span-4 xl:mt-[155px]
+
+.section-bike-experiences__text
+  @apply md:max-w-[585px]
+
+// -- Arrows --
+// Two classes: .slider-nav (display: flex) is emitted after this partial.
+// Tablet: the 44px above the arrows is padding on a cream ground, so the
+// frame's left line stays hidden down to the arrows' bottom edge and
+// reappears there (as in the tablet frame).
+.section-bike-experiences__inner .section-bike-experiences__nav
+  @apply relative mt-[30px] md:mt-0 md:pt-11 md:bg-montela-cream xl:absolute xl:pt-0 xl:bg-transparent xl:top-[90px]
+
+.section-bike-experiences--right .section-bike-experiences__inner .section-bike-experiences__nav
+  @apply xl:right-[8.43%]
+
+.section-bike-experiences--left .section-bike-experiences__inner .section-bike-experiences__nav
+  @apply xl:right-[calc(17.22%_+_20px)]
+
+// -- Cards --
+// Mobile: a horizontal scroll-snap track, one card per view. Tablet and
+// desktop: a 2 × 2 grid — or, paged, a two-row track of half-width columns.
+.section-bike-experiences__cards
+  @apply flex gap-5 mt-[89px] overflow-x-auto snap-x snap-mandatory md:mt-32 md:grid md:grid-cols-2 md:gap-x-5 md:gap-y-[22px] md:overflow-visible xl:row-start-1 xl:col-span-6 xl:gap-x-[94px] xl:gap-y-[51px]
+  scrollbar-width: none
+  &::-webkit-scrollbar
+    display: none
+
+.section-bike-experiences--right .section-bike-experiences__cards
+  @apply xl:col-start-7 xl:mt-[504px]
+
+.section-bike-experiences--left .section-bike-experiences__cards
+  @apply xl:col-start-1 xl:mt-[220px]
+
+.section-bike-experiences--paged .section-bike-experiences__cards
+  @apply md:grid-cols-none md:grid-rows-2 md:grid-flow-col md:auto-cols-[calc((100%_-_20px)/2)] md:overflow-x-auto xl:auto-cols-[calc((100%_-_94px)/2)]
+
+.section-bike-experiences__cards .section-bike-experiences__card
+  @apply w-full shrink-0 snap-start

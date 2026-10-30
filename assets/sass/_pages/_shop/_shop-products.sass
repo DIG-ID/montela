@@ -1,0 +1,37 @@
+// Shop — shop products (template-parts/pages/shop/shop-products.php).
+// Figma "Section Card Shop": desktop 5895:19814, tablet 5895:20745, mobile
+// 5895:20633.
+//
+//   Desktop  centred title (90/80), 44px to a row of three cards with the
+//            arrows (39px; 40 here) at either side, centred on the cards.
+//            Figma: arrows at x 143 / 1737 — the right edge of column 1 and
+//            the left edge of column 12; cards 3 × 435 + 2 × 21 = 1347px,
+//            centred (x 286–1633), between the grid columns. Built as
+//            columns 2–11 with 82px padding each side and 21px between
+//            the cards (Bruno): 436px cards at 1920.
+//   Tablet   title (80/76), 44px, one card (436px centred in Figma, x 199 —
+//            columns 2–5 with 12px padding each side — Bruno: 440px), 44px, arrows centred below
+//            (20px apart)
+//   Mobile   title (36/38), 44px, one card (329), 44px, arrows below
+//
+// Card: photo 216px tall (164 mobile), then a 1px walnut box, 16px / 20px
+// padding, centred text (capped at 288px on mobile and 395px on tablet — Bruno, the text box
+// in Figma); title → text 18px (14 mobile). Desktop box 337px
+// tall in Figma — here it grows to the tallest card in view. Title 20/32
+// bold desktop ("Desktop/H4"), 18/28 tablet, 12/20 mobile; text .body-text.
+//
+// Spacing: none above (the opening hours box above has 44 / 96 / 128px
+// below it); 192px below on desktop and tablet, 128 mobile, to "Aus der
+// Region" (which has none above), measured.
+// Layout (grid columns, spacing, card padding) is in the PHP as Tailwind
+// classes; here only what has to beat swiper.css (loaded after main.css,
+// so two classes) and the type overrides.
+
+.section-shop-products .section-shop-products__swiper
+  @apply m-0 w-full
+
+.section-shop-products__swiper .section-shop-products__slide
+  @apply h-auto
+
+.section-shop-products__card .section-shop-products__card-title
+  @apply text-[12px] leading-[20px] md:text-[18px] md:leading-[28px] xl:text-[20px] xl:leading-[32px]

@@ -54,7 +54,7 @@ $pkg_title_id = wp_unique_id( 'section-offer-package-title-' );
 
 				<div class="section-offer-package__content">
 					<?php if ( $pkg_title ) : ?>
-						<h2 id="<?php echo esc_attr( $pkg_title_id ); ?>" class="title-h3 section-offer-package__title"><?php echo esc_html( $pkg_title ); ?></h2>
+						<h3 id="<?php echo esc_attr( $pkg_title_id ); ?>" class="title-h3 section-offer-package__title"><?php echo esc_html( $pkg_title ); ?></h3>
 					<?php endif; ?>
 
 					<?php

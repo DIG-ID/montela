@@ -11,6 +11,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.32.0] — 2026-10-30
+
+### Added
+- Unser Resort page ("Our Resort Template"): hero, intro and alternating text + photo sections (new Resort sections module).
+- Six Resort subpages, each with its own template: Bike Hotel, Kids Playground, Lounge & Bar, Meetings & Groups, Shop and Fitnessroom.
+- New modules: Green text (full-width sage band) and Horizontal (full-width photo, then title, button and text).
+- Photo strip slider for the subpages, and info boxes for Meetings & Groups and Fitnessroom.
+- Explore module: optional overline above the title, and a layout without the small photo.
+- Cards with icon module: a "filled" style (sage cards, cream text and icons).
+
+### Changed
+- Heading tags now follow the Figma text styles (H2, H3, H4) instead of the page order; sizes are unchanged.
+- Box text module: its margins can be set per page.
+- Bullets in text lists are smaller.
+
 ## [1.31.0] — 2026-10-29
 
 ### Added

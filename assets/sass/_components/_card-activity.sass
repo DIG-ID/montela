@@ -7,10 +7,10 @@
 // excerpt (4 lines at most) and the link. Closed, only the title shows, in a
 // cream bar (76px desktop, 58px below).
 //
-// Open is the default, and what touch screens always get: they have no
-// hover. Devices with a mouse close the card until it is hovered or a
-// keyboard focus lands inside it. The excerpt and link fold away through a
-// 0fr → 1fr grid row, so the panel animates to its content height.
+// Tablet and mobile (< 1280px): always open (Bruno). On desktop, devices
+// with a mouse close the card until it is hovered or a keyboard focus lands
+// inside it; touch screens show it open. The excerpt and link fold away
+// through a 0fr → 1fr grid row, so the panel animates to its content height.
 .card-activity
   @apply relative h-[325px] xl:h-[421px] overflow-hidden
 
@@ -29,6 +29,12 @@
 .card-activity__more-inner
   @apply min-h-0 overflow-hidden
 
+// Title: 19px below desktop (H4 is 20px) so the longer titles keep to one
+// line in the tablet and mobile cards — Bruno's call. Two classes to beat
+// .title-h4.
+.card-activity .card-activity__title
+  @apply text-[19px] xl:text-[20px]
+
 // Figma "Tablet/Text" below desktop, "Text" on desktop.
 .card-activity__excerpt
   @apply font-primary font-light tracking-[0.5px] text-[18px] leading-[25px] xl:mt-2 xl:text-[20px] xl:leading-[32px] line-clamp-4
@@ -36,7 +42,8 @@
 .card-activity__link
   @apply flex mt-[22px] xl:mt-[30px]
 
-@media (hover: hover) and (pointer: fine)
+// Closed: only the title, in a cream bar.
+@media (min-width: 1280px) and (hover: hover) and (pointer: fine)
   .card-activity:not(:hover):not(:focus-within)
     .card-activity__panel
       @apply bg-montela-cream text-montela-sage pb-3 xl:pt-[21px] xl:pb-[21px]

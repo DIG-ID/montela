@@ -59,3 +59,13 @@ O inset usado pela maioria das secções (colunas 2 a 11 de 12) é
 - O layout absoluto do Figma não mapeia 1:1 para um grid CSS responsivo; o frame dá o desenho, não a implementação.
 - Um frame desenhado a 1920 dá um único passo. Os valores para os breakpoints intermédios são **interpolados**, e isso deve ficar escrito no comentário — para o próximo que lá mexer saber que não foi medido.
 - Os números do frame podem não fechar: já aconteceu um grupo de 1514px conter 1515px de conteúdo. Quando a soma não dá, é o desenho que está à mão, não o código que está errado — tratar a medida como tecto e deixar o CSS ceder.
+
+## Tags de título: manda o nome do estilo
+
+O Figma diz o nível de cada título no estilo de texto (no Dev Mode, o
+comentário em Typography: `/* Tablet/H3 */`). **A tag HTML segue esse
+nível**: estilo H1 → `<h1>`, H2 → `<h2>`, H3 → `<h3>`, H4 → `<h4>` — com a
+classe correspondente (`.title-h3` num `<h3>`). Não escolher a tag pela
+ordem da página (Bruno, Outubro 2026, por SEO).
+O tamanho continua a ser o desenhado em cada frame: um frame de tablet com
+"Desktop/H3" fica com 90/80, anotado no SASS.

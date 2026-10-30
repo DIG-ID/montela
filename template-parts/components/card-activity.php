@@ -2,8 +2,8 @@
 /**
  * Activity card: the activity's card image with its title in a bar at the
  * bottom. The bar opens into a sage panel with the excerpt and a link to the
- * activity — on hover or keyboard focus on devices with a mouse, always open
- * on touch screens (see _card-activity.sass).
+ * activity — on desktop with a mouse, on hover or keyboard focus; always
+ * open on tablet, mobile and touch screens (see _card-activity.sass).
  *
  * Content comes either from an Activity post — featured image (labelled
  * "Card image" in the admin), title, excerpt and a "Learn more" link to it —
@@ -76,7 +76,7 @@ $card_class = 'card-activity' . ( ! empty( $args['class'] ) ? ' ' . $args['class
 	<?php endif; ?>
 
 	<div class="card-activity__panel">
-		<h3 class="title-h4 card-activity__title"><?php echo esc_html( $card_title ); ?></h3>
+		<h4 class="title-h4 card-activity__title"><?php echo esc_html( $card_title ); ?></h4>
 
 		<div class="card-activity__more">
 			<div class="card-activity__more-inner">

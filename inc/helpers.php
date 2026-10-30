@@ -218,3 +218,34 @@ if ( ! function_exists( 'montela_get_offer_validity' ) ) :
 		return implode( ' - ', $dates );
 	}
 endif;
+/**
+ * Reads a module field, wherever the module's fields live.
+ *
+ * A module is either cloned straight into a page's field group (read with
+ * get_field()) or used as a layout of a Flexible Content field (read with
+ * get_sub_field(), from inside the have_rows() loop). The page template says
+ * which by passing 'row' => true in the module's $args.
+ *
+ *     $foo_title = montela_module_field( 'section_foo_title', $args );
+ *
+ * @since 1.16.0
+ *
+ * @param string $name Field name, without the clone prefix.
+ * @param array  $args The module's $args: 'row' (bool), 'prefix' (string), 'post_id' (int|string).
+ * @return mixed The formatted field value, or null when ACF is inactive.
+ */
+function montela_module_field( $name, $args = array() ) {
+	if ( ! function_exists( 'get_field' ) ) {
+		return null;
+	}
+
+	$args   = is_array( $args ) ? $args : array();
+	$prefix = ! empty( $args['prefix'] ) ? $args['prefix'] : '';
+
+	if ( ! empty( $args['row'] ) ) {
+		return get_sub_field( $prefix . $name );
+	}
+
+	$ctx = ! empty( $args['post_id'] ) ? $args['post_id'] : get_the_ID();
+	return get_field( $prefix . $name, $ctx );
+}

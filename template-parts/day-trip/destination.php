@@ -38,7 +38,7 @@ $dest_title_id = wp_unique_id( 'section-destination-title-' );
 		<div class="theme-container">
 			<div class="theme-grid section-destination__grid">
 				<?php if ( $dest_title ) : ?>
-					<h2 id="<?php echo esc_attr( $dest_title_id ); ?>" class="title-h3 section-destination__title"><?php echo esc_html( $dest_title ); ?></h2>
+					<h3 id="<?php echo esc_attr( $dest_title_id ); ?>" class="title-h3 section-destination__title"><?php echo esc_html( $dest_title ); ?></h3>
 				<?php endif; ?>
 
 				<?php if ( $dest_text ) : ?>

@@ -1,0 +1,29 @@
+// Resort sections module (template-parts/modules/resort-sections.php).
+// Figma "Sections Resort" — Our Resort desktop 5895:20070, tablet
+// 5895:20388, mobile 5895:20164.
+//
+// Desktop: blocks 128px apart, 192px below the last. Title on columns 2–12,
+// 52px above the row. Row: text + button (64px apart) on columns 2–4,
+// photos on columns 5–12 — 522px and 666px wide, 18px apart, 600px tall at
+// 1920 (kept as an aspect ratio below that). Every other block (--reverse)
+// mirrors the row: photos on columns 1–8, text on 9–12 (up to 518px — drawn
+// as 75px right padding) and 49px to the button. The narrower photo always sits next to
+// the text.
+//
+// Tablet: blocks and the bottom 128px. Title 44px above the row; the row is
+// three equal parts of two columns — text (44px to the button), then the
+// two photos, 385px tall; mirrored on --reverse.
+//
+// Mobile: blocks and the bottom 128px. Title, text and button 28px apart,
+// then one photo (the one next to the text) 44px below, 326 × 268 at 393.
+// The outer photo is not shown.
+//
+// Layout (grid columns, spacing, max-widths) is in the PHP as Tailwind
+// classes, switched per block for --reverse; this file keeps the measurements
+// and the button override.
+
+// Tablet below the 834px frame: the text column (two grid columns) drops
+// under the button's 213px, so its label padding narrows from 22px to 14px
+// until there is room again. Two classes to beat .btn__label.
+.resort-block__body .btn__label
+  @apply md:px-[14px] min-[834px]:px-[22px]
