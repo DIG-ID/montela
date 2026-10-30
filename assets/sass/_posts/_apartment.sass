@@ -1,0 +1,97 @@
+// Single Apartment (single-apartment.php, template-parts/apartment/).
+// Figma: desktop 5426:7911, tablet 5426:9736, mobile 5426:9146. Layout
+// (columns, gaps, margins, the hairlines) is in the PHP; this file keeps the
+// measurements, the type and the photo crops.
+//
+// Vertical rhythm, mobile / tablet / desktop:
+//   hero → back link                 44 / 115 / 103
+//   back link → facts                44 / 37 / 57
+//   facts → hairline                 44 / 18 / 18
+//   hairline → photos                44 / 44 / 47
+//   photos → intro                   16 / 44 / 100
+//   intro → hairline                 44 / 56 / 77
+//   hairline → "Ausstattung:"        44 / 56 / 77
+//   amenities → gallery              45 / 56 / 101
+// Hairlines: 1px sage, the container's width.
+
+// -- Facts bar (template-parts/apartment/facts.php) --
+// Sage, 20/32 on every breakpoint (Figma "Desktop/Text" in all three), 24px
+// icons 14px from the text. Mobile one column (12px apart); tablet two
+// columns, filled down (size, bathrooms | bedrooms, occupancy — 15px apart);
+// desktop one row from column 2, 76px apart. The desktop frame orders them
+// size, bedrooms, bathrooms, occupancy; the tablet and mobile ones (and the
+// cards) put the bathrooms second — kept everywhere.
+.apartment-bar .apartment-facts__item
+  @apply gap-[14px]
+
+.apartment-bar .apartment-facts__icon
+  @apply w-6 h-6 mt-1
+
+.apartment-bar .apartment-facts__text
+  @apply text-[20px] leading-[32px]
+
+// -- Photos (template-parts/apartment/photos.php) --
+// Desktop: 1207 × 832 (columns 1–8) and two on columns 9–12, 516 and 304px
+// tall, 12px apart; 24px between the columns in Figma, 20 here (the
+// gutter). Tablet: the same at 461 × 318, 5px apart. Mobile: the large photo
+// only, 320 × 246. The right photos fill the large one's height.
+.apartment-photos__main,
+.apartment-photos__side
+  @apply m-0 overflow-hidden
+
+.apartment-photos__main
+  @apply aspect-[320/246] md:aspect-[1207/832]
+
+.apartment-photos__side
+  @apply relative min-h-0
+  .apartment-photos__img
+    @apply absolute inset-0
+
+.apartment-photos__img
+  @apply w-full h-full object-cover
+
+// -- Intro (template-parts/apartment/intro.php) --
+// Title: italic, 40/35 (mobile — the mobile frame has another page's title
+// in "Mobile/H3"; the desktop style is followed), 70/70 on tablet and
+// desktop (.title-intro is 90/76 on desktop). Columns 1–3 on tablet (336px),
+// 2–6 on desktop (768px in Figma). Button 83 / 136px below the title on
+// tablet / desktop, 16px below the text on mobile. Text: 18/25 on mobile and
+// tablet, 20/32 on desktop; columns 4–6 (tablet), 8–11 (desktop).
+// "Jetzt buchen" is mustard in Figma — the buttons' hover state — so it
+// takes the sage "secondary" style, as the offer's booking button.
+.section-apartment-intro .title-intro
+  @apply xl:text-[70px] xl:leading-[70px]
+
+// Two classes: .body-text is emitted after this partial.
+.section-apartment-intro .section-apartment-intro__text
+  @apply text-[18px] leading-[25px] xl:text-[20px] xl:leading-[32px]
+  p
+    @apply mb-0
+  p + p
+    @apply mt-[25px] xl:mt-8
+
+// -- Ausstattung (template-parts/apartment/equipment.php) --
+// Title "Desktop/H4" (20/32 bold), 24 / 44 / 50px above the list.
+// List (components/icon-list.php), filled down: one column on mobile; two
+// on tablet (columns 1–3, 4–6) and desktop (2–4, 5–7 — Figma starts the
+// block 33px left of column 2, rounded to it). Rows 16 / 30 / 16px apart.
+// Icons: in a 50px box, 15–17px to the text (mobile, tablet); a 68px box,
+// 17px to the text, on desktop — glyphs 44 / 50px tall (the icon list's
+// rule: same height, own width). Text 17/23 (mobile, tablet), 20/32 on
+// desktop — Figma draws 15/25 ("Text small - footer", smaller than the
+// tablet's), the same slip as "Inklusive Leistungen" (NOTES.txt C5, C7).
+// Photo (desktop only): 660 × 556 in Figma, 90px left of column 8; here on
+// columns 8–11 at the same ratio, top-aligned with the title.
+.section-apartment-equipment .icon-list__icon
+  @apply h-[50px] xl:h-[68px]
+  img
+    @apply h-[44px] xl:h-[50px]
+
+.section-apartment-equipment .icon-list__text
+  @apply text-[17px] leading-[23px] xl:text-[20px] xl:leading-[32px]
+
+.section-apartment-equipment__photo
+  @apply m-0 overflow-hidden aspect-[660/556]
+
+.section-apartment-equipment__img
+  @apply w-full h-full object-cover

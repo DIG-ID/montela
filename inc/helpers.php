@@ -302,3 +302,42 @@ if ( ! function_exists( 'montela_get_apartment_amenities' ) ) :
 		return $terms;
 	}
 endif;
+
+if ( ! function_exists( 'montela_get_active_offers' ) ) :
+	/**
+	 * Returns the offers still on sale — published, with "Valid until" today
+	 * or later, or no end date — sorted by their start date ("Valid from";
+	 * offers without one last). Used by the Angebote & Packages cards and
+	 * the Offer cards module.
+	 *
+	 * @since 1.34.0
+	 *
+	 * @return int[] Offer IDs, in the current language.
+	 */
+	function montela_get_active_offers() {
+		$today  = wp_date( 'Ymd' );
+		$offers = array();
+		$ids    = get_posts(
+			array(
+				'post_type'        => 'offer',
+				'post_status'      => 'publish',
+				'posts_per_page'   => -1,
+				'fields'           => 'ids',
+				'suppress_filters' => false, // Let WPML keep the current language.
+			)
+		);
+
+		foreach ( $ids as $id ) {
+			$valid_to = function_exists( 'get_field' ) ? get_field( 'section_offer_valid_to', $id ) : '';
+			if ( $valid_to && $valid_to < $today ) {
+				continue; // Expired.
+			}
+			$valid_from    = function_exists( 'get_field' ) ? get_field( 'section_offer_valid_from', $id ) : '';
+			$offers[ $id ] = $valid_from ? $valid_from : '99999999';
+		}
+
+		asort( $offers, SORT_STRING );
+
+		return array_keys( $offers );
+	}
+endif;

@@ -1,0 +1,22 @@
+// Offer cards module (template-parts/modules/offer-cards.php).
+// Figma "Section Card activities": desktop 5823:15953, tablet 5830:16101,
+// mobile 5833:15845. Layout (columns, gaps, margins) is in the PHP.
+//
+// Head: mobile title, text, button 16px apart; tablet the same, 24px apart,
+// the text on 4 columns (462px in Figma); desktop the title (columns 2–6)
+// with the button 38px below, the text on columns 8–11 level with the title.
+// Cards 44px below (65 on desktop): card-preview, 4 / 2 / 1 in view, 20px
+// apart — the grid gutter (69 in Figma at 403px wide; here the cards fill
+// the container, 440px at 1920). Arrows 44px below, centred; hidden when
+// every card is in view (desktop with four offers, as drawn).
+//
+// Spacing below: 192px on every breakpoint (to the footer). Above: the
+// section before it (Services comparison: 128 / 192).
+
+// Two classes: swiper.css (loaded after main.css) sets .swiper-slide's height.
+.section-offer-cards__swiper .section-offer-cards__slide
+  @apply h-auto
+
+// Every card in view: Swiper hides both arrows; drop the row too.
+.section-offer-cards__nav:has(.swiper-button-lock)
+  @apply hidden

@@ -2,7 +2,9 @@
 // Size, bathrooms, bedrooms, occupancy: an icon beside each, two columns.
 // The icons are SVG masks painted with currentColor (as in _buttons.sass), so
 // they follow the text colour — cream on the cards, walnut on the single.
-// The column widths are set where the list is used.
+// The column widths are set where the list is used. The list and item
+// layout sit in the components layer, so layout classes passed from the PHP
+// (class) win — the single lays the facts out in a row on desktop.
 //
 //   Mobile   icons ~30×34, 17px to the text; rows 12px apart; text 14/22
 //   Tablet   icons 24px, 14px to the text; rows 12px apart; text 18/25
@@ -22,11 +24,12 @@
   mask: url("../../svg/icons/apartment-occupancy.svg") center / contain no-repeat
 
 // -- List ----------------------------------------------------------------------
-.apartment-facts
-  @apply grid grid-cols-2 gap-x-5 gap-y-3 xl:gap-y-[5px] text-left
+@layer components
+  .apartment-facts
+    @apply grid grid-cols-2 gap-x-5 gap-y-3 xl:gap-y-[5px] text-left
 
-.apartment-facts__item
-  @apply flex items-start gap-[17px] md:gap-[14px]
+  .apartment-facts__item
+    @apply flex items-start gap-[17px] md:gap-[14px]
 
 .apartment-facts__icon
   @apply flex shrink-0 w-[30px] h-[34px] md:w-6 md:h-6 md:mt-px xl:mt-1

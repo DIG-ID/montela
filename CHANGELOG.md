@@ -11,6 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.34.0] — 2026-10-30
+
+### Added
+- Apartment single page: back link, facts bar, photos, intro, amenities, gallery, and the shared "Inklusive Leistungen", services comparison and offer cards (read from the Apartments page).
+- Offer cards module ("Für jede Auszeit das passende Angebot"), with an Offers tab on the Apartments page.
+
+### Changed
+- The "Zurück zur Übersicht" link is a shared component (offer and apartment singles).
+
+### Fixed
+- Tailwind now scans every root template, so classes set in `single-{post_type}.php` files reach the CSS.
+
 ## [1.33.2] — 2026-10-30
 
 ### Changed

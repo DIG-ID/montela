@@ -1,0 +1,124 @@
+{
+    "key": "group_module_offer_cards",
+    "title": "Module — Offer cards",
+    "fields": [
+        {
+            "key": "field_module_offer_cards_title",
+            "label": "Title",
+            "name": "section_offer_cards_title",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Press Enter to force a line break.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": "br"
+        },
+        {
+            "key": "field_module_offer_cards_text",
+            "label": "Text",
+            "name": "section_offer_cards_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_module_offer_cards_button",
+            "label": "Button",
+            "name": "section_offer_cards_button",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Under the title — e.g. to the Angebote & Packages page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "return_format": "array",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_module_offer_cards_items",
+            "label": "Offers",
+            "name": "section_offer_cards_items",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Shown in this order. Empty: every offer still valid, by start date (as on the Angebote & Packages page). Four in view on desktop, the rest slide.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "post_type": [
+                "offer"
+            ],
+            "post_status": "",
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "return_format": "id",
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 0,
+            "elements": [
+                "featured_image"
+            ],
+            "bidirectional": 0,
+            "bidirectional_target": []
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "Module: clone it into a page field group.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1793376074,
+    "acfml_field_group_mode": "advanced"
+}

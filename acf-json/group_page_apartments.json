@@ -152,6 +152,24 @@
             "selected": 0
         },
         {
+            "key": "field_page_apartments_services_note",
+            "label": "",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Also shown on every apartment page.",
+            "new_lines": "",
+            "esc_html": 0
+        },
+        {
             "key": "field_page_apartments_services",
             "label": "Services",
             "name": "apartments_services",
@@ -191,6 +209,24 @@
             "placement": "top",
             "endpoint": 0,
             "selected": 0
+        },
+        {
+            "key": "field_page_apartments_included_note",
+            "label": "",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Also shown on every apartment page.",
+            "new_lines": "",
+            "esc_html": 0
         },
         {
             "key": "field_page_apartments_included",
@@ -255,6 +291,65 @@
             "layout": "block",
             "prefix_label": 0,
             "prefix_name": 0
+        },
+        {
+            "key": "field_page_apartments_tab_offers",
+            "label": "Offers",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_page_apartments_offers_note",
+            "label": "",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Shown on the apartment pages only (\"Für jede Auszeit das passende Angebot\"), not on this page.",
+            "new_lines": "",
+            "esc_html": 0
+        },
+        {
+            "key": "field_page_apartments_offers",
+            "label": "Offers",
+            "name": "apartments_offers",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "clone": [
+                "group_module_offer_cards"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
         }
     ],
     "location": [
@@ -278,6 +373,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793363634,
+    "modified": 1793376074,
     "acfml_field_group_mode": "advanced"
 }

@@ -1,14 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './404.php',
-    './archive.php',
-    './footer.php',
-    './functions.php',
-    './header.php',
-    './index.php',
-    './page.php',
-    './single.php',
+    // Every root template, single-{post_type}.php included (classes passed
+    // from there to template parts would otherwise never reach the CSS).
+    './*.php',
     './inc/**/*.php',
     './page-templates/**/*.php',
     './template-parts/**/*.php',

@@ -15,13 +15,18 @@ alteração no `CHANGELOG.md`. Os nodes do Figma de cada template estão no
   - os botões "Apartments entdecken", "Premium Stay entdecken" e "Zu allen
     Services" apontam para `#` — faltam as páginas de destino.
 - [ ] **Apartments** (`page-templates/page-apartments.php`) e **Single Apartment**
-  (`single-apartment.php`) — CPT, taxonomia `amenity` e campos feitos; a página
-  está completa; o single tem só o hero — faltam as secções listadas no `CLAUDE.md`
-  (Templates). Falta o conteúdo dos 9 apartamentos. Em local há dois apartamentos de
-  teste (`apartment-1-schlafzimmer-1-badezimmer`, `apartment-2-schlafzimmer-1-badezimmer`), com as fotos dos cards do Figma.
-  Em produção: Sync do CPT, da taxonomia e dos grupos; criar a página
-  Apartments (filha da Aufenthalt) e preencher os tabs Services (o conteúdo da Aufenthalt), Included ("Inklusive Leistungen", estilo Cream band, ícones walnut) e Testimonials (título); criar os 11 termos com os slugs do
-  `CLAUDE.md` e os ícones. O botão "Zu allen Services" aponta para `#` — falta a página de destino (como na Aufenthalt).
+  (`single-apartment.php`) — feitos. Falta o conteúdo dos 9 apartamentos
+  (fotos 1–3, foto da Ausstattung, galeria, intro, amenities). Em local há dois
+  apartamentos de teste (`apartment-1-schlafzimmer-1-badezimmer` completo,
+  `apartment-2-schlafzimmer-1-badezimmer` só com o card). Em local só há uma
+  oferta: o slider "Für jede Auszeit…" não foi visto com 4+ cards.
+  Em produção: Sync do CPT, da taxonomia e dos grupos (incl. Module — Offer
+  cards); criar a página Apartments (filha da Aufenthalt) e preencher os tabs
+  Services (o conteúdo da Aufenthalt), Included ("Inklusive Leistungen", estilo
+  Cream band, ícones walnut), Testimonials (título) e Offers (título, texto,
+  botão para a Angebote & Packages); criar os 11 termos com os slugs do
+  `CLAUDE.md` e os ícones. O botão "Zu allen Services" aponta para `#` — falta
+  a página de destino (como na Aufenthalt).
 - [ ] **Mapa** — design por aprovar. Entra em vários sítios:
   - homepage, entre a Gallery e o Explore (`page-templates/page-home.php`);
   - Unsere Region, entre os Highlights e os Tagesausflüge (`page-templates/page-region.php`);

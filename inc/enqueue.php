@@ -207,8 +207,8 @@ function montela_enqueue_assets() {
 	if ( is_page_template( 'page-templates/page-region.php' ) ) {
 		montela_enqueue_module( 'swiper' ); // Cards with icon and day trips sliders.
 	}
-	if ( is_singular( array( 'offer', 'tagesausflug' ) ) ) {
-		montela_enqueue_module( 'swiper' ); // Gallery slider (+ Cards with icon, Explore on day trips).
+	if ( is_singular( array( 'offer', 'tagesausflug', 'apartment' ) ) ) {
+		montela_enqueue_module( 'swiper' ); // Gallery slider (+ Cards with icon, Explore on day trips; Services, offer cards on apartments).
 	}
 	if ( is_page_template( 'page-templates/page-arrival.php' ) ) {
 		montela_enqueue_module( 'swiper' ); // Cards with icon slider.

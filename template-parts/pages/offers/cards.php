@@ -6,7 +6,8 @@
  *
  * Content: the Offers post type. Shows the published offers that are still
  * valid ("Valid until" today or later, or no end date), sorted by their
- * start date (offers without one last). Card fields: title, card image
+ * start date (offers without one last) — montela_get_active_offers(),
+ * inc/helpers.php. Card fields: title, card image
  * (featured image), excerpt, "Duration" and the validity dates
  * (acf-json/group_cpt_offer.json).
  *
@@ -22,34 +23,15 @@ if ( ! function_exists( 'get_field' ) ) {
 	return;
 }
 
-$offers_today = wp_date( 'Ymd' );
-$offers       = array();
-foreach ( get_posts(
-	array(
-		'post_type'        => 'offer',
-		'post_status'      => 'publish',
-		'posts_per_page'   => -1,
-		'fields'           => 'ids',
-		'suppress_filters' => false, // Let WPML keep the current language.
-	)
-) as $offers_id ) {
-	$offers_to = get_field( 'section_offer_valid_to', $offers_id );
-	if ( $offers_to && $offers_to < $offers_today ) {
-		continue; // Expired.
-	}
-	$offers_from          = get_field( 'section_offer_valid_from', $offers_id );
-	$offers[ $offers_id ] = $offers_from ? $offers_from : '99999999';
-}
+$offers = function_exists( 'montela_get_active_offers' ) ? montela_get_active_offers() : array();
 
 if ( ! $offers ) {
 	return;
 }
-
-asort( $offers, SORT_STRING );
 ?>
 <div class="section-offers">
 	<?php
-	foreach ( array_keys( $offers ) as $offers_id ) :
+	foreach ( $offers as $offers_id ) :
 		$offers_validity = function_exists( 'montela_get_offer_validity' ) ? montela_get_offer_validity( $offers_id, 'd.m.y' ) : '';
 		$offers_duration = get_field( 'section_offer_duration', $offers_id );
 		$offers_excerpt  = has_excerpt( $offers_id ) ? get_the_excerpt( $offers_id ) : '';

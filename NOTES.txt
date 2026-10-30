@@ -220,6 +220,20 @@ no ficheiro indicado em "No starter".
              [Unreleased] do CHANGELOG (próxima release).
 
 
+[2026-10-30] A14. O Tailwind não lia os single-{post_type}.php
+  Problema   o "content" do tailwind.config.js listava os templates da raiz
+             um a um (single.php, page.php, 404.php…). As classes escritas
+             em single-apartment.php (margens passadas a template parts por
+             $args['class']) não chegavam ao CSS — sem erro: o back link
+             ficava com a margem de mobile em tablet e desktop. Os outros
+             single-*.php ainda não tinham classes, por isso ninguém notou.
+  Regra      "O content do Tailwind lê './*.php' (todos os templates da
+             raiz), não uma lista. Com o layout no PHP (classes passadas por
+             $args), qualquer ficheiro PHP do tema pode trazer classes."
+  No starter tailwind.config.js (content).
+  No Montela tailwind.config.js (1.34.0).
+  Estado     POR PASSAR
+
 ===============================================================================
 B. DECISÕES POR CONFIRMAR
 ===============================================================================
@@ -343,6 +357,28 @@ o cliente.
   Estado     POR CONFIRMAR
 
 
+[2026-10-30] B10. "Jetzt buchen" no single do apartamento
+  O quê      cor do botão de reserva da intro do apartamento.
+  Figma      mostarda com texto walnut (5426:8212) — é o estado hover
+             ("Hoover 1") dos botões.
+  Feito      sage ("secondary"), como o botão de reserva do single da oferta.
+  Porquê     não há estilo de botão mostarda por omissão no design system.
+  Confirma   designer.
+  Onde       template-parts/apartment/intro.php.
+  Estado     POR CONFIRMAR
+
+[2026-10-30] B11. Espaço por cima do "Inklusive Leistungen" no single (mobile)
+  O quê      espaço entre a galeria e a faixa creme, em mobile.
+  Figma      a faixa começa logo a seguir às fotos (5426:9146); as setas da
+             galeria não estão desenhadas em mobile.
+  Feito      as setas ficam por baixo das fotos (como na homepage e na
+             oferta) e a faixa começa 64px abaixo delas.
+  Porquê     a faixa creme não tem padding em cima em mobile: sem margem, o
+             título encostava às setas.
+  Confirma   designer.
+  Onde       single-apartment.php ('class' => 'mt-16 md:mt-0').
+  Estado     POR CONFIRMAR
+
 ===============================================================================
 C. ERROS NO FIGMA
 ===============================================================================
@@ -405,4 +441,20 @@ Campos de cada nota:
   No site    os ícones são conteúdo (upload no tab Included). Em local:
              os vectores soltos do desktop (frigorífico, guarda-sol) e o
              holiday_village.
+  Estado     POR REPORTAR
+
+[2026-10-30] C7. Texto da lista "Ausstattung:" em desktop
+  Frame      5812:15627 (single do apartamento, desktop).
+  Erro       15/25 ("Text small - footer"), mais pequeno que o de tablet e
+             mobile (17/23); o mesmo deslize do C5.
+  No site    20/32 em desktop (o tamanho das listas com ícone).
+  Estado     POR REPORTAR
+
+[2026-10-30] C8. Ordem dos dados do apartamento em desktop
+  Frame      5812:15633 (single, desktop) vs 5812:15644 / 5539:4763 (tablet,
+             mobile) e os cards da página Apartments.
+  Erro       desktop: Grösse, Schlafzimmer, Badezimmer, Belegung; nos outros
+             frames e nos cards a casa de banho vem em segundo lugar.
+  No site    a mesma ordem em todo o lado (Grösse, Badezimmer,
+             Schlafzimmer, Belegung).
   Estado     POR REPORTAR

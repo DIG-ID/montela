@@ -6,9 +6,9 @@
  * Desktop: title and price box on the left, text on the right. Tablet and
  * mobile: price box first, then title and text (CSS order).
  *
- * The back link goes to the page using the Offers template (found by
- * template, so slugs and WPML translations don't matter). The booking
- * button falls back to the header's "Jetzt buchen" link (Theme Settings).
+ * The back link (components/back-link.php) goes to the page using the
+ * Offers template. The booking button falls back to the header's "Jetzt
+ * buchen" link (Theme Settings).
  *
  * Fields: tab "Intro" of acf-json/group_cpt_offer.json. Figma: desktop
  * 5778:17177 (back link 5426:14464), tablet 5607:23300, mobile 5607:23443.
@@ -31,24 +31,17 @@ if ( ! $offer_booking ) {
 	$offer_booking = get_field( 'header_booking_link', 'option' );
 }
 
-$offer_overview = function_exists( 'montela_get_page_by_template' ) ? montela_get_page_by_template( 'page-templates/page-offers.php' ) : null;
 $offer_title_id = wp_unique_id( 'section-offer-intro-title-' );
+
+get_template_part(
+	'template-parts/components/back-link',
+	null,
+	array(
+		'template' => 'page-templates/page-offers.php',
+		'class'    => 'mt-[102px] md:mt-[94px] xl:mt-11',
+	)
+);
 ?>
-<?php if ( $offer_overview ) : ?>
-	<div class="theme-container offer-back">
-		<?php
-		get_template_part(
-			'template-parts/components/button',
-			null,
-			array(
-				'url'   => get_permalink( $offer_overview ),
-				'title' => __( 'Zurück zur Übersicht', 'montela' ),
-				'style' => 'back',
-			)
-		);
-		?>
-	</div>
-<?php endif; ?>
 
 <?php if ( $offer_title || $offer_text || $offer_price ) : ?>
 	<section class="section-offer-intro"<?php echo $offer_title ? ' aria-labelledby="' . esc_attr( $offer_title_id ) . '"' : ''; ?>>

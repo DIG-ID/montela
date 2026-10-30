@@ -4,9 +4,10 @@
 // Figma: desktop 5778:17177 (back link 5426:14464), tablet 5607:23300,
 // mobile 5607:23443.
 //
-// Back link ("Zurück zur Übersicht", .btn-back): 102 / 94 / 44px below the
-// hero (mobile / tablet / desktop); the intro's content starts 70px below it
-// on mobile and tablet, 192px on desktop.
+// Back link ("Zurück zur Übersicht", components/back-link.php): 102 / 94 /
+// 44px below the hero (mobile / tablet / desktop), set in the PHP; the
+// intro's content starts 70px below it on mobile and tablet, 192px on
+// desktop.
 //
 //   Mobile   price box (stacked: amount, then the button), title, text —
 //            44px apart; text 20/30 ("Mobile/Intro text")
@@ -16,9 +17,6 @@
 //
 // Price box: cream with a soft right/bottom shadow; "Ab" over the amount
 // (30/32) and its unit (20/32), all bold and uppercase.
-.offer-back
-  @apply mt-[102px] md:mt-[94px] xl:mt-11
-
 .section-offer-intro
   @apply pt-[70px] pb-[128px] md:pb-[192px] xl:pt-[192px] text-montela-walnut
 
