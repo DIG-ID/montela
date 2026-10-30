@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.35.1] — 2026-10-30
+
+### Changed
+- Sticky header: the sage bar appears from the first scroll, instead of once the header has left the screen; scrolling back up, the bar folds up and the normal header drops back in, 50px before the top.
+
 ## [1.35.0] — 2026-10-30
 
 ### Added

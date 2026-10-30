@@ -274,30 +274,59 @@ function initStickyCta() {
 // =============================================================================
 // Sticky header
 // =============================================================================
-// Once the header has scrolled out of view, it comes back fixed at the top as
-// a compact sage bar (`.is-header-stuck` on <body>, _header.sass), and turns
-// back into the normal header at the top of the page. While the mega menu
-// locks the page, the state does not change.
+// From the first scroll down, the header is fixed at the top as a compact
+// sage bar (`.is-header-stuck` on <body>, _header.sass). Scrolling back up,
+// the bar folds up (`.is-header-leaving`, LEAVE ms) and the normal header
+// drops back in (`.is-header-returning`), a little before the top (RELEASE
+// px), so the smooth scroll's slow glide into 0 does not delay it. While the mega menu locks the page, the
+// state does not change.
 function initStickyHeader() {
   const header = document.getElementById('header-main');
   if (!header) {
     return;
   }
 
+  const RELEASE = 50;
+  const LEAVE = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 300;
   const body = document.body;
-  // The normal header's height: measured while it is not stuck.
-  let threshold = header.offsetHeight;
+  let lastY = window.scrollY;
   let ticking = false;
+  let leaving = null;
+
+  const setStuck = (stuck) => {
+    if (stuck) {
+      clearTimeout(leaving);
+      leaving = null;
+      body.classList.remove('is-header-leaving', 'is-header-returning');
+      body.classList.add('is-header-stuck');
+    } else if (body.classList.contains('is-header-stuck') && !leaving) {
+      body.classList.add('is-header-leaving');
+      leaving = setTimeout(() => {
+        leaving = null;
+        body.classList.remove('is-header-stuck', 'is-header-leaving');
+        body.classList.add('is-header-returning');
+      }, LEAVE);
+    }
+  };
 
   const update = () => {
     ticking = false;
     if (body.classList.contains('is-menu-open') || body.classList.contains('is-menu-closing')) {
       return;
     }
-    if (!body.classList.contains('is-header-stuck')) {
-      threshold = header.offsetHeight;
+    const y = window.scrollY;
+    let stuck = body.classList.contains('is-header-stuck') && !leaving;
+    if (y <= 0) {
+      stuck = false;
+    } else if (y > RELEASE) {
+      stuck = true;
+    } else if (y > lastY) {
+      stuck = true;
+    } else if (y < lastY) {
+      stuck = false;
     }
-    body.classList.toggle('is-header-stuck', window.scrollY > threshold);
+    lastY = y;
+    setStuck(stuck);
   };
 
   const onScroll = () => {
@@ -307,8 +336,13 @@ function initStickyHeader() {
     }
   };
 
+  header.addEventListener('animationend', (event) => {
+    if (event.animationName === 'header-drop') {
+      body.classList.remove('is-header-returning');
+    }
+  });
+
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll, { passive: true });
   update();
 }
 

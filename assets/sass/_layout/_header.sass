@@ -210,13 +210,16 @@
     @apply text-montela-mustard
 
 // -- Sticky header -------------------------------------------------------------
-// Figma "sticky menu bar_desktop" 5895:18432 (desktop only): once the header
-// has scrolled out of view (`.is-header-stuck` on <body>, main.js), it comes
-// back fixed at the top as a sage bar, 80px tall — logo (62px) and controls
+// Figma "sticky menu bar_desktop" 5895:18432 (desktop only): from the first
+// scroll down (`.is-header-stuck` on <body>, main.js; Bruno) the header is
+// fixed at the top as a sage bar — back to normal 50px before the top when
+// scrolling up — 80px tall — logo (62px) and controls
 // (60px) centred, 9px above and below the logo. The current menu item gets a
 // 20% cream background instead of the mustard text. Tablet and mobile have no
 // frame: the same sage bar and 9px around the logo (Bruno) — 80px tall on
-// tablet, 76 on mobile. It drops in from above.
+// tablet, 76 on mobile. It drops in from above and folds back up when it
+// leaves (`.is-header-leaving`, 300ms in main.js); then the normal header
+// drops in (`.is-header-returning`).
 .is-header-stuck
   .header-main
     @apply fixed bg-montela-sage text-montela-cream motion-safe:animate-[header-drop_400ms_ease-out]
@@ -229,4 +232,14 @@
 
 @keyframes header-drop
   from
+    transform: translateY(-100%)
+
+.is-header-stuck.is-header-leaving .header-main
+  @apply motion-safe:animate-[header-lift_300ms_ease-in_forwards]
+
+.is-header-returning:not(.is-header-stuck) .header-main
+  @apply motion-safe:animate-[header-drop_400ms_ease-out]
+
+@keyframes header-lift
+  to
     transform: translateY(-100%)
