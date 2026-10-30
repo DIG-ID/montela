@@ -88,7 +88,7 @@ $bx_title_id = wp_unique_id( 'section-bike-experiences-title-' );
 			<?php if ( $bx_title || $bx_text ) : ?>
 				<div class="section-bike-experiences__copy">
 					<?php if ( $bx_title ) : ?>
-						<h3 id="<?php echo esc_attr( $bx_title_id ); ?>" class="title-h3 section-bike-experiences__title"><?php echo esc_html( $bx_title ); ?></h3>
+						<h2 id="<?php echo esc_attr( $bx_title_id ); ?>" class="title-h3 section-bike-experiences__title"><?php echo esc_html( $bx_title ); ?></h2>
 					<?php endif; ?>
 
 					<?php if ( $bx_text ) : ?>

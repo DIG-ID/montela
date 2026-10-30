@@ -79,7 +79,7 @@ $fu_box_class = 'info-box section-fitness-usage__box flex flex-col pt-6 pb-6 pl-
 						<?php foreach ( $fu_items as $fu_i => $fu_item ) : ?>
 							<article class="<?php echo esc_attr( $fu_box_class . ' ' . ( isset( $fu_left_class[ $fu_i ] ) ? $fu_left_class[ $fu_i ] : 'gap-6 xl:gap-[38px]' ) ); ?> md:grow">
 								<?php if ( ! empty( $fu_item['title'] ) ) : ?>
-									<h4 class="title-h4 section-fitness-usage__title max-w-[255px] md:max-w-[267px] xl:max-w-[425px]"><?php echo esc_html( $fu_item['title'] ); ?></h4>
+									<h3 class="title-h4 section-fitness-usage__title max-w-[255px] md:max-w-[267px] xl:max-w-[425px]"><?php echo esc_html( $fu_item['title'] ); ?></h3>
 								<?php endif; ?>
 								<?php if ( ! empty( $fu_item['text'] ) ) : ?>
 									<div class="section-fitness-usage__text xl:max-w-[570px]"><?php echo wp_kses_post( $fu_item['text'] ); ?></div>
@@ -91,7 +91,7 @@ $fu_box_class = 'info-box section-fitness-usage__box flex flex-col pt-6 pb-6 pl-
 					<?php if ( $fu_right ) : ?>
 						<article class="<?php echo esc_attr( $fu_box_class . ' ' . $fu_right_class ); ?> col-span-full md:col-span-3 xl:col-span-5">
 							<?php if ( ! empty( $fu_right['title'] ) ) : ?>
-								<h4 class="title-h4 section-fitness-usage__title max-w-[255px] md:max-w-[267px] xl:max-w-[425px]"><?php echo esc_html( $fu_right['title'] ); ?></h4>
+								<h3 class="title-h4 section-fitness-usage__title max-w-[255px] md:max-w-[267px] xl:max-w-[425px]"><?php echo esc_html( $fu_right['title'] ); ?></h3>
 							<?php endif; ?>
 							<?php if ( ! empty( $fu_right['text'] ) ) : ?>
 								<div class="section-fitness-usage__text xl:max-w-[570px]"><?php echo wp_kses_post( $fu_right['text'] ); ?></div>

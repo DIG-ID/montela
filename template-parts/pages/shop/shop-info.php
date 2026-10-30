@@ -38,9 +38,9 @@ $si_title_id = wp_unique_id( 'section-shop-info-title-' );
 	<div class="theme-container">
 		<div class="theme-grid section-shop-info__grid gap-y-8 pb-11 md:gap-y-11 xl:gap-y-16">
 			<?php if ( $si_title ) : ?>
-				<h3 id="<?php echo esc_attr( $si_title_id ); ?>" class="title-h3 section-shop-info__title col-span-full xl:col-start-2 xl:col-span-10">
+				<h2 id="<?php echo esc_attr( $si_title_id ); ?>" class="title-h3 section-shop-info__title col-span-full xl:col-start-2 xl:col-span-10">
 					<?php echo wp_kses( $si_title, array( 'br' => array( 'class' => array() ) ) ); ?>
-				</h3>
+				</h2>
 			<?php endif; ?>
 
 			<?php if ( $si_text ) : ?>

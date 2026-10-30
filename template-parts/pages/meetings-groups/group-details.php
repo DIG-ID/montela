@@ -39,7 +39,7 @@ if ( ! $gd_items ) {
 			<?php foreach ( $gd_items as $gd_item ) : ?>
 				<article class="info-box section-group-details__box col-span-full flex flex-col gap-6 pt-6 pb-6 pl-[21px] pr-4 md:col-span-3 md:row-span-2 md:grid md:grid-rows-subgrid md:pr-11 xl:col-span-5 xl:odd:col-start-2 xl:even:col-start-7 xl:gap-y-[26px] xl:pt-[22px] xl:pb-[46px] xl:pl-[22px] xl:pr-[22px]">
 					<?php if ( ! empty( $gd_item['title'] ) ) : ?>
-						<h4 class="title-h4 section-group-details__title max-w-[255px] md:max-w-[267px] xl:max-w-[425px]"><?php echo esc_html( $gd_item['title'] ); ?></h4>
+						<h3 class="title-h4 section-group-details__title max-w-[255px] md:max-w-[267px] xl:max-w-[425px]"><?php echo esc_html( $gd_item['title'] ); ?></h3>
 					<?php endif; ?>
 					<?php if ( ! empty( $gd_item['text'] ) ) : ?>
 						<div class="section-group-details__text md:row-start-2 xl:max-w-[570px]"><?php echo wp_kses_post( $gd_item['text'] ); ?></div>

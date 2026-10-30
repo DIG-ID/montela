@@ -33,7 +33,7 @@ $fi_title_id = wp_unique_id( 'section-fitness-info-title-' );
 	<div class="theme-container">
 		<div class="theme-grid gap-y-6 md:grid-rows-[auto_1fr] md:gap-y-10 xl:gap-y-[68px]">
 			<?php if ( $fi_title ) : ?>
-				<h4 id="<?php echo esc_attr( $fi_title_id ); ?>" class="title-h4 section-fitness-info__title col-span-full md:col-span-3 xl:col-start-2 xl:col-span-6"><?php echo esc_html( $fi_title ); ?></h4>
+				<h2 id="<?php echo esc_attr( $fi_title_id ); ?>" class="title-h4 section-fitness-info__title col-span-full md:col-span-3 xl:col-start-2 xl:col-span-6"><?php echo esc_html( $fi_title ); ?></h2>
 			<?php endif; ?>
 
 			<?php

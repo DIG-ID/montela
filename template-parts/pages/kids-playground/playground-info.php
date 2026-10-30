@@ -42,9 +42,9 @@ $pi_title_id = wp_unique_id( 'section-playground-info-title-' );
 			<?php if ( $pi_title || $pi_text ) : ?>
 				<div class="section-playground-info__content col-span-full xl:col-start-8 xl:col-span-5 xl:row-start-1">
 					<?php if ( $pi_title ) : ?>
-						<h3 id="<?php echo esc_attr( $pi_title_id ); ?>" class="title-h3 section-playground-info__title xl:max-w-[660px]">
+						<h2 id="<?php echo esc_attr( $pi_title_id ); ?>" class="title-h3 section-playground-info__title xl:max-w-[660px]">
 							<?php echo wp_kses( $pi_title, array( 'br' => array( 'class' => array() ) ) ); ?>
-						</h3>
+						</h2>
 					<?php endif; ?>
 
 					<?php if ( $pi_text ) : ?>

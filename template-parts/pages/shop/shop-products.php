@@ -57,9 +57,9 @@ $sp_swiper = array(
 	<div class="theme-container">
 		<div class="theme-grid gap-y-11" data-swiper-root>
 			<?php if ( $sp_title ) : ?>
-				<h3 id="<?php echo esc_attr( $sp_title_id ); ?>" class="title-h3 section-shop-products__title col-span-full text-center">
+				<h2 id="<?php echo esc_attr( $sp_title_id ); ?>" class="title-h3 section-shop-products__title col-span-full text-center">
 					<?php echo wp_kses( $sp_title, array( 'br' => array( 'class' => array() ) ) ); ?>
-				</h3>
+				</h2>
 			<?php endif; ?>
 
 			<div class="section-shop-products__slider col-span-full md:col-start-2 md:col-span-4 md:px-3 xl:col-start-2 xl:col-span-10 xl:row-start-2 xl:px-[82px]">
@@ -86,7 +86,7 @@ $sp_swiper = array(
 
 									<div class="section-shop-products__body flex flex-col flex-1 gap-3.5 border border-montela-walnut px-5 py-4 text-center md:gap-[18px]">
 										<?php if ( ! empty( $sp_item['title'] ) ) : ?>
-											<h4 class="title-h4 section-shop-products__card-title"><?php echo esc_html( $sp_item['title'] ); ?></h4>
+											<h3 class="title-h4 section-shop-products__card-title"><?php echo esc_html( $sp_item['title'] ); ?></h3>
 										<?php endif; ?>
 										<?php if ( ! empty( $sp_item['text'] ) ) : ?>
 											<p class="body-text section-shop-products__card-text mx-auto max-w-[288px] md:max-w-[395px] xl:max-w-none"><?php echo esc_html( $sp_item['text'] ); ?></p>

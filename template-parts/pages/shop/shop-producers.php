@@ -61,9 +61,9 @@ $spr_swiper = array(
 			<?php if ( $spr_title || $spr_text ) : ?>
 				<div class="section-shop-producers__head col-span-full grid grid-cols-subgrid gap-y-4 text-center md:gap-y-9 xl:col-start-2 xl:col-span-10 xl:items-end xl:text-left">
 					<?php if ( $spr_title ) : ?>
-						<h3 id="<?php echo esc_attr( $spr_title_id ); ?>" class="title-h3 section-shop-producers__title col-span-full xl:col-span-6">
+						<h2 id="<?php echo esc_attr( $spr_title_id ); ?>" class="title-h3 section-shop-producers__title col-span-full xl:col-span-6">
 							<?php echo wp_kses( $spr_title, array( 'br' => array( 'class' => array() ) ) ); ?>
-						</h3>
+						</h2>
 					<?php endif; ?>
 					<?php if ( $spr_text ) : ?>
 						<p class="body-text section-shop-producers__text col-span-full justify-self-center max-w-[329px] md:max-w-[580px] xl:col-start-7 xl:col-span-4 xl:justify-self-stretch xl:max-w-[555px]"><?php echo esc_html( $spr_text ); ?></p>
@@ -78,7 +78,7 @@ $spr_swiper = array(
 							<div class="swiper-slide section-shop-producers__slide">
 								<article class="section-shop-producers__card flex flex-col h-full gap-2.5 border border-montela-sage shadow-[0_4px_4px_rgba(0,0,0,0.25)] pt-8 pb-4 px-[31px] md:gap-4 md:py-8 md:px-11 xl:min-h-[410px] xl:gap-2.5 xl:pt-[47px] xl:pb-[26px] xl:pl-[42px] xl:pr-[41px]">
 									<?php if ( ! empty( $spr_item['title'] ) ) : ?>
-										<h4 class="title-h4 section-shop-producers__card-title"><?php echo esc_html( $spr_item['title'] ); ?></h4>
+										<h3 class="title-h4 section-shop-producers__card-title"><?php echo esc_html( $spr_item['title'] ); ?></h3>
 									<?php endif; ?>
 									<?php if ( ! empty( $spr_item['text'] ) ) : ?>
 										<p class="section-shop-producers__card-text max-w-[260px] md:max-w-none"><?php echo esc_html( $spr_item['text'] ); ?></p>

@@ -42,9 +42,9 @@ $li_title_id = wp_unique_id( 'section-lounge-info-title-' );
 		<div class="theme-grid section-lounge-info__grid gap-y-6 pb-6 md:pb-10 xl:pb-5 xl:items-stretch">
 			<div class="section-lounge-info__box col-span-full flex flex-col items-start border border-montela-walnut pt-[26px] pl-3 pr-3 pb-4 md:pt-[46px] md:pl-[22px] md:pr-[22px] md:pb-[26px] xl:col-span-5 xl:pt-[69px] xl:pl-[71px] xl:pr-[102px] xl:pb-[64px]">
 				<?php if ( $li_title ) : ?>
-					<h3 id="<?php echo esc_attr( $li_title_id ); ?>" class="title-h3 section-lounge-info__title">
+					<h2 id="<?php echo esc_attr( $li_title_id ); ?>" class="title-h3 section-lounge-info__title">
 						<?php echo wp_kses( $li_title, array( 'br' => array( 'class' => array() ) ) ); ?>
-					</h3>
+					</h2>
 				<?php endif; ?>
 
 				<?php if ( $li_text ) : ?>

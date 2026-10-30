@@ -52,9 +52,9 @@ $hz_has_link = is_array( $hz_button ) && ! empty( $hz_button['url'] );
 			<?php if ( $hz_title || $hz_has_link ) : ?>
 				<div class="section-horizontal__head">
 					<?php if ( $hz_title ) : ?>
-						<h3 id="<?php echo esc_attr( $hz_title_id ); ?>" class="title-h3 section-horizontal__title">
+						<h2 id="<?php echo esc_attr( $hz_title_id ); ?>" class="title-h3 section-horizontal__title">
 							<?php echo wp_kses( $hz_title, array( 'br' => array( 'class' => array() ) ) ); ?>
-						</h3>
+						</h2>
 					<?php endif; ?>
 					<?php
 					if ( $hz_has_link ) {

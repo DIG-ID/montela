@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.33.2] — 2026-10-30
+
+### Changed
+- Unser Resort and its subpages (Bike Hotel, Kids Playground, Lounge & Bar, Meetings & Groups, Shop, Fitnessroom): section titles are h2 and titles inside a section h3, following the page structure (no skipped levels). Sizes are unchanged.
+
 ## [1.33.1] — 2026-10-30
 
 ### Fixed

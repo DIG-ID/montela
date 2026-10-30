@@ -43,9 +43,9 @@ $ri_has_link = is_array( $ri_button ) && ! empty( $ri_button['url'] );
 	<div class="theme-container">
 		<div class="theme-grid gap-y-8 pb-11 md:gap-y-9 xl:gap-y-16">
 			<?php if ( $ri_title ) : ?>
-				<h3 id="<?php echo esc_attr( $ri_title_id ); ?>" class="title-h3 section-room-info__title col-span-full xl:col-start-2 xl:col-span-10">
+				<h2 id="<?php echo esc_attr( $ri_title_id ); ?>" class="title-h3 section-room-info__title col-span-full xl:col-start-2 xl:col-span-10">
 					<?php echo wp_kses( $ri_title, array( 'br' => array( 'class' => array() ) ) ); ?>
-				</h3>
+				</h2>
 			<?php endif; ?>
 
 			<?php if ( $ri_image ) : ?>
