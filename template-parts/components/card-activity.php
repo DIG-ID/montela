@@ -20,6 +20,9 @@
  * - link    (array)  Without post_id: optional. ACF Link array (url, title,
  *                    target) — the button; no URL, no button.
  * - class   (string) Optional. Extra classes for the card.
+ * - title_tag (string) Optional. Heading level of the title, h2–h6 (default
+ *                    h4), so the card fits the heading outline of the
+ *                    section it sits in.
  *
  * @package montela
  * @subpackage Component
@@ -55,7 +58,8 @@ if ( $card_id ) {
 	}
 }
 
-$card_class = 'card-activity' . ( ! empty( $args['class'] ) ? ' ' . $args['class'] : '' );
+$card_class     = 'card-activity' . ( ! empty( $args['class'] ) ? ' ' . $args['class'] : '' );
+$card_title_tag = ( ! empty( $args['title_tag'] ) && in_array( $args['title_tag'], array( 'h2', 'h3', 'h4', 'h5', 'h6' ), true ) ) ? $args['title_tag'] : 'h4';
 ?>
 <article class="<?php echo esc_attr( $card_class ); ?>">
 	<?php if ( $card_image ) : ?>
@@ -76,7 +80,7 @@ $card_class = 'card-activity' . ( ! empty( $args['class'] ) ? ' ' . $args['class
 	<?php endif; ?>
 
 	<div class="card-activity__panel">
-		<h4 class="title-h4 card-activity__title"><?php echo esc_html( $card_title ); ?></h4>
+		<<?php echo esc_attr( $card_title_tag ); ?> class="title-h4 card-activity__title"><?php echo esc_html( $card_title ); ?></<?php echo esc_attr( $card_title_tag ); ?>>
 
 		<div class="card-activity__more">
 			<div class="card-activity__more-inner">

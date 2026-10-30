@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.32.1] — 2026-10-30
+
+### Fixed
+- Unsere Region: the icon list in the Saas-Grund section is spaced as before again.
+- Homepage gallery ("Premium Hotel Stay"): the icons are back to their earlier size.
+- Activity cards accept a heading level; the info cards of an activity single use `<h3>`, so the page no longer jumps from `<h2>` to `<h4>`.
+- The title of the footer call-to-action box is an `<h2>` again: it no longer nests under the page's last section, and the 404 no longer jumps from `<h1>` to `<h3>`.
+
 ## [1.32.0] — 2026-10-30
 
 ### Added

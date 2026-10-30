@@ -44,9 +44,10 @@ $footer_has_form = function_exists( 'mc4wp_show_form' );
 	<?php if ( $footer_cta_title ) : ?>
 		<div class="theme-container footer-main__cta-wrap">
 			<div class="footer-main__cta">
-				<h3 class="title-h3 footer-main__cta-title">
+				<?php // An h2 with the H3 look: the box belongs to no section of the page, so it must not nest under the last one (and a 404 has no h2 before it). ?>
+				<h2 class="title-h3 footer-main__cta-title">
 					<?php echo wp_kses( $footer_cta_title, array( 'br' => array( 'class' => array() ) ) ); ?>
-				</h3>
+				</h2>
 				<div class="footer-main__cta-row">
 					<?php if ( $footer_cta_text ) : ?>
 						<p class="footer-main__cta-text"><?php echo esc_html( $footer_cta_text ); ?></p>

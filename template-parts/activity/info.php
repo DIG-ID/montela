@@ -75,10 +75,12 @@ $info_title_id = wp_unique_id( 'section-activity-info-title-' );
 						'template-parts/components/card-activity',
 						null,
 						array(
-							'title' => $info_item['title'],
-							'text'  => ! empty( $info_item['text'] ) ? $info_item['text'] : '',
-							'image' => ! empty( $info_item['image'] ) ? $info_item['image'] : 0,
-							'link'  => ! empty( $info_item['link'] ) ? $info_item['link'] : null,
+							'title'     => $info_item['title'],
+							'text'      => ! empty( $info_item['text'] ) ? $info_item['text'] : '',
+							'image'     => ! empty( $info_item['image'] ) ? $info_item['image'] : 0,
+							'link'      => ! empty( $info_item['link'] ) ? $info_item['link'] : null,
+							// Straight under the section's h2.
+							'title_tag' => 'h3',
 						)
 					);
 				endforeach;

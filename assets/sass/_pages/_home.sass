@@ -86,6 +86,14 @@
 .section-gallery__list
   @apply col-span-full order-5 md:col-span-4 xl:col-start-2 xl:col-span-3 xl:row-start-5
 
+// The gallery keeps its icons at the column width (68px), as built before the
+// icon-list default moved to a fixed 50px height — like Direct booking.
+.section-gallery .icon-list__icon
+  @apply block h-auto
+
+.section-gallery .icon-list__icon img
+  @apply w-full h-auto
+
 // -- Gallery slider (components/gallery-slider.php, _components/_gallery-slider.sass) --
 // Only its distance from the content above is set here.
 .section-gallery__slider

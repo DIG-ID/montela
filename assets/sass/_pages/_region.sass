@@ -53,6 +53,11 @@
 .section-place .icon-list__item
   @apply grid-cols-[42px_1fr] gap-x-[30px] items-center md:grid-cols-[52px_1fr] md:gap-x-9 xl:grid-cols-[51px_1fr] xl:gap-x-6
 
+// The icon box takes the icon's own height (42 / 52 / 45px), not the
+// icon-list default of 68px — the rows stay as close as in Figma.
+.section-place .icon-list__icon
+  @apply block h-auto
+
 .section-place .icon-list__icon img
   @apply w-auto max-w-full h-[42px] md:h-[52px] xl:h-[45px]
 
