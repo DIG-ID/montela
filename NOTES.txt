@@ -379,6 +379,32 @@ o cliente.
   Onde       single-apartment.php ('class' => 'mt-16 md:mt-0').
   Estado     POR CONFIRMAR
 
+[2026-10-30] B12. Espaço entre a intro e a Services comparison (Premium Stay, desktop)
+  O quê      distância do texto da intro ao título "Wählen Sie, wie viel
+             Service zu Ihnen passt", em desktop.
+  Figma      416px (5426:7103): os 224 da intro mais 192 por cima da
+             Services. Em tablet e mobile só os da intro (192 / 128).
+  Feito      224px — só o espaço da intro, como em tablet, mobile e nas
+             outras páginas em que uma secção vem a seguir à intro.
+  Porquê     o espaço a mais só existe neste frame de desktop.
+  Confirma   designer.
+  Onde       page-templates/page-premium-stay.php (módulos sem margem extra).
+  Estado     POR CONFIRMAR
+
+[2026-10-30] B13. Espaço por cima do "Ihr Apartment mit zusätzlichem Service" (Premium Stay, desktop)
+  O quê      distância dos planos da Services comparison à foto pequena, em
+             desktop.
+  Figma      384px (5812:15507 tem 192 de padding em cima, sobre os 192 da
+             Services); tablet e mobile só os da Services.
+  Feito      192px — o espaço da Services, como no resto do site (o módulo
+             Text with photos não tem padding em cima). Por baixo da mesma
+             secção, até ao "Lage & Resort": 224px (o padding do módulo, da
+             homepage); o Figma tem 192.
+  Porquê     o mesmo padrão do B12: 192 a mais só no frame de desktop.
+  Confirma   designer.
+  Onde       template-parts/modules/text-photos.php.
+  Estado     POR CONFIRMAR
+
 ===============================================================================
 C. ERROS NO FIGMA
 ===============================================================================
@@ -457,4 +483,18 @@ Campos de cada nota:
              frames e nos cards a casa de banho vem em segundo lugar.
   No site    a mesma ordem em todo o lado (Grösse, Badezimmer,
              Schlafzimmer, Belegung).
+  Estado     POR REPORTAR
+
+[2026-10-30] C9. "In Saas-Grund" no hero mobile da Premium Stay
+  Frame      5466:16333 (Premium Stay, mobile).
+  Erro       "In Saas-Grund" com maiúscula; desktop e tablet têm "in".
+  No site    "in Saas-Grund" (um só campo para os três tamanhos).
+  Estado     POR REPORTAR
+
+[2026-10-30] C10. Services comparison da Premium Stay em tablet e mobile
+  Frame      5663:11540 / 5663:11783 (Premium Stay) vs 5661:10868 (desktop).
+  Erro       tablet e mobile repetem a versão da Aufenthalt: texto curto e o
+             botão "Premium Stay entdecken", que aqui levaria à própria
+             página. O desktop tem texto próprio e não tem botão.
+  No site    o do desktop nos três tamanhos (um só conteúdo).
   Estado     POR REPORTAR

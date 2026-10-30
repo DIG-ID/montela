@@ -5,9 +5,9 @@
  * desktop, a slider with arrows on tablet and mobile.
  *
  * Fields: acf-json/group_module_services.json, cloned into each page's field
- * group. The checklist is a textarea, one feature per line. Figma: "Services
- * comparison" desktop 5679:16769, tablet 5679:16905, mobile 5679:16983.
- * Enqueues the Swiper module itself.
+ * group. The text takes line breaks (Enter); the checklist is a textarea,
+ * one feature per line. Figma: "Services comparison" desktop 5679:16769,
+ * tablet 5679:16905, mobile 5679:16983. Enqueues the Swiper module itself.
  *
  * Arguments ($args):
  * - post_id (int|string) Optional. Where to read the fields from. Default: current post.
@@ -60,7 +60,7 @@ $srv_swiper   = array(
 					<?php if ( $srv_text || $srv_button ) : ?>
 						<div class="section-services__intro">
 							<?php if ( $srv_text ) : ?>
-								<p class="body-text section-services__text"><?php echo esc_html( $srv_text ); ?></p>
+								<p class="body-text section-services__text"><?php echo wp_kses( $srv_text, array( 'br' => array( 'class' => array() ) ) ); ?></p>
 							<?php endif; ?>
 							<?php
 							if ( $srv_button ) :

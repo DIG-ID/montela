@@ -30,7 +30,7 @@
             "name": "section_services_text",
             "aria-label": "",
             "type": "textarea",
-            "instructions": "",
+            "instructions": "Press Enter for a line break.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -44,7 +44,7 @@
             "allow_in_bindings": 0,
             "rows": 4,
             "placeholder": "",
-            "new_lines": ""
+            "new_lines": "br"
         },
         {
             "key": "field_module_services_button",
@@ -208,6 +208,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793200949,
+    "modified": 1793378835,
     "acfml_field_group_mode": "advanced"
 }

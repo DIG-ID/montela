@@ -24,7 +24,7 @@ paths:
 - Componentes partilhados (ex.: `icon-list`) levam os defaults de layout em `@layer components` no SASS, para as classes passadas pelo PHP (`class`, `item_class`) ganharem.
 - O SASS da secção fica com: o comentário das medidas (Figma ids, valores desenhados vs. arredondados), sobreposições de tipografia com duas classes, e CSS que não tem utilitário (pseudo-elementos, `:has()`, spacers).
 
-Secções já neste modelo: `bike-services`, `playground-info`, `lounge-info`, `resort-sections`. As restantes ainda têm o layout em `@apply` — migrar ao tocar nelas.
+Secções já neste modelo: `bike-services`, `playground-info`, `lounge-info`, `resort-sections`, `text-photos`, `offer-cards`, as secções do single do apartamento (`template-parts/apartment/`). As restantes ainda têm o layout em `@apply` — migrar ao tocar nelas.
 
 ### @apply (componentes e o que não é layout de secção)
 Componentes e regras custom no SASS constroem-se com utilitários Tailwind via **`@apply`**, não com propriedades CSS soltas:

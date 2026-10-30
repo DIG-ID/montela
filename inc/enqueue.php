@@ -219,7 +219,7 @@ function montela_enqueue_assets() {
 	if ( is_singular( 'activity' ) ) {
 		montela_enqueue_module( 'swiper' ); // Cards with icon slider.
 	}
-	if ( is_page_template( array( 'page-templates/page-offers.php', 'page-templates/page-stay.php' ) ) ) {
+	if ( is_page_template( array( 'page-templates/page-offers.php', 'page-templates/page-stay.php', 'page-templates/page-premium-stay.php' ) ) ) {
 		montela_enqueue_module( 'swiper' ); // Services comparison (+ Testimonials on Stay) sliders.
 	}
 	if ( is_page_template( array( 'page-templates/page-bike-hotel.php', 'page-templates/page-kids-playground.php', 'page-templates/page-lounge-bar.php', 'page-templates/page-shop.php', 'page-templates/page-meetings-groups.php', 'page-templates/page-fitnessroom.php' ) ) ) {

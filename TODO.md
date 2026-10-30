@@ -12,8 +12,11 @@ alteração no `CHANGELOG.md`. Os nodes do Figma de cada template estão no
   Raum für gemeinsame Ferien", Services, "Alles da, was Ferien einfacher
   macht" e Testimonials. Falta o mapa (design por aprovar; nodes no `CLAUDE.md`). Pendente:
   - a foto do hero no Figma tem só 1400px — pedir o original em alta resolução;
-  - os botões "Apartments entdecken", "Premium Stay entdecken" e "Zu allen
-    Services" apontam para `#` — faltam as páginas de destino.
+  - os botões "Apartments entdecken" e "Zu allen Services" apontam para `#`
+    — faltam as páginas de destino (ou ligar o primeiro à página Apartments).
+    O "Premium Stay entdecken" (Services, também na Angebote e na Apartments)
+    já aponta para a Premium Stay em local; em produção, ligar depois de criar
+    a página.
 - [ ] **Apartments** (`page-templates/page-apartments.php`) e **Single Apartment**
   (`single-apartment.php`) — feitos. Falta o conteúdo dos 9 apartamentos
   (fotos 1–3, foto da Ausstattung, galeria, intro, amenities). Em local há dois
@@ -27,6 +30,17 @@ alteração no `CHANGELOG.md`. Os nodes do Figma de cada template estão no
   botão para a Angebote & Packages); criar os 11 termos com os slugs do
   `CLAUDE.md` e os ícones. O botão "Zu allen Services" aponta para `#` — falta
   a página de destino (como na Aufenthalt).
+- [ ] **Premium Stay** (`page-templates/page-premium-stay.php`) — feita. Pendente:
+  - a foto do hero no Figma tem só 1400px (como na Aufenthalt) — pedir o original;
+  - o item "Premium Stay" do mega-menu aponta para `#` (menus são conteúdo:
+    ligar à página em cada ambiente).
+  Em produção: Sync dos grupos `group_page_premium_stay` e Module — Services
+  comparison (o texto passou a aceitar quebras de linha); criar a página (filha
+  da Aufenthalt, slug `premium-stay`, "Premium Stay Template") e preencher Hero,
+  Intro, Services (os planos da Aufenthalt, o texto do Figma desktop, sem botão)
+  e Text with photos (Desktop layout: Staggered; botão para a Apartments) e
+  Cards with icon ("Lage & Resort", estilo Filled, ícones creme).
+  Sync também do Module — Text with photos (campo novo Desktop layout).
 - [ ] **Mapa** — design por aprovar. Entra em vários sítios:
   - homepage, entre a Gallery e o Explore (`page-templates/page-home.php`);
   - Unsere Region, entre os Highlights e os Tagesausflüge (`page-templates/page-region.php`);

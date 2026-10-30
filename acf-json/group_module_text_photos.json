@@ -117,6 +117,38 @@
             "mime_types": "jpg, jpeg, png, webp",
             "allow_in_bindings": 0,
             "preview_size": "medium"
+        },
+        {
+            "key": "field_module_text_photos_layout",
+            "label": "Desktop layout",
+            "name": "section_find_apartment_layout",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "With two photos. Side by side: title on top, text and button beside both photos. Staggered: a small photo above the title, the large one beside title and text. Tablet and mobile are the same in both.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_page_home_find_apartment_image_2",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "choices": {
+                "side": "Side by side",
+                "staggered": "Staggered"
+            },
+            "default_value": "side",
+            "return_format": "value",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "layout": "horizontal"
         }
     ],
     "location": [
@@ -140,6 +172,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793190629,
+    "modified": 1793379235,
     "acfml_field_group_mode": "advanced"
 }

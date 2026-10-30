@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.36.0] — 2026-10-30
+
+### Added
+- Premium Stay page template: hero, intro, services comparison, "Ihr Apartment mit zusätzlichem Service" and "Lage & Resort".
+- Text with photos: "Staggered" desktop layout (small photo above the title, the large one beside the title and text).
+
+### Changed
+- Services comparison: the text takes line breaks.
+
 ## [1.35.1] — 2026-10-30
 
 ### Changed
