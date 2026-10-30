@@ -1,0 +1,38 @@
+// Apartment facts (template-parts/components/apartment-facts.php).
+// Size, bathrooms, bedrooms, occupancy: an icon beside each, two columns.
+// The icons are SVG masks painted with currentColor (as in _buttons.sass), so
+// they follow the text colour — cream on the cards, walnut on the single.
+// The column widths are set where the list is used.
+//
+//   Mobile   icons ~30×34, 17px to the text; rows 12px apart; text 14/22
+//   Tablet   icons 24px, 14px to the text; rows 12px apart; text 18/25
+//   Desktop  icons 24px, 14px to the text; rows 5px apart; text 20/32
+
+// -- Icon masks ----------------------------------------------------------------
+.apartment-facts__icon--size::before
+  mask: url("../../svg/icons/apartment-size.svg") center / contain no-repeat
+
+.apartment-facts__icon--bathrooms::before
+  mask: url("../../svg/icons/apartment-bathrooms.svg") center / contain no-repeat
+
+.apartment-facts__icon--bedrooms::before
+  mask: url("../../svg/icons/apartment-bedrooms.svg") center / contain no-repeat
+
+.apartment-facts__icon--occupancy::before
+  mask: url("../../svg/icons/apartment-occupancy.svg") center / contain no-repeat
+
+// -- List ----------------------------------------------------------------------
+.apartment-facts
+  @apply grid grid-cols-2 gap-x-5 gap-y-3 xl:gap-y-[5px] text-left
+
+.apartment-facts__item
+  @apply flex items-start gap-[17px] md:gap-[14px]
+
+.apartment-facts__icon
+  @apply flex shrink-0 w-[30px] h-[34px] md:w-6 md:h-6 md:mt-px xl:mt-1
+  &::before
+    content: ""
+    @apply w-full h-full bg-current
+
+.apartment-facts__text
+  @apply font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[20px] xl:leading-[32px]

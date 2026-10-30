@@ -115,8 +115,8 @@ $srv_swiper   = array(
 				</div>
 
 				<div class="slider-nav slider-nav--walnut section-services__nav">
-					<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-swiper-prev aria-label="<?php esc_attr_e( 'Previous plan', 'montela' ); ?>"></button>
-					<button class="slider-nav__btn slider-nav__btn--next" type="button" data-swiper-next aria-label="<?php esc_attr_e( 'Next plan', 'montela' ); ?>"></button>
+					<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-swiper-prev aria-label="<?php esc_attr_e( 'Vorheriges Paket', 'montela' ); ?>"></button>
+					<button class="slider-nav__btn slider-nav__btn--next" type="button" data-swiper-next aria-label="<?php esc_attr_e( 'Nächstes Paket', 'montela' ); ?>"></button>
 				</div>
 			</div>
 		</div>

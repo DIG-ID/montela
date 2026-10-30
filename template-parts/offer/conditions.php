@@ -40,7 +40,7 @@ $cond_title_id = wp_unique_id( 'section-offer-conditions-title-' );
 			<?php endif; ?>
 
 			<?php if ( $cond_items ) : ?>
-				<h3 class="section-offer-conditions__label"><?php esc_html_e( 'Conditions', 'montela' ); ?></h3>
+				<h3 class="section-offer-conditions__label"><?php esc_html_e( 'Bedingungen', 'montela' ); ?></h3>
 
 				<ul class="section-offer-conditions__boxes">
 					<?php foreach ( $cond_items as $cond_item ) : ?>
@@ -58,7 +58,7 @@ $cond_title_id = wp_unique_id( 'section-offer-conditions-title-' );
 
 			<?php if ( $cond_validity ) : ?>
 				<p class="section-offer-conditions__validity">
-					<strong><?php esc_html_e( 'Offer valid:', 'montela' ); ?></strong>
+					<strong><?php esc_html_e( 'Angebot gültig:', 'montela' ); ?></strong>
 					<span><?php echo esc_html( $cond_validity ); ?></span>
 				</p>
 			<?php endif; ?>

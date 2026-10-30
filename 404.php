@@ -20,9 +20,9 @@ $error_title   = $error_has_acf ? get_field( 'error_404_title', 'option' ) : '';
 $error_text    = $error_has_acf ? get_field( 'error_404_text', 'option' ) : '';
 $error_button  = $error_has_acf ? get_field( 'error_404_button', 'option' ) : '';
 
-$error_title  = $error_title ? $error_title : __( 'Oops…', 'montela' );
-$error_text   = $error_text ? $error_text : __( 'It looks like you missed a signpost. But don’t worry: all roads lead back to Montela.', 'montela' );
-$error_button = $error_button ? $error_button : __( 'Back to the homepage', 'montela' );
+$error_title  = $error_title ? $error_title : __( 'Ups…', 'montela' );
+$error_text   = $error_text ? $error_text : __( 'Es scheint, als hätten Sie einen Wegweiser übersehen. Aber keine Sorge: Zum Glück führen alle Wege zurück ins Montela.', 'montela' );
+$error_button = $error_button ? $error_button : __( 'Zur Startseite', 'montela' );
 
 get_header();
 do_action( 'before_main_content' );
@@ -31,7 +31,7 @@ do_action( 'before_main_content' );
 	<div class="theme-container">
 		<div class="section-404__frame">
 			<h1 id="section-404-title" class="section-404__code">
-				404<span class="sr-only"> – <?php esc_html_e( 'Page not found', 'montela' ); ?></span>
+				404<span class="sr-only"> – <?php esc_html_e( 'Seite nicht gefunden', 'montela' ); ?></span>
 			</h1>
 
 			<div class="section-404__copy">

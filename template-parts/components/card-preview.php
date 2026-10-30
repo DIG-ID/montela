@@ -26,7 +26,7 @@
  * - text    (string) Manual: the text shown when the card opens.
  * - url     (string) Manual: the button's link; no URL, no button.
  * - target  (string) Manual: the link's target ('_blank' for a new tab).
- * - label   (string) Optional. Button label. Default: "Learn more".
+ * - label   (string) Optional. Button label. Default: "Mehr erfahren".
  * - sizes   (string) Optional. The image's sizes attribute, for the slot the
  *                    card sits in. Default: a quarter of the screen on desktop.
  * - class   (string) Optional. Extra classes for the card.
@@ -58,7 +58,7 @@ if ( $card_id ) {
 	}
 }
 
-$card_label = ! empty( $args['label'] ) ? $args['label'] : __( 'Learn more', 'montela' );
+$card_label = ! empty( $args['label'] ) ? $args['label'] : __( 'Mehr erfahren', 'montela' );
 $card_sizes = ! empty( $args['sizes'] ) ? $args['sizes'] : '(min-width: 1280px) 19vw, (min-width: 768px) 468px, 100vw';
 $card_class = 'card-preview' . ( ! empty( $args['class'] ) ? ' ' . $args['class'] : '' );
 ?>

@@ -91,8 +91,8 @@ $spr_swiper = array(
 			</div>
 
 			<div class="slider-nav--walnut col-span-full flex justify-center gap-5 xl:contents">
-				<button class="slider-nav__btn slider-nav__btn--prev xl:col-start-1 xl:row-start-2 xl:self-center xl:justify-self-end" type="button" data-swiper-prev aria-label="<?php esc_attr_e( 'Previous producer', 'montela' ); ?>"></button>
-				<button class="slider-nav__btn slider-nav__btn--next xl:col-start-12 xl:row-start-2 xl:self-center xl:justify-self-start" type="button" data-swiper-next aria-label="<?php esc_attr_e( 'Next producer', 'montela' ); ?>"></button>
+				<button class="slider-nav__btn slider-nav__btn--prev xl:col-start-1 xl:row-start-2 xl:self-center xl:justify-self-end" type="button" data-swiper-prev aria-label="<?php esc_attr_e( 'Vorheriger Produzent', 'montela' ); ?>"></button>
+				<button class="slider-nav__btn slider-nav__btn--next xl:col-start-12 xl:row-start-2 xl:self-center xl:justify-self-start" type="button" data-swiper-next aria-label="<?php esc_attr_e( 'Nächster Produzent', 'montela' ); ?>"></button>
 			</div>
 		</div>
 	</div>

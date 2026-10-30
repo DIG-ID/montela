@@ -62,7 +62,7 @@ $mega_target = static function ( $item ) {
 	}
 };
 ?>
-<div id="mega-menu" class="mega-menu" role="dialog" aria-modal="true" aria-label="<?php esc_attr_e( 'Menu', 'montela' ); ?>" data-lenis-prevent>
+<div id="mega-menu" class="mega-menu" role="dialog" aria-modal="true" aria-label="<?php esc_attr_e( 'Menü', 'montela' ); ?>" data-lenis-prevent>
 	<div class="theme-container mega-menu__inner">
 
 		<?php if ( $mega_image ) : ?>
@@ -81,7 +81,7 @@ $mega_target = static function ( $item ) {
 			</div>
 		<?php endif; ?>
 
-		<nav class="mega-menu__nav" aria-label="<?php esc_attr_e( 'Site menu', 'montela' ); ?>">
+		<nav class="mega-menu__nav" aria-label="<?php esc_attr_e( 'Website-Menü', 'montela' ); ?>">
 
 			<ul class="mega-menu__grid" style="--n: <?php echo esc_attr( count( $mega_top ) ); ?>">
 				<?php foreach ( $mega_top as $mega_i => $mega_item ) : ?>
@@ -122,7 +122,6 @@ $mega_target = static function ( $item ) {
 					</ul>
 					<button type="button" class="mega-menu__item mega-menu__back">
 						<span class="mega-menu__back-icon" aria-hidden="true"></span>
-						<?php // German source string by request; other languages via WPML String Translation. ?>
 						<span><?php esc_html_e( 'Zurück', 'montela' ); ?></span>
 					</button>
 				</div>

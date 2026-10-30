@@ -1,0 +1,340 @@
+NOTES — Montela
+===============
+
+Notas do projecto para rever no fim. Cada nota vai para UMA das três partes
+abaixo; cada parte diz o que lá entra, o que não entra e os campos que cada
+nota tem de ter.
+
+O que NÃO vai para este ficheiro:
+  - trabalho por fazer (secções, páginas, conteúdo em falta)  → TODO.md
+  - o que mudou numa versão                                    → CHANGELOG.md
+  - como o tema funciona hoje (campos, templates, convenções)  → CLAUDE.md
+
+Regras de escrita:
+  - Uma nota por assunto, com a data em que foi escrita: [AAAA-MM-DD].
+  - Português de Portugal; nomes de ficheiros, funções e campos como estão
+    no código.
+  - Uma nota resolvida não se apaga: muda-se o Estado e acrescenta-se como
+    ficou resolvida.
+
+
+===============================================================================
+A. REGRAS PARA O STARTER
+===============================================================================
+
+O que entra: algo que este projecto ensinou e que deve passar a ser regra,
+padrão ou ferramenta no dig.id Theme Starter — porque falhou, custou tempo
+ou se repetiu em várias secções, e vai voltar a acontecer noutro projecto.
+
+O que não entra: regras que só fazem sentido no Montela (essas ficam só no
+CLAUDE.md do projecto).
+
+Campos de cada nota:
+  Problema     — o que aconteceu, com o caso concreto.
+  Regra        — o texto da regra a escrever no starter, já pronto a copiar.
+  No starter   — o ficheiro exacto onde a regra entra (CLAUDE.md, secção X;
+                 .claude/rules/php.md; skill /deploy; SETUP.md…).
+  No Montela   — onde está hoje, para servir de exemplo.
+  Estado       — POR PASSAR / PASSADA AO STARTER (data).
+
+Uso no fim do projecto: percorrer as notas POR PASSAR e aplicar cada Regra
+no ficheiro indicado em "No starter".
+
+-------------------------------------------------------------------------------
+[2026-10-30] A1. Língua das strings do tema
+  Problema   O starter manda escrever as strings em inglês. Num site em
+             alemão, os cards saíram com "Learn more" e o site inteiro ficou
+             com botões, aria-labels e fallbacks em inglês até alguém os
+             traduzir no WPML — o que ninguém tinha feito.
+  Regra      "A string fonte é o texto do Figma, na língua em que lá está.
+             Sem texto no Figma (aria-label, fallback), a língua principal do
+             site, definida no SETUP. Strings só do admin em inglês."
+  No starter CLAUDE.md, secções "Semântica HTML5" e "i18n"; SETUP.md e skill
+             /setup-project: nova pergunta "Língua principal do site"
+             (ex.: de-CH — Sie, "ss" e nunca "ß").
+  No Montela CLAUDE.md, secção i18n.
+  Estado     POR PASSAR
+
+[2026-10-30] A2. Folha de conteúdo
+  Problema   O Figma tem textos copiados de outras páginas (o hero do tablet
+             dos Apartments, o hero e a intro do mobile do single). Copiar do
+             Figma põe texto errado no site.
+  Regra      Secção "Conteúdo" no CLAUDE.md com o link da folha de textos do
+             projecto e a frase "consultar antes de copiar texto do Figma".
+  No starter CLAUDE.md, secção nova "Conteúdo" (vazia, só o placeholder do
+             link); SETUP.md: pedir o link.
+  No Montela CLAUDE.md, secção Conteúdo.
+  Estado     POR PASSAR
+
+[2026-10-29] A3. CPT com URL por baixo de uma página
+  Problema   Quatro vezes neste projecto (activity, offer, tagesausflug,
+             apartment) a listagem é uma página com template e os posts têm
+             de ficar por baixo dela (/aufenthalt/apartments/{slug}/). O
+             arquivo do CPT não serve: a página precisa de hero e módulos.
+  Regra      Página com template + CPT com rewrite slug = caminho da página,
+             has_archive false, with_front false. Não criar páginas-filhas
+             dessa página (o URL é apanhado pelo CPT → 404). Se um slug pai
+             mudar, mudar o rewrite. Noutras línguas, traduzir o slug no WPML
+             (Post Types Translation). O "voltar à listagem" encontra a
+             página pelo template, com um helper.
+  No starter CLAUDE.md, secção "Custom Post Types"; inc/helpers.php: trazer
+             montela_get_page_by_template().
+  No Montela acf-json/post_type_apartment.json; inc/helpers.php.
+  Estado     POR PASSAR
+
+[2026-10-29] A4. Ordem fixa dos termos de uma taxonomia
+  Problema   As amenities têm a ordem do design; o WordPress ordena por nome
+             ou ID e não tem ordem manual de termos sem plugin.
+  Regra      Lista de slugs no código, por ordem; termos fora da lista no
+             fim, por ordem alfabética; aceitar o sufixo que o WPML põe nos
+             slugs traduzidos ("wifi-2"). Ícone do termo = campo ACF de
+             imagem na taxonomia.
+  No starter .claude/rules/php.md (padrão) ou inc/helpers.php (função
+             genérica que recebe taxonomia + lista de slugs).
+  No Montela montela_get_apartment_amenities(), inc/helpers.php.
+  Estado     POR PASSAR
+
+[2026-10-29] A5. Importar ACF por WP-CLI sem duplicar
+  Problema   acf_get_field_group( $key )['ID'] devolve a cópia do JSON
+             (ID 0); acf_import_field_group() cria um grupo duplicado a cada
+             import.
+  Regra      Grupos: ID com acf_get_field_group_post( $key ). CPTs e
+             taxonomias: acf_get_internal_post_type_post( $key, $type ) +
+             acf_import_internal_post_type(). Depois de importar:
+             wp post list --post_type=acf-field-group --field=post_name | sort | uniq -d
+  No starter CLAUDE.md, secção "ACF Field Groups".
+  No Montela CLAUDE.md (só a parte dos grupos — falta a dos CPTs).
+  Estado     POR PASSAR
+
+[2026-10-29] A6. Yoast com posts criados em local
+  Problema   Fora de produção o Yoast não cria indexables; os posts criados
+             por WP-CLI mostram avisos "Deprecated" no front-end e
+             "wp yoast index" recusa correr.
+  Regra      Nos scripts de conteúdo, depois de criar o post:
+               add_filter( 'Yoast\WP\SEO\should_index_indexables', '__return_true' );
+               YoastSEO()->classes->get( Yoast\WP\SEO\Builders\Indexable_Builder::class )
+                 ->build_for_id_and_type( $id, 'post' );
+  No starter CLAUDE.md, secção "SEO / Schema" (nota sobre ambiente local).
+  No Montela script de conteúdo dos apartamentos (scratchpad, fora do repo).
+  Estado     POR PASSAR
+
+[2026-10-29] A7. Versão no package-lock.json
+  Problema   O package-lock.json ficou em 1.26.0 enquanto o style.css, o
+             package.json e o CHANGELOG iam em 1.31.0.
+  Regra      O package-lock.json entra na lista de ficheiros de versão a
+             sincronizar em cada release/deploy.
+  No starter skills /deploy, /release e /go-live (passo de sincronização);
+             CLAUDE.md, secção "Versionamento".
+  No Montela corrigido à mão na 1.32.0.
+  Estado     POR PASSAR
+
+[2026-10-29] A8. Ícones SVG exportados do Figma
+  Problema   Exportar o frame de um ícone traz lixo do canvas (rectângulo
+             #2C2C2C, paths enormes da página) e ids/clip-paths que partem a
+             máscara.
+  Regra      Exportar o vector de dentro do frame; limpar ids, styles,
+             clip-path e defs; fill="currentColor". Pintar com CSS mask +
+             bg-current, para a cor seguir o texto.
+  No starter .claude/rules/figma.md (exportar) e .claude/rules/sass.md
+             (padrão mask).
+  No Montela assets/svg/icons/apartment-*.svg;
+             assets/sass/_components/_apartment-facts.sass.
+  Estado     POR PASSAR
+
+[2026-10-29] A9. Altura do Swiper
+  Problema   O CSS do Swiper (.swiper { height: auto }) carrega depois do
+             main.css e ganha a uma classe só (h-full no slider não pegava).
+  Regra      Para mexer em propriedades que o Swiper define, usar duas
+             classes: .foo__photos .foo__swiper.
+  No starter .claude/rules/sass.md, secção "Especificidade" (como exemplo).
+  No Montela assets/sass/_pages/_apartments.sass.
+  Estado     POR PASSAR
+
+[2026-10-29] A10. Secções iguais em todos os posts de um CPT
+  Problema   Services e "Inklusive Leistungen" são iguais em todos os
+             apartamentos; preencher em cada post é repetir e desalinhar.
+  Regra      O módulo lê os campos da página da listagem, com o argumento
+             post_id: get_template_part( '…/services', null,
+             array( 'post_id' => $page_id ) ).
+  No starter .claude/rules/php.md, parágrafo do post_id (hoje só fala das
+             Theme Options).
+  No Montela planeado no single-apartment.php (por fazer).
+  Estado     POR PASSAR
+
+[2026-10-30] A11. Rever os ficheiros fundidos sem conflito
+  Problema   No rebase da 1.33.0, o box-text.php fundiu-se sem conflito: o
+             colega tinha passado as margens para o PHP com um "else" para
+             a caixa, e o estilo novo (cream) caiu nesse else — ficava com as
+             margens da caixa. Nenhum aviso do git.
+  Regra      Depois de um pull/rebase, rever também os ficheiros que os dois
+             lados mudaram e o git fundiu sozinho (git diff ORIG_HEAD -- <f>),
+             sobretudo condições e listas de variantes; verificar a página.
+  No starter skill /deploy, passo 2 (pré-check do repositório).
+  No Montela template-parts/modules/box-text.php (ramo 'box' explícito).
+  Estado     POR PASSAR
+
+
+===============================================================================
+B. DECISÕES POR CONFIRMAR
+===============================================================================
+
+O que entra: escolhas feitas durante as sessões sem aprovação de quem decide
+— desvios ao Figma, textos inventados por não haver texto no design,
+interpretações de um frame ambíguo.
+
+O que não entra: desvios já aprovados pelo utilizador na sessão (esses ficam
+documentados no CLAUDE.md, no template).
+
+Campos de cada nota:
+  O quê        — o elemento e a página.
+  Figma        — o que o design mostra (ou "sem texto no Figma").
+  Feito        — o que ficou no código.
+  Porquê       — a razão da escolha.
+  Confirma     — quem decide: designer, cliente ou folha de conteúdo.
+  Onde         — ficheiro(s) a mudar se a resposta for outra.
+  Estado       — POR CONFIRMAR / CONFIRMADA (data) / ALTERADA (data, para quê).
+
+Uso no fim do projecto: juntar as POR CONFIRMAR numa lista para o designer e
+o cliente.
+
+-------------------------------------------------------------------------------
+[2026-10-30] B1. Rótulos das setas dos sliders
+  O quê      aria-label das setas anterior/seguinte, em todos os sliders.
+  Figma      sem texto (são botões só com ícone).
+  Feito      "Vorheriges/Nächstes Foto" (galerias, Explore, cards dos
+             apartamentos, Direkt zu Montela), "Vorherige/Nächste Karte"
+             (Cards with icon, info cards), "Vorheriges/Nächstes Paket"
+             (Services), "Vorherige/Nächste Bewertung" (Testimonials),
+             "Vorheriges/Nächstes Jahr" (timeline), "Vorheriger/Nächster
+             Tagesausflug", "Vorherige/Nächste Aktivität(en)".
+  Porquê     regra A1: sem texto no Figma → de-CH.
+  Confirma   cliente ou folha de conteúdo.
+  Onde       template-parts/ (procurar "Vorherig" / "Nächst").
+  Estado     POR CONFIRMAR
+
+[2026-10-30] B2. Botão da 404
+  O quê      rótulo do botão da página 404 (fallback, quando o campo
+             error_404_button das Theme Settings está vazio).
+  Figma      o rótulo existe no frame 5426:5441, mas não foi lido.
+  Feito      "Zur Startseite".
+  Porquê     ler o rótulo exigia abrir o componente; o texto do título e da
+             frase foram copiados do Figma.
+  Confirma   designer (ler o frame) — ou preencher o campo nas Theme Settings.
+  Onde       404.php, linha do $error_button.
+  Estado     POR CONFIRMAR
+
+[2026-10-30] B3. Rótulos da oferta
+  O quê      título das condições e rótulo da validade no single da oferta.
+  Figma      não verificado ao trocar as strings para alemão.
+  Feito      "Bedingungen", "Angebot gültig:", "Ab" (antes do preço).
+  Porquê     tradução directa das strings inglesas anteriores.
+  Confirma   designer (frames 5426:14430 / 17370 / 16423).
+  Onde       template-parts/offer/conditions.php, template-parts/offer/intro.php.
+  Estado     POR CONFIRMAR
+
+[2026-10-30] B4. Rodapé e navegação
+  O quê      copyright e aria-labels das navegações.
+  Figma      copyright desenhado; aria-labels sem texto.
+  Feito      "© {ano} {site}. Alle Rechte vorbehalten"; "Hauptnavigation",
+             "Footer-Navigation", "Rechtliches", "Website-Menü",
+             "Zum Inhalt springen", "Menü öffnen/schliessen".
+  Porquê     regra A1.
+  Confirma   cliente (copyright: confirmar com o texto do Figma).
+  Onde       template-parts/footer-main.php, header-main.php, mega-menu.php.
+  Estado     POR CONFIRMAR
+
+[2026-10-29] B5. Setas no slider de fotos dos cards dos apartamentos
+  O quê      setas do slider de fotos, página Apartments.
+  Figma      só em desktop (5679:14338).
+  Feito      em todos os breakpoints.
+  Porquê     em tablet e mobile a foto não dá outra pista de que desliza.
+  Confirma   designer.
+  Onde       assets/sass/_pages/_apartments.sass (.apartment-card__nav).
+  Estado     POR CONFIRMAR
+
+[2026-10-30] B6. Botão do "Inklusive Leistungen" (desktop)
+  O quê      distância do título ao botão "Zu allen Services", Apartments.
+  Figma      o botão está a 182px do topo do título — num título de uma linha
+             (80px) ficam 102px; o componente foi desenhado para um título de
+             duas linhas (160 + 22).
+  Feito      22px abaixo do título, como na faixa sage da Aufenthalt.
+  Porquê     é o mesmo componente; a posição fixa do Figma não segue o título.
+  Confirma   designer (5812:15532).
+  Onde       assets/sass/_modules/_box-text.sass (.section-box-text__button).
+  Estado     POR CONFIRMAR
+
+[2026-10-30] B7. Espaço Services → "Inklusive Leistungen" (mobile)
+  O quê      espaço entre as setas da Services comparison e o título da faixa
+             creme, Apartments, mobile.
+  Figma      149px.
+  Feito      128px (a margem que o módulo Services já tem em mobile).
+  Porquê     a faixa creme não tem padding em cima em mobile; mudar a margem
+             do módulo mexeria nas outras páginas.
+  Confirma   designer (5426:8963).
+  Onde       assets/sass/_modules/_box-text.sass (.section-box-text--cream).
+  Estado     POR CONFIRMAR
+
+
+===============================================================================
+C. ERROS NO FIGMA
+===============================================================================
+
+O que entra: inconsistências do design encontradas ao construir — texto de
+outra página, gralhas, medidas que não fecham, espaçamentos diferentes entre
+breakpoints sem razão aparente. Serve para mandar ao designer no fim, e para
+o próximo que abrir o frame não cair no mesmo erro.
+
+O que não entra: o que foi resolvido com uma decisão nossa (isso vai para a
+parte B).
+
+Campos de cada nota:
+  Frame        — node id e página/breakpoint.
+  Erro         — o que está mal.
+  No site      — o que ficou no código.
+  Estado       — POR REPORTAR / REPORTADO (data) / CORRIGIDO NO FIGMA (data).
+
+-------------------------------------------------------------------------------
+[2026-10-29] C1. Gralha numa amenity
+  Frame      single do apartamento, lista "Ausstattung".
+  Erro       "Geschirrpühler".
+  No site    termo "Geschirrspüler".
+  Estado     POR REPORTAR
+
+[2026-10-29] C2. Hero do tablet dos Apartments
+  Frame      5426:9561 (Apartments, tablet).
+  Erro       o título do hero é de outra página.
+  No site    o título do desktop.
+  Estado     POR REPORTAR
+
+[2026-10-29] C3. Hero e intro do mobile do single do apartamento
+  Frame      5426:9146 (Single Apartment, mobile).
+  Erro       hero e intro com texto de outras páginas.
+  No site    os textos do desktop.
+  Estado     POR REPORTAR
+
+[2026-10-29] C4. Espaço entre a intro e os cards dos Apartments
+  Frame      5426:7347 / 5426:9561.
+  Erro       73px (desktop) e 28px (tablet) entre a intro e os cards; nas
+             ofertas, a mesma passagem não tem espaço.
+  No site    sem espaço, como nas ofertas (documentado no CLAUDE.md,
+             template Apartments).
+  Estado     POR REPORTAR
+
+[2026-10-30] C5. Texto do "Inklusive Leistungen" em desktop
+  Frame      5812:15532 (Apartments, desktop).
+  Erro       o texto está a 15/25px; o estilo do frame (Desktop/Text) e a
+             mesma faixa na Aufenthalt usam 20/32.
+  No site    20/32.
+  Estado     POR REPORTAR
+
+[2026-10-30] C6. Ícones do "Inklusive Leistungen"
+  Frame      5812:15532 / 5812:15556 / 5812:15589 (Apartments).
+  Erro       os ícones do componente estão vazios ou escuros (invisíveis);
+             na página há vectores soltos por cima. Os nomes dos ícones mudam
+             de breakpoint para breakpoint (desktop: breakfast_dining, store,
+             holiday_village; tablet e mobile: bakery_dining, more_time,
+             cleaning).
+  No site    os ícones são conteúdo (upload no tab Included). Em local:
+             os vectores soltos do desktop (frigorífico, guarda-sol) e o
+             holiday_village.
+  Estado     POR REPORTAR

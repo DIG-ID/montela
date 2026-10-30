@@ -99,8 +99,8 @@ $bx_title_id = wp_unique_id( 'section-bike-experiences-title-' );
 
 			<?php if ( $bx_count > 1 ) : ?>
 				<div class="slider-nav slider-nav--sage section-bike-experiences__nav">
-					<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-activities-prev aria-label="<?php esc_attr_e( 'Previous activity', 'montela' ); ?>"></button>
-					<button class="slider-nav__btn slider-nav__btn--next" type="button" data-activities-next aria-label="<?php esc_attr_e( 'Next activity', 'montela' ); ?>"></button>
+					<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-activities-prev aria-label="<?php esc_attr_e( 'Vorherige Aktivität', 'montela' ); ?>"></button>
+					<button class="slider-nav__btn slider-nav__btn--next" type="button" data-activities-next aria-label="<?php esc_attr_e( 'Nächste Aktivität', 'montela' ); ?>"></button>
 				</div>
 			<?php endif; ?>
 

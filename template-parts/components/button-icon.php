@@ -10,7 +10,7 @@
  *         null,
  *         array(
  *             'icon'  => 'arrow-right',
- *             'label' => __( 'Next slide', 'montela' ),
+ *             'label' => __( 'Nächstes Foto', 'montela' ),
  *             'class' => 'swiper-button-next',
  *         )
  *     );

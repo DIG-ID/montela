@@ -45,7 +45,7 @@ $act_seasons = array(
 	'summer' => array(
 		'field' => 'section_activities_summer',
 		'term'  => 'sommer',
-		'label' => __( 'Summer', 'montela' ),
+		'label' => __( 'Sommer', 'montela' ),
 	),
 	'winter' => array(
 		'field' => 'section_activities_winter',
@@ -113,7 +113,7 @@ $act_title_id = $act_uid . '-title';
 
 			<div class="section-activities__intro">
 				<?php if ( count( $act_seasons ) > 1 ) : ?>
-					<div class="section-activities__switch" role="tablist" aria-label="<?php esc_attr_e( 'Season', 'montela' ); ?>" data-activities-tabs>
+					<div class="section-activities__switch" role="tablist" aria-label="<?php esc_attr_e( 'Saison', 'montela' ); ?>" data-activities-tabs>
 						<?php foreach ( $act_seasons as $act_key => $act_season ) : ?>
 							<?php $act_is_current = $act_key === $act_current; ?>
 							<button
@@ -168,8 +168,8 @@ $act_title_id = $act_uid . '-title';
 
 					<?php if ( count( $act_season['ids'] ) > 1 ) : ?>
 						<div class="slider-nav section-activities__nav">
-							<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-activities-prev aria-label="<?php esc_attr_e( 'Previous activity', 'montela' ); ?>"></button>
-							<button class="slider-nav__btn slider-nav__btn--next" type="button" data-activities-next aria-label="<?php esc_attr_e( 'Next activity', 'montela' ); ?>"></button>
+							<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-activities-prev aria-label="<?php esc_attr_e( 'Vorherige Aktivität', 'montela' ); ?>"></button>
+							<button class="slider-nav__btn slider-nav__btn--next" type="button" data-activities-next aria-label="<?php esc_attr_e( 'Nächste Aktivität', 'montela' ); ?>"></button>
 						</div>
 					<?php endif; ?>
 				</div>

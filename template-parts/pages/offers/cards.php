@@ -78,7 +78,7 @@ asort( $offers, SORT_STRING );
 					null,
 					array(
 						'url'     => get_permalink( $offers_id ),
-						'title'   => __( 'Learn more', 'montela' ),
+						'title'   => __( 'Mehr erfahren', 'montela' ),
 						'context' => $offers_title,
 						'style'   => 'outline',
 						'class'   => 'offer-card__btn',

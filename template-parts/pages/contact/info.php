@@ -25,7 +25,7 @@ if ( ! $info_boxes ) {
 	return;
 }
 ?>
-<section class="section-contact-info" aria-label="<?php esc_attr_e( 'Contact details', 'montela' ); ?>">
+<section class="section-contact-info" aria-label="<?php esc_attr_e( 'Kontaktangaben', 'montela' ); ?>">
 	<div class="theme-container">
 		<div class="theme-grid">
 			<div class="section-contact-info__boxes">

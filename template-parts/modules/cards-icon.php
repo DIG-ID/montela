@@ -131,8 +131,8 @@ if ( 'filled' === $cards_style ) {
 					</div>
 
 					<div class="slider-nav slider-nav--walnut section-cards-icon__nav">
-						<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-swiper-prev aria-label="<?php esc_attr_e( 'Previous card', 'montela' ); ?>"></button>
-						<button class="slider-nav__btn slider-nav__btn--next" type="button" data-swiper-next aria-label="<?php esc_attr_e( 'Next card', 'montela' ); ?>"></button>
+						<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-swiper-prev aria-label="<?php esc_attr_e( 'Vorherige Karte', 'montela' ); ?>"></button>
+						<button class="slider-nav__btn slider-nav__btn--next" type="button" data-swiper-next aria-label="<?php esc_attr_e( 'Nächste Karte', 'montela' ); ?>"></button>
 					</div>
 				</div>
 			</div>

@@ -62,8 +62,8 @@ $info_title_id = wp_unique_id( 'section-activity-info-title-' );
 
 				<?php if ( count( $info_items ) > 1 ) : ?>
 					<div class="slider-nav slider-nav--sage section-activity-info__nav">
-						<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-activities-prev aria-label="<?php esc_attr_e( 'Previous card', 'montela' ); ?>"></button>
-						<button class="slider-nav__btn slider-nav__btn--next" type="button" data-activities-next aria-label="<?php esc_attr_e( 'Next card', 'montela' ); ?>"></button>
+						<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-activities-prev aria-label="<?php esc_attr_e( 'Vorherige Karte', 'montela' ); ?>"></button>
+						<button class="slider-nav__btn slider-nav__btn--next" type="button" data-activities-next aria-label="<?php esc_attr_e( 'Nächste Karte', 'montela' ); ?>"></button>
 					</div>
 				<?php endif; ?>
 			</div>

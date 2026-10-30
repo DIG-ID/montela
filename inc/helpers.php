@@ -104,7 +104,7 @@ if ( ! function_exists( 'montela_link_phone_numbers' ) ) :
 
 				if ( false !== stripos( $before, 'whatsapp' ) ) {
 					$href = 'https://wa.me/' . ltrim( $digits, '+' );
-					return '<a href="' . esc_url( $href ) . '" target="_blank" rel="noopener noreferrer">' . $number . '<span class="sr-only"> ' . esc_html__( '(WhatsApp, opens in a new tab)', 'montela' ) . '</span></a>';
+					return '<a href="' . esc_url( $href ) . '" target="_blank" rel="noopener noreferrer">' . $number . '<span class="sr-only"> ' . esc_html__( '(WhatsApp, öffnet in einem neuen Tab)', 'montela' ) . '</span></a>';
 				}
 
 				return '<a href="' . esc_url( 'tel:' . $digits, array( 'tel' ) ) . '">' . $number . '</a>';
@@ -249,3 +249,56 @@ function montela_module_field( $name, $args = array() ) {
 	$ctx = ! empty( $args['post_id'] ) ? $args['post_id'] : get_the_ID();
 	return get_field( $prefix . $name, $ctx );
 }
+
+if ( ! function_exists( 'montela_get_apartment_amenities' ) ) :
+	/**
+	 * Returns an apartment's amenities (Amenity terms) in the design's order,
+	 * set here by slug. Terms missing from the list follow, alphabetically.
+	 * To change the order, or place a new amenity, edit the list.
+	 *
+	 * @since 1.32.0
+	 *
+	 * @param int $post_id Apartment ID.
+	 * @return WP_Term[]
+	 */
+	function montela_get_apartment_amenities( $post_id ) {
+		$order = array(
+			'wifi',
+			'liegestuhl',
+			'kinderbett',
+			'radio',
+			'kaffeemaschine',
+			'parkplatz',
+			'terrasse',
+			'safe',
+			'haartrockner',
+			'sofabett',
+			'kueche',
+		);
+
+		$terms = get_the_terms( $post_id, 'amenity' );
+		if ( ! $terms || is_wp_error( $terms ) ) {
+			return array();
+		}
+
+		// Translated terms keep the slug of the original (WPML may add a
+		// language suffix: "wifi-en"), so match the start of the slug.
+		$position = static function ( $term ) use ( $order ) {
+			foreach ( $order as $index => $slug ) {
+				if ( $term->slug === $slug || str_starts_with( $term->slug, $slug . '-' ) ) {
+					return $index;
+				}
+			}
+			return count( $order );
+		};
+
+		usort(
+			$terms,
+			static function ( $a, $b ) use ( $position ) {
+				return array( $position( $a ), $a->name ) <=> array( $position( $b ), $b->name );
+			}
+		);
+
+		return $terms;
+	}
+endif;

@@ -6,7 +6,7 @@
  * open on tablet, mobile and touch screens (see _card-activity.sass).
  *
  * Content comes either from an Activity post — featured image (labelled
- * "Card image" in the admin), title, excerpt and a "Learn more" link to it —
+ * "Card image" in the admin), title, excerpt and a "Mehr erfahren" link to it —
  * or straight from the arguments, for cards typed into a page (the info
  * cards of an activity single). Those show a button only when they have a
  * link. Figma: the cards of "Activities_with slider SW" — desktop
@@ -41,7 +41,7 @@ if ( $card_id ) {
 	$card_image   = get_post_thumbnail_id( $card_id );
 	$card_link    = array(
 		'url'   => get_permalink( $card_id ),
-		'title' => __( 'Learn more', 'montela' ),
+		'title' => __( 'Mehr erfahren', 'montela' ),
 	);
 } else {
 	$card_title   = ! empty( $args['title'] ) ? $args['title'] : '';
@@ -50,7 +50,7 @@ if ( $card_id ) {
 	$card_link    = ( ! empty( $args['link'] ) && is_array( $args['link'] ) && ! empty( $args['link']['url'] ) ) ? $args['link'] : null;
 
 	if ( $card_link && empty( $card_link['title'] ) ) {
-		$card_link['title'] = __( 'Learn more', 'montela' );
+		$card_link['title'] = __( 'Mehr erfahren', 'montela' );
 	}
 
 	if ( ! $card_title ) {

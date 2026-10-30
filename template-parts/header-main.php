@@ -40,7 +40,7 @@ if ( is_array( $header_languages ) ) {
 	}
 }
 ?>
-<a class="skip-link" href="#main-content"><?php esc_html_e( 'Skip to content', 'montela' ); ?></a>
+<a class="skip-link" href="#main-content"><?php esc_html_e( 'Zum Inhalt springen', 'montela' ); ?></a>
 
 <header id="header-main" class="header-main">
 	<div class="theme-container header-main__inner">
@@ -52,7 +52,7 @@ if ( is_array( $header_languages ) ) {
 		<div class="header-main__actions">
 
 			<?php if ( has_nav_menu( 'main-menu' ) ) : ?>
-				<nav class="header-main__nav" aria-label="<?php esc_attr_e( 'Main navigation', 'montela' ); ?>">
+				<nav class="header-main__nav" aria-label="<?php esc_attr_e( 'Hauptnavigation', 'montela' ); ?>">
 					<?php
 					wp_nav_menu(
 						array(
@@ -72,7 +72,7 @@ if ( is_array( $header_languages ) ) {
 					<span class="header-main__cta-label">
 						<?php echo esc_html( $header_booking['title'] ); ?>
 						<?php if ( '_blank' === $header_book_tg ) : ?>
-							<span class="sr-only"><?php esc_html_e( '(opens in a new tab)', 'montela' ); ?></span>
+							<span class="sr-only"><?php esc_html_e( '(öffnet in einem neuen Tab)', 'montela' ); ?></span>
 						<?php endif; ?>
 					</span>
 					<span class="header-main__cta-icon" aria-hidden="true"></span>
@@ -86,7 +86,7 @@ if ( is_array( $header_languages ) ) {
 						<span class="sr-only">
 							<?php
 							/* translators: %s: name of the current language, in that language. */
-							echo esc_html( sprintf( __( 'Language: %s', 'montela' ), $header_lang_now['native_name'] ) );
+							echo esc_html( sprintf( __( 'Sprache: %s', 'montela' ), $header_lang_now['native_name'] ) );
 							?>
 						</span>
 					</button>
@@ -103,7 +103,7 @@ if ( is_array( $header_languages ) ) {
 				</div>
 			<?php endif; ?>
 
-			<button type="button" class="header-main__toggle" aria-expanded="false"<?php echo has_nav_menu( 'mega-menu' ) ? ' aria-controls="mega-menu"' : ''; ?> aria-label="<?php esc_attr_e( 'Open menu', 'montela' ); ?>" data-label-open="<?php esc_attr_e( 'Open menu', 'montela' ); ?>" data-label-close="<?php esc_attr_e( 'Close menu', 'montela' ); ?>">
+			<button type="button" class="header-main__toggle" aria-expanded="false"<?php echo has_nav_menu( 'mega-menu' ) ? ' aria-controls="mega-menu"' : ''; ?> aria-label="<?php esc_attr_e( 'Menü öffnen', 'montela' ); ?>" data-label-open="<?php esc_attr_e( 'Menü öffnen', 'montela' ); ?>" data-label-close="<?php esc_attr_e( 'Menü schliessen', 'montela' ); ?>">
 				<span class="header-main__toggle-icon" aria-hidden="true">
 					<span class="header-main__toggle-bar"></span>
 					<span class="header-main__toggle-bar"></span>

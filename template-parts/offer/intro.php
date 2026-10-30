@@ -42,7 +42,7 @@ $offer_title_id = wp_unique_id( 'section-offer-intro-title-' );
 			null,
 			array(
 				'url'   => get_permalink( $offer_overview ),
-				'title' => __( 'Back to overview', 'montela' ),
+				'title' => __( 'Zurück zur Übersicht', 'montela' ),
 				'style' => 'back',
 			)
 		);
@@ -62,7 +62,7 @@ $offer_title_id = wp_unique_id( 'section-offer-intro-title-' );
 					<div class="section-offer-intro__price">
 						<?php if ( $offer_price ) : ?>
 							<p class="section-offer-intro__amount">
-								<span class="section-offer-intro__from"><?php esc_html_e( 'From', 'montela' ); ?></span>
+								<span class="section-offer-intro__from"><?php esc_html_e( 'Ab', 'montela' ); ?></span>
 								<span class="section-offer-intro__value"><?php echo esc_html( $offer_price ); ?></span><?php echo $offer_unit ? '<span class="section-offer-intro__unit">' . esc_html( $offer_unit ) . '</span>' : ''; ?>
 							</p>
 						<?php endif; ?>

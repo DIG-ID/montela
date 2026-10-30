@@ -34,9 +34,9 @@ $cta_target     = ( is_array( $cta_link ) && ! empty( $cta_link['target'] ) ) ? 
 $cta_name       = $cta_title ? $cta_title : $cta_link_title;
 
 /* translators: %s: sticky call-to-action title. */
-$cta_label_open = sprintf( __( 'Open: %s', 'montela' ), $cta_name );
+$cta_label_open = sprintf( __( 'Öffnen: %s', 'montela' ), $cta_name );
 /* translators: %s: sticky call-to-action title. */
-$cta_label_close = sprintf( __( 'Close: %s', 'montela' ), $cta_name );
+$cta_label_close = sprintf( __( 'Schliessen: %s', 'montela' ), $cta_name );
 ?>
 <aside class="sticky-cta" aria-label="<?php echo esc_attr( $cta_name ); ?>" data-sticky-cta>
 	<div id="sticky-cta-panel" class="sticky-cta__panel">
@@ -52,7 +52,7 @@ $cta_label_close = sprintf( __( 'Close: %s', 'montela' ), $cta_name );
 			<a class="sticky-cta__btn" href="<?php echo esc_url( $cta_url ); ?>"<?php echo '_blank' === $cta_target ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>>
 				<?php echo esc_html( $cta_link_title ); ?>
 				<?php if ( '_blank' === $cta_target ) : ?>
-					<span class="sr-only"><?php esc_html_e( '(opens in a new tab)', 'montela' ); ?></span>
+					<span class="sr-only"><?php esc_html_e( '(öffnet in einem neuen Tab)', 'montela' ); ?></span>
 				<?php endif; ?>
 			</a>
 		<?php endif; ?>

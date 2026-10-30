@@ -135,3 +135,24 @@
 
 .section-box-text--band .icon-list__text
   @apply md:text-[18px] md:leading-[25px] xl:col-span-3 xl:text-[20px] xl:leading-[32px]
+
+// -- Cream band ---------------------------------------------------------------
+// Figma "Section Green Background_with logos" on the Apartments page: desktop
+// 5812:15532, tablet 5812:15556, mobile 5812:15589. The band with its button
+// and list (above), on the page's cream with walnut text, a walnut button
+// ("primary") and walnut icons — the editor uploads them in that colour. The
+// element carries both modifiers: .section-box-text--band.section-box-text--cream.
+//
+// The desktop frame sets the text at 15/25; it keeps the band's 20/32
+// (Desktop/Text), as the tablet and mobile frames do with 18/25 and 14/22.
+//
+// Spacing: with no colour change, the space above is the previous section's
+// bottom margin plus this padding — 192 + 140px on desktop (332 in Figma, below
+// the services comparison), 192 + 100 on tablet, 128 + 0 on mobile. Below:
+// the padding only (139px in Figma — 140 —, 100, 112); the next section
+// (testimonials) follows with no margin. No margins of its own (box-text.php).
+.section-box-text--band.section-box-text--cream
+  @apply pt-0 md:pt-[100px] xl:pt-0 bg-montela-cream text-montela-walnut
+
+.section-box-text--cream.section-box-text--has-list
+  @apply xl:pt-[140px]

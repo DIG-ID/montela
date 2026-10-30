@@ -112,7 +112,7 @@ $footer_has_form = function_exists( 'mc4wp_show_form' );
 							<li>
 								<a href="<?php echo esc_url( $footer_social_url ); ?>" target="_blank" rel="noopener noreferrer">
 									<?php echo esc_html( $footer_social_name ); ?>
-									<span class="sr-only"><?php esc_html_e( '(opens in a new tab)', 'montela' ); ?></span>
+									<span class="sr-only"><?php esc_html_e( '(öffnet in einem neuen Tab)', 'montela' ); ?></span>
 								</a>
 							</li>
 						<?php endforeach; ?>
@@ -124,7 +124,7 @@ $footer_has_form = function_exists( 'mc4wp_show_form' );
 			</div>
 
 			<?php if ( has_nav_menu( 'footer-menu' ) ) : ?>
-				<nav class="footer-main__nav" aria-label="<?php esc_attr_e( 'Footer navigation', 'montela' ); ?>">
+				<nav class="footer-main__nav" aria-label="<?php esc_attr_e( 'Footer-Navigation', 'montela' ); ?>">
 					<?php
 					wp_nav_menu(
 						array(
@@ -177,11 +177,11 @@ $footer_has_form = function_exists( 'mc4wp_show_form' );
 				<p>
 					<?php
 					/* translators: 1: current year, 2: site name. */
-					echo esc_html( sprintf( __( '© %1$s %2$s. All rights reserved', 'montela' ), wp_date( 'Y' ), get_bloginfo( 'name' ) ) );
+					echo esc_html( sprintf( __( '© %1$s %2$s. Alle Rechte vorbehalten', 'montela' ), wp_date( 'Y' ), get_bloginfo( 'name' ) ) );
 					?>
 				</p>
 				<?php if ( has_nav_menu( 'legal-menu' ) ) : ?>
-					<nav aria-label="<?php esc_attr_e( 'Legal', 'montela' ); ?>">
+					<nav aria-label="<?php esc_attr_e( 'Rechtliches', 'montela' ); ?>">
 						<?php
 						wp_nav_menu(
 							array(

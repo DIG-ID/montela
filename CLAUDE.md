@@ -40,7 +40,7 @@ montela/
 ├── page-templates/         # Page templates WordPress
 ├── acf-json/               # field groups do ACF (Local JSON)
 ├── template-parts/
-│   ├── components/       # button.php (+ icon arrow-down), button-icon.php, icon-list.php, gallery-slider.php, photo-slider.php, card-activity.php, card-preview.php…
+│   ├── components/       # button.php (+ icon arrow-down), button-icon.php, icon-list.php, gallery-slider.php, photo-slider.php, card-activity.php, card-preview.php, apartment-facts.php…
 │   ├── modules/          # secções reutilizadas (hero, intro…)
 │   ├── pages/            # secções de uma só página
 │   ├── footer-main.php
@@ -113,6 +113,15 @@ Antes de entregar código PHP, verificar com `npm run php:lint`. Usar `npm run p
 
 ---
 
+## Conteúdo
+
+Os textos do site (por página) estão nesta folha do Google Sheets — consultar
+ao preencher conteúdo, antes de copiar texto do Figma (o Figma tem textos que
+ficaram de outras páginas):
+[Montela — conteúdo](https://docs.google.com/spreadsheets/d/1oWmzIrI7iy-7-ZAdTVUGfADHXv-gUGyeWgB7PtYldr4?usp=drive_fs).
+
+---
+
 ## Custom Post Types
 
 Registados pelo **ACF Pro** (Local JSON, `acf-json/post_type_*.json`) — não há
@@ -125,12 +134,14 @@ volta no JSON; depois de um deploy, fazer Sync.
 | `offer` — Angebote & Packages | `post_type_offer.json` | `/angebote-packages/{slug}/` (sem arquivo) — por baixo da página Angebote & Packages, como as activities | título, imagem destacada ("Card image"), excerto, revisões | Single: `single-offer.php` (hero + `template-parts/offer/intro.php`). O slug repete o caminho da página; noutras línguas, traduzir no WPML. Os cards da página de listagem são feitos a partir dos posts (por fazer). |
 | `tagesausflug` — Tagesausflüge (Day Trips) | `post_type_tagesausflug.json` | `/erkunden/unsere-region/{slug}/` (sem arquivo) — por baixo da página Unsere Region, como as activities. Não criar páginas-filhas da Unsere Region: o URL delas seria apanhado pelo CPT (404). Se a Erkunden ou a Unsere Region mudarem de slug, mudar também aqui; noutras línguas, traduzir no WPML. | título, imagem destacada ("Kartenbild"), excerto, revisões | Labels em alemão. Single: `single-tagesausflug.php`. Os cards de preview estão na Unsere Region (secção "Ausflüge ab Saas-Grund"). |
 | `testimonial` — Testimonials | `post_type_testimonial.json` | nenhum (não público: sem single nem arquivo) | título, revisões | Título = linha do autor ("Martin Ahrens 5* bei Google"); a quote é o campo `testimonial_quote` (grupo `group_cpt_testimonial`). Lido pelo módulo Testimonials. |
+| `apartment` — Apartments | `post_type_apartment.json` | `/aufenthalt/apartments/{slug}/` (sem arquivo) — por baixo da página Apartments (filha da Aufenthalt), como as activities. Não criar páginas-filhas da Apartments (o URL seria apanhado pelo CPT). Se a Aufenthalt ou a Apartments mudarem de slug, mudar também aqui; noutras línguas, traduzir no WPML. | título, imagem destacada ("Card image"), excerto (texto do card), ordem, revisões | Single: `single-apartment.php` (por agora só o hero). Os cards da overview e as secções do single por fazer — ver Templates. |
 
 ### Taxonomias
 
 | Taxonomia | JSON | Em | Notas |
 |-----------|------|----|-------|
 | `season` — Seasons | `taxonomy_season.json` | `activity` | Hierárquica (checkboxes no editor), sem URLs públicos, coluna na lista do admin. Termos **`sommer`** e **`winter`** — os slugs são usados no código (filtro Sommer/Winter); criar em cada ambiente, não renomear os slugs. Uma actividade pode ter as duas. |
+| `amenity` — Amenities (Ausstattung) | `taxonomy_amenity.json` | `apartment` | Hierárquica (checkboxes no editor), sem URLs públicos. Ícone em cada termo: `amenity_icon` (SVG walnut, grupo `group_taxonomy_amenity`). **A ordem da lista é a do design e vive no código**, por slug — `montela_get_apartment_amenities()` (`inc/helpers.php`); termos fora da lista vão para o fim, por ordem alfabética. Slugs: `wifi`, `liegestuhl`, `kinderbett`, `radio`, `kaffeemaschine`, `parkplatz`, `terrasse`, `safe`, `haartrockner`, `sofabett`, `kueche` — criar com estes slugs em cada ambiente; um termo novo entra na lista à mão. |
 
 ### Templates
 - **Single Tagesausflug** (`single-tagesausflug.php`, CPT `tagesausflug`) — hero + intro (módulos), "Über das Reiseziel" (`template-parts/day-trip/destination.php`: foto, texto, destaques com ícone, galeria), Cards with icon (módulo, com o texto opcional), Explore (módulo). Campos no grupo `group_cpt_day_trip`. Figma: desktop
@@ -151,6 +162,22 @@ volta no JSON; depois de um deploy, fazer Sync.
   mobile [5426:8673](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-8673&m=dev).
   Secções por fazer, por ordem (nodes desktop / tablet / mobile):
   - Mapa "Alles nah, alles einfach" — mapa Sommer/Winter, zoom, popups com pontos numerados e uma fila de ícones: 5838:17168 / 5838:16851 / 5838:16921.
+- **Apartments** (`page-templates/page-apartments.php`, "Apartments Template"; filha da Aufenthalt, `/aufenthalt/apartments/` — os singles do CPT `apartment` ficam por baixo dela) — hero e intro (módulos) e os cards dos apartamentos (`pages/apartments/cards.php`: uma linha por apartamento — painel sage com título, dados (`components/apartment-facts.php`), excerto, "Mehr erfahren" + reserva; slider com a imagem do card e a galeria, setas em todos os breakpoints (o Figma só as desenha em desktop); lados alternam em desktop), a Services comparison (módulo; o mesmo conteúdo da Aufenthalt), "Inklusive Leistungen" (Box text, estilo `cream`, com botão e lista) e Testimonials (módulo; vazio = todos). As três últimas são iguais em todos os apartamentos: o single vai lê-las daqui. O Figma deixa 73px entre a intro e os cards em desktop (28 em tablet): ficam encostados, como nas ofertas. Campos no grupo `group_page_apartments`. Figma: desktop
+  [5426:7347](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-7347&m=dev),
+  tablet [5426:9561](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-9561&m=dev) (o título do hero ficou de outra página — usar o do desktop),
+  mobile [5426:8963](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-8963&m=dev).
+- **Single Apartment** (`single-apartment.php`, CPT `apartment`) — por agora só o hero (módulo). Campos no grupo `group_cpt_apartment` (já completo). Figma: desktop
+  [5426:7911](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-7911&m=dev),
+  tablet [5426:9736](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-9736&m=dev),
+  mobile [5426:9146](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-9146&m=dev) (o hero e a intro do mobile têm texto de outras páginas — seguir o desktop).
+  Secções por fazer, por ordem:
+  - "Zurück zur Übersicht" — tirar o link da oferta (`template-parts/offer/intro.php`) para um componente partilhado; aqui aponta para a página com o template dos Apartments (`montela_get_page_by_template()`).
+  - Barra de dados — o mesmo `components/apartment-facts.php` dos cards (os ícones seguem a cor do texto).
+  - Grelha de 3 fotos (1 grande + 2).
+  - Intro: título, "Jetzt buchen", texto.
+  - "Ausstattung:" — os termos `amenity` em 2 colunas com ícone, e uma foto.
+  - Slider de fotos (`components/gallery-slider.php`, a galeria do apartamento).
+  - "Inklusive Leistungen", Services comparison e "Für jede Auszeit das passende Angebot" (cards de ofertas com o `card-activity.php`) — iguais em todos os apartamentos: os módulos lêem da **página Apartments** (`post_id`), não do apartamento.
 - **Anreise & Lage / Getting here** (`page-templates/page-arrival.php`, "Arrival Template"; `/anreise-lage/`) — hero (Full screen), intro, Cards with icon, Features duas vezes ("Bequem mit dem Auto" em creme, "Stressfrei mit Bahn und Postauto" em sage — clones com prefixo `arrival_car_` / `arrival_train_`), "SBB Gepäcktransport" (`pages/arrival/luggage.php`), "Direkt zu Montela" (`pages/arrival/location.php`: painel creme com morada e botão Google Maps + slider de fotos de locais com o nome — no Figma era um placeholder; a última secção passa por baixo da caixa de booking do footer, como o Explore nos Tagesausflüge). Campos no grupo `group_page_arrival`. Figma: desktop
   [5781:17203](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5781-17203&m=dev),
   tablet [5426:17808](https://www.figma.com/design/f3bMaIW2Y0RPvteAzqmGKa/Design--c%C3%B3pia-?node-id=5426-17808&m=dev),
@@ -240,7 +267,7 @@ no clone e passar o prefixo ao módulo:
 | `group_module_image_band` — Module — Image band | `modules/image-band.php` | `section_image_band_image` (image) |
 | `group_module_activities` — Module — Activities | `modules/activities.php` | `section_activities_title` (text), `section_activities_text` (textarea), `section_activities_button` (link), `section_activities_summer` / `section_activities_winter` (relationship → `activity`, filtrado por Season `sommer` / `winter`, máx. 4, IDs; vazio = as 4 primeiras da estação). Args opcionais: `seasons` (só essas estações; uma só = sem switch) e `exclude` (uma activity a tirar dos cards). Cards: `components/card-activity.php` (imagem destacada, título, excerpt, permalink). Estação aberta ao carregar: inverno de Dezembro a Abril. |
 | `group_module_testimonials` — Module — Testimonials | `modules/testimonials.php` | `section_testimonials_title` (text), `section_testimonials_items` (relationship → `testimonial`, IDs, pela ordem escolhida; vazio = todos). Slider Swiper em fade, com loop e sem autoplay. |
-| `group_module_box_text` — Module — Box text | `modules/box-text.php` | `section_box_text_style` (button group: `box` — caixa com moldura walnut, título e texto lado a lado em desktop / `band` — faixa sage a toda a largura, texto creme, texto numa coluna à direita em desktop), `section_box_text_eyebrow` (text, título pequeno em itálico), `section_box_text_title` (text), `section_box_text_text` (textarea, `wpautop` — linha vazia = parágrafo novo); só no `band`: `section_box_text_button` (link, botão `outline` por baixo do título) e `section_box_text_items` (repeater `icon` (SVG creme) / `title` / `text` — lista com ícone, duas colunas em desktop). Margens no PHP, por estilo; a página pode passar outras em `$args['class']` (Kids e Lounge: `my-11 md:my-24 xl:my-32`). |
+| `group_module_box_text` — Module — Box text | `modules/box-text.php` | `section_box_text_style` (button group: `box` — caixa com moldura walnut, título e texto lado a lado em desktop / `band` — faixa sage a toda a largura, texto creme, texto numa coluna à direita em desktop / `cream` — o layout da `band` sobre o creme da página, texto, botão (`primary`) e ícones walnut, sem espaço próprio por cima — Apartments), `section_box_text_eyebrow` (text, título pequeno em itálico), `section_box_text_title` (text), `section_box_text_text` (textarea, `wpautop` — linha vazia = parágrafo novo); só nas faixas (`band`, `cream`): `section_box_text_button` (link, botão por baixo do título — `outline` na sage, `primary` na creme) e `section_box_text_items` (repeater `icon` (SVG na cor do texto: creme na sage, walnut na creme) / `title` / `text` — lista com ícone, duas colunas em desktop). Margens no PHP, por estilo; a página pode passar outras em `$args['class']` (Kids e Lounge: `my-11 md:my-24 xl:my-32`). |
 | `group_module_cards_icon` — Module — Cards with icon | `modules/cards-icon.php` | `section_cards_icon_title` (text), `section_cards_icon_text` (textarea, opcional), `section_cards_icon_items` (repeater: `icon` image, `title`, `subtitle`, `text`). Slider Swiper: 4 cards em desktop, 2 em tablet, 1 em mobile; setas escondem-se quando cabem todos; menos cards do que cabem = centrados. `section_cards_icon_style` (button group: `frame` — creme com filete sage, por omissão / `filled` — sage com texto creme, ícones creme). `$args['class']` substitui as margens (por omissão 128 / 192px por baixo). |
 | `group_module_text_photos` — Module — Text with photos | `modules/text-photos.php` | `section_find_apartment_title` (textarea, `br`), `_text`, `_button` (link), `_image_1`, `_image_2` (opcional). Título, texto e botão ao lado de 1 ou 2 fotos — o layout de tablet/mobile segue o número de fotos. Os nomes e as chaves (`field_page_home_find_apartment_*`) vêm de quando era secção só da homepage: **não mudar**, o conteúdo existente depende deles. |
 | `group_module_text_list` — Module — Text with checklist | `modules/text-list.php` | `section_text_list_layout` (button group: `left` / `right` — lado da foto em tablet/desktop), `_title` (textarea, `br`), `_text` (textarea, `wpautop`), `_items` (textarea, uma linha por item, cada uma com visto), `_image`. Título por cima; foto de um lado, texto + checklist do outro; em mobile a foto fica entre o texto e a lista. |
@@ -262,6 +289,7 @@ tab clona o grupo do módulo (Seamless, sem prefixo).
 | `group_page_region` — Page — Our Region | `page-templates/page-region.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Saas-Grund (campos próprios, `pages/region/place.php`: `section_place_title`, `_text`, `_image_1`, `_image_2`, `_items` repeater `icon` + `title`) · Highlights → `group_module_cards_icon` · Day trips (campos próprios, `pages/region/trips.php`: `section_trips_title`, `_text`, `_items` — relationship → `tagesausflug`, pela ordem escolhida; vazio = todos, os mais antigos primeiro. Card: `components/card-preview.php` — imagem destacada, título, excerto; em desktop fechado, abre no hover; em mobile/tablet foto inteira em cima e painel sempre aberto) · SaastalCard → `group_module_box_text` (style `band`) · Activities → `group_module_activities` |
 | `group_page_activities` — Page — Activities | `page-templates/page-activities.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Summer / Winter (campos próprios, `pages/activities/season.php` chamado duas vezes com `array( 'season' => 'summer' \| 'winter' )`: `section_{summer,winter}_eyebrow`, `_title`, `_text`, `_activities` — relationship sem máximo, filtrado pela estação; vazio = todas da estação; mais de 4 = slider em páginas de 4) · Saas-Grund → `group_module_text_photos` |
 | `group_page_stay` — Page — Stay | `page-templates/page-stay.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Space (campos próprios, `pages/stay/space.php`: `section_space_title` (textarea, `br`), `_text`, `_button`, `_image_1`, `_image_2`, `_items` repeater `icon` / `title` / `text`) · Services → `group_module_services` · Extras → `group_module_box_text` (style `band`, com botão e lista) · Testimonials → `group_module_testimonials` (falta o mapa, entre o Extras e os Testimonials) |
+| `group_page_apartments` — Page — Apartments | `page-templates/page-apartments.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Apartments (campos próprios: `section_apartments_items` — relationship → `apartment`, pela ordem escolhida; vazio = todos, pela "Ordem" (Page Attributes)) · Services → `group_module_services` · Included → `group_module_box_text` (style `cream`, com botão e lista) · Testimonials → `group_module_testimonials` |
 | `group_page_offers` — Page — Offers | `page-templates/page-offers.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · (cards das ofertas — sem campos: `pages/offers/cards.php` lê o CPT `offer`) · Services → `group_module_services` |
 | `group_page_montela_way` — Page — Montela Way | `page-templates/page-montela-way.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Values (campos próprios: `section_values_title` (textarea, `br`), `_text`, `_rows` repeater `image` + `texts` (repeater `title` a negrito / `text`)) · History (`section_history_image`, `_title` (textarea, `br`), `_text`, `_highlight_title`, `_highlight_text`) · Timeline (`section_timeline_items` repeater: `image`, `year`, `title`, `text`) · Future (`section_future_title` (textarea, `br`), `_text`, `_items` (textarea, uma linha por item), `_image`) · Closing (`section_closing_title` (textarea, `br`), `_text`) |
 | `group_page_arrival` — Page — Arrival | `page-templates/page-arrival.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Cards with icon → `group_module_cards_icon` · By car / By train → `group_module_features` (clones com "Prefix field names": `arrival_car` / `arrival_train`) · Luggage (campos próprios: `section_luggage_title` (textarea, `br`), `_text` (WYSIWYG básico), `_button` (link)) · Location (`section_location_title` (textarea, `br`), `_name`, `_address` (textarea, `br`), `_button` (link), `_slides` repeater `image` / `caption`) |
@@ -278,6 +306,8 @@ tab clona o grupo do módulo (Seamless, sem prefixo).
 | `group_page_shop` — Page — Shop | `page-templates/page-shop.php` | Hero · Intro · Shop info (campos próprios + clone `group_module_box_text` no mesmo tab) · Products (campos próprios) · Producers (campos próprios) |
 | `group_page_fitnessroom` — Page — Fitnessroom | `page-templates/page-fitnessroom.php` | Hero → `group_module_hero` · Intro → `group_module_intro` · Fitness info (campos próprios) · Training → `group_module_cards_icon` · Fitness usage (campos próprios) |
 | `group_cpt_activity` — Activity | `single-activity.php` (post type `activity`) | Hero → `group_module_hero` · Intro → `group_module_intro` · Text block 1 / Text block 2 → `group_module_text_list` (clones com "Prefix field names": `activity_block_1` / `activity_block_2`) · Cards with icon → `group_module_cards_icon` · Info cards (campos próprios, `template-parts/activity/info.php`: `section_activity_info_title` (textarea, `br`), `_text`, `_items` repeater de 2 a 4: `image`, `title`, `text`, `link` (opcional — sem link, sem botão; para um PDF, colar o URL do ficheiro)) · Activities → `group_module_activities` (o template passa `seasons` e `exclude` ao módulo) |
+| `group_cpt_apartment` — Apartment | `single-apartment.php` (post type `apartment`) | Hero → `group_module_hero` · Facts (`section_apartment_size` (m²), `_bedrooms`, `_bathrooms` — number, copy; `_occupancy` — text, "4-5 Personen"; também no card) · Photos (`section_apartment_photo_1` (grande), `_photo_2`, `_photo_3`) · Intro (`section_apartment_intro_title` (textarea, `br`), `_intro_text` (`wpautop`), `section_apartment_booking` (link; vazio = `header_booking_link`)) · Equipment (`section_apartment_equipment_title` — "Ausstattung:" por omissão, `_equipment_image`; a lista são os termos `amenity`, na barra lateral) · Gallery (`section_apartment_gallery` — slider do single e do card) |
+| `group_taxonomy_amenity` — Amenity | termos `amenity` | `amenity_icon` (image, ID, SVG walnut) |
 
 **Leitura nos módulos:** `montela_module_field( 'section_foo_title', $args )`
 (`inc/helpers.php`) — respeita `prefix` e `post_id` dos `$args` (e `row`, para
@@ -435,14 +465,17 @@ Todos os ficheiros PHP **devem** começar com um file docblock com `@package`, `
 - Imagens: usar `wp_get_attachment_image()` (gera `srcset`/`sizes`); `loading="lazy"` por omissão, `loading="eager"` + `fetchpriority="high"` apenas no hero/LCP.
 - Schema/structured data: **sempre via Yoast Schema API (JSON-LD)** — nunca microdata (`itemscope`/`itemtype`) inline no HTML.
 - Escaping sempre no output: `esc_html()`, `esc_attr()`, `esc_url()`, `wp_kses_post()`. Inputs com sanitização e nonces quando aplicável.
-- Strings sempre traduzíveis (`__()`, `esc_html__()`, etc.) com text domain `montela`, e em **inglês** por omissão.
+- Strings sempre traduzíveis (`__()`, `esc_html__()`, etc.) com text domain `montela`; a string fonte segue o Figma (DE ou EN, como lá estiver) e, sem texto no Figma, **alemão suíço (de-CH)** — ver i18n.
 - Estas regras aplicam-se a todo o código novo e a qualquer ficheiro tocado (boy-scout rule: ao editar, corrigir a semântica/documentação desse ficheiro).
 
 ---
 
 ## i18n / Traduções
 
-- Todas as strings do tema são traduzíveis (`__()`, `esc_html__()`, etc.) com text domain `montela`, em **inglês** por omissão.
+- Todas as strings do tema são traduzíveis (`__()`, `esc_html__()`, etc.) com text domain `montela`.
+- **A string fonte é a que está no Figma, na língua em que lá está.** Se o design tem o texto em alemão ("Mehr erfahren", "Zurück zur Übersicht", "Grösse: %s m²"), fica em alemão; se o tem em inglês, fica em inglês. Não traduzir o que o design já escreve.
+- **Sem texto no Figma** (um `aria-label`, um fallback, uma string que o design não mostra): **alemão suíço (de-CH)** por omissão, a língua principal do site. Tratamento formal (Sie) e ortografia suíça (**`ss`, nunca `ß`**).
+- As outras línguas (EN, FR) traduzem-se no WPML String Translation. Strings só do admin (dashboard dig.id, localizações de menus, `_doing_it_wrong`) ficam em inglês.
 - **Gerar o `.pot` com WP-CLI** (disponível no shell do Local by WPEngine), idealmente antes do lançamento:
   ```bash
   wp i18n make-pot . languages/montela.pot --domain=montela
@@ -524,3 +557,4 @@ secção só de uma página que passa a aparecer noutra é **promovida a módulo
 - Ao adicionar template parts, seguir a estrutura existente em `template-parts/`.
 - Assets CSS/JS são compilados via `npm run prod` (ver secção Build) — nunca editar `dist/` directamente.
 - Text domain do tema: `montela`.
+- **`NOTES.txt`** (raiz do tema): notas do projecto para rever no fim, em três partes — **A. Regras para o starter** (o que falhou ou se repetiu e deve virar regra no dig.id Theme Starter, com o texto da regra e o ficheiro do starter onde entra), **B. Decisões por confirmar** (desvios ao Figma e textos escritos sem texto no design, com quem confirma) e **C. Erros no Figma** (texto de outra página, gralhas, medidas que não fecham). Acrescentar a nota **na sessão em que o caso aparece**, com a data e os campos que o cabeçalho de cada parte pede, e dizê-lo na resposta. Trabalho por fazer vai para o `TODO.md`, não para aqui.

@@ -22,7 +22,7 @@
  *                    download, e.g. a menu PDF). Since 1.13.0.
  * - class   (string) Optional. Extra classes for the link.
  * - context (string) Optional. Screen-reader-only words after the title, for
- *                    links that repeat on a page ("Learn more" + card title).
+ *                    links that repeat on a page ("Mehr erfahren" + card title).
  *
  * @package montela
  * @subpackage Component
@@ -50,7 +50,7 @@ $btn_context = ! empty( $args['context'] ) ? $args['context'] : '';
 			<span class="sr-only">: <?php echo esc_html( $btn_context ); ?></span>
 		<?php endif; ?>
 		<?php if ( '_blank' === $btn_target ) : ?>
-			<span class="sr-only"><?php esc_html_e( '(opens in a new tab)', 'montela' ); ?></span>
+			<span class="sr-only"><?php esc_html_e( '(öffnet in einem neuen Tab)', 'montela' ); ?></span>
 		<?php endif; ?>
 	</span>
 	<span class="btn__icon" aria-hidden="true"></span>

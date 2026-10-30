@@ -43,7 +43,7 @@ get_template_part( 'template-parts/pages/page-header' );
 			</div>
 			<?php the_posts_pagination(); ?>
 		<?php else : ?>
-			<p><?php esc_html_e( 'No posts found.', 'montela' ); ?></p>
+			<p><?php esc_html_e( 'Keine Beiträge gefunden.', 'montela' ); ?></p>
 		<?php endif; ?>
 	</div>
 </section>

@@ -24,7 +24,7 @@ if ( ! $imprint_boxes ) {
 	return;
 }
 ?>
-<section class="section-imprint" aria-label="<?php esc_attr_e( 'Imprint', 'montela' ); ?>">
+<section class="section-imprint" aria-label="<?php esc_attr_e( 'Impressum', 'montela' ); ?>">
 	<div class="theme-container">
 		<div class="theme-grid">
 			<div class="section-imprint__boxes">

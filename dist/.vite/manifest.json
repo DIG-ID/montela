@@ -88,7 +88,7 @@
     "isEntry": true
   },
   "assets/sass/main.sass": {
-    "file": "css/main-CPeVDsd3.css",
+    "file": "css/main-CGYUwove.css",
     "name": "main",
     "names": [
       "main.css"
@@ -112,8 +112,28 @@
       "assets/slider-prev-sage-CRYbWYmP.svg",
       "assets/slider-next-sage-B0mM5aXy.svg",
       "assets/slider-prev-walnut-Dr4u8bNN.svg",
-      "assets/slider-next-walnut-BF6QV3Oz.svg"
+      "assets/slider-next-walnut-BF6QV3Oz.svg",
+      "assets/apartment-size-xFpri9sm.svg",
+      "assets/apartment-bathrooms-6x8bapDd.svg",
+      "assets/apartment-bedrooms-16tD24bg.svg",
+      "assets/apartment-occupancy-BJ9Ho7Ox.svg"
     ]
+  },
+  "assets/svg/icons/apartment-bathrooms.svg": {
+    "file": "assets/apartment-bathrooms-6x8bapDd.svg",
+    "src": "assets/svg/icons/apartment-bathrooms.svg"
+  },
+  "assets/svg/icons/apartment-bedrooms.svg": {
+    "file": "assets/apartment-bedrooms-16tD24bg.svg",
+    "src": "assets/svg/icons/apartment-bedrooms.svg"
+  },
+  "assets/svg/icons/apartment-occupancy.svg": {
+    "file": "assets/apartment-occupancy-BJ9Ho7Ox.svg",
+    "src": "assets/svg/icons/apartment-occupancy.svg"
+  },
+  "assets/svg/icons/apartment-size.svg": {
+    "file": "assets/apartment-size-xFpri9sm.svg",
+    "src": "assets/svg/icons/apartment-size.svg"
   },
   "assets/svg/icons/arrow-back.svg": {
     "file": "assets/arrow-back-tz3BBcEc.svg",

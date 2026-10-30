@@ -8,7 +8,7 @@
             "name": "section_box_text_style",
             "aria-label": "",
             "type": "button_group",
-            "instructions": "Box: walnut frame. Green band: full-width sage background.",
+            "instructions": "Box: walnut frame. Green band: full-width sage background. Cream band: the green band's layout on the page background, walnut text.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -19,7 +19,8 @@
             "wpml_cf_preferences": 2,
             "choices": {
                 "box": "Box",
-                "band": "Green band"
+                "band": "Green band",
+                "cream": "Cream band"
             },
             "default_value": "box",
             "return_format": "value",
@@ -99,7 +100,7 @@
             "name": "section_box_text_button",
             "aria-label": "",
             "type": "link",
-            "instructions": "Optional. Green band only.",
+            "instructions": "Optional. Bands only.",
             "required": 0,
             "conditional_logic": [
                 [
@@ -107,6 +108,13 @@
                         "field": "field_module_box_text_style",
                         "operator": "==",
                         "value": "band"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_module_box_text_style",
+                        "operator": "==",
+                        "value": "cream"
                     }
                 ]
             ],
@@ -125,7 +133,7 @@
             "name": "section_box_text_items",
             "aria-label": "",
             "type": "repeater",
-            "instructions": "Optional. Green band only: icon, a bold line and a short text — two columns on desktop.",
+            "instructions": "Optional. Bands only: icon, a bold line and a short text — two columns on desktop.",
             "required": 0,
             "conditional_logic": [
                 [
@@ -133,6 +141,13 @@
                         "field": "field_module_box_text_style",
                         "operator": "==",
                         "value": "band"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_module_box_text_style",
+                        "operator": "==",
+                        "value": "cream"
                     }
                 ]
             ],
@@ -156,7 +171,7 @@
                     "name": "icon",
                     "aria-label": "",
                     "type": "image",
-                    "instructions": "SVG in the light (cream) colour.",
+                    "instructions": "SVG in the band's text colour: cream on the green band, walnut (dark) on the cream band.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -248,6 +263,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793274348,
+    "modified": 1793363635,
     "acfml_field_group_mode": "advanced"
 }

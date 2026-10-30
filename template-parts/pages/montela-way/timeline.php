@@ -47,7 +47,7 @@ $timeline_swiper   = array(
 );
 ?>
 <section class="section-timeline" aria-labelledby="<?php echo esc_attr( $timeline_title_id ); ?>">
-	<h2 id="<?php echo esc_attr( $timeline_title_id ); ?>" class="sr-only"><?php esc_html_e( 'Our story, year by year', 'montela' ); ?></h2>
+	<h2 id="<?php echo esc_attr( $timeline_title_id ); ?>" class="sr-only"><?php esc_html_e( 'Unsere Geschichte, Jahr für Jahr', 'montela' ); ?></h2>
 
 	<div class="section-timeline__inner" data-swiper-root>
 		<div class="swiper section-timeline__swiper"<?php echo $timeline_many ? ' data-swiper="' . esc_attr( wp_json_encode( $timeline_swiper ) ) . '"' : ''; ?>>
@@ -86,8 +86,8 @@ $timeline_swiper   = array(
 
 		<?php if ( $timeline_many ) : ?>
 			<div class="slider-nav section-timeline__nav">
-				<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-swiper-prev aria-label="<?php esc_attr_e( 'Previous year', 'montela' ); ?>"></button>
-				<button class="slider-nav__btn slider-nav__btn--next" type="button" data-swiper-next aria-label="<?php esc_attr_e( 'Next year', 'montela' ); ?>"></button>
+				<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-swiper-prev aria-label="<?php esc_attr_e( 'Vorheriges Jahr', 'montela' ); ?>"></button>
+				<button class="slider-nav__btn slider-nav__btn--next" type="button" data-swiper-next aria-label="<?php esc_attr_e( 'Nächstes Jahr', 'montela' ); ?>"></button>
 			</div>
 		<?php endif; ?>
 	</div>

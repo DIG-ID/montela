@@ -1,0 +1,56 @@
+{
+    "key": "group_taxonomy_amenity",
+    "title": "Amenity",
+    "fields": [
+        {
+            "key": "field_taxonomy_amenity_icon",
+            "label": "Icon",
+            "name": "amenity_icon",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "SVG in the dark (walnut) colour.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "svg",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "amenity"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Amenity icon.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1793363634,
+    "acfml_field_group_mode": "advanced"
+}

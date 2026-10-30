@@ -65,8 +65,8 @@ $season_class    = 'section-season' . ( count( $season_ids ) > 4 ? ' section-sea
 
 				<?php if ( count( $season_ids ) > 1 ) : ?>
 					<div class="slider-nav slider-nav--sage section-season__nav">
-						<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-activities-prev aria-label="<?php esc_attr_e( 'Previous activities', 'montela' ); ?>"></button>
-						<button class="slider-nav__btn slider-nav__btn--next" type="button" data-activities-next aria-label="<?php esc_attr_e( 'Next activities', 'montela' ); ?>"></button>
+						<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-activities-prev aria-label="<?php esc_attr_e( 'Vorherige Aktivitäten', 'montela' ); ?>"></button>
+						<button class="slider-nav__btn slider-nav__btn--next" type="button" data-activities-next aria-label="<?php esc_attr_e( 'Nächste Aktivitäten', 'montela' ); ?>"></button>
 					</div>
 				<?php endif; ?>
 			</div>

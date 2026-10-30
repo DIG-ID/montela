@@ -11,6 +11,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.33.0] — 2026-10-30
+
+### Added
+- Apartments: a new post type (one page per apartment, at /aufenthalt/apartments/…) with its fields — facts (size, bedrooms, bathrooms, occupancy), photos, intro with booking link, equipment and gallery.
+- Amenities (Ausstattung) for apartments, each with its own icon.
+- "Apartments Template" for the apartments overview page: hero, intro and the apartment cards — title, size, bathrooms, bedrooms and occupancy with icons, short text, "Mehr erfahren" and booking buttons, and a photo slider. The page can pick the apartments and their order; left empty, it shows them all. Below the cards: the services comparison, "Inklusive Leistungen" and the guest reviews slider.
+- Box text module: a third style, "Cream band" — the green band's layout (title, text, button and a list with icons) in walnut on the page background.
+
+### Changed
+- The theme's own front-end texts (buttons such as "Mehr erfahren" and "Zurück zur Übersicht", labels, screen-reader texts, 404 fallbacks, footer copyright) now default to Swiss German; other languages are translated in WPML String Translation.
+
 ## [1.32.2] — 2026-10-30
 
 ### Fixed
