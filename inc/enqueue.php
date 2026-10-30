@@ -159,7 +159,28 @@ if ( ! function_exists( 'montela_enqueue_module' ) ) :
 			return false;
 		}
 
-		return montela_vite_enqueue_script( 'montela-' . $module, $modules[ $module ] );
+		$enqueued = montela_vite_enqueue_script( 'montela-' . $module, $modules[ $module ] );
+
+		// Swiper's A11y module announces its own English messages (first/last
+		// slide, pagination bullets): hand it translatable ones, once per page.
+		static $swiper_i18n_done = false;
+		if ( 'swiper' === $module && ! $swiper_i18n_done ) {
+			$swiper_i18n_done = true;
+			wp_add_inline_script(
+				'montela-swiper',
+				'window.montelaSwiperI18n = ' . wp_json_encode(
+					array(
+						'firstSlideMessage'       => __( 'Das ist das erste Element.', 'montela' ),
+						'lastSlideMessage'        => __( 'Das ist das letzte Element.', 'montela' ),
+						/* translators: {{index}} is replaced by Swiper with the slide number. */
+						'paginationBulletMessage' => __( 'Zu Element {{index}}', 'montela' ),
+					)
+				) . ';',
+				'before'
+			);
+		}
+
+		return $enqueued;
 	}
 endif;
 

@@ -44,9 +44,10 @@ domReady(() => {
       prevEl: root.querySelector('[data-swiper-prev], .swiper-button-prev'),
     };
     const pagination = root.querySelector('.swiper-pagination');
-    // A11y writes its own (English) labels on the arrows: keep the theme's
-    // translated aria-label when the button has one.
-    const a11y = {};
+    // A11y's own messages are English: use the translated ones printed by
+    // montela_enqueue_module() (inc/enqueue.php), and keep the theme's
+    // aria-label on the arrows when the button has one.
+    const a11y = { ...(window.montelaSwiperI18n || {}) };
     if (navigation.prevEl?.getAttribute('aria-label')) {
       a11y.prevSlideMessage = navigation.prevEl.getAttribute('aria-label');
     }

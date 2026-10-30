@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.33.1] — 2026-10-30
+
+### Fixed
+- Bike Hotel cards: the default button label is "Mehr erfahren", like the other cards, instead of the English Figma placeholder.
+- Sliders: what screen readers announce on the first and last slide and on the pagination dots is now in German (translatable), instead of Swiper's English messages.
+
 ## [1.33.0] — 2026-10-30
 
 ### Added

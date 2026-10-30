@@ -42,7 +42,7 @@ $bx_stem   = ( isset( $args['fields'] ) && 'bike_partners' === $args['fields'] )
 $bx_layout = ( isset( $args['layout'] ) && 'left' === $args['layout'] ) ? 'left' : 'right';
 $bx_title  = get_field( 'section_' . $bx_stem . '_title' );
 $bx_text   = get_field( 'section_' . $bx_stem . '_text' );
-$bx_label  = __( 'Link to subpage', 'montela' ); // Figma copy; placeholder until the final wording is decided.
+$bx_label  = __( 'Mehr erfahren', 'montela' ); // Figma has the placeholder "Link to subpage"; same label as the other cards until the final wording is decided.
 
 $bx_cards = array();
 foreach ( (array) get_field( 'section_' . $bx_stem . '_cards' ) as $bx_row ) {
