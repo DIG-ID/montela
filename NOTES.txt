@@ -53,7 +53,8 @@ no ficheiro indicado em "No starter".
              /setup-project: nova pergunta "Língua principal do site"
              (ex.: de-CH — Sie, "ss" e nunca "ß").
   No Montela CLAUDE.md, secção i18n.
-  Estado     POR PASSAR
+  Estado     PASSADA AO STARTER (2026-10-30) — theme-starter-vite, secção
+             [Unreleased] do CHANGELOG (próxima release).
 
 [2026-10-30] A2. Folha de conteúdo
   Problema   O Figma tem textos copiados de outras páginas (o hero do tablet
@@ -64,7 +65,8 @@ no ficheiro indicado em "No starter".
   No starter CLAUDE.md, secção nova "Conteúdo" (vazia, só o placeholder do
              link); SETUP.md: pedir o link.
   No Montela CLAUDE.md, secção Conteúdo.
-  Estado     POR PASSAR
+  Estado     PASSADA AO STARTER (2026-10-30) — theme-starter-vite, secção
+             [Unreleased] do CHANGELOG (próxima release).
 
 [2026-10-29] A3. CPT com URL por baixo de uma página
   Problema   Quatro vezes neste projecto (activity, offer, tagesausflug,
@@ -80,7 +82,8 @@ no ficheiro indicado em "No starter".
   No starter CLAUDE.md, secção "Custom Post Types"; inc/helpers.php: trazer
              montela_get_page_by_template().
   No Montela acf-json/post_type_apartment.json; inc/helpers.php.
-  Estado     POR PASSAR
+  Estado     PASSADA AO STARTER (2026-10-30) — theme-starter-vite, secção
+             [Unreleased] do CHANGELOG (próxima release).
 
 [2026-10-29] A4. Ordem fixa dos termos de uma taxonomia
   Problema   As amenities têm a ordem do design; o WordPress ordena por nome
@@ -92,7 +95,8 @@ no ficheiro indicado em "No starter".
   No starter .claude/rules/php.md (padrão) ou inc/helpers.php (função
              genérica que recebe taxonomia + lista de slugs).
   No Montela montela_get_apartment_amenities(), inc/helpers.php.
-  Estado     POR PASSAR
+  Estado     PASSADA AO STARTER (2026-10-30) — theme-starter-vite, secção
+             [Unreleased] do CHANGELOG (próxima release).
 
 [2026-10-29] A5. Importar ACF por WP-CLI sem duplicar
   Problema   acf_get_field_group( $key )['ID'] devolve a cópia do JSON
@@ -105,8 +109,8 @@ no ficheiro indicado em "No starter".
   No starter CLAUDE.md, secção "ACF Field Groups".
   No Montela CLAUDE.md, secção "ACF Field Groups" (grupos, CPTs e
              taxonomias — a dos CPTs acrescentada a 2026-10-30).
-  Estado     PASSADA AO STARTER (2026-10-30) — v2.4.3, CLAUDE.md, secção
-             "ACF Field Groups" → "Importar por WP-CLI".
+  Estado     PASSADA AO STARTER (2026-10-30) — theme-starter-vite, secção
+             [Unreleased] do CHANGELOG (próxima release).
 
 [2026-10-29] A6. Yoast com posts criados em local
   Problema   Fora de produção o Yoast não cria indexables; os posts criados
@@ -118,7 +122,8 @@ no ficheiro indicado em "No starter".
                  ->build_for_id_and_type( $id, 'post' );
   No starter CLAUDE.md, secção "SEO / Schema" (nota sobre ambiente local).
   No Montela script de conteúdo dos apartamentos (scratchpad, fora do repo).
-  Estado     POR PASSAR
+  Estado     PASSADA AO STARTER (2026-10-30) — theme-starter-vite, secção
+             [Unreleased] do CHANGELOG (próxima release).
 
 [2026-10-29] A7. Versão no package-lock.json
   Problema   O package-lock.json ficou em 1.26.0 enquanto o style.css, o
@@ -128,7 +133,8 @@ no ficheiro indicado em "No starter".
   No starter skills /deploy, /release e /go-live (passo de sincronização);
              CLAUDE.md, secção "Versionamento".
   No Montela corrigido à mão na 1.32.0.
-  Estado     POR PASSAR
+  Estado     PASSADA AO STARTER (2026-10-30) — theme-starter-vite, secção
+             [Unreleased] do CHANGELOG (próxima release).
 
 [2026-10-29] A8. Ícones SVG exportados do Figma
   Problema   Exportar o frame de um ícone traz lixo do canvas (rectângulo
@@ -141,7 +147,8 @@ no ficheiro indicado em "No starter".
              (padrão mask).
   No Montela assets/svg/icons/apartment-*.svg;
              assets/sass/_components/_apartment-facts.sass.
-  Estado     POR PASSAR
+  Estado     PASSADA AO STARTER (2026-10-30) — theme-starter-vite, secção
+             [Unreleased] do CHANGELOG (próxima release).
 
 [2026-10-29] A9. Altura do Swiper
   Problema   O CSS do Swiper (.swiper { height: auto }) carrega depois do
@@ -150,7 +157,8 @@ no ficheiro indicado em "No starter".
              classes: .foo__photos .foo__swiper.
   No starter .claude/rules/sass.md, secção "Especificidade" (como exemplo).
   No Montela assets/sass/_pages/_apartments.sass.
-  Estado     POR PASSAR
+  Estado     PASSADA AO STARTER (2026-10-30) — theme-starter-vite, secção
+             [Unreleased] do CHANGELOG (próxima release).
 
 [2026-10-29] A10. Secções iguais em todos os posts de um CPT
   Problema   Services e "Inklusive Leistungen" são iguais em todos os
@@ -173,7 +181,8 @@ no ficheiro indicado em "No starter".
              sobretudo condições e listas de variantes; verificar a página.
   No starter skill /deploy, passo 2 (pré-check do repositório).
   No Montela template-parts/modules/box-text.php (ramo 'box' explícito).
-  Estado     POR PASSAR
+  Estado     PASSADA AO STARTER (2026-10-30) — theme-starter-vite, secção
+             [Unreleased] do CHANGELOG (próxima release).
 
 [2026-10-30] A12. Nível dos headings: estrutura, não estilo do Figma
   Problema   Na 1.32.0 a tag passou a seguir o estilo de texto do Figma
@@ -189,7 +198,8 @@ no ficheiro indicado em "No starter".
   No starter .claude/rules/figma.md e CLAUDE.md, secção "Semântica HTML5".
   No Montela .claude/rules/figma.md, "Tags de título";
              template-parts/components/card-activity.php (title_tag).
-  Estado     POR PASSAR
+  Estado     PASSADA AO STARTER (2026-10-30) — theme-starter-vite, secção
+             [Unreleased] do CHANGELOG (próxima release).
 
 [2026-10-30] A13. Mudar um componente partilhado
   Problema   Na 1.32.0, alterações a icon-list, card-activity, box-text e
@@ -206,7 +216,8 @@ no ficheiro indicado em "No starter".
   No starter CLAUDE.md, "Convenções Gerais"; .claude/rules/php.md (template
              parts); skill /deploy, passo de lint/verificação.
   No Montela correcções na 1.32.1 (_home.sass, _region.sass).
-  Estado     POR PASSAR
+  Estado     PASSADA AO STARTER (2026-10-30) — theme-starter-vite, secção
+             [Unreleased] do CHANGELOG (próxima release).
 
 
 ===============================================================================
