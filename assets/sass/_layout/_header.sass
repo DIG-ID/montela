@@ -176,11 +176,12 @@
 // cream, as in the 404 frames (desktop 5426:5441). The bordered menu, the
 // language box and the toggle turn walnut; the booking button becomes the
 // walnut button (cream label and arrow); the logo swaps to its walnut file.
-// While the mega menu (sage) is open or closing, the cream header is back.
+// While the mega menu (sage) is open or closing, or the header is stuck (sage
+// bar), the cream header is back.
 .site-logo__img--dark
   @apply hidden
 
-.header-dark:not(.is-menu-open):not(.is-menu-closing)
+.header-dark:not(.is-menu-open):not(.is-menu-closing):not(.is-header-stuck)
   .header-main
     @apply text-montela-walnut
   .site-logo__img
@@ -207,3 +208,25 @@
   .header-main__lang:hover,
   .header-main__toggle:hover
     @apply text-montela-mustard
+
+// -- Sticky header -------------------------------------------------------------
+// Figma "sticky menu bar_desktop" 5895:18432 (desktop only): once the header
+// has scrolled out of view (`.is-header-stuck` on <body>, main.js), it comes
+// back fixed at the top as a sage bar, 80px tall — logo (62px) and controls
+// (60px) centred, 9px above and below the logo. The current menu item gets a
+// 20% cream background instead of the mustard text. Tablet and mobile have no
+// frame: the same sage bar and 9px around the logo (Bruno) — 80px tall on
+// tablet, 76 on mobile. It drops in from above.
+.is-header-stuck
+  .header-main
+    @apply fixed bg-montela-sage text-montela-cream motion-safe:animate-[header-drop_400ms_ease-out]
+  .header-main__inner
+    @apply py-[9px]
+  .header-main__menu
+    .current-menu-item > a,
+    .current-menu-ancestor > a
+      @apply bg-montela-cream/20 text-montela-cream
+
+@keyframes header-drop
+  from
+    transform: translateY(-100%)
