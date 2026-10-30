@@ -105,7 +105,8 @@ no ficheiro indicado em "No starter".
   No starter CLAUDE.md, secção "ACF Field Groups".
   No Montela CLAUDE.md, secção "ACF Field Groups" (grupos, CPTs e
              taxonomias — a dos CPTs acrescentada a 2026-10-30).
-  Estado     POR PASSAR
+  Estado     PASSADA AO STARTER (2026-10-30) — v2.4.3, CLAUDE.md, secção
+             "ACF Field Groups" → "Importar por WP-CLI".
 
 [2026-10-29] A6. Yoast com posts criados em local
   Problema   Fora de produção o Yoast não cria indexables; os posts criados
