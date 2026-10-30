@@ -91,11 +91,11 @@ $exp_swiper = array(
 
 	<div class="section-explore__panel">
 		<?php if ( $exp_overline ) : ?>
-			<h2 class="title-h2 section-explore__overline"><?php echo esc_html( $exp_overline ); ?></h2>
+			<p class="title-h2 section-explore__overline"><?php echo esc_html( $exp_overline ); ?></p>
 		<?php endif; ?>
 
 		<?php if ( $exp_title ) : ?>
-			<h3 id="<?php echo esc_attr( $exp_title_id ); ?>" class="title-h3 section-explore__title"><?php echo esc_html( $exp_title ); ?></h3>
+			<h2 id="<?php echo esc_attr( $exp_title_id ); ?>" class="title-h3 section-explore__title"><?php echo esc_html( $exp_title ); ?></h2>
 		<?php endif; ?>
 
 		<?php if ( $exp_image ) : ?>

@@ -36,9 +36,9 @@ $gal_title_id = wp_unique_id( 'section-gallery-title-' );
 	<div class="theme-container">
 		<div class="theme-grid section-gallery__grid">
 			<?php if ( $gal_title ) : ?>
-				<h3 id="<?php echo esc_attr( $gal_title_id ); ?>" class="title-h3 section-gallery__title">
+				<h2 id="<?php echo esc_attr( $gal_title_id ); ?>" class="title-h3 section-gallery__title">
 					<?php echo wp_kses( $gal_title, array( 'br' => array( 'class' => array() ) ) ); ?>
-				</h3>
+				</h2>
 			<?php endif; ?>
 
 			<?php if ( $gal_image_1 ) : ?>

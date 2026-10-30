@@ -132,7 +132,7 @@ $act_title_id = $act_uid . '-title';
 
 				<div class="section-activities__copy">
 					<?php if ( $act_title ) : ?>
-						<h3 id="<?php echo esc_attr( $act_title_id ); ?>" class="title-h3 section-activities__title"><?php echo esc_html( $act_title ); ?></h3>
+						<h2 id="<?php echo esc_attr( $act_title_id ); ?>" class="title-h3 section-activities__title"><?php echo esc_html( $act_title ); ?></h2>
 					<?php endif; ?>
 
 					<?php if ( $act_text ) : ?>

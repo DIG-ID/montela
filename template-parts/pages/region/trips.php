@@ -70,7 +70,7 @@ $trips_swiper   = array(
 				<?php if ( $trips_title || $trips_text ) : ?>
 					<div class="section-trips__head">
 						<?php if ( $trips_title ) : ?>
-							<h3 id="<?php echo esc_attr( $trips_title_id ); ?>" class="title-h3 section-trips__title"><?php echo wp_kses( $trips_title, array( 'br' => array( 'class' => array() ) ) ); ?></h3>
+							<h2 id="<?php echo esc_attr( $trips_title_id ); ?>" class="title-h3 section-trips__title"><?php echo wp_kses( $trips_title, array( 'br' => array( 'class' => array() ) ) ); ?></h2>
 						<?php endif; ?>
 						<?php if ( $trips_text ) : ?>
 							<p class="body-text section-trips__text"><?php echo esc_html( $trips_text ); ?></p>

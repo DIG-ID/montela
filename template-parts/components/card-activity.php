@@ -21,7 +21,7 @@
  *                    target) — the button; no URL, no button.
  * - class   (string) Optional. Extra classes for the card.
  * - title_tag (string) Optional. Heading level of the title, h2–h6 (default
- *                    h4), so the card fits the heading outline of the
+ *                    h3), so the card fits the heading outline of the
  *                    section it sits in.
  *
  * @package montela
@@ -59,7 +59,7 @@ if ( $card_id ) {
 }
 
 $card_class     = 'card-activity' . ( ! empty( $args['class'] ) ? ' ' . $args['class'] : '' );
-$card_title_tag = ( ! empty( $args['title_tag'] ) && in_array( $args['title_tag'], array( 'h2', 'h3', 'h4', 'h5', 'h6' ), true ) ) ? $args['title_tag'] : 'h4';
+$card_title_tag = ( ! empty( $args['title_tag'] ) && in_array( $args['title_tag'], array( 'h2', 'h3', 'h4', 'h5', 'h6' ), true ) ) ? $args['title_tag'] : 'h3';
 ?>
 <article class="<?php echo esc_attr( $card_class ); ?>">
 	<?php if ( $card_image ) : ?>

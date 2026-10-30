@@ -54,7 +54,7 @@ $srv_swiper   = array(
 			<div class="section-services__inner" data-swiper-root>
 				<div class="section-services__head">
 					<?php if ( $srv_title ) : ?>
-						<h3 id="<?php echo esc_attr( $srv_title_id ); ?>" class="title-h3 section-services__title"><?php echo wp_kses( $srv_title, array( 'br' => array( 'class' => array() ) ) ); ?></h3>
+						<h2 id="<?php echo esc_attr( $srv_title_id ); ?>" class="title-h3 section-services__title"><?php echo wp_kses( $srv_title, array( 'br' => array( 'class' => array() ) ) ); ?></h2>
 					<?php endif; ?>
 
 					<?php if ( $srv_text || $srv_button ) : ?>

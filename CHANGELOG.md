@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.32.2] — 2026-10-30
+
+### Fixed
+- Section titles are `<h2>` again, side by side (homepage, Erkunden, Unsere Region, Aktivitäten, offers, day trips and the shared modules), so screen readers find every section; their look is unchanged.
+- Small lines above a title ("SaastalCard", "Sommeraktivitäten") are no longer headings.
+- Activity card titles are `<h3>` by default again.
+
 ## [1.32.1] — 2026-10-30
 
 ### Fixed

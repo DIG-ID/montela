@@ -69,11 +69,11 @@ $box_title_id = wp_unique_id( 'section-box-text-title-' );
 			<div class="section-box-text__box">
 				<div class="section-box-text__inner">
 					<?php if ( $box_eyebrow ) : ?>
-						<h2 class="title-h2 section-box-text__eyebrow"><?php echo esc_html( $box_eyebrow ); ?></h2>
+						<p class="title-h2 section-box-text__eyebrow"><?php echo esc_html( $box_eyebrow ); ?></p>
 					<?php endif; ?>
 
 					<?php if ( $box_title ) : ?>
-						<h3 id="<?php echo esc_attr( $box_title_id ); ?>" class="title-h3 section-box-text__title"><?php echo esc_html( $box_title ); ?></h3>
+						<h2 id="<?php echo esc_attr( $box_title_id ); ?>" class="title-h3 section-box-text__title"><?php echo esc_html( $box_title ); ?></h2>
 					<?php endif; ?>
 
 					<?php if ( $box_text ) : ?>
