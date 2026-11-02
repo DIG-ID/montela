@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.36.3] — 2026-11-02
+
+### Fixed
+- Box text (opening hours on Kids Playground, Lounge & Bar and Shop): a one-word title such as "Öffnungszeiten" no longer breaks before its last letter on desktop screens narrower than 1920px — the title and the box padding scale down with the screen.
+
 ## [1.36.2] — 2026-11-02
 
 ### Fixed

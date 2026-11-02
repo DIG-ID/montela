@@ -405,6 +405,20 @@ o cliente.
   Onde       template-parts/modules/text-photos.php.
   Estado     POR CONFIRMAR
 
+[2026-11-02] B14. Conteúdo do Unser Resort e sub-páginas: folha vs Figma
+  O quê      textos para o staging das 7 páginas do Resort.
+  Figma      vários textos diferentes da folha (botões dos blocos do Resort,
+             títulos das intros, texto do Shop info, lista do Fitness, botão
+             do Horizontal do Meetings).
+  Feito      a folha onde há texto lá; o Figma para a estrutura e para o que
+             a folha não tem (produtos e produtores do Shop). Lista completa
+             em ~/Documents/Dig.id/websites/montela/CONTEUDO-STAGING.md
+             ("Por confirmar").
+  Porquê     regra do CLAUDE.md: a folha antes do Figma.
+  Confirma   cliente ou folha de conteúdo.
+  Onde       conteúdo (wp-admin), não código.
+  Estado     POR CONFIRMAR
+
 ===============================================================================
 C. ERROS NO FIGMA
 ===============================================================================
@@ -513,4 +527,31 @@ Campos de cada nota:
              activities tem o mesmo desenho (5426:5140) e ficou igual
              (_components/_card-activity.sass); o título e o excerpt desses
              cards continuam centrados, como no Figma.
+  Estado     POR REPORTAR
+
+[2026-11-02] C12. Fotos em baixa resolução nas páginas do Resort
+  Frame      desktop do Unser Resort (5895:20065) e das sub-páginas.
+  Erro       o Figma só tem estas fotos a 1400px (o hero do Unser Resort a
+             1920px, ecrã inteiro): heros do Kids Playground e do Meetings &
+             Groups, Holiday do Kids, slide 3 do Playground info, slide do
+             Explore do Bike Hotel, foto larga do Bike services (= bloco 1
+             outer do Resort) e bloco 6 outer do Resort. As outras vêm a
+             2000–4096px.
+  No site    exportadas assim para o staging (WebP com a largura do original).
+             Pedir os originais e substituir.
+  Estado     POR REPORTAR
+
+[2026-11-02] C13. Produtores do Shop com texto de outro projecto
+  Frame      5895:19815 (Shop, desktop — "Aus der Region. Mit Leidenschaft.").
+  Erro       "idealen Partner für Wallmont" e "Wallmont Online Shop"; o
+             título diz "Schaukäserei Rohne AG" e o texto "Schaukäserei Rhone".
+  No site    conteúdo (staging) copiado do Figma tal e qual, por confirmar.
+  Estado     POR REPORTAR
+
+[2026-11-02] C14. Blocos do Unser Resort
+  Frame      5895:20070 (Unser Resort, desktop).
+  Erro       o bloco "Regional einkaufen" tem o texto do bloco do Bike Hotel;
+             o bloco do Mehrzweckraum junta o H3 da folha ao parágrafo.
+  No site    bloco 2 com o texto da folha; bloco 6 com o texto do Figma
+             (escolha do Bruno, 2026-11-02).
   Estado     POR REPORTAR

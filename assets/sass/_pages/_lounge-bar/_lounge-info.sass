@@ -36,10 +36,11 @@
 // Opening hours box (modules/box-text.php): this page's frames draw a 90/80
 // title from tablet up and 20/32 text on desktop only (Figma 5895:20901;
 // tablet 5895:20497 keeps the module's 18/25), where the module's own frame
-// has 80/76. Three classes to beat the module's
+// has 80/76. On desktop it shrinks below 1920, as the module's
+// (see _box-text.sass). Three classes to beat the module's
 // .section-box-text--box .section-box-text__title.
 .section-lounge-info .section-box-text--box .section-box-text__title
-  @apply md:text-[90px] md:leading-[80px]
+  @apply md:text-[90px] md:leading-[80px] xl:text-[clamp(68px,calc(24px+3.4375vw),90px)] xl:leading-[0.89]
 
 .section-lounge-info .section-box-text--box .section-box-text__text
   @apply xl:text-[20px] xl:leading-[32px]
