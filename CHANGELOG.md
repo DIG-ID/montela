@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.38.1] — 2026-11-02
+
+### Fixed
+- Offer cards (apartment single): title and excerpt centred, as drawn.
+- Cards with icon: the "filled" style hides the slider arrows when every card is in view, like the "frame" style (the Fitnessroom keeps them, as drawn).
+
 ## [1.38.0] — 2026-11-02
 
 ### Changed

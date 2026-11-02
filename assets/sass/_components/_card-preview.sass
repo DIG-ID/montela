@@ -16,9 +16,10 @@
 // so the panel animates to its content height (as the activity cards).
 // Desktop-sized touch screens get it open.
 //
-// Text to the left at every size, as in the tablet "Cards with image"
-// (5753:14837); the desktop component (5470:17071) centres the title and
-// excerpt — left there too, Daniel's call (November 2026).
+// Title and excerpt centred at every size, as in the desktop component
+// (5470:17071). They were to the left while the card also served the Unsere
+// Region day trips (tablet "Cards with image" 5753:14837); those now have
+// their own card (card-trip).
 //
 // Width comes from where it is placed.
 
@@ -32,7 +33,7 @@
   @apply w-full h-full object-cover
 
 .card-preview__panel
-  @apply flex flex-1 flex-col px-[18px] pt-[14px] pb-4 bg-montela-sage text-montela-cream text-left border border-montela-sage xl:absolute xl:inset-x-0 xl:bottom-0
+  @apply flex flex-1 flex-col px-[18px] pt-[14px] pb-4 bg-montela-sage text-montela-cream text-center border border-montela-sage xl:absolute xl:inset-x-0 xl:bottom-0
 
 .card-preview__title
   @apply font-primary font-bold tracking-[0.5px] text-[20px] leading-[32px]

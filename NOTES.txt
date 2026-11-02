@@ -535,7 +535,10 @@ Campos de cada nota:
              317px), o que o deixa 46px da esquerda — nem centrado nem
              encostado.
   No site    tudo à esquerda em todos os tamanhos (decisão do Daniel), e o
-             texto do botão a 46px da esquerda.
+             texto do botão a 46px da esquerda. [2026-11-02] O card passou a
+             ser só dos Offer cards (single dos apartamentos): título e
+             excerpto centrados, como no componente de desktop (Pedro); o
+             botão continua com o texto a 46px.
              _components/_card-preview.sass. O botão do hover dos cards das
              activities tem o mesmo desenho (5426:5140) e ficou igual
              (_components/_card-activity.sass); o título e o excerpt desses

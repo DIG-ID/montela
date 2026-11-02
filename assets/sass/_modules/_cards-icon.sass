@@ -59,7 +59,7 @@
 .section-cards-icon__inner .section-cards-icon__nav
   @apply justify-center
   // Every card in view: Swiper hides both arrows (.swiper-button-lock);
-  // drop the row too, or its gap is left behind. Not on the filled style,
-  // which keeps them (watchOverflow off in cards-icon.php).
+  // drop the row too, or its gap is left behind. Not where the page keeps
+  // them ('nav' => 'always' — watchOverflow off in cards-icon.php).
   &:has(.swiper-button-lock)
     @apply hidden

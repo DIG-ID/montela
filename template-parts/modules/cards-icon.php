@@ -22,6 +22,9 @@
  *                        "Prefix field names" — e.g. 'cards_' for a clone named 'cards'.
  * - class   (string)     Optional. Margins around the section, replacing the
  *                        default (128px below on mobile, 192 from tablet up).
+ * - nav     (string)     Optional. 'auto' (default) hides the arrows when every
+ *                        card is in view; 'always' keeps them, disabled, as
+ *                        drawn on the Fitnessroom.
  *
  * @package montela
  * @subpackage Section
@@ -74,9 +77,10 @@ $cards_swiper = array(
 	),
 );
 
-// The filled style (Fitnessroom) keeps its arrows, disabled, when every card
-// is in view, as drawn; the frame style hides them.
-if ( 'filled' === $cards_style ) {
+// Arrows hide when every card is in view, unless the page keeps them
+// (Fitnessroom: disabled, as drawn).
+$cards_nav_always = ! empty( $args['nav'] ) && 'always' === $args['nav'];
+if ( $cards_nav_always ) {
 	$cards_swiper['watchOverflow'] = false;
 }
 ?>
