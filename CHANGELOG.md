@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.38.0] — 2026-11-02
+
+### Changed
+- Bike Hotel: the cards in "Bike-Erlebnisse" and "Lokales Know-how" use the activity card, as in the design — title in a bar that opens on hover on desktop, always open on tablet and mobile.
+
+### Fixed
+- Unser Resort: in the blocks with the photos on the left, the text keeps its gap to the right edge on screens narrower than 1920px.
+
 ## [1.37.0] — 2026-11-02
 
 ### Added

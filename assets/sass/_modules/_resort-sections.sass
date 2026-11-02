@@ -6,8 +6,9 @@
 // 52px above the row. Row: text + button (64px apart) on columns 2–4,
 // photos on columns 5–12 — 522px and 666px wide, 18px apart, 600px tall at
 // 1920 (kept as an aspect ratio below that). Every other block (--reverse)
-// mirrors the row: photos on columns 1–8, text on 9–12 (up to 518px — drawn
-// as 75px right padding) and 49px to the button. The narrower photo always sits next to
+// mirrors the row: photos on columns 1–8, text on 9–12 (518 of the 593px —
+// drawn as 75px right padding; kept as 87.35% of the columns, so the gap
+// scales with them below 1920 instead of closing) and 49px to the button. The narrower photo always sits next to
 // the text.
 //
 // Tablet: blocks and the bottom 128px. Title 44px above the row; the row is

@@ -2,7 +2,7 @@
 // Figma (Bike Hotel): layout 'right' "Activities_with arrows" — desktop
 // 5895:19869, tablet 5895:20609, mobile 5895:20379; layout 'left'
 // "Activities all_flip over" — desktop 5895:19870, tablet 5895:20608,
-// mobile 5895:20380. Cards: _components/_card-preview.sass.
+// mobile 5895:20380. Cards: _components/_card-activity.sass.
 //
 //   Desktop 'right'  copy (columns 1–5) 45px down, 45px padding; cards on
 //                    columns 7–12 from 504px down; arrows 90px down, 8.43%
@@ -16,16 +16,17 @@
 //                    one card at a time 89px lower; frame 7px past the
 //                    container, from 128px down
 //
-// Cards: components/card-preview.php, 420px tall (Bruno: the preview card
-// instead of the activity card). Desktop: 403 wide, 94px / 51px apart (the
-// right or left half of the container).
+// Cards: components/card-activity.php, as drawn in the Figma (Bruno, 2026-11-02
+// — before, the preview card, 420px tall): 421px tall on desktop, 325 below.
+// Desktop: 403 wide, 94px / 51px apart (the right or left half of the
+// container).
 //
 // The frame's bottom edge lands inside the first row of cards: on mobile
 // and tablet it is measured from the bottom of the cards, so that it ends
-// 118px (mobile) / 265px (tablet) into the first row of 420px cards: 302px
-// mobile; 597px tablet with two rows, 155px with one (.--one-row, 1–2
-// cards). On desktop from the top (888px), since the cards start at a
-// fixed height.
+// 118px (mobile) / 265px (tablet) into the first row of 325px cards: 207px
+// mobile; 407px tablet with two rows (325 + 22 + 60), 60px with one
+// (.--one-row, 1–2 cards). On desktop from the top (888px), since the cards
+// start at a fixed height.
 // With a single row in the 'left' layout it hangs below the cards — not in
 // the design.
 //
@@ -54,10 +55,10 @@
 
 // -- Frame --
 .section-bike-experiences__frame
-  @apply absolute border border-montela-sage -left-[7px] -right-[7px] top-[128px] bottom-[302px] md:left-[19%] md:right-0 md:top-0 md:bottom-[597px] xl:bottom-auto xl:h-[888px]
+  @apply absolute border border-montela-sage -left-[7px] -right-[7px] top-[128px] bottom-[207px] md:left-[19%] md:right-0 md:top-0 md:bottom-[407px] xl:bottom-auto xl:h-[888px]
 
 .section-bike-experiences--one-row .section-bike-experiences__frame
-  @apply md:bottom-[155px] xl:bottom-auto
+  @apply md:bottom-[60px] xl:bottom-auto
 
 .section-bike-experiences--right .section-bike-experiences__frame
   @apply xl:left-[9.56%] xl:right-[7.33%]

@@ -5,7 +5,8 @@
  * the page, with its own fields each time: "Bike-Erlebnisse rund um
  * Montela" (section_bike_experiences_*) and "Lokales Know-how für Ihre
  * Bikeferien" (section_bike_partners_*). Cards are filled in by hand and
- * drawn by components/card-preview.php.
+ * drawn by components/card-activity.php (the card the Figma draws: title in a
+ * bar, opening into a sage panel with the text and the link).
  *
  * Two desktop layouts ($args['layout']), identical on tablet and mobile:
  * - 'right' Copy on the left, cards on the right half, arrows in the
@@ -42,21 +43,20 @@ $bx_stem   = ( isset( $args['fields'] ) && 'bike_partners' === $args['fields'] )
 $bx_layout = ( isset( $args['layout'] ) && 'left' === $args['layout'] ) ? 'left' : 'right';
 $bx_title  = get_field( 'section_' . $bx_stem . '_title' );
 $bx_text   = get_field( 'section_' . $bx_stem . '_text' );
-$bx_label  = __( 'Mehr erfahren', 'montela' ); // Figma has the placeholder "Link to subpage"; same label as the other cards until the final wording is decided.
 
 $bx_cards = array();
 foreach ( (array) get_field( 'section_' . $bx_stem . '_cards' ) as $bx_row ) {
 	if ( empty( $bx_row['title'] ) ) {
 		continue;
 	}
-	$bx_link    = ( ! empty( $bx_row['link'] ) && is_array( $bx_row['link'] ) ) ? $bx_row['link'] : array();
+	// The whole Link array (url, title, target): the card's button keeps the
+	// editor's "open in a new tab"; an empty title falls back to "Mehr
+	// erfahren" in the card (Figma has the placeholder "Link to subpage").
 	$bx_cards[] = array(
-		'image'  => ! empty( $bx_row['image'] ) ? $bx_row['image'] : 0,
-		'title'  => $bx_row['title'],
-		'text'   => ! empty( $bx_row['text'] ) ? $bx_row['text'] : '',
-		'url'    => ! empty( $bx_link['url'] ) ? $bx_link['url'] : '',
-		'target' => ! empty( $bx_link['target'] ) ? $bx_link['target'] : '',
-		'label'  => ! empty( $bx_link['title'] ) ? $bx_link['title'] : $bx_label,
+		'image' => ! empty( $bx_row['image'] ) ? $bx_row['image'] : 0,
+		'title' => $bx_row['title'],
+		'text'  => ! empty( $bx_row['text'] ) ? $bx_row['text'] : '',
+		'link'  => ( ! empty( $bx_row['link'] ) && is_array( $bx_row['link'] ) ) ? $bx_row['link'] : null,
 	);
 }
 
@@ -108,15 +108,9 @@ $bx_title_id = wp_unique_id( 'section-bike-experiences-title-' );
 				<?php
 				foreach ( $bx_cards as $bx_card ) :
 					get_template_part(
-						'template-parts/components/card-preview',
+						'template-parts/components/card-activity',
 						null,
-						array_merge(
-							$bx_card,
-							array(
-								'class' => 'section-bike-experiences__card',
-								'sizes' => '(min-width: 1280px) 22vw, (min-width: 768px) 45vw, 100vw',
-							)
-						)
+						array_merge( $bx_card, array( 'class' => 'section-bike-experiences__card' ) )
 					);
 				endforeach;
 				?>
