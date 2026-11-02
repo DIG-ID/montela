@@ -103,9 +103,14 @@
   mask: url("../../svg/icons/season-winter.svg") center / contain no-repeat
 
 // -- Cards --
-// Fades in when the switch shows it.
+// Fade in when the switch shows them. The fade is on what is inside each
+// card, not on the panel: the card box stays opaque cream (see below), so
+// the frame behind it never shows through a half-transparent card.
 .section-activities__panel
   @apply relative mt-[66px] md:mt-9 xl:mt-[220px] xl:col-start-2 xl:row-start-1
+
+.section-activities__panel .card-activity > *,
+.section-activities__panel .section-activities__nav
   animation: section-activities-in 0.4s ease-out
   @media (prefers-reduced-motion: reduce)
     animation: none
@@ -123,8 +128,9 @@
   &::-webkit-scrollbar
     display: none
 
+// Cream box: hides the frame behind the card while its content fades in.
 .section-activities__cards .card-activity
-  @apply w-full shrink-0 snap-start
+  @apply w-full shrink-0 snap-start bg-montela-cream
 
 // Two classes: .slider-nav (display: flex) is emitted after this partial.
 .section-activities__panel .section-activities__nav

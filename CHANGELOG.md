@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.36.1] — 2026-11-02
+
+### Fixed
+- Activities: the sage frame no longer shows through the cards while they fade in on the summer / winter switch.
+
 ## [1.36.0] — 2026-10-30
 
 ### Added
