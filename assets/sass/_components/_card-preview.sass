@@ -8,13 +8,17 @@
 // bottom.
 //
 // Desktop: 420px tall, the photo filling it, the sage panel over its
-// bottom — title (20/32 bold, centred) and the ghost button (44px), 26px
-// apart, 14 / 18 / 16px padding: 132px closed. Open, the excerpt (centred,
-// light, 5 lines at most) shows under the title and the panel grows up over
+// bottom — title (20/32 bold) and the ghost button (44px), 26px
+// apart, 14 / 18 / 16px padding: 132px closed. Open, the excerpt (light,
+// 5 lines at most) shows under the title and the panel grows up over
 // the photo. With a mouse the card is closed until hovered or a keyboard
 // focus lands inside it; the excerpt folds through a 0fr → 1fr grid row,
 // so the panel animates to its content height (as the activity cards).
 // Desktop-sized touch screens get it open.
+//
+// Text to the left at every size, as in the tablet "Cards with image"
+// (5753:14837); the desktop component (5470:17071) centres the title and
+// excerpt — left there too, Daniel's call (November 2026).
 //
 // Width comes from where it is placed.
 
@@ -28,7 +32,7 @@
   @apply w-full h-full object-cover
 
 .card-preview__panel
-  @apply flex flex-1 flex-col px-[18px] pt-[14px] pb-4 bg-montela-sage text-montela-cream text-center border border-montela-sage xl:absolute xl:inset-x-0 xl:bottom-0
+  @apply flex flex-1 flex-col px-[18px] pt-[14px] pb-4 bg-montela-sage text-montela-cream text-left border border-montela-sage xl:absolute xl:inset-x-0 xl:bottom-0
 
 .card-preview__title
   @apply font-primary font-bold tracking-[0.5px] text-[20px] leading-[32px]
@@ -52,8 +56,11 @@
   @apply flex mt-auto xl:mt-[26px]
 
 // The ghost button is 34px tall below desktop elsewhere; here it is 44.
+// The label sits to the left, 46px in, not centred: in the Figma card
+// (tablet 5753:14834) the text is centred in a 239px box at the start of the
+// 319px button, which puts "MEHR ERFAHREN" 46px from its left edge.
 .card-preview__btn .btn__label
-  @apply py-[13px]
+  @apply justify-start pl-[46px] py-[13px]
 
 .card-preview__btn .btn__icon
   @apply w-11

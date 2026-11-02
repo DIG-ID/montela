@@ -42,6 +42,12 @@
 .card-activity__link
   @apply flex mt-[22px] xl:mt-[30px]
 
+// The label sits to the left, 46px in, not centred — as in the preview
+// cards: in the Figma hover card (desktop 5426:5140) the text is centred in
+// a 237px box at the start of the 317px button.
+.card-activity__link .btn__label
+  @apply justify-start pl-[46px]
+
 // Closed: only the title, in a cream bar.
 @media (min-width: 1280px) and (hover: hover) and (pointer: fine)
   .card-activity:not(:hover):not(:focus-within)

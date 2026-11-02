@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.36.2] — 2026-11-02
+
+### Fixed
+- Preview cards (day trips, offer cards, Bike Hotel): title, text and button label sit to the left, as in the design, instead of centred.
+- Activity cards: the button label on hover sits to the left, as in the design.
+
 ## [1.36.1] — 2026-11-02
 
 ### Fixed
