@@ -8,9 +8,10 @@
  *
  * Content comes from the post: featured image ("Card image" / "Kartenbild"),
  * title, excerpt and permalink. Figma: "Card Offers and Packages" 5470:17071.
- * Used by the Unsere Region day trips (template-parts/pages/region/trips.php)
+ * Used by the Offer cards module (template-parts/modules/offer-cards.php)
  * and, with manual content, the Bike Hotel cards
- * (template-parts/pages/bike-hotel/bike-experiences.php).
+ * (template-parts/pages/bike-hotel/bike-experiences.php). The Unsere Region
+ * day trips have their own card (components/card-trip.php).
  *
  *     get_template_part(
  *         'template-parts/components/card-preview',

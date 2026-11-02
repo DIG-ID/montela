@@ -419,6 +419,19 @@ o cliente.
   Onde       conteúdo (wp-admin), não código.
   Estado     POR CONFIRMAR
 
+[2026-11-02] B15. Botão dos cards dos Tagesausflüge em desktops pequenos
+  O quê      "Mehr erfahren" nos cards da Unsere Region ("Ausflüge ab
+             Saas-Grund").
+  Figma      só o frame de 1920: cards de 366px, o texto do botão a 46px da
+             esquerda.
+  Feito      46px como no Figma; nos cards com menos de 280px (desktop até
+             ~1500px — 230px a 1280) o texto fica centrado.
+  Porquê     com 46px o texto não cabe no botão e empurra a seta para fora
+             do card.
+  Confirma   designer.
+  Onde       assets/sass/_components/_card-trip.sass (@container).
+  Estado     POR CONFIRMAR
+
 ===============================================================================
 C. ERROS NO FIGMA
 ===============================================================================

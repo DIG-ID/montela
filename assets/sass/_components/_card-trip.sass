@@ -1,0 +1,55 @@
+// Day trip card (template-parts/components/card-trip.php).
+// Figma "Cards with image": desktop 5753:14853, tablet 5753:14837, mobile
+// 5753:14852 — inside "Cards with image section" (Unsere Region).
+//
+// The photo on top (366:225 on desktop, 436:201 below), the sage panel under
+// it, always open: title (20/32 bold), excerpt (15/25 light) and the ghost
+// button (44px). Padding 26 / 24px on desktop, 16 / 30 / 17px below.
+//
+// The Figma panels have a fixed height (276px desktop, 233 below) with the
+// button 72px (48 below) under the text. Here the cards in a row stretch to
+// the tallest, the button sits at the bottom, and 72 / 48px is the least
+// space above it.
+//
+// Width comes from where it is placed.
+
+.card-trip
+  @apply flex flex-col w-full h-full
+  container-type: inline-size
+
+.card-trip__photo
+  @apply m-0 overflow-hidden aspect-[436/201] xl:aspect-[366/225]
+
+.card-trip__img
+  @apply w-full h-full object-cover
+
+.card-trip__panel
+  @apply flex flex-1 flex-col px-[30px] pt-4 pb-[17px] xl:px-6 xl:py-[26px] bg-montela-sage text-montela-cream text-left shadow-[0_4px_2px_rgba(0,0,0,0.25)]
+
+.card-trip__body
+  @apply mb-12 xl:mb-[72px]
+
+.card-trip__title
+  @apply font-primary font-bold tracking-[0.5px] text-[20px] leading-[32px]
+
+.card-trip__text
+  @apply font-primary font-light tracking-[0.5px] text-[15px] leading-[25px]
+
+.card-trip__panel .card-trip__btn
+  @apply flex mt-auto
+
+// The ghost button is 34px tall below desktop elsewhere; here it is 44.
+// The label sits to the left, 46px in, not centred: in the Figma card the
+// text is centred in a 200px box at the start of the 268px label (desktop),
+// as in the preview and activity cards.
+.card-trip__btn .btn__label
+  @apply justify-start pl-[46px] py-[13px]
+
+.card-trip__btn .btn__icon
+  @apply w-11
+
+// Narrow cards (small desktops: 230px at 1280) have no room for the 46px
+// inset — the label would push the arrow out of the card. Centred there.
+@container (max-width: 279px)
+  .card-trip__btn .btn__label
+    @apply justify-center px-2

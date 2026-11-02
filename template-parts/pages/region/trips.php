@@ -4,7 +4,7 @@
  * slider of day trip cards. Four cards in view on desktop, one on tablet
  * and mobile; arrows below.
  *
- * Cards: components/card-preview.php (closed, they open on hover).
+ * Cards: components/card-trip.php (always open).
  *
  * Content: the Tagesausflüge post type — the ones picked in the "Day trips"
  * relationship, in that order, or all of them (oldest first) when it is
@@ -82,7 +82,7 @@ $trips_swiper   = array(
 					<div class="swiper-wrapper">
 						<?php foreach ( $trips_ids as $trips_id ) : ?>
 							<div class="swiper-slide section-trips__slide">
-								<?php get_template_part( 'template-parts/components/card-preview', null, array( 'post_id' => $trips_id ) ); ?>
+								<?php get_template_part( 'template-parts/components/card-trip', null, array( 'post_id' => $trips_id ) ); ?>
 							</div>
 						<?php endforeach; ?>
 					</div>

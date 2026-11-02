@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.37.0] — 2026-11-02
+
+### Added
+- Unsere Region, "Ausflüge ab Saas-Grund": the day trips have their own cards — photo on top, title, text and button always visible, as in the design. They no longer open on hover.
+
 ## [1.36.3] — 2026-11-02
 
 ### Fixed
