@@ -86,7 +86,7 @@
         },
         {
             "key": "field_page_stay_tab_space",
-            "label": "Space",
+            "label": "Apartments",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -104,7 +104,7 @@
         },
         {
             "key": "field_page_stay_space",
-            "label": "Space",
+            "label": "Apartments",
             "name": "stay_space",
             "aria-label": "",
             "type": "clone",
@@ -127,7 +127,7 @@
         },
         {
             "key": "field_page_stay_tab_services",
-            "label": "Services",
+            "label": "Stay comparison",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -145,7 +145,7 @@
         },
         {
             "key": "field_page_stay_services",
-            "label": "Services",
+            "label": "Stay comparison",
             "name": "stay_services",
             "aria-label": "",
             "type": "clone",
@@ -168,7 +168,7 @@
         },
         {
             "key": "field_page_stay_tab_extras",
-            "label": "Extras",
+            "label": "Services",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -186,7 +186,7 @@
         },
         {
             "key": "field_page_stay_extras",
-            "label": "Extras",
+            "label": "Services",
             "name": "stay_extras",
             "aria-label": "",
             "type": "clone",
@@ -270,6 +270,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793646279,
+    "modified": 1793709717,
     "acfml_field_group_mode": "advanced"
 }

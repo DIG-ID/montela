@@ -135,7 +135,7 @@
         },
         {
             "key": "field_page_apartments_tab_services",
-            "label": "Services",
+            "label": "Stay comparison",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -171,7 +171,7 @@
         },
         {
             "key": "field_page_apartments_services",
-            "label": "Services",
+            "label": "Stay comparison",
             "name": "apartments_services",
             "aria-label": "",
             "type": "clone",
@@ -373,6 +373,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793376074,
+    "modified": 1793709851,
     "acfml_field_group_mode": "advanced"
 }

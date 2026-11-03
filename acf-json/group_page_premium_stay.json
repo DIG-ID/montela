@@ -86,7 +86,7 @@
         },
         {
             "key": "field_page_premium_stay_tab_services",
-            "label": "Services",
+            "label": "Stay comparison",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -104,7 +104,7 @@
         },
         {
             "key": "field_page_premium_stay_services",
-            "label": "Services",
+            "label": "Stay comparison",
             "name": "premium_stay_services",
             "aria-label": "",
             "type": "clone",
@@ -127,7 +127,7 @@
         },
         {
             "key": "field_page_premium_stay_tab_text_photos",
-            "label": "Text with photos",
+            "label": "Apartment & service",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -145,7 +145,7 @@
         },
         {
             "key": "field_page_premium_stay_text_photos",
-            "label": "Text with photos",
+            "label": "Apartment & service",
             "name": "premium_stay_text_photos",
             "aria-label": "",
             "type": "clone",
@@ -168,7 +168,7 @@
         },
         {
             "key": "field_page_premium_stay_tab_cards_icon",
-            "label": "Cards with icon",
+            "label": "Location & resort",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -186,7 +186,7 @@
         },
         {
             "key": "field_page_premium_stay_cards_icon",
-            "label": "Cards with icon",
+            "label": "Location & resort",
             "name": "premium_stay_cards_icon",
             "aria-label": "",
             "type": "clone",
@@ -229,6 +229,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793379523,
+    "modified": 1793709851,
     "acfml_field_group_mode": "advanced"
 }

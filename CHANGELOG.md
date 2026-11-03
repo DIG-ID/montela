@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.39.1] — 2026-11-03
+
+### Changed
+- Aufenthalt, Apartments, Premium Stay and Leistungen: field tabs named after what each section shows.
+
 ## [1.39.0] — 2026-11-03
 
 ### Added
