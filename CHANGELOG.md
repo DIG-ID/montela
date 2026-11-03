@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.40.1] — 2026-11-03
+
+### Changed
+- Shop products and producers sliders: the arrows hide when every card is in view (three or fewer on desktop).
+
 ## [1.40.0] — 2026-11-03
 
 ### Added

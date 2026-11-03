@@ -39,12 +39,12 @@ if ( function_exists( 'montela_enqueue_module' ) ) {
 $sp_title_id = wp_unique_id( 'section-shop-products-title-' );
 
 // One card below desktop, 20px apart (the grid gutter); three on desktop,
-// 21px apart as drawn. The arrows stay visible (disabled) when every card is
-// in view, as drawn.
+// 21px apart as drawn. When every card is in view (three or fewer on
+// desktop) Swiper hides the arrows (watchOverflow — Bruno; Figma draws them
+// disabled).
 $sp_swiper = array(
 	'slidesPerView' => 1,
 	'spaceBetween'  => 20,
-	'watchOverflow' => false,
 	'breakpoints'   => array(
 		1280 => array(
 			'slidesPerView' => 3,
@@ -99,7 +99,7 @@ $sp_swiper = array(
 				</div>
 			</div>
 
-			<div class="slider-nav--walnut col-span-full flex justify-center gap-5 xl:contents">
+			<div class="section-shop-products__nav slider-nav--walnut col-span-full flex justify-center gap-5 xl:contents">
 				<button class="slider-nav__btn slider-nav__btn--prev xl:col-start-1 xl:row-start-2 xl:self-center xl:justify-self-end" type="button" data-swiper-prev aria-label="<?php esc_attr_e( 'Vorheriges Produkt', 'montela' ); ?>"></button>
 				<button class="slider-nav__btn slider-nav__btn--next xl:col-start-12 xl:row-start-2 xl:self-center xl:justify-self-start" type="button" data-swiper-next aria-label="<?php esc_attr_e( 'Nächstes Produkt', 'montela' ); ?>"></button>
 			</div>

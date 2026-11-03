@@ -43,3 +43,8 @@
 
 .section-shop-producers__card-text
   @apply font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[15px] xl:leading-[25px]
+
+// Every card in view: Swiper hides both arrows (.swiper-button-lock); drop
+// the row too below desktop, or its gap is left behind.
+.section-shop-producers__nav:has(.swiper-button-lock)
+  @apply hidden

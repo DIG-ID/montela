@@ -35,3 +35,8 @@
 
 .section-shop-products__card .section-shop-products__card-title
   @apply text-[12px] leading-[20px] md:text-[18px] md:leading-[28px] xl:text-[20px] xl:leading-[32px]
+
+// Every card in view: Swiper hides both arrows (.swiper-button-lock); drop
+// the row too below desktop, or its gap is left behind.
+.section-shop-products__nav:has(.swiper-button-lock)
+  @apply hidden
