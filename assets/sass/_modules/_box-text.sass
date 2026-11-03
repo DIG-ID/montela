@@ -164,3 +164,24 @@
 
 .section-box-text--cream.section-box-text--has-list
   @apply xl:pt-[140px]
+
+// Cream band without a list (Leistungen "Alles nah beieinander", Figma
+// desktop 5426:7013, tablet 5528:6883, mobile 5528:6912): title, text and
+// button only, no 600px band on desktop. Desktop: the button 68px under the
+// title (the text level with the title, as in the band); tablet: 72px from
+// the title to the text (578px), 32 to the button, title at 90/80 as drawn
+// (Desktop/H3 in the tablet frame); mobile: 30px and 24px. No padding above
+// (the section before ends with its own); 128 / 192 / 192px below. The
+// tablet and mobile frames set the text at 20/32 and the mobile title at
+// 90/80 (desktop copies) — the house sizes are kept (NOTES C23).
+.section-box-text--cream:not(.section-box-text--has-list)
+  @apply pt-0 pb-32 md:pt-0 md:pb-[192px] xl:min-h-0 xl:block xl:pb-[192px]
+
+.section-box-text--cream:not(.section-box-text--has-list) .section-box-text__title
+  @apply md:text-[90px] md:leading-[80px]
+
+.section-box-text--cream:not(.section-box-text--has-list) .section-box-text__text
+  @apply mt-[30px] md:mt-[72px] md:max-w-[578px] xl:mt-0 xl:max-w-none
+
+.section-box-text--cream:not(.section-box-text--has-list) .section-box-text__button
+  @apply mt-6 md:mt-8 xl:mt-[68px]

@@ -33,3 +33,14 @@
 
 .icon-list__title
   @apply font-bold
+
+// Optional per item (Leistungen "Mehr Komfort nach Bedarf", Figma
+// 5787:19377 / 5787:19287 / 5787:19255): a note one blank line below the
+// text, and an outline button below everything — 28 / 44 / 36px (mobile /
+// tablet / desktop; tablet interpolated, Figma's two items disagree: 70 and
+// 76px).
+.icon-list__note
+  @apply mt-[1lh]
+
+.icon-list__button
+  @apply mt-7 md:mt-11 xl:mt-9

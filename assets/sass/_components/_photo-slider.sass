@@ -37,3 +37,10 @@
 // keeps 37px and its mobile arrows.
 .photo-slider--subpage .photo-slider__nav
   @apply hidden md:block md:bottom-[12px] xl:bottom-[19px]
+
+// Variant .photo-slider--side (Leistungen "Frühstück", Figma 5426:6929 /
+// 5528:6641 / 5532:7276): lower slides — 951 and 746 by 684 on desktop, 570
+// and 746 by 606 on tablet, 221 by 190 on mobile — 20px apart (22 in
+// Figma); on desktop the strip starts beside a box, from column 5.
+.photo-slider--side .photo-slider__swiper .photo-slider__slide
+  @apply h-[190px] aspect-[221/190] even:aspect-[221/190] md:h-[606px] md:aspect-[570/606] md:even:aspect-[746/606] xl:h-[684px] xl:aspect-[951/684] xl:even:aspect-[746/684]

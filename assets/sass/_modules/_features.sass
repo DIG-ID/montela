@@ -59,3 +59,35 @@
 
 .section-features .icon-list__title
   @apply xl:text-[20px] xl:leading-[32px]
+
+// Layout "centred" (Leistungen "Mehr Komfort nach Bedarf", Figma desktop
+// 5787:19377, tablet 5787:19287, mobile 5787:19255): the title centred,
+// 44px above the features; no padding above (the section before closes
+// with its 128 / 192px margin), 128 / 192 / 192px below. Tablet and mobile
+// features as in the split layout, the list on the left. Desktop: the same
+// two columns, rows 126px apart (about 120 in Figma), but an 80px icon box
+// and 20px to the text (Figma: text 100px from the icon), text 20/32 —
+// notes 15/25, as drawn — and the outline button in walnut.
+.section-features--centred
+  @apply pt-0 pb-32 md:pb-[192px]
+
+.section-features--centred .section-features__title
+  @apply text-center xl:col-start-1 xl:col-span-12
+
+.section-features--centred .section-features__list
+  @apply md:mt-11 xl:mt-11
+
+.section-features--centred .icon-list__item
+  @apply xl:grid-cols-[80px_1fr] xl:gap-x-5
+
+.section-features--centred .icon-list__icon
+  @apply xl:h-[68px]
+
+.section-features--centred .icon-list__text
+  @apply xl:text-[20px] xl:leading-[32px]
+
+.section-features--centred .icon-list__note
+  @apply xl:text-[15px] xl:leading-[25px]
+
+.section-features--centred .btn-outline:not(:hover):not(:active)
+  @apply text-montela-walnut

@@ -1,0 +1,51 @@
+// Leistungen (page-templates/page-services.php). Layout in the PHP.
+
+// -- Frühstück (template-parts/pages/services/breakfast.php) --
+// Figma: desktop 5426:6929, tablet 5528:6641, mobile 5532:7276.
+//
+//   Mobile   box across, 92px tall: title (36/38) 24px from the top, 20px
+//            from the left; the strip 12px below, 190px tall
+//   Tablet   box across, 304px tall, the same insets — title drawn at the
+//            desktop size (90/80, "Desktop/H3") and kept so; the strip 32px
+//            below, 606px tall
+//   Desktop  box on columns 1–4, as tall as the strip (684px), title 69px
+//            from the top and 71px from the left; the strip from column 5,
+//            off the right edge
+//   1280–1535 the four columns leave the title ("Frühstück", 352px wide at
+//            90px) too little room: 20px side padding and the tablet H3 step
+//            (80/76) — interpolated, Figma only draws 1920
+//
+// Box: walnut hairline. Figma leaves it empty under the title (and a stray
+// 22px line in it); an optional text field fills it. Spacing: none above
+// (the cards before it close with their margin); 20 / 12 / 20px below, to
+// the Horizontal section that follows (mobile / tablet / desktop).
+
+.section-breakfast__title
+  @apply md:text-[90px] md:leading-[80px] xl:text-[80px] xl:leading-[76px] 2xl:text-[90px] 2xl:leading-[80px]
+
+// -- Alles direkt im Resort (template-parts/pages/services/resort.php) --
+// Figma: desktop 5787:19130, tablet 5787:19170, mobile 5787:19201.
+//
+//   Mobile   title (36/38) to the left, cards 44px below, stacked 12px
+//            apart: photo 700:330, sage-framed panel (129px at least) —
+//            title 19px from the top, 27px side insets, text 10px below the
+//            title, 12px below it; 14/22
+//   Tablet   the same at 706px: title 80/76, panel 160px, insets 37 / 17px,
+//            24px from the top; title and text 20/32
+//   Desktop  title centred (90/80 — Figma sets 76 leading), three cards on
+//            columns 2–11, 20px apart (13 in Figma): photo 570px tall,
+//            panel 200px, 24px insets
+//
+// Spacing: none above (the "Frühstück" section ends with its padding);
+// 192px below on tablet and desktop, 128 on mobile. (On tablet Figma puts
+// the 192px as the next section's top padding; that section — Features,
+// centred — has none, so it sits here.)
+
+.section-resort__img
+  @apply w-full h-full object-cover
+
+.section-resort__title
+  @apply font-primary font-bold tracking-[0.5px] text-[14px] leading-[22px] md:text-[20px] md:leading-[32px]
+
+.section-resort__text
+  @apply font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[20px] md:leading-[32px]

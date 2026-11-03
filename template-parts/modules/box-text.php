@@ -51,6 +51,7 @@ $box_text    = get_field( $box_prefix . 'section_box_text_text', $box_ctx );
 
 // Button and list: bands only (the fields are hidden for the box).
 $box_button = $box_is_band ? get_field( $box_prefix . 'section_box_text_button', $box_ctx ) : null;
+$box_btn_sg = $box_is_band && 'sage' === get_field( $box_prefix . 'section_box_text_button_colour', $box_ctx );
 $box_items  = $box_is_band ? get_field( $box_prefix . 'section_box_text_items', $box_ctx ) : null;
 
 if ( ! $box_title && ! $box_text ) {
@@ -97,7 +98,7 @@ $box_title_id = wp_unique_id( 'section-box-text-title-' );
 							get_template_part(
 								'template-parts/components/button',
 								null,
-								array_merge( $box_button, array( 'style' => 'cream' === $box_style ? 'primary' : 'outline' ) )
+								array_merge( $box_button, array( 'style' => $box_btn_sg ? 'secondary' : ( 'cream' === $box_style ? 'primary' : 'outline' ) ) )
 							);
 							?>
 						</div>

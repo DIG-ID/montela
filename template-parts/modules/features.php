@@ -10,6 +10,12 @@
  * 5747:13926 (cream) / 5679:15353 (sage), tablet 5747:13980 / 5679:15376,
  * mobile 5747:13948 / 5679:15409.
  *
+ * Layout (field "Layout"): "split" — title beside the text on desktop
+ * (Anreise & Lage) — or "centred" — the title centred over the features,
+ * no band padding above, smaller icon boxes on desktop (Leistungen "Mehr
+ * Komfort nach Bedarf", Figma 5787:19377 / 5787:19287 / 5787:19255). Each
+ * feature can add a note and a button (components/icon-list.php).
+ *
  * Arguments ($args):
  * - post_id (int|string) Optional. Where to read the fields from. Default: current post.
  * - prefix  (string)     Optional. Clone field prefix, when the clone uses
@@ -31,13 +37,14 @@ $feat_style = get_field( $feat_prefix . 'section_features_style', $feat_ctx );
 $feat_title = get_field( $feat_prefix . 'section_features_title', $feat_ctx );
 $feat_text  = get_field( $feat_prefix . 'section_features_text', $feat_ctx );
 $feat_items = get_field( $feat_prefix . 'section_features_items', $feat_ctx );
+$feat_centr = 'centred' === get_field( $feat_prefix . 'section_features_layout', $feat_ctx );
 
 if ( ! $feat_title && ! $feat_items ) {
 	return;
 }
 
 $feat_title_id = wp_unique_id( 'section-features-title-' );
-$feat_class    = 'section-features section-features--' . ( 'sage' === $feat_style ? 'sage' : 'cream' );
+$feat_class    = 'section-features section-features--' . ( 'sage' === $feat_style ? 'sage' : 'cream' ) . ( $feat_centr ? ' section-features--centred' : '' );
 ?>
 <section class="<?php echo esc_attr( $feat_class ); ?>"<?php echo $feat_title ? ' aria-labelledby="' . esc_attr( $feat_title_id ) . '"' : ''; ?>>
 	<div class="theme-container">

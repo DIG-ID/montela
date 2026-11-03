@@ -11,6 +11,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.39.0] — 2026-11-03
+
+### Added
+- Leistungen page template: hero, intro, "Flexibel wohnen mit passenden Leistungen", "Lounge & Shop", "Frühstück" (photo strip and the dogs block), "Alles direkt im Resort", "Mehr Komfort nach Bedarf", the partner blocks and "Alles nah beieinander".
+- Space module (from the Aufenthalt "Viel Raum" section), with a two-column desktop layout.
+- Cards with icon: an optional button per card.
+- Features: centred layout; an optional note and button per item.
+- Horizontal: heading level and photo crop options.
+- Box text: optional green button.
+
+### Changed
+- Resort sections: line breaks in the text are kept.
+
 ## [1.38.1] — 2026-11-02
 
 ### Fixed

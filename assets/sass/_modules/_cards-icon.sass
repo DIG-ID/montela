@@ -19,6 +19,12 @@
 //           columns 2–11, 500px, 76px top padding, icon 68px, 120px to
 //           text; title 20/32 bold, the rest 15/25
 //
+// With a button (Leistungen, Figma 5761:15467 / 5761:15518 / 5761:15543):
+// the frame style takes the filled spacing — 40 / 43 / 44px above the icon,
+// 59 / 95 / 74px from the icon to the text and from the text to the button
+// (mobile / tablet / desktop); on tablet the text is 17/23 and 20px below
+// the button.
+//
 // Icons are editor uploads (SVG), sized by height. Cards stretch to the
 // tallest one. The arrows hide themselves when every card is in view
 // (Swiper's watchOverflow).
@@ -63,3 +69,22 @@
   // them ('nav' => 'always' — watchOverflow off in cards-icon.php).
   &:has(.swiper-button-lock)
     @apply hidden
+
+// Card button (Leistungen, Figma 5761:15467 / 5761:15518 / 5761:15543): the
+// outline button with walnut text and arrow (sage in the house style) —
+// mustard on hover, as the outline button. It never grows past the card:
+// from 1280 to ~1535px the four-card layout leaves 190px inside, and the
+// label wraps (interpolated — Figma only draws 1920).
+.section-cards-icon__card .btn-outline:not(:hover):not(:active)
+  @apply text-montela-walnut
+
+.section-cards-icon__card .btn
+  @apply max-w-full
+
+.section-cards-icon__card .btn__label
+  @apply whitespace-normal
+
+// With a button, the tablet text is 17/23 and the card keeps 20px below
+// the button (pb in the PHP), so it stays 500px tall, as drawn.
+.section-cards-icon--button .section-cards-icon__body
+  @apply md:text-[17px] md:leading-[23px] xl:text-[15px] xl:leading-[25px]

@@ -20,7 +20,7 @@ if ( have_posts() ) :
 		do_action( 'before_main_content' );
 			get_template_part( 'template-parts/modules/hero' );
 			get_template_part( 'template-parts/modules/intro' );
-			get_template_part( 'template-parts/pages/stay/space' );
+			get_template_part( 'template-parts/modules/space' );
 			get_template_part( 'template-parts/modules/services' );
 			get_template_part( 'template-parts/modules/box-text' );
 			get_template_part( 'template-parts/modules/testimonials' );

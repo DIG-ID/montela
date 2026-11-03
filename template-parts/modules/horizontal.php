@@ -5,13 +5,18 @@
  *
  * Fields: acf-json/group_module_horizontal.json. Figma "Horizontal
  * section": Kids Playground desktop 5895:19923, tablet 5895:20544, mobile
- * 5895:20330 (also Services, Meetings 5895:19971, Montela Way).
+ * 5895:20330 (also Meetings 5895:19971, Montela Way; on Leistungen it ends
+ * the "Frühstück" section, 5787:19029).
  *
  * Arguments ($args):
  * - row     (bool)       Optional. True inside a Flexible Content loop (fields read with get_sub_field()).
  * - post_id (int|string) Optional. Where to read the fields from. Default: current post.
  * - prefix  (string)     Optional. Clone field prefix, when the clone uses
  *                        "Prefix field names".
+ * - title_tag   (string) Optional. Heading level of the title, h2–h4 (default
+ *                        h2): h3 when the module ends another section.
+ * - image_class (string) Optional. Extra classes for the photo, e.g. an
+ *                        object-position for the desktop crop.
  *
  * @package montela
  * @subpackage Section
@@ -27,8 +32,10 @@ if ( ! $hz_image && ! $hz_title && ! $hz_text ) {
 	return;
 }
 
-$hz_title_id = wp_unique_id( 'section-horizontal-title-' );
-$hz_has_link = is_array( $hz_button ) && ! empty( $hz_button['url'] );
+$hz_title_id  = wp_unique_id( 'section-horizontal-title-' );
+$hz_title_tag = ( ! empty( $args['title_tag'] ) && in_array( $args['title_tag'], array( 'h2', 'h3', 'h4' ), true ) ) ? $args['title_tag'] : 'h2';
+$hz_img_class = 'section-horizontal__img' . ( ! empty( $args['image_class'] ) ? ' ' . $args['image_class'] : '' );
+$hz_has_link  = is_array( $hz_button ) && ! empty( $hz_button['url'] );
 ?>
 <section class="section-horizontal"<?php echo $hz_title ? ' aria-labelledby="' . esc_attr( $hz_title_id ) . '"' : ''; ?>>
 	<div class="theme-container">
@@ -41,7 +48,7 @@ $hz_has_link = is_array( $hz_button ) && ! empty( $hz_button['url'] );
 						'full',
 						false,
 						array(
-							'class' => 'section-horizontal__img',
+							'class' => $hz_img_class,
 							'sizes' => '(min-width: 1920px) 1820px, (min-width: 1280px) calc(100vw - 100px), (min-width: 768px) calc(100vw - 128px), calc(100vw - 64px)',
 						)
 					);
@@ -52,9 +59,9 @@ $hz_has_link = is_array( $hz_button ) && ! empty( $hz_button['url'] );
 			<?php if ( $hz_title || $hz_has_link ) : ?>
 				<div class="section-horizontal__head">
 					<?php if ( $hz_title ) : ?>
-						<h2 id="<?php echo esc_attr( $hz_title_id ); ?>" class="title-h3 section-horizontal__title">
+						<<?php echo esc_attr( $hz_title_tag ); ?> id="<?php echo esc_attr( $hz_title_id ); ?>" class="title-h3 section-horizontal__title">
 							<?php echo wp_kses( $hz_title, array( 'br' => array( 'class' => array() ) ) ); ?>
-						</h2>
+						</<?php echo esc_attr( $hz_title_tag ); ?>>
 					<?php endif; ?>
 					<?php
 					if ( $hz_has_link ) {

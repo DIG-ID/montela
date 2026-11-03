@@ -5,7 +5,9 @@
  *
  * Fields: acf-json/group_module_resort_sections.json, cloned into each
  * page's field group. Figma: "Sections Resort" — Our Resort desktop
- * 5895:20070, tablet 5895:20388, mobile 5895:20164 (also on Services).
+ * 5895:20070, tablet 5895:20388, mobile 5895:20164 (also on Leistungen,
+ * 5787:19551 / 5787:19661 / 5787:19747). Line breaks typed in the text are
+ * kept (an empty line = a gap between paragraphs).
  *
  * Arguments ($args), read by montela_module_field():
  * - row     (bool)       Optional. True inside a Flexible Content loop (fields read with get_sub_field()).
@@ -46,7 +48,7 @@ if ( ! $rs_items ) {
 
 				<div class="resort-block__body col-span-full flex flex-col items-start gap-7 md:col-span-2 md:row-start-2 md:gap-11 <?php echo $rs_reverse ? 'md:col-start-5 xl:col-start-9 xl:col-span-4 xl:gap-[49px]' : 'xl:col-start-2 xl:col-span-3 xl:gap-16'; ?>">
 					<?php if ( ! empty( $rs_item['text'] ) ) : ?>
-						<p class="body-text resort-block__text<?php echo $rs_reverse ? ' xl:max-w-[87.35%]' : ''; ?>"><?php echo esc_html( $rs_item['text'] ); ?></p>
+						<p class="body-text resort-block__text<?php echo $rs_reverse ? ' xl:max-w-[87.35%]' : ''; ?>"><?php echo nl2br( esc_html( $rs_item['text'] ) ); ?></p>
 					<?php endif; ?>
 					<?php
 					if ( ! empty( $rs_item['link']['url'] ) ) {

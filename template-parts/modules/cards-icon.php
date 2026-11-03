@@ -7,7 +7,9 @@
  * Two card styles (field "Card style"): "frame" — cream with a sage hairline
  * (Unsere Region) — and "filled" — sage with cream text (Fitnessroom); they
  * differ in colour and in the space above and below the icon. Fewer cards
- * than fit are centred.
+ * than fit are centred. A card can end with a button (item "Button",
+ * Leistungen): then the cards take the filled style's spacing, the button
+ * as far below the text as the text is below the icon.
  *
  * Fields: acf-json/group_module_cards_icon.json, cloned into each page's
  * field group. Figma: "Cards with icon section" — desktop 5753:15123,
@@ -54,12 +56,22 @@ if ( function_exists( 'montela_enqueue_module' ) ) {
 $cards_title_id = wp_unique_id( 'section-cards-icon-title-' );
 $cards_class    = ! empty( $args['class'] ) ? $args['class'] : 'mb-[128px] md:mb-[192px]';
 
+// Cards with a button (Leistungen) are spaced as the filled ones, in either
+// style.
+$cards_has_button = (bool) array_filter(
+	$cards_items,
+	function ( $cards_item ) {
+		return ! empty( $cards_item['link']['url'] );
+	}
+);
+
 // The two styles differ in colour and in the space around the icon.
-if ( 'filled' === $cards_style ) {
-	$cards_card_class = 'bg-montela-sage text-montela-cream pt-10 md:pt-[43px] xl:pt-[44px]';
+$cards_btn_class = 'mt-[59px] md:mt-[95px] xl:mt-[74px]';
+if ( 'filled' === $cards_style || $cards_has_button ) {
+	$cards_card_class = ( 'filled' === $cards_style ? 'bg-montela-sage text-montela-cream ' : '' ) . 'pt-10 md:pt-[43px] xl:pt-[44px]';
 	$cards_body_class = 'mt-[59px] md:mt-[95px] xl:mt-[74px]';
-	$cards_nav_gap    = 'gap-9 md:gap-11 xl:gap-9';
-	$cards_head_gap   = 'gap-6';
+	$cards_nav_gap    = 'filled' === $cards_style ? 'gap-9 md:gap-11 xl:gap-9' : 'gap-9 md:gap-11 xl:gap-24';
+	$cards_head_gap   = 'filled' === $cards_style ? 'gap-6' : 'gap-4 xl:gap-6';
 } else {
 	$cards_card_class = 'pt-10 md:pt-[60px] xl:pt-[76px]';
 	$cards_body_class = 'mt-[59px] md:mt-[75px] xl:mt-[120px]';
@@ -84,7 +96,7 @@ if ( $cards_nav_always ) {
 	$cards_swiper['watchOverflow'] = false;
 }
 ?>
-<section class="section-cards-icon section-cards-icon--<?php echo esc_attr( $cards_style . ' ' . $cards_class ); ?> text-montela-walnut"<?php echo $cards_title ? ' aria-labelledby="' . esc_attr( $cards_title_id ) . '"' : ''; ?>>
+<section class="section-cards-icon section-cards-icon--<?php echo esc_attr( $cards_style . ( $cards_has_button ? ' section-cards-icon--button' : '' ) . ' ' . $cards_class ); ?> text-montela-walnut"<?php echo $cards_title ? ' aria-labelledby="' . esc_attr( $cards_title_id ) . '"' : ''; ?>>
 	<div class="theme-container">
 		<div class="theme-grid">
 			<div class="section-cards-icon__inner col-span-full flex flex-col items-center gap-9 md:gap-11 xl:col-start-2 xl:col-span-10 xl:gap-24" data-swiper-root>
@@ -103,7 +115,7 @@ if ( $cards_nav_always ) {
 					<div class="swiper section-cards-icon__swiper" data-swiper="<?php echo esc_attr( wp_json_encode( $cards_swiper ) ); ?>">
 						<div class="swiper-wrapper">
 							<?php foreach ( $cards_items as $cards_item ) : ?>
-								<article class="swiper-slide section-cards-icon__card px-[35px] pb-10 xl:px-5 2xl:px-[35px] <?php echo esc_attr( $cards_card_class ); ?>">
+								<article class="swiper-slide section-cards-icon__card px-[35px] pb-10 xl:px-5 2xl:px-[35px] <?php echo esc_attr( $cards_card_class . ( $cards_has_button ? ' md:pb-5 xl:pb-10' : '' ) ); ?>">
 									<?php if ( ! empty( $cards_item['icon'] ) ) : ?>
 										<?php
 										echo wp_get_attachment_image(
@@ -129,6 +141,12 @@ if ( $cards_nav_always ) {
 											<p><?php echo esc_html( $cards_item['text'] ); ?></p>
 										<?php endif; ?>
 									</div>
+
+									<?php if ( ! empty( $cards_item['link']['url'] ) ) : ?>
+										<div class="<?php echo esc_attr( $cards_btn_class ); ?>">
+											<?php get_template_part( 'template-parts/components/button', null, array_merge( $cards_item['link'], array( 'style' => 'filled' === $cards_style ? 'ghost' : 'outline' ) ) ); ?>
+										</div>
+									<?php endif; ?>
 								</article>
 							<?php endforeach; ?>
 						</div>

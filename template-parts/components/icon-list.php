@@ -18,7 +18,9 @@
  *     );
  *
  * Arguments ($args):
- * - items (array)  Required. Rows with 'icon' (attachment ID), 'title' and 'text'.
+ * - items (array)  Required. Rows with 'icon' (attachment ID), 'title' and 'text';
+ *                  optionally 'note' (a short line one blank line below the
+ *                  text) and 'link' (ACF Link array — an outline button below).
  * - class      (string)          Optional. Extra classes for the list.
  * - item_class (string|string[]) Optional. Extra classes for each item; an
  *                                array is cycled through, e.g. one entry per
@@ -55,6 +57,14 @@ $list_item_classes = ! empty( $args['item_class'] ) ? array_values( (array) $arg
 				<?php endif; ?>
 				<?php if ( ! empty( $list_item['text'] ) ) : ?>
 					<p><?php echo esc_html( $list_item['text'] ); ?></p>
+				<?php endif; ?>
+				<?php if ( ! empty( $list_item['note'] ) ) : ?>
+					<p class="icon-list__note"><?php echo esc_html( $list_item['note'] ); ?></p>
+				<?php endif; ?>
+				<?php if ( ! empty( $list_item['link']['url'] ) ) : ?>
+					<div class="icon-list__button">
+						<?php get_template_part( 'template-parts/components/button', null, array_merge( $list_item['link'], array( 'style' => 'outline' ) ) ); ?>
+					</div>
 				<?php endif; ?>
 			</div>
 		</li>

@@ -12,8 +12,9 @@ alteração no `CHANGELOG.md`. Os nodes do Figma de cada template estão no
   Raum für gemeinsame Ferien", Services, "Alles da, was Ferien einfacher
   macht" e Testimonials. Falta o mapa (design por aprovar; nodes no `CLAUDE.md`). Pendente:
   - a foto do hero no Figma tem só 1400px — pedir o original em alta resolução;
-  - os botões "Apartments entdecken" e "Zu allen Services" apontam para `#`
-    — faltam as páginas de destino (ou ligar o primeiro à página Apartments).
+  - o botão "Apartments entdecken" aponta para `#` — ligar à página Apartments.
+    O "Zu allen Services" já aponta para a Leistungen em local (também na
+    Apartments); em produção, ligar depois de criar a página.
     O "Premium Stay entdecken" (Services, também na Angebote e na Apartments)
     já aponta para a Premium Stay em local; em produção, ligar depois de criar
     a página.
@@ -28,8 +29,8 @@ alteração no `CHANGELOG.md`. Os nodes do Figma de cada template estão no
   Services (o conteúdo da Aufenthalt), Included ("Inklusive Leistungen", estilo
   Cream band, ícones walnut), Testimonials (título) e Offers (título, texto,
   botão para a Angebote & Packages); criar os 11 termos com os slugs do
-  `CLAUDE.md` e os ícones. O botão "Zu allen Services" aponta para `#` — falta
-  a página de destino (como na Aufenthalt).
+  `CLAUDE.md` e os ícones. O botão "Zu allen Services" vai para a Leistungen
+  (ver Aufenthalt).
 - [ ] **Premium Stay** (`page-templates/page-premium-stay.php`) — feita. Pendente:
   - a foto do hero no Figma tem só 1400px (como na Aufenthalt) — pedir o original;
   - o item "Premium Stay" do mega-menu aponta para `#` (menus são conteúdo:
@@ -41,6 +42,36 @@ alteração no `CHANGELOG.md`. Os nodes do Figma de cada template estão no
   e Text with photos (Desktop layout: Staggered; botão para a Apartments) e
   Cards with icon ("Lage & Resort", estilo Filled, ícones creme).
   Sync também do Module — Text with photos (campo novo Desktop layout).
+- [ ] **Leistungen** (`page-templates/page-services.php`) — feita (todas as
+  secções do Figma). Pendente:
+  - a caixa do "Frühstück" está vazia no Figma por baixo do título (NOTES
+    C19) — o campo Text existe; confirmar se leva texto (folha de conteúdo);
+  - o título do bloco dos cães repete o da secção "Flexibel wohnen…" (NOTES
+    C20) — confirmar o texto na folha de conteúdo;
+  - o bloco do Aqua Allalin talvez não leve imagem (nota da designer, NOTES
+    C22) — confirmar;
+  - fotos do Figma em baixa resolução: hero, foto 1 do Space, cão e varanda
+    do Magic Pass (1400px); sauna do Aqua Allalin (998px) — pedir originais;
+  - o item "Services" do mega-menu aponta para `#` (ligar em cada ambiente);
+  - botões a ligar (em local estão em `#`): "Zur Lounge & Bar" e "Zum Shop"
+    (Lounge & Shop) → páginas Lounge & Bar e Shop; "Mehr erfahren"
+    (Gepäckservice) → secção SBB Gepäcktransport da Anreise & Lage; "Anfrage
+    senden" (Reinigung) → Info & Kontakt (ou um mailto — confirmar); "Zum
+    Resort" (Alles nah beieinander) → Unser Resort.
+  Em produção:
+  - Sync dos grupos: Page — Services (novo), Module — Space (novo), Page —
+    Stay (o Space da Aufenthalt passou a módulo — os valores mantêm-se),
+    Module — Cards with icon (Button nos cards), Module — Features (Layout,
+    Note, Button), Module — Resort sections (só as instruções do texto),
+    Module — Box text (campo novo Button colour);
+  - criar a página (filha da Aufenthalt, slug `leistungen`, "Services
+    Template") e preencher, por tab: Hero (linha 2 Custom 185px, linha 3
+    Right), Intro, Space (Columns, sem botão, itens sem ícone), Cards with
+    icon (Frame, ícones walnut, um botão por card), Breakfast (título, duas
+    fotos e o bloco dos cães — texto com a lista em `<ul>`), Resort (título e
+    três cards), Features (Cream, Centred, ícones walnut, notas e botões) e
+    Resort sections (três blocos de parceiros, sem botão) e Box text (Cream,
+    sem lista, título, texto, botão "Zum Resort" com Button colour Green).
 - [ ] **Mapa** — design por aprovar. Entra em vários sítios:
   - homepage, entre a Gallery e o Explore (`page-templates/page-home.php`);
   - Unsere Region, entre os Highlights e os Tagesausflüge (`page-templates/page-region.php`);

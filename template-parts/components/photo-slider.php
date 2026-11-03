@@ -25,6 +25,10 @@
  * Arguments ($args):
  * - images (int[])  Required. Attachment IDs, in order.
  * - class  (string) Optional. Extra classes for the root element (spacing).
+ *                   Variants: photo-slider--subpage (Resort sub-pages, no
+ *                   arrows on mobile), photo-slider--side (Leistungen
+ *                   "Frühstück": lower slides, beside a box on desktop).
+ * - mobile_gap (int) Optional. Space between slides below 768px. Default 4.
  *
  * @package montela
  * @subpackage Component
@@ -46,7 +50,7 @@ $slider_class = 'photo-slider' . ( ! empty( $args['class'] ) ? ' ' . $args['clas
 // Slides: auto width (set per slide in CSS), 4px apart on mobile, 20px above (23 in Figma — the gutter rule).
 $slider_options = array(
 	'slidesPerView' => 'auto',
-	'spaceBetween'  => 4,
+	'spaceBetween'  => isset( $args['mobile_gap'] ) ? (int) $args['mobile_gap'] : 4,
 	'breakpoints'   => array(
 		768 => array( 'spaceBetween' => 20 ),
 	),
