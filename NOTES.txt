@@ -250,6 +250,20 @@ no ficheiro indicado em "No starter".
   No Montela foto do bikeraum rodada à mão (sessão de 2026-11-03).
   Estado     POR PASSAR
 
+[2026-11-03] A16. Nenhum campo ACF obrigatório
+  Problema   40 campos com "required" (títulos e imagens de secção, campos
+             de linhas de repeaters). Num módulo clonado, um required obriga
+             a preencher uma secção que a página não quer mostrar, ou a
+             página não grava. Os templates já escondiam o que estava vazio:
+             o required só atrapalhava.
+  Regra      "Nenhum campo obrigatório ("required": 0). Quem decide o que
+             aparece é o template: um campo vazio esconde o elemento, uma
+             secção sem o essencial não é desenhada."
+  No starter CLAUDE.md, secção "ACF Field Groups" (ao lado da regra da
+             description); .claude/agents que criam field groups.
+  No Montela CLAUDE.md, secção ACF Field Groups (1.39.2).
+  Estado     POR PASSAR
+
 ===============================================================================
 B. DECISÕES POR CONFIRMAR
 ===============================================================================
