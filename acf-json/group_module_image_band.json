@@ -9,7 +9,7 @@
             "aria-label": "",
             "type": "image",
             "instructions": "Full-width photo. Landscape, at least 1920 px wide; cropped from the centre-bottom on smaller screens.",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -51,6 +51,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793104102,
+    "modified": 1793726775,
     "acfml_field_group_mode": "advanced"
 }

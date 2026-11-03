@@ -109,7 +109,7 @@
             "aria-label": "",
             "type": "text",
             "instructions": "Line breaks: <br>. Only on mobile: <br class=\"md:hidden\">, only below desktop: <br class=\"xl:hidden\"> — keep a space next to it.",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -395,5 +395,5 @@
     "description": "Meetings & Groups: one tab per section.",
     "show_in_rest": 0,
     "acfml_field_group_mode": "advanced",
-    "modified": 1793273776
+    "modified": 1793726775
 }

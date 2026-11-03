@@ -238,6 +238,10 @@ chegam a produção com o deploy e o ACF grava lá as alterações feitas no adm
 Depois de editar um grupo noutro ambiente, usar **Sync** no admin.
 
 - **`description` de cada field group: no máximo 50 caracteres.**
+- **Nenhum campo obrigatório** (`"required": 0`). Quem decide o que aparece é o
+  template: um campo vazio esconde o elemento, uma secção sem o essencial não é
+  desenhada. Um `required` num módulo clonado obrigava a preencher secções que a
+  página não quer mostrar.
 - **WPML (ACFML):** todos os grupos em modo **Expert** —
   `"acfml_field_group_mode": "advanced"` — com a preferência em cada campo
   (`wpml_cf_preferences`): imagens e vídeo **copy** (`1`), o resto **translate**

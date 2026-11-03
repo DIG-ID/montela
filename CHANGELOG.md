@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.39.2] — 2026-11-03
+
+### Changed
+- No custom field is required any more: pages, posts and the theme settings save with any field left empty, and the empty parts are simply not shown.
+
 ## [1.39.1] — 2026-11-03
 
 ### Changed

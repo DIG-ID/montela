@@ -33,7 +33,7 @@
                     "aria-label": "",
                     "type": "textarea",
                     "instructions": "Use &lt;br&gt; for a line break.",
-                    "required": 1,
+                    "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
@@ -98,7 +98,7 @@
                     "aria-label": "",
                     "type": "image",
                     "instructions": "Portrait-ish (about 522 × 600 on desktop).",
-                    "required": 1,
+                    "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
@@ -126,7 +126,7 @@
                     "aria-label": "",
                     "type": "image",
                     "instructions": "Wider (about 666 × 600 on desktop).",
-                    "required": 1,
+                    "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
@@ -171,6 +171,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793704626,
+    "modified": 1793726775,
     "acfml_field_group_mode": "advanced"
 }
