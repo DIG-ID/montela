@@ -109,13 +109,15 @@ alteração no `CHANGELOG.md`. Os nodes do Figma de cada template estão no
 
 ## SEO / Schema
 
-- [ ] Preencher no `CLAUDE.md` o mapeamento contexto → schema (Yoast Schema
-  API) e implementar: p.ex. `offer` → `Offer`, `activity` / `tagesausflug`
-  → `TouristAttraction`, testimonials → `Review`. Já feito: página FAQ →
-  `FAQPage` (`inc/schema.php`, v1.29.0).
+- [ ] Coordenadas (`geo`) do Hotel no schema — não há campo; acrescentar às
+  Theme Settings se se quiser.
 
 ## Antes do lançamento
 
+- [ ] Yoast → Settings → Site representation: Organization, com nome
+  ("Montela Apartment-Hotel & Resort") e logo. Sem os dois, o Yoast não gera
+  o nó Organization e o schema do Hotel (`inc/schema.php`) não sai.
+- [ ] Tirar o `noindex, nofollow` e passar a página Design System a privada.
 - [ ] Gerar o `.pot`: `wp i18n make-pot . languages/montela.pot --domain=montela`.
 - [ ] `wp-config.php` em produção: `DISALLOW_FILE_EDIT`, `WP_DEBUG` desligado
   (ver `SETUP.md`, passo 13).

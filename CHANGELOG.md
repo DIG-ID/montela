@@ -11,6 +11,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.40.0] — 2026-11-03
+
+### Added
+- Structured data: the business as a Hotel (address, phone, e-mail, social profiles), offers as Offer (price, validity), apartments as Apartment (size, rooms, occupancy, amenities), activities and day trips as TouristAttraction.
+
+### Changed
+- Fitnessroom usage boxes: clearer field instruction for bold sub-heads.
+
+### Fixed
+- Footer booking box and sticky CTA titles are no longer headings, so they stay out of every page's heading outline.
+
 ## [1.39.2] — 2026-11-03
 
 ### Changed

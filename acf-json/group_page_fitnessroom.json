@@ -371,7 +371,7 @@
                     "name": "text",
                     "aria-label": "",
                     "type": "textarea",
-                    "instructions": "A blank line starts a new paragraph. Bold sub-heads: <strong>Öffnungszeiten</strong> on its own line, the text on the next.",
+                    "instructions": "A blank line starts a new paragraph. For a bold sub-head inside this box, type the tags: &lt;strong&gt;Öffnungszeiten&lt;/strong&gt; on its own line, the text on the next line.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -429,5 +429,5 @@
     "description": "Fitnessroom: one tab per section.",
     "show_in_rest": 0,
     "acfml_field_group_mode": "advanced",
-    "modified": 1793275197
+    "modified": 1793703543
 }

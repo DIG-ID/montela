@@ -688,3 +688,12 @@ Campos de cada nota:
              o de tablet fica a 90/80, como desenhado (regra figma.md).
   Estado     POR REPORTAR
 
+[2026-11-02] C24. Foto do produto "Cholera" no Shop
+  Frame      5895:19770 (Shop, desktop — slider de produtos).
+  Erro       o card "Cholera" usa a foto da prateleira de massas e molhos
+             ("Teigwaren aus dem Wallis"), a mesma do slide 3 do Shop info;
+             não mostra uma Cholera.
+  No site    a foto do Figma, com o alt a descrever o que se vê
+             ("Teigwaren und Tomatensaucen im Montela Shop"). Pedir uma foto
+             do produto.
+  Estado     POR REPORTAR

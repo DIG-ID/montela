@@ -381,11 +381,15 @@ Menus: `main-menu` (header desktop), `mega-menu` (mega-menu; 2 níveis), `footer
 - Schema customizado via **Yoast Schema API** — usar filtros `wpseo_schema_graph_pieces` e `wpseo_schema_*`
 - Não criar schema manual com `wp_head` se o Yoast já o suportar.
 
-> **A preencher** com o mapeamento contexto → schema (ex.: CPT de eventos → `schema.org/Event`, página FAQ → `schema.org/FAQPage`).
+Tudo em `inc/schema.php`. As restantes páginas ficam só com o schema base do Yoast (WebSite, WebPage, Organization).
 
 | Contexto | Schema | Campos principais |
 |----------|--------|-------------------|
 | Página FAQ (`page-templates/page-faq.php`) | `FAQPage` (acrescentado ao tipo do WebPage do Yoast) + `mainEntity` com `Question` / `Answer` | `section_faq_groups` → `items` (`question`, `answer` sem HTML). Em `inc/schema.php` (filtros `wpseo_schema_webpage_type` e `wpseo_schema_webpage`). Só nesta página: o FAQ da Info & Kontakt repete perguntas daqui. |
+| Site inteiro (o nó Organization do Yoast) | `Organization` + `Hotel` | Morada (`PostalAddress`, lida da linha com o código postal do `footer_address`), `footer_phone` (sem o "(0)"), `footer_email`, `socials_*` no `sameAs`. Filtro `wpseo_schema_organization`. **Só sai se o Yoast tiver nome e logo da organização** (Settings → Site representation). |
+| Single `offer` | `Offer` | Título, excerto (senão a meta description do Yoast, senão o texto da intro), imagem destacada (senão a do hero), `section_offer_price` → `price` + `priceCurrency` (CHF por omissão) e `priceSpecification` (`minPrice` — é um preço "Ab" — e `unitText` de `_price_unit`), `_valid_from` / `_valid_to` → `validFrom` / `validThrough`, `offeredBy` → Hotel. Filtro `wpseo_schema_graph`. |
+| Single `apartment` | `Apartment` | Base como a oferta + `floorSize` (m², `MTK`), `numberOfBedrooms`, `numberOfBathroomsTotal`, `occupancy` ("4-5 Personen" → min 4 / max 5), `amenityFeature` (termos `amenity`), `containedInPlace` → Hotel. |
+| Singles `activity` e `tagesausflug` | `TouristAttraction` | Só a base: nome, descrição, imagem, URL. |
 
 ---
 

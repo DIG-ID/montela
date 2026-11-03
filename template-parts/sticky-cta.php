@@ -41,7 +41,8 @@ $cta_label_close = sprintf( __( 'Schliessen: %s', 'montela' ), $cta_name );
 <aside class="sticky-cta" aria-label="<?php echo esc_attr( $cta_name ); ?>" data-sticky-cta>
 	<div id="sticky-cta-panel" class="sticky-cta__panel">
 		<?php if ( $cta_title ) : ?>
-			<h2 class="sticky-cta__title"><?php echo esc_html( $cta_title ); ?></h2>
+			<?php // Not a heading: the card repeats on every page and stays out of its outline. ?>
+			<p class="sticky-cta__title"><?php echo esc_html( $cta_title ); ?></p>
 		<?php endif; ?>
 
 		<?php if ( $cta_text ) : ?>
