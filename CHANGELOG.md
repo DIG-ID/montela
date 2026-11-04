@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.42.2] — 2026-11-04
+
+### Changed
+- Activities module (tablet): the frame line shows above the button and runs behind it, as designed.
+- Testimonials (tablet): slider arrows further out, 45px from the frame.
+
 ## [1.42.1] — 2026-11-04
 
 ### Changed
