@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.42.0] — 2026-11-04
+
+### Added
+- Aktivitäten page: choose whether the summer or the winter activities come first.
+
+### Changed
+- Text with photos (one photo): text and photo split in half on tablet, so the button fits.
+
 ## [1.41.0] — 2026-11-04
 
 ### Added
