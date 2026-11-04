@@ -119,7 +119,37 @@
             "name": "section_explore_slides",
             "aria-label": "",
             "type": "gallery",
-            "instructions": "Large photos on the slider half. Portrait-friendly: cropped to fill the area.",
+            "instructions": "Large photos on the slider half (desktop) and on top of the panel (mobile). Portrait-friendly: cropped to fill the area.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "return_format": "id",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "jpg, jpeg, png, webp",
+            "insert": "append",
+            "preview_size": "medium",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_module_explore_slides_tablet",
+            "label": "Slider photos (tablet)",
+            "name": "section_explore_slides_tablet",
+            "aria-label": "",
+            "type": "gallery",
+            "instructions": "Optional. Landscape photos for tablet, where the slider runs the full width (834 × 400 in the design). Empty = the photos above.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -165,6 +195,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793726775,
+    "modified": 1793787091,
     "acfml_field_group_mode": "advanced"
 }

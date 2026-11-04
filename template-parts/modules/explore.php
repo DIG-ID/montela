@@ -14,6 +14,13 @@
  * enqueue it on wp_enqueue_scripts for the templates that use this module
  * (see inc/enqueue.php).
  *
+ * Tablet has its own, optional, slider photos: there the slider runs the
+ * full width (834 × 400 in the design, Single Tagesausflug tablet
+ * 5426:17664), so it wants landscape photos, while desktop (a half) and
+ * mobile take the portrait-friendly ones. With tablet photos, two sliders
+ * are printed and the CSS shows one per breakpoint; the hidden one's images
+ * are lazy, so they are not downloaded. Since 1.41.0.
+ *
  * Arguments ($args):
  * - row     (bool)       Optional. True inside a Flexible Content loop (fields
  *                        read with get_sub_field()). Since 1.13.0.
@@ -38,6 +45,13 @@ $exp_image    = montela_module_field( 'section_explore_image', $exp_args );
 $exp_text     = montela_module_field( 'section_explore_text', $exp_args );
 $exp_button   = montela_module_field( 'section_explore_button', $exp_args );
 $exp_slides   = montela_module_field( 'section_explore_slides', $exp_args );
+$exp_tablet   = montela_module_field( 'section_explore_slides_tablet', $exp_args );
+
+// Tablet photos only count alongside the main ones: without those there is
+// nothing to show on desktop and mobile.
+if ( ! $exp_slides ) {
+	$exp_tablet = array();
+}
 
 if ( ! $exp_title && ! $exp_text && ! $exp_slides ) {
 	return;
@@ -58,13 +72,31 @@ $exp_swiper = array(
 	'spaceBetween'  => 0,
 	'watchOverflow' => false,
 );
+
+// One slider per photo set. Without tablet photos, the main one shows at
+// every width.
+$exp_sliders = array();
+if ( $exp_slides ) {
+	$exp_sliders[] = array(
+		'slides' => $exp_slides,
+		'class'  => $exp_tablet ? ' section-explore__slider--main' : '',
+		'sizes'  => '(min-width: 1280px) 50vw, 100vw',
+	);
+}
+if ( $exp_tablet ) {
+	$exp_sliders[] = array(
+		'slides' => $exp_tablet,
+		'class'  => ' section-explore__slider--tablet',
+		'sizes'  => '100vw',
+	);
+}
 ?>
 <section class="section-explore<?php echo $exp_image ? '' : ' section-explore--no-photo'; ?>"<?php echo $exp_title ? ' aria-labelledby="' . esc_attr( $exp_title_id ) . '"' : ''; ?>>
-	<?php if ( $exp_slides ) : ?>
-		<div class="section-explore__slider" data-swiper-root>
+	<?php foreach ( $exp_sliders as $exp_slider ) : ?>
+		<div class="section-explore__slider<?php echo esc_attr( $exp_slider['class'] ); ?>" data-swiper-root>
 			<div class="swiper section-explore__swiper" data-swiper="<?php echo esc_attr( wp_json_encode( $exp_swiper ) ); ?>">
 				<div class="swiper-wrapper">
-					<?php foreach ( $exp_slides as $exp_slide ) : ?>
+					<?php foreach ( $exp_slider['slides'] as $exp_slide ) : ?>
 						<div class="swiper-slide section-explore__slide">
 							<?php
 							echo wp_get_attachment_image(
@@ -72,8 +104,9 @@ $exp_swiper = array(
 								'full',
 								false,
 								array(
-									'class' => 'section-explore__img',
-									'sizes' => '(min-width: 1280px) 50vw, 100vw',
+									'class'   => 'section-explore__img',
+									'sizes'   => $exp_slider['sizes'],
+									'loading' => 'lazy',
 								)
 							);
 							?>
@@ -87,7 +120,7 @@ $exp_swiper = array(
 				<button class="slider-nav__btn slider-nav__btn--next" type="button" data-swiper-next aria-label="<?php esc_attr_e( 'Nächstes Foto', 'montela' ); ?>"></button>
 			</div>
 		</div>
-	<?php endif; ?>
+	<?php endforeach; ?>
 
 	<div class="section-explore__panel">
 		<?php if ( $exp_overline ) : ?>

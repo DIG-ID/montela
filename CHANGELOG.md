@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.41.0] — 2026-11-04
+
+### Added
+- Explore module: optional landscape slider photos for tablet, where the slider runs the full width; without them, tablet keeps the main photos.
+
 ## [1.40.1] — 2026-11-04
 
 ### Changed
