@@ -17,16 +17,19 @@
 //                    container, from 128px down
 //
 // Cards: components/card-activity.php, as drawn in the Figma (Bruno, 2026-11-02
-// — before, the preview card, 420px tall): 421px tall on desktop, 325 below.
+// — before, the preview card, 420px tall): 421px tall on desktop, 375 on
+// tablet, 390 on mobile (325 in the Figma).
 // Desktop: 403 wide, 94px / 51px apart (the right or left half of the
 // container).
 //
 // The frame's bottom edge lands inside the first row of cards: on mobile
 // and tablet it is measured from the bottom of the cards, so that it ends
-// 118px (mobile) / 265px (tablet) into the first row of 325px cards: 207px
-// mobile; 407px tablet with two rows (325 + 22 + 60), 60px with one
-// (.--one-row, 1–2 cards). On desktop from the top (888px), since the cards
-// start at a fixed height.
+// 118px (mobile) / 265px (tablet) into the first row of the Figma's 325px
+// cards: 207px mobile; 407px tablet with two rows (325 + 22 + 60), 60px with
+// one (.--one-row, 1–2 cards). On desktop from the top (888px), since the cards
+// start at a fixed height. The cards grew 50px (tablet) / 65px (mobile)
+// in the photo: measured from the bottom, the frame still ends where the
+// panel starts.
 // With a single row in the 'left' layout it hangs below the cards — not in
 // the design.
 //

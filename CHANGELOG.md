@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.40.1] — 2026-11-04
+
+### Changed
+- Activity cards on tablet and mobile: the photo sits above the panel instead of behind it, and the cards are taller, so more of the photo shows.
+
 ## [1.40.0] — 2026-11-03
 
 ### Added

@@ -2,8 +2,9 @@
 // Figma: the cards of "Activities_with slider SW" — desktop 5679:16639,
 // tablet 5679:15677, mobile 5679:16603.
 //
-// The photo fills the whole card (403×421 desktop, 325 tall below); a panel
-// sits over its bottom edge. Open, the panel is sage with the title, the
+// The photo fills the whole card (403×421 desktop; 375 tall on tablet and
+// 390 on mobile — 325 in the Figma, taller for more photo, Daniel
+// 2026-11-04); a panel sits over its bottom edge. Open, the panel is sage with the title, the
 // excerpt (4 lines at most) and the link. Closed, only the title shows, in a
 // cream bar (76px desktop, 58px below).
 //
@@ -11,17 +12,26 @@
 // with a mouse close the card until it is hovered or a keyboard focus lands
 // inside it; touch screens show it open. The excerpt and link fold away
 // through a 0fr → 1fr grid row, so the panel animates to its content height.
+//
+// Always open, the photo only fills the space above the panel (Figma
+// 2026-11, tablet 6345:20097, mobile 5895:21361 — "so the photos show
+// without the hover"): the card is a column, the photo takes what the panel
+// leaves (with four lines of text about 162px on tablet, 177 on mobile; 112
+// in the Figma) and is cropped around its centre. Before, it filled the
+// whole card behind the panel and only its top strip — mostly sky — showed. Desktop with a mouse keeps the photo behind
+// the panel, which opens over it on hover. Desktop touch screens follow the
+// open layout too.
 .card-activity
-  @apply relative h-[325px] xl:h-[421px] overflow-hidden
+  @apply relative flex flex-col justify-end h-[390px] md:h-[375px] xl:h-[421px] overflow-hidden
 
 .card-activity__media
-  @apply absolute inset-0 m-0
+  @apply relative flex-1 min-h-0 m-0
 
 .card-activity__img
-  @apply w-full h-full object-cover
+  @apply absolute inset-0 w-full h-full object-cover
 
 .card-activity__panel
-  @apply absolute inset-x-0 bottom-0 border border-montela-sage bg-montela-sage text-montela-cream text-center px-[15px] pt-3 pb-[13px] xl:px-[19px] xl:pt-[15px] xl:pb-4 transition-[background-color,color,padding] duration-[400ms] ease-out motion-reduce:transition-none
+  @apply relative border border-montela-sage bg-montela-sage text-montela-cream text-center px-[15px] pt-3 pb-[13px] xl:px-[19px] xl:pt-[15px] xl:pb-4 transition-[background-color,color,padding] duration-[400ms] ease-out motion-reduce:transition-none
 
 .card-activity__more
   @apply grid grid-rows-[1fr] transition-[grid-template-rows] duration-[400ms] ease-out motion-reduce:transition-none
@@ -48,8 +58,13 @@
 .card-activity__link .btn__label
   @apply justify-start pl-[46px]
 
-// Closed: only the title, in a cream bar.
+// Desktop with a mouse: the photo fills the card behind the panel. Closed,
+// only the title shows, in a cream bar.
 @media (min-width: 1280px) and (hover: hover) and (pointer: fine)
+  .card-activity__media
+    @apply absolute inset-0
+  .card-activity__panel
+    @apply absolute inset-x-0 bottom-0
   .card-activity:not(:hover):not(:focus-within)
     .card-activity__panel
       @apply bg-montela-cream text-montela-sage pb-3 xl:pt-[21px] xl:pb-[21px]
