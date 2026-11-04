@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.42.1] — 2026-11-04
+
+### Changed
+- Activities module: on mobile, the sage arrows sit above the cards, as in the other activity sliders.
+
 ## [1.42.0] — 2026-11-04
 
 ### Added
