@@ -133,7 +133,7 @@
             "name": "section_offer_price_unit",
             "aria-label": "",
             "type": "text",
-            "instructions": "e.g. / Person",
+            "instructions": "e.g. \/ Person",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -142,7 +142,7 @@
                 "id": ""
             },
             "wpml_cf_preferences": 2,
-            "default_value": "/ Person",
+            "default_value": "\/ Person",
             "maxlength": "",
             "allow_in_bindings": 0,
             "placeholder": "",
@@ -444,12 +444,34 @@
             "new_lines": ""
         },
         {
+            "key": "field_cpt_offer_conditions_label",
+            "label": "Conditions heading",
+            "name": "section_offer_conditions_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small heading above the conditions. Empty = \"Konditionen\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "Konditionen",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_cpt_offer_conditions",
             "label": "Conditions",
             "name": "section_offer_conditions",
             "aria-label": "",
             "type": "repeater",
-            "instructions": "One box per stay, e.g. Holiday Stay / Premium Stay.",
+            "instructions": "One box per stay, e.g. Holiday Stay \/ Premium Stay.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -515,6 +537,28 @@
             ]
         },
         {
+            "key": "field_cpt_offer_validity_label",
+            "label": "Validity label",
+            "name": "section_offer_validity_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Bold label before the dates. Empty = \"Gültigkeit des Angebotes:\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "Gültigkeit des Angebotes:",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_cpt_offer_valid_from",
             "label": "Valid from",
             "name": "section_offer_valid_from",
@@ -532,7 +576,8 @@
             "display_format": "d.m.Y",
             "return_format": "Ymd",
             "first_day": 1,
-            "allow_in_bindings": 0
+            "allow_in_bindings": 0,
+            "default_to_current_date": 0
         },
         {
             "key": "field_cpt_offer_valid_to",
@@ -552,7 +597,8 @@
             "display_format": "d.m.Y",
             "return_format": "Ymd",
             "first_day": 1,
-            "allow_in_bindings": 0
+            "allow_in_bindings": 0,
+            "default_to_current_date": 0
         },
         {
             "key": "field_cpt_offer_tab_text_photos",
@@ -657,6 +703,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793726775,
+    "modified": 1793791166,
     "acfml_field_group_mode": "advanced"
 }

@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.43.0] — 2026-11-04
+
+### Added
+- Offer conditions: editable heading and validity label.
+
+### Changed
+- Offer conditions: defaults now "Konditionen" and "Gültigkeit des Angebotes:", as designed; on tablet the heading matches the validity line's size.
+
 ## [1.42.2] — 2026-11-04
 
 ### Changed
