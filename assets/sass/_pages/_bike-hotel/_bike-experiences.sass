@@ -34,9 +34,8 @@
 // the design.
 //
 // More than 4 cards (.--paged): from tablet up the grid becomes a two-row
-// track, one column per arrow click. The arrows always show (Bruno, for now,
-// as drawn on desktop) — disabled by the carousel when there is nothing to
-// page. Arrows in the 'left' layout sit in the frame's top-right corner like
+// track, one column per arrow click. The arrows hide when there is nothing
+// to page (Bruno) — see -- Arrows --. Arrows in the 'left' layout sit in the frame's top-right corner like
 // 'right' — not in the design.
 //
 // Spacing (Bike Hotel, measured): mobile 128px above and below. Tablet:
@@ -87,9 +86,18 @@
 // Two classes: .slider-nav (display: flex) is emitted after this partial.
 // Tablet: the 44px above the arrows is padding on a cream ground, so the
 // frame's left line stays hidden down to the arrows' bottom edge and
-// reappears there (as in the tablet frame).
+// reappears there (as in the tablet frame). The ground is as wide as the
+// copy (608px max), not the row: the frame's right line runs on beside it
+// (Bruno).
 .section-bike-experiences__inner .section-bike-experiences__nav
-  @apply relative mt-[30px] md:mt-0 md:pt-11 md:bg-montela-cream xl:absolute xl:pt-0 xl:bg-transparent xl:top-[90px]
+  @apply relative mt-[30px] md:mt-0 md:pt-11 md:max-w-[608px] md:bg-montela-cream xl:absolute xl:pt-0 xl:max-w-none xl:bg-transparent xl:top-[90px]
+
+// Nothing to page (every card in view — up to four from tablet up): the
+// carousel disables both arrows, and they hide. Hidden, not removed: on
+// tablet their row keeps the frame's left line covered and the cards where
+// they are drawn.
+.section-bike-experiences__nav:has(.slider-nav__btn--prev:disabled):has(.slider-nav__btn--next:disabled) .slider-nav__btn
+  @apply invisible
 
 .section-bike-experiences--right .section-bike-experiences__inner .section-bike-experiences__nav
   @apply xl:right-[8.43%]

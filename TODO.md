@@ -109,8 +109,14 @@ alteração no `CHANGELOG.md`. Os nodes do Figma de cada template estão no
 
 ## SEO / Schema
 
-- [ ] Coordenadas (`geo`) do Hotel no schema — não há campo; acrescentar às
-  Theme Settings se se quiser.
+- [ ] Validar o schema no staging com o Rich Results Test ou o Schema Markup
+  Validator: a homepage (Hotel), uma oferta e uma activity. O staging tem
+  password: colar o código-fonte da página em vez do URL.
+- [ ] Rever os schemas quando o conteúdo do site estiver todo completo: os
+  campos que alimentam cada um (preços, datas, dados dos apartamentos,
+  morada/telefone/e-mail do footer, imagens, excertos) e voltar a validar.
+- [ ] Opcional: coordenadas GPS (`geo`) do Hotel no schema — não há campo;
+  seria preciso acrescentá-lo às Theme Settings.
 
 ## Antes do lançamento
 

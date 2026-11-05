@@ -42,10 +42,10 @@ $fi_title_id = wp_unique_id( 'section-fitness-info-title-' );
 				null,
 				array(
 					'items'      => $fi_items,
-					'class'      => 'section-fitness-info__list col-span-full self-start gap-[25px] md:col-span-3 md:gap-11 xl:col-start-2 xl:col-span-6 xl:grid xl:grid-cols-subgrid xl:gap-x-5 xl:gap-y-[57px]',
+					'class'      => 'section-fitness-info__list col-span-full self-start gap-[25px] md:col-span-3 md:self-stretch md:justify-between md:gap-[30px] xl:self-start xl:justify-normal xl:col-start-2 xl:col-span-6 xl:grid xl:grid-cols-subgrid xl:gap-x-5 xl:gap-y-[57px]',
 					'item_class' => array(
-						'grid-cols-[37px_1fr] gap-x-[28px] items-center md:gap-x-[31px] xl:grid-cols-[52px_1fr] xl:gap-x-6 xl:col-start-1 xl:col-span-3',
-						'grid-cols-[37px_1fr] gap-x-[28px] items-center md:gap-x-[31px] xl:grid-cols-[52px_1fr] xl:gap-x-6 xl:col-start-4 xl:col-span-3',
+						'grid-cols-[37px_1fr] gap-x-[28px] items-center md:grid-cols-[30px_1fr] md:gap-x-[30px] xl:grid-cols-[52px_1fr] xl:gap-x-6 xl:col-start-1 xl:col-span-3',
+						'grid-cols-[37px_1fr] gap-x-[28px] items-center md:grid-cols-[30px_1fr] md:gap-x-[30px] xl:grid-cols-[52px_1fr] xl:gap-x-6 xl:col-start-4 xl:col-span-3',
 					),
 				)
 			);

@@ -88,3 +88,14 @@
 // the button (pb in the PHP), so it stays 500px tall, as drawn.
 .section-cards-icon--button .section-cards-icon__body
   @apply md:text-[17px] md:leading-[23px] xl:text-[15px] xl:leading-[25px]
+
+// Fixed-width cards ('width' => 'fixed', Fitnessroom — Figma 5895:20061 /
+// 5895:20837):
+//   Tablet   340 × 500 (Bruno), never more than half the row: 310px at
+//            768. From ~1080px a third card fits beside them; below, it
+//            peeks in at the edge.
+//   Desktop  1280–1535: four to a row, as in the default — three at 369
+//            don't fit columns 2–11 there. From 1536px 369px with 36px side
+//            padding, so the text wraps as drawn (297px).
+.section-cards-icon--fixed .section-cards-icon__swiper .section-cards-icon__card
+  @apply md:w-[340px] md:max-w-[calc(50%-10px)] xl:max-w-none 2xl:w-[369px] 2xl:px-9

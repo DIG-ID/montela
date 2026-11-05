@@ -2,7 +2,8 @@
 /**
  * Full-bleed photo strip: a Swiper slider of photos at their own width (wide
  * and narrow crops alternate), with prev/next arrows over its bottom-right
- * corner on tablet and desktop, below it on mobile.
+ * corner on tablet and desktop, below it on mobile. The strip bleeds past
+ * the container; the arrows sit on the grid.
  *
  * Used by the homepage Gallery section and the Photo slider module. Figma:
  * homepage gallery strip (desktop 5466:15471, tablet 5426:4383, mobile
@@ -99,9 +100,11 @@ $slider_options = array(
 	<?php if ( count( $slider_images ) > 1 ) : ?>
 		<div class="photo-slider__nav">
 			<div class="theme-container">
-				<div class="slider-nav photo-slider__nav-buttons">
-					<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-swiper-prev aria-label="<?php esc_attr_e( 'Vorheriges Foto', 'montela' ); ?>"></button>
-					<button class="slider-nav__btn slider-nav__btn--next" type="button" data-swiper-next aria-label="<?php esc_attr_e( 'Nächstes Foto', 'montela' ); ?>"></button>
+				<div class="theme-grid">
+					<div class="slider-nav photo-slider__nav-buttons">
+						<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-swiper-prev aria-label="<?php esc_attr_e( 'Vorheriges Foto', 'montela' ); ?>"></button>
+						<button class="slider-nav__btn slider-nav__btn--next" type="button" data-swiper-next aria-label="<?php esc_attr_e( 'Nächstes Foto', 'montela' ); ?>"></button>
+					</div>
 				</div>
 			</div>
 		</div>

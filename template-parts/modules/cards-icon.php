@@ -27,6 +27,11 @@
  * - nav     (string)     Optional. 'auto' (default) hides the arrows when every
  *                        card is in view; 'always' keeps them, disabled, as
  *                        drawn on the Fitnessroom.
+ * - width   (string)     Optional. 'fluid' (default) shares the row between
+ *                        the cards in view; 'fixed' gives each card the
+ *                        width drawn on the Fitnessroom — 340px on tablet,
+ *                        369 from 1536px up (fewer than four cards — four at
+ *                        369 need ~1940px).
  *
  * @package montela
  * @subpackage Section
@@ -95,8 +100,17 @@ $cards_nav_always = ! empty( $args['nav'] ) && 'always' === $args['nav'];
 if ( $cards_nav_always ) {
 	$cards_swiper['watchOverflow'] = false;
 }
+
+// Fixed-width cards (Fitnessroom): on tablet and from 1536px the card width
+// comes from the SASS, not from the number of cards in view.
+$cards_fixed = ! empty( $args['width'] ) && 'fixed' === $args['width'];
+if ( $cards_fixed ) {
+	$cards_swiper['breakpoints'][768]  = array( 'slidesPerView' => 'auto' );
+	$cards_swiper['breakpoints'][1536] = array( 'slidesPerView' => 'auto' );
+	ksort( $cards_swiper['breakpoints'] );
+}
 ?>
-<section class="section-cards-icon section-cards-icon--<?php echo esc_attr( $cards_style . ( $cards_has_button ? ' section-cards-icon--button' : '' ) . ' ' . $cards_class ); ?> text-montela-walnut"<?php echo $cards_title ? ' aria-labelledby="' . esc_attr( $cards_title_id ) . '"' : ''; ?>>
+<section class="section-cards-icon section-cards-icon--<?php echo esc_attr( $cards_style . ( $cards_has_button ? ' section-cards-icon--button' : '' ) . ( $cards_fixed ? ' section-cards-icon--fixed' : '' ) . ' ' . $cards_class ); ?> text-montela-walnut"<?php echo $cards_title ? ' aria-labelledby="' . esc_attr( $cards_title_id ) . '"' : ''; ?>>
 	<div class="theme-container">
 		<div class="theme-grid">
 			<div class="section-cards-icon__inner col-span-full flex flex-col items-center gap-9 md:gap-11 xl:col-start-2 xl:col-span-10 xl:gap-24" data-swiper-root>

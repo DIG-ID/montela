@@ -26,7 +26,7 @@
   @apply mt-8 md:mt-0 md:absolute md:inset-x-0 md:bottom-[37px] md:z-10 md:pointer-events-none
 
 .photo-slider__nav-buttons
-  @apply justify-center md:justify-end
+  @apply col-span-full justify-center md:justify-end
 
 .photo-slider__nav .slider-nav__btn
   @apply pointer-events-auto
@@ -37,6 +37,14 @@
 // keeps 37px and its mobile arrows.
 .photo-slider--subpage .photo-slider__nav
   @apply hidden md:block md:bottom-[12px] xl:bottom-[19px]
+
+// On the sub-pages the arrows sit in the last column (Bruno): from its left
+// edge on tablet (Figma x 667–668, col 6 starts at 669 — 94px of arrows in
+// a 101px column; at 768 the 90px column lets them run 6px into the
+// margin), at its right end on desktop (x 1776–1870, as before). Not on
+// the Leistungen strip (--side), which sits inside a grid of its own.
+.photo-slider--subpage:not(.photo-slider--side) .photo-slider__nav-buttons
+  @apply md:col-start-6 md:col-span-1 md:justify-start xl:col-start-12 xl:justify-end
 
 // Variant .photo-slider--side (Leistungen "Frühstück", Figma 5426:6929 /
 // 5528:6641 / 5532:7276): lower slides — 951 and 746 by 684 on desktop, 570

@@ -93,3 +93,9 @@ body:has(.footer-main--has-cta) .main-content > .section-explore:last-child
 
 .section-explore--no-photo .section-explore__panel .btn
   @apply mt-[51px] md:mt-11 xl:mt-[50px]
+
+// Last section without the photo (Bike Hotel, tablet 5895:20547): 87px from
+// the button to the footer's box (86.62 in Figma — Bruno), not the 144px
+// of the single Tagesausflug: 160px overlap + 87.
+body:has(.footer-main--has-cta) .main-content > .section-explore--no-photo:last-child .section-explore__panel
+  @apply md:pb-[247px] xl:pb-[371px]

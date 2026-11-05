@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.43.2] — 2026-11-05
+
+### Changed
+- Fitnessroom: "Auf einen Blick" list spreads to the photo's height on tablet, with 30px icons; training cards keep the designed width (340px on tablet, 369px from 1536px).
+- Photo sliders: the arrows sit on the grid — in the last column on the resort sub-pages.
+- Bike Hotel: the experience arrows hide when every card is in view; the tablet arrow ground is as wide as the copy.
+- Explore without photo as the last section: designed spacing above the footer box.
+- Footer (desktop): partner logos on the same row as the rest, on the right; they shrink to fit between 1280 and 1535px.
+
 ## [1.43.1] — 2026-11-05
 
 ### Changed
