@@ -34,6 +34,14 @@
 .section-explore__img
   @apply w-full h-full object-cover
 
+// With tablet photos (section_explore_slides_tablet) there are two sliders:
+// the main one for desktop and mobile, the landscape one for tablet.
+.section-explore__slider--main
+  @apply md:max-xl:hidden
+
+.section-explore__slider--tablet
+  @apply hidden md:max-xl:block
+
 .section-explore__nav
   @apply absolute z-10 bottom-[28px] left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-[58px] md:bottom-[35px] xl:bottom-auto xl:top-[76px] xl:right-[51px]
 

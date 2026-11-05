@@ -5,8 +5,11 @@
 //   Desktop  two halves: switch, title, text and button on the left; the
 //            cards in a 2×2 grid on the right half, starting 220px down
 //   Tablet   stacked: intro, then the 2×2 grid
-//   Mobile   stacked: intro, then one card at a time (scroll-snap carousel,
-//            arrows below — not in the Figma frame, same as the gallery)
+//   Mobile   stacked: intro, then one card at a time (scroll-snap carousel;
+//            not in the Figma frame). Sage arrows above the cards, left,
+//            as on the Aktivitäten page and the activity info cards —
+//            the same arrows wherever activity cards slide (Daniel,
+//            2026-11-04)
 //
 // A thin sage frame runs behind it all (.section-activities__frame); the
 // cream copy block and the cards hide the parts of it the design hides.
@@ -31,11 +34,12 @@
 .section-activities__inner
   @apply relative xl:grid xl:grid-cols-2 xl:gap-x-5 xl:items-start
 
-// Mobile: 7px past the container on each side, from 113px down.
+// Mobile: 7px past the container on each side, from 113px down to 207px
+// above the section's bottom (the cards' bottom), as on the Aktivitäten page.
 // Tablet: from 19% of the width to the right edge, from the top.
 // Desktop: 9.56% to 63.54% of the width, from the top.
 .section-activities__frame
-  @apply absolute border border-montela-sage -left-[7px] -right-[7px] top-[113px] bottom-[278px] md:left-[19%] md:right-0 md:top-0 md:bottom-[526px] xl:left-[9.56%] xl:right-[36.46%] xl:bottom-[226px]
+  @apply absolute border border-montela-sage -left-[7px] -right-[7px] top-[113px] bottom-[207px] md:left-[19%] md:right-0 md:top-0 md:bottom-[526px] xl:left-[9.56%] xl:right-[36.46%] xl:bottom-[226px]
 
 // -- Intro --
 // Desktop: cream from 50px down (21px above the switch), hiding the end of
@@ -58,6 +62,15 @@
 
 .section-activities__copy .btn
   @apply mt-8 md:mt-[53px] xl:mt-[65px]
+
+// Tablet, with a button: the frame's left line shows again 26px above the
+// button and runs on behind it (Figma tablet, "Activities_with slider SW"
+// 5679:15677). The cream stops there: it covers the copy down to 26px +
+// the button's 44px from its bottom. Without a button the cream covers
+// the copy to the end, as before.
+@media (min-width: 768px) and (max-width: 1279px)
+  .section-activities__copy:has(> .btn)
+    background: linear-gradient(theme('colors.montela-cream'), theme('colors.montela-cream')) top / 100% calc(100% - 70px) no-repeat
 
 // -- Summer / Winter switch --
 // Sage pill with two tabs; the selected one is a cream pill. Full width on
@@ -107,7 +120,7 @@
 // card, not on the panel: the card box stays opaque cream (see below), so
 // the frame behind it never shows through a half-transparent card.
 .section-activities__panel
-  @apply relative mt-[66px] md:mt-9 xl:mt-[220px] xl:col-start-2 xl:row-start-1
+  @apply relative mt-[30px] md:mt-9 xl:mt-[220px] xl:col-start-2 xl:row-start-1
 
 .section-activities__panel .card-activity > *,
 .section-activities__panel .section-activities__nav
@@ -132,6 +145,8 @@
 .section-activities__cards .card-activity
   @apply w-full shrink-0 snap-start bg-montela-cream
 
-// Two classes: .slider-nav (display: flex) is emitted after this partial.
+// Mobile only: 30px under the button (the panel's top margin), 40px above
+// the card — the Aktivitäten page's spacing. Two classes: .slider-nav
+// (display: flex) is emitted after this partial.
 .section-activities__panel .section-activities__nav
-  @apply justify-center mt-8 md:hidden
+  @apply mb-10 md:hidden

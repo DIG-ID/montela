@@ -158,6 +158,13 @@ $act_title_id = $act_uid . '-title';
 					<?php echo $act_key !== $act_current ? 'hidden' : ''; ?>
 					data-activities-carousel
 				>
+					<?php if ( count( $act_season['ids'] ) > 1 ) : ?>
+						<div class="slider-nav slider-nav--sage section-activities__nav">
+							<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-activities-prev aria-label="<?php esc_attr_e( 'Vorherige Aktivität', 'montela' ); ?>"></button>
+							<button class="slider-nav__btn slider-nav__btn--next" type="button" data-activities-next aria-label="<?php esc_attr_e( 'Nächste Aktivität', 'montela' ); ?>"></button>
+						</div>
+					<?php endif; ?>
+
 					<div class="section-activities__cards" data-activities-track>
 						<?php
 						foreach ( $act_season['ids'] as $act_id ) :
@@ -165,13 +172,6 @@ $act_title_id = $act_uid . '-title';
 						endforeach;
 						?>
 					</div>
-
-					<?php if ( count( $act_season['ids'] ) > 1 ) : ?>
-						<div class="slider-nav section-activities__nav">
-							<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-activities-prev aria-label="<?php esc_attr_e( 'Vorherige Aktivität', 'montela' ); ?>"></button>
-							<button class="slider-nav__btn slider-nav__btn--next" type="button" data-activities-next aria-label="<?php esc_attr_e( 'Nächste Aktivität', 'montela' ); ?>"></button>
-						</div>
-					<?php endif; ?>
 				</div>
 			<?php endforeach; ?>
 		</div>

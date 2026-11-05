@@ -9,7 +9,8 @@
 //
 //   Desktop  frame min. 688px tall; arrows on the sides, 155px in, centred
 //            vertically; quote up to 1206px wide, with quote marks
-//   Tablet   frame min. 596px, arrows 89px in; quote 376px wide
+//   Tablet   frame min. 596px, arrows 45px in (89 in the Figma — opened
+//            up, Daniel 2026-11-04); quote 376px wide
 //   Mobile   arrows centred below the author
 //
 // Slides take the height of the tallest (Swiper's .swiper-slide height is
@@ -66,7 +67,7 @@
 // z-10: the slider spans the frame's full width and swiper.css gives it
 // z-index 1, which would sit on top of the arrows and swallow the clicks.
 .section-testimonials__frame .section-testimonials__nav
-  @apply z-10 justify-center mt-[60px] md:absolute md:inset-x-[89px] md:top-1/2 md:-translate-y-1/2 md:mt-0 md:justify-between md:pointer-events-none xl:inset-x-[155px]
+  @apply z-10 justify-center mt-[60px] md:absolute md:inset-x-[45px] md:top-1/2 md:-translate-y-1/2 md:mt-0 md:justify-between md:pointer-events-none xl:inset-x-[155px]
 
 .section-testimonials__nav .slider-nav__btn
   @apply pointer-events-auto

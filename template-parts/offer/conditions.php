@@ -5,8 +5,10 @@
  *
  * Fields: tab "Conditions" of acf-json/group_cpt_offer.json. The validity
  * comes from the "Valid from" / "Valid until" dates
- * (montela_get_offer_validity(), inc/helpers.php). Figma: desktop
- * 5778:17192, tablet 5609:23487, mobile 5609:23486.
+ * (montela_get_offer_validity(), inc/helpers.php). The heading above the
+ * conditions and the label before the dates are fields too, with the
+ * design's words as fallbacks ("Konditionen", "Gültigkeit des Angebotes:").
+ * Figma: desktop 5778:17192, tablet 5609:23487, mobile 5609:23486.
  *
  * @package montela
  * @subpackage Section
@@ -20,6 +22,10 @@ if ( ! function_exists( 'get_field' ) ) {
 $cond_title    = get_field( 'section_offer_extra_title' );
 $cond_text     = get_field( 'section_offer_extra_text' );
 $cond_items    = get_field( 'section_offer_conditions' );
+$cond_label    = get_field( 'section_offer_conditions_label' );
+$cond_label    = $cond_label ? $cond_label : __( 'Konditionen', 'montela' );
+$cond_valid_lb = get_field( 'section_offer_validity_label' );
+$cond_valid_lb = $cond_valid_lb ? $cond_valid_lb : __( 'Gültigkeit des Angebotes:', 'montela' );
 $cond_validity = function_exists( 'montela_get_offer_validity' ) ? montela_get_offer_validity( get_the_ID() ) : '';
 
 if ( ! $cond_title && ! $cond_text && ! $cond_items && ! $cond_validity ) {
@@ -40,7 +46,7 @@ $cond_title_id = wp_unique_id( 'section-offer-conditions-title-' );
 			<?php endif; ?>
 
 			<?php if ( $cond_items ) : ?>
-				<h3 class="section-offer-conditions__label"><?php esc_html_e( 'Bedingungen', 'montela' ); ?></h3>
+				<h3 class="section-offer-conditions__label"><?php echo esc_html( $cond_label ); ?></h3>
 
 				<ul class="section-offer-conditions__boxes">
 					<?php foreach ( $cond_items as $cond_item ) : ?>
@@ -58,7 +64,7 @@ $cond_title_id = wp_unique_id( 'section-offer-conditions-title-' );
 
 			<?php if ( $cond_validity ) : ?>
 				<p class="section-offer-conditions__validity">
-					<strong><?php esc_html_e( 'Angebot gültig:', 'montela' ); ?></strong>
+					<strong><?php echo esc_html( $cond_valid_lb ); ?></strong>
 					<span><?php echo esc_html( $cond_validity ); ?></span>
 				</p>
 			<?php endif; ?>

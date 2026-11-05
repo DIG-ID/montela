@@ -11,10 +11,47 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
-## [1.40.1] — 2026-11-03
+## [1.43.1] — 2026-11-05
 
 ### Changed
 - Shop products and producers sliders: the arrows hide when every card is in view (three or fewer on desktop).
+
+## [1.43.0] — 2026-11-04
+
+### Added
+- Offer conditions: editable heading and validity label.
+
+### Changed
+- Offer conditions: defaults now "Konditionen" and "Gültigkeit des Angebotes:", as designed; on tablet the heading matches the validity line's size.
+
+## [1.42.2] — 2026-11-04
+
+### Changed
+- Activities module (tablet): the frame line shows above the button and runs behind it, as designed.
+- Testimonials (tablet): slider arrows further out, 45px from the frame.
+
+## [1.42.1] — 2026-11-04
+
+### Changed
+- Activities module: on mobile, the sage arrows sit above the cards, as in the other activity sliders.
+
+## [1.42.0] — 2026-11-04
+
+### Added
+- Aktivitäten page: choose whether the summer or the winter activities come first.
+
+### Changed
+- Text with photos (one photo): text and photo split in half on tablet, so the button fits.
+
+## [1.41.0] — 2026-11-04
+
+### Added
+- Explore module: optional landscape slider photos for tablet, where the slider runs the full width; without them, tablet keeps the main photos.
+
+## [1.40.1] — 2026-11-04
+
+### Changed
+- Activity cards on tablet and mobile: the photo sits above the panel instead of behind it, and the cards are taller, so more of the photo shows.
 
 ## [1.40.0] — 2026-11-03
 

@@ -55,12 +55,12 @@ if ( 1 === $apt_count ) {
 	$apt_cls = array(
 		'grid'    => 'gap-y-11 xl:gap-y-16',
 		'title'   => 'col-span-full xl:col-start-2 xl:col-span-10',
-		'content' => 'col-span-full md:col-span-2 xl:col-start-2 xl:col-span-3 flex flex-col items-start gap-5 md:gap-11 xl:gap-16',
+		'content' => 'col-span-full md:col-span-3 xl:col-start-2 xl:col-span-3 flex flex-col items-start gap-5 md:gap-11 xl:gap-16',
 		'text'    => '',
 		'button'  => '',
-		'photos'  => 'col-span-full -mt-6 md:mt-0 md:col-start-3 md:col-span-4 xl:col-start-5 xl:col-span-7 flex flex-col',
+		'photos'  => 'col-span-full -mt-6 md:mt-0 md:col-start-4 md:col-span-3 xl:col-start-5 xl:col-span-7 flex flex-col',
 		'photo'   => array( 'aspect-[326/268] md:aspect-[463/314] xl:aspect-auto xl:h-[600px]' ),
-		'sizes'   => array( '(min-width: 1280px) 55vw, (min-width: 768px) 56vw, 100vw' ),
+		'sizes'   => array( '(min-width: 1280px) 55vw, (min-width: 768px) 41vw, 100vw' ),
 	);
 } elseif ( 'staggered' === $apt_layout ) {
 	// Desktop rows: small photo · title (grows, so title and text end
