@@ -31,7 +31,7 @@ $resort_title_id = wp_unique_id( 'section-resort-title-' );
 	<div class="theme-container">
 		<div class="theme-grid gap-y-11">
 			<?php if ( $resort_title ) : ?>
-				<h2 id="<?php echo esc_attr( $resort_title_id ); ?>" class="title-h3 col-span-full xl:text-center"><?php echo esc_html( $resort_title ); ?></h2>
+				<h2 id="<?php echo esc_attr( $resort_title_id ); ?>" class="title-h3 col-span-full xl:text-center"><?php echo montela_text( $resort_title ); ?></h2>
 			<?php endif; ?>
 
 			<ul class="col-span-full grid gap-y-3 xl:col-start-2 xl:col-span-10 xl:grid-cols-3 xl:gap-x-5">
@@ -54,10 +54,10 @@ $resort_title_id = wp_unique_id( 'section-resort-title-' );
 						<?php endif; ?>
 						<div class="section-resort__panel flex flex-1 flex-col gap-[10px] border border-montela-sage px-[27px] pt-[19px] pb-3 min-h-[129px] md:pl-[37px] md:pr-[17px] md:pt-6 md:pb-6 md:min-h-[160px] xl:px-6 xl:min-h-[200px]">
 							<?php if ( ! empty( $resort_item['title'] ) ) : ?>
-								<h3 class="section-resort__title"><?php echo esc_html( $resort_item['title'] ); ?></h3>
+								<h3 class="section-resort__title"><?php echo montela_text( $resort_item['title'] ); ?></h3>
 							<?php endif; ?>
 							<?php if ( ! empty( $resort_item['text'] ) ) : ?>
-								<p class="section-resort__text"><?php echo esc_html( $resort_item['text'] ); ?></p>
+								<p class="section-resort__text"><?php echo montela_text( $resort_item['text'] ); ?></p>
 							<?php endif; ?>
 						</div>
 					</li>

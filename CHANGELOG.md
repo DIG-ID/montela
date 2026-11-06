@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.44.0] — 2026-11-06
+
+### Changed
+- Every text field now accepts inline HTML: line breaks (also per breakpoint), bold, italics and links. Other markup is stripped.
+
 ## [1.43.2] — 2026-11-05
 
 ### Changed

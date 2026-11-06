@@ -43,12 +43,12 @@ if ( ! $rs_items ) {
 			?>
 			<section class="theme-grid resort-block<?php echo $rs_reverse ? ' resort-block--reverse' : ''; ?> items-start gap-y-7 md:gap-y-11 xl:gap-y-[52px]<?php echo $rs_shown++ ? ' mt-32' : ''; ?>" aria-labelledby="<?php echo esc_attr( $rs_title_id ); ?>">
 				<h2 id="<?php echo esc_attr( $rs_title_id ); ?>" class="title-h3 resort-block__title col-span-full xl:col-start-2 xl:col-span-11">
-					<?php echo wp_kses( $rs_item['title'], array( 'br' => array( 'class' => array() ) ) ); ?>
+					<?php echo montela_text( $rs_item['title'] ); ?>
 				</h2>
 
 				<div class="resort-block__body col-span-full flex flex-col items-start gap-7 md:col-span-2 md:row-start-2 md:gap-11 <?php echo $rs_reverse ? 'md:col-start-5 xl:col-start-9 xl:col-span-4 xl:gap-[49px]' : 'xl:col-start-2 xl:col-span-3 xl:gap-16'; ?>">
 					<?php if ( ! empty( $rs_item['text'] ) ) : ?>
-						<p class="body-text resort-block__text<?php echo $rs_reverse ? ' xl:max-w-[87.35%]' : ''; ?>"><?php echo nl2br( esc_html( $rs_item['text'] ) ); ?></p>
+						<p class="body-text resort-block__text<?php echo $rs_reverse ? ' xl:max-w-[87.35%]' : ''; ?>"><?php echo nl2br( montela_text( $rs_item['text'] ) ); ?></p>
 					<?php endif; ?>
 					<?php
 					if ( ! empty( $rs_item['link']['url'] ) ) {

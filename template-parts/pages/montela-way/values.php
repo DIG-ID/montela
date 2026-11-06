@@ -32,10 +32,10 @@ $values_title_id = wp_unique_id( 'section-values-title-' );
 		<?php if ( $values_title || $values_text ) : ?>
 			<div class="theme-grid section-values__head">
 				<?php if ( $values_title ) : ?>
-					<h2 id="<?php echo esc_attr( $values_title_id ); ?>" class="title-h3 section-values__title"><?php echo wp_kses( $values_title, array( 'br' => array( 'class' => array() ) ) ); ?></h2>
+					<h2 id="<?php echo esc_attr( $values_title_id ); ?>" class="title-h3 section-values__title"><?php echo montela_text( $values_title ); ?></h2>
 				<?php endif; ?>
 				<?php if ( $values_text ) : ?>
-					<p class="body-text section-values__text"><?php echo esc_html( $values_text ); ?></p>
+					<p class="body-text section-values__text"><?php echo montela_text( $values_text ); ?></p>
 				<?php endif; ?>
 			</div>
 		<?php endif; ?>
@@ -67,10 +67,10 @@ $values_title_id = wp_unique_id( 'section-values-title-' );
 						<?php foreach ( $values_texts as $values_item ) : ?>
 							<div class="section-values__item">
 								<?php if ( ! empty( $values_item['title'] ) ) : ?>
-									<h3 class="section-values__item-title"><?php echo esc_html( $values_item['title'] ); ?></h3>
+									<h3 class="section-values__item-title"><?php echo montela_text( $values_item['title'] ); ?></h3>
 								<?php endif; ?>
 								<?php if ( ! empty( $values_item['text'] ) ) : ?>
-									<p><?php echo esc_html( $values_item['text'] ); ?></p>
+									<p><?php echo montela_text( $values_item['text'] ); ?></p>
 								<?php endif; ?>
 							</div>
 						<?php endforeach; ?>

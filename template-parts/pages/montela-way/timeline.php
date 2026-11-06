@@ -55,12 +55,12 @@ $timeline_swiper   = array(
 				<?php foreach ( $timeline_items as $timeline_item ) : ?>
 					<article class="swiper-slide section-timeline__slide">
 						<div class="section-timeline__panel">
-							<h3 class="title-h3 section-timeline__year"><?php echo esc_html( $timeline_item['year'] ); ?></h3>
+							<h3 class="title-h3 section-timeline__year"><?php echo montela_text( $timeline_item['year'] ); ?></h3>
 							<?php if ( ! empty( $timeline_item['title'] ) ) : ?>
-								<p class="title-h2 section-timeline__title"><?php echo esc_html( $timeline_item['title'] ); ?></p>
+								<p class="title-h2 section-timeline__title"><?php echo montela_text( $timeline_item['title'] ); ?></p>
 							<?php endif; ?>
 							<?php if ( ! empty( $timeline_item['text'] ) ) : ?>
-								<p class="section-timeline__text"><?php echo esc_html( $timeline_item['text'] ); ?></p>
+								<p class="section-timeline__text"><?php echo montela_text( $timeline_item['text'] ); ?></p>
 							<?php endif; ?>
 						</div>
 

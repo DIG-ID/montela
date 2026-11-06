@@ -81,11 +81,11 @@ $card_class = 'card-preview' . ( ! empty( $args['class'] ) ? ' ' . $args['class'
 	<?php endif; ?>
 
 	<div class="card-preview__panel">
-		<h3 class="card-preview__title"><?php echo esc_html( $card_title ); ?></h3>
+		<h3 class="card-preview__title"><?php echo montela_text( $card_title ); ?></h3>
 		<?php if ( $card_excerpt ) : ?>
 			<div class="card-preview__more">
 				<div class="card-preview__more-inner">
-					<p class="card-preview__text"><?php echo esc_html( $card_excerpt ); ?></p>
+					<p class="card-preview__text"><?php echo montela_text( $card_excerpt ); ?></p>
 				</div>
 			</div>
 		<?php endif; ?>

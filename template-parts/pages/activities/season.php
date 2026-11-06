@@ -52,15 +52,15 @@ $season_class    = 'section-season' . ( count( $season_ids ) > 4 ? ' section-sea
 
 			<div class="section-season__copy">
 				<?php if ( $season_eyebrow ) : ?>
-					<p class="title-h2 section-season__eyebrow"><?php echo esc_html( $season_eyebrow ); ?></p>
+					<p class="title-h2 section-season__eyebrow"><?php echo montela_text( $season_eyebrow ); ?></p>
 				<?php endif; ?>
 
 				<?php if ( $season_title ) : ?>
-					<h2 id="<?php echo esc_attr( $season_title_id ); ?>" class="title-h3 section-season__title"><?php echo esc_html( $season_title ); ?></h2>
+					<h2 id="<?php echo esc_attr( $season_title_id ); ?>" class="title-h3 section-season__title"><?php echo montela_text( $season_title ); ?></h2>
 				<?php endif; ?>
 
 				<?php if ( $season_text ) : ?>
-					<p class="body-text section-season__text"><?php echo esc_html( $season_text ); ?></p>
+					<p class="body-text section-season__text"><?php echo montela_text( $season_text ); ?></p>
 				<?php endif; ?>
 
 				<?php if ( count( $season_ids ) > 1 ) : ?>

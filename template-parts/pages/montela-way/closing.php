@@ -28,10 +28,10 @@ $closing_title_id = wp_unique_id( 'section-closing-title-' );
 	<div class="theme-container">
 		<div class="theme-grid section-closing__grid">
 			<?php if ( $closing_title ) : ?>
-				<h2 id="<?php echo esc_attr( $closing_title_id ); ?>" class="title-h3 section-closing__title"><?php echo wp_kses( $closing_title, array( 'br' => array( 'class' => array() ) ) ); ?></h2>
+				<h2 id="<?php echo esc_attr( $closing_title_id ); ?>" class="title-h3 section-closing__title"><?php echo montela_text( $closing_title ); ?></h2>
 			<?php endif; ?>
 			<?php if ( $closing_text ) : ?>
-				<p class="body-text section-closing__text"><?php echo esc_html( $closing_text ); ?></p>
+				<p class="body-text section-closing__text"><?php echo montela_text( $closing_text ); ?></p>
 			<?php endif; ?>
 		</div>
 	</div>

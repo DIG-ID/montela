@@ -29,6 +29,16 @@
 
     <!-- You can tweak sniffs or add excludes per project here -->
 
+    <!-- The theme's own escaping functions. montela_text() runs wp_kses()
+         with the inline HTML allowed in text fields (inc/helpers.php). -->
+    <rule ref="WordPress.Security.EscapeOutput">
+        <properties>
+            <property name="customEscapingFunctions" type="array">
+                <element value="montela_text"/>
+            </property>
+        </properties>
+    </rule>
+
     <!-- Theme text domain (optional if you want to enforce it) -->
     <!--
     <rule ref="WordPress.WP.I18n">

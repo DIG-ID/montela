@@ -48,7 +48,7 @@ get_template_part(
 		<div class="theme-container">
 			<div class="theme-grid section-offer-intro__grid">
 				<?php if ( $offer_title ) : ?>
-					<h2 id="<?php echo esc_attr( $offer_title_id ); ?>" class="title-intro section-offer-intro__title"><?php echo wp_kses( $offer_title, array( 'br' => array( 'class' => array() ) ) ); ?></h2>
+					<h2 id="<?php echo esc_attr( $offer_title_id ); ?>" class="title-intro section-offer-intro__title"><?php echo montela_text( $offer_title ); ?></h2>
 				<?php endif; ?>
 
 				<?php if ( $offer_price || $offer_booking ) : ?>
@@ -56,7 +56,7 @@ get_template_part(
 						<?php if ( $offer_price ) : ?>
 							<p class="section-offer-intro__amount">
 								<span class="section-offer-intro__from"><?php esc_html_e( 'Ab', 'montela' ); ?></span>
-								<span class="section-offer-intro__value"><?php echo esc_html( $offer_price ); ?></span><?php echo $offer_unit ? '<span class="section-offer-intro__unit">' . esc_html( $offer_unit ) . '</span>' : ''; ?>
+								<span class="section-offer-intro__value"><?php echo montela_text( $offer_price ); ?></span><?php echo $offer_unit ? '<span class="section-offer-intro__unit">' . montela_text( $offer_unit ) . '</span>' : ''; ?>
 							</p>
 						<?php endif; ?>
 

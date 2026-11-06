@@ -47,7 +47,7 @@ $equip_title_id = wp_unique_id( 'section-apartment-equipment-title-' );
 ?>
 <section class="theme-container section-apartment-equipment mt-11 md:mt-14 xl:mt-[77px] text-montela-walnut" aria-labelledby="<?php echo esc_attr( $equip_title_id ); ?>" style="--equipment-rows: <?php echo esc_attr( $equip_rows ); ?>">
 	<div class="theme-grid gap-y-6 md:gap-y-11 xl:gap-y-[50px]">
-		<h2 id="<?php echo esc_attr( $equip_title_id ); ?>" class="title-h4 col-span-full xl:col-start-2 xl:col-span-6 xl:row-start-1"><?php echo esc_html( $equip_title ); ?></h2>
+		<h2 id="<?php echo esc_attr( $equip_title_id ); ?>" class="title-h4 col-span-full xl:col-start-2 xl:col-span-6 xl:row-start-1"><?php echo montela_text( $equip_title ); ?></h2>
 
 		<?php
 		get_template_part(

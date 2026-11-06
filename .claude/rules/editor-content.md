@@ -53,10 +53,10 @@ Massgeschneidert<br class="md:hidden"> für Sie
 
 Sem o espaço, no desktop sai `Massgeschneidertfür Sie`.
 
-Isto só funciona nos campos cujo template deixa passar `class` no `<br>` — ou
-seja, os que usam `wp_kses( $valor, array( 'br' => array( 'class' => array() ) ) )`.
-Num campo escapado com `esc_html()` o `<br>` sai **impresso como texto** no meio
-do título. Ao criar um campo de título novo, decidir já qual dos dois é.
+Funciona em **todos** os campos de texto: os templates imprimem-nos com
+`montela_text()` (`inc/helpers.php`), que deixa passar o `<br>` com `class` e o
+resto do HTML inline (ver `php.md`). Um campo novo segue a mesma regra — com
+`esc_html()` o `<br>` sairia **impresso como texto** no meio do título.
 
 **Precisas de outro breakpoint?** Acrescenta ao `safelist` e recompila. Escrever
 `2xl:hidden` sem isso não faz nada.

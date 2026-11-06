@@ -35,8 +35,8 @@ do_action( 'before_main_content' );
 			</h1>
 
 			<div class="section-404__copy">
-				<p class="section-404__title"><?php echo esc_html( $error_title ); ?></p>
-				<p class="section-404__text"><?php echo esc_html( $error_text ); ?></p>
+				<p class="section-404__title"><?php echo montela_text( $error_title ); ?></p>
+				<p class="section-404__text"><?php echo montela_text( $error_text ); ?></p>
 			</div>
 
 			<?php

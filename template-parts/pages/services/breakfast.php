@@ -37,7 +37,7 @@ $breakfast_title_id = wp_unique_id( 'section-breakfast-title-' );
 			<?php if ( $breakfast_title || $breakfast_text ) : ?>
 				<div class="section-breakfast__box col-span-full flex flex-col gap-6 border border-montela-walnut px-5 pt-6 pb-5 min-h-[92px] md:min-h-[304px] xl:col-span-4 xl:min-h-0 xl:px-5 xl:pt-[69px] xl:pb-10 2xl:pl-[71px] 2xl:pr-10">
 					<?php if ( $breakfast_title ) : ?>
-						<h2 id="<?php echo esc_attr( $breakfast_title_id ); ?>" class="title-h3 section-breakfast__title"><?php echo esc_html( $breakfast_title ); ?></h2>
+						<h2 id="<?php echo esc_attr( $breakfast_title_id ); ?>" class="title-h3 section-breakfast__title"><?php echo montela_text( $breakfast_title ); ?></h2>
 					<?php endif; ?>
 					<?php if ( $breakfast_text ) : ?>
 						<div class="body-text"><?php echo wp_kses_post( $breakfast_text ); ?></div>

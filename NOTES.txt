@@ -264,6 +264,29 @@ no ficheiro indicado em "No starter".
   No Montela CLAUDE.md, secção ACF Field Groups (1.39.2).
   Estado     POR PASSAR
 
+[2026-11-06] A17. Todos os campos de texto aceitam HTML inline
+  Problema   Os campos de texto eram impressos com esc_html(): um <br> (ou um
+             <strong>) escrito no admin saía impresso como texto. Só cerca de
+             40 títulos passavam por um wp_kses() só com <br>, decidido campo
+             a campo, e cada campo novo era mais um caso a lembrar.
+  Regra      "Todo o campo de texto (text, textarea, sub-campos de repeaters,
+             títulos e excertos) imprime-se com <prefixo>_text() — wp_kses()
+             com uma lista de HTML inline: br (class), strong, b, em, i, span
+             (class), sup, sub, a (href, target, rel, class). Nunca
+             esc_html() para conteúdo do admin; esc_html() só para strings do
+             tema, rótulos de menus e botões e valores montados no código. Um
+             valor de campo que vá para um atributo passa antes por
+             wp_strip_all_tags(). Registar a função em
+             customEscapingFunctions no phpcs.xml.dist."
+  No starter inc/helpers.php (as funções <prefixo>_text() e
+             <prefixo>_text_allowed_html()); phpcs.xml.dist
+             (customEscapingFunctions); .claude/rules/php.md (escaping) e
+             .claude/rules/editor-content.md (quebras de linha responsivas);
+             .claude/agents/module-builder.
+  No Montela montela_text() e montela_text_allowed_html() em inc/helpers.php;
+             montela_hero_keep_hyphens() para o hero (1.44.0).
+  Estado     POR PASSAR
+
 ===============================================================================
 B. DECISÕES POR CONFIRMAR
 ===============================================================================

@@ -53,13 +53,13 @@ $list_item_classes = ! empty( $args['item_class'] ) ? array_values( (array) $arg
 			<?php endif; ?>
 			<div class="<?php echo esc_attr( $list_text_class ); ?>">
 				<?php if ( ! empty( $list_item['title'] ) ) : ?>
-					<h3 class="icon-list__title"><?php echo esc_html( $list_item['title'] ); ?></h3>
+					<h3 class="icon-list__title"><?php echo montela_text( $list_item['title'] ); ?></h3>
 				<?php endif; ?>
 				<?php if ( ! empty( $list_item['text'] ) ) : ?>
-					<p><?php echo esc_html( $list_item['text'] ); ?></p>
+					<p><?php echo montela_text( $list_item['text'] ); ?></p>
 				<?php endif; ?>
 				<?php if ( ! empty( $list_item['note'] ) ) : ?>
-					<p class="icon-list__note"><?php echo esc_html( $list_item['note'] ); ?></p>
+					<p class="icon-list__note"><?php echo montela_text( $list_item['note'] ); ?></p>
 				<?php endif; ?>
 				<?php if ( ! empty( $list_item['link']['url'] ) ) : ?>
 					<div class="icon-list__button">

@@ -11,13 +11,17 @@ description: PHP house style — escaping, ACF access, template parts, hooks.
 
 ### PHP — output & escaping
 - Sempre `<?php echo ?>` — **nunca** `<?= ?>`.
-- Escaping por tipo: `esc_url()` (URLs/`href`/`src`), `esc_attr()` (atributos), `esc_html()` (texto), `wp_kses_post()` (HTML rico de ACF/editor).
+- Escaping por tipo: `esc_url()` (URLs/`href`/`src`), `esc_attr()` (atributos), `montela_text()` (texto escrito no admin), `esc_html()` (texto do tema), `wp_kses_post()` (HTML rico de ACF/editor).
 - Imagens de media library: `wp_get_attachment_image( $id, 'full', false, array( 'class' => '...' ) )` — nunca montar `<img>` à mão quando há attachment ID.
-- Markup limitado vindo de um campo (um `<br>` num título, por exemplo) passa por `wp_kses()` com uma lista explícita, não por `wp_kses_post()`:
+- **Todo o campo de texto aceita HTML inline** (Daniel, Novembro 2026). Campos `text` e `textarea` (e sub-campos de repeaters, títulos e excertos de posts) imprimem-se com `montela_text()` (`inc/helpers.php`), nunca com `esc_html()`:
   ```php
-  echo wp_kses( $title, array( 'br' => array( 'class' => array() ) ) );
+  echo montela_text( $foo_title );
   ```
-  `esc_html()` imprimiria a tag como texto; `wp_kses_post()` abriria a porta a imagens e links num campo que só precisa de uma quebra de linha. Ver `editor-content.md`.
+  Deixa passar `<br>` (com `class`, para as quebras por breakpoint), `<strong>`, `<b>`, `<em>`, `<i>`, `<span class>`, `<sup>`, `<sub>` e `<a href target rel class>` — a lista está em `montela_text_allowed_html()` (filtrável). Tudo o resto (`<script>`, `<img>`, blocos) é removido. `esc_html()` imprimiria um `<br>` como texto; `wp_kses_post()` abriria a porta a imagens e blocos num campo de uma linha. Ver `editor-content.md`.
+  - `esc_html()` fica para o que **não** se escreve num campo: strings do tema, rótulos de menus e de botões (links ACF), valores montados no código (datas, telefones).
+  - Um valor de campo que vá para um **atributo** (`aria-label`, texto `sr-only` de contexto) passa por `wp_strip_all_tags()` antes do `esc_attr()` / `esc_html()`, senão as tags aparecem escritas.
+  - Campos `wpautop` / WYSIWYG continuam com `wp_kses_post()`.
+  - O PHPCS conhece a função (`customEscapingFunctions` no `phpcs.xml.dist`).
 
 ### PHP — acesso a campos ACF
 ```php

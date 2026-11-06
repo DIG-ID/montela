@@ -30,7 +30,7 @@ $form_title_id = wp_unique_id( 'section-contact-form-title-' );
 	<div class="theme-container">
 		<div class="theme-grid">
 			<?php if ( $form_title ) : ?>
-				<h2 id="<?php echo esc_attr( $form_title_id ); ?>" class="title-h3 section-contact-form__title"><?php echo wp_kses( $form_title, array( 'br' => array( 'class' => array() ) ) ); ?></h2>
+				<h2 id="<?php echo esc_attr( $form_title_id ); ?>" class="title-h3 section-contact-form__title"><?php echo montela_text( $form_title ); ?></h2>
 			<?php endif; ?>
 
 			<div class="section-contact-form__form">

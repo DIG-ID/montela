@@ -44,7 +44,7 @@ $ri_has_link = is_array( $ri_button ) && ! empty( $ri_button['url'] );
 		<div class="theme-grid gap-y-8 pb-11 md:gap-y-9 xl:gap-y-16">
 			<?php if ( $ri_title ) : ?>
 				<h2 id="<?php echo esc_attr( $ri_title_id ); ?>" class="title-h3 section-room-info__title col-span-full xl:col-start-2 xl:col-span-10">
-					<?php echo wp_kses( $ri_title, array( 'br' => array( 'class' => array() ) ) ); ?>
+					<?php echo montela_text( $ri_title ); ?>
 				</h2>
 			<?php endif; ?>
 
@@ -67,13 +67,13 @@ $ri_has_link = is_array( $ri_button ) && ! empty( $ri_button['url'] );
 			<?php if ( $ri_text || $ri_items || $ri_has_link ) : ?>
 				<div class="section-room-info__content col-span-full flex flex-col items-start gap-5 md:col-start-4 md:col-span-3 md:gap-11 xl:col-start-9 xl:col-span-3 xl:gap-16">
 					<?php if ( $ri_text ) : ?>
-						<p class="body-text section-room-info__text md:max-w-[340px] xl:max-w-none"><?php echo esc_html( $ri_text ); ?></p>
+						<p class="body-text section-room-info__text md:max-w-[340px] xl:max-w-none"><?php echo montela_text( $ri_text ); ?></p>
 					<?php endif; ?>
 
 					<?php if ( $ri_items ) : ?>
 						<ul class="body-text section-room-info__list">
 							<?php foreach ( $ri_items as $ri_item ) : ?>
-								<li><?php echo esc_html( $ri_item ); ?></li>
+								<li><?php echo montela_text( $ri_item ); ?></li>
 							<?php endforeach; ?>
 						</ul>
 					<?php endif; ?>

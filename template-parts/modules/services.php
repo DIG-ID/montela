@@ -54,13 +54,13 @@ $srv_swiper   = array(
 			<div class="section-services__inner" data-swiper-root>
 				<div class="section-services__head">
 					<?php if ( $srv_title ) : ?>
-						<h2 id="<?php echo esc_attr( $srv_title_id ); ?>" class="title-h3 section-services__title"><?php echo wp_kses( $srv_title, array( 'br' => array( 'class' => array() ) ) ); ?></h2>
+						<h2 id="<?php echo esc_attr( $srv_title_id ); ?>" class="title-h3 section-services__title"><?php echo montela_text( $srv_title ); ?></h2>
 					<?php endif; ?>
 
 					<?php if ( $srv_text || $srv_button ) : ?>
 						<div class="section-services__intro">
 							<?php if ( $srv_text ) : ?>
-								<p class="body-text section-services__text"><?php echo wp_kses( $srv_text, array( 'br' => array( 'class' => array() ) ) ); ?></p>
+								<p class="body-text section-services__text"><?php echo montela_text( $srv_text ); ?></p>
 							<?php endif; ?>
 							<?php
 							if ( $srv_button ) :
@@ -96,15 +96,15 @@ $srv_swiper   = array(
 
 								<div class="section-services__box">
 									<?php if ( ! empty( $srv_plan['title'] ) ) : ?>
-										<h3 class="section-services__plan-title"><?php echo esc_html( $srv_plan['title'] ); ?></h3>
+										<h3 class="section-services__plan-title"><?php echo montela_text( $srv_plan['title'] ); ?></h3>
 									<?php endif; ?>
 									<?php if ( ! empty( $srv_plan['subtitle'] ) ) : ?>
-										<p class="section-services__subtitle"><?php echo esc_html( $srv_plan['subtitle'] ); ?></p>
+										<p class="section-services__subtitle"><?php echo montela_text( $srv_plan['subtitle'] ); ?></p>
 									<?php endif; ?>
 									<?php if ( $srv_features ) : ?>
 										<ul class="section-services__features">
 											<?php foreach ( $srv_features as $srv_feature ) : ?>
-												<li><?php echo esc_html( $srv_feature ); ?></li>
+												<li><?php echo montela_text( $srv_feature ); ?></li>
 											<?php endforeach; ?>
 										</ul>
 									<?php endif; ?>

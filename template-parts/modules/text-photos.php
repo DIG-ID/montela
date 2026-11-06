@@ -99,13 +99,13 @@ $apt_class = 'section-text-photos section-text-photos--' . ( 1 === $apt_count ? 
 		<div class="theme-grid section-text-photos__grid <?php echo esc_attr( $apt_cls['grid'] ); ?>">
 			<?php if ( $apt_title ) : ?>
 				<h2 id="<?php echo esc_attr( $apt_title_id ); ?>" class="title-h3 section-text-photos__title <?php echo esc_attr( $apt_cls['title'] ); ?>">
-					<?php echo wp_kses( $apt_title, array( 'br' => array( 'class' => array() ) ) ); ?>
+					<?php echo montela_text( $apt_title ); ?>
 				</h2>
 			<?php endif; ?>
 
 			<div class="section-text-photos__content <?php echo esc_attr( $apt_cls['content'] ); ?>">
 				<?php if ( $apt_text ) : ?>
-					<p class="<?php echo esc_attr( trim( 'body-text section-text-photos__text ' . $apt_cls['text'] ) ); ?>"><?php echo esc_html( $apt_text ); ?></p>
+					<p class="<?php echo esc_attr( trim( 'body-text section-text-photos__text ' . $apt_cls['text'] ) ); ?>"><?php echo montela_text( $apt_text ); ?></p>
 				<?php endif; ?>
 				<?php
 				if ( $apt_button ) :

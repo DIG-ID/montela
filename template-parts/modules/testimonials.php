@@ -87,7 +87,7 @@ $tst_swiper   = array(
 	<div class="theme-container">
 		<div class="section-testimonials__frame" data-swiper-root>
 			<?php if ( $tst_title ) : ?>
-				<h2 id="<?php echo esc_attr( $tst_title_id ); ?>" class="title-h2 section-testimonials__title"><?php echo esc_html( $tst_title ); ?></h2>
+				<h2 id="<?php echo esc_attr( $tst_title_id ); ?>" class="title-h2 section-testimonials__title"><?php echo montela_text( $tst_title ); ?></h2>
 			<?php endif; ?>
 
 			<div class="swiper section-testimonials__swiper"<?php echo $tst_many ? ' data-swiper="' . esc_attr( wp_json_encode( $tst_swiper ) ) . '"' : ''; ?>>
@@ -95,10 +95,10 @@ $tst_swiper   = array(
 					<?php foreach ( $tst_items as $tst_item ) : ?>
 						<figure class="swiper-slide section-testimonials__slide">
 							<blockquote class="body-quote section-testimonials__quote">
-								<p><?php echo esc_html( $tst_item['quote'] ); ?></p>
+								<p><?php echo montela_text( $tst_item['quote'] ); ?></p>
 							</blockquote>
 							<?php if ( $tst_item['author'] ) : ?>
-								<figcaption class="body-text section-testimonials__author"><?php echo esc_html( $tst_item['author'] ); ?></figcaption>
+								<figcaption class="body-text section-testimonials__author"><?php echo montela_text( $tst_item['author'] ); ?></figcaption>
 							<?php endif; ?>
 						</figure>
 					<?php endforeach; ?>

@@ -46,11 +46,11 @@ $footer_has_form = function_exists( 'mc4wp_show_form' );
 			<div class="footer-main__cta">
 				<?php // A paragraph with the H3 look, not a heading: the box repeats on every page and belongs to none of its sections, so it stays out of the page's outline. ?>
 				<p class="title-h3 footer-main__cta-title">
-					<?php echo wp_kses( $footer_cta_title, array( 'br' => array( 'class' => array() ) ) ); ?>
+					<?php echo montela_text( $footer_cta_title ); ?>
 				</p>
 				<div class="footer-main__cta-row">
 					<?php if ( $footer_cta_text ) : ?>
-						<p class="footer-main__cta-text"><?php echo esc_html( $footer_cta_text ); ?></p>
+						<p class="footer-main__cta-text"><?php echo montela_text( $footer_cta_text ); ?></p>
 					<?php endif; ?>
 					<?php
 					if ( is_array( $footer_cta_link ) ) {
@@ -85,7 +85,7 @@ $footer_has_form = function_exists( 'mc4wp_show_form' );
 			<?php if ( $footer_news_text || $footer_has_form ) : ?>
 				<div class="footer-main__newsletter">
 					<?php if ( $footer_news_text ) : ?>
-						<p><?php echo esc_html( $footer_news_text ); ?></p>
+						<p><?php echo montela_text( $footer_news_text ); ?></p>
 					<?php endif; ?>
 					<?php
 					if ( $footer_has_form ) {
@@ -98,7 +98,7 @@ $footer_has_form = function_exists( 'mc4wp_show_form' );
 			<?php if ( $footer_address || $footer_phone || $footer_email || $footer_socials ) : ?>
 			<address class="footer-main__contact">
 				<?php if ( $footer_address ) : ?>
-					<p><?php echo wp_kses( $footer_address, array( 'br' => array() ) ); ?></p>
+					<p><?php echo montela_text( $footer_address ); ?></p>
 				<?php endif; ?>
 				<?php if ( $footer_phone ) : ?>
 					<p><a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', str_replace( '(0)', '', $footer_phone ) ) ); ?>"><?php echo esc_html( $footer_phone ); ?></a></p>

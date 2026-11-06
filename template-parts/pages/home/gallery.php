@@ -37,7 +37,7 @@ $gal_title_id = wp_unique_id( 'section-gallery-title-' );
 		<div class="theme-grid section-gallery__grid">
 			<?php if ( $gal_title ) : ?>
 				<h2 id="<?php echo esc_attr( $gal_title_id ); ?>" class="title-h3 section-gallery__title">
-					<?php echo wp_kses( $gal_title, array( 'br' => array( 'class' => array() ) ) ); ?>
+					<?php echo montela_text( $gal_title ); ?>
 				</h2>
 			<?php endif; ?>
 
@@ -58,7 +58,7 @@ $gal_title_id = wp_unique_id( 'section-gallery-title-' );
 			<?php endif; ?>
 
 			<?php if ( $gal_text ) : ?>
-				<p class="body-text section-gallery__text"><?php echo esc_html( $gal_text ); ?></p>
+				<p class="body-text section-gallery__text"><?php echo montela_text( $gal_text ); ?></p>
 			<?php endif; ?>
 
 			<?php if ( $gal_button ) : ?>

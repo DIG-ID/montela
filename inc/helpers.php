@@ -30,6 +30,97 @@ function montela_console_log( ...$data ) {
 	);
 }
 
+if ( ! function_exists( 'montela_text_allowed_html' ) ) :
+	/**
+	 * Returns the inline HTML allowed in the theme's text fields.
+	 *
+	 * Text and textarea fields are printed through montela_text(), so an
+	 * editor can break a line (<br>, also with a breakpoint class — see
+	 * .claude/rules/editor-content.md), set a word in bold or italics, or
+	 * add a link. Block markup (paragraphs, lists, images) stays out: those
+	 * belong to the wpautop / WYSIWYG fields, printed with wp_kses_post().
+	 *
+	 * @since 1.44.0
+	 *
+	 * @return array Allowed tags and attributes, in the wp_kses() format.
+	 */
+	function montela_text_allowed_html() {
+		$allowed = array(
+			'br'     => array( 'class' => true ),
+			'strong' => array(),
+			'b'      => array(),
+			'em'     => array(),
+			'i'      => array(),
+			'span'   => array( 'class' => true ),
+			'sup'    => array(),
+			'sub'    => array(),
+			'a'      => array(
+				'href'   => true,
+				'target' => true,
+				'rel'    => true,
+				'class'  => true,
+			),
+		);
+
+		/**
+		 * Filters the inline HTML allowed in text fields.
+		 *
+		 * @since 1.44.0
+		 *
+		 * @param array $allowed Allowed tags and attributes.
+		 */
+		return apply_filters( 'montela_text_allowed_html', $allowed );
+	}
+endif;
+
+if ( ! function_exists( 'montela_text' ) ) :
+	/**
+	 * Returns a text field's value ready to print: the inline HTML of
+	 * montela_text_allowed_html() kept, anything else stripped.
+	 *
+	 * Use it in place of esc_html() for content typed in the admin (text and
+	 * textarea fields, repeater sub-fields, titles and excerpts). Theme
+	 * strings, menu labels and values built in code keep esc_html().
+	 *
+	 * @since 1.44.0
+	 *
+	 * @param mixed $value The field value.
+	 * @return string Safe HTML.
+	 */
+	function montela_text( $value ) {
+		if ( ! is_scalar( $value ) ) {
+			return '';
+		}
+
+		return wp_kses( (string) $value, montela_text_allowed_html() );
+	}
+endif;
+
+if ( ! function_exists( 'montela_hero_keep_hyphens' ) ) :
+	/**
+	 * Keeps hyphenated words whole ("Saas-Fee") in a hero title line: at
+	 * those sizes the browser would otherwise wrap after the hyphen. Only
+	 * the text between tags is touched, so markup the editor typed (a <br>
+	 * with a class, say) is left as it is.
+	 *
+	 * @since 1.44.0
+	 *
+	 * @param string $html The line, already through montela_text().
+	 * @return string The line with each hyphenated word in a nowrap span.
+	 */
+	function montela_hero_keep_hyphens( $html ) {
+		$parts = preg_split( '/(<[^>]*>)/u', (string) $html, -1, PREG_SPLIT_DELIM_CAPTURE );
+
+		foreach ( $parts as $i => $part ) {
+			if ( '' !== $part && '<' !== $part[0] ) {
+				$parts[ $i ] = preg_replace( '/(\S+-\S+)/u', '<span class="whitespace-nowrap">$1</span>', $part );
+			}
+		}
+
+		return implode( '', $parts );
+	}
+endif;
+
 if ( ! function_exists( 'montela_get_season_activities' ) ) :
 	/**
 	 * Returns the published activities to show for a season.

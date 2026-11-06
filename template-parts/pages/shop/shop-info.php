@@ -39,12 +39,12 @@ $si_title_id = wp_unique_id( 'section-shop-info-title-' );
 		<div class="theme-grid section-shop-info__grid gap-y-8 pb-11 md:gap-y-11 xl:gap-y-16">
 			<?php if ( $si_title ) : ?>
 				<h2 id="<?php echo esc_attr( $si_title_id ); ?>" class="title-h3 section-shop-info__title col-span-full xl:col-start-2 xl:col-span-10">
-					<?php echo wp_kses( $si_title, array( 'br' => array( 'class' => array() ) ) ); ?>
+					<?php echo montela_text( $si_title ); ?>
 				</h2>
 			<?php endif; ?>
 
 			<?php if ( $si_text ) : ?>
-				<p class="body-text section-shop-info__text col-span-full md:col-span-2 xl:col-start-2 xl:col-span-3"><?php echo esc_html( $si_text ); ?></p>
+				<p class="body-text section-shop-info__text col-span-full md:col-span-2 xl:col-start-2 xl:col-span-3"><?php echo montela_text( $si_text ); ?></p>
 			<?php endif; ?>
 
 			<?php if ( $si_image ) : ?>

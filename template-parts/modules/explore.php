@@ -124,11 +124,11 @@ if ( $exp_tablet ) {
 
 	<div class="section-explore__panel">
 		<?php if ( $exp_overline ) : ?>
-			<p class="title-h2 section-explore__overline"><?php echo esc_html( $exp_overline ); ?></p>
+			<p class="title-h2 section-explore__overline"><?php echo montela_text( $exp_overline ); ?></p>
 		<?php endif; ?>
 
 		<?php if ( $exp_title ) : ?>
-			<h2 id="<?php echo esc_attr( $exp_title_id ); ?>" class="title-h3 section-explore__title"><?php echo esc_html( $exp_title ); ?></h2>
+			<h2 id="<?php echo esc_attr( $exp_title_id ); ?>" class="title-h3 section-explore__title"><?php echo montela_text( $exp_title ); ?></h2>
 		<?php endif; ?>
 
 		<?php if ( $exp_image ) : ?>
@@ -148,7 +148,7 @@ if ( $exp_tablet ) {
 		<?php endif; ?>
 
 		<?php if ( $exp_text ) : ?>
-			<p class="body-text section-explore__text"><?php echo esc_html( $exp_text ); ?></p>
+			<p class="body-text section-explore__text"><?php echo montela_text( $exp_text ); ?></p>
 		<?php endif; ?>
 
 		<?php

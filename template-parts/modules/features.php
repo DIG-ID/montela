@@ -50,11 +50,11 @@ $feat_class    = 'section-features section-features--' . ( 'sage' === $feat_styl
 	<div class="theme-container">
 		<div class="theme-grid section-features__grid">
 			<?php if ( $feat_title ) : ?>
-				<h2 id="<?php echo esc_attr( $feat_title_id ); ?>" class="title-h3 section-features__title"><?php echo wp_kses( $feat_title, array( 'br' => array( 'class' => array() ) ) ); ?></h2>
+				<h2 id="<?php echo esc_attr( $feat_title_id ); ?>" class="title-h3 section-features__title"><?php echo montela_text( $feat_title ); ?></h2>
 			<?php endif; ?>
 
 			<?php if ( $feat_text ) : ?>
-				<p class="body-text section-features__text"><?php echo esc_html( $feat_text ); ?></p>
+				<p class="body-text section-features__text"><?php echo montela_text( $feat_text ); ?></p>
 			<?php endif; ?>
 
 			<?php

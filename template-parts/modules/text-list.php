@@ -46,7 +46,7 @@ $tl_class    = 'section-text-list' . ( 'right' === $tl_layout ? ' section-text-l
 	<div class="theme-container">
 		<div class="theme-grid section-text-list__grid">
 			<?php if ( $tl_title ) : ?>
-				<h2 id="<?php echo esc_attr( $tl_title_id ); ?>" class="title-h3 section-text-list__title"><?php echo wp_kses( $tl_title, array( 'br' => array( 'class' => array() ) ) ); ?></h2>
+				<h2 id="<?php echo esc_attr( $tl_title_id ); ?>" class="title-h3 section-text-list__title"><?php echo montela_text( $tl_title ); ?></h2>
 			<?php endif; ?>
 
 			<?php if ( $tl_text ) : ?>
@@ -72,7 +72,7 @@ $tl_class    = 'section-text-list' . ( 'right' === $tl_layout ? ' section-text-l
 			<?php if ( $tl_items ) : ?>
 				<ul class="body-text section-text-list__items">
 					<?php foreach ( $tl_items as $tl_item ) : ?>
-						<li><?php echo esc_html( $tl_item ); ?></li>
+						<li><?php echo montela_text( $tl_item ); ?></li>
 					<?php endforeach; ?>
 				</ul>
 			<?php endif; ?>

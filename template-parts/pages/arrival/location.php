@@ -56,16 +56,16 @@ $location_swiper   = array(
 <section class="section-location"<?php echo $location_title ? ' aria-labelledby="' . esc_attr( $location_title_id ) . '"' : ''; ?>>
 	<div class="section-location__panel">
 		<?php if ( $location_title ) : ?>
-			<h2 id="<?php echo esc_attr( $location_title_id ); ?>" class="title-h3 section-location__title"><?php echo wp_kses( $location_title, array( 'br' => array( 'class' => array() ) ) ); ?></h2>
+			<h2 id="<?php echo esc_attr( $location_title_id ); ?>" class="title-h3 section-location__title"><?php echo montela_text( $location_title ); ?></h2>
 		<?php endif; ?>
 
 		<?php if ( $location_name || $location_address ) : ?>
 			<address class="section-location__address">
 				<?php if ( $location_name ) : ?>
-					<span class="section-location__name"><?php echo esc_html( $location_name ); ?></span>
+					<span class="section-location__name"><?php echo montela_text( $location_name ); ?></span>
 				<?php endif; ?>
 				<?php if ( $location_address ) : ?>
-					<span class="section-location__lines"><?php echo wp_kses( $location_address, array( 'br' => array() ) ); ?></span>
+					<span class="section-location__lines"><?php echo montela_text( $location_address ); ?></span>
 				<?php endif; ?>
 			</address>
 		<?php endif; ?>
@@ -95,7 +95,7 @@ $location_swiper   = array(
 							);
 							?>
 							<?php if ( ! empty( $location_slide['caption'] ) ) : ?>
-								<figcaption class="title-h2 section-location__caption"><?php echo esc_html( $location_slide['caption'] ); ?></figcaption>
+								<figcaption class="title-h2 section-location__caption"><?php echo montela_text( $location_slide['caption'] ); ?></figcaption>
 							<?php endif; ?>
 						</figure>
 					<?php endforeach; ?>

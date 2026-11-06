@@ -37,7 +37,7 @@ $apt_title_id = wp_unique_id( 'section-apartment-intro-title-' );
 <section class="theme-container section-apartment-intro mt-4 md:mt-11 xl:mt-[100px] text-montela-walnut"<?php echo $apt_title ? ' aria-labelledby="' . esc_attr( $apt_title_id ) . '"' : ''; ?>>
 	<div class="theme-grid gap-y-4 md:gap-y-0 pb-11 md:pb-14 xl:pb-[77px] border-b border-montela-sage">
 		<?php if ( $apt_title ) : ?>
-			<h2 id="<?php echo esc_attr( $apt_title_id ); ?>" class="title-intro col-span-full md:col-span-3 md:row-start-1 xl:col-start-2 xl:col-span-5"><?php echo wp_kses( $apt_title, array( 'br' => array( 'class' => array() ) ) ); ?></h2>
+			<h2 id="<?php echo esc_attr( $apt_title_id ); ?>" class="title-intro col-span-full md:col-span-3 md:row-start-1 xl:col-start-2 xl:col-span-5"><?php echo montela_text( $apt_title ); ?></h2>
 		<?php endif; ?>
 
 		<?php if ( $apt_text ) : ?>

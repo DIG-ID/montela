@@ -486,6 +486,7 @@ Todos os ficheiros PHP **devem** começar com um file docblock com `@package`, `
 - Imagens: usar `wp_get_attachment_image()` (gera `srcset`/`sizes`); `loading="lazy"` por omissão, `loading="eager"` + `fetchpriority="high"` apenas no hero/LCP.
 - Schema/structured data: **sempre via Yoast Schema API (JSON-LD)** — nunca microdata (`itemscope`/`itemtype`) inline no HTML.
 - Escaping sempre no output: `esc_html()`, `esc_attr()`, `esc_url()`, `wp_kses_post()`. Inputs com sanitização e nonces quando aplicável.
+- **Campos de texto aceitam HTML inline**: tudo o que se escreve num campo `text` / `textarea` (e títulos e excertos) imprime-se com `montela_text()` (`inc/helpers.php`), não com `esc_html()` — permite `<br>` (com classe), `<strong>`, `<em>`, `<span>`, `<a>`… Regra completa em `.claude/rules/php.md`.
 - Strings sempre traduzíveis (`__()`, `esc_html__()`, etc.) com text domain `montela`; a string fonte segue o Figma (DE ou EN, como lá estiver) e, sem texto no Figma, **alemão suíço (de-CH)** — ver i18n.
 - Estas regras aplicam-se a todo o código novo e a qualquer ficheiro tocado (boy-scout rule: ao editar, corrigir a semântica/documentação desse ficheiro).
 

@@ -35,11 +35,11 @@ $place_title_id = wp_unique_id( 'section-place-title-' );
 	<div class="theme-container">
 		<div class="theme-grid section-place__grid">
 			<?php if ( $place_title ) : ?>
-				<h2 id="<?php echo esc_attr( $place_title_id ); ?>" class="title-h3 section-place__title"><?php echo esc_html( $place_title ); ?></h2>
+				<h2 id="<?php echo esc_attr( $place_title_id ); ?>" class="title-h3 section-place__title"><?php echo montela_text( $place_title ); ?></h2>
 			<?php endif; ?>
 
 			<?php if ( $place_text ) : ?>
-				<p class="body-text section-place__text"><?php echo esc_html( $place_text ); ?></p>
+				<p class="body-text section-place__text"><?php echo montela_text( $place_text ); ?></p>
 			<?php endif; ?>
 
 			<?php if ( $place_image_1 ) : ?>

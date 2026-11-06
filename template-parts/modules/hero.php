@@ -73,12 +73,12 @@ foreach ( $hero_lines as $hero_n => $hero_line ) {
 	$hero_indent = 'custom' === $hero_align ? absint( get_field( $hero_prefix . 'section_hero_title_line_' . $hero_n . '_indent', $hero_ctx ) ) : null;
 
 	$hero_rendered[ $hero_n ] = array(
-		'text'   => preg_replace( '/(\S+-\S+)/u', '<span class="whitespace-nowrap">$1</span>', esc_html( $hero_line ) ),
+		'text'   => montela_hero_keep_hyphens( montela_text( $hero_line ) ),
 		'align'  => $hero_align,
 		'indent' => $hero_indent,
 	);
 }
-$hero_kses = array( 'span' => array( 'class' => array() ) );
+$hero_kses = montela_text_allowed_html();
 
 // The last line is the italic one, however many lines there are.
 $hero_last = $hero_rendered ? array_key_last( $hero_rendered ) : 0;

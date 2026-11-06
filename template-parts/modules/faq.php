@@ -65,10 +65,10 @@ $faq_title_id = $faq_uid . '-title';
 			<div class="section-faq__head">
 				<div class="section-faq__copy">
 					<?php if ( $faq_title ) : ?>
-						<h2 id="<?php echo esc_attr( $faq_title_id ); ?>" class="title-h3 section-faq__title"><?php echo wp_kses( $faq_title, array( 'br' => array( 'class' => array() ) ) ); ?></h2>
+						<h2 id="<?php echo esc_attr( $faq_title_id ); ?>" class="title-h3 section-faq__title"><?php echo montela_text( $faq_title ); ?></h2>
 					<?php endif; ?>
 					<?php if ( $faq_text ) : ?>
-						<p class="body-text section-faq__text"><?php echo esc_html( $faq_text ); ?></p>
+						<p class="body-text section-faq__text"><?php echo montela_text( $faq_text ); ?></p>
 					<?php endif; ?>
 				</div>
 				<?php
@@ -82,7 +82,7 @@ $faq_title_id = $faq_uid . '-title';
 				<?php foreach ( $faq_items as $faq_item ) : ?>
 					<details class="section-faq__item" name="<?php echo esc_attr( $faq_uid ); ?>">
 						<summary class="section-faq__question">
-							<span class="section-faq__question-text"><?php echo esc_html( $faq_item['question'] ); ?></span>
+							<span class="section-faq__question-text"><?php echo montela_text( $faq_item['question'] ); ?></span>
 							<span class="section-faq__icon" aria-hidden="true"></span>
 						</summary>
 						<?php if ( ! empty( $faq_item['answer'] ) ) : ?>

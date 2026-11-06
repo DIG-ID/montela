@@ -47,7 +47,7 @@ $btn_context = ! empty( $args['context'] ) ? $args['context'] : '';
 	<span class="btn__label">
 		<?php echo esc_html( $btn_title ); ?>
 		<?php if ( $btn_context ) : ?>
-			<span class="sr-only">: <?php echo esc_html( $btn_context ); ?></span>
+			<span class="sr-only">: <?php echo esc_html( wp_strip_all_tags( $btn_context ) ); ?></span>
 		<?php endif; ?>
 		<?php if ( '_blank' === $btn_target ) : ?>
 			<span class="sr-only"><?php esc_html_e( '(öffnet in einem neuen Tab)', 'montela' ); ?></span>

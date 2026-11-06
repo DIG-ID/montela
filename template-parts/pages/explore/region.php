@@ -45,12 +45,12 @@ $region_photos = array(
 		<div class="section-region__grid">
 			<div class="section-region__copy">
 				<?php if ( $region_title ) : ?>
-					<h2 id="<?php echo esc_attr( $region_title_id ); ?>" class="title-h3 section-region__title"><?php echo wp_kses( $region_title, array( 'br' => array( 'class' => array() ) ) ); ?></h2>
+					<h2 id="<?php echo esc_attr( $region_title_id ); ?>" class="title-h3 section-region__title"><?php echo montela_text( $region_title ); ?></h2>
 				<?php endif; ?>
 
 				<div class="section-region__body">
 					<?php if ( $region_text ) : ?>
-						<p class="body-text section-region__text"><?php echo esc_html( $region_text ); ?></p>
+						<p class="body-text section-region__text"><?php echo montela_text( $region_text ); ?></p>
 					<?php endif; ?>
 
 					<?php

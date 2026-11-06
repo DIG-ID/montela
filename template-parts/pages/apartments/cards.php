@@ -88,7 +88,7 @@ $apts_swiper = array(
 		?>
 		<article class="apartment-card">
 			<div class="apartment-card__panel">
-				<h2 class="title-h3 apartment-card__title"><?php echo esc_html( $apts_title ); ?></h2>
+				<h2 class="title-h3 apartment-card__title"><?php echo montela_text( $apts_title ); ?></h2>
 
 				<div class="apartment-card__body">
 					<?php
@@ -103,7 +103,7 @@ $apts_swiper = array(
 					?>
 
 					<?php if ( $apts_excerpt ) : ?>
-						<p class="apartment-card__excerpt"><?php echo esc_html( $apts_excerpt ); ?></p>
+						<p class="apartment-card__excerpt"><?php echo montela_text( $apts_excerpt ); ?></p>
 					<?php endif; ?>
 
 					<div class="apartment-card__buttons">

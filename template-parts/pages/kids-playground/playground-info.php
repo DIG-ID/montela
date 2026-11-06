@@ -43,12 +43,12 @@ $pi_title_id = wp_unique_id( 'section-playground-info-title-' );
 				<div class="section-playground-info__content col-span-full xl:col-start-8 xl:col-span-5 xl:row-start-1">
 					<?php if ( $pi_title ) : ?>
 						<h2 id="<?php echo esc_attr( $pi_title_id ); ?>" class="title-h3 section-playground-info__title xl:max-w-[660px]">
-							<?php echo wp_kses( $pi_title, array( 'br' => array( 'class' => array() ) ) ); ?>
+							<?php echo montela_text( $pi_title ); ?>
 						</h2>
 					<?php endif; ?>
 
 					<?php if ( $pi_text ) : ?>
-						<p class="body-text section-playground-info__text mt-3 md:mt-[52px] md:max-w-[578px] xl:mt-9 xl:max-w-[440px]"><?php echo esc_html( $pi_text ); ?></p>
+						<p class="body-text section-playground-info__text mt-3 md:mt-[52px] md:max-w-[578px] xl:mt-9 xl:max-w-[440px]"><?php echo montela_text( $pi_text ); ?></p>
 					<?php endif; ?>
 				</div>
 			<?php endif; ?>

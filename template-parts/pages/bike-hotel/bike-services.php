@@ -40,13 +40,13 @@ $bs_title_id = wp_unique_id( 'section-bike-services-title-' );
 	<div class="theme-container">
 		<div class="theme-grid">
 			<?php if ( $bs_title ) : ?>
-				<h2 id="<?php echo esc_attr( $bs_title_id ); ?>" class="title-h3 section-bike-services__title col-span-full max-w-[300px] md:max-w-none mb-9 md:mb-10 xl:mb-11 xl:col-start-2 xl:col-span-11"><?php echo esc_html( $bs_title ); ?></h2>
+				<h2 id="<?php echo esc_attr( $bs_title_id ); ?>" class="title-h3 section-bike-services__title col-span-full max-w-[300px] md:max-w-none mb-9 md:mb-10 xl:mb-11 xl:col-start-2 xl:col-span-11"><?php echo montela_text( $bs_title ); ?></h2>
 			<?php endif; ?>
 
 			<div class="section-bike-services__body col-span-full grid grid-cols-1 gap-y-11 md:grid-cols-6 md:gap-x-5 md:gap-y-0 xl:grid-cols-12 xl:items-start">
 				<div class="section-bike-services__col section-bike-services__col--left contents xl:grid xl:grid-cols-subgrid xl:col-span-4 xl:gap-y-[138px]">
 					<?php if ( $bs_text ) : ?>
-						<p class="body-text section-bike-services__text order-1 md:col-span-3 md:row-start-1 md:max-w-[343px] xl:col-start-2 xl:col-span-3 xl:max-w-none"><?php echo esc_html( $bs_text ); ?></p>
+						<p class="body-text section-bike-services__text order-1 md:col-span-3 md:row-start-1 md:max-w-[343px] xl:col-start-2 xl:col-span-3 xl:max-w-none"><?php echo montela_text( $bs_text ); ?></p>
 					<?php endif; ?>
 
 					<?php if ( $bs_image_tall ) : ?>

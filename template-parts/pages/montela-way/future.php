@@ -35,15 +35,15 @@ $future_title_id = wp_unique_id( 'section-future-title-' );
 		<div class="theme-grid section-future__grid">
 			<div class="section-future__copy">
 				<?php if ( $future_title ) : ?>
-					<h2 id="<?php echo esc_attr( $future_title_id ); ?>" class="title-h3 section-future__title"><?php echo wp_kses( $future_title, array( 'br' => array( 'class' => array() ) ) ); ?></h2>
+					<h2 id="<?php echo esc_attr( $future_title_id ); ?>" class="title-h3 section-future__title"><?php echo montela_text( $future_title ); ?></h2>
 				<?php endif; ?>
 				<?php if ( $future_text ) : ?>
-					<p class="body-text section-future__text"><?php echo esc_html( $future_text ); ?></p>
+					<p class="body-text section-future__text"><?php echo montela_text( $future_text ); ?></p>
 				<?php endif; ?>
 				<?php if ( $future_items ) : ?>
 					<ul class="body-text section-future__items">
 						<?php foreach ( $future_items as $future_item ) : ?>
-							<li><?php echo esc_html( $future_item ); ?></li>
+							<li><?php echo montela_text( $future_item ); ?></li>
 						<?php endforeach; ?>
 					</ul>
 				<?php endif; ?>

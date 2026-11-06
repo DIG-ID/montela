@@ -80,12 +80,12 @@ $card_title_tag = ( ! empty( $args['title_tag'] ) && in_array( $args['title_tag'
 	<?php endif; ?>
 
 	<div class="card-activity__panel">
-		<<?php echo esc_attr( $card_title_tag ); ?> class="title-h4 card-activity__title"><?php echo esc_html( $card_title ); ?></<?php echo esc_attr( $card_title_tag ); ?>>
+		<<?php echo esc_attr( $card_title_tag ); ?> class="title-h4 card-activity__title"><?php echo montela_text( $card_title ); ?></<?php echo esc_attr( $card_title_tag ); ?>>
 
 		<div class="card-activity__more">
 			<div class="card-activity__more-inner">
 				<?php if ( $card_excerpt ) : ?>
-					<p class="card-activity__excerpt"><?php echo esc_html( $card_excerpt ); ?></p>
+					<p class="card-activity__excerpt"><?php echo montela_text( $card_excerpt ); ?></p>
 				<?php endif; ?>
 
 				<?php

@@ -132,11 +132,11 @@ $act_title_id = $act_uid . '-title';
 
 				<div class="section-activities__copy">
 					<?php if ( $act_title ) : ?>
-						<h2 id="<?php echo esc_attr( $act_title_id ); ?>" class="title-h3 section-activities__title"><?php echo esc_html( $act_title ); ?></h2>
+						<h2 id="<?php echo esc_attr( $act_title_id ); ?>" class="title-h3 section-activities__title"><?php echo montela_text( $act_title ); ?></h2>
 					<?php endif; ?>
 
 					<?php if ( $act_text ) : ?>
-						<p class="body-text section-activities__text"><?php echo esc_html( $act_text ); ?></p>
+						<p class="body-text section-activities__text"><?php echo montela_text( $act_text ); ?></p>
 					<?php endif; ?>
 
 					<?php

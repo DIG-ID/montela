@@ -30,7 +30,7 @@ $luggage_title_id = wp_unique_id( 'section-luggage-title-' );
 	<div class="theme-container">
 		<div class="theme-grid section-luggage__grid">
 			<?php if ( $luggage_title ) : ?>
-				<h2 id="<?php echo esc_attr( $luggage_title_id ); ?>" class="title-h3 section-luggage__title"><?php echo wp_kses( $luggage_title, array( 'br' => array( 'class' => array() ) ) ); ?></h2>
+				<h2 id="<?php echo esc_attr( $luggage_title_id ); ?>" class="title-h3 section-luggage__title"><?php echo montela_text( $luggage_title ); ?></h2>
 			<?php endif; ?>
 
 			<?php if ( $luggage_text ) : ?>

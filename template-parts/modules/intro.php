@@ -38,11 +38,11 @@ $intro_title_id = wp_unique_id( 'section-intro-title-' );
 			<div class="section-intro__content">
 				<?php if ( $intro_title ) : ?>
 					<h2 id="<?php echo esc_attr( $intro_title_id ); ?>" class="title-intro section-intro__title">
-						<?php echo wp_kses( $intro_title, array( 'br' => array( 'class' => array() ) ) ); ?>
+						<?php echo montela_text( $intro_title ); ?>
 					</h2>
 				<?php endif; ?>
 				<?php if ( $intro_text ) : ?>
-					<p class="body-intro section-intro__text"><?php echo esc_html( $intro_text ); ?></p>
+					<p class="body-intro section-intro__text"><?php echo montela_text( $intro_text ); ?></p>
 				<?php endif; ?>
 			</div>
 		</div>

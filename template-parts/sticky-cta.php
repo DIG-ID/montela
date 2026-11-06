@@ -31,7 +31,7 @@ if ( ! $cta_title && ! $cta_url ) {
 
 $cta_link_title = ! empty( $cta_link['title'] ) ? $cta_link['title'] : $cta_title;
 $cta_target     = ( is_array( $cta_link ) && ! empty( $cta_link['target'] ) ) ? $cta_link['target'] : '';
-$cta_name       = $cta_title ? $cta_title : $cta_link_title;
+$cta_name       = wp_strip_all_tags( $cta_title ? $cta_title : $cta_link_title );
 
 /* translators: %s: sticky call-to-action title. */
 $cta_label_open = sprintf( __( 'Öffnen: %s', 'montela' ), $cta_name );
@@ -42,11 +42,11 @@ $cta_label_close = sprintf( __( 'Schliessen: %s', 'montela' ), $cta_name );
 	<div id="sticky-cta-panel" class="sticky-cta__panel">
 		<?php if ( $cta_title ) : ?>
 			<?php // Not a heading: the card repeats on every page and stays out of its outline. ?>
-			<p class="sticky-cta__title"><?php echo esc_html( $cta_title ); ?></p>
+			<p class="sticky-cta__title"><?php echo montela_text( $cta_title ); ?></p>
 		<?php endif; ?>
 
 		<?php if ( $cta_text ) : ?>
-			<p class="sticky-cta__text"><?php echo esc_html( $cta_text ); ?></p>
+			<p class="sticky-cta__text"><?php echo montela_text( $cta_text ); ?></p>
 		<?php endif; ?>
 
 		<?php if ( $cta_url ) : ?>

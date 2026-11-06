@@ -60,7 +60,7 @@ $hz_has_link  = is_array( $hz_button ) && ! empty( $hz_button['url'] );
 				<div class="section-horizontal__head">
 					<?php if ( $hz_title ) : ?>
 						<<?php echo esc_attr( $hz_title_tag ); ?> id="<?php echo esc_attr( $hz_title_id ); ?>" class="title-h3 section-horizontal__title">
-							<?php echo wp_kses( $hz_title, array( 'br' => array( 'class' => array() ) ) ); ?>
+							<?php echo montela_text( $hz_title ); ?>
 						</<?php echo esc_attr( $hz_title_tag ); ?>>
 					<?php endif; ?>
 					<?php

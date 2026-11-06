@@ -32,7 +32,7 @@ if ( ! $info_boxes ) {
 				<?php foreach ( $info_boxes as $info_box ) : ?>
 					<div class="section-contact-info__box">
 						<?php if ( ! empty( $info_box['title'] ) ) : ?>
-							<h2 class="section-contact-info__title"><?php echo esc_html( $info_box['title'] ); ?></h2>
+							<h2 class="section-contact-info__title"><?php echo montela_text( $info_box['title'] ); ?></h2>
 						<?php endif; ?>
 						<?php if ( ! empty( $info_box['text'] ) ) : ?>
 							<p class="section-contact-info__text"><?php echo wp_kses_post( montela_make_clickable( $info_box['text'] ) ); ?></p>

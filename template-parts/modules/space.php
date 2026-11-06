@@ -77,13 +77,13 @@ $space_title_id = wp_unique_id( 'section-space-title-' );
 	<div class="theme-container">
 		<div class="theme-grid">
 			<?php if ( $space_title ) : ?>
-				<h2 id="<?php echo esc_attr( $space_title_id ); ?>" class="title-h3 col-span-full xl:col-start-2 xl:col-span-11"><?php echo wp_kses( $space_title, array( 'br' => array( 'class' => array() ) ) ); ?></h2>
+				<h2 id="<?php echo esc_attr( $space_title_id ); ?>" class="title-h3 col-span-full xl:col-start-2 xl:col-span-11"><?php echo montela_text( $space_title ); ?></h2>
 			<?php endif; ?>
 
 			<?php if ( $space_text || $space_button ) : ?>
 				<div class="col-span-full flex flex-col items-start gap-8 mt-4 md:col-span-3 md:row-start-2 md:gap-10 md:mt-10 xl:col-start-2 <?php echo esc_attr( $space_cls['content'] ); ?>">
 					<?php if ( $space_text ) : ?>
-						<p class="body-text"><?php echo esc_html( $space_text ); ?></p>
+						<p class="body-text"><?php echo montela_text( $space_text ); ?></p>
 					<?php endif; ?>
 					<?php
 					if ( $space_button ) :

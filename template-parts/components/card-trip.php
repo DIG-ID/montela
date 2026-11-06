@@ -58,9 +58,9 @@ $card_class   = 'card-trip' . ( ! empty( $args['class'] ) ? ' ' . $args['class']
 
 	<div class="card-trip__panel">
 		<div class="card-trip__body">
-			<h3 class="card-trip__title"><?php echo esc_html( $card_title ); ?></h3>
+			<h3 class="card-trip__title"><?php echo montela_text( $card_title ); ?></h3>
 			<?php if ( $card_excerpt ) : ?>
-				<p class="card-trip__text"><?php echo esc_html( $card_excerpt ); ?></p>
+				<p class="card-trip__text"><?php echo montela_text( $card_excerpt ); ?></p>
 			<?php endif; ?>
 		</div>
 		<?php

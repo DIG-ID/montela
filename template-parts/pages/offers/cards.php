@@ -40,18 +40,18 @@ if ( ! $offers ) {
 		?>
 		<article class="offer-card">
 			<div class="offer-card__panel">
-				<h2 class="title-h3 offer-card__title"><?php echo esc_html( $offers_title ); ?></h2>
+				<h2 class="title-h3 offer-card__title"><?php echo montela_text( $offers_title ); ?></h2>
 
 				<?php if ( $offers_validity ) : ?>
 					<p class="offer-card__dates"><?php echo esc_html( $offers_validity ); ?></p>
 				<?php endif; ?>
 
 				<?php if ( $offers_duration ) : ?>
-					<p class="offer-card__duration"><?php echo esc_html( $offers_duration ); ?></p>
+					<p class="offer-card__duration"><?php echo montela_text( $offers_duration ); ?></p>
 				<?php endif; ?>
 
 				<?php if ( $offers_excerpt ) : ?>
-					<p class="offer-card__excerpt"><?php echo esc_html( $offers_excerpt ); ?></p>
+					<p class="offer-card__excerpt"><?php echo montela_text( $offers_excerpt ); ?></p>
 				<?php endif; ?>
 
 				<?php

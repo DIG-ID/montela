@@ -117,10 +117,10 @@ if ( $cards_fixed ) {
 				<?php if ( $cards_title || $cards_text ) : ?>
 					<div class="section-cards-icon__head flex flex-col items-center text-center xl:max-w-[1217px] <?php echo esc_attr( $cards_head_gap ); ?>">
 						<?php if ( $cards_title ) : ?>
-							<h2 id="<?php echo esc_attr( $cards_title_id ); ?>" class="title-h3 section-cards-icon__title"><?php echo esc_html( $cards_title ); ?></h2>
+							<h2 id="<?php echo esc_attr( $cards_title_id ); ?>" class="title-h3 section-cards-icon__title"><?php echo montela_text( $cards_title ); ?></h2>
 						<?php endif; ?>
 						<?php if ( $cards_text ) : ?>
-							<p class="body-text section-cards-icon__text xl:max-w-[957px]"><?php echo esc_html( $cards_text ); ?></p>
+							<p class="body-text section-cards-icon__text xl:max-w-[957px]"><?php echo montela_text( $cards_text ); ?></p>
 						<?php endif; ?>
 					</div>
 				<?php endif; ?>
@@ -146,13 +146,13 @@ if ( $cards_fixed ) {
 
 									<div class="section-cards-icon__body <?php echo esc_attr( $cards_body_class ); ?>">
 										<?php if ( ! empty( $cards_item['title'] ) ) : ?>
-											<h3 class="section-cards-icon__card-title"><?php echo esc_html( $cards_item['title'] ); ?></h3>
+											<h3 class="section-cards-icon__card-title"><?php echo montela_text( $cards_item['title'] ); ?></h3>
 										<?php endif; ?>
 										<?php if ( ! empty( $cards_item['subtitle'] ) ) : ?>
-											<p class="section-cards-icon__subtitle"><?php echo esc_html( $cards_item['subtitle'] ); ?></p>
+											<p class="section-cards-icon__subtitle"><?php echo montela_text( $cards_item['subtitle'] ); ?></p>
 										<?php endif; ?>
 										<?php if ( ! empty( $cards_item['text'] ) ) : ?>
-											<p><?php echo esc_html( $cards_item['text'] ); ?></p>
+											<p><?php echo montela_text( $cards_item['text'] ); ?></p>
 										<?php endif; ?>
 									</div>
 

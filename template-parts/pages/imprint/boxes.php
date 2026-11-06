@@ -37,7 +37,7 @@ if ( ! $imprint_boxes ) {
 						<?php endif; ?>
 						<div class="section-imprint__copy">
 							<?php if ( ! empty( $imprint_box['title'] ) ) : ?>
-								<h2 class="section-imprint__title"><?php echo esc_html( $imprint_box['title'] ); ?></h2>
+								<h2 class="section-imprint__title"><?php echo montela_text( $imprint_box['title'] ); ?></h2>
 							<?php endif; ?>
 							<?php if ( ! empty( $imprint_box['text'] ) ) : ?>
 								<p class="section-imprint__text"><?php echo wp_kses_post( montela_make_clickable( $imprint_box['text'] ) ); ?></p>

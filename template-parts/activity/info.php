@@ -53,11 +53,11 @@ $info_title_id = wp_unique_id( 'section-activity-info-title-' );
 
 			<div class="section-activity-info__copy">
 				<?php if ( $info_title ) : ?>
-					<h2 id="<?php echo esc_attr( $info_title_id ); ?>" class="title-h3 section-activity-info__title"><?php echo wp_kses( $info_title, array( 'br' => array( 'class' => array() ) ) ); ?></h2>
+					<h2 id="<?php echo esc_attr( $info_title_id ); ?>" class="title-h3 section-activity-info__title"><?php echo montela_text( $info_title ); ?></h2>
 				<?php endif; ?>
 
 				<?php if ( $info_text ) : ?>
-					<p class="body-text section-activity-info__text"><?php echo esc_html( $info_text ); ?></p>
+					<p class="body-text section-activity-info__text"><?php echo montela_text( $info_text ); ?></p>
 				<?php endif; ?>
 
 				<?php if ( count( $info_items ) > 1 ) : ?>
