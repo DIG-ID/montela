@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.44.3] — 2026-11-09
+
+### Changed
+- Footer: the call-to-action box overlaps the sage through the layout itself, without a negative margin; it looks the same.
+
 ## [1.44.2] — 2026-11-09
 
 ### Changed
