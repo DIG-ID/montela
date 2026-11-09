@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.44.2] — 2026-11-09
+
+### Changed
+- Mega menu: items with and without sub-menus start their labels at the same indent on every breakpoint.
+
 ## [1.44.1] — 2026-11-09
 
 ### Changed

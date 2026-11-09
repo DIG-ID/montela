@@ -102,9 +102,10 @@
 .mega-menu__plus
   @apply font-light text-[44px] leading-[55px]
 
-// Plain links in the grid (no "+"): the deeper indent.
-.mega-menu__grid a.mega-menu__item
-  @apply pl-[43px] md:pl-[44px] xl:pl-[57px]
+// Plain links and items with a "+" share one indent (Bruno, 2026-11-09).
+// The frames indent the plain links deeper (43 / 44 / 57px), but the mobile
+// frame lists the "+" items first, so the step never showed there; in the
+// menu order they alternate and the labels zigzag.
 
 // -- Grid (closed state) -------------------------------------------------------
 .mega-menu__grid
