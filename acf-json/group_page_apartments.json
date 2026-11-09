@@ -165,7 +165,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Also shown on every apartment page.",
+            "message": "Also shown on every apartment page that leaves this section empty.",
             "new_lines": "",
             "esc_html": 0
         },
@@ -224,7 +224,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Also shown on every apartment page.",
+            "message": "Also shown on every apartment page that leaves this section empty.",
             "new_lines": "",
             "esc_html": 0
         },
@@ -324,7 +324,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Shown on the apartment pages only (\"Für jede Auszeit das passende Angebot\"), not on this page.",
+            "message": "Shown on the apartment pages only (\"Für jede Auszeit das passende Angebot\"), not on this page — on those that leave their Offers tab empty.",
             "new_lines": "",
             "esc_html": 0
         },
@@ -373,6 +373,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793709851,
+    "modified": 1794241696,
     "acfml_field_group_mode": "advanced"
 }

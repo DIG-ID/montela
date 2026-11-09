@@ -432,3 +432,29 @@ if ( ! function_exists( 'montela_get_active_offers' ) ) :
 		return array_keys( $offers );
 	}
 endif;
+
+if ( ! function_exists( 'montela_section_source' ) ) :
+	/**
+	 * Returns where a shared section reads its fields from: the post itself
+	 * when any of the given fields is filled in there, otherwise the fallback
+	 * (the apartment pages and their Apartments page).
+	 *
+	 * @since 1.45.0
+	 *
+	 * @param int      $post_id     The post that may override the section.
+	 * @param string[] $fields      Field names that tell whether the post has content of its own.
+	 * @param int|null $fallback_id Where the shared content lives.
+	 * @return int|null
+	 */
+	function montela_section_source( $post_id, $fields, $fallback_id ) {
+		if ( function_exists( 'get_field' ) ) {
+			foreach ( $fields as $field ) {
+				if ( get_field( $field, $post_id ) ) {
+					return $post_id;
+				}
+			}
+		}
+
+		return $fallback_id;
+	}
+endif;

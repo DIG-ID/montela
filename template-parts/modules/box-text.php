@@ -29,6 +29,8 @@
  *                        around on desktop; cream: none) — e.g. Kids
  *                        Playground and Lounge & Bar, where the box closes a
  *                        page section.
+ * - style   (string)     Optional. 'box', 'band' or 'cream', replacing the
+ *                        field — e.g. the apartment pages, always cream.
  *
  * @package montela
  * @subpackage Section
@@ -42,7 +44,7 @@ if ( ! function_exists( 'get_field' ) ) {
 $box_ctx    = ! empty( $args['post_id'] ) ? $args['post_id'] : get_the_ID();
 $box_prefix = ! empty( $args['prefix'] ) ? $args['prefix'] : '';
 
-$box_style   = get_field( $box_prefix . 'section_box_text_style', $box_ctx );
+$box_style   = ! empty( $args['style'] ) ? $args['style'] : get_field( $box_prefix . 'section_box_text_style', $box_ctx );
 $box_style   = in_array( $box_style, array( 'band', 'cream' ), true ) ? $box_style : 'box';
 $box_is_band = 'box' !== $box_style;
 $box_eyebrow = get_field( $box_prefix . 'section_box_text_eyebrow', $box_ctx );

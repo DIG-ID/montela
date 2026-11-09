@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.45.0] — 2026-11-09
+
+### Added
+- Apartment pages: "Inklusive Leistungen", the stay comparison and the offer cards can each have their own content per apartment; left empty, the Apartments page's content is shown.
+
 ## [1.44.2] — 2026-11-09
 
 ### Changed
