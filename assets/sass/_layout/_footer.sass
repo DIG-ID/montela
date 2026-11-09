@@ -127,7 +127,7 @@
   @apply md:basis-full xl:basis-auto
 
 .footer-main__menu
-  @apply grid grid-cols-1 justify-items-center gap-y-4 md:justify-items-stretch md:grid-rows-none md:grid-flow-row md:grid-cols-[repeat(4,124px)] md:justify-between md:gap-y-8 xl:grid-rows-4 xl:grid-flow-col xl:grid-cols-none xl:justify-start xl:gap-y-6
+  @apply grid grid-cols-1 justify-items-center gap-y-4 md:justify-items-stretch md:grid-rows-none md:grid-flow-row md:grid-cols-[repeat(4,124px)] md:justify-between md:gap-y-8 xl:grid-rows-4 xl:grid-flow-col xl:grid-cols-none xl:justify-start xl:gap-x-16 xl:gap-y-6
   // Mobile: the two columns of four swap places (the frame lists the
   // desktop's second column first), 48px apart.
   li:nth-child(-n+4)
@@ -145,13 +145,14 @@
 // 2 × 2 cells of 192×96, 64px / 56px apart. Uploaded logos differ in shape,
 // so each one is fitted into a 150×82 box (the largest the frame uses)
 // rather than given one height — see .claude/rules/editor-content.md.
-// Centred on its own row on tablet. Desktop: on the right of the same row
-// as the rest (Bruno, from the desktop frame). From 1280 to 1535 the row is
+// Centred on its own row on tablet. Desktop: in the same row as the rest,
+// 101px after the navigation like every column (x 1258–1706 in the frame
+// 5895:19803 — not against the right margin). From 1280 to 1535 the row is
 // short of room (the frame only draws 1920): the newsletter narrows and the
 // cells shrink with it, down to 130px — the logos inside them too; the
 // gaps between the columns close to 64 / 40px (101 from 1536).
 .footer-main__partners
-  @apply grid grid-cols-1 gap-y-4 w-full md:w-auto md:grid-cols-2 md:gap-x-16 md:gap-y-14 shrink-0 md:mx-auto xl:ml-auto xl:mr-0 xl:shrink xl:basis-[448px] xl:min-w-[280px] xl:grid-cols-[repeat(2,minmax(0,192px))] xl:gap-x-5 xl:justify-end 2xl:gap-x-16
+  @apply grid grid-cols-1 gap-y-4 w-full md:w-auto md:grid-cols-2 md:gap-x-16 md:gap-y-14 shrink-0 md:mx-auto xl:mx-0 xl:shrink xl:basis-[448px] xl:min-w-[280px] xl:grid-cols-[repeat(2,minmax(0,192px))] xl:gap-x-5 2xl:gap-x-16
 
 .footer-main__partner
   @apply flex items-center justify-center w-full h-32 md:w-[192px] md:h-[96px] xl:w-full
@@ -166,7 +167,12 @@
 .footer-main__bottom-inner
   @apply flex flex-col-reverse items-center gap-8 md:flex-row md:justify-between md:gap-4 py-[30px] md:px-[50px]
 
+// Desktop frame (5895:19803): the links end at x 1795, 75px short of the
+// right margin, 120px apart (119 / 140 in Figma). The columns above only
+// leave room on their right from ~1756px (346 + 247 + 312 + 448 + 3 × 101
+// + margins); below it the logos reach the margin and so do the links. The
+// gap grows with the viewport in between: 0 at 1756, 75px at 1920.
 .footer-main__legal
-  @apply flex flex-wrap justify-center gap-x-11 gap-y-2 md:justify-start md:gap-x-16 xl:gap-x-[120px]
+  @apply flex flex-wrap justify-center gap-x-11 gap-y-2 md:justify-start md:gap-x-16 xl:gap-x-[120px] xl:mr-[clamp(0px,calc((100vw_-_1756px)_*_0.4573),75px)]
   a:hover
     @apply text-montela-mustard

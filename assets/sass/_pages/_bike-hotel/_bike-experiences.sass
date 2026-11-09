@@ -38,6 +38,14 @@
 // to page (Bruno) — see -- Arrows --. Arrows in the 'left' layout sit in the frame's top-right corner like
 // 'right' — not in the design.
 //
+// 1280–1535px (the frames only draw 1920; interpolated, not measured — Bruno,
+// 2026-11-05): with 94px between them the cards were 243px wide at 1280.
+// The gap grows with the viewport instead, 20px (the gutter) at 1280 to
+// 94px at 1920 (--bx-gap); the cards are 375px tall (the tablet height)
+// up to 1535, and the 'right' frame ends 46px higher with them, so its
+// bottom line still runs through the title panels. The 'left' copy takes
+// columns 8–12 up to 1535 (four columns broke its title into five lines).
+//
 // Spacing (Bike Hotel, measured): mobile 128px above and below. Tablet:
 // 192px above 'right', 150px between the two, 175px below 'left'. Desktop:
 // 192px above 'right', 128px between, 192px below 'left'. Margins collapse,
@@ -54,6 +62,8 @@
 
 .section-bike-experiences__inner
   @apply relative flex flex-col xl:grid xl:grid-cols-12 xl:gap-x-5 xl:items-start
+  // Space between the cards on desktop: 20px at 1280 → 94px at 1920.
+  --bx-gap: clamp(20px, calc(11.5625vw - 128px), 94px)
 
 // -- Frame --
 .section-bike-experiences__frame
@@ -63,7 +73,7 @@
   @apply md:bottom-[60px] xl:bottom-auto
 
 .section-bike-experiences--right .section-bike-experiences__frame
-  @apply xl:left-[9.56%] xl:right-[7.33%]
+  @apply xl:left-[9.56%] xl:right-[7.33%] xl:h-[842px] 2xl:h-[888px]
 
 .section-bike-experiences--left .section-bike-experiences__frame
   @apply xl:left-[28.8%] xl:right-[17.22%]
@@ -77,7 +87,7 @@
   @apply xl:col-start-1 xl:col-span-5 xl:mt-[45px]
 
 .section-bike-experiences--left .section-bike-experiences__copy
-  @apply xl:col-start-9 xl:col-span-4 xl:mt-[155px]
+  @apply xl:col-start-8 xl:col-span-5 xl:mt-[155px] 2xl:col-start-9 2xl:col-span-4
 
 .section-bike-experiences__text
   @apply md:max-w-[585px]
@@ -109,7 +119,7 @@
 // Mobile: a horizontal scroll-snap track, one card per view. Tablet and
 // desktop: a 2 × 2 grid — or, paged, a two-row track of half-width columns.
 .section-bike-experiences__cards
-  @apply flex gap-5 mt-[89px] overflow-x-auto snap-x snap-mandatory md:mt-32 md:grid md:grid-cols-2 md:gap-x-5 md:gap-y-[22px] md:overflow-visible xl:row-start-1 xl:col-span-6 xl:gap-x-[94px] xl:gap-y-[51px]
+  @apply flex gap-5 mt-[89px] overflow-x-auto snap-x snap-mandatory md:mt-32 md:grid md:grid-cols-2 md:gap-x-5 md:gap-y-[22px] md:overflow-visible xl:row-start-1 xl:col-span-6 xl:gap-x-[var(--bx-gap)] xl:gap-y-[51px]
   scrollbar-width: none
   &::-webkit-scrollbar
     display: none
@@ -121,7 +131,7 @@
   @apply xl:col-start-1 xl:mt-[220px]
 
 .section-bike-experiences--paged .section-bike-experiences__cards
-  @apply md:grid-cols-none md:grid-rows-2 md:grid-flow-col md:auto-cols-[calc((100%_-_20px)/2)] md:overflow-x-auto xl:auto-cols-[calc((100%_-_94px)/2)]
+  @apply md:grid-cols-none md:grid-rows-2 md:grid-flow-col md:auto-cols-[calc((100%_-_20px)/2)] md:overflow-x-auto xl:auto-cols-[calc((100%_-_var(--bx-gap))/2)]
 
 .section-bike-experiences__cards .section-bike-experiences__card
-  @apply w-full shrink-0 snap-start
+  @apply w-full shrink-0 snap-start xl:h-[375px] 2xl:h-[421px]

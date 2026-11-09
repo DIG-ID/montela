@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.44.1] — 2026-11-09
+
+### Changed
+- Footer (desktop): partner logos follow the other columns, 101px after the navigation, instead of sitting against the right margin; 64px between the two navigation columns; the legal links end 75px short of the margin on wide screens, as designed.
+- Bike Hotel experiences (1280–1535px): wider cards (375px tall), the space between them growing from 20px to the designed 94px, and the right-hand copy on five columns.
+
 ## [1.44.0] — 2026-11-06
 
 ### Changed
