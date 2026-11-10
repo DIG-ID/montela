@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.49.1] — 2026-11-10
+
+### Changed
+- Intro: the text is 35/55 on desktop, as designed (it was 24/40).
+
 ## [1.49.0] — 2026-11-10
 
 ### Added
