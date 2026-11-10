@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.50.1] — 2026-11-10
+
+### Changed
+- Mega menu: the photo only changes once the pointer or focus rests on an item for 250ms, so sweeping across the menu no longer flicks through the photos.
+
 ## [1.50.0] — 2026-11-10
 
 ### Added

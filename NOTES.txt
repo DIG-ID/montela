@@ -528,8 +528,9 @@ o cliente.
   Figma      só a foto estática (5895:18352 / 5895:18398); a troca não está
              desenhada.
   Feito      crossfade de 600ms com um zoom leve (1.04 → 1, 1200ms); a nova
-             entra por cima da anterior. Sem nenhum item em hover (150ms
-             depois de sair, para não piscar entre caixas) e ao fechar volta
+             entra por cima da anterior. Só muda quando o rato (ou o foco)
+             fica 250ms num item — ao varrer os itens não salta de foto em
+             foto. Sem nenhum item em hover (também 250ms) e ao fechar volta
              à das Theme Settings. Sub-item sem imagem = a do item-pai; item
              sem imagem = a de omissão.
   Porquê     pedido do Bruno (10/11); a animação não tem desenho.

@@ -30,8 +30,9 @@
 // - Esc steps back out of a sub-menu first, then closes the menu;
 // - hovering or focusing an item with `data-menu-image` crossfades the photo
 //   to the image with the same attachment ID (desktop only — the photo is
-//   hidden below). Leaving the items, and closing, goes back to the default
-//   image (`data-menu-default`, Theme Settings).
+//   hidden below), once it has rested there for 250ms. Leaving the items,
+//   and closing, goes back to the default image (`data-menu-default`,
+//   Theme Settings).
 function initMegaMenu() {
   const toggle = document.querySelector('.header-main__toggle');
   if (!toggle) {
@@ -175,15 +176,32 @@ function initMegaMenu() {
     });
 
     if (images.length > 1) {
-      // Leaving the items goes back to the default after a short wait, so
-      // crossing the gap between two boxes does not flash it.
-      let backToDefault = null;
+      // Hover intent: an image only changes once the pointer (or focus) has
+      // rested on an item for HOVER_DELAY, so sweeping across the boxes does
+      // not flick through every photo. Leaving the items queues the default
+      // the same way (and crossing the gap between two boxes cancels it).
+      // The latest request wins; one for the image already queued keeps its
+      // timer, so moving within an item does not restart it.
+      const HOVER_DELAY = 250;
+      let pending = null;
+      let pendingId = null;
+
+      const queueImage = (id) => {
+        if (id === pendingId) {
+          return;
+        }
+        clearTimeout(pending);
+        pendingId = id;
+        pending = setTimeout(() => {
+          pendingId = null;
+          showImage(id);
+        }, HOVER_DELAY);
+      };
 
       const onItem = (event) => {
         const item = event.target.closest('[data-menu-image]');
         if (item) {
-          clearTimeout(backToDefault);
-          showImage(item.dataset.menuImage);
+          queueImage(item.dataset.menuImage);
         }
       };
 
@@ -192,8 +210,7 @@ function initMegaMenu() {
         if (!event.target.closest('[data-menu-image]') || (to && nav.contains(to))) {
           return;
         }
-        clearTimeout(backToDefault);
-        backToDefault = setTimeout(() => showImage(defaultImage), 150);
+        queueImage(defaultImage);
       };
 
       nav.addEventListener('pointerover', onItem);
