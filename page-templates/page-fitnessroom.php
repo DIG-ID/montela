@@ -21,14 +21,14 @@ if ( have_posts() ) :
 			get_template_part( 'template-parts/modules/hero' );
 			get_template_part( 'template-parts/modules/intro' );
 			get_template_part( 'template-parts/pages/fitnessroom/fitness-info' );
-			// "Trainieren während Ihrer Ferien": 128px below on desktop, the arrows
-			// kept (disabled) when every card is in view and 369px cards, as drawn.
+			// "Trainieren während Ihrer Ferien": 128px below on desktop and 369px
+			// cards, as drawn. The arrows hide when every card is in view (Bruno,
+			// 2026-11-10 — the design shows them disabled).
 			get_template_part(
 				'template-parts/modules/cards-icon',
 				null,
 				array(
 					'class' => 'mb-[128px] md:mb-[192px] xl:mb-[128px]',
-					'nav'   => 'always',
 					'width' => 'fixed',
 				)
 			);

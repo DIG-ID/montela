@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.46.2] — 2026-11-10
+
+### Changed
+- Fitnessroom: the training cards' arrows hide when every card is in view.
+
 ## [1.46.1] — 2026-11-10
 
 ### Changed
