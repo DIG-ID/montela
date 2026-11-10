@@ -11,6 +11,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.49.2] — 2026-11-10
+
+### Changed
+- Intro: the text is at most 900px wide on desktop, the same on every page; back to 24/40.
+
+### Fixed
+- Intro: the title keeps its designed width (899px) on every desktop screen, so it breaks into lines as designed.
+
+### Removed
+- Intro: the "Desktop max width" field.
+
 ## [1.49.1] — 2026-11-10
 
 ### Changed

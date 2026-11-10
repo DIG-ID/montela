@@ -1,6 +1,7 @@
 // Intro module (template-parts/modules/intro.php).
 //
-// Desktop: 224px vertical padding, content on columns 4–9 (899px), 56px gap.
+// Desktop: 224px vertical padding, title 899px wide, text at most 900px,
+// 56px gap.
 // Tablet: 192px, full container width, text narrowed to 603px, 40px gap.
 // Mobile: 128px, text narrowed to 276px, 40px gap.
 
@@ -22,19 +23,15 @@
     background-position: calc(50% + 180px) 50%
 
 .section-intro__content
-  @apply col-span-full xl:col-start-4 xl:col-span-6 flex flex-col items-center gap-10 xl:gap-14
+  @apply col-span-full flex flex-col items-center gap-10 xl:gap-14
+
+// Desktop: the title is as wide as the frame's text box, 899px, on every
+// desktop width (Bruno, 2026-11-10) — on columns 4–9 it narrowed with the
+// screen (660px at 1440) and titles drawn on one line broke in two. It
+// never grows past the container (1180px at 1280). The text is at most
+// 900px on every page (Bruno, 2026-11-10 — it was columns 4–9 too).
+.section-intro__title
+  @apply xl:w-[min(899px,100%)]
 
 .section-intro__text
-  @apply max-w-[276px] md:max-w-[603px] xl:max-w-none
-
-// "Desktop max width" field (px, in the admin): only the text. The content
-// spans the whole row on desktop so the text can be wider than columns 4–9;
-// the title keeps the six columns' width (6 of 12 + 5 gutters = 50% − 10px),
-// so it does not move. The text, centred, is as wide as the field says.
-// Below desktop nothing changes.
-.section-intro__content--max-w
-  @apply xl:col-start-1 xl:col-span-12
-  .section-intro__title
-    @apply xl:max-w-[calc(50%-10px)]
-  .section-intro__text
-    @apply xl:w-full xl:max-w-[var(--intro-max-w)]
+  @apply max-w-[276px] md:max-w-[603px] xl:w-full xl:max-w-[900px]
