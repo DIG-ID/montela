@@ -85,10 +85,11 @@
 .footer-main__body
   @apply relative z-[1] flex flex-col items-center bg-montela-sage text-montela-cream font-primary font-light text-[14px] leading-[22px] md:text-[15px] md:leading-[25px] tracking-[0.5px] pt-24 pb-24 md:pt-16 md:pb-0 xl:pt-[128px]
   // Sage behind the box: 60px up (desktop), 280px (tablet) — see Overlap.
-  // The padding clears the overlap, so the logo sits 128px (desktop) / 40px
-  // (tablet) below the box.
+  // Desktop: the logo is 128px from the top of the sage, so 68px below the
+  // box (Figma 5895:20059) — the overlap is part of the 128. Tablet: the
+  // padding clears the 280px overlap, the logo 40px below the box.
   .footer-main--has-cta &
-    @apply md:pt-[320px] xl:pt-[188px]
+    @apply md:pt-[320px] xl:pt-[128px]
 
 .footer-main__logo
   @apply block w-[192px] md:w-[187px] mb-8 md:mb-24 xl:mb-[128px]

@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.44.4] — 2026-11-10
+### Changed
+- Sticky header: the current page's menu item is mustard, as in the normal header; 20px above and below on desktop; a smaller logo on mobile and tablet.
+
+### Fixed
+- Footer: the logo sits 68px below the call-to-action box on desktop, as designed (it was 120px).
+
 ## [1.44.3] — 2026-11-09
 
 ### Changed
