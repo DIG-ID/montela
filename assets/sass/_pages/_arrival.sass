@@ -36,9 +36,10 @@
 //   Tablet   panel: title 120px down, address 150px under it, button 36px
 //            under that, 76px below; then the map, 400px tall
 //   Desktop  two halves 20px apart (18 in Figma): the panel on the left —
-//            title 76px down (608px wide), address 236px under it, button
-//            34px under that, 314px below — and the map on the right, as
-//            tall as the panel
+//            title 76px down (608px wide), address 118px under it, button
+//            34px under that, 157px below (236 and 314 in Figma, halved
+//            with the map in place of the photos) — and the map on the
+//            right, as tall as the panel
 //
 // Address: bold name over the lines, one empty line between (14/22, 18/25);
 // on desktop the name is regular 25/40. Map: the right half is a
@@ -48,13 +49,13 @@
   @apply grid grid-cols-1 text-montela-walnut xl:grid-cols-2 xl:gap-x-5
 
 .section-location__panel
-  @apply flex flex-col items-center gap-[51px] text-center bg-montela-cream px-8 py-7 md:gap-0 md:pt-[120px] md:pb-[76px] xl:pt-[76px] xl:pb-[314px]
+  @apply flex flex-col items-center gap-[51px] text-center bg-montela-cream px-8 py-7 md:gap-0 md:pt-[120px] md:pb-[76px] xl:pt-[76px] xl:pb-[157px]
 
 .section-location__title
   @apply max-w-[701px] xl:max-w-[608px]
 
 .section-location__address
-  @apply not-italic font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:mt-[150px] md:text-[18px] md:leading-[25px] xl:mt-[236px] xl:text-[20px] xl:leading-[32px]
+  @apply not-italic font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:mt-[150px] md:text-[18px] md:leading-[25px] xl:mt-[118px] xl:text-[20px] xl:leading-[32px]
 
 .section-location__name
   @apply block mb-[22px] font-bold md:mb-[25px] xl:mb-10 xl:font-normal xl:text-[25px] xl:leading-[40px] xl:tracking-[1px]
@@ -72,10 +73,16 @@
 .section-location__map
   @apply relative h-[324px] md:h-[400px] xl:h-auto
 
-// Desktop: absolutely filled, so the map never sets the row height — the
-// panel does.
+// Absolutely filled, so the map never sets the row height (desktop: the
+// panel does). The embed always opens with Google's place card top-left
+// (address + "Open in Maps" — the panel already has both) and has no
+// option to hide it: the iframe starts 150px above the box, which clips
+// the card off; the pin sits 75px above the centre.
+.section-location__map
+  @apply overflow-hidden
+
 .section-location__iframe
-  @apply absolute inset-0 w-full h-full border-0
+  @apply absolute inset-x-0 -top-[150px] w-full h-[calc(100%+150px)] border-0
 
 // Last section: on tablet and desktop the section runs on behind the
 // footer's booking box, as the Explore module does on the day trips (see
@@ -85,4 +92,4 @@
 body:has(.footer-main--has-cta) .main-content > .section-location:last-child
   @apply md:-mb-[160px] xl:-mb-[320px]
   .section-location__panel
-    @apply xl:pb-[634px]
+    @apply xl:pb-[477px]

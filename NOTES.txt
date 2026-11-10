@@ -508,6 +508,19 @@ o cliente.
   Onde       assets/sass/_layout/_page.sass.
   Estado     POR CONFIRMAR
 
+[2026-11-10] B18. Anreise & Lage — mapa em vez das fotos; painel mais baixo
+  O quê      "Direkt zu Montela" (pages/arrival/location.php).
+  Figma      metade direita é um placeholder (nota a pedir 4–5 fotos);
+             painel com 236px entre o título e a morada e 314px por baixo
+             do botão (desktop).
+  Feito      mapa do Google (iframe de embed) no lugar das fotos; os dois
+             espaços a metade em desktop (118 / 157px).
+  Porquê     pedido do cliente (mapa); com o mapa a secção ficava alta
+             demais (Daniel).
+  Confirma   designer.
+  Onde       assets/sass/_pages/_arrival.sass.
+  Estado     POR CONFIRMAR
+
 ===============================================================================
 C. ERROS NO FIGMA
 ===============================================================================

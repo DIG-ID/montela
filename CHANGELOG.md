@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.48.1] — 2026-11-10
+
+### Changed
+- Anreise & Lage: a shorter location section on desktop (less space around the address); the map no longer shows Google's address card, already in the panel beside it.
+
 ## [1.48.0] — 2026-11-10
 
 ### Added
