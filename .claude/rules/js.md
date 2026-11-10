@@ -29,8 +29,6 @@ domReady(() => {
 });
 ```
 
-O `google-maps.js` não passa pelo Vite: é enfileirado só nos templates que precisam dele (ver `inc/enqueue.php`).
-
 ### jQuery sempre em IIFE
 Não há `jquery` no npm: usar o do WordPress (`window.jQuery`), com `'jquery'` nas dependências do enqueue.
 ```javascript

@@ -23,11 +23,6 @@ if ( ! defined( 'MONTELA_ADOBE_FONTS_ID' ) ) {
 	define( 'MONTELA_ADOBE_FONTS_ID', 'eju2iqq' ); // FreightBig Pro + Roboto.
 }
 
-// Google Maps API key — define the real key in wp-config.php. Empty = disabled.
-if ( ! defined( 'MONTELA_GOOGLE_MAPS_API_KEY' ) ) {
-	define( 'MONTELA_GOOGLE_MAPS_API_KEY', '' );
-}
-
 // Theme setup: supports, nav menus, sidebars, plugin filters.
 require get_template_directory() . '/inc/theme-setup.php';
 

@@ -32,19 +32,18 @@
 // mobile 5769:16282. Full bleed — no .theme-container.
 //
 //   Mobile   cream panel (28px padding; title, address and button 51px
-//            apart), then the slider, 324px tall
+//            apart), then the map, 324px tall
 //   Tablet   panel: title 120px down, address 150px under it, button 36px
-//            under that, 76px below; then the slider, 400px tall
+//            under that, 76px below; then the map, 400px tall
 //   Desktop  two halves 20px apart (18 in Figma): the panel on the left —
 //            title 76px down (608px wide), address 236px under it, button
-//            34px under that, 314px below — and the slider on the right, as
+//            34px under that, 314px below — and the map on the right, as
 //            tall as the panel
 //
 // Address: bold name over the lines, one empty line between (14/22, 18/25);
-// on desktop the name is regular 25/40. Slider: not designed (a placeholder
-// with a note) — photos with their place's name top-left over a soft
-// shade, sage arrows top-right (bottom-centre on mobile), as in Explore;
-// both kept at the top because the footer's box covers the bottom.
+// on desktop the name is regular 25/40. Map: the right half is a
+// placeholder in the design (a photo slider until 1.48.0) — Google's embed
+// iframe, filling the box.
 .section-location
   @apply grid grid-cols-1 text-montela-walnut xl:grid-cols-2 xl:gap-x-5
 
@@ -70,33 +69,17 @@
   &.btn-outline:not(:hover)
     @apply text-montela-walnut
 
-.section-location__slider
+.section-location__map
   @apply relative h-[324px] md:h-[400px] xl:h-auto
 
-// Desktop: absolutely filled, so the photos never set the row height — the
-// panel does. Two classes: swiper.css (loaded after main.css) sets
-// .swiper { position: relative }.
-.section-location__slider .section-location__swiper
-  @apply h-full xl:absolute xl:inset-0
-
-.section-location__swiper .section-location__slide
-  @apply relative m-0 h-full
-  &::after
-    content: ""
-    @apply absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-montela-walnut/50 to-transparent pointer-events-none
-
-.section-location__img
-  @apply w-full h-full object-cover
-
-.section-location__caption
-  @apply absolute z-[1] left-8 top-7 right-8 text-montela-cream md:left-[58px] md:top-[35px] md:right-[180px] xl:left-[51px] xl:top-[76px]
-
-.section-location__nav
-  @apply absolute z-10 bottom-[28px] left-1/2 -translate-x-1/2 md:bottom-auto md:left-auto md:translate-x-0 md:right-[58px] md:top-[35px] xl:top-[76px] xl:right-[51px]
+// Desktop: absolutely filled, so the map never sets the row height — the
+// panel does.
+.section-location__iframe
+  @apply absolute inset-0 w-full h-full border-0
 
 // Last section: on tablet and desktop the section runs on behind the
 // footer's booking box, as the Explore module does on the day trips (see
-// _explore.sass for the numbers). Tablet: the slider is below, so the box
+// _explore.sass for the numbers). Tablet: the map is below, so the box
 // covers its lower part (as drawn); desktop: the panel's bottom padding
 // grows by the overlap, keeping its content clear.
 body:has(.footer-main--has-cta) .main-content > .section-location:last-child

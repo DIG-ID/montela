@@ -11,6 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.48.0] — 2026-11-10
+
+### Added
+- Theme Settings: a switch to show or hide the sticky CTA on every page.
+
+### Changed
+- Anreise & Lage: the "Direkt zu Montela" section shows a Google map (embedded, lazy-loaded) instead of the photo slider; the map can be set with Google's embed code, or follows the address.
+- 404: the page fits the screen on desktop.
+
+### Removed
+- The unused Google Maps API loader (script, API key constant and ACF key setting).
+
 ## [1.47.0] — 2026-11-10
 
 ### Added

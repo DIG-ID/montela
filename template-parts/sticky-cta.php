@@ -7,8 +7,9 @@
  * arrow that closes it again. Esc and a click outside also close it. Hides
  * itself while the footer is on screen (main.js, _sticky-cta.sass).
  *
- * Fields: Theme Settings → Sticky CTA (sticky_cta_title, sticky_cta_text,
- * sticky_cta_link). Nothing is printed without a title or a button.
+ * Fields: Theme Settings → Sticky CTA (sticky_cta_enabled, sticky_cta_title,
+ * sticky_cta_text, sticky_cta_link). Nothing is printed when the switch is
+ * off (since 1.48.0; never saved = on), or without a title or a button.
  * Figma: closed 5594:17195, open 5426:5271.
  *
  * @package montela
@@ -17,6 +18,12 @@
  */
 
 if ( ! function_exists( 'get_field' ) ) {
+	return;
+}
+
+// Null = the switch was never saved: keep the CTA, as before it existed.
+$cta_enabled = get_field( 'sticky_cta_enabled', 'option' );
+if ( null !== $cta_enabled && ! $cta_enabled ) {
 	return;
 }
 

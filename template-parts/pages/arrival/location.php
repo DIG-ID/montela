@@ -1,17 +1,17 @@
 <?php
 /**
  * Anreise & Lage — location ("Direkt zu Montela"): a cream panel with the
- * title, the address and a Google Maps button beside a slider of photos of
- * places nearby, each with its name (desktop); panel over the slider below.
- * Last section of the page: on tablet and desktop it runs on behind the
- * footer's booking box (_arrival.sass).
+ * title, the address and a Google Maps button beside an embedded Google
+ * map (desktop); panel over the map below. Last section of the page: on
+ * tablet and desktop it runs on behind the footer's booking box
+ * (_arrival.sass).
  *
- * The design leaves the photo half as a placeholder, with a note asking
- * for 4–5 photos of main places with their names; built as a slider with
- * arrows (no autoplay), like the Explore module. Fields: tab "Location" of
- * acf-json/group_page_arrival.json. Figma "Next to footer_explore": desktop
- * 5769:16301, tablet 5769:16291, mobile 5769:16282. Enqueues the Swiper
- * module itself.
+ * The design leaves the right half as a placeholder; it held a photo slider
+ * until 1.48.0, now the map. Google's embed iframe (no API key, no JS),
+ * lazy-loaded: the "Map" field takes the "Embed a map" code or its src URL;
+ * empty, the map searches for the address. Fields: tab "Location"
+ * of acf-json/group_page_arrival.json. Figma "Next to footer_explore":
+ * desktop 5769:16301, tablet 5769:16291, mobile 5769:16282.
  *
  * @package montela
  * @subpackage Section
@@ -26,32 +26,41 @@ $location_title   = get_field( 'section_location_title' );
 $location_name    = get_field( 'section_location_name' );
 $location_address = get_field( 'section_location_address' );
 $location_button  = get_field( 'section_location_button' );
-$location_slides  = get_field( 'section_location_slides' );
+$location_map     = trim( (string) get_field( 'section_location_map' ) );
 
-$location_slides = array_values(
-	array_filter(
-		(array) $location_slides,
-		function ( $location_slide ) {
-			return ! empty( $location_slide['image'] );
-		}
-	)
-);
+// The embed code pasted whole: keep only its src.
+if ( preg_match( '/<iframe[^>]+src=["\']([^"\']+)["\']/i', $location_map, $location_match ) ) {
+	$location_map = html_entity_decode( $location_match[1] );
+}
 
-if ( ! $location_title && ! $location_address && ! $location_slides ) {
+// Only Google's embeds; anything else falls back to the address search.
+if ( $location_map && ! preg_match( '#^https://(www\.)?google\.[a-z.]+/maps/#i', $location_map ) ) {
+	$location_map = '';
+}
+
+// The address on one line, its line breaks as commas: the map searches for
+// it (Google finds the street more reliably than the hotel's name), and the
+// iframe's title names the place.
+$location_lines = preg_split( '/<br\s*\/?>|\R/i', (string) $location_address );
+$location_query = implode( ', ', array_filter( array_map( 'trim', array_map( 'wp_strip_all_tags', $location_lines ) ) ) );
+$location_place = trim( wp_strip_all_tags( (string) $location_name ) );
+if ( ! $location_map && $location_query ) {
+	$location_map = add_query_arg(
+		array(
+			'q'      => rawurlencode( $location_query ),
+			'output' => 'embed',
+		),
+		'https://www.google.com/maps'
+	);
+}
+
+if ( ! $location_title && ! $location_address && ! $location_map ) {
 	return;
 }
 
-$location_many = count( $location_slides ) > 1;
-
-if ( $location_many && function_exists( 'montela_enqueue_module' ) ) {
-	montela_enqueue_module( 'swiper' );
-}
-
 $location_title_id = wp_unique_id( 'section-location-title-' );
-$location_swiper   = array(
-	'slidesPerView' => 1,
-	'spaceBetween'  => 0,
-);
+/* translators: %s: place name or address shown on the map. */
+$location_map_label = sprintf( __( 'Karte: %s', 'montela' ), $location_place ? $location_place : ( $location_query ? $location_query : 'Montela' ) );
 ?>
 <section class="section-location"<?php echo $location_title ? ' aria-labelledby="' . esc_attr( $location_title_id ) . '"' : ''; ?>>
 	<div class="section-location__panel">
@@ -77,37 +86,9 @@ $location_swiper   = array(
 		?>
 	</div>
 
-	<?php if ( $location_slides ) : ?>
-		<div class="section-location__slider" data-swiper-root>
-			<div class="swiper section-location__swiper"<?php echo $location_many ? ' data-swiper="' . esc_attr( wp_json_encode( $location_swiper ) ) . '"' : ''; ?>>
-				<div class="swiper-wrapper">
-					<?php foreach ( $location_slides as $location_slide ) : ?>
-						<figure class="swiper-slide section-location__slide">
-							<?php
-							echo wp_get_attachment_image(
-								$location_slide['image'],
-								'full',
-								false,
-								array(
-									'class' => 'section-location__img',
-									'sizes' => '(min-width: 1280px) 50vw, 100vw',
-								)
-							);
-							?>
-							<?php if ( ! empty( $location_slide['caption'] ) ) : ?>
-								<figcaption class="title-h2 section-location__caption"><?php echo montela_text( $location_slide['caption'] ); ?></figcaption>
-							<?php endif; ?>
-						</figure>
-					<?php endforeach; ?>
-				</div>
-			</div>
-
-			<?php if ( $location_many ) : ?>
-				<div class="slider-nav slider-nav--sage section-location__nav">
-					<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-swiper-prev aria-label="<?php esc_attr_e( 'Vorheriges Foto', 'montela' ); ?>"></button>
-					<button class="slider-nav__btn slider-nav__btn--next" type="button" data-swiper-next aria-label="<?php esc_attr_e( 'Nächstes Foto', 'montela' ); ?>"></button>
-				</div>
-			<?php endif; ?>
+	<?php if ( $location_map ) : ?>
+		<div class="section-location__map">
+			<iframe class="section-location__iframe" src="<?php echo esc_url( $location_map ); ?>" title="<?php echo esc_attr( $location_map_label ); ?>" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
 		</div>
 	<?php endif; ?>
 </section>

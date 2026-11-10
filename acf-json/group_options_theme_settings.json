@@ -84,6 +84,28 @@
             "selected": 0
         },
         {
+            "key": "field_options_sticky_cta_enabled",
+            "label": "Show sticky CTA",
+            "name": "sticky_cta_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Off = the button and card are hidden on every page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "message": "",
+            "default_value": 1,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_options_sticky_cta_title",
             "label": "Title",
             "name": "sticky_cta_title",
@@ -565,6 +587,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793726775,
+    "modified": 1794319003,
     "acfml_field_group_mode": "advanced"
 }

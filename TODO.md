@@ -77,8 +77,9 @@ alteração no `CHANGELOG.md`. Os nodes do Figma de cada template estão no
   - Unsere Region, entre os Highlights e os Tagesausflüge (`page-templates/page-region.php`);
   - Aufenthalt, entre o Extras e os Testimonials;
   - Unser Resort e Shop ("mapa adiado" no `CLAUDE.md`).
-  Ao construir: chave em `wp-config.php` (`MONTELA_GOOGLE_MAPS_API_KEY`) e o
-  template na lista de `montela_enqueue_google_maps()` (`inc/enqueue.php`).
+  A infraestrutura da API do Google Maps (`google-maps.js`, a constante da
+  chave, o enqueue) saiu na 1.48.0 sem uso; se o mapa precisar dela, está no
+  starter / no git.
   Rever as margens das secções vizinhas, que hoje são provisórias por causa do
   mapa — desde a 1.32.0 estão no PHP (`modules/cards-icon.php`,
   `modules/box-text.php`, classes por omissão ou `$args['class']`).

@@ -76,54 +76,6 @@ endif;
 
 add_filter( 'wp_resource_hints', 'montela_font_resource_hints', 10, 2 );
 
-if ( ! function_exists( 'montela_enqueue_google_maps' ) ) :
-	/**
-	 * Enqueues Google Maps API and init script on specific page templates.
-	 * Requires MONTELA_GOOGLE_MAPS_API_KEY to be set in functions.php.
-	 * Add page templates to $templates as needed per project.
-	 */
-	function montela_enqueue_google_maps() {
-		if ( ! defined( 'MONTELA_GOOGLE_MAPS_API_KEY' ) || ! MONTELA_GOOGLE_MAPS_API_KEY ) {
-			return;
-		}
-
-		$templates = array(
-			// 'page-templates/page-contact.php',
-		);
-
-		if ( empty( $templates ) || ! is_page_template( $templates ) ) {
-			return;
-		}
-
-		$theme_version = wp_get_theme()->get( 'Version' );
-
-		wp_enqueue_script(
-			'montela-google-maps-init',
-			get_theme_file_uri( '/assets/js/google-maps.js' ),
-			array( 'jquery' ),
-			$theme_version,
-			true
-		);
-
-		wp_enqueue_script(
-			'montela-google-maps-api',
-			add_query_arg(
-				array(
-					'key'      => MONTELA_GOOGLE_MAPS_API_KEY,
-					'callback' => 'initMap',
-					'loading'  => 'async',
-				),
-				'https://maps.googleapis.com/maps/api/js'
-			),
-			array( 'montela-google-maps-init' ),
-			null,
-			true
-		);
-	}
-endif;
-
-add_action( 'wp_enqueue_scripts', 'montela_enqueue_google_maps' );
-
 if ( ! function_exists( 'montela_enqueue_module' ) ) :
 	/**
 	 * Enqueues an optional front-end module (JS plus its CSS), built as a

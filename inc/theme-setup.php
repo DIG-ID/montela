@@ -68,20 +68,6 @@ add_action( 'widgets_init', 'montela_register_sidebars' );
  */
 add_filter( 'wpcf7_autop_or_not', '__return_false' );
 
-if ( ! function_exists( 'montela_acf_google_maps_key' ) ) :
-	/**
-	 * Sets the Google Maps API key for ACF map fields.
-	 * Requires MONTELA_GOOGLE_MAPS_API_KEY to be set in functions.php.
-	 */
-	function montela_acf_google_maps_key() {
-		if ( defined( 'MONTELA_GOOGLE_MAPS_API_KEY' ) && MONTELA_GOOGLE_MAPS_API_KEY ) {
-			acf_update_setting( 'google_api_key', MONTELA_GOOGLE_MAPS_API_KEY );
-		}
-	}
-endif;
-
-add_action( 'acf/init', 'montela_acf_google_maps_key' );
-
 /**
  * Lowers Yoast SEO metabox priority so ACF fields appear above it.
  *
