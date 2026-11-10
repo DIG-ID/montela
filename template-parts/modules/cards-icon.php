@@ -32,6 +32,10 @@
  *                        width drawn on the Fitnessroom — 340px on tablet,
  *                        369 from 1536px up (fewer than four cards — four at
  *                        369 need ~1940px).
+ * - spacing (string)     Optional. 'frame' gives filled cards the frame
+ *                        style's spacing — the text further down, near the
+ *                        middle of the card (Fitnessroom, Bruno 2026-11-10).
+ *                        Default: each style's own.
  *
  * @package montela
  * @subpackage Section
@@ -70,9 +74,16 @@ $cards_has_button = (bool) array_filter(
 	}
 );
 
-// The two styles differ in colour and in the space around the icon.
-$cards_btn_class = 'mt-[59px] md:mt-[95px] xl:mt-[74px]';
-if ( 'filled' === $cards_style || $cards_has_button ) {
+// The two styles differ in colour and in the space around the icon; a page
+// can give filled cards the frame spacing ('spacing' => 'frame').
+$cards_btn_class     = 'mt-[59px] md:mt-[95px] xl:mt-[74px]';
+$cards_frame_spacing = 'filled' === $cards_style && ! empty( $args['spacing'] ) && 'frame' === $args['spacing'] && ! $cards_has_button;
+if ( $cards_frame_spacing ) {
+	$cards_card_class = 'bg-montela-sage text-montela-cream pt-10 md:pt-[60px] xl:pt-[76px]';
+	$cards_body_class = 'mt-[59px] md:mt-[75px] xl:mt-[120px]';
+	$cards_nav_gap    = 'gap-9 md:gap-11 xl:gap-9';
+	$cards_head_gap   = 'gap-6';
+} elseif ( 'filled' === $cards_style || $cards_has_button ) {
 	$cards_card_class = ( 'filled' === $cards_style ? 'bg-montela-sage text-montela-cream ' : '' ) . 'pt-10 md:pt-[43px] xl:pt-[44px]';
 	$cards_body_class = 'mt-[59px] md:mt-[95px] xl:mt-[74px]';
 	$cards_nav_gap    = 'filled' === $cards_style ? 'gap-9 md:gap-11 xl:gap-9' : 'gap-9 md:gap-11 xl:gap-24';

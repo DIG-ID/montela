@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.46.3] — 2026-11-10
+
+### Changed
+- Fitnessroom: the training cards' text sits lower, near the middle of the card, as in the outlined cards.
+
 ## [1.46.2] — 2026-11-10
 
 ### Changed
