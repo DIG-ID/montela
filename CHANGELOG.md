@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.50.0] — 2026-11-10
+
+### Added
+- Mega menu: an image per menu item (Appearance → Menus); on desktop the photo crossfades to the hovered or focused item's image.
+
+### Changed
+- Theme Settings → Header → "Menu image" is now the default mega menu photo, shown when the menu opens and while no link is hovered.
+
 ## [1.49.2] — 2026-11-10
 
 ### Changed

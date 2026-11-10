@@ -44,7 +44,7 @@
             "name": "header_menu_image",
             "aria-label": "",
             "type": "image",
-            "instructions": "Shown next to the links when the menu is open (landscape, about 1664 × 1182 px).",
+            "instructions": "Default image of the menu (desktop): shown when it opens, when no link is hovered and for links without their own image (Appearance → Menus). Landscape, about 1664 × 1182 px.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -587,6 +587,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1794319003,
+    "modified": 1794332762,
     "acfml_field_group_mode": "advanced"
 }

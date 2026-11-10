@@ -79,8 +79,17 @@
   .is-menu-open &
     @apply opacity-100 duration-700 delay-500 ease-out
 
+// One image per menu item (template-parts/mega-menu.php), stacked; main.js
+// moves .is-active on hover/focus. Not designed: the new image fades in on
+// top in 600ms, with a slight zoom out (1.04 → 1); the old one stays under it
+// and only hides once covered (opacity, delayed 600ms, no transition).
+.mega-menu__media
+  @apply relative
+
 .mega-menu__img
-  @apply w-full h-full object-cover
+  @apply absolute inset-0 w-full h-full object-cover opacity-0 scale-[1.04] transition-[opacity,transform] duration-0 delay-[600ms] motion-reduce:transition-none
+  &.is-active
+    @apply z-[1] opacity-100 scale-100 duration-[600ms,1200ms] delay-0 ease-out
 
 .mega-menu__nav
   @apply grow shrink basis-[902px]

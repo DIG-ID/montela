@@ -1,0 +1,56 @@
+{
+    "key": "group_menu_item",
+    "title": "Menu item",
+    "fields": [
+        {
+            "key": "field_menu_item_image",
+            "label": "Image",
+            "name": "menu_item_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Shown on desktop while this link is hovered (landscape, about 1664 × 1182 px). Empty: sub-items show their parent's, the others the default (Theme Settings → Header). Translated menus use the German item's image when theirs is empty.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "nav_menu_item",
+                "operator": "==",
+                "value": "location/mega-menu"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Mega menu image of each item.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1794332808,
+    "acfml_field_group_mode": "advanced"
+}

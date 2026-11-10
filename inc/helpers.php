@@ -458,3 +458,35 @@ if ( ! function_exists( 'montela_section_source' ) ) :
 		return $fallback_id;
 	}
 endif;
+
+if ( ! function_exists( 'montela_get_menu_item_image' ) ) :
+	/**
+	 * Returns the image of a menu item (ACF "menu_item_image", set in
+	 * Appearance → Menus on the Mega Menu items). A translated item without
+	 * its own image takes the one of the item in the default language, so
+	 * the images only need to be set once.
+	 *
+	 * @since 1.50.0
+	 *
+	 * @param WP_Post $item Menu item.
+	 * @return int Attachment ID, or 0.
+	 */
+	function montela_get_menu_item_image( $item ) {
+		if ( ! function_exists( 'get_field' ) || empty( $item->ID ) ) {
+			return 0;
+		}
+
+		$image = get_field( 'menu_item_image', $item->ID );
+
+		if ( ! $image ) {
+			$default_lang = apply_filters( 'wpml_default_language', null );
+			$original_id  = $default_lang ? (int) apply_filters( 'wpml_object_id', $item->ID, 'nav_menu_item', false, $default_lang ) : 0;
+
+			if ( $original_id && $original_id !== (int) $item->ID ) {
+				$image = get_field( 'menu_item_image', $original_id );
+			}
+		}
+
+		return $image ? (int) $image : 0;
+	}
+endif;

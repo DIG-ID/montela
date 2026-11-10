@@ -27,7 +27,11 @@
 //   through the `montela:menu` event;
 // - an item with children swaps the grid for its sub-menu view, "Back"
 //   swaps it back;
-// - Esc steps back out of a sub-menu first, then closes the menu.
+// - Esc steps back out of a sub-menu first, then closes the menu;
+// - hovering or focusing an item with `data-menu-image` crossfades the photo
+//   to the image with the same attachment ID (desktop only — the photo is
+//   hidden below). Leaving the items, and closing, goes back to the default
+//   image (`data-menu-default`, Theme Settings).
 function initMegaMenu() {
   const toggle = document.querySelector('.header-main__toggle');
   if (!toggle) {
@@ -41,6 +45,18 @@ function initMegaMenu() {
 
   const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
   const openSub = () => (nav ? nav.querySelector('.mega-menu__sub.is-open') : null);
+
+  // Photo per item. The new image fades in on top of the old one, which
+  // only disappears once covered (_mega-menu.sass).
+  const images = menu ? [...menu.querySelectorAll('.mega-menu__img[data-menu-image]')] : [];
+  const defaultImage = menu?.querySelector('.mega-menu__media')?.dataset.menuDefault;
+  const showImage = (id) => {
+    const next = images.find((img) => img.dataset.menuImage === id);
+    if (!next || next.classList.contains('is-active')) {
+      return;
+    }
+    images.forEach((img) => img.classList.toggle('is-active', img === next));
+  };
 
   // Shows the sub-menu of `button`, or the grid again when it is null. The
   // view on screen leaves first (.is-leaving, 250ms "out" animation in
@@ -133,6 +149,8 @@ function initMegaMenu() {
       document.body.classList.remove('is-menu-closing');
       header.style.top = '';
       lockScroll(false);
+      // Back to the default photo, while the panel is invisible.
+      showImage(defaultImage);
       // Back to the grid for the next opening.
       if (nav && openSub()) {
         openSub().classList.remove('is-open');
@@ -155,6 +173,34 @@ function initMegaMenu() {
         showSub(null);
       }
     });
+
+    if (images.length > 1) {
+      // Leaving the items goes back to the default after a short wait, so
+      // crossing the gap between two boxes does not flash it.
+      let backToDefault = null;
+
+      const onItem = (event) => {
+        const item = event.target.closest('[data-menu-image]');
+        if (item) {
+          clearTimeout(backToDefault);
+          showImage(item.dataset.menuImage);
+        }
+      };
+
+      const offItem = (event) => {
+        const to = event.relatedTarget instanceof Element ? event.relatedTarget.closest('[data-menu-image]') : null;
+        if (!event.target.closest('[data-menu-image]') || (to && nav.contains(to))) {
+          return;
+        }
+        clearTimeout(backToDefault);
+        backToDefault = setTimeout(() => showImage(defaultImage), 150);
+      };
+
+      nav.addEventListener('pointerover', onItem);
+      nav.addEventListener('focusin', onItem);
+      nav.addEventListener('pointerout', offItem);
+      nav.addEventListener('focusout', offItem);
+    }
   }
 
   document.addEventListener('keydown', (event) => {

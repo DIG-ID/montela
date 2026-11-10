@@ -521,6 +521,23 @@ o cliente.
   Onde       assets/sass/_pages/_arrival.sass.
   Estado     POR CONFIRMAR
 
+[2026-11-10] B19. Imagem do mega-menu por item, com crossfade
+  O quê      a foto do mega-menu (desktop) muda com o hover / foco de cada
+             item; cada item do menu tem a sua imagem (Aparência → Menus) e a
+             das Theme Settings fica como a de omissão.
+  Figma      só a foto estática (5895:18352 / 5895:18398); a troca não está
+             desenhada.
+  Feito      crossfade de 600ms com um zoom leve (1.04 → 1, 1200ms); a nova
+             entra por cima da anterior. Sem nenhum item em hover (150ms
+             depois de sair, para não piscar entre caixas) e ao fechar volta
+             à das Theme Settings. Sub-item sem imagem = a do item-pai; item
+             sem imagem = a de omissão.
+  Porquê     pedido do Bruno (10/11); a animação não tem desenho.
+  Confirma   designer.
+  Onde       assets/sass/_layout/_mega-menu.sass, assets/js/main.js
+             (initMegaMenu).
+  Estado     POR CONFIRMAR
+
 ===============================================================================
 C. ERROS NO FIGMA
 ===============================================================================
