@@ -17,6 +17,10 @@
  * - variant (string)     Optional. 'home' for the homepage exception (full
  *                        screen on desktop, bigger first line, see _hero.sass).
  *                        Chosen by the template, not by the editor.
+ * - animate (bool)       Optional. With 'home': false keeps the big title in
+ *                        place, without the title animation. Default true —
+ *                        the animation is the homepage's only (Bruno,
+ *                        2026-11-10); Unser Resort passes false.
  *
  * @package montela
  * @subpackage Section
@@ -30,6 +34,7 @@ if ( ! function_exists( 'get_field' ) ) {
 $hero_ctx     = ! empty( $args['post_id'] ) ? $args['post_id'] : get_the_ID();
 $hero_prefix  = ! empty( $args['prefix'] ) ? $args['prefix'] : '';
 $hero_is_home = ! empty( $args['variant'] ) && 'home' === $args['variant'];
+$hero_animate = $hero_is_home && ( ! isset( $args['animate'] ) || $args['animate'] );
 
 $hero_class = 'section-hero';
 if ( $hero_is_home ) {
@@ -113,7 +118,7 @@ $hero_last = $hero_rendered ? array_key_last( $hero_rendered ) : 0;
 		<?php endif; ?>
 	</div>
 
-	<?php if ( $hero_rendered && ! $hero_is_home ) : ?>
+	<?php if ( $hero_rendered && ! $hero_animate ) : ?>
 		<div class="theme-container section-hero__content">
 			<h1 class="title-h1 section-hero__title">
 				<?php foreach ( $hero_rendered as $hero_n => $hero_line ) : ?>

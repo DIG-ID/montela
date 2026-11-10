@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.44.5] — 2026-11-10
+### Changed
+- Unser Resort: the hero title stays in place — the title animation is the homepage's only.
+
 ## [1.44.4] — 2026-11-10
 ### Changed
 - Sticky header: the current page's menu item is mustard, as in the normal header; 20px above and below on desktop; a smaller logo on mobile and tablet.

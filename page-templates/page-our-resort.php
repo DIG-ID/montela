@@ -16,8 +16,15 @@ if ( have_posts() ) :
 	while ( have_posts() ) :
 		the_post();
 		do_action( 'before_main_content' );
-			// Full-screen hero, same as the homepage's.
-			get_template_part( 'template-parts/modules/hero', null, array( 'variant' => 'home' ) );
+			// Full-screen hero, same as the homepage's, without its title animation.
+			get_template_part(
+				'template-parts/modules/hero',
+				null,
+				array(
+					'variant' => 'home',
+					'animate' => false,
+				)
+			);
 			get_template_part( 'template-parts/modules/intro' );
 			// Resort map section: postponed.
 			get_template_part( 'template-parts/modules/resort-sections' );
