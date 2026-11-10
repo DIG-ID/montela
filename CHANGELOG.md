@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.47.0] — 2026-11-10
+
+### Added
+- Hero: an animated scroll cue at the bottom of every page except the homepage.
+
 ## [1.46.4] — 2026-11-10
 
 ### Changed

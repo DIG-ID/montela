@@ -151,4 +151,16 @@ $hero_last = $hero_rendered ? array_key_last( $hero_rendered ) : 0;
 			</h1>
 		</div>
 	<?php endif; ?>
+	<?php if ( ! is_front_page() ) : ?>
+		<i class="section-hero__scroll" aria-hidden="true">
+			<span class="section-hero__scroll-icon">
+				<span class="section-hero__scroll-icon__scroll"></span>
+				<span class="section-hero__scroll-icon__arrows flex flex-col items-center">
+					<span class="section-hero__scroll-icon__arrow"></span>
+					<span class="section-hero__scroll-icon__arrow"></span>
+					<span class="section-hero__scroll-icon__arrow"></span>
+				</span>
+			</span>
+		</i>
+	<?php endif; ?>
 </section>

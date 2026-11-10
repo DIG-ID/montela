@@ -136,3 +136,32 @@
     clip-path: inset(-25% 105% -25% -5%)
   to
     clip-path: inset(-25% -5% -25% -5%)
+
+@keyframes arrow-cascade
+  0%, 100%
+    opacity: 0
+  30%
+    opacity: 1
+  60%
+    opacity: 0
+
+@keyframes smooth-peak-down
+  0%, 100%
+    translate: 0 0
+  50%
+    translate: 0 3px
+
+.section-hero__scroll
+  @apply absolute bottom-16 left-1/2 -translate-x-1/2 w-[100px] h-[100px] flex items-center justify-center
+  .section-hero__scroll-icon
+    @apply border w-10 h-16 rounded-full flex flex-col justify-start items-center py-3 gap-y-2
+    --scroll-cue: 2s
+    &__scroll
+      @apply block border py-1
+      animation: ease-in-out var(--scroll-cue) infinite smooth-peak-down
+    &__arrow
+      @apply [border-width:0_1px_1px_0] inline-block p-[2px] translate-y-0 rotate-45 opacity-0
+      animation: ease-in-out var(--scroll-cue) infinite arrow-cascade
+      @for $i from 1 through 3
+        &:nth-child(#{$i})
+          animation-delay: #{($i - 1) * 200}ms
