@@ -18,7 +18,6 @@ if ( have_posts() ) :
 	while ( have_posts() ) :
 		the_post();
 		do_action( 'before_main_content' );
-			// Default (900px) child-page hero; the editor's "Full screen" toggle can enlarge it.
 			get_template_part( 'template-parts/modules/hero' );
 			get_template_part( 'template-parts/modules/intro' );
 			get_template_part( 'template-parts/pages/shop/shop-info' );

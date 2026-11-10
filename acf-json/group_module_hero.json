@@ -52,28 +52,6 @@
             "allow_in_bindings": 0
         },
         {
-            "key": "field_module_hero_fullscreen",
-            "label": "Full screen",
-            "name": "section_hero_fullscreen",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "Desktop: full screen instead of 900px. The homepage is always full screen.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "wpml_cf_preferences": 2,
-            "message": "",
-            "default_value": 0,
-            "allow_in_bindings": 0,
-            "ui": 1,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
             "key": "field_module_hero_title_line_1",
             "label": "Title — line 1",
             "name": "section_hero_title_line_1",
@@ -341,6 +319,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793726775,
+    "modified": 1794303169,
     "acfml_field_group_mode": "advanced"
 }

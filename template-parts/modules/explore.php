@@ -65,12 +65,11 @@ if ( $exp_slides && function_exists( 'montela_enqueue_module' ) ) {
 }
 
 $exp_title_id = wp_unique_id( 'section-explore-title-' );
-// The arrows always show, as drawn — even with one photo (disabled then;
-// Swiper would hide them when locked, hence watchOverflow off).
+// One photo per view. The arrows only show when there is somewhere to go:
+// none with a single photo (since 1.46.0 — before, they showed disabled).
 $exp_swiper = array(
 	'slidesPerView' => 1,
 	'spaceBetween'  => 0,
-	'watchOverflow' => false,
 );
 
 // One slider per photo set. Without tablet photos, the main one shows at
@@ -115,10 +114,12 @@ if ( $exp_tablet ) {
 				</div>
 			</div>
 
-			<div class="slider-nav slider-nav--sage section-explore__nav">
-				<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-swiper-prev aria-label="<?php esc_attr_e( 'Vorheriges Foto', 'montela' ); ?>"></button>
-				<button class="slider-nav__btn slider-nav__btn--next" type="button" data-swiper-next aria-label="<?php esc_attr_e( 'Nächstes Foto', 'montela' ); ?>"></button>
-			</div>
+			<?php if ( count( $exp_slider['slides'] ) > 1 ) : ?>
+				<div class="slider-nav slider-nav--sage section-explore__nav">
+					<button class="slider-nav__btn slider-nav__btn--prev" type="button" data-swiper-prev aria-label="<?php esc_attr_e( 'Vorheriges Foto', 'montela' ); ?>"></button>
+					<button class="slider-nav__btn slider-nav__btn--next" type="button" data-swiper-next aria-label="<?php esc_attr_e( 'Nächstes Foto', 'montela' ); ?>"></button>
+				</div>
+			<?php endif; ?>
 		</div>
 	<?php endforeach; ?>
 

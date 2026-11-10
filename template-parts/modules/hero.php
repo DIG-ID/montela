@@ -5,17 +5,18 @@
  *
  * Fields: acf-json/group_module_hero.json, cloned into each page's field
  * group. Each title line has a desktop position field (left / indented
- * 128px / custom indent in px / centre / right); "Full screen" makes the hero
- * fill the screen on desktop instead of 900px. Figma: hero-child-page-desktop 5618:10003 (default),
- * hero-desktop 5594:16771 (homepage), hero-tablet 5426:4317,
+ * 128px / custom indent in px / centre / right). Full screen on every page
+ * and breakpoint (since 1.46.0 — before, 900px on desktop unless the editor
+ * turned "Full screen" on). Figma: hero-child-page-desktop 5618:10003
+ * (default), hero-desktop 5594:16771 (homepage), hero-tablet 5426:4317,
  * hero-mobile 5594:16778.
  *
  * Arguments ($args):
  * - post_id (int|string) Optional. Where to read the fields from. Default: current post.
  * - prefix  (string)     Optional. Clone field prefix, when the clone uses
  *                        "Prefix field names" — e.g. 'hero_' for a clone named 'hero'.
- * - variant (string)     Optional. 'home' for the homepage exception (full
- *                        screen on desktop, bigger first line, see _hero.sass).
+ * - variant (string)     Optional. 'home' for the homepage exception (bigger
+ *                        first line, title animation, see _hero.sass).
  *                        Chosen by the template, not by the editor.
  *
  * @package montela
@@ -34,8 +35,6 @@ $hero_is_home = ! empty( $args['variant'] ) && 'home' === $args['variant'];
 $hero_class = 'section-hero';
 if ( $hero_is_home ) {
 	$hero_class .= ' section-hero--home';
-} elseif ( get_field( $hero_prefix . 'section_hero_fullscreen', $hero_ctx ) ) {
-	$hero_class .= ' section-hero--full';
 }
 
 $hero_image = get_field( $hero_prefix . 'section_hero_image', $hero_ctx );

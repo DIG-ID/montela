@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.46.0] — 2026-11-10
+
+### Changed
+- Hero: always full screen; the "Full screen" option is gone.
+- Explore: the slider arrows only show with more than one photo.
+- Day trips (Unsere Region): fewer than four cards are centred on desktop.
+
 ## [1.45.0] — 2026-11-09
 
 ### Added
