@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.46.4] — 2026-11-10
+
+### Changed
+- Aktivitäten and Unsere Region: no extra space between the intro and the section after it.
+- Impressum: the box titles line up on desktop.
+- Text pages (Datenschutz, AGB…): less space above the content and before each section heading on desktop.
+
 ## [1.46.3] — 2026-11-10
 
 ### Changed

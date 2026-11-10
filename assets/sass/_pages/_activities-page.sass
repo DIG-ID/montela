@@ -23,10 +23,14 @@
 // desktop only with more than four cards (.section-season--paged, set in
 // PHP); on mobile with more than one.
 //
-// Spacing: 192px around on desktop; tablet 53px above (as drawn, after the
-// intro), 192 below; mobile 128.
+// Spacing: 192px around on desktop; tablet 53px above, 192 below; mobile
+// 128. The first one, right after the intro, has no top margin: the intro's
+// own padding is the gap.
 .section-season
   @apply mt-[128px] mb-[128px] md:mt-[53px] md:mb-[192px] xl:my-[192px] overflow-hidden text-montela-walnut
+
+.section-intro + .section-season
+  @apply mt-0
 
 // flow-root: the copy's top margin (tablet) would otherwise collapse through
 // this box and push the frame down with it. isolate: the frame sits behind

@@ -22,8 +22,9 @@
 // the text — paragraphs, bold H3 sub-headings, lists. Cols 2–7 on desktop
 // (897px in Figma), 580px on tablet, full width on mobile.
 //
-//   Above the first section  128 / 192 / 264px
-//   Between sections         128 / 96 / 192px (before each H2)
+//   Above the first section  128 / 192 / 150px (264 in the desktop Figma)
+//   Between sections         128 / 96 / 96px (before each H2; 192 in the
+//                            desktop Figma, halved on request)
 //   H2 → text                44 / 44 / 32px
 //   Between sub-sections     44px (before each H3)
 //   H3 → its text            8 / 8 / 30px (the frames run them on below
@@ -31,7 +32,7 @@
 // Paragraphs are 16px apart — the frames stack them with none, which
 // reads as one block in long legal text.
 .page-content
-  @apply mt-32 mb-32 text-montela-walnut md:mt-48 md:mb-48 xl:mt-[264px]
+  @apply mt-32 mb-32 text-montela-walnut md:mt-48 md:mb-48 xl:mt-[150px]
 
 .page-content__body
   @apply col-span-full break-words font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:max-w-[580px] md:text-[18px] md:leading-[25px] xl:col-start-2 xl:col-span-6 xl:max-w-none xl:text-[20px] xl:leading-[32px]
@@ -41,7 +42,7 @@
     @apply mb-0
 
   h2
-    @apply mt-32 mb-11 font-secondary font-normal italic tracking-[1px] text-[25px] leading-[30px] md:mt-24 xl:mt-48 xl:mb-8
+    @apply mt-32 mb-11 font-secondary font-normal italic tracking-[1px] text-[25px] leading-[30px] md:mt-24 xl:mb-8
 
   h3,
   h4

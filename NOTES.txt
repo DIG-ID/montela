@@ -485,6 +485,29 @@ o cliente.
   Onde       assets/sass/_components/_card-trip.sass (@container).
   Estado     POR CONFIRMAR
 
+[2026-11-10] B16. Sem margem por cima da secção a seguir à intro
+  O quê      primeira estação na Aktivitäten (.section-season) e Saas-Grund
+             na Unsere Region (.section-place).
+  Figma      Aktivitäten 192px (desktop) / 53 (tablet) / 128 (mobile) por
+             cima; Unsere Region 192px em desktop.
+  Feito      margin-top 0 em todos os breakpoints: o espaço é só o padding
+             da intro. A segunda estação mantém a margem.
+  Porquê     pedido do Daniel — o intervalo ficava demasiado grande.
+  Confirma   designer.
+  Onde       assets/sass/_pages/_activities-page.sass, _region.sass.
+  Estado     POR CONFIRMAR
+
+[2026-11-10] B17. Espaço antes de cada H2 nas páginas de texto (desktop)
+  O quê      Datenschutz, AGB e outras páginas com o template por defeito
+             (.page-content__body h2).
+  Figma      192px por cima de cada H2 em desktop; 264px entre a faixa do
+             título e o conteúdo.
+  Feito      96px (metade), como em tablet; 150px por baixo da faixa.
+  Porquê     pedido do Daniel — demasiado espaço entre secções.
+  Confirma   designer.
+  Onde       assets/sass/_layout/_page.sass.
+  Estado     POR CONFIRMAR
+
 ===============================================================================
 C. ERROS NO FIGMA
 ===============================================================================

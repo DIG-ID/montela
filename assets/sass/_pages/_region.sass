@@ -16,10 +16,11 @@
 // sized by height), bold text 14/20 mobile, 20/32 above; items 16 / 24 /
 // 44px apart.
 //
-// Spacing: 192px above on desktop only (tablet and mobile start right after
-// the intro, as drawn); 192px below on tablet and desktop, 128 on mobile.
+// Spacing: no top margin — it starts right after the intro, whose padding is
+// the gap (the desktop frame drew 192px more); 192px below on tablet and
+// desktop, 128 on mobile.
 .section-place
-  @apply mb-[128px] md:mb-[192px] xl:mt-[192px] text-montela-walnut
+  @apply mb-[128px] md:mb-[192px] text-montela-walnut
 
 .section-place__grid
   @apply flex flex-col xl:grid xl:grid-cols-12 xl:grid-rows-[auto_1fr_auto] xl:gap-x-5
