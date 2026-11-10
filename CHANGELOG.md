@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.49.0] — 2026-11-10
+
+### Added
+- Intro: a "Desktop max width" field sets how wide the text can be on desktop.
+
+### Changed
+- Fitnessroom: the "Auf einen Blick:" title is set in the large serif (H3).
+
 ## [1.48.1] — 2026-11-10
 
 ### Changed

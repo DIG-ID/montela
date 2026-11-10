@@ -45,6 +45,30 @@
             "rows": 4,
             "placeholder": "",
             "new_lines": ""
+        },
+        {
+            "key": "field_module_intro_max_width",
+            "label": "Desktop max width",
+            "name": "section_intro_max_width",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Desktop only (1280px and up): the widest the text can be, in px — the title does not change. Empty = as wide as the title (899px).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "default_value": "",
+            "min": 300,
+            "max": 1820,
+            "allow_in_bindings": 0,
+            "placeholder": "899",
+            "step": 1,
+            "prepend": "",
+            "append": "px"
         }
     ],
     "location": [
@@ -68,6 +92,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793726775,
+    "modified": 1794325467,
     "acfml_field_group_mode": "advanced"
 }

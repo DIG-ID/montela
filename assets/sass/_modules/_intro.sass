@@ -26,3 +26,15 @@
 
 .section-intro__text
   @apply max-w-[276px] md:max-w-[603px] xl:max-w-none
+
+// "Desktop max width" field (px, in the admin): only the text. The content
+// spans the whole row on desktop so the text can be wider than columns 4–9;
+// the title keeps the six columns' width (6 of 12 + 5 gutters = 50% − 10px),
+// so it does not move. The text, centred, is as wide as the field says.
+// Below desktop nothing changes.
+.section-intro__content--max-w
+  @apply xl:col-start-1 xl:col-span-12
+  .section-intro__title
+    @apply xl:max-w-[calc(50%-10px)]
+  .section-intro__text
+    @apply xl:w-full xl:max-w-[var(--intro-max-w)]
