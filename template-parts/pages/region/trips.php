@@ -2,7 +2,7 @@
 /**
  * Unsere Region — "Ausflüge ab Saas-Grund": centred title and text over a
  * slider of day trip cards. Four cards in view on desktop, one on tablet
- * and mobile; arrows below.
+ * and mobile; arrows below. Fewer than four on desktop: centred.
  *
  * Cards: components/card-trip.php (always open).
  *
@@ -55,10 +55,12 @@ if ( function_exists( 'montela_enqueue_module' ) ) {
 }
 
 $trips_title_id = wp_unique_id( 'section-trips-title-' );
+// Fewer cards than fit (under four on desktop): centred, at the same width.
 $trips_swiper   = array(
-	'slidesPerView' => 1,
-	'spaceBetween'  => 20,
-	'breakpoints'   => array(
+	'slidesPerView'            => 1,
+	'spaceBetween'             => 20,
+	'centerInsufficientSlides' => true,
+	'breakpoints'              => array(
 		1280 => array( 'slidesPerView' => 4 ),
 	),
 );

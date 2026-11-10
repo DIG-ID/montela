@@ -11,21 +11,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
-## [1.44.5] — 2026-11-10
-### Changed
-- Unser Resort: the hero title stays in place — the title animation is the homepage's only.
+## [1.46.1] — 2026-11-10
 
-## [1.44.4] — 2026-11-10
 ### Changed
 - Sticky header: the current page's menu item is mustard, as in the normal header; 20px above and below on desktop; a smaller logo on mobile and tablet.
+- Unser Resort: the hero title stays in place — the title animation is the homepage's only.
+- Footer: the call-to-action box overlaps the sage through the layout itself, without a negative margin; it looks the same.
 
 ### Fixed
 - Footer: the logo sits 68px below the call-to-action box on desktop, as designed (it was 120px).
 
-## [1.44.3] — 2026-11-09
+## [1.46.0] — 2026-11-10
 
 ### Changed
-- Footer: the call-to-action box overlaps the sage through the layout itself, without a negative margin; it looks the same.
+- Hero: always full screen; the "Full screen" option is gone.
+- Explore: the slider arrows only show with more than one photo.
+- Day trips (Unsere Region): fewer than four cards are centred on desktop.
+
+## [1.45.0] — 2026-11-09
+
+### Added
+- Apartment pages: "Inklusive Leistungen", the stay comparison and the offer cards can each have their own content per apartment; left empty, the Apartments page's content is shown.
 
 ## [1.44.2] — 2026-11-09
 
