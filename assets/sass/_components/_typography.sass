@@ -24,10 +24,14 @@
 html
   font-size: 100%
 
+// Desktop: text at 20/32 in the frames ("Desktop/Text", "Desktop/H4") is set
+// at 18/30 across the theme (Bruno, 2026-11-11); tablet and mobile keep the
+// frames' sizes. The section comments keep the frames' 20/32.
+//
 // Font family and colour come from _base-styles (CSS custom properties).
 // Same scale as .body-text, so unstyled text already matches the design.
 body
-  @apply font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[20px] xl:leading-[32px]
+  @apply font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[18px] xl:leading-[30px]
 
 // No heading reset needed: Tailwind's preflight already sets h1–h6 to
 // font-size/font-weight: inherit and margin: 0, so the semantic level never
@@ -49,7 +53,7 @@ body
 // Figma "H4" — Roboto, not FreightBig. The tablet and mobile frames use the
 // desktop style unchanged.
 .title-h4
-  @apply font-primary font-bold tracking-[0.5px] text-[20px] leading-[32px]
+  @apply font-primary font-bold tracking-[0.5px] text-[20px] leading-[32px] xl:text-[18px] xl:leading-[30px]
 
 // Figma "Intro title".
 .title-intro
@@ -77,7 +81,7 @@ body
 // Figma "Text". Rich text from the editor (WYSIWYG / textarea with wpautop):
 // apply on a wrapper, so the <p> children wpautop generates inherit it.
 .body-text
-  @apply font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[20px] xl:leading-[32px]
+  @apply font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[18px] xl:leading-[30px]
   p
     @apply mb-4 last:mb-0
 
