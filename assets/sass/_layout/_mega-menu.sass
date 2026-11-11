@@ -149,27 +149,23 @@
 // the opening/closing transitions are never overridden afterwards.
 //
 // Desktop (Bruno, 2026-11-11 — not designed): one 2-column grid, as the
-// closed menu, so the view is as tall as the photo. "Back" and the parent's
-// link share the first row (Back on the left), the children follow below:
-// with six children, 4 rows of 130px, 24px apart = 592px, the photo's 591.
-// The markup order (parent, children, Back) stays, for the keyboard and
-// for mobile and tablet.
+// closed menu, so the view is as tall as the photo: the parent's link, the
+// children and "Back" are its cells, in the markup order (the list of
+// children is display: contents there). With six children, 8 cells = 4 rows
+// of 130px, 24px apart = 592px, the photo's 591.
 .mega-menu__sub
   @apply hidden flex-col gap-[10px] md:gap-[21px] xl:grid-cols-2 xl:gap-x-5 xl:gap-y-6
   &.is-open
     @apply flex xl:grid
-    > .mega-menu__item:not(.mega-menu__back)
-      @apply xl:col-start-2 xl:row-start-1
-    > .mega-menu__back
-      @apply xl:col-start-1 xl:row-start-1
-    > .mega-menu__sub-list
-      @apply xl:col-span-2
     > *
       @apply motion-safe:animate-[mega-menu-in_600ms_cubic-bezier(0.16,1,0.3,1)_backwards]
     > :nth-child(2)
       @apply [animation-delay:70ms]
     > :nth-child(3)
       @apply [animation-delay:140ms]
+    // The list has no box of its own on desktop: its rows animate instead.
+    .mega-menu__sub-list > li
+      @apply xl:motion-safe:animate-[mega-menu-in_600ms_cubic-bezier(0.16,1,0.3,1)_70ms_backwards]
 
 // Back from a sub-menu: the grid boxes come in one after the other.
 .mega-menu__nav.is-back .mega-menu__grid li
@@ -182,12 +178,12 @@
   @apply motion-safe:animate-[mega-menu-out_250ms_cubic-bezier(0.7,0,0.84,0)_forwards] pointer-events-none
 
 // Mobile and tablet: the children share one bordered box; each row is a
-// third of its 281px. Desktop: one box per child in the 2-column grid of the
-// closed menu — 130px, 20px / 24px apart, same indents (Bruno, 2026-11-11:
-// Unser Resort has six children and the single box ran off the screen; the
-// frame draws three).
+// third of its 281px. Desktop: one box per child, cells of the sub-menu grid
+// above — 130px, same indents as the closed menu (Bruno, 2026-11-11: Unser
+// Resort has six children and the single box ran off the screen; the frame
+// draws three).
 .mega-menu__sub-list
-  @apply border border-montela-cream xl:grid xl:grid-cols-2 xl:gap-x-5 xl:gap-y-6 xl:border-0
+  @apply border border-montela-cream xl:contents
 
 .mega-menu__sub-link
   @apply flex items-center justify-between gap-4 h-[60px] md:h-[93px] xl:h-[130px] pl-[30px] pr-[34px] md:pl-[40px] md:pr-[74px] xl:pl-[53px] xl:pr-[45px] xl:border xl:border-montela-cream font-primary font-normal text-[19px] md:text-[24px] leading-[35px] tracking-[0.5px] uppercase transition-[background-color,box-shadow] duration-300 ease-out

@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.51.2] — 2026-11-11
+### Changed
+- Mega menu: on desktop, "Zurück" comes after the sub-menu pages.
+
 ## [1.51.1] — 2026-11-11
 ### Changed
 - Homepage hero: the title animation plays only when the hero has a video; with just an image, the title stays in place.
