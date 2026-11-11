@@ -119,6 +119,10 @@
   @apply flex items-center justify-between gap-4 w-full h-[70px] md:h-[130px] pl-[31px] pr-[34px] md:pl-[41px] md:pr-[35px] xl:pl-[53px] xl:pr-[45px] border border-solid border-montela-cream font-primary font-normal text-[19px] md:text-[24px] leading-[35px] tracking-[0.5px] uppercase text-left transition-[background-color,box-shadow] duration-300 ease-out
   &:hover
     @apply bg-montela-cream/20 shadow-[0_4px_4px_rgba(0,0,0,0.25)]
+    // Links straight to a page show the sub-menu rows' arrow on hover
+    // (Bruno, 2026-11-11); items with a "+" have none.
+    .mega-menu__sub-icon
+      @apply opacity-100
   &:focus-visible
     @apply outline outline-2 outline-offset-4 outline-montela-mustard
 

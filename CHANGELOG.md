@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.52.9] — 2026-11-11
+### Changed
+- Header: the menu button's hover is the menu's light cream box, instead of mustard bars.
+- Mega menu: links straight to a page show an arrow on hover, as the sub-menu pages do.
+
 ## [1.52.8] — 2026-11-11
 ### Fixed
 - Apartment facts (cards and apartment pages): "Badezimmer" has a bathroom icon instead of a bed.

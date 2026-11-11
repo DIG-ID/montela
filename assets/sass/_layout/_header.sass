@@ -129,10 +129,12 @@
 // box. Open, the outer bars slide to the middle and turn into the X of the
 // close icon (24.9px square on desktop: 35.2px arms, hence the 1.1
 // stretch) while the middle one shrinks away.
+// Hover: the menu's 20% cream fill, bars stay cream (Bruno, 2026-11-11 —
+// they turned mustard).
 .header-main__toggle
   @apply flex items-center justify-center w-[44px] xl:w-[60px] border border-solid border-montela-cream text-montela-cream transition-colors duration-300 ease-out
   &:hover
-    @apply text-montela-mustard
+    @apply bg-montela-cream/20
 
 // --toggle-shift: the step between bars, whole pixels. Even box heights
 // keep the icon on a whole pixel inside the 42 / 58px of the bordered box.
@@ -212,10 +214,10 @@
   // The menu's cream fill would vanish on cream: walnut at 10% instead.
   .header-main__menu a:hover,
   .header-main__menu .current-menu-item > a,
-  .header-main__menu .current-menu-ancestor > a
-    @apply bg-montela-walnut/10
-  .header-main__lang:hover,
+  .header-main__menu .current-menu-ancestor > a,
   .header-main__toggle:hover
+    @apply bg-montela-walnut/10
+  .header-main__lang:hover
     @apply text-montela-mustard
 
 // -- Sticky header -------------------------------------------------------------

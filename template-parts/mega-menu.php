@@ -133,6 +133,7 @@ $mega_image_attr = static function ( $item ) use ( $mega_item_images ) {
 						<?php else : ?>
 							<a class="mega-menu__item" href="<?php echo esc_url( $mega_item->url ); ?>"<?php $mega_target( $mega_item ); ?><?php $mega_image_attr( $mega_item ); ?>>
 								<span><?php echo esc_html( $mega_label( $mega_item ) ); ?></span>
+								<span class="mega-menu__sub-icon" aria-hidden="true"></span>
 							</a>
 						<?php endif; ?>
 					</li>
@@ -148,6 +149,7 @@ $mega_image_attr = static function ( $item ) use ( $mega_item_images ) {
 				<div id="mega-menu-sub-<?php echo esc_attr( $mega_item->ID ); ?>" class="mega-menu__sub">
 					<a class="mega-menu__item" href="<?php echo esc_url( $mega_item->url ); ?>"<?php $mega_target( $mega_item ); ?><?php $mega_image_attr( $mega_item ); ?>>
 						<span><?php echo esc_html( $mega_label( $mega_item ) ); ?></span>
+						<span class="mega-menu__sub-icon" aria-hidden="true"></span>
 					</a>
 					<ul class="mega-menu__sub-list">
 						<?php foreach ( $mega_children[ $mega_item->ID ] as $mega_child ) : ?>
