@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.51.0] — 2026-11-11
+### Added
+- Apartment pages: an optional second booking button (e.g. for a second building), shown only when filled — beside the first on desktop, below it on smaller screens.
+
+### Changed
+- Apartment pages, "Inklusive Leistungen": each field left empty takes the Apartments page's, so an apartment can change only its button, or only its list. The button and the list can now be edited on the apartment.
+- Apartment pages: the intro text is a basic text editor (bold, italic, links, lists, line breaks); existing text keeps its paragraphs and line breaks.
+
 ## [1.50.9] — 2026-11-11
 ### Changed
 - Mega menu: on desktop, "Zurück" and the parent page share the first row of the sub-menu, so it is as tall as the photo.

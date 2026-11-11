@@ -325,3 +325,25 @@ add_action(
 	},
 	1
 );
+
+/**
+ * Apartments, tab "Included": the section is always the cream band, so the
+ * Style field is hidden and set to cream — which also shows the button and
+ * the list, otherwise hidden by their conditional logic (bands only).
+ *
+ * @since 1.51.0
+ *
+ * @param array $field ACF field.
+ * @return array
+ */
+function montela_apartment_box_text_style( $field ) {
+	$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+	if ( ! $screen || 'apartment' !== $screen->post_type ) {
+		return $field;
+	}
+
+	$field['value']            = 'cream';
+	$field['wrapper']['class'] = trim( $field['wrapper']['class'] . ' acf-hidden' );
+	return $field;
+}
+add_filter( 'acf/prepare_field/name=section_box_text_style', 'montela_apartment_box_text_style' );

@@ -31,6 +31,10 @@
  *                        page section.
  * - style   (string)     Optional. 'box', 'band' or 'cream', replacing the
  *                        field — e.g. the apartment pages, always cream.
+ * - fallback_id (int)    Optional. A post whose fields fill in, one by one,
+ *                        the ones left empty on post_id — the apartment
+ *                        pages fall back on the Apartments page (since
+ *                        1.51.0). The button colour goes with the button.
  *
  * @package montela
  * @subpackage Section
@@ -43,18 +47,33 @@ if ( ! function_exists( 'get_field' ) ) {
 
 $box_ctx    = ! empty( $args['post_id'] ) ? $args['post_id'] : get_the_ID();
 $box_prefix = ! empty( $args['prefix'] ) ? $args['prefix'] : '';
+$box_backup = ! empty( $args['fallback_id'] ) ? $args['fallback_id'] : 0;
 
-$box_style   = ! empty( $args['style'] ) ? $args['style'] : get_field( $box_prefix . 'section_box_text_style', $box_ctx );
+/*
+ * Reads a field, from the fallback post when empty here. Returns the value
+ * and the post it came from.
+ */
+$box_get = static function ( $name ) use ( $box_prefix, $box_ctx, $box_backup ) {
+	$value = get_field( $box_prefix . $name, $box_ctx );
+	if ( ! $value && $box_backup ) {
+		return array( get_field( $box_prefix . $name, $box_backup ), $box_backup );
+	}
+	return array( $value, $box_ctx );
+};
+
+$box_style   = ! empty( $args['style'] ) ? $args['style'] : $box_get( 'section_box_text_style' )[0];
 $box_style   = in_array( $box_style, array( 'band', 'cream' ), true ) ? $box_style : 'box';
 $box_is_band = 'box' !== $box_style;
-$box_eyebrow = get_field( $box_prefix . 'section_box_text_eyebrow', $box_ctx );
-$box_title   = get_field( $box_prefix . 'section_box_text_title', $box_ctx );
-$box_text    = get_field( $box_prefix . 'section_box_text_text', $box_ctx );
+$box_eyebrow = $box_get( 'section_box_text_eyebrow' )[0];
+$box_title   = $box_get( 'section_box_text_title' )[0];
+$box_text    = $box_get( 'section_box_text_text' )[0];
 
-// Button and list: bands only (the fields are hidden for the box).
-$box_button = $box_is_band ? get_field( $box_prefix . 'section_box_text_button', $box_ctx ) : null;
-$box_btn_sg = $box_is_band && 'sage' === get_field( $box_prefix . 'section_box_text_button_colour', $box_ctx );
-$box_items  = $box_is_band ? get_field( $box_prefix . 'section_box_text_items', $box_ctx ) : null;
+// Button and list: bands only (the fields are hidden for the box). The
+// colour is read where the button came from.
+list( $box_button, $box_btn_src ) = $box_is_band ? $box_get( 'section_box_text_button' ) : array( null, $box_ctx );
+
+$box_btn_sg = $box_is_band && 'sage' === get_field( $box_prefix . 'section_box_text_button_colour', $box_btn_src );
+$box_items  = $box_is_band ? $box_get( 'section_box_text_items' )[0] : null;
 
 if ( ! $box_title && ! $box_text ) {
 	return;

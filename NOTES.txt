@@ -564,6 +564,20 @@ o cliente.
   Onde       assets/sass/_components/_buttons.sass (.btn-mustard).
   Estado     POR CONFIRMAR
 
+[2026-11-11] B21. Segundo botão de reserva — apartamento (single)
+  O quê      um segundo "Jetzt buchen" na intro, para os apartamentos que se
+             reservam em dois edifícios.
+  Figma      só um botão (5426:8212).
+  Feito      campo opcional "Booking link 2"; o texto vem do link (sugerido
+             "Haus F buchen"). Mostarda, 237px, 20px entre os dois; lado a
+             lado em desktop (passa para baixo se não couber, ~1280px), um
+             por baixo do outro em tablet e mobile — como nos screenshots do
+             Pedro (11/11).
+  Porquê     pedido do Pedro; sem desenho.
+  Confirma   designer.
+  Onde       template-parts/apartment/intro.php.
+  Estado     POR CONFIRMAR
+
 ===============================================================================
 C. ERROS NO FIGMA
 ===============================================================================
