@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.52.4] — 2026-11-11
+### Changed
+- Day trip pages: the destination highlights sit on the left on desktop.
+
 ## [1.52.3] — 2026-11-11
 ### Changed
 - Intro text: 22/38 on tablet and desktop (was 30/40 and 24/40).

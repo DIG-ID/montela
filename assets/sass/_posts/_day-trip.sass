@@ -8,7 +8,8 @@
 //   Tablet   the same, title → text 44px; photo 698:452; items 72px apart
 //   Desktop  photo (900×538) on columns 1–6, title and text (440px wide,
 //            46px below the title) on 8–12; the highlights 96px below, in
-//            two columns on 6–12 (rows 121px apart); the slider 96px below
+//            two columns on 1–7 (6–12 in Figma, moved left — Daniel,
+//            2026-11-11; rows 121px apart); the slider 96px below
 //
 // Highlights: the icon list — 68px icon column, 20px to the text; bold title
 // and text, 14/22 and 17/23 (component defaults), on desktop title 20/32
@@ -35,7 +36,7 @@
   @apply w-full h-full object-cover
 
 .section-destination__list
-  @apply col-span-full mt-11 xl:col-start-6 xl:col-span-7 xl:row-start-3 xl:mt-24
+  @apply col-span-full mt-11 xl:col-start-1 xl:col-span-7 xl:row-start-3 xl:mt-24
 
 .section-destination .icon-list
   @apply gap-4 md:gap-[72px] xl:grid xl:grid-cols-2 xl:gap-x-5 xl:gap-y-[121px]

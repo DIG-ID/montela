@@ -601,6 +601,16 @@ o cliente.
   Onde       assets/sass/_layout/_footer.sass.
   Estado     POR CONFIRMAR
 
+[2026-11-11] B24. Tagesausflug — destaques à esquerda (desktop)
+  O quê      a lista com ícones de "Über das Reiseziel"
+             (template-parts/day-trip/destination.php).
+  Figma      colunas 6–12, à direita, por baixo do texto (5787:17868).
+  Feito      colunas 1–7, alinhada à esquerda com a foto.
+  Porquê     pedido do Daniel (11/11).
+  Confirma   designer.
+  Onde       assets/sass/_posts/_day-trip.sass.
+  Estado     POR CONFIRMAR
+
 ===============================================================================
 C. ERROS NO FIGMA
 ===============================================================================
