@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.52.2] — 2026-11-11
+### Changed
+- Header menu: the hover box fills the menu edge to edge, without a shadow.
+
 ## [1.52.1] — 2026-11-11
 ### Changed
 - Header menu: hover and the current page show a light cream box with a shadow, as in the mega menu, instead of mustard text.

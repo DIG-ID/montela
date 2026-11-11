@@ -57,21 +57,28 @@
 
 // -- Menu ----------------------------------------------------------------------
 // Bordered box: 32px inner padding, 32px between items, 32px around each
-// label (frame values, 2xl+).
+// label (frame values, 2xl+) — the labels keep those distances, but the
+// links fill the box edge to edge, so the hover fill leaves no gaps: 48px
+// each side (half of the 96 between labels), 64 at the box's ends. Below
+// 2xl: 20px, 36 at the ends.
 .header-main__nav
   @apply hidden xl:flex
 
 .header-main__menu
-  @apply flex items-center border border-montela-cream xl:px-4 2xl:px-8 2xl:gap-8
+  @apply flex items-stretch border border-montela-cream
   a
-    @apply flex items-center py-[14px] font-primary font-normal text-[15px] leading-[32px] tracking-[0.5px] uppercase whitespace-nowrap transition-[background-color,box-shadow] duration-300 ease-out xl:px-5 2xl:px-8
+    @apply flex items-center h-full py-[14px] font-primary font-normal text-[15px] leading-[32px] tracking-[0.5px] uppercase whitespace-nowrap transition-colors duration-300 ease-out xl:px-5 2xl:px-12
     &:hover
-      @apply bg-montela-cream/20 shadow-[0_4px_4px_rgba(0,0,0,0.25)]
-  // Hover and the current page: the mega menu's hover, a 20% cream fill and
-  // the 0 4 4 shadow (Bruno, 2026-11-11 — they were mustard text).
+      @apply bg-montela-cream/20
+  li:first-child > a
+    @apply xl:pl-9 2xl:pl-16
+  li:last-child > a
+    @apply xl:pr-9 2xl:pr-16
+  // Hover and the current page: the mega menu's 20% cream fill, without its
+  // shadow (Bruno, 2026-11-11 — they were mustard text).
   .current-menu-item > a,
   .current-menu-ancestor > a
-    @apply bg-montela-cream/20 shadow-[0_4px_4px_rgba(0,0,0,0.25)]
+    @apply bg-montela-cream/20
 
 // -- Booking button ------------------------------------------------------------
 // Cream label + 4px gap + arrow box (44px tablet, 60px desktop).
