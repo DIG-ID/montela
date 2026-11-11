@@ -151,6 +151,14 @@
   50%
     translate: 0 3px
 
+// Scroll cue: on every page (the homepage too since 1.52.6); animations.js
+// fades it out over the first 150px of scroll. Hidden on desktop while the
+// homepage title animation runs (.section-hero--animated, a video hero): the
+// small title ends in the bottom-left corner, its last line reaching the
+// cue's spot.
+.section-hero--animated .section-hero__scroll
+  @apply xl:hidden
+
 .section-hero__scroll
   @apply absolute bottom-16 left-1/2 -translate-x-1/2 w-[100px] h-[100px] flex items-center justify-center
   .section-hero__scroll-icon

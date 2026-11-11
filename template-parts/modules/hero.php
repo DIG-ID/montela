@@ -47,6 +47,9 @@ $hero_class = 'section-hero';
 if ( $hero_is_home ) {
 	$hero_class .= ' section-hero--home';
 }
+if ( $hero_animate ) {
+	$hero_class .= ' section-hero--animated';
+}
 
 $hero_image = get_field( $hero_prefix . 'section_hero_image', $hero_ctx );
 $hero_lines = array_filter(
@@ -156,16 +159,15 @@ $hero_last = $hero_rendered ? array_key_last( $hero_rendered ) : 0;
 			</h1>
 		</div>
 	<?php endif; ?>
-	<?php if ( ! is_front_page() ) : ?>
-		<i class="section-hero__scroll" aria-hidden="true">
-			<span class="section-hero__scroll-icon">
-				<span class="section-hero__scroll-icon__scroll"></span>
-				<span class="section-hero__scroll-icon__arrows flex flex-col items-center">
-					<span class="section-hero__scroll-icon__arrow"></span>
-					<span class="section-hero__scroll-icon__arrow"></span>
-					<span class="section-hero__scroll-icon__arrow"></span>
-				</span>
+	<?php // Scroll cue, on every page; fades out on scroll (animations.js). ?>
+	<i class="section-hero__scroll" aria-hidden="true">
+		<span class="section-hero__scroll-icon">
+			<span class="section-hero__scroll-icon__scroll"></span>
+			<span class="section-hero__scroll-icon__arrows flex flex-col items-center">
+				<span class="section-hero__scroll-icon__arrow"></span>
+				<span class="section-hero__scroll-icon__arrow"></span>
+				<span class="section-hero__scroll-icon__arrow"></span>
 			</span>
-		</i>
-	<?php endif; ?>
+		</span>
+	</i>
 </section>

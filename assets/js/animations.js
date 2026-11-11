@@ -19,6 +19,10 @@ document.addEventListener('montela:menu', (event) => {
   }
 });
 
+// Pixels of scroll over which the hero's scroll cue fades out. Above the
+// domReady() call: it may run straight away.
+const SCROLL_CUE_FADE = 150;
+
 // Delayed by WP Rocket, this may run after DOMContentLoaded has fired.
 domReady(() => {
 
@@ -26,4 +30,28 @@ domReady(() => {
   // Project-specific animations go here
   // ---------------------------------------------------
 
+  heroScrollCue();
+
 });
+
+/**
+ * Hero scroll cue (modules/hero.php): fades out over the first
+ * SCROLL_CUE_FADE pixels of scroll, tied to the scroll position (scrub), so
+ * it comes back on the way up. Without this file it simply stays.
+ */
+function heroScrollCue() {
+  const cue = document.querySelector('.section-hero__scroll');
+  if (!cue) {
+    return;
+  }
+
+  gsap.to(cue, {
+    autoAlpha: 0,
+    ease: 'none',
+    scrollTrigger: {
+      start: 0,
+      end: SCROLL_CUE_FADE,
+      scrub: true,
+    },
+  });
+}

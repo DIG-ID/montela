@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.52.6] — 2026-11-11
+### Changed
+- Hero: the scroll-down icon fades out over the first bit of scrolling and comes back at the top of the page.
+- Hero: the scroll-down icon also shows on the homepage (on desktop, not while the title animation over a video runs).
+
 ## [1.52.5] — 2026-11-11
 ### Changed
 - Icon lists: the text is 18/30 on desktop on every page — Anreise, Bike Hotel, Kids Playground, Fitnessraum, day trips and offers too (they were 15/25 or 17/23), and the bold titles of the Anreise and day-trip lists.
