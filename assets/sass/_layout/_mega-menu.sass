@@ -20,8 +20,9 @@
 // reduced motion skips it all.
 //
 // Tablet (menu-open-tablet 5895:18194): no image; the 2-column grid of
-// 340×130px boxes, vertically centred under the header. Mobile (Home_mobile
-// 5895:18141): one column of 70px boxes, 10px apart, 19px type, from 170px.
+// 340×130px boxes, from 140px (centred in the frame). Mobile (Home_mobile
+// 5895:18141): one column of 70px boxes, 10px apart, 19px type, from 120px
+// (170 in the frame). Both offsets: Bruno, 2026-11-11.
 // The sub-menu view is only designed on desktop; tablet and mobile use the
 // same proportions with their own box sizes — not designed.
 //
@@ -72,11 +73,12 @@
 .mega-menu::before
   @apply content-[''] sticky top-0 z-[1] block h-[108px] -mb-[108px] md:h-[134px] md:-mb-[134px] bg-montela-sage
 
-// Top padding clears the header: 170px on mobile and 172px on desktop are
-// the frames' offsets. Tablet centres the grid in the space below the
-// 134px header (+40px clearance) — the frame has it 30px lower, close enough.
+// Top padding clears the header: 120px on mobile (Bruno, 2026-11-11 — the
+// frame has 170; 12px under the 108px band), 140px on tablet (Bruno,
+// 2026-11-11 — it was centred under the header; 6px under the 134px band)
+// and 172px on desktop, the frame's offset.
 .mega-menu__inner
-  @apply flex items-start gap-[55px] pt-[170px] pb-[52px] md:min-h-full md:items-center md:pt-[174px] md:pb-10 xl:items-start xl:pt-[172px] xl:pb-[87px] xl:pl-[83px]
+  @apply flex items-start gap-[55px] pt-[120px] pb-[52px] md:pt-[140px] md:pb-10 xl:items-start xl:pt-[172px] xl:pb-[87px] xl:pl-[83px]
 
 .mega-menu__media
   @apply hidden xl:block shrink grow-0 basis-[832px] aspect-[832/591] overflow-hidden shadow-[0_4px_4px_rgba(0,0,0,0.25)] bg-montela-walnut
