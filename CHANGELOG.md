@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.52.3] — 2026-11-11
+### Changed
+- Intro text: 22/38 on tablet and desktop (was 30/40 and 24/40).
+- Footer: text at 18/30 on desktop; menu links widen to fit it.
+
 ## [1.52.2] — 2026-11-11
 ### Changed
 - Header menu: the hover box fills the menu edge to edge, without a shadow.

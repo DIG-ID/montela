@@ -578,6 +578,29 @@ o cliente.
   Onde       template-parts/apartment/intro.php.
   Estado     POR CONFIRMAR
 
+[2026-11-11] B22. Texto da intro (.body-intro) — 22/38 em tablet e desktop
+  O quê      o texto de todas as intros do site.
+  Figma      estilo "Intro text": 35/55 em desktop, 30/40 em tablet,
+             20/30 em mobile.
+  Feito      tablet e desktop a 22/38 (desktop estava a 24/40 desde a
+             1.49.2); mobile fica 20/30.
+  Porquê     pedido do Daniel (11/11).
+  Confirma   designer.
+  Onde       assets/sass/_components/_typography.sass (.body-intro).
+  Estado     POR CONFIRMAR
+
+[2026-11-11] B23. Footer — texto a 18/30 em desktop
+  O quê      o texto da faixa sage do footer (newsletter, contactos, menu,
+             barra de copyright).
+  Figma      15/25 (o mesmo do tablet).
+  Feito      18/30 em desktop; tablet 15/25 e mobile 14/22 iguais. Os links
+             do menu (caixas de 124px) passam a crescer com o texto em
+             desktop: "Info & Kontakt" já não cabia.
+  Porquê     pedido do Daniel (11/11).
+  Confirma   designer.
+  Onde       assets/sass/_layout/_footer.sass.
+  Estado     POR CONFIRMAR
+
 ===============================================================================
 C. ERROS NO FIGMA
 ===============================================================================
