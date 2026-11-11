@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.50.8] — 2026-11-11
+### Changed
+- Footer: on desktop, the columns spread across the full width, as designed.
+
 ## [1.50.7] — 2026-11-11
 ### Fixed
 - Mega menu: on desktop, the photo no longer scrolls over the logo.

@@ -6,8 +6,13 @@
 // also reaches 40px into the section above; here it starts at the footer's
 // top, as the section above is not known.
 //
-// Sage part, 128px apart: logo, the four columns (101px apart: newsletter
-// 346px, contact, navigation, partner logos), the copyright bar. All text is
+// Sage part, 128px apart: logo, the four columns (newsletter 346px,
+// contact, navigation, partner logos), the copyright bar. Desktop frame
+// 5895:18774 (Bruno, 2026-11-11): the columns spread across the container,
+// 159px apart, the logos against the right margin — they no longer fit at
+// 159 (6px short), so 157 at 1920: (container − columns) / 3. The gap
+// shrinks with the screen, down to the old 101px at about 1750px; below
+// that, as before. All text is
 // Roboto Light 15/25, cream.
 //
 // Desktop from 2xl (the frame needs ~1656px of content). Between xl and
@@ -97,7 +102,7 @@
     @apply w-full h-auto
 
 .footer-main__content
-  @apply flex flex-col gap-12 md:flex-row md:flex-wrap md:items-start md:gap-[101px] md:px-[50px] xl:flex-nowrap xl:gap-x-10 2xl:gap-x-[101px]
+  @apply flex flex-col gap-12 md:flex-row md:flex-wrap md:items-start md:gap-[101px] md:px-[50px] xl:flex-nowrap xl:gap-x-10 2xl:gap-x-[clamp(101px,calc((100vw_-_1449px)_/_3),157px)]
 
 .footer-main a
   @apply transition-colors duration-300 ease-out
@@ -109,7 +114,7 @@
 // around it). Below 834px (the tablet frame) the pair no longer fits at full
 // width: the newsletter column narrows instead of the contact dropping below.
 .footer-main__info
-  @apply flex flex-col gap-12 md:flex-row md:items-start md:gap-[101px] xl:min-w-0 xl:gap-16 2xl:gap-[101px]
+  @apply flex flex-col gap-12 md:flex-row md:items-start md:gap-[101px] xl:min-w-0 xl:gap-16 2xl:gap-x-[clamp(101px,calc((100vw_-_1449px)_/_3),157px)]
 
 // -- Newsletter ----------------------------------------------------------------
 .footer-main__newsletter
@@ -161,8 +166,8 @@
 // so each one is fitted into a 150×82 box (the largest the frame uses)
 // rather than given one height — see .claude/rules/editor-content.md.
 // Centred on its own row on tablet. Desktop: in the same row as the rest,
-// 101px after the navigation like every column (x 1258–1706 in the frame
-// 5895:19803 — not against the right margin). From 1280 to 1535 the row is
+// as far from the navigation as every column — against the right margin
+// at 1920 (frame 5895:18774; the older 5895:19803 had them at x 1258–1706). From 1280 to 1535 the row is
 // short of room (the frame only draws 1920): the newsletter narrows and the
 // cells shrink with it, down to 130px — the logos inside them too; the
 // gaps between the columns close to 64 / 40px (101 from 1536).
