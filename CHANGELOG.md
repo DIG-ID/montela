@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.50.9] — 2026-11-11
+### Changed
+- Mega menu: on desktop, "Zurück" and the parent page share the first row of the sub-menu, so it is as tall as the photo.
+
 ## [1.50.8] — 2026-11-11
 ### Changed
 - Footer: on desktop, the columns spread across the full width, as designed.
