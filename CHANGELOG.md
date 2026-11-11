@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.50.3] — 2026-11-11
+### Fixed
+- Mega menu: on mobile, the items no longer scroll over the logo and the close button.
+
 ## [1.50.2] — 2026-11-11
 
 ### Changed

@@ -63,6 +63,15 @@
 .admin-bar .mega-menu
   @apply top-[46px] min-[783px]:top-[32px]
 
+// A solid sage band behind the header (Bruno, 2026-11-11): the panel scrolls
+// when the boxes do not fit (mobile), and they slid over the logo and the
+// close button. The band sticks to the top of the scrolling panel, as tall
+// as the header (108px on mobile, 134 from tablet), and covers the boxes as
+// they pass under it; it is part of the panel, so it comes down with the
+// curtain. Negative margin: it takes no room in the layout.
+.mega-menu::before
+  @apply content-[''] sticky top-0 z-[1] block h-[108px] -mb-[108px] md:h-[134px] md:-mb-[134px] bg-montela-sage
+
 // Top padding clears the header: 170px on mobile and 172px on desktop are
 // the frames' offsets. Tablet centres the grid in the space below the
 // 134px header (+40px clearance) — the frame has it 30px lower, close enough.
