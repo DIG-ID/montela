@@ -287,6 +287,19 @@ no ficheiro indicado em "No starter".
              montela_hero_keep_hyphens() para o hero (1.44.0).
   Estado     POR PASSAR
 
+
+[2026-11-11] A18. Underscores nas variantes arbitrárias do Tailwind
+  Problema   a classe [&_.btn__label]:min-w-[237px] no botão "Jetzt buchen"
+             do apartamento não fazia nada: o Tailwind converte cada "_" de
+             uma classe arbitrária num espaço, e o selector gerado ficou
+             ".btn  label". Sem erro — só não muda.
+  Regra      "Numa variante ou valor arbitrário do Tailwind, o _ é um
+             espaço. Para um _ literal (nomes BEM: __elemento), escrever \_
+             — [&_.btn\_\_label]:min-w-[237px]. Confirmar o selector no CSS
+             gerado."
+  No starter .claude/rules/sass.md (secção Especificidade / armadilhas).
+  No Montela template-parts/apartment/intro.php (1.50.5).
+  Estado     POR PASSAR
 ===============================================================================
 B. DECISÕES POR CONFIRMAR
 ===============================================================================
@@ -537,6 +550,18 @@ o cliente.
   Confirma   designer.
   Onde       assets/sass/_layout/_mega-menu.sass, assets/js/main.js
              (initMegaMenu).
+  Estado     POR CONFIRMAR
+
+[2026-11-11] B20. Botão mostarda "Jetzt buchen" — hover
+  O quê      o botão "Jetzt buchen" da intro do apartamento (single).
+  Figma      mostarda com texto e seta walnut (5426:8212) — as cores do
+             hover dos botões walnut e sage, aqui em repouso; o hover deste
+             não está desenhado.
+  Feito      variante nova btn-mustard; no hover troca para walnut com texto
+             creme (o botão walnut em repouso).
+  Porquê     o inverso do par existente, sem inventar cores.
+  Confirma   designer.
+  Onde       assets/sass/_components/_buttons.sass (.btn-mustard).
   Estado     POR CONFIRMAR
 
 ===============================================================================

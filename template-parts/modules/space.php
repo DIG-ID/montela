@@ -26,6 +26,8 @@
  * - post_id (int|string) Optional. Where to read the fields from. Default: current post.
  * - prefix  (string)     Optional. Clone field prefix, when the clone uses
  *                        "Prefix field names" — e.g. 'space_' for a clone named 'space'.
+ * - padding_top (bool)   Optional. false drops the columns layout's 192px
+ *                        above the title (Services template). Default true.
  *
  * @package montela
  * @subpackage Section
@@ -66,6 +68,11 @@ if ( 'columns' === $space_layout ) {
 		'photo_2' => 'aspect-[660/556] xl:mt-[75px]',
 		'list'    => 'md:gap-y-[72px] xl:col-start-7 xl:col-span-4 xl:max-w-[496px] xl:mt-[75px]',
 	);
+}
+
+// A page can drop the space above the title (Services template).
+if ( isset( $args['padding_top'] ) && false === $args['padding_top'] ) {
+	$space_cls['section'] = '';
 }
 
 // Items without icons drop the icon column, or the text lands in it.

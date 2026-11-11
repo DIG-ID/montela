@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.50.5] — 2026-11-11
+
+### Fixed
+- Apartment pages: the "Jetzt buchen" button is mustard, at the size of the design.
+
+### Changed
+- Leistungen: no space above the "Flexibel wohnen mit passenden Leistungen" section.
+
 ## [1.50.4] — 2026-11-11
 ### Changed
 - Mega menu: the items start higher on mobile (120px) and tablet (140px).

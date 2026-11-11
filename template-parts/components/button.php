@@ -16,8 +16,9 @@
  * - title   (string) Required. Link text.
  * - target  (string) Optional. '_blank' opens in a new tab.
  * - style   (string) Optional. 'primary' (default), 'secondary', 'outline',
- *                    'ghost' (cream outline, for sage backgrounds) or 'back'
- *                    (sage, arrow on the left pointing back).
+ *                    'ghost' (cream outline, for sage backgrounds), 'back'
+ *                    (sage, arrow on the left pointing back) or 'mustard'
+ *                    (booking buttons — apartment intro). Mustard since 1.50.5.
  * - icon    (string) Optional. 'arrow-right' (default) or 'arrow-down' (a
  *                    download, e.g. a menu PDF). Since 1.13.0.
  * - class   (string) Optional. Extra classes for the link.
@@ -38,7 +39,7 @@ if ( ! $btn_url || ! $btn_title ) {
 }
 
 $btn_target  = ! empty( $args['target'] ) ? $args['target'] : '';
-$btn_style   = ( ! empty( $args['style'] ) && in_array( $args['style'], array( 'primary', 'secondary', 'outline', 'ghost', 'back' ), true ) ) ? $args['style'] : 'primary';
+$btn_style   = ( ! empty( $args['style'] ) && in_array( $args['style'], array( 'primary', 'secondary', 'outline', 'ghost', 'back', 'mustard' ), true ) ) ? $args['style'] : 'primary';
 $btn_icon    = ( ! empty( $args['icon'] ) && 'arrow-down' === $args['icon'] ) ? 'arrow-down' : 'arrow-right';
 $btn_class   = 'btn btn-' . $btn_style . ( 'arrow-down' === $btn_icon ? ' btn--arrow-down' : '' ) . ( ! empty( $args['class'] ) ? ' ' . $args['class'] : '' );
 $btn_context = ! empty( $args['context'] ) ? $args['context'] : '';

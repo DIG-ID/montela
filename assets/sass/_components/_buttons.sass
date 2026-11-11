@@ -69,6 +69,21 @@
     .btn__icon
       @apply bg-montela-mustard
 
+// Mustard with walnut text — the primary's hover colours at rest (apartment
+// "Jetzt buchen", Figma 5426:8212). Hover is not designed: walnut, the
+// primary at rest.
+.btn-mustard
+  @apply text-montela-walnut
+  .btn__label,
+  .btn__icon
+    @apply bg-montela-mustard
+  &:hover,
+  &:active
+    @apply text-montela-cream
+    .btn__label,
+    .btn__icon
+      @apply bg-montela-walnut
+
 // Figma "Standart 3", hover "Hoover 2" — cream with a hairline border.
 .btn-outline
   @apply text-montela-sage

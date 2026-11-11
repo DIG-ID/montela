@@ -46,7 +46,21 @@ $apt_title_id = wp_unique_id( 'section-apartment-intro-title-' );
 
 		<?php if ( is_array( $apt_booking ) && ! empty( $apt_booking['url'] ) ) : ?>
 			<div class="col-span-full md:col-span-3 md:row-start-2 md:mt-[83px] xl:col-start-2 xl:col-span-5 xl:mt-[136px]">
-				<?php get_template_part( 'template-parts/components/button', null, array_merge( $apt_booking, array( 'style' => 'secondary' ) ) ); ?>
+				<?php
+				get_template_part(
+					'template-parts/components/button',
+					null,
+					array_merge(
+						$apt_booking,
+						array(
+							'style' => 'mustard',
+							// 237px label, as drawn on every breakpoint (5426:8212). The
+							// underscores are escaped: Tailwind reads "_" as a space.
+							'class' => '[&_.btn\_\_label]:min-w-[237px]',
+						)
+					)
+				);
+				?>
 			</div>
 		<?php endif; ?>
 	</div>

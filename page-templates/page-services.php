@@ -27,7 +27,8 @@ if ( have_posts() ) :
 		do_action( 'before_main_content' );
 			get_template_part( 'template-parts/modules/hero' );
 			get_template_part( 'template-parts/modules/intro' );
-			get_template_part( 'template-parts/modules/space' );
+			// No space above the title on this page (taken out on request).
+			get_template_part( 'template-parts/modules/space', null, array( 'padding_top' => false ) );
 			get_template_part( 'template-parts/modules/cards-icon' );
 			get_template_part( 'template-parts/pages/services/breakfast' );
 			get_template_part( 'template-parts/pages/services/resort' );
