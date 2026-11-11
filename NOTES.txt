@@ -622,6 +622,9 @@ o cliente.
              interiores, as três linhas iguais). Ficam como estavam os
              títulos com tamanho próprio: Frühstück (Leistungen) e os de
              clamp() (Kids, Lounge, Shop).
+             Depois (11/11), tudo o que tinha 18px em desktop (textos de
+             cards, listas com ícone, footer, H4, FAQ, formulários…) passa
+             a 16/28 de 1280 a 1535; de 1536 para cima fica como estava.
   Porquê     pedido do Daniel (11/11): o desktop a 1280–1535 com os valores
              de 1920 ficava grande demais.
   Confirma   designer.

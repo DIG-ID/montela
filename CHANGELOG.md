@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.52.11] — 2026-11-11
+### Changed
+- Text set at 18px on desktop (cards, icon lists, footer, H4, FAQ, forms and more) is 16/28 between 1280 and 1535px; 1536px and up unchanged.
+
 ## [1.52.10] — 2026-11-11
 ### Changed
 - Smaller type between 1280 and 1535px: body text 16/28, intro text 20/36, H3 and intro titles 82/72, hero title line 1 120/95 and the other lines 93/81 on every hero. 1536px and up unchanged.
