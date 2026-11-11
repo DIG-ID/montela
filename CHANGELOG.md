@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.52.8] — 2026-11-11
+### Fixed
+- Apartment facts (cards and apartment pages): "Badezimmer" has a bathroom icon instead of a bed.
+
+### Changed
+- Hero: the scroll-down icon fades out more gradually, over the first 400px of scrolling.
+
 ## [1.52.7] — 2026-11-11
 ### Changed
 - Header menu: the first and last items have the same padding as the others.

@@ -846,3 +846,12 @@ Campos de cada nota:
              ("Teigwaren und Tomatensaucen im Montela Shop"). Pedir uma foto
              do produto.
   Estado     POR REPORTAR
+
+[2026-11-11] C25. Ícones dos dados do apartamento trocados
+  Frame      5426:7911 (single, desktop) e 5426:7347 (Apartments, cards).
+  Erro       "Schlafzimmer" tem o ícone de casa de banho (moldura com
+             chuveiro — a camada ainda se chama "bedroom_parent") e
+             "Badezimmer" tem uma cama de solteiro.
+  No site    cada ícone com o seu texto (Pedro, 11/11): Schlafzimmer = cama
+             de casal, Badezimmer = chuveiro (Material Symbols "bathroom").
+  Estado     POR REPORTAR

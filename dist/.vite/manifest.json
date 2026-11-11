@@ -4,7 +4,7 @@
     "name": "helpers"
   },
   "assets/js/animations.js": {
-    "file": "js/animations-B_wyLXTM.js",
+    "file": "js/animations-CkYfvYrd.js",
     "name": "animations",
     "src": "assets/js/animations.js",
     "isEntry": true,
@@ -91,7 +91,7 @@
     ]
   },
   "assets/sass/main.sass": {
-    "file": "css/main-JaY9te9g.css",
+    "file": "css/main-KxPqp5Z6.css",
     "name": "main",
     "names": [
       "main.css"
@@ -117,13 +117,13 @@
       "assets/slider-prev-walnut-Dr4u8bNN.svg",
       "assets/slider-next-walnut-BF6QV3Oz.svg",
       "assets/apartment-size-xFpri9sm.svg",
-      "assets/apartment-bathrooms-6x8bapDd.svg",
+      "assets/apartment-bathrooms-Cn6w8BoH.svg",
       "assets/apartment-bedrooms-16tD24bg.svg",
       "assets/apartment-occupancy-BJ9Ho7Ox.svg"
     ]
   },
   "assets/svg/icons/apartment-bathrooms.svg": {
-    "file": "assets/apartment-bathrooms-6x8bapDd.svg",
+    "file": "assets/apartment-bathrooms-Cn6w8BoH.svg",
     "src": "assets/svg/icons/apartment-bathrooms.svg"
   },
   "assets/svg/icons/apartment-bedrooms.svg": {

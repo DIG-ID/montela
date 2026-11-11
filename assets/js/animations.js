@@ -21,7 +21,7 @@ document.addEventListener('montela:menu', (event) => {
 
 // Pixels of scroll over which the hero's scroll cue fades out. Above the
 // domReady() call: it may run straight away.
-const SCROLL_CUE_FADE = 150;
+const SCROLL_CUE_FADE = 400;
 
 // Delayed by WP Rocket, this may run after DOMContentLoaded has fired.
 domReady(() => {
@@ -51,7 +51,7 @@ function heroScrollCue() {
     scrollTrigger: {
       start: 0,
       end: SCROLL_CUE_FADE,
-      scrub: true,
+      scrub: 0.5,
     },
   });
 }
