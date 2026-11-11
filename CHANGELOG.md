@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 ---
 
 ## [1.50.5] — 2026-11-11
+### Changed
+- Mega menu: on desktop, the sub-menu lists its pages in two columns, as the main menu does.
+### Fixed
+- Mega menu: long sub-menu labels stay on one line on mobile.
+
+## [1.50.5] — 2026-11-11
 
 ### Fixed
 - Apartment pages: the "Jetzt buchen" button is mustard, at the size of the design.

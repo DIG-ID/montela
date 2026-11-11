@@ -91,7 +91,11 @@
     ]
   },
   "assets/sass/main.sass": {
+<<<<<<< Updated upstream
     "file": "css/main-DN3EGxhW.css",
+=======
+    "file": "css/main-y1c-5YBQ.css",
+>>>>>>> Stashed changes
     "name": "main",
     "names": [
       "main.css"
