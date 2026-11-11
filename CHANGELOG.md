@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.52.1] — 2026-11-11
+### Changed
+- Header menu: hover and the current page show a light cream box with a shadow, as in the mega menu, instead of mustard text.
+
 ## [1.52.0] — 2026-11-11
 ### Changed
 - Typography: on desktop, text drawn at 20/32 is now 18/30 across the site.

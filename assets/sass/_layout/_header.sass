@@ -64,12 +64,14 @@
 .header-main__menu
   @apply flex items-center border border-montela-cream xl:px-4 2xl:px-8 2xl:gap-8
   a
-    @apply flex items-center py-[14px] font-primary font-normal text-[15px] leading-[32px] tracking-[0.5px] uppercase whitespace-nowrap transition-colors duration-300 ease-out xl:px-5 2xl:px-8
+    @apply flex items-center py-[14px] font-primary font-normal text-[15px] leading-[32px] tracking-[0.5px] uppercase whitespace-nowrap transition-[background-color,box-shadow] duration-300 ease-out xl:px-5 2xl:px-8
     &:hover
-      @apply text-montela-mustard
+      @apply bg-montela-cream/20 shadow-[0_4px_4px_rgba(0,0,0,0.25)]
+  // Hover and the current page: the mega menu's hover, a 20% cream fill and
+  // the 0 4 4 shadow (Bruno, 2026-11-11 — they were mustard text).
   .current-menu-item > a,
   .current-menu-ancestor > a
-    @apply text-montela-mustard
+    @apply bg-montela-cream/20 shadow-[0_4px_4px_rgba(0,0,0,0.25)]
 
 // -- Booking button ------------------------------------------------------------
 // Cream label + 4px gap + arrow box (44px tablet, 60px desktop).
@@ -204,7 +206,11 @@
       .header-main__cta-label,
       .header-main__cta-icon
         @apply bg-montela-mustard
+  // The menu's cream fill would vanish on cream: walnut at 10% instead.
   .header-main__menu a:hover,
+  .header-main__menu .current-menu-item > a,
+  .header-main__menu .current-menu-ancestor > a
+    @apply bg-montela-walnut/10
   .header-main__lang:hover,
   .header-main__toggle:hover
     @apply text-montela-mustard
@@ -215,8 +221,7 @@
 // fixed at the top as a sage bar — back to normal 50px before the top when
 // scrolling up — 102px tall on desktop (80 in the frame) — logo (62px) and controls
 // (60px) centred, 9px above and below the logo. The current menu item keeps
-// the mustard text of the normal header (Bruno, 2026-11-10 — the frame gives
-// it a 20% cream background instead). Tablet and mobile have no
+// the normal header's 20% cream fill, as the frame draws it. Tablet and mobile have no
 // frame: the same sage bar and 9px around the logo (Bruno) — 69px tall on
 // tablet, 65 on mobile, with the smaller logo below. It drops in from above
 // and folds back up when it leaves (`.is-header-leaving`, 300ms in main.js);
