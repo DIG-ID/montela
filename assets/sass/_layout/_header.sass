@@ -59,8 +59,8 @@
 // Bordered box: 32px inner padding, 32px between items, 32px around each
 // label (frame values, 2xl+) — the labels keep those distances, but the
 // links fill the box edge to edge, so the hover fill leaves no gaps: 48px
-// each side (half of the 96 between labels), 64 at the box's ends. Below
-// 2xl: 20px, 36 at the ends.
+// each side (half of the 96 between labels), the box's ends included
+// (Bruno, 2026-11-11 — the frame has 64 there). Below 2xl: 20px.
 .header-main__nav
   @apply hidden xl:flex
 
@@ -70,10 +70,6 @@
     @apply flex items-center h-full py-[14px] font-primary font-normal text-[15px] leading-[32px] tracking-[0.5px] uppercase whitespace-nowrap transition-colors duration-300 ease-out xl:px-5 2xl:px-12
     &:hover
       @apply bg-montela-cream/20
-  li:first-child > a
-    @apply xl:pl-9 2xl:pl-16
-  li:last-child > a
-    @apply xl:pr-9 2xl:pr-16
   // Hover and the current page: the mega menu's 20% cream fill, without its
   // shadow (Bruno, 2026-11-11 — they were mustard text).
   .current-menu-item > a,

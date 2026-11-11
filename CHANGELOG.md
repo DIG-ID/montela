@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.52.7] — 2026-11-11
+### Changed
+- Header menu: the first and last items have the same padding as the others.
+
 ## [1.52.6] — 2026-11-11
 ### Changed
 - Hero: the scroll-down icon fades out over the first bit of scrolling and comes back at the top of the page.
