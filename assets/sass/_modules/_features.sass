@@ -13,7 +13,8 @@
 //   Desktop  140px padding; title on cols 2–6 beside the text on cols 8–11;
 //            172px below the title, the features in two columns (cols 2–5
 //            and 8–11), rows 126px apart: 102px icon box, 52px to the text
-//            — bold title 20/32, text 15/25
+//            — bold title 20/32, text 15/25 in Figma; both 18/30 (the
+//            icon list's, since 1.52.5 — Pedro)
 //
 // Icons are editor uploads with uneven artboards (49 to 104px wide in the
 // design): each sits centred in its box at its own size, never larger than
@@ -55,10 +56,8 @@
     @apply w-auto h-auto max-w-full max-h-full
 
 .section-features .icon-list__text
-  @apply md:text-[18px] md:leading-[25px] xl:text-[15px] xl:leading-[25px]
-
-.section-features .icon-list__title
-  @apply xl:text-[18px] xl:leading-[30px]
+  // The md line height would carry on to desktop: repeat the 30.
+  @apply md:text-[18px] md:leading-[25px] xl:leading-[30px]
 
 // Layout "centred" (Leistungen "Mehr Komfort nach Bedarf", Figma desktop
 // 5787:19377, tablet 5787:19287, mobile 5787:19255): the title centred,
@@ -66,8 +65,9 @@
 // with its 128 / 192px margin), 128 / 192 / 192px below. Tablet and mobile
 // features as in the split layout, the list on the left. Desktop: the same
 // two columns, rows 126px apart (about 120 in Figma), but an 80px icon box
-// and 20px to the text (Figma: text 100px from the icon), text 20/32 —
-// notes 15/25, as drawn — and the outline button in walnut.
+// and 20px to the text (Figma: text 100px from the icon), text 18/30 (the
+// icon list's; 20/32 in Figma) — notes 15/25, as drawn — and the outline
+// button in walnut.
 .section-features--centred
   @apply pt-0 pb-32 md:pb-[192px]
 
@@ -82,9 +82,6 @@
 
 .section-features--centred .icon-list__icon
   @apply xl:h-[68px]
-
-.section-features--centred .icon-list__text
-  @apply xl:text-[18px] xl:leading-[30px]
 
 .section-features--centred .icon-list__note
   @apply xl:text-[15px] xl:leading-[25px]

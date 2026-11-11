@@ -12,8 +12,8 @@
 //            2026-11-11; rows 121px apart); the slider 96px below
 //
 // Highlights: the icon list — 68px icon column, 20px to the text; bold title
-// and text, 14/22 and 17/23 (component defaults), on desktop title 20/32
-// and text 15/25.
+// and text, 14/22, 17/23 and 18/30 (component defaults; Figma's desktop
+// title 20/32 and text 15/25 — every list 18/30 since 1.52.5, Pedro).
 //
 // Spacing: none above (the intro ends with its own padding); 192px below
 // on tablet and desktop, 128 on mobile.
@@ -46,12 +46,6 @@
 
 .section-destination .icon-list__icon img
   @apply w-auto max-w-full h-[52px] md:h-[67px] xl:h-[60px]
-
-.section-destination .icon-list__text
-  @apply xl:text-[15px] xl:leading-[25px]
-
-.section-destination .icon-list__title
-  @apply xl:text-[18px] xl:leading-[30px]
 
 .section-destination__slider
   @apply mt-11 xl:mt-24

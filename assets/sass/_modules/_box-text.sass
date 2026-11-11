@@ -142,7 +142,8 @@
   @apply xl:w-[102px]
 
 .section-box-text--band .icon-list__text
-  @apply md:text-[18px] md:leading-[25px] xl:col-span-3 xl:text-[18px] xl:leading-[30px]
+  // Two classes: the md line height would carry on to desktop — repeat 30.
+  @apply md:text-[18px] md:leading-[25px] xl:col-span-3 xl:leading-[30px]
 
 // -- Cream band ---------------------------------------------------------------
 // Figma "Section Green Background_with logos" on the Apartments page: desktop
@@ -151,8 +152,8 @@
 // ("primary") and walnut icons — the editor uploads them in that colour. The
 // element carries both modifiers: .section-box-text--band.section-box-text--cream.
 //
-// The desktop frame sets the text at 15/25; it keeps the band's 20/32
-// (Desktop/Text), as the tablet and mobile frames do with 18/25 and 14/22.
+// The desktop frame sets the text at 15/25; it takes the icon list's 18/30,
+// as every list on desktop (Pedro, 1.52.5) — 18/25 and 14/22 below.
 //
 // Spacing: with no colour change, the space above is the previous section's
 // bottom margin plus this padding — 192 + 140px on desktop (332 in Figma, below

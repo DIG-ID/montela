@@ -31,8 +31,9 @@
 // snapped to three columns (343px) instead, as in Text with photos.
 //
 // List text (icon list): 14/22 on mobile; tablet 17/23 (component default)
-// — columns 18/25 ("Tablet/Text"); desktop 15/25 ("Text small - footer") —
-// columns 20/32 (component default).
+// — columns 18/25 ("Tablet/Text"); desktop 18/30, the component's (Figma:
+// list 15/25 "Text small - footer", columns 20/32; every list 18/30 since
+// 1.52.5 — Pedro).
 //
 // Spacing: none above but the columns desktop (the intro ends with its own
 // padding); 192px below on tablet and desktop, 128 on mobile.
@@ -46,8 +47,6 @@
   @apply w-full h-full object-cover
 
 // Two classes beat the icon-list defaults.
-.section-space--list .icon-list__text
-  @apply xl:text-[15px] xl:leading-[25px]
-
 .section-space--columns .icon-list__text
-  @apply md:text-[18px] md:leading-[25px] xl:text-[18px] xl:leading-[30px]
+  // The md line height would carry on to desktop: repeat the 30.
+  @apply md:text-[18px] md:leading-[25px] xl:leading-[30px]

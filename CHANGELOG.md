@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.52.5] — 2026-11-11
+### Changed
+- Icon lists: the text is 18/30 on desktop on every page — Anreise, Bike Hotel, Kids Playground, Fitnessraum, day trips and offers too (they were 15/25 or 17/23), and the bold titles of the Anreise and day-trip lists.
+
 ## [1.52.4] — 2026-11-11
 ### Changed
 - Day trip pages: the destination highlights sit on the left on desktop.

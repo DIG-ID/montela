@@ -119,6 +119,32 @@ alteração no `CHANGELOG.md`. Os nodes do Figma de cada template estão no
 - [ ] Opcional: coordenadas GPS (`geo`) do Hotel no schema — não há campo;
   seria preciso acrescentá-lo às Theme Settings.
 
+Headings — revisão das 45 páginas do staging a 2026-11-11: a hierarquia está
+correcta (um `<h1>`, sem saltos de nível). Ficou por resolver:
+
+- [ ] **Leistungen — título duplicado** (conteúdo): o `<h3>` do bloco dos cães,
+  debaixo de "Frühstück", diz "Flexibel wohnen mit passenden Leistungen" — o
+  mesmo texto do `<h2>` da secção Space. Admin: Leistungen → tab Breakfast →
+  Dogs → Title.
+- [ ] **Títulos que parecem cortados ou repetidos** (conteúdo):
+  - oferta "Montela Mountain & Pleasure", "Im Package enthalten": os itens
+    "Wasserdichter" e "Frühstück direkt" parecem frases a meio;
+  - Tagesausflug Leukerbad: os cards "Therme & Gemmi kombinieren" e "Gemmi
+    kombinieren", quase iguais;
+  - os 9 apartamentos têm o mesmo título da intro, "Ihr Zuhause in den Bergen"
+    (o texto é próprio de cada um) — para SEO, um título por apartamento.
+- [ ] **Activities — um título por estação** (código): na homepage, na Erkunden
+  e na Unsere Region os cards do Sommer e do Winter estão os dois no HTML,
+  todos `<h3>` debaixo do mesmo `<h2>` ("Familien" aparece duas vezes). Um
+  título escondido (`sr-only`) "Sommer" / "Winter" por grupo — h3, com os
+  cards a h4 — diz a um leitor de ecrã que são estações diferentes.
+  `template-parts/modules/activities.php`, `components/card-activity.php`
+  (já recebe `title_tag`).
+- [ ] Opcional — **Fitnessraum**: as caixas de utilização ("Rücksichtsvoll
+  trainieren"…) são `<h3>` sem `<h2>` próprio e ficam dentro da secção
+  "Trainieren während Ihrer Ferien". Um título de secção (mesmo `sr-only`)
+  em `pages/fitnessroom/fitness-usage.php` separava-as.
+
 ## Antes do lançamento
 
 - [ ] Yoast → Settings → Site representation: Organization, com nome

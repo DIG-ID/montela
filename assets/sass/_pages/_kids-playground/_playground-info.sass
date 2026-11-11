@@ -21,16 +21,14 @@
 // the list frame is 324px tall (14px below the last row). Desktop items on
 // cols 2–4 and 7–9 (440px) — drawn 456.5px wide, the right-hand ones 9.5px
 // into col 7; snapped to the columns.
-// Text stays at 17/23 on desktop ("Tablet/Text small" in the frame).
+// Text 17/23 on desktop in the frame ("Tablet/Text small"): 18/30, the
+// icon list's, as every list (Pedro, 1.52.5).
 //
 // Layout (grid columns, spacing, max-widths) is in the PHP as Tailwind
 // classes; this file keeps the measurements and the type override.
 //
 // No top spacing: it follows the Intro module, whose padding gives the gap.
 // 44px between the list and the photo strip.
-.section-playground-info .icon-list__text
-  @apply xl:text-[17px] xl:leading-[23px]
-
 // Opening hours box (modules/box-text.php): this page's frame draws it at
 // 90/80 title and 20/32 text from tablet up (Figma 5895:20545 / 5895:19924), where the module's
 // own frame has 80/76 and 18/25. On desktop it shrinks below 1920, as the module's
