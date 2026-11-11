@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.50.2] — 2026-11-11
+
+### Changed
+- Login screen: the Montela logo instead of the agency's.
+
 ## [1.50.1] — 2026-11-10
 
 ### Changed

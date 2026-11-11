@@ -79,13 +79,16 @@
     "isEntry": true
   },
   "assets/sass/admin-login.sass": {
-    "file": "css/admin-login-Zh6TMaWS.css",
+    "file": "css/admin-login-BVd9zWni.css",
     "name": "admin-login",
     "names": [
       "admin-login.css"
     ],
     "src": "assets/sass/admin-login.sass",
-    "isEntry": true
+    "isEntry": true,
+    "assets": [
+      "assets/logo-montela-BWVSS86D.svg"
+    ]
   },
   "assets/sass/main.sass": {
     "file": "css/main-CNhZYLL3.css",
@@ -198,6 +201,10 @@
   "assets/svg/icons/slider-prev.svg": {
     "file": "assets/slider-prev-BgkI7qkP.svg",
     "src": "assets/svg/icons/slider-prev.svg"
+  },
+  "assets/svg/logo-montela.svg": {
+    "file": "assets/logo-montela-BWVSS86D.svg",
+    "src": "assets/svg/logo-montela.svg"
   },
   "assets/svg/mountains.svg": {
     "file": "assets/mountains-BtNTc39q.svg",
