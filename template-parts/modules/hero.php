@@ -21,7 +21,9 @@
  * - animate (bool)       Optional. With 'home': false keeps the big title in
  *                        place, without the title animation. Default true —
  *                        the animation is the homepage's only (Bruno,
- *                        2026-11-10); Unser Resort passes false.
+ *                        2026-11-10); Unser Resort passes false. Plays only
+ *                        when the hero has a video: with just an image the
+ *                        title stays in place, as with false.
  *
  * @package montela
  * @subpackage Section
@@ -35,7 +37,11 @@ if ( ! function_exists( 'get_field' ) ) {
 $hero_ctx     = ! empty( $args['post_id'] ) ? $args['post_id'] : get_the_ID();
 $hero_prefix  = ! empty( $args['prefix'] ) ? $args['prefix'] : '';
 $hero_is_home = ! empty( $args['variant'] ) && 'home' === $args['variant'];
-$hero_animate = $hero_is_home && ( ! isset( $args['animate'] ) || $args['animate'] );
+$hero_video   = get_field( $hero_prefix . 'section_hero_video', $hero_ctx );
+
+// The title animation plays over a video only: with just an image, the big
+// title stays in place (Daniel, 2026-11-11).
+$hero_animate = $hero_is_home && $hero_video && ( ! isset( $args['animate'] ) || $args['animate'] );
 
 $hero_class = 'section-hero';
 if ( $hero_is_home ) {
@@ -43,7 +49,6 @@ if ( $hero_is_home ) {
 }
 
 $hero_image = get_field( $hero_prefix . 'section_hero_image', $hero_ctx );
-$hero_video = get_field( $hero_prefix . 'section_hero_video', $hero_ctx );
 $hero_lines = array_filter(
 	array(
 		1 => get_field( $hero_prefix . 'section_hero_title_line_1', $hero_ctx ),

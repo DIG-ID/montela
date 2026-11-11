@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.51.1] — 2026-11-11
+### Changed
+- Homepage hero: the title animation plays only when the hero has a video; with just an image, the title stays in place.
+
 ## [1.51.0] — 2026-11-11
 ### Added
 - Apartment pages: an optional second booking button (e.g. for a second building), shown only when filled — beside the first on desktop, below it on smaller screens.
