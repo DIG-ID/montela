@@ -5,15 +5,16 @@
 //     tablet). svh, so mobile browser bars don't push the bottom off screen.
 //     The desktop frames are 900px tall: since 1.46.0 every hero fills the
 //     screen there too (Daniel) — the "Full screen" field is gone.
-//   - title: .title-h1 sizes on mobile and tablet; on desktop every line is
-//     123/111. The last line (3, or 2 with two lines) is italic on every
+//   - title: .title-h1 sizes on mobile and tablet; from 1536 every line is
+//     123/111 (1280–1535: line 1 120/95, the others 93/81). The last line
+//     (3, or 2 with two lines) is italic on every
 //     breakpoint (.section-hero__line--last).
 //   - each line's desktop position comes from the editor (left / indented
 //     128px / custom indent in px / centre / right); mobile and tablet are
 //     always left-aligned.
 //
 // Homepage exception (.section-hero--home — Figma hero-desktop 5594:16771):
-// line 1 keeps the .title-h1 desktop size
+// line 1 keeps the .title-h1 desktop size from 1536
 // (150/125), the last line italic on desktop only.
 
 .section-hero
@@ -39,7 +40,13 @@
   @apply relative
 
 .section-hero__line
-  @apply block xl:text-[123px] xl:leading-[111px]
+  @apply block xl:text-[93px] xl:leading-[81px] 2xl:text-[123px] 2xl:leading-[111px]
+
+// 1280–1535: line 1 bigger on every hero (120/95), the others 93/81 —
+// Daniel, 2026-11-11. From 1536 the Figma sizes (123/111; home line 1
+// 150/125).
+.section-hero__line.section-hero__line--1
+  @apply xl:text-[120px] xl:leading-[95px] 2xl:text-[123px] 2xl:leading-[111px]
 
 .section-hero__line--last
   @apply italic
@@ -60,8 +67,8 @@
 
 // -- Homepage exception ($args['variant'] = 'home') --
 
-.section-hero--home .section-hero__line--1
-  @apply xl:text-[150px] xl:leading-[125px]
+.section-hero--home .section-hero__line.section-hero__line--1
+  @apply 2xl:text-[150px] 2xl:leading-[125px]
 
 .section-hero--home .section-hero__line--last
   @apply not-italic xl:italic

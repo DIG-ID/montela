@@ -31,7 +31,7 @@ html
 // Font family and colour come from _base-styles (CSS custom properties).
 // Same scale as .body-text, so unstyled text already matches the design.
 body
-  @apply font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[18px] xl:leading-[30px]
+  @apply font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[16px] xl:leading-[28px] 2xl:text-[18px] 2xl:leading-[30px]
 
 // No heading reset needed: Tailwind's preflight already sets h1–h6 to
 // font-size/font-weight: inherit and margin: 0, so the semantic level never
@@ -46,26 +46,28 @@ body
 .title-h2
   @apply font-secondary font-normal italic tracking-[1px] text-[25px] leading-[30px]
 
-// Figma "H3".
+// Figma "H3". Desktop split (Daniel, 2026-11-11): 82/72 from 1280, the
+// Figma 90/80 from 1536 (2xl).
 .title-h3
-  @apply font-secondary font-medium tracking-[0.5px] text-[36px] leading-[38px] md:text-[80px] md:leading-[76px] xl:text-[90px] xl:leading-[80px]
+  @apply font-secondary font-medium tracking-[0.5px] text-[36px] leading-[38px] md:text-[80px] md:leading-[76px] xl:text-[82px] xl:leading-[72px] 2xl:text-[90px] 2xl:leading-[80px]
 
 // Figma "H4" — Roboto, not FreightBig. The tablet and mobile frames use the
 // desktop style unchanged.
 .title-h4
   @apply font-primary font-bold tracking-[0.5px] text-[20px] leading-[32px] xl:text-[18px] xl:leading-[30px]
 
-// Figma "Intro title".
+// Figma "Intro title". 82/72 from 1280, the Figma 90/76 from 1536 (2xl).
 .title-intro
-  @apply font-secondary font-normal italic tracking-[0.5px] text-[40px] leading-[35px] md:text-[70px] md:leading-[70px] xl:text-[90px] xl:leading-[76px]
+  @apply font-secondary font-normal italic tracking-[0.5px] text-[40px] leading-[35px] md:text-[70px] md:leading-[70px] xl:text-[82px] xl:leading-[72px] 2xl:text-[90px] 2xl:leading-[76px]
 
 // -- Text styles ---------------------------------------------------------------
 // Figma "Intro text". Desktop deviates from the Figma style on purpose
-// (35/55 there): 22/38 since 1.52.3 (24/40 before), and tablet the same
+// (35/55 there): 22/38 since 1.52.3 (24/40 before) — 20/36 from 1280 to
+// 1535 (2xl keeps 22/38) — and tablet the same
 // (30/40 before, as in the Figma) — the frames are left as they are.
 // (35/55 was tried in 1.49.1 and undone in 1.49.2 — Bruno.)
 .body-intro
-  @apply font-primary font-light tracking-[0.5px] text-[20px] leading-[30px] md:text-[22px] md:leading-[38px]
+  @apply font-primary font-light tracking-[0.5px] text-[20px] leading-[30px] md:text-[22px] md:leading-[38px] xl:text-[20px] xl:leading-[36px] 2xl:text-[22px] 2xl:leading-[38px]
 
 // Figma "Quote".
 .body-quote
@@ -79,10 +81,10 @@ body
 .body-small
   @apply font-primary font-light tracking-[0.5px] text-[12px] leading-[20px] md:text-[15px] md:leading-[25px]
 
-// Figma "Text". Rich text from the editor (WYSIWYG / textarea with wpautop):
+// Figma "Text" (16/28 from 1280, 18/30 from 1536). Rich text from the editor (WYSIWYG / textarea with wpautop):
 // apply on a wrapper, so the <p> children wpautop generates inherit it.
 .body-text
-  @apply font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[18px] xl:leading-[30px]
+  @apply font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[16px] xl:leading-[28px] 2xl:text-[18px] 2xl:leading-[30px]
   p
     @apply mb-4 last:mb-0
 

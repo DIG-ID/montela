@@ -611,6 +611,24 @@ o cliente.
   Onde       assets/sass/_posts/_day-trip.sass.
   Estado     POR CONFIRMAR
 
+[2026-11-11] B25. Desktop dividido em xl (1280–1535) e 2xl (1536+)
+  O quê      tipografia entre 1280 e 1535px.
+  Figma      só desenha 1920 (os valores de desktop).
+  Feito      de 1536 para cima, os valores de antes. De 1280 a 1535:
+             body-text 16/28, body-intro 20/36, title-h3 e title-intro 82/72
+             (também nos títulos que fixam o H3 a 90/80 em tablet: footer,
+             Activities, Box text cream, Room info), hero com a linha 1 a
+             120/95 e as outras a 93/81 em todos os heros (antes, nas
+             interiores, as três linhas iguais). Ficam como estavam os
+             títulos com tamanho próprio: Frühstück (Leistungen) e os de
+             clamp() (Kids, Lounge, Shop).
+  Porquê     pedido do Daniel (11/11): o desktop a 1280–1535 com os valores
+             de 1920 ficava grande demais.
+  Confirma   designer.
+  Onde       _components/_typography.sass, _modules/_hero.sass e as regras
+             de cada título acima.
+  Estado     POR CONFIRMAR
+
 ===============================================================================
 C. ERROS NO FIGMA
 ===============================================================================
