@@ -94,8 +94,11 @@
 // moves .is-active on hover/focus. Not designed: the new image fades in on
 // top in 600ms, with a slight zoom out (1.04 → 1); the old one stays under it
 // and only hides once covered (opacity, delayed 600ms, no transition).
+// isolate: the active image's z-index stays inside the frame, so the
+// sticky band behind the header (::before, z-1) still covers the photo when
+// the panel scrolls (Bruno, 2026-11-11 — it slid over the logo).
 .mega-menu__media
-  @apply relative
+  @apply relative isolate
 
 .mega-menu__img
   @apply absolute inset-0 w-full h-full object-cover opacity-0 scale-[1.04] transition-[opacity,transform] duration-0 delay-[600ms] motion-reduce:transition-none

@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.50.7] — 2026-11-11
+### Fixed
+- Mega menu: on desktop, the photo no longer scrolls over the logo.
+
 ## [1.50.6] — 2026-11-11
 ### Changed
 - Mega menu: on desktop, the sub-menu lists its pages in two columns, as the main menu does.
