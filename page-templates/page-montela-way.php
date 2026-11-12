@@ -25,7 +25,6 @@ if ( have_posts() ) :
 			get_template_part( 'template-parts/pages/montela-way/history' );
 			get_template_part( 'template-parts/pages/montela-way/timeline' );
 			get_template_part( 'template-parts/pages/montela-way/future' );
-			get_template_part( 'template-parts/pages/montela-way/closing' );
 		do_action( 'after_main_content' );
 	endwhile;
 endif;

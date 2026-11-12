@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.55.0] — 2026-11-12
+
+### Removed
+- Der Montela Weg: the closing section ("Erleben Sie Montela selbst") and its fields. After deploying, run the ACF Sync for Page — Montela Way.
+
 ## [1.54.8] — 2026-11-12
 
 ### Changed
