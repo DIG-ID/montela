@@ -36,6 +36,13 @@
 //            columns 2–11, 20px apart (13 in Figma): photo 570px tall,
 //            panel 200px, 24px insets
 //
+// Button (optional, Figma 6784:20161 — desktop only, added later): the
+// outline button with walnut text, at the bottom of the panel — 31px above
+// its edge, the panel 252px tall (with it). 21px at least below the text
+// (the three-line card in the frame). Not designed below desktop (Bruno):
+// tablet under the text, aligned with it; mobile centred under the text;
+// 24px below the text, 24 / 32px to the edge.
+//
 // Spacing: none above (the "Frühstück" section ends with its padding);
 // 192px below on tablet and desktop, 128 on mobile. (On tablet Figma puts
 // the 192px as the next section's top padding; that section — Features,
@@ -49,3 +56,6 @@
 
 .section-resort__text
   @apply font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[20px] md:leading-[32px] xl:text-[16px] xl:leading-[28px] 2xl:text-[18px] 2xl:leading-[30px]
+
+.section-resort__panel .btn-outline:not(:hover):not(:active)
+  @apply text-montela-walnut

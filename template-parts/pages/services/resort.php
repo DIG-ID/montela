@@ -1,7 +1,8 @@
 <?php
 /**
  * Leistungen — "Alles direkt im Resort": a title over photo cards, each with
- * a framed panel below the photo (bold title, text). Desktop: three in a row
+ * a framed panel below the photo (bold title, text, an optional "Mehr
+ * erfahren" button — since 1.55.1). Desktop: three in a row
  * on columns 2–11, the title centred. Tablet and mobile: stacked, 12px apart,
  * the title to the left.
  *
@@ -52,12 +53,30 @@ $resort_title_id = wp_unique_id( 'section-resort-title-' );
 								?>
 							</figure>
 						<?php endif; ?>
-						<div class="section-resort__panel flex flex-1 flex-col gap-[10px] border border-montela-sage px-[27px] pt-[19px] pb-3 min-h-[129px] md:pl-[37px] md:pr-[17px] md:pt-6 md:pb-6 md:min-h-[160px] xl:px-6 xl:min-h-[200px]">
+						<?php $resort_link = ( ! empty( $resort_item['link']['url'] ) && ! empty( $resort_item['link']['title'] ) ) ? $resort_item['link'] : null; ?>
+						<div class="section-resort__panel flex flex-1 flex-col gap-[10px] border border-montela-sage px-[27px] pt-[19px] min-h-[129px] md:pl-[37px] md:pr-[17px] md:pt-6 md:pb-6 md:min-h-[160px] xl:px-6<?php echo $resort_link ? ' pb-8 xl:pb-[31px] xl:min-h-[252px]' : ' pb-3 xl:min-h-[200px]'; ?>">
 							<?php if ( ! empty( $resort_item['title'] ) ) : ?>
 								<h3 class="section-resort__title"><?php echo montela_text( $resort_item['title'] ); ?></h3>
 							<?php endif; ?>
 							<?php if ( ! empty( $resort_item['text'] ) ) : ?>
 								<p class="section-resort__text"><?php echo montela_text( $resort_item['text'] ); ?></p>
+							<?php endif; ?>
+							<?php if ( $resort_link ) : ?>
+								<div class="flex justify-center md:justify-start mt-auto pt-[14px] xl:pt-[11px]">
+									<?php
+									get_template_part(
+										'template-parts/components/button',
+										null,
+										array_merge(
+											$resort_link,
+											array(
+												'style'   => 'outline',
+												'context' => ! empty( $resort_item['title'] ) ? wp_strip_all_tags( $resort_item['title'] ) : '',
+											)
+										)
+									);
+									?>
+								</div>
 							<?php endif; ?>
 						</div>
 					</li>
