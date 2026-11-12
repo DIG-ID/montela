@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.54.8] — 2026-11-12
+
+### Changed
+- Explore as the last section: the cream gap above the footer runs the full width again (under the slider too).
+
 ## [1.54.7] — 2026-11-12
 
 ### Changed
