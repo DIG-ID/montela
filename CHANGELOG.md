@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.54.7] — 2026-11-12
+
+### Changed
+- Explore as the last section (Bike Hotel, day trips): a cream gap between the sage panel and the footer on desktop; the slider still runs into the footer.
+
 ## [1.54.6] — 2026-11-12
 ### Changed
 - Apartment pages: "Inklusive Leistungen" has 192px of space above and below on desktop.

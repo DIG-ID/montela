@@ -77,6 +77,15 @@ body:has(.footer-main--has-cta) .main-content > .section-explore:last-child
   .section-explore__panel
     @apply md:pb-[304px] xl:pb-[371px]
 
+// Desktop: a cream strip (20px, the grid gutter) parts the panel's sage from
+// the footer's, as the gutter parts it from the slider (Daniel, 12.11.2026).
+// The footer's sage paints over the bottom of this section, so the strip is
+// the top of the footer's body; the box covers it except in the margin. Only
+// under the panel (the left half, less half the gutter): the slider runs on
+// into the footer.
+body:has(.main-content > .section-explore:last-child) .footer-main--has-cta .footer-main__body::before
+  @apply xl:content-[''] xl:absolute xl:left-0 xl:top-0 xl:w-[calc(50%-10px)] xl:h-5 xl:bg-montela-cream
+
 // -- Overline and no-photo variant (since 1.16.0) --
 // Figma "Next to footer_explore" (Bike Hotel): desktop 5895:19865, tablet
 // 5895:20547, mobile 5895:20377. Overline = "H2" style (.title-h2), right
