@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.54.6] — 2026-11-12
+### Changed
+- Apartment pages: "Inklusive Leistungen" has 192px of space above and below on desktop.
+
 ## [1.54.5] — 2026-11-12
 
 ### Changed

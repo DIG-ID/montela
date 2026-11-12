@@ -167,6 +167,12 @@
 .section-box-text--cream.section-box-text--has-list
   @apply xl:pt-[140px]
 
+// Apartment pages (single-apartment.php passes the modifier): 192px above
+// and below on desktop instead of the band's 140 (Pedro, 1.54.6). Two
+// classes, after the rules above: they would win over a utility class.
+.section-box-text--cream.section-box-text--apartment
+  @apply xl:py-[192px]
+
 // Cream band without a list (Leistungen "Alles nah beieinander", Figma
 // desktop 5426:7013, tablet 5528:6883, mobile 5528:6912): title, text and
 // button only, no 600px band on desktop. Desktop: the button 68px under the

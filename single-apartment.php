@@ -51,7 +51,9 @@ if ( have_posts() ) :
 					'post_id'     => get_the_ID(),
 					'fallback_id' => $apartment_fallback,
 					'style'       => 'cream',
-					'class'       => 'mt-16 md:mt-0',
+					// The modifier sets 192px above and below on desktop
+					// (_box-text.sass).
+					'class'       => 'section-box-text--apartment mt-16 md:mt-0',
 				)
 			);
 
