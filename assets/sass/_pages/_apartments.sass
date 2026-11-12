@@ -7,19 +7,21 @@
 // offer cards (_offers.sass).
 //   Mobile   stacked: panel 551px tall (34px padding top, 32 at the sides),
 //            photo 180px; cards 12px apart
-//   Tablet   stacked: panel 686px (42 / 66px padding), photo 401px; 16px apart
+//   Tablet   stacked: panel 686px (42 / 66px padding), photo 400px; 16px apart
 //   Desktop  side by side, 20px apart (rows too — the grid gutter; 18 in
-//            Figma), 900px tall; every other row puts the photos first.
-//            Panel padding 74px top and bottom; the content is 649px wide in
-//            Figma (title) and 597 (facts, text, buttons), centred
+//            Figma); every other row puts the photos first. The panel sets
+//            the row height (at least 400px — 900 in Figma, lowered by Pedro
+//            in 1.53.1): the slider is taken out of the flow and fills it.
+//            Panel padding 80px top and bottom, 96 at the sides
 //
-// Panel, centred: the title on top, the rest at the bottom — facts (two
-// columns: 151 / 222 / 289px), text, buttons (outline on the sage: "ghost";
-// booking: "outline"). Gaps title → facts → text → buttons, at least:
-// 44 / 44 / 44 (mobile), 96 / 44 / 44 (tablet), 161 / 50 / 115 (desktop —
-// the text box is 152px tall in Figma, for two lines of 32). Buttons stacked
-// on mobile (12px apart), side by side and centred on tablet, at the two
-// ends of the 597px column on desktop.
+// Panel, centred: the title on top, the rest at the bottom (justify-between,
+// when the panel is taller than its content) — facts (two columns: 151 / 245
+// / 289px), text, buttons (outline on the sage: "ghost"; booking:
+// "outline"). Gaps (Pedro, 1.53.1; Figma 44–161px): title → body 40px, 96 on
+// desktop; inside the body (64px in at the sides on desktop) 40 / 48px between facts,
+// text and buttons, plus 32px under the text on desktop. Buttons stacked on
+// mobile (12px apart), side by side and centred on tablet, at the two ends
+// of the column on desktop.
 //
 // Photos: the arrows are drawn on desktop only (top right, 38 / 32px in);
 // they stay on tablet and mobile too, where the photo would otherwise give no
@@ -27,41 +29,43 @@
 //
 // Spacing below: 192px on every breakpoint (to the services comparison).
 .section-apartments
-  @apply flex flex-col gap-3 md:gap-4 xl:gap-5 mb-[192px]
+  @apply flex flex-col gap-3 md:gap-4 xl:gap-5 mb-48
 
 .apartment-card
   @apply flex flex-col xl:grid xl:grid-cols-2 xl:gap-x-5
 
 .apartment-card__panel
-  @apply flex flex-col items-center text-center min-h-[551px] px-8 pt-[34px] pb-8 bg-montela-sage text-montela-cream md:min-h-[686px] md:px-[66px] md:py-[42px] xl:min-h-[900px] xl:px-10 xl:py-[74px]
+  @apply flex flex-col justify-between items-center text-center min-h-[551px] px-8 pt-12 pb-8 bg-montela-sage text-montela-cream md:min-h-[686px] md:px-16 md:py-11 xl:min-h-[400px] xl:px-24 xl:py-20 gap-y-10 xl:gap-y-24
 
 .apartment-card__title
-  @apply mb-11 md:mb-24 xl:mb-[161px] xl:max-w-[649px] text-balance
+  @apply text-balance
 
 .apartment-card__body
-  @apply flex flex-col items-center w-full mt-auto xl:max-w-[597px]
+  @apply flex flex-col items-center w-full gap-y-10 xl:gap-y-12 xl:px-16
 
 .apartment-card__facts
-  @apply grid-cols-[repeat(2,minmax(0,151px))] md:grid-cols-[repeat(2,minmax(0,222px))] xl:grid-cols-[repeat(2,minmax(0,289px))]
+  @apply grid-cols-[repeat(2,minmax(0,151px))] md:grid-cols-[repeat(2,minmax(0,245px))] xl:grid-cols-[repeat(2,minmax(0,289px))]
 
 .apartment-card__excerpt
-  @apply mt-11 xl:mt-[50px] md:max-w-[460px] xl:max-w-none font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[16px] xl:leading-[28px] 2xl:text-[18px] 2xl:leading-[30px]
+  @apply  md:max-w-[460px] xl:max-w-none font-primary font-light tracking-[0.0313rem] text-sm leading-6 md:text-lg md:leading-6 xl:text-base xl:leading-7 2xl:text-lg 2xl:leading-8 xl:mb-8
 
 .apartment-card__buttons
-  @apply flex flex-col items-center gap-3 mt-11 md:flex-row md:justify-center md:gap-8 xl:mt-[115px] xl:w-full xl:justify-between
+  @apply flex flex-col items-center gap-3  md:flex-row md:justify-center md:gap-8 xl:w-full xl:justify-between
 
 .apartment-card__photos
-  @apply relative h-[180px] md:h-[401px] xl:h-auto overflow-hidden
+  @apply relative h-[180px] md:h-[400px] xl:h-auto overflow-hidden
 
 .apartment-card:nth-child(even) .apartment-card__photos
   @apply xl:order-first
 
-// Two classes: Swiper's own .swiper (height auto) loads later.
+// Two classes: Swiper's own .swiper (height auto) loads later. On desktop the
+// slider leaves the flow, so the panel sets the row height and the photo
+// fills it.
 .apartment-card__photos .apartment-card__swiper
-  @apply h-full
+  @apply h-full xl:absolute xl:inset-0
 
 .apartment-card__img
   @apply w-full h-full object-cover
 
 .apartment-card__nav
-  @apply absolute top-4 right-4 z-10 md:top-[38px] md:right-8
+  @apply absolute top-4 right-4 z-10 md:top-10 md:right-8

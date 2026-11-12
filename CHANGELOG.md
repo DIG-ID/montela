@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.53.1] — 2026-11-12
+### Changed
+- Apartments page: the apartment cards are lower on desktop — the text panel sets the height and the photo fills it — with tighter spacing in the panel.
+
 ## [1.53.0] — 2026-11-12
 ### Added
 - Interactive map section on the homepage, Aufenthalt, Unsere Region and Unser Resort: illustrated summer / winter map with zoom, pan, fullscreen, a popup per location and a features bar below. The map artwork and its locations are set once in Theme Settings (tab Map); each page sets its own title, text, button and features.
