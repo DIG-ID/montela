@@ -84,6 +84,33 @@
 .section-location__iframe
   @apply absolute inset-x-0 -top-[150px] w-full h-[calc(100%+150px)] border-0
 
+// The JS map (google-map.js) has no place card: it fills the box (its
+// controls stay in view). Cream until the API draws it.
+.section-location__canvas
+  @apply absolute inset-0 bg-montela-cream
+
+// Its pin: the drop's tip on the coordinates. A button when there is an
+// address: hover, focus or tap shows the popup above it.
+.section-location__pin
+  @apply absolute -translate-x-1/2 -translate-y-full
+  svg
+    @apply block
+
+.section-location__pin-button
+  @apply block p-0 bg-transparent border-0 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-montela-walnut
+
+.section-location__popup
+  @apply absolute bottom-full left-1/2 mb-3 flex flex-col w-max max-w-[260px] px-5 py-4 bg-montela-cream text-montela-walnut text-center shadow-[0_4px_16px_rgba(78,60,42,0.25)] font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] opacity-0 invisible -translate-x-1/2 translate-y-1 transition duration-200 pointer-events-none
+  // Arrow towards the pin.
+  &::after
+    @apply content-[''] absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-montela-cream
+
+.section-location__popup-name
+  @apply mb-1 font-bold
+
+.section-location__pin.is-open .section-location__popup
+  @apply opacity-100 visible translate-y-0
+
 // Last section: on tablet and desktop the section runs on behind the
 // footer's booking box, as the Explore module does on the day trips (see
 // _explore.sass for the numbers). Tablet: the map is below, so the box
@@ -91,5 +118,11 @@
 // grows by the overlap, keeping its content clear.
 body:has(.footer-main--has-cta) .main-content > .section-location:last-child
   @apply md:-mb-[160px] xl:-mb-[320px]
+  // The JS map runs on behind the box too (as the iframe did). On desktop
+  // the box hides Google's logo and terms — accepted by Daniel (12.11.2026;
+  // CLAUDE.md). --map-covered = the height the box covers: google-map.js
+  // moves the pin up by half of it, to the middle of what shows.
+  .section-location__canvas
+    @apply md:[--map-covered:160px] xl:[--map-covered:320px]
   .section-location__panel
     @apply xl:pb-[477px]

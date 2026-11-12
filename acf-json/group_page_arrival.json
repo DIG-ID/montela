@@ -395,7 +395,7 @@
             "name": "section_location_map",
             "aria-label": "",
             "type": "textarea",
-            "instructions": "Google Maps → Share → Embed a map: paste the code (or just its src URL). Empty = a map of the address above.",
+            "instructions": "Only without a Google Maps API key (Theme Settings): Google Maps → Share → Embed a map: paste the code (or just its src URL). Empty = a map of the address above.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -410,6 +410,54 @@
             "rows": 3,
             "placeholder": "",
             "new_lines": ""
+        },
+        {
+            "key": "field_page_arrival_location_lat",
+            "label": "Latitude",
+            "name": "section_location_lat",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Pin position on the Google map (with an API key in Theme Settings → Google Maps). Google Maps → right-click the building → the first number.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "default_value": "",
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": "any",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_page_arrival_location_lng",
+            "label": "Longitude",
+            "name": "section_location_lng",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "The second number.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "default_value": "",
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": "any",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -433,6 +481,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1794319582,
+    "modified": 1794488437,
     "acfml_field_group_mode": "advanced"
 }

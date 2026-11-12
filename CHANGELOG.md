@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.54.0] — 2026-11-12
+### Added
+- Anreise & Lage: the map is now a Google map without hotels, cafés, shops or bus stops, with a Montela pin that shows the name and address on hover or tap. It needs a Google Maps API key (`MONTELA_GOOGLE_MAPS_KEY` in `wp-config.php`, or Theme Settings → Google Maps) and the Latitude / Longitude in the page's Location tab; without them, or if the key fails, the plain Google embed is shown as before.
+
 ## [1.53.1] — 2026-11-12
 ### Changed
 - Apartments page: the apartment cards are lower on desktop — the text panel sets the height and the photo fills it — with tighter spacing in the panel.

@@ -7,9 +7,14 @@
  * (_arrival.sass).
  *
  * The design leaves the right half as a placeholder; it held a photo slider
- * until 1.48.0, now the map. Google's embed iframe (no API key, no JS),
- * lazy-loaded: the "Map" field takes the "Embed a map" code or its src URL;
- * empty, the map searches for the address. Fields: tab "Location"
+ * until 1.48.0, now the map. With an API key (MONTELA_GOOGLE_MAPS_KEY in
+ * wp-config.php, or Theme Settings → Google Maps) and the page's Latitude / Longitude, a Maps JavaScript API map
+ * without the places of interest and with a Montela pin (since 1.54.0,
+ * assets/js/modules/google-map.js; hovering, focusing or tapping the pin
+ * shows the name and address); otherwise Google's embed iframe (no
+ * key, no JS), lazy-loaded: the "Map" field takes the "Embed a map" code or
+ * its src URL; empty, the map searches for the address. The iframe is also
+ * the JS map's fallback when the key fails. Fields: tab "Location"
  * of acf-json/group_page_arrival.json. Figma "Next to footer_explore":
  * desktop 5769:16301, tablet 5769:16291, mobile 5769:16282.
  *
@@ -44,6 +49,8 @@ if ( $location_map && ! preg_match( '#^https://(www\.)?google\.[a-z.]+/maps/#i',
 $location_lines = preg_split( '/<br\s*\/?>|\R/i', (string) $location_address );
 $location_query = implode( ', ', array_filter( array_map( 'trim', array_map( 'wp_strip_all_tags', $location_lines ) ) ) );
 $location_place = trim( wp_strip_all_tags( (string) $location_name ) );
+// The same lines for the JS map's pin popup.
+$location_address_lines = array_values( array_filter( array_map( 'trim', array_map( 'wp_strip_all_tags', $location_lines ) ) ) );
 if ( ! $location_map && $location_query ) {
 	$location_map = add_query_arg(
 		array(
@@ -54,8 +61,21 @@ if ( ! $location_map && $location_query ) {
 	);
 }
 
-if ( ! $location_title && ! $location_address && ! $location_map ) {
+if ( ! $location_title && ! $location_address && ! $location_map && ! is_numeric( get_field( 'section_location_lat' ) ) ) {
 	return;
+}
+
+// The JS map: a key and both coordinates. The key: the MONTELA_GOOGLE_MAPS_KEY
+// constant (wp-config.php) first, then Theme Settings. Either way it ends up
+// in the page source — a browser key is public; what protects it is the
+// HTTP-referrer and API restriction in Google Cloud.
+$location_key = defined( 'MONTELA_GOOGLE_MAPS_KEY' ) ? (string) MONTELA_GOOGLE_MAPS_KEY : (string) get_field( 'google_maps_api_key', 'option' );
+$location_key = trim( $location_key );
+$location_lat = get_field( 'section_location_lat' );
+$location_lng = get_field( 'section_location_lng' );
+$location_js  = $location_key && is_numeric( $location_lat ) && is_numeric( $location_lng );
+if ( $location_js ) {
+	montela_enqueue_module( 'google-map' );
 }
 
 $location_title_id = wp_unique_id( 'section-location-title-' );
@@ -86,7 +106,11 @@ $location_map_label = sprintf( __( 'Karte: %s', 'montela' ), $location_place ? $
 		?>
 	</div>
 
-	<?php if ( $location_map ) : ?>
+	<?php if ( $location_js ) : ?>
+		<div class="section-location__map">
+			<div class="section-location__canvas" role="region" aria-label="<?php echo esc_attr( $location_map_label ); ?>" data-google-map data-key="<?php echo esc_attr( $location_key ); ?>" data-lat="<?php echo esc_attr( $location_lat ); ?>" data-lng="<?php echo esc_attr( $location_lng ); ?>" data-language="<?php echo esc_attr( substr( determine_locale(), 0, 2 ) ); ?>" data-fallback="<?php echo esc_url( $location_map ); ?>" data-name="<?php echo esc_attr( $location_place ); ?>" data-address="<?php echo esc_attr( wp_json_encode( $location_address_lines ) ); ?>"></div>
+		</div>
+	<?php elseif ( $location_map ) : ?>
 		<div class="section-location__map">
 			<iframe class="section-location__iframe" src="<?php echo esc_url( $location_map ); ?>" title="<?php echo esc_attr( $location_map_label ); ?>" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
 		</div>

@@ -77,7 +77,8 @@ alteração no `CHANGELOG.md`. Os nodes do Figma de cada template estão no
   nas Theme Settings (tab Map); no staging, preencher lá e em cada página o
   título / texto / features. Falta:
   - Shop ("mapa adiado" no `CLAUDE.md`) — confirmar no Figma;
-  - textos dos pins (só o 1 tem texto e botão) e o G / C do inverno (NOTES B26).
+  - confirmar com o cliente o título do G do inverno e o F do verão (sem
+    marcador na ilustração) — NOTES B26.
 - [ ] **Animações** — `assets/js/animations.js` ainda não tem animações do
   projecto (só o setup do GSAP/Lenis). Lembrar: estados iniciais via
   `gsap.from()`, nunca `opacity: 0` no CSS.
@@ -87,6 +88,13 @@ alteração no `CHANGELOG.md`. Os nodes do Figma de cada template estão no
   Ipsum (conteúdo, no tab Timeline da página).
 
 ## A verificar
+
+- [ ] **Google Maps na Anreise & Lage** — no staging (e em produção): Sync do
+  Options — Theme Settings e do Page — Arrival; `define(
+  'MONTELA_GOOGLE_MAPS_KEY', '…' );` no `wp-config.php`; Latitude
+  46.1297376 / Longitude 7.9350669 no tab Location. Na Google Cloud,
+  restringir a chave por HTTP referrer (local, staging, produção) e à Maps
+  JavaScript API.
 
 - [ ] **Testimonials** — o conteúdo actual é provisório (vão ser reviews
   escolhidas de várias fontes e inseridas à mão). O testimonial 212 não tem

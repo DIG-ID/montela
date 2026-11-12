@@ -89,7 +89,7 @@ if ( ! function_exists( 'montela_enqueue_module' ) ) :
 	 *
 	 * @since 1.1.0
 	 *
-	 * @param string $module Module name: 'swiper', 'fancybox', 'isotope', 'activities' or 'map'.
+	 * @param string $module Module name: 'swiper', 'fancybox', 'isotope', 'activities', 'map' or 'google-map'.
 	 * @return bool True if the module was enqueued.
 	 */
 	function montela_enqueue_module( $module ) {
@@ -99,6 +99,7 @@ if ( ! function_exists( 'montela_enqueue_module' ) ) :
 			'isotope'    => 'assets/js/modules/isotope.js',
 			'activities' => 'assets/js/modules/activities.js',
 			'map'        => 'assets/js/modules/map.js',
+			'google-map' => 'assets/js/modules/google-map.js',
 		);
 
 		if ( ! isset( $modules[ $module ] ) ) {

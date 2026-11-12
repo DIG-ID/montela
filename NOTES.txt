@@ -650,12 +650,17 @@ o cliente.
                homepage; título + texto = lado a lado; só título =
                centrado). Entre a intro e o mapa: 165px com botão, 80px
                com texto (81 no Figma da Unser Resort), 72px só com título;
-             - pins só com o título (da legenda dos PDFs), excepto o 1; no
-               inverno ficam de fora o G azul (sem legenda) e o C preto ao
-               pé de Saas-Fee (é o do verão); 17 = "Kreuzboden" (a legenda
-               do verão diz "Kreuzoben").
+             - títulos dos pins da legenda dos PDFs; textos do cliente
+               (12/11). Só o pin 1 tem botão. 17 = "Kreuzboden" (a legenda
+               do verão diz "Kreuzoben");
+             - inverno: o G azul (sem legenda) entra com o título
+               "Schlittelpiste Hannig – Saas-Fee", tirado do texto; o C preto
+               ao pé de Saas-Fee (é o do verão) fica de fora;
+             - verão: o F (Klettersteig) tem texto mas não tem marcador no
+               mapa de verão — fica de fora.
   Porquê     comportamento do protótipo validado (tema kitchen-sink).
-  Confirma   designer (textos dos pins e o G / C do inverno: cliente).
+  Confirma   designer; cliente: título do G no inverno e onde fica o F no
+             verão (sem marcador na ilustração).
   Onde       template-parts/modules/map.php, assets/js/modules/map.js,
              assets/sass/_modules/_map.sass.
   Estado     POR CONFIRMAR
