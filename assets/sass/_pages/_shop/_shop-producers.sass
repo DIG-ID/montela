@@ -23,6 +23,12 @@
 // 16px apart, title 18/28 bold, text 18/25. Mobile padding 32 / 31 / 16 /
 // 31px, 10px apart, title 12/20 bold, text 14/22, capped at 260px (Bruno).
 //
+// Button (optional, since 1.55.2 — not in the frames, Bruno): the outline
+// button with walnut text, as on the Leistungen resort cards. At the
+// bottom of the card, 24px below the text at least: desktop aligned with
+// the text, the card's 26px below it; tablet and mobile centred, 32px below
+// (mobile's card padding grows from 16 to 32 with a button).
+//
 // Spacing: none above (the products section above has 192 / 192 / 128px
 // below); 192px below on every breakpoint, to the resort map in the frames
 // (map not built yet — the footer follows), measured.
@@ -48,3 +54,6 @@
 // the row too below desktop, or its gap is left behind.
 .section-shop-producers__nav:has(.swiper-button-lock)
   @apply hidden
+
+.section-shop-producers__card .btn-outline:not(:hover):not(:active)
+  @apply text-montela-walnut

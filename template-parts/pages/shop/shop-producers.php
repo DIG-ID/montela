@@ -2,7 +2,8 @@
 /**
  * Shop — shop producers: title and text (side by side on desktop, centred
  * and stacked below), then a slider of text cards on the region's producers
- * — a sage-framed card with a title and a text. Three cards in view on
+ * — a sage-framed card with a title, a text and an optional "Mehr erfahren"
+ * button (since 1.55.2). Three cards in view on
  * desktop with the arrows at either side; one card below that, with the
  * arrows underneath. "Aus der Region. Mit Leidenschaft."
  *
@@ -76,12 +77,30 @@ $spr_swiper = array(
 					<div class="swiper-wrapper">
 						<?php foreach ( $spr_items as $spr_item ) : ?>
 							<div class="swiper-slide section-shop-producers__slide">
-								<article class="section-shop-producers__card flex flex-col h-full gap-2.5 border border-montela-sage shadow-[0_4px_4px_rgba(0,0,0,0.25)] pt-8 pb-4 px-[31px] md:gap-4 md:py-8 md:px-11 xl:min-h-[410px] xl:gap-2.5 xl:pt-[47px] xl:pb-[26px] xl:pl-[42px] xl:pr-[41px]">
+								<?php $spr_link = ( ! empty( $spr_item['link']['url'] ) && ! empty( $spr_item['link']['title'] ) ) ? $spr_item['link'] : null; ?>
+								<article class="section-shop-producers__card flex flex-col h-full gap-2.5 border border-montela-sage shadow-[0_4px_4px_rgba(0,0,0,0.25)] pt-8 px-[31px] md:gap-4 md:py-8 md:px-11 xl:min-h-[410px] xl:gap-2.5 xl:pt-[47px] xl:pb-[26px] xl:pl-[42px] xl:pr-[41px]<?php echo $spr_link ? ' pb-8' : ' pb-4'; ?>">
 									<?php if ( ! empty( $spr_item['title'] ) ) : ?>
 										<h3 class="title-h4 section-shop-producers__card-title"><?php echo montela_text( $spr_item['title'] ); ?></h3>
 									<?php endif; ?>
 									<?php if ( ! empty( $spr_item['text'] ) ) : ?>
 										<p class="section-shop-producers__card-text max-w-[260px] md:max-w-none"><?php echo montela_text( $spr_item['text'] ); ?></p>
+									<?php endif; ?>
+									<?php if ( $spr_link ) : ?>
+										<div class="flex justify-center xl:justify-start mt-auto pt-[14px] md:pt-2 xl:pt-[14px]">
+											<?php
+											get_template_part(
+												'template-parts/components/button',
+												null,
+												array_merge(
+													$spr_link,
+													array(
+														'style'   => 'outline',
+														'context' => ! empty( $spr_item['title'] ) ? wp_strip_all_tags( $spr_item['title'] ) : '',
+													)
+												)
+											);
+											?>
+										</div>
 									<?php endif; ?>
 								</article>
 							</div>

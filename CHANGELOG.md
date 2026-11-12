@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.55.2] — 2026-11-12
+### Added
+- Shop, producer cards: an optional "Mehr erfahren" button.
+
 ## [1.55.1] — 2026-11-12
 ### Added
 - Leistungen, "Alles direkt im Resort": an optional "Mehr erfahren" button on each card.

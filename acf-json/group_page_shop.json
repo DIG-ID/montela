@@ -500,6 +500,25 @@
                     "new_lines": "",
                     "parent_repeater": "field_page_shop_shop_producers_items",
                     "parent": "field_page_shop_shop_producers_items"
+                },
+                {
+                    "key": "field_page_shop_shop_producers_item_link",
+                    "label": "Button",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Optional — \"Mehr erfahren\" at the bottom of the card; empty = no button.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "wpml_cf_preferences": 2,
+                    "return_format": "array",
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_page_shop_shop_producers_items"
                 }
             ]
         }
@@ -523,5 +542,5 @@
     "description": "Shop: one tab per section.",
     "show_in_rest": 0,
     "acfml_field_group_mode": "advanced",
-    "modified": 1793726775
+    "modified": 1794506092
 }
