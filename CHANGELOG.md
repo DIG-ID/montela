@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.54.2] — 2026-11-12
+### Changed
+- Der Montela Weg: the timeline is lower still on desktop (at least 620px); the photo now fills the panel's height instead of setting it.
+
 ## [1.54.1] — 2026-11-12
 ### Changed
 - Der Montela Weg: the timeline is lower on desktop (at least 720px instead of 900px, the text centred between the title and the arrows) and on tablet (less space around the text).
