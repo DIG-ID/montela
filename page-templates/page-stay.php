@@ -22,7 +22,9 @@ if ( have_posts() ) :
 			get_template_part( 'template-parts/modules/intro' );
 			get_template_part( 'template-parts/modules/space' );
 			get_template_part( 'template-parts/modules/services' );
-			get_template_part( 'template-parts/modules/box-text' );
+			// The band keeps its space above; below it, the map's padding is the gap (Figma).
+			get_template_part( 'template-parts/modules/box-text', null, array( 'class' => 'xl:mt-[192px]' ) );
+			get_template_part( 'template-parts/modules/map' );
 			get_template_part( 'template-parts/modules/testimonials' );
 		do_action( 'after_main_content' );
 	endwhile;

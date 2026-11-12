@@ -20,7 +20,7 @@ if ( have_posts() ) :
 			get_template_part( 'template-parts/modules/text-photos' );
 			get_template_part( 'template-parts/pages/home/direct-book' );
 			get_template_part( 'template-parts/pages/home/gallery' );
-			// Map section: design not final yet.
+			get_template_part( 'template-parts/modules/map' );
 			get_template_part( 'template-parts/modules/explore' );
 			get_template_part( 'template-parts/modules/image-band' );
 			get_template_part( 'template-parts/modules/activities' );

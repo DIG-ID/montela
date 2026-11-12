@@ -21,8 +21,9 @@ if ( have_posts() ) :
 			get_template_part( 'template-parts/modules/hero' );
 			get_template_part( 'template-parts/modules/intro' );
 			get_template_part( 'template-parts/pages/region/place' );
-			get_template_part( 'template-parts/modules/cards-icon' );
-			// Map section: skipped for now (design not approved).
+			// No space below the cards: the map's own padding is the gap (Figma).
+			get_template_part( 'template-parts/modules/cards-icon', null, array( 'class' => 'mb-0' ) );
+			get_template_part( 'template-parts/modules/map' );
 			get_template_part( 'template-parts/pages/region/trips' );
 			get_template_part( 'template-parts/modules/box-text' );
 			get_template_part( 'template-parts/modules/activities' );

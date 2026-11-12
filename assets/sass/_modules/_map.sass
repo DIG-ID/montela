@@ -1,0 +1,210 @@
+// Map module (template-parts/modules/map.php, assets/js/modules/map.js).
+// Figma "section-map": desktop 5588:16242, tablet 5895:18193, mobile
+// 5895:18042.
+//
+//   Section  128 / 192 / 224px above and below (mobile / tablet / desktop).
+//   Intro    title, text and button. Desktop: title on columns 2–8 (934px
+//            wide in Figma), 20px below it the button (column 2, on the
+//            text's bottom line) and the text (columns 8–11 — 593px).
+//            Tablet / mobile: title, text (72 / 40px below), button 32px
+//            below the text.
+//   Map      165 / 64 / 40px below the intro. Desktop: the container width,
+//            1814 × 720 in Figma (the ratio is kept). Tablet / mobile: the
+//            whole screen width inside a 12px cream border, 720px tall
+//            (portrait on mobile — the prototype's square frame was not
+//            the design).
+//   Features 30 / 64 / 40px below the map: a sage frame with six icons +
+//            texts — a row on desktop, 6 columns on tablet (24px from the
+//            screen edges), 2 columns on mobile (the container).
+//
+// Layout (columns, margins, paddings) is in the PHP; here the map itself.
+
+// -- Map ----------------------------------------------------------------------
+
+.section-map__map
+  @apply relative font-primary
+  // Fullscreen: the frame fills the screen instead of keeping its size.
+  &:fullscreen
+    @apply bg-montela-cream
+    .section-map__viewport
+      @apply h-full aspect-auto
+
+// The scrolling frame: pan = native scroll, no visible scrollbars. One
+// finger pans natively; the pinch is handled in map.js.
+.section-map__viewport
+  @apply h-[696px] xl:h-auto xl:aspect-[1814/720] overflow-auto overscroll-contain cursor-grab select-none
+  touch-action: pan-x pan-y
+  scrollbar-width: none
+  &::-webkit-scrollbar
+    display: none
+  &:focus-visible
+    @apply outline outline-2 outline-offset-4 outline-montela-mustard
+  &.is-dragging
+    @apply cursor-grabbing
+
+.section-map__canvas
+  @apply relative w-full
+
+// Season layers: the first one sizes the canvas, the others are stacked on
+// it; the active one fades in (0.5s).
+.section-map__layer
+  @apply opacity-0 invisible motion-reduce:transition-none
+  transition: opacity 0.5s ease, visibility 0s linear 0.5s
+  & + &
+    @apply absolute inset-0
+  &.is-active
+    @apply opacity-100 visible
+    transition: opacity 0.5s ease, visibility 0s
+
+.section-map__image
+  @apply block w-full h-auto max-w-none pointer-events-none
+
+// -- Pins: transparent hit areas over the markers printed in the artwork --
+// They grow with the zoom (% of the canvas) but never below a tappable 28px.
+.section-map__pin
+  @apply absolute aspect-square p-0 border-0 rounded-full bg-transparent cursor-pointer
+  left: var(--x)
+  top: var(--y)
+  width: max(1.4%, 1.75rem)
+  transform: translate(-50%, -50%)
+  &::after
+    content: ""
+    @apply absolute -inset-1 border-2 border-solid border-white rounded-full opacity-0 scale-[0.7] motion-reduce:transition-none
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.15), 0 0 14px rgba(255, 255, 255, 0.9)
+    transition: opacity 0.2s ease, transform 0.2s ease
+  &:hover::after,
+  &:focus-visible::after,
+  &.is-active::after
+    @apply opacity-100 scale-100
+  &:focus-visible
+    @apply outline-none
+
+// Entry: the halos pulse once, staggered, when the map scrolls into view.
+.section-map__map.is-revealed .section-map__pin::after
+  animation: section-map-pulse 0.9s ease calc(var(--pin-index, 0) * 80ms) 1
+  @media (prefers-reduced-motion: reduce)
+    animation: none
+
+@keyframes section-map-pulse
+  0%
+    opacity: 0
+    transform: scale(0.7)
+  40%
+    opacity: 1
+    transform: scale(1.2)
+  100%
+    opacity: 0
+    transform: scale(0.7)
+
+// -- Wheel hint: the wheel used before the map was clicked --
+.section-map__hint
+  @apply absolute left-1/2 top-1/2 z-[4] px-5 py-[10px] -translate-x-1/2 -translate-y-1/2 bg-montela-walnut/85 text-montela-cream text-center text-[16px] leading-[22px] tracking-[0.5px] pointer-events-none opacity-0 transition-opacity duration-300
+  &.is-visible
+    @apply opacity-100
+
+// -- Controls: white 48px circles, top right --
+// From the frame's edge: 30 / 37px (mobile), 34 / 38px (tablet), 53 / 57px
+// (desktop) — Figma.
+.section-map__controls
+  @apply absolute z-[5] flex flex-col gap-3 top-[30px] right-[37px] md:top-[34px] md:right-[38px] xl:top-[53px] xl:right-[57px]
+
+.section-map__control
+  @apply grid place-items-center w-12 h-12 p-0 border-0 rounded-full bg-white cursor-pointer transition-transform duration-200 motion-reduce:transition-none
+  img
+    @apply block max-w-none
+  &:hover
+    @apply scale-[1.06]
+  &:focus-visible
+    @apply outline outline-2 outline-offset-2 outline-montela-mustard
+  &:disabled
+    @apply opacity-50 cursor-default scale-100
+  &[hidden]
+    @apply hidden
+
+// -- Season switch: sage pill, bottom right; the active season in cream --
+// Desktop: two 150px buttons, 6px padding. Tablet / mobile: buttons sized
+// by their text, 8 / 6px padding. 47–52px from the frame's bottom.
+//
+// The cream pill slides from one season to the other, as in the Activities
+// switch: map.js measures the active button into --indicator-* and adds
+// .is-ready, which hands the cream background over from the button to
+// .section-map__indicator. Until then (no JS yet) the button paints it.
+.section-map__seasons
+  @apply absolute z-[5] flex gap-4 right-[37px] bottom-12 md:right-[38px] xl:right-[57px] xl:bottom-[52px] px-2 py-[6px] xl:p-[6px] rounded-[81px] xl:rounded-[38px] bg-montela-sage drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)]
+
+.section-map__season
+  @apply flex items-center justify-center gap-2 xl:w-[150px] px-4 py-[6px] border-0 rounded-[32px] bg-transparent font-light text-[20px] leading-[32px] tracking-[0.5px] text-montela-cream cursor-pointer whitespace-nowrap transition-colors duration-300 motion-reduce:transition-none
+  &::before
+    content: ""
+    @apply w-8 h-8 shrink-0 bg-current
+  &:hover
+    @apply text-montela-mustard
+  &.is-active
+    @apply bg-montela-cream text-montela-sage cursor-default
+  .is-ready > &
+    @apply relative z-[1] bg-transparent
+  &:focus-visible
+    @apply outline outline-2 outline-offset-2 outline-montela-mustard
+
+.section-map__indicator
+  @apply absolute left-0 top-0 hidden rounded-[32px] bg-montela-cream
+  width: var(--indicator-w)
+  height: var(--indicator-h)
+  transform: translate(var(--indicator-x), var(--indicator-y))
+
+.section-map__seasons.is-ready .section-map__indicator
+  @apply block
+
+.section-map__seasons.is-animated .section-map__indicator
+  @apply transition-[transform,width] duration-[400ms] ease-in-out motion-reduce:transition-none
+
+// The Activities switch's icons, as a mask so they take the text colour.
+.section-map__season--summer::before
+  mask: url("../../svg/icons/season-summer.svg") center / contain no-repeat
+
+.section-map__season--winter::before
+  mask: url("../../svg/icons/season-winter.svg") center / contain no-repeat
+
+// -- Popup: cream, sage hairline, 442px (tablet and desktop) --
+// Mobile: the map's width less 8px each side. map.js sets its position.
+.section-map__popup
+  @apply absolute left-0 top-0 z-[6] w-[calc(100%-16px)] md:w-[442px] p-8 border border-solid border-montela-sage bg-montela-cream text-montela-walnut
+  &[hidden]
+    @apply hidden
+
+// Close (not in Figma — for touch and keyboard).
+.section-map__popup-close
+  @apply absolute top-2 right-2 w-8 h-8 p-0 border-0 rounded-full bg-transparent text-montela-sage cursor-pointer
+  &::before
+    content: ""
+    @apply absolute inset-2 bg-current
+    mask: url("../../svg/icons/close.svg") center / contain no-repeat
+  &:hover,
+  &:focus-visible
+    @apply bg-montela-sage/15 outline-none
+
+// Title 25/30 (18/28 on mobile), 16px to the text, 30px to the button.
+.section-map__popup-title
+  @apply pr-6 font-normal text-[18px] leading-[28px] tracking-[1px] md:text-[25px] md:leading-[30px]
+
+// Figma: mobile 18/25, tablet and desktop the "Text" style (20/32 in the
+// frame; 18/30 in this theme from 1536, 16/28 from 1280 — B25).
+.section-map__popup-text
+  @apply mt-4 font-light text-[18px] leading-[25px] tracking-[0.5px] md:text-[20px] md:leading-[32px] xl:text-[16px] xl:leading-[28px] 2xl:text-[18px] 2xl:leading-[30px]
+
+// Sage box, 237px, no arrow (Figma); hover as the theme's buttons.
+.section-map__popup-button
+  @apply flex items-center justify-center w-[237px] max-w-full mt-[30px] py-3 px-4 bg-montela-sage font-bold text-[14px] leading-[16px] tracking-[0.84px] uppercase text-montela-cream transition-colors duration-300
+  &:hover,
+  &:active
+    @apply bg-montela-mustard text-montela-walnut
+  &:focus-visible
+    @apply outline outline-2 outline-offset-4 outline-montela-mustard
+
+// -- Features: icon + text in sage --
+// Figma: Roboto Medium 14/20 (16/20 on desktop), icons 64px.
+.section-map__feature-icon
+  @apply block w-16 h-16 shrink-0 object-contain
+
+.section-map__feature-text
+  @apply font-medium text-[14px] leading-[20px] tracking-[0.5px] text-montela-sage xl:text-[16px]

@@ -632,6 +632,34 @@ o cliente.
              de cada título acima.
   Estado     POR CONFIRMAR
 
+[2026-11-12] B26. Mapa interactivo (homepage) — o que o Figma não desenha
+  O quê      módulo Map (template-parts/modules/map.php).
+  Figma      5588:16242 / 5895:18193 / 5895:18042: um estado parado (popup
+             do pin 1 aberto, Summer activo).
+  Feito      - switch com os nomes dos termos Season ("Sommer" / "Winter"),
+               como nas Activities — o Figma escreve "Summer";
+             - estação aberta ao carregar: inverno de Dezembro a Abril;
+             - botão × no popup (touch e teclado) e aviso "Klicken Sie auf
+               die Karte, um mit dem Mausrad zu zoomen" ao rodar a roda
+               antes de clicar no mapa (textos sem Figma, de-CH);
+             - popup em mobile por cima ou por baixo do pin, conforme o
+               espaço; a partir de tablet ao lado dele;
+             - vista inicial em mobile já com zoom, centrada no pin 1;
+             - 20px entre as features em desktop (o Figma encosta-as);
+             - intro em desktop: o layout segue o conteúdo (com botão =
+               homepage; título + texto = lado a lado; só título =
+               centrado). Entre a intro e o mapa: 165px com botão, 80px
+               com texto (81 no Figma da Unser Resort), 72px só com título;
+             - pins só com o título (da legenda dos PDFs), excepto o 1; no
+               inverno ficam de fora o G azul (sem legenda) e o C preto ao
+               pé de Saas-Fee (é o do verão); 17 = "Kreuzboden" (a legenda
+               do verão diz "Kreuzoben").
+  Porquê     comportamento do protótipo validado (tema kitchen-sink).
+  Confirma   designer (textos dos pins e o G / C do inverno: cliente).
+  Onde       template-parts/modules/map.php, assets/js/modules/map.js,
+             assets/sass/_modules/_map.sass.
+  Estado     POR CONFIRMAR
+
 ===============================================================================
 C. ERROS NO FIGMA
 ===============================================================================

@@ -26,7 +26,8 @@ if ( have_posts() ) :
 				)
 			);
 			get_template_part( 'template-parts/modules/intro' );
-			// Resort map section: postponed.
+			// Map: right after the intro, without its own space above.
+			get_template_part( 'template-parts/modules/map', null, array( 'padding_top' => false ) );
 			get_template_part( 'template-parts/modules/resort-sections' );
 		do_action( 'after_main_content' );
 	endwhile;

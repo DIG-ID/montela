@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.53.0] — 2026-11-12
+### Added
+- Interactive map section on the homepage, Aufenthalt, Unsere Region and Unser Resort: illustrated summer / winter map with zoom, pan, fullscreen, a popup per location and a features bar below. The map artwork and its locations are set once in Theme Settings (tab Map); each page sets its own title, text, button and features.
+
+### Changed
+- Unsere Region: no extra space between the Highlights cards and the map. Aufenthalt: no extra space between the green band and the map.
+
 ## [1.52.11] — 2026-11-11
 ### Changed
 - Text set at 18px on desktop (cards, icon lists, footer, H4, FAQ, forms and more) is 16/28 between 1280 and 1535px; 1536px and up unchanged.

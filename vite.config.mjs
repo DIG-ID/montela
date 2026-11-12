@@ -22,6 +22,7 @@ const entries = [
   'assets/js/modules/fancybox.js',
   'assets/js/modules/isotope.js',
   'assets/js/modules/activities.js',
+  'assets/js/modules/map.js',
   'assets/sass/main.sass',
   'assets/sass/admin-login.sass',
   'assets/sass/admin-dashboard.sass',

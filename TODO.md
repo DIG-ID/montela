@@ -72,17 +72,12 @@ alteração no `CHANGELOG.md`. Os nodes do Figma de cada template estão no
     três cards), Features (Cream, Centred, ícones walnut, notas e botões) e
     Resort sections (três blocos de parceiros, sem botão) e Box text (Cream,
     sem lista, título, texto, botão "Zum Resort" com Button colour Green).
-- [ ] **Mapa** — design por aprovar. Entra em vários sítios:
-  - homepage, entre a Gallery e o Explore (`page-templates/page-home.php`);
-  - Unsere Region, entre os Highlights e os Tagesausflüge (`page-templates/page-region.php`);
-  - Aufenthalt, entre o Extras e os Testimonials;
-  - Unser Resort e Shop ("mapa adiado" no `CLAUDE.md`).
-  A infraestrutura da API do Google Maps (`google-maps.js`, a constante da
-  chave, o enqueue) saiu na 1.48.0 sem uso; se o mapa precisar dela, está no
-  starter / no git.
-  Rever as margens das secções vizinhas, que hoje são provisórias por causa do
-  mapa — desde a 1.32.0 estão no PHP (`modules/cards-icon.php`,
-  `modules/box-text.php`, classes por omissão ou `$args['class']`).
+- [ ] **Mapa** — módulo feito (`modules/map.php`, desde a 1.53.0): homepage,
+  Aufenthalt, Unsere Region e Unser Resort. As ilustrações e os pins estão
+  nas Theme Settings (tab Map); no staging, preencher lá e em cada página o
+  título / texto / features. Falta:
+  - Shop ("mapa adiado" no `CLAUDE.md`) — confirmar no Figma;
+  - textos dos pins (só o 1 tem texto e botão) e o G / C do inverno (NOTES B26).
 - [ ] **Animações** — `assets/js/animations.js` ainda não tem animações do
   projecto (só o setup do GSAP/Lenis). Lembrar: estados iniciais via
   `gsap.from()`, nunca `opacity: 0` no CSS.
