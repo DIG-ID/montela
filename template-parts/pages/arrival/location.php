@@ -8,7 +8,7 @@
  *
  * The design leaves the right half as a placeholder; it held a photo slider
  * until 1.48.0, now the map. With an API key (MONTELA_GOOGLE_MAPS_KEY in
- * wp-config.php, or Theme Settings → Google Maps) and the page's Latitude / Longitude, a Maps JavaScript API map
+ * wp-config.php) and the page's Latitude / Longitude, a Maps JavaScript API map
  * without the places of interest and with a Montela pin (since 1.54.0,
  * assets/js/modules/google-map.js; hovering, focusing or tapping the pin
  * shows the name and address); otherwise Google's embed iframe (no
@@ -65,12 +65,11 @@ if ( ! $location_title && ! $location_address && ! $location_map && ! is_numeric
 	return;
 }
 
-// The JS map: a key and both coordinates. The key: the MONTELA_GOOGLE_MAPS_KEY
-// constant (wp-config.php) first, then Theme Settings. Either way it ends up
-// in the page source — a browser key is public; what protects it is the
+// The JS map: a key and both coordinates. The key is the
+// MONTELA_GOOGLE_MAPS_KEY constant (wp-config.php). It still ends up in the
+// page source — a browser key is public; what protects it is the
 // HTTP-referrer and API restriction in Google Cloud.
-$location_key = defined( 'MONTELA_GOOGLE_MAPS_KEY' ) ? (string) MONTELA_GOOGLE_MAPS_KEY : (string) get_field( 'google_maps_api_key', 'option' );
-$location_key = trim( $location_key );
+$location_key = defined( 'MONTELA_GOOGLE_MAPS_KEY' ) ? trim( (string) MONTELA_GOOGLE_MAPS_KEY ) : '';
 $location_lat = get_field( 'section_location_lat' );
 $location_lng = get_field( 'section_location_lng' );
 $location_js  = $location_key && is_numeric( $location_lat ) && is_numeric( $location_lng );

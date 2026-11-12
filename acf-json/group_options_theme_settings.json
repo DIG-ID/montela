@@ -962,46 +962,6 @@
                     "parent_repeater": "field_options_map_pins_winter"
                 }
             ]
-        },
-        {
-            "key": "field_options_google_maps_tab",
-            "label": "Google Maps",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0,
-            "selected": 0
-        },
-        {
-            "key": "field_options_google_maps_api_key",
-            "label": "API key",
-            "name": "google_maps_api_key",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Google Cloud key with the Maps JavaScript API enabled; restrict it to this site's domains (HTTP referrers). Used by the map of the Anreise & Lage page; empty = Google's plain embed (with all the places of interest). The MONTELA_GOOGLE_MAPS_KEY constant in wp-config.php, when defined, wins over this field.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "wpml_cf_preferences": 1,
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
         }
     ],
     "location": [
@@ -1025,6 +985,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1794488437,
+    "modified": 1794489761,
     "acfml_field_group_mode": "advanced"
 }

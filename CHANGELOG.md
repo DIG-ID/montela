@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.54.1] — 2026-11-12
+### Changed
+- Der Montela Weg: the timeline is lower on desktop (at least 720px instead of 900px, the text centred between the title and the arrows) and on tablet (less space around the text).
+
+### Removed
+- Theme Settings: the Google Maps tab. The API key is now only set in `wp-config.php` (`MONTELA_GOOGLE_MAPS_KEY`).
+
 ## [1.54.0] — 2026-11-12
 ### Added
 - Anreise & Lage: the map is now a Google map without hotels, cafés, shops or bus stops, with a Montela pin that shows the name and address on hover or tap. It needs a Google Maps API key (`MONTELA_GOOGLE_MAPS_KEY` in `wp-config.php`, or Theme Settings → Google Maps) and the Latitude / Longitude in the page's Location tab; without them, or if the key fails, the plain Google embed is shown as before.

@@ -88,11 +88,14 @@
 //   Mobile   photo 400px tall, then the sage panel: 44px padding, year
 //            (36/38), 12px, title, 44px, text (14/22, 328px), 44px, arrows
 //   Tablet   photo 400px tall, then the panel: 53 / 65px padding, year
-//            (80/76), 16px, title, 96px, text (18/25, 453px), 96px, arrows
-//   Desktop  panel and photo side by side, 900px tall, 20px apart (18 in
-//            Figma); year 76px down, title 50px under it, text 15/25
-//            (485px) from 489px down; arrows centred on the panel, 97px
-//            from the bottom
+//            (80/76), 16px, title, 64px, text (18/25, 453px), 61px, arrows
+//            (Figma: 96 and 96 — lower at Daniel's request, 12.11.2026)
+//   Desktop  panel and photo side by side, 20px apart (18 in Figma); year
+//            76px down, title 50px under it, text 15/25 (485px); arrows
+//            centred on the panel, 97px from the bottom. Figma: 900px tall,
+//            text from 489px down. Lower at Daniel's request (12.11.2026):
+//            at least 720px, the text centred between the title and the
+//            arrows (56px clear at least) — a longer text grows the panel
 //
 // The arrows sit once over the slider (not in every slide), in the room
 // the panel's bottom padding keeps for them. Slides stretch to the tallest.
@@ -110,13 +113,13 @@
   @apply flex flex-col h-auto xl:grid xl:grid-cols-2 xl:gap-x-5
 
 .section-timeline__panel
-  @apply flex flex-1 flex-col items-center bg-montela-sage text-center px-8 pt-11 pb-[127px] md:px-[65px] md:pt-[53px] md:pb-[188px] xl:min-h-[900px] xl:pt-[76px] xl:pb-[200px]
+  @apply flex flex-1 flex-col items-center bg-montela-sage text-center px-8 pt-11 pb-[127px] md:px-[65px] md:pt-[53px] md:pb-[152px] xl:min-h-[720px] xl:pt-[76px] xl:pb-[160px]
 
 .section-timeline__title
   @apply mt-3 md:mt-4 xl:mt-[50px]
 
 .section-timeline__text
-  @apply mt-11 max-w-[328px] font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:mt-24 md:max-w-[453px] md:text-[18px] md:leading-[25px] xl:mt-[253px] xl:max-w-[485px] xl:text-[15px]
+  @apply mt-11 max-w-[328px] font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:mt-16 md:max-w-[453px] md:text-[18px] md:leading-[25px] xl:my-auto xl:py-14 xl:max-w-[485px] xl:text-[15px]
 
 .section-timeline__photo
   @apply order-first m-0 h-[400px] overflow-hidden xl:order-none xl:h-auto

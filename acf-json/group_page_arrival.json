@@ -395,7 +395,7 @@
             "name": "section_location_map",
             "aria-label": "",
             "type": "textarea",
-            "instructions": "Only without a Google Maps API key (Theme Settings): Google Maps → Share → Embed a map: paste the code (or just its src URL). Empty = a map of the address above.",
+            "instructions": "Only without a Google Maps API key (MONTELA_GOOGLE_MAPS_KEY in wp-config.php): Google Maps → Share → Embed a map: paste the code (or just its src URL). Empty = a map of the address above.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -417,7 +417,7 @@
             "name": "section_location_lat",
             "aria-label": "",
             "type": "number",
-            "instructions": "Pin position on the Google map (with an API key in Theme Settings → Google Maps). Google Maps → right-click the building → the first number.",
+            "instructions": "Pin position on the Google map (with a Google Maps API key in wp-config.php). Google Maps → right-click the building → the first number.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -481,6 +481,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1794488437,
+    "modified": 1794489761,
     "acfml_field_group_mode": "advanced"
 }

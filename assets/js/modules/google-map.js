@@ -4,7 +4,7 @@
 //
 // A Google Maps JavaScript API map without the places of interest (hotels,
 // cafés, shops, bus stops), which the plain embed iframe cannot hide, and
-// with a Montela pin. Used when Theme Settings → Google Maps has an API key
+// with a Montela pin. Used when wp-config.php defines MONTELA_GOOGLE_MAPS_KEY
 // and the page has coordinates; otherwise the template prints the iframe.
 //
 // - The API loads only when the map nears the viewport (it is the last
