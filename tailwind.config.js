@@ -15,6 +15,13 @@ module.exports = {
     },
 
     extend: {
+      // Above Tailwind's 2xl (1536px), appended after it so the min-width
+      // queries keep their order. CSS pixels: a 4K screen usually runs at
+      // 150–200% scaling (1920–2560px), so nothing above 4xl.
+      screens: {
+        '3xl': '1920px', // the Figma desktop canvas
+        '4xl': '2560px', // 1440p ("2K") at 100%
+      },
       letterSpacing: {
         // wide: '.038em',
         // wider: '.06em',

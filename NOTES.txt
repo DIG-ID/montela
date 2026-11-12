@@ -300,6 +300,23 @@ no ficheiro indicado em "No starter".
   No starter .claude/rules/sass.md (secção Especificidade / armadilhas).
   No Montela template-parts/apartment/intro.php (1.50.5).
   Estado     POR PASSAR
+
+[2026-11-12] A19. Breakpoints acima do 2xl
+  Problema   o Tailwind pára no 2xl (1536px). Num ecrã 1440p (2560px de
+             CSS) a página de Apartments ficou com o título em menos linhas
+             e os painéis vazios — sem breakpoint para corrigir.
+  Regra      no tailwind.config.js, theme.extend.screens:
+               '3xl': '1920px',  // o canvas desktop do Figma
+               '4xl': '2560px',  // 1440p ("2K") a 100%
+             e em .claude/rules/sass.md: "os breakpoints por omissão não se
+             redefinem; acima do 2xl, 3xl / 4xl (extend.screens) — só
+             quando é preciso, o design não tem frames para eles". Sem 5xl
+             (3840): são pixels CSS, e um 4K com 150–200% de escala dá
+             1920–2560px — só dispararia a 100%.
+  No starter tailwind.config.js (theme.extend.screens) e
+             .claude/rules/sass.md (Responsive).
+  No Montela tailwind.config.js, .claude/rules/sass.md (1.54.3).
+  Estado     POR PASSAR
 ===============================================================================
 B. DECISÕES POR CONFIRMAR
 ===============================================================================

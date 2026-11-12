@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.54.3] — 2026-11-12
+### Added
+- Two Tailwind breakpoints for large screens: `3xl` (1920px) and `4xl` (2560px). Not used yet — no visible change.
+
 ## [1.54.2] — 2026-11-12
 ### Changed
 - Der Montela Weg: the timeline is lower still on desktop (at least 620px); the photo now fills the panel's height instead of setting it.

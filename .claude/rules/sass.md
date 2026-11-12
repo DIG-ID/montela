@@ -35,7 +35,7 @@ Componentes e regras custom no SASS constroem-se com utilitários Tailwind via *
 ```
 
 - Uma classe = uma linha `@apply` com os utilitários; usar **valores arbitrários** quando não há token (`text-[82px]`, `leading-[100px]`, `tracking-[0.5px]`).
-- **Responsive** com os breakpoints por omissão do Tailwind, nunca redefinidos no `tailwind.config.js`. Vocabulário: **mobile** < `md` (768) · **tablet** entre `md` e `xl` · **desktop** ≥ `xl` (1280). Mobile-first: valor base, depois `xl:`; só usar `md:` quando o design dá um valor próprio para tablet.
+- **Responsive** com os breakpoints por omissão do Tailwind, nunca redefinidos no `tailwind.config.js` — só acrescentados acima do `2xl` (`extend.screens`): `3xl` 1920 (o canvas do Figma) e `4xl` 2560 (1440p), para ecrãs grandes onde o layout de 1920 fica perdido. Usar só quando é preciso; o design não tem frames para eles. Vocabulário: **mobile** < `md` (768) · **tablet** entre `md` e `xl` · **desktop** ≥ `xl` (1280). Mobile-first: valor base, depois `xl:`; só usar `md:` quando o design dá um valor próprio para tablet.
 - **Tipografia sem cor** — as classes de título/texto não trazem cor; define-se no container para os filhos (incl. `<p>` do wpautop) herdarem. Excepção: links inline.
 - Fonte via os tokens `font-primary` / `font-secondary` do `tailwind.config.js`.
 - CSS puro só quando não há utilitário equivalente (ex.: `grid-template-columns: repeat(12, ...)` no `.theme-grid`).
