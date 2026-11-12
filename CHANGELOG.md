@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.54.4] — 2026-11-12
+
+### Changed
+- Explore section without the small photo (Bike Hotel): less space between the title and the text, more between the button and the footer's booking box (desktop and tablet).
+
 ## [1.54.3] — 2026-11-12
 ### Added
 - Two Tailwind breakpoints for large screens: `3xl` (1920px) and `4xl` (2560px). Not used yet — no visible change.

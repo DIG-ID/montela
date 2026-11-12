@@ -86,16 +86,20 @@ body:has(.footer-main--has-cta) .main-content > .section-explore:last-child
   @apply max-w-[701px] xl:max-w-[608px] mb-[51px] md:mb-[14px] xl:mb-0
 
 // Without the small photo (.section-explore--no-photo) the text keeps the
-// panel's composition: title → text 51px mobile, 116px tablet, 267px
+// panel's composition: title → text 51px mobile, 72px tablet, 120px
 // desktop; text → button 51px mobile, 44px tablet, 50px desktop (measured).
+// Title → text is 116 (tablet) / 267 (desktop) in Figma: shortened at
+// Daniel's request (12.11.2026) — the difference moves under the button
+// (see the last-section padding below), so the panel keeps its height.
 .section-explore--no-photo .section-explore__text
-  @apply mt-[51px] md:mt-[116px] xl:mt-[267px]
+  @apply mt-[51px] md:mt-[72px] xl:mt-[120px]
 
 .section-explore--no-photo .section-explore__panel .btn
   @apply mt-[51px] md:mt-11 xl:mt-[50px]
 
 // Last section without the photo (Bike Hotel, tablet 5895:20547): 87px from
-// the button to the footer's box (86.62 in Figma — Bruno), not the 144px
-// of the single Tagesausflug: 160px overlap + 87.
+// the button to the footer's box in Figma (86.62 — Bruno), not the 144px of
+// the single Tagesausflug. Plus what the title → text gap gave up above:
+// tablet 160 overlap + 87 + 44 = 291; desktop 371 + 147 = 518.
 body:has(.footer-main--has-cta) .main-content > .section-explore--no-photo:last-child .section-explore__panel
-  @apply md:pb-[247px] xl:pb-[371px]
+  @apply md:pb-[291px] xl:pb-[518px]
