@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.54.5] — 2026-11-12
+
+### Changed
+- Box text (box style — Kids Playground, Lounge & Bar, Shop, Erkunden): the text is vertically centred against the title on desktop.
+
 ## [1.54.4] — 2026-11-12
 
 ### Changed

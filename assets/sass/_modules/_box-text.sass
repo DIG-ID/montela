@@ -49,9 +49,10 @@
 .section-box-text--box .section-box-text__box
   @apply col-span-full border border-montela-walnut pt-6 pl-5 pr-2.5 pb-5 md:pt-11 md:pr-5 xl:col-start-2 xl:col-span-10 xl:px-[clamp(60px,calc(14.84vw-130px),155px)] xl:py-[84px]
 
-// Columns cap at 566px and shrink together below 1920.
+// Columns cap at 566px and shrink together below 1920. The text is centred
+// against the title (top-aligned in Figma — Daniel, 12.11.2026).
 .section-box-text--box .section-box-text__inner
-  @apply flex flex-col gap-2.5 md:gap-0 xl:grid xl:grid-cols-[minmax(0,566px)_minmax(0,566px)] xl:gap-x-5 xl:gap-y-2.5 xl:justify-center
+  @apply flex flex-col gap-2.5 md:gap-0 xl:grid xl:grid-cols-[minmax(0,566px)_minmax(0,566px)] xl:gap-x-5 xl:gap-y-2.5 xl:justify-center xl:items-center
 
 .section-box-text--box .section-box-text__eyebrow
   @apply xl:col-span-2
