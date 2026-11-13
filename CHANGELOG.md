@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.56.2] — 2026-11-13
+
+### Changed
+- Map strip: popups open beside the pin on desktop, and just off it (diagonally) on tablet and mobile, so the pin stays visible.
+
 ## [1.56.1] — 2026-11-13
 
 ### Added

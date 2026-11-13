@@ -10,8 +10,10 @@
 //   invisible button.
 // - Hover (mouse) opens the popup; click / tap / Enter toggles it; Esc, the
 //   close button and a click outside close it.
-// - The popup's bottom-right corner sits on the pin (Figma); it flips to the
-//   right of the pin, or below it, when there is no room.
+// - Desktop: the popup sits beside the pin, centred on it vertically — on
+//   its left, or its right when there is no room. Tablet / mobile: its
+//   corner just off the pin, above-left, flipping right / below. Figma: its
+//   corner on the pin.
 // - Season switch (the Map module's): cross-fades the layers (CSS); the
 //   inactive one is inert. The cream pill slides as in map.js.
 // - The places light up one after the other the first time the strip
@@ -20,6 +22,7 @@
 import { domReady } from '../utils/helpers.js';
 
 const MARGIN = 8;
+const desktopQuery = window.matchMedia('(min-width: 1280px)');
 
 function initStrip(strip) {
   const frame = strip.querySelector('.section-map-strip__frame');
@@ -73,13 +76,31 @@ function initStrip(strip) {
     const width = popup.offsetWidth;
     const height = popup.offsetHeight;
 
-    let left = x - width;
-    if (left < MARGIN) {
-      left = x;
-    }
-    let top = y - height;
-    if (top < MARGIN) {
-      top = y;
+    let left;
+    let top;
+
+    if (desktopQuery.matches) {
+      // Desktop: beside the pin, centred on it vertically, the disc + 12px
+      // clear — on its left, or its right when there is no room (Daniel,
+      // 13.11.2026; Figma puts the card's corner on the pin).
+      const gap = pinRect.width / 2 + 12;
+      left = x - gap - width;
+      if (left < MARGIN) {
+        left = x + gap;
+      }
+      top = y - height / 2;
+    } else {
+      // Tablet and mobile: the corner off the disc, diagonally — above-left,
+      // flipping right / below when there is no room.
+      const gap = pinRect.width / 2 + 4;
+      left = x - gap - width;
+      if (left < MARGIN) {
+        left = x + gap;
+      }
+      top = y - gap - height;
+      if (top < MARGIN) {
+        top = y + gap;
+      }
     }
 
     // Never past the bottom of what shows (the footer's box covers the rest).
