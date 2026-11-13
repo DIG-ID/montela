@@ -67,7 +67,7 @@
 .header-main__menu
   @apply flex items-stretch border border-montela-cream
   a
-    @apply flex items-center h-full py-[14px] font-primary font-normal text-[15px] leading-[32px] tracking-[0.5px] uppercase whitespace-nowrap transition-colors duration-300 ease-out xl:px-5 2xl:px-12
+    @apply flex items-center h-full py-[14px] font-primary font-normal text-[15px] leading-[32px] tracking-[0.5px] uppercase whitespace-nowrap transition-colors duration-300 ease-out xl:px-5 2xl:px-16
     &:hover
       @apply bg-montela-cream/20
   // Hover and the current page: the mega menu's 20% cream fill, without its
@@ -234,7 +234,7 @@
 // drops in (`.is-header-returning`).
 .is-header-stuck
   .header-main
-    @apply fixed bg-montela-sage text-montela-cream motion-safe:animate-[header-drop_400ms_ease-out]
+    @apply fixed bg-montela-sage text-montela-cream motion-safe:animate-[header-drop_400ms_ease-out] shadow-md
   // Desktop: 20px above and below (Bruno, 2026-11-10 — the frame has 9px).
   .header-main__inner
     @apply py-[9px] xl:py-5

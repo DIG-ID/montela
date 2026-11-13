@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.59.1] — 2026-11-13
+### Fixed
+- Hero title: indented lines come in on the same rhythm as the others (they started late, the reveal first sweeping the empty indent). Same position as before.
+
+### Changed
+- Header: wider menu items on large screens; the sticky header has a soft shadow.
+
 ## [1.59.0] — 2026-11-13
 ### Changed
 - Every page with a hero now opens like the homepage: the title comes in line by line, then the header, scroll cue and sticky button; the hero image moves with a parallax on scroll. Unser Resort included; pages without a hero (text pages, 404) are unchanged.

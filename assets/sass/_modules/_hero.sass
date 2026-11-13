@@ -52,12 +52,15 @@
   @apply italic
 
 // -- Desktop position, set per line in the editor --
+// Indents are margins, not padding (1.59.1): the title animations clip
+// each line's own box (width: fit-content) — with padding, the mask swept
+// the empty indent first and indented lines came in late. Same position.
 .section-hero__line--indent
-  @apply xl:pl-[128px]
+  @apply xl:ml-[128px]
 
 // Custom: the editor's indent in px, set inline as --hero-indent.
 .section-hero__line--custom
-  @apply xl:pl-[var(--hero-indent,128px)]
+  @apply xl:ml-[var(--hero-indent,128px)]
 
 .section-hero__line--center
   @apply xl:text-center
