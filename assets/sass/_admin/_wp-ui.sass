@@ -10,7 +10,7 @@
 //
 // Kept as core draws them: input borders (#8c8f94 is 3.3:1 on white — the
 // 3:1 a field's outline needs; the palette's light shades don't reach it)
-// and the success / warning / error colours of notices, which mean something.
+// and the warning / error colours of notices, which mean something.
 
 // ---------------------------------------------------------------------------
 // Page
@@ -102,8 +102,12 @@ p.description,
   background-color: admin-highlight()
   color: on(admin-highlight())
 
-// Neutral notices take the accent; success / warning / error keep core's.
-.notice-info
+// Neutral and success notices take the accent (Pedro, 2026-11-13 — "Theme
+// was successfully updated" and the like); warning (yellow) and error (red)
+// keep core's: they mean something.
+.notice-info,
+.notice-success,
+div.updated
   border-left-color: $admin-accent
 
 // ---------------------------------------------------------------------------

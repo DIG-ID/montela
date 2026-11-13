@@ -104,6 +104,21 @@ $admin-text-dark: $admin-main-900
     @return $preferred
   @return on($bg)
 
+// The colour itself, nudged just enough to read on $bg: mixed with white on
+// a dark background (black on a light one) in 5% steps until it reaches
+// 4.5:1 — so it stays "the sage", not swapped for the text tone like
+// text-on(). Sage on $admin-main-800 sits right at 4.5:1 (passes as is);
+// a palette whose main falls short gets the lightest tone that passes.
+@function readable-on($bg, $color)
+  $mix: #000
+  @if _luminance($bg) < 0.18
+    $mix: #fff
+  @for $i from 0 through 20
+    $c: color.mix($mix, $color, $i * 5%)
+    @if contrast($bg, $c) >= 4.5
+      @return $c
+  @return on($bg)
+
 // WordPress puts white text on the accent (buttons).
 @if contrast($admin-accent, #fff) < 4.5
   @warn "Admin palette: white text on the accent #{$admin-accent} is #{math.round(contrast($admin-accent, #fff) * 100) * 0.01}:1 — below 4.5:1. Choose a darker accent."

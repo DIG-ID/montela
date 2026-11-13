@@ -22,6 +22,11 @@ function montela_disable_default_dashboard_widgets() {
 	unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary'] );
 	unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press'] );
 	unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts'] );
+
+	// Yoast SEO: posts overview and Wincher keyphrases (the site has no blog).
+	// remove_meta_box() doesn't depend on the column or priority Yoast uses.
+	remove_meta_box( 'wpseo-dashboard-overview', 'dashboard', 'normal' );
+	remove_meta_box( 'wpseo-wincher-dashboard-overview', 'dashboard', 'normal' );
 }
 
 add_action( 'wp_dashboard_setup', 'montela_disable_default_dashboard_widgets', 999 );

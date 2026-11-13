@@ -420,6 +420,12 @@ no ficheiro indicado em "No starter".
              _login.sass, _dashboard-widgets.sass (tooltip em $digid-*), e
              o skill setup-project.
   No Montela os mesmos ficheiros (1.57.1): main sage, accent walnut.
+  Adenda     [2026-11-13] Função readable-on($bg, $cor) no _vars.sass: a
+             própria cor, aclarada (ou escurecida) em passos de 5% até ler
+             a 4,5:1 — para estados que devem manter a cor da marca (hover
+             dos submenus em sage), em vez de a trocar pelo tom de texto
+             como faz o text-on(). Notices: success e info com a barra no
+             accent; warning e error ficam com as cores do core.
   Estado     POR PASSAR
 
 [2026-11-13] A22. As páginas wp_die() ficam sem o estilo do login

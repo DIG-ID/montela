@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.58.1] — 2026-11-13
+### Changed
+- Dashboard: the Yoast SEO "Posts Overview" and "Wincher: Top Keyphrases" boxes are removed for every user.
+- wp-admin: success and info notices take the walnut accent bar; submenu items turn sage on hover and keyboard focus instead of WordPress blue.
+
 ## [1.58.0] — 2026-11-13
 ### Added
 - Scroll animations by class: sections fade and slide in as they reach the screen, one after the other when they arrive together; optional repeat, fade-out and parallax. Nothing is hidden that the visitor has already seen, and nothing moves with "reduce motion".
