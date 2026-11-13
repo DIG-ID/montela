@@ -22,6 +22,8 @@ if ( have_posts() ) :
 			get_template_part( 'template-parts/pages/kids-playground/playground-info' );
 			// Holiday: "Ferien mit Kindern im Saastal" — the Horizontal module.
 			get_template_part( 'template-parts/modules/horizontal' );
+			// The summer map, cropped around Saas-Grund (Theme Settings, tab Map).
+			get_template_part( 'template-parts/modules/map-strip' );
 		do_action( 'after_main_content' );
 	endwhile;
 endif;

@@ -123,20 +123,23 @@
 
 // -- Season switch: sage pill, bottom right; the active season in cream --
 // Desktop: two 150px buttons, 6px padding. Tablet / mobile: buttons sized
-// by their text, 8 / 6px padding. 47–52px from the frame's bottom.
+// by their text, 47–52px from the frame's bottom — and smaller than the
+// frames draw them (20px label, 32px icon: a third of the mobile width;
+// Daniel, 13.11.2026): mobile 14px / 18px icons, tablet 16px / 22px, 4px
+// padding. Also the Map strip's switch (_map-strip.sass).
 //
 // The cream pill slides from one season to the other, as in the Activities
 // switch: map.js measures the active button into --indicator-* and adds
 // .is-ready, which hands the cream background over from the button to
 // .section-map__indicator. Until then (no JS yet) the button paints it.
 .section-map__seasons
-  @apply absolute z-[5] flex gap-4 right-[37px] bottom-12 md:right-[38px] xl:right-[57px] xl:bottom-[52px] px-2 py-[6px] xl:p-[6px] rounded-[81px] xl:rounded-[38px] bg-montela-sage drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)]
+  @apply absolute z-[5] flex right-[37px] bottom-12 md:right-[38px] xl:right-[57px] xl:bottom-[52px] gap-1 p-1 xl:gap-4 xl:p-[6px] rounded-[81px] xl:rounded-[38px] bg-montela-sage drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)]
 
 .section-map__season
-  @apply flex items-center justify-center gap-2 xl:w-[150px] px-4 py-[6px] border-0 rounded-[32px] bg-transparent font-light text-[20px] leading-[32px] tracking-[0.5px] text-montela-cream cursor-pointer whitespace-nowrap transition-colors duration-300 motion-reduce:transition-none
+  @apply flex items-center justify-center gap-1.5 xl:gap-2 xl:w-[150px] px-3 py-1 xl:px-4 xl:py-[6px] border-0 rounded-[32px] bg-transparent font-light text-[14px] leading-[22px] md:text-[16px] md:leading-[24px] xl:text-[20px] xl:leading-[32px] tracking-[0.5px] text-montela-cream cursor-pointer whitespace-nowrap transition-colors duration-300 motion-reduce:transition-none
   &::before
     content: ""
-    @apply w-8 h-8 shrink-0 bg-current
+    @apply w-[18px] h-[18px] md:w-[22px] md:h-[22px] xl:w-8 xl:h-8 shrink-0 bg-current
   &:hover
     @apply text-montela-mustard
   &.is-active

@@ -682,6 +682,36 @@ o cliente.
              assets/sass/_modules/_map.sass.
   Estado     POR CONFIRMAR
 
+[2026-11-13] B27. Mapa recortado (Kids Playground) — o que o Figma não desenha
+  O quê      módulo Map strip (template-parts/modules/map-strip.php), antes do
+             footer na Kids Playground.
+  Figma      5895:19876 (só desktop): o mapa de verão recortado, um popup
+             sage aberto e um disco mustard de 35px sobre o pin; anotação
+             "hover: location changes color… animation when first arrive".
+  Feito      - módulo (para outras páginas); ilustração e pins nas Theme
+               Settings, tab Map strip (vazios = os do tab Map) — aparecem
+               os pins que caem no recorte; sem campos na página;
+             - o disco mustard leva o número do pin (no Figma é liso, e
+               tapava o número impresso);
+             - entrada: os pins acendem em mustard um a um, uma vez;
+             - inverno e o switch Sommer / Winter do Map, no canto superior
+               direito (pedido do Daniel, 13.11.2026 — o Figma só tem o verão,
+               sem switch); aberto no inverno de Dezembro a Abril;
+             - tablet (600px, recorte mais apertado) e mobile (560px, ~3×
+               a largura do ecrã) interpolados — sem frames;
+             - passa por baixo da caixa do footer, como o Explore; em
+               desktop o recorte mostra acima da caixa o mesmo que o Figma
+               (877 − 214px a 1920) a qualquer largura; os pins tapados
+               pela caixa ficam escondidos;
+             - popup com o canto em baixo à direita no pin (Figma); vira
+               para a direita / para baixo sem espaço; botão × (touch e
+               teclado); título "Lageplan" só para leitores de ecrã.
+  Porquê     "adapta responsive como achares melhor" (Daniel, 13.11.2026).
+  Confirma   designer.
+  Onde       template-parts/modules/map-strip.php,
+             assets/js/modules/map-strip.js, assets/sass/_modules/_map-strip.sass.
+  Estado     POR CONFIRMAR
+
 ===============================================================================
 C. ERROS NO FIGMA
 ===============================================================================

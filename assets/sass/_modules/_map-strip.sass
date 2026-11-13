@@ -1,0 +1,136 @@
+// Map strip module (template-parts/modules/map-strip.php,
+// assets/js/modules/map-strip.js).
+// Figma: Kids Playground desktop 5895:19876 — 1920 × 877, full width, the
+// summer map cropped around Saas-Grund; tablet and mobile not drawn.
+//
+// The whole illustration is a square plane; the frame shows a crop of it.
+// Per breakpoint, unitless: --w = the plane's width (% of the frame's
+// width), --x / --y = the crop's left / top edge (% of the image). Below
+// desktop, a frame taller than the image below --y (the last-section
+// overlap) pins the image's bottom to the frame's instead, so no empty
+// strip shows. Not on desktop: there the box covers 320px whatever the
+// width, and pulling the crop up would hide the resort's pins under it at
+// 1280 — what is left below the image sits under the box, in sage. The
+// frame is a size container: cqw / cqh are its width / height.
+//
+//   Desktop  Figma's crop: plane 102.85% wide, from 1.4% / 53.46% — frame
+//            1920/877.
+//   Tablet   interpolated: 600px tall, plane 180% (x 20–75%, y 57–97%).
+//   Mobile   interpolated: 560px tall, plane 300% (x 30–63%, y 52–99.5%).
+.section-map-strip
+  @apply relative text-montela-cream font-primary
+
+.section-map-strip__frame
+  @apply relative overflow-hidden h-[560px] md:h-[600px] xl:h-auto xl:aspect-[1920/877] bg-montela-sage [--w:300] [--x:30] [--y:52] md:[--w:180] md:[--x:20] md:[--y:57] xl:[--w:102.85] xl:[--x:1.4] xl:[--y:53.46]
+  container-type: size
+
+.section-map-strip__plane
+  @apply absolute aspect-square
+  width: calc(var(--w) * 1cqw)
+  left: calc(var(--w) * var(--x) * -0.01cqw)
+  top: max(calc(var(--w) * var(--y) * -0.01cqw), calc(100cqh - var(--w) * 1cqw))
+  @media (min-width: 1280px)
+    top: calc(var(--w) * var(--y) * -0.01cqw)
+
+// Season layers, one plane each, stacked; the active one fades in (0.5s),
+// as in the Map module.
+.section-map-strip__plane
+  @apply opacity-0 invisible motion-reduce:transition-none
+  transition: opacity 0.5s ease, visibility 0s linear 0.5s
+  &.is-active
+    @apply opacity-100 visible
+    transition: opacity 0.5s ease, visibility 0s
+
+.section-map-strip__image
+  @apply block w-full h-full max-w-none object-cover select-none pointer-events-none
+
+// -- Season switch: the Map module's (_map.sass), top right --
+// Same distance from the corner as the Map module's zoom controls (34 / 38,
+// 53 / 57px); 20px on mobile, where the switch is smaller. Two classes to move the shared one.
+.section-map__seasons.section-map-strip__seasons
+  @apply top-5 bottom-auto right-5 md:top-[34px] md:right-[38px] xl:top-[53px] xl:right-[57px]
+
+// -- Pins: transparent buttons over the markers printed in the artwork --
+// The marker is 35px on the 1975px plane of the desktop frame (1.77%); the
+// disc is a little bigger, 2% (~40px), so it covers the printed marker —
+// never below a tappable 32px. Nudged 1px right and down to sit on the
+// markers (Daniel, 13.11.2026). Hover, focus or open: a mustard disc with
+// the label (Figma "Ellipse 2" — a plain disc there; the label keeps it
+// readable).
+.section-map-strip__pin
+  @apply absolute grid place-items-center aspect-square p-0 border-0 rounded-full bg-transparent cursor-pointer
+  left: var(--x)
+  top: var(--y)
+  width: max(2%, 2rem)
+  transform: translate(calc(-50% + 1px), calc(-50% + 1px))
+  &[hidden]
+    @apply hidden
+  &:focus-visible
+    @apply outline outline-2 outline-offset-2 outline-montela-cream
+
+.section-map-strip__label
+  @apply grid place-items-center w-full h-full rounded-full bg-montela-mustard text-montela-walnut font-medium text-[14px] leading-none opacity-0 scale-75 transition duration-200 motion-reduce:transition-none
+
+.section-map-strip__pin:hover .section-map-strip__label,
+.section-map-strip__pin:focus-visible .section-map-strip__label,
+.section-map-strip__pin.is-active .section-map-strip__label
+  @apply opacity-100 scale-100
+
+// Entry (Figma annotation): the places light up one after the other the
+// first time the strip scrolls into view, so it reads as interactive.
+.section-map-strip.is-revealed .section-map-strip__label
+  animation: section-map-strip-flash 0.9s ease calc(var(--pin-index, 0) * 90ms) 1
+  @media (prefers-reduced-motion: reduce)
+    animation: none
+
+@keyframes section-map-strip-flash
+  0%, 100%
+    opacity: 0
+    transform: scale(0.75)
+  40%
+    opacity: 1
+    transform: scale(1.1)
+
+// -- Popup: sage card, cream hairline, its corner on the pin --
+// Figma: 287 × 270 — 340px wide here (Daniel, 13.11.2026), 25px padding; title Roboto 25/40, text 20/32 light,
+// cream button 237 × 40 with sage text. map-strip.js places it above-left
+// of the pin, flipping right / below when there is no room.
+.section-map-strip__popup
+  @apply absolute left-0 top-0 z-[2] w-[340px] max-w-[calc(100%-16px)] p-[25px] border border-solid border-montela-cream bg-montela-sage text-montela-cream
+  &[hidden]
+    @apply hidden
+
+// Close (not in Figma — for touch and keyboard).
+.section-map-strip__popup-close
+  @apply absolute top-2 right-2 w-8 h-8 p-0 border-0 rounded-full bg-transparent text-montela-cream cursor-pointer
+  &::before
+    content: ""
+    @apply absolute inset-2 bg-current
+    mask: url("../../svg/icons/close.svg") center / contain no-repeat
+  &:hover,
+  &:focus-visible
+    @apply bg-montela-cream/15 outline-none
+
+.section-map-strip__popup-title
+  @apply pr-6 font-normal text-[20px] leading-[30px] tracking-[1px] xl:text-[25px] xl:leading-[40px]
+
+.section-map-strip__popup-text
+  @apply mt-3 font-light text-[16px] leading-[26px] tracking-[0.5px] xl:text-[20px] xl:leading-[32px]
+
+.section-map-strip__popup-button
+  @apply flex items-center justify-center w-[237px] max-w-full mt-8 py-3 px-4 bg-montela-cream font-bold text-[14px] leading-[16px] tracking-[0.84px] uppercase text-montela-sage transition-colors duration-300
+  &:hover,
+  &:active
+    @apply bg-montela-mustard text-montela-walnut
+  &:focus-visible
+    @apply outline outline-2 outline-offset-4 outline-montela-mustard
+
+// -- Last section: behind the footer's booking box --
+// As the Explore module (see _explore.sass for the numbers): 160px on
+// tablet, 320 on desktop. The frame grows by the overlap so the part in
+// view stays Figma's (877 − 214px under the box at 1920 = 34.53vw), and
+// --covered tells map-strip.js to hide the pins under the box.
+body:has(.footer-main--has-cta) .main-content > .section-map-strip:last-child
+  @apply md:-mb-[160px] xl:-mb-[320px]
+  .section-map-strip__frame
+    @apply md:h-[760px] xl:aspect-auto xl:h-[calc(34.53vw+320px)] md:[--covered:160px] xl:[--covered:320px]

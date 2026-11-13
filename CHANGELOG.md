@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.56.0] — 2026-11-13
+
+### Added
+- Map strip module: a full-width, cropped view of the illustrated map with its pins and popups, and the summer / winter switch top right — no zoom or pan. On Kids Playground, before the footer. Its illustrations and pins live in Theme Settings, tab Map strip (empty = the Map tab's). After deploying, run the ACF Sync for Options — Theme Settings.
+
+### Changed
+- Map: the summer / winter switch is smaller on tablet and mobile.
+
 ## [1.55.2] — 2026-11-12
 ### Added
 - Shop, producer cards: an optional "Mehr erfahren" button.
