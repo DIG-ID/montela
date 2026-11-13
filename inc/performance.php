@@ -105,3 +105,66 @@ function montela_disable_self_pingbacks( &$links ) {
 }
 
 add_action( 'pre_ping', 'montela_disable_self_pingbacks' );
+
+
+/**
+ * Lazy-loads every image but the ones the theme marks as eager (the hero).
+ *
+ * WordPress leaves the first 3 images of a page without loading="lazy",
+ * assuming they're above the fold. Here the hero fills the screen, so the
+ * images after it are below the fold: on the homepage the two Text with
+ * photos images were downloaded up front. The hero sets loading="eager" and
+ * fetchpriority="high" itself (modules/hero.php), which this doesn't touch.
+ *
+ * @since 1.60.4
+ *
+ * @return int Number of images to leave without lazy-loading.
+ */
+function montela_omit_loading_attr_threshold() {
+	return 0;
+}
+
+add_filter( 'wp_omit_loading_attr_threshold', 'montela_omit_loading_attr_threshold' );
+
+/**
+ * Whether the current page shows a Contact Form 7 form: the Info & Kontakt
+ * template (pages/contact/form.php), or a page with the [contact-form-7]
+ * shortcode in its content. Filterable: `montela_page_has_cf7`.
+ *
+ * @since 1.60.4
+ *
+ * @return bool
+ */
+function montela_page_has_cf7() {
+	$has_form = is_page_template( 'page-templates/page-contact.php' );
+
+	if ( ! $has_form && is_singular() ) {
+		$post     = get_post();
+		$has_form = $post && has_shortcode( $post->post_content, 'contact-form-7' );
+	}
+
+	return (bool) apply_filters( 'montela_page_has_cf7', $has_form );
+}
+
+/**
+ * Loads Contact Form 7's CSS and JS — and reCAPTCHA's, when the integration
+ * is on — only on pages with a form (montela_page_has_cf7()).
+ *
+ * CF7 loads them on every page by default; its reCAPTCHA module enqueues the
+ * Google script on every page too, regardless of wpcf7_load_js, so its
+ * action is removed separately. Runs on `wp`: the query is known, and
+ * wp_enqueue_scripts hasn't fired yet.
+ *
+ * @since 1.60.4
+ */
+function montela_cf7_only_where_used() {
+	if ( ! defined( 'WPCF7_VERSION' ) || is_admin() || montela_page_has_cf7() ) {
+		return;
+	}
+
+	add_filter( 'wpcf7_load_js', '__return_false' );
+	add_filter( 'wpcf7_load_css', '__return_false' );
+	remove_action( 'wp_enqueue_scripts', 'wpcf7_recaptcha_enqueue_scripts', 20 );
+}
+
+add_action( 'wp', 'montela_cf7_only_where_used' );

@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.60.4] — 2026-11-13
+### Changed
+- Performance: every image below the hero loads lazily (the first ones after the hero were downloaded up front).
+- Performance: Contact Form 7's styles and scripts (and reCAPTCHA's, if turned on) load only on pages with a form — Info & Kontakt.
+
 ## [1.60.3] — 2026-11-13
 ### Changed
 - Hero: the image (and the video) fade in softly once loaded, over a walnut background instead of the page cream.

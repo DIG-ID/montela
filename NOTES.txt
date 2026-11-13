@@ -543,6 +543,28 @@ no ficheiro indicado em "No starter".
              na secção e <noscript> a mostrar sem JS. Única excepção à regra
              "nunca opacity: 0 no CSS".
   Estado     POR PASSAR
+
+-------------------------------------------------------------------------------
+[2026-11-13] A26. Lazy-loading e Contact Form 7 só onde é preciso
+  Problema   No HTML da homepage do staging: (1) as 2 fotos do Text with
+             photos, abaixo da dobra (o hero ocupa o ecrã), sem
+             loading="lazy" — o WordPress deixa as 3 primeiras imagens sem
+             lazy (wp_omit_loading_attr_threshold); (2) o CSS e o JS do CF7
+             em todas as páginas, com o formulário só na Info & Kontakt — e o
+             módulo de reCAPTCHA do CF7 carrega o script da Google em todas
+             as páginas, ignorando o filtro wpcf7_load_js.
+  Regra      "Hero = única imagem eager (+ fetchpriority high, no próprio
+             template); o resto lazy: wp_omit_loading_attr_threshold → 0.
+             CF7: wpcf7_load_js / wpcf7_load_css a false e
+             remove_action( 'wp_enqueue_scripts',
+             'wpcf7_recaptcha_enqueue_scripts', 20 ) em todas as páginas sem
+             formulário (template do contacto ou shortcode no conteúdo),
+             no hook wp."
+  No starter inc/performance.php (o nome do template do contacto muda por
+             projecto: montela_page_has_cf7() é filtrável).
+  No Montela inc/performance.php (1.60.4).
+  Estado     POR PASSAR
+
 ===============================================================================
 B. DECISÕES POR CONFIRMAR
 ===============================================================================
