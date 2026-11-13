@@ -12,7 +12,8 @@
 //            Figma); every other row puts the photos first. The panel sets
 //            the row height (at least 400px — 900 in Figma, lowered by Pedro
 //            in 1.53.1): the slider is taken out of the flow and fills it.
-//            Panel padding 80px top and bottom, 96 at the sides
+//            Panel padding 80px all round (96 at the sides until 1.59.2
+//            — Daniel)
 //
 // Panel, centred: the title on top, the rest at the bottom (justify-between,
 // when the panel is taller than its content) — facts (two columns: 151 / 245
@@ -40,10 +41,12 @@
   @apply flex flex-col xl:grid xl:grid-cols-2 xl:gap-x-5
 
 .apartment-card__panel
-  @apply flex flex-col justify-between items-center text-center min-h-[551px] px-8 pt-12 pb-8 bg-montela-sage text-montela-cream md:min-h-[686px] md:px-16 md:py-11 xl:min-h-[400px] xl:px-24 xl:py-20 gap-y-10 xl:gap-y-16
+  @apply flex flex-col justify-between items-center text-center min-h-[551px] px-8 pt-12 pb-8 bg-montela-sage text-montela-cream md:min-h-[686px] md:px-16 md:py-11 xl:min-h-[400px] xl:px-20 xl:py-20 gap-y-10 xl:gap-y-16
 
+// Above 1080p (3xl) the title caps at 860px, as the excerpt below (Daniel,
+// 13.11.2026).
 .apartment-card__title
-  @apply text-balance
+  @apply text-balance 3xl:max-w-[860px]
 
 .apartment-card__body
   @apply flex flex-col items-center w-full gap-y-10 xl:gap-y-12 xl:px-16
@@ -51,10 +54,10 @@
 .apartment-card__facts
   @apply grid-cols-[repeat(2,minmax(0,151px))] md:grid-cols-[repeat(2,minmax(0,245px))] xl:grid-cols-[repeat(2,minmax(0,289px))]
 
-// Above 1080p (3xl, 1921px and up) the excerpt caps at 600px, so long texts
-// don't run the panel's full width (Daniel, 13.11.2026).
+// On desktop the excerpt caps at 600px, so long texts don't run the panel's
+// full width (Daniel, 13.11.2026 — above 1080p only in 1.59.2).
 .apartment-card__excerpt
-  @apply md:max-w-[460px] xl:max-w-none 3xl:max-w-[600px] font-primary font-light tracking-[0.0313rem] text-sm leading-6 md:text-lg md:leading-6 xl:text-base xl:leading-7 2xl:text-lg 2xl:leading-8 xl:mb-8
+  @apply md:max-w-[460px] xl:max-w-[600px] font-primary font-light tracking-[0.0313rem] text-sm leading-6 md:text-lg md:leading-6 xl:text-base xl:leading-7 2xl:text-lg 2xl:leading-8 xl:mb-8
 
 .apartment-card__buttons
   @apply flex flex-col items-center gap-3  md:flex-row md:justify-center md:gap-8 xl:w-full xl:justify-between

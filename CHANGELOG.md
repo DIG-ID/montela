@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.59.3] — 2026-11-13
+### Changed
+- Apartments page (desktop): the card panel has 80px padding on every side, and the card text is at most 600px wide on every desktop screen (not only above 1080p).
+- Apartments page: above 1080p, the card title is at most 860px wide.
+
 ## [1.59.2] — 2026-11-13
 ### Changed
 - Apartments page (desktop): every apartment card is as tall as the tallest one; less space between the card's title and its details.
