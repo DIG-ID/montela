@@ -306,8 +306,8 @@ no ficheiro indicado em "No starter".
              CSS) a página de Apartments ficou com o título em menos linhas
              e os painéis vazios — sem breakpoint para corrigir.
   Regra      no tailwind.config.js, theme.extend.screens:
-               '3xl': '1920px',  // o canvas desktop do Figma
-               '4xl': '2560px',  // 1440p ("2K") a 100%
+               '3xl': '1921px',  // acima de 1080p (o canvas do Figma, 1920, fica de fora)
+               '4xl': '2561px',  // acima de 1440p (um ecrã 2560 fica de fora)
              e em .claude/rules/sass.md: "os breakpoints por omissão não se
              redefinem; acima do 2xl, 3xl / 4xl (extend.screens) — só
              quando é preciso, o design não tem frames para eles". Sem 5xl

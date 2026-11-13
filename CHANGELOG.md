@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.59.2] — 2026-11-13
+### Changed
+- Apartments page (desktop): every apartment card is as tall as the tallest one; less space between the card's title and its details.
+- Apartments page: above 1080p (wider than 1920px), the card text is at most 600px wide.
+- Large-screen breakpoints now start above 1080p and 1440p: `3xl` from 1921px, `4xl` from 2561px.
+
 ## [1.59.1] — 2026-11-13
 ### Fixed
 - Hero title: indented lines come in on the same rhythm as the others (they started late, the reveal first sweeping the empty indent). Same position as before.

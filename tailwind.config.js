@@ -19,8 +19,8 @@ module.exports = {
       // queries keep their order. CSS pixels: a 4K screen usually runs at
       // 150–200% scaling (1920–2560px), so nothing above 4xl.
       screens: {
-        '3xl': '1920px', // the Figma desktop canvas
-        '4xl': '2560px', // 1440p ("2K") at 100%
+        '3xl': '1921px', // above 1080p — the Figma canvas (1920) stays on the desktop layout (Daniel, 13.11.2026)
+        '4xl': '2561px', // above 1440p ("2K") — a 2560 screen stays on 3xl
       },
       letterSpacing: {
         // wide: '.038em',
