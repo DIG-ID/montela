@@ -66,7 +66,7 @@ $apts_swiper = array(
 ?>
 <div class="section-apartments">
 	<?php
-	foreach ( $apts_ids as $apts_id ) :
+	foreach ( array_values( $apts_ids ) as $apts_index => $apts_id ) :
 		$apts_title   = get_the_title( $apts_id );
 		$apts_excerpt = has_excerpt( $apts_id ) ? get_the_excerpt( $apts_id ) : '';
 		$apts_booking = get_field( 'section_apartment_booking', $apts_id );
@@ -87,7 +87,7 @@ $apts_swiper = array(
 		);
 		?>
 		<article class="apartment-card">
-			<div class="apartment-card__panel">
+			<div class="apartment-card__panel anim-fade-up">
 				<h2 class="title-h3 apartment-card__title"><?php echo montela_text( $apts_title ); ?></h2>
 
 				<div class="apartment-card__body">
@@ -138,7 +138,8 @@ $apts_swiper = array(
 			</div>
 
 			<?php if ( $apts_photos ) : ?>
-				<div class="apartment-card__photos" data-swiper-root>
+				<?php // Photos on the right on odd rows, on the left on even ones (desktop, _apartments.sass): they slide in from their side. ?>
+				<div class="apartment-card__photos <?php echo 0 === $apts_index % 2 ? 'anim-fade-right' : 'anim-fade-left'; ?>" data-swiper-root>
 					<div class="swiper apartment-card__swiper" data-swiper="<?php echo esc_attr( wp_json_encode( $apts_swiper ) ); ?>">
 						<div class="swiper-wrapper">
 							<?php foreach ( $apts_photos as $apts_photo ) : ?>

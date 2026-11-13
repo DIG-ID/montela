@@ -36,7 +36,7 @@ if ( ! $back_page ) {
 	return;
 }
 
-$back_class = 'theme-container back-link' . ( ! empty( $args['class'] ) ? ' ' . $args['class'] : '' );
+$back_class = 'theme-container back-link anim-fade-up' . ( ! empty( $args['class'] ) ? ' ' . $args['class'] : '' );
 ?>
 <div class="<?php echo esc_attr( $back_class ); ?>">
 	<?php

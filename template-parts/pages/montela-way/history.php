@@ -39,7 +39,7 @@ $history_title_id = wp_unique_id( 'section-history-title-' );
 						'full',
 						false,
 						array(
-							'class' => 'section-history__img',
+							'class' => 'section-history__img anim-parallax', // Container-wide band: drifts inside the frame (reveal.js).
 							'sizes' => '(min-width: 1920px) 1820px, 100vw',
 						)
 					);
@@ -48,15 +48,15 @@ $history_title_id = wp_unique_id( 'section-history-title-' );
 			<?php endif; ?>
 
 			<?php if ( $history_title ) : ?>
-				<h2 id="<?php echo esc_attr( $history_title_id ); ?>" class="title-h3 section-history__title"><?php echo montela_text( $history_title ); ?></h2>
+				<h2 id="<?php echo esc_attr( $history_title_id ); ?>" class="title-h3 section-history__title anim-fade-up"><?php echo montela_text( $history_title ); ?></h2>
 			<?php endif; ?>
 
 			<?php if ( $history_text ) : ?>
-				<p class="body-text section-history__text"><?php echo montela_text( $history_text ); ?></p>
+				<p class="body-text section-history__text anim-fade-up"><?php echo montela_text( $history_text ); ?></p>
 			<?php endif; ?>
 
 			<?php if ( $history_hl_title || $history_hl_text ) : ?>
-				<div class="body-text section-history__highlight">
+				<div class="body-text section-history__highlight anim-fade-up">
 					<?php if ( $history_hl_title ) : ?>
 						<h3 class="section-history__highlight-title"><?php echo montela_text( $history_hl_title ); ?></h3>
 					<?php endif; ?>

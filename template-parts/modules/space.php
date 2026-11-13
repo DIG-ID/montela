@@ -84,11 +84,11 @@ $space_title_id = wp_unique_id( 'section-space-title-' );
 	<div class="theme-container">
 		<div class="theme-grid">
 			<?php if ( $space_title ) : ?>
-				<h2 id="<?php echo esc_attr( $space_title_id ); ?>" class="title-h3 col-span-full xl:col-start-2 xl:col-span-11"><?php echo montela_text( $space_title ); ?></h2>
+				<h2 id="<?php echo esc_attr( $space_title_id ); ?>" class="title-h3 anim-fade-up col-span-full xl:col-start-2 xl:col-span-11"><?php echo montela_text( $space_title ); ?></h2>
 			<?php endif; ?>
 
 			<?php if ( $space_text || $space_button ) : ?>
-				<div class="col-span-full flex flex-col items-start gap-8 mt-4 md:col-span-3 md:row-start-2 md:gap-10 md:mt-10 xl:col-start-2 <?php echo esc_attr( $space_cls['content'] ); ?>">
+				<div class="anim-fade-up col-span-full flex flex-col items-start gap-8 mt-4 md:col-span-3 md:row-start-2 md:gap-10 md:mt-10 xl:col-start-2 <?php echo esc_attr( $space_cls['content'] ); ?>">
 					<?php if ( $space_text ) : ?>
 						<p class="body-text"><?php echo montela_text( $space_text ); ?></p>
 					<?php endif; ?>
@@ -101,7 +101,7 @@ $space_title_id = wp_unique_id( 'section-space-title-' );
 			<?php endif; ?>
 
 			<?php if ( $space_image_1 ) : ?>
-				<figure class="section-space__photo col-span-full mt-8 aspect-[320/246] md:col-start-4 md:col-span-3 md:row-start-2 md:mt-10 md:aspect-[360/246] xl:col-start-6 xl:col-span-7 xl:aspect-[1050/632] <?php echo esc_attr( $space_cls['photo_1'] ); ?>">
+				<figure class="section-space__photo anim-fade-right col-span-full mt-8 aspect-[320/246] md:col-start-4 md:col-span-3 md:row-start-2 md:mt-10 md:aspect-[360/246] xl:col-start-6 xl:col-span-7 xl:aspect-[1050/632] <?php echo esc_attr( $space_cls['photo_1'] ); ?>">
 					<?php
 					echo wp_get_attachment_image(
 						$space_image_1,
@@ -117,7 +117,7 @@ $space_title_id = wp_unique_id( 'section-space-title-' );
 			<?php endif; ?>
 
 			<?php if ( $space_image_2 ) : ?>
-				<figure class="section-space__photo col-span-full mt-8 md:col-start-1 md:col-span-3 md:row-start-3 md:mt-5 md:aspect-[360/246] xl:col-start-2 xl:col-span-4 xl:w-[91.06%] xl:aspect-[540/455] <?php echo esc_attr( $space_cls['photo_2'] ); ?>">
+				<figure class="section-space__photo anim-fade-left col-span-full mt-8 md:col-start-1 md:col-span-3 md:row-start-3 md:mt-5 md:aspect-[360/246] xl:col-start-2 xl:col-span-4 xl:w-[91.06%] xl:aspect-[540/455] <?php echo esc_attr( $space_cls['photo_2'] ); ?>">
 					<?php
 					echo wp_get_attachment_image(
 						$space_image_2,
@@ -140,7 +140,7 @@ $space_title_id = wp_unique_id( 'section-space-title-' );
 					array(
 						'items'      => $space_items,
 						'item_class' => $space_has_icons ? '' : 'grid-cols-1',
-						'class'      => 'section-space__list col-span-full mt-4 gap-y-4 md:row-start-4 md:justify-self-center md:w-[464px] md:mt-9 xl:row-start-3 xl:justify-self-stretch xl:w-auto ' . $space_cls['list'],
+						'class'      => 'section-space__list anim-fade-up anim-children col-span-full mt-4 gap-y-4 md:row-start-4 md:justify-self-center md:w-[464px] md:mt-9 xl:row-start-3 xl:justify-self-stretch xl:w-auto ' . $space_cls['list'],
 					)
 				);
 			endif;

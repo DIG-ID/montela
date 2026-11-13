@@ -82,7 +82,7 @@ $location_title_id = wp_unique_id( 'section-location-title-' );
 $location_map_label = sprintf( __( 'Karte: %s', 'montela' ), $location_place ? $location_place : ( $location_query ? $location_query : 'Montela' ) );
 ?>
 <section class="section-location"<?php echo $location_title ? ' aria-labelledby="' . esc_attr( $location_title_id ) . '"' : ''; ?>>
-	<div class="section-location__panel">
+	<div class="section-location__panel anim-fade-up">
 		<?php if ( $location_title ) : ?>
 			<h2 id="<?php echo esc_attr( $location_title_id ); ?>" class="title-h3 section-location__title"><?php echo montela_text( $location_title ); ?></h2>
 		<?php endif; ?>
@@ -106,11 +106,11 @@ $location_map_label = sprintf( __( 'Karte: %s', 'montela' ), $location_place ? $
 	</div>
 
 	<?php if ( $location_js ) : ?>
-		<div class="section-location__map">
+		<div class="section-location__map anim-fade">
 			<div class="section-location__canvas" role="region" aria-label="<?php echo esc_attr( $location_map_label ); ?>" data-google-map data-key="<?php echo esc_attr( $location_key ); ?>" data-lat="<?php echo esc_attr( $location_lat ); ?>" data-lng="<?php echo esc_attr( $location_lng ); ?>" data-language="<?php echo esc_attr( substr( determine_locale(), 0, 2 ) ); ?>" data-fallback="<?php echo esc_url( $location_map ); ?>" data-name="<?php echo esc_attr( $location_place ); ?>" data-address="<?php echo esc_attr( wp_json_encode( $location_address_lines ) ); ?>"></div>
 		</div>
 	<?php elseif ( $location_map ) : ?>
-		<div class="section-location__map">
+		<div class="section-location__map anim-fade">
 			<iframe class="section-location__iframe" src="<?php echo esc_url( $location_map ); ?>" title="<?php echo esc_attr( $location_map_label ); ?>" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
 		</div>
 	<?php endif; ?>

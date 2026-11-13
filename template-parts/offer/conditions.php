@@ -38,17 +38,17 @@ $cond_title_id = wp_unique_id( 'section-offer-conditions-title-' );
 	<div class="theme-container">
 		<div class="section-offer-conditions__inner">
 			<?php if ( $cond_title ) : ?>
-				<h2 id="<?php echo esc_attr( $cond_title_id ); ?>" class="title-h3 section-offer-conditions__title"><?php echo montela_text( $cond_title ); ?></h2>
+				<h2 id="<?php echo esc_attr( $cond_title_id ); ?>" class="title-h3 section-offer-conditions__title anim-fade-up"><?php echo montela_text( $cond_title ); ?></h2>
 			<?php endif; ?>
 
 			<?php if ( $cond_text ) : ?>
-				<p class="body-text section-offer-conditions__text"><?php echo montela_text( $cond_text ); ?></p>
+				<p class="body-text section-offer-conditions__text anim-fade-up"><?php echo montela_text( $cond_text ); ?></p>
 			<?php endif; ?>
 
 			<?php if ( $cond_items ) : ?>
-				<h3 class="section-offer-conditions__label"><?php echo montela_text( $cond_label ); ?></h3>
+				<h3 class="section-offer-conditions__label anim-fade-up"><?php echo montela_text( $cond_label ); ?></h3>
 
-				<ul class="section-offer-conditions__boxes">
+				<ul class="section-offer-conditions__boxes anim-fade-up anim-children">
 					<?php foreach ( $cond_items as $cond_item ) : ?>
 						<li class="section-offer-conditions__box">
 							<?php if ( ! empty( $cond_item['title'] ) ) : ?>
@@ -63,7 +63,7 @@ $cond_title_id = wp_unique_id( 'section-offer-conditions-title-' );
 			<?php endif; ?>
 
 			<?php if ( $cond_validity ) : ?>
-				<p class="section-offer-conditions__validity">
+				<p class="section-offer-conditions__validity anim-fade-up">
 					<strong><?php echo montela_text( $cond_valid_lb ); ?></strong>
 					<span><?php echo esc_html( $cond_validity ); ?></span>
 				</p>

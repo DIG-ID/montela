@@ -33,7 +33,7 @@ $fi_title_id = wp_unique_id( 'section-fitness-info-title-' );
 	<div class="theme-container">
 		<div class="theme-grid gap-y-6 md:grid-rows-[auto_1fr] md:gap-y-10 xl:gap-y-[68px]">
 			<?php if ( $fi_title ) : ?>
-				<h2 id="<?php echo esc_attr( $fi_title_id ); ?>" class="title-h3 section-fitness-info__title col-span-full md:col-span-3 xl:col-start-2 xl:col-span-6"><?php echo montela_text( $fi_title ); ?></h2>
+				<h2 id="<?php echo esc_attr( $fi_title_id ); ?>" class="title-h3 section-fitness-info__title anim-fade-up col-span-full md:col-span-3 xl:col-start-2 xl:col-span-6"><?php echo montela_text( $fi_title ); ?></h2>
 			<?php endif; ?>
 
 			<?php
@@ -42,7 +42,7 @@ $fi_title_id = wp_unique_id( 'section-fitness-info-title-' );
 				null,
 				array(
 					'items'      => $fi_items,
-					'class'      => 'section-fitness-info__list col-span-full self-start gap-[25px] md:col-span-3 md:self-stretch md:justify-between md:gap-[30px] xl:self-start xl:justify-normal xl:col-start-2 xl:col-span-6 xl:grid xl:grid-cols-subgrid xl:gap-x-5 xl:gap-y-[57px]',
+					'class'      => 'section-fitness-info__list anim-fade-up anim-children col-span-full self-start gap-[25px] md:col-span-3 md:self-stretch md:justify-between md:gap-[30px] xl:self-start xl:justify-normal xl:col-start-2 xl:col-span-6 xl:grid xl:grid-cols-subgrid xl:gap-x-5 xl:gap-y-[57px]',
 					'item_class' => array(
 						'grid-cols-[37px_1fr] gap-x-[28px] items-center md:grid-cols-[30px_1fr] md:gap-x-[30px] xl:grid-cols-[52px_1fr] xl:gap-x-6 xl:col-start-1 xl:col-span-3',
 						'grid-cols-[37px_1fr] gap-x-[28px] items-center md:grid-cols-[30px_1fr] md:gap-x-[30px] xl:grid-cols-[52px_1fr] xl:gap-x-6 xl:col-start-4 xl:col-span-3',
@@ -52,7 +52,7 @@ $fi_title_id = wp_unique_id( 'section-fitness-info-title-' );
 			?>
 
 			<?php if ( $fi_image ) : ?>
-				<figure class="section-fitness-info__photo col-span-full m-0 overflow-hidden aspect-[329/246] md:col-start-4 md:col-span-3 md:row-start-1 md:row-span-2 md:self-start md:aspect-[340/512] xl:col-start-8 xl:col-span-4 xl:aspect-[660/556]">
+				<figure class="section-fitness-info__photo anim-fade-right col-span-full m-0 overflow-hidden aspect-[329/246] md:col-start-4 md:col-span-3 md:row-start-1 md:row-span-2 md:self-start md:aspect-[340/512] xl:col-start-8 xl:col-span-4 xl:aspect-[660/556]">
 					<?php
 					echo wp_get_attachment_image(
 						$fi_image,

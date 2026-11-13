@@ -20,7 +20,7 @@ if ( ! function_exists( 'montela_enqueue_fonts' ) ) :
 				'montela-fonts',
 				MONTELA_GOOGLE_FONTS_URL,
 				array(),
-				null
+				null // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- the provider's own URL; a ?ver would only defeat its caching.
 			);
 		}
 
@@ -29,7 +29,7 @@ if ( ! function_exists( 'montela_enqueue_fonts' ) ) :
 				'montela-fonts',
 				'https://use.typekit.net/' . MONTELA_ADOBE_FONTS_ID . '.css',
 				array(),
-				null
+				null // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- the provider's own URL; a ?ver would only defeat its caching.
 			);
 		}
 	}

@@ -69,22 +69,22 @@ $ofc_swiper   = array(
 		<?php if ( $ofc_title || $ofc_text || $ofc_button ) : ?>
 			<div class="theme-grid gap-y-4 md:gap-y-6 xl:gap-y-[38px]">
 				<?php if ( $ofc_title ) : ?>
-					<h2 id="<?php echo esc_attr( $ofc_title_id ); ?>" class="title-h3 col-span-full xl:col-start-2 xl:col-span-5 xl:row-start-1"><?php echo montela_text( $ofc_title ); ?></h2>
+					<h2 id="<?php echo esc_attr( $ofc_title_id ); ?>" class="title-h3 anim-fade-up col-span-full xl:col-start-2 xl:col-span-5 xl:row-start-1"><?php echo montela_text( $ofc_title ); ?></h2>
 				<?php endif; ?>
 
 				<?php if ( $ofc_text ) : ?>
-					<p class="body-text col-span-full md:col-span-4 xl:col-start-8 xl:col-span-4 xl:row-start-1 xl:row-span-2"><?php echo montela_text( $ofc_text ); ?></p>
+					<p class="body-text anim-fade-up col-span-full md:col-span-4 xl:col-start-8 xl:col-span-4 xl:row-start-1 xl:row-span-2"><?php echo montela_text( $ofc_text ); ?></p>
 				<?php endif; ?>
 
 				<?php if ( is_array( $ofc_button ) && ! empty( $ofc_button['url'] ) ) : ?>
-					<div class="col-span-full xl:col-start-2 xl:col-span-5 xl:row-start-2">
+					<div class="anim-fade-up col-span-full xl:col-start-2 xl:col-span-5 xl:row-start-2">
 						<?php get_template_part( 'template-parts/components/button', null, array_merge( $ofc_button, array( 'style' => 'secondary' ) ) ); ?>
 					</div>
 				<?php endif; ?>
 			</div>
 		<?php endif; ?>
 
-		<div class="swiper section-offer-cards__swiper mt-11 xl:mt-[65px]" data-swiper="<?php echo esc_attr( wp_json_encode( $ofc_swiper ) ); ?>">
+		<div class="swiper section-offer-cards__swiper anim-fade-up mt-11 xl:mt-[65px]" data-swiper="<?php echo esc_attr( wp_json_encode( $ofc_swiper ) ); ?>">
 			<div class="swiper-wrapper">
 				<?php foreach ( $ofc_ids as $ofc_id ) : ?>
 					<div class="swiper-slide section-offer-cards__slide">

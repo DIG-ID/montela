@@ -32,7 +32,7 @@ if ( ! $bar_has_facts ) {
 }
 ?>
 <div class="theme-container apartment-bar mt-11 md:mt-[37px] xl:mt-[57px]">
-	<div class="theme-grid pb-11 md:pb-[18px] border-b border-montela-sage text-montela-sage">
+	<div class="theme-grid anim-fade-up pb-11 md:pb-[18px] border-b border-montela-sage text-montela-sage">
 		<?php
 		get_template_part(
 			'template-parts/components/apartment-facts',

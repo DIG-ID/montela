@@ -43,13 +43,13 @@ $ri_has_link = is_array( $ri_button ) && ! empty( $ri_button['url'] );
 	<div class="theme-container">
 		<div class="theme-grid gap-y-8 pb-11 md:gap-y-9 xl:gap-y-16">
 			<?php if ( $ri_title ) : ?>
-				<h2 id="<?php echo esc_attr( $ri_title_id ); ?>" class="title-h3 section-room-info__title col-span-full xl:col-start-2 xl:col-span-10">
+				<h2 id="<?php echo esc_attr( $ri_title_id ); ?>" class="title-h3 section-room-info__title anim-fade-up col-span-full xl:col-start-2 xl:col-span-10">
 					<?php echo montela_text( $ri_title ); ?>
 				</h2>
 			<?php endif; ?>
 
 			<?php if ( $ri_image ) : ?>
-				<figure class="section-room-info__photo col-span-full order-first self-start m-0 overflow-hidden aspect-[326/268] md:order-none md:col-span-3 md:aspect-[343/536] xl:col-start-2 xl:col-span-7 xl:aspect-[1053/600]">
+				<figure class="section-room-info__photo anim-fade-left col-span-full order-first self-start m-0 overflow-hidden aspect-[326/268] md:order-none md:col-span-3 md:aspect-[343/536] xl:col-start-2 xl:col-span-7 xl:aspect-[1053/600]">
 					<?php
 					echo wp_get_attachment_image(
 						$ri_image,
@@ -65,7 +65,7 @@ $ri_has_link = is_array( $ri_button ) && ! empty( $ri_button['url'] );
 			<?php endif; ?>
 
 			<?php if ( $ri_text || $ri_items || $ri_has_link ) : ?>
-				<div class="section-room-info__content col-span-full flex flex-col items-start gap-5 md:col-start-4 md:col-span-3 md:gap-11 xl:col-start-9 xl:col-span-3 xl:gap-16">
+				<div class="section-room-info__content anim-fade-up col-span-full flex flex-col items-start gap-5 md:col-start-4 md:col-span-3 md:gap-11 xl:col-start-9 xl:col-span-3 xl:gap-16">
 					<?php if ( $ri_text ) : ?>
 						<p class="body-text section-room-info__text md:max-w-[340px] xl:max-w-none"><?php echo montela_text( $ri_text ); ?></p>
 					<?php endif; ?>
@@ -95,7 +95,7 @@ $ri_has_link = is_array( $ri_button ) && ! empty( $ri_button['url'] );
 			null,
 			array(
 				'images' => $ri_slider,
-				'class'  => 'photo-slider--subpage',
+				'class'  => 'photo-slider--subpage anim-fade',
 			)
 		);
 	endif;

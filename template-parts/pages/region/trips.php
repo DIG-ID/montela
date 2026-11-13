@@ -56,7 +56,7 @@ if ( function_exists( 'montela_enqueue_module' ) ) {
 
 $trips_title_id = wp_unique_id( 'section-trips-title-' );
 // Fewer cards than fit (under four on desktop): centred, at the same width.
-$trips_swiper   = array(
+$trips_swiper = array(
 	'slidesPerView'            => 1,
 	'spaceBetween'             => 20,
 	'centerInsufficientSlides' => true,
@@ -72,15 +72,15 @@ $trips_swiper   = array(
 				<?php if ( $trips_title || $trips_text ) : ?>
 					<div class="section-trips__head">
 						<?php if ( $trips_title ) : ?>
-							<h2 id="<?php echo esc_attr( $trips_title_id ); ?>" class="title-h3 section-trips__title"><?php echo montela_text( $trips_title ); ?></h2>
+							<h2 id="<?php echo esc_attr( $trips_title_id ); ?>" class="title-h3 section-trips__title anim-fade-up"><?php echo montela_text( $trips_title ); ?></h2>
 						<?php endif; ?>
 						<?php if ( $trips_text ) : ?>
-							<p class="body-text section-trips__text"><?php echo montela_text( $trips_text ); ?></p>
+							<p class="body-text section-trips__text anim-fade-up"><?php echo montela_text( $trips_text ); ?></p>
 						<?php endif; ?>
 					</div>
 				<?php endif; ?>
 
-				<div class="swiper section-trips__swiper" data-swiper="<?php echo esc_attr( wp_json_encode( $trips_swiper ) ); ?>">
+				<div class="swiper section-trips__swiper anim-fade-up" data-swiper="<?php echo esc_attr( wp_json_encode( $trips_swiper ) ); ?>">
 					<div class="swiper-wrapper">
 						<?php foreach ( $trips_ids as $trips_id ) : ?>
 							<div class="swiper-slide section-trips__slide">

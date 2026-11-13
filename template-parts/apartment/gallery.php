@@ -22,6 +22,6 @@ get_template_part(
 	null,
 	array(
 		'images' => get_field( 'section_apartment_gallery' ),
-		'class'  => 'mt-[45px] md:mt-14 xl:mt-[101px]',
+		'class'  => 'anim-fade mt-[45px] md:mt-14 xl:mt-[101px]',
 	)
 );

@@ -31,7 +31,7 @@ if ( ! $offers ) {
 ?>
 <div class="section-offers">
 	<?php
-	foreach ( $offers as $offers_id ) :
+	foreach ( array_values( $offers ) as $offers_index => $offers_id ) :
 		$offers_validity = function_exists( 'montela_get_offer_validity' ) ? montela_get_offer_validity( $offers_id, 'd.m.y' ) : '';
 		$offers_duration = get_field( 'section_offer_duration', $offers_id );
 		$offers_excerpt  = has_excerpt( $offers_id ) ? get_the_excerpt( $offers_id ) : '';
@@ -39,7 +39,7 @@ if ( ! $offers ) {
 		$offers_title    = get_the_title( $offers_id );
 		?>
 		<article class="offer-card">
-			<div class="offer-card__panel">
+			<div class="offer-card__panel anim-fade-up">
 				<h2 class="title-h3 offer-card__title"><?php echo montela_text( $offers_title ); ?></h2>
 
 				<?php if ( $offers_validity ) : ?>
@@ -70,7 +70,8 @@ if ( ! $offers ) {
 			</div>
 
 			<?php if ( $offers_image ) : ?>
-				<figure class="offer-card__photo">
+				<?php // Photo on the right on odd rows, on the left on even ones (desktop, _offers.sass): it slides in from its side. ?>
+				<figure class="offer-card__photo <?php echo 0 === $offers_index % 2 ? 'anim-fade-right' : 'anim-fade-left'; ?>">
 					<?php
 					echo wp_get_attachment_image(
 						$offers_image,

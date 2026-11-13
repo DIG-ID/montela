@@ -54,11 +54,11 @@ $srv_swiper   = array(
 			<div class="section-services__inner" data-swiper-root>
 				<div class="section-services__head">
 					<?php if ( $srv_title ) : ?>
-						<h2 id="<?php echo esc_attr( $srv_title_id ); ?>" class="title-h3 section-services__title"><?php echo montela_text( $srv_title ); ?></h2>
+						<h2 id="<?php echo esc_attr( $srv_title_id ); ?>" class="title-h3 section-services__title anim-fade-up"><?php echo montela_text( $srv_title ); ?></h2>
 					<?php endif; ?>
 
 					<?php if ( $srv_text || $srv_button ) : ?>
-						<div class="section-services__intro">
+						<div class="section-services__intro anim-fade-up">
 							<?php if ( $srv_text ) : ?>
 								<p class="body-text section-services__text"><?php echo montela_text( $srv_text ); ?></p>
 							<?php endif; ?>
@@ -71,7 +71,7 @@ $srv_swiper   = array(
 					<?php endif; ?>
 				</div>
 
-				<div class="swiper section-services__swiper" data-swiper="<?php echo esc_attr( wp_json_encode( $srv_swiper ) ); ?>">
+				<div class="swiper section-services__swiper anim-fade-up" data-swiper="<?php echo esc_attr( wp_json_encode( $srv_swiper ) ); ?>">
 					<div class="swiper-wrapper">
 						<?php
 						foreach ( $srv_plans as $srv_plan ) :

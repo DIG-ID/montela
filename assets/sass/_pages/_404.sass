@@ -46,3 +46,22 @@
   @apply max-w-full mt-[70px] md:mt-[110px] xl:mt-[clamp(48px,7svh,120px)]
   .btn__label
     @apply px-6 whitespace-normal md:px-[115px] md:whitespace-nowrap
+
+// -- Load entrance (not in Figma; Pedro, 2026-11-13) --
+// The page has no hero, so it gets its own, in CSS like the heroes' (the
+// "404" is the LCP — animations.js may be delayed by WP Rocket): the frame
+// fades in, then the "404", the copy and the button rise one after the
+// other; the header and the sticky CTA follow (_layout/_page-intro.sass).
+// Durations and easing from the --intro-* settings there.
+@media (prefers-reduced-motion: no-preference)
+  .section-404__frame
+    animation: page-intro-fade var(--intro-duration) var(--intro-ease) 0.1s backwards
+
+  .section-404__code
+    animation: page-intro-up var(--intro-duration) var(--intro-ease) 0.3s backwards
+
+  .section-404__copy
+    animation: page-intro-up var(--intro-duration) var(--intro-ease) 0.45s backwards
+
+  .section-404 .section-404__btn
+    animation: page-intro-up var(--intro-duration) var(--intro-ease) 0.6s backwards

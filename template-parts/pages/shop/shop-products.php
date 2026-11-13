@@ -57,12 +57,12 @@ $sp_swiper = array(
 	<div class="theme-container">
 		<div class="theme-grid gap-y-11" data-swiper-root>
 			<?php if ( $sp_title ) : ?>
-				<h2 id="<?php echo esc_attr( $sp_title_id ); ?>" class="title-h3 section-shop-products__title col-span-full text-center">
+				<h2 id="<?php echo esc_attr( $sp_title_id ); ?>" class="title-h3 section-shop-products__title anim-fade-up col-span-full text-center">
 					<?php echo montela_text( $sp_title ); ?>
 				</h2>
 			<?php endif; ?>
 
-			<div class="section-shop-products__slider col-span-full md:col-start-2 md:col-span-4 md:px-3 xl:col-start-2 xl:col-span-10 xl:row-start-2 xl:px-[82px]">
+			<div class="section-shop-products__slider anim-fade-up col-span-full md:col-start-2 md:col-span-4 md:px-3 xl:col-start-2 xl:col-span-10 xl:row-start-2 xl:px-[82px]">
 				<div class="swiper section-shop-products__swiper" data-swiper="<?php echo esc_attr( wp_json_encode( $sp_swiper ) ); ?>">
 					<div class="swiper-wrapper">
 						<?php foreach ( $sp_items as $sp_item ) : ?>

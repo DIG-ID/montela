@@ -80,10 +80,8 @@ alteração no `CHANGELOG.md`. Os nodes do Figma de cada template estão no
     marcador na ilustração) — NOTES B26.
 - [ ] **Animações** — a biblioteca de entradas por classe está feita
   (`assets/js/animations/reveal.js`, ver `CLAUDE.md` → Build). Falta:
-  - pôr as classes nas secções das outras páginas (a homepage está feita;
-    os módulos dela já as levam onde aparecerem);
-  - decidir se a entrada no load (`_page-intro.sass`) passa para as outras
-    páginas e se toca só na primeira visita da sessão.
+  - decidir se a entrada no load toca só na primeira visita da sessão
+    (hoje toca em cada página aberta).
 - [ ] **Estilo dos links inline** — `_typography.sass` tem a secção "Links" por
   definir a partir do design system.
 - [ ] **Timeline do Montela Weg** — os anos 2020–2026 ainda estão em Lorem

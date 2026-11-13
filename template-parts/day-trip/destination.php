@@ -38,15 +38,15 @@ $dest_title_id = wp_unique_id( 'section-destination-title-' );
 		<div class="theme-container">
 			<div class="theme-grid section-destination__grid">
 				<?php if ( $dest_title ) : ?>
-					<h2 id="<?php echo esc_attr( $dest_title_id ); ?>" class="title-h3 section-destination__title"><?php echo montela_text( $dest_title ); ?></h2>
+					<h2 id="<?php echo esc_attr( $dest_title_id ); ?>" class="title-h3 section-destination__title anim-fade-up"><?php echo montela_text( $dest_title ); ?></h2>
 				<?php endif; ?>
 
 				<?php if ( $dest_text ) : ?>
-					<div class="body-text section-destination__text"><?php echo wp_kses_post( $dest_text ); ?></div>
+					<div class="body-text section-destination__text anim-fade-up"><?php echo wp_kses_post( $dest_text ); ?></div>
 				<?php endif; ?>
 
 				<?php if ( $dest_image ) : ?>
-					<figure class="section-destination__photo">
+					<figure class="section-destination__photo anim-fade-up">
 						<?php
 						echo wp_get_attachment_image(
 							$dest_image,
@@ -67,7 +67,7 @@ $dest_title_id = wp_unique_id( 'section-destination-title-' );
 					null,
 					array(
 						'items' => $dest_items,
-						'class' => 'section-destination__list',
+						'class' => 'section-destination__list anim-fade-up anim-children',
 					)
 				);
 				?>
@@ -81,7 +81,7 @@ $dest_title_id = wp_unique_id( 'section-destination-title-' );
 		null,
 		array(
 			'images' => $dest_images,
-			'class'  => 'section-destination__slider',
+			'class'  => 'section-destination__slider anim-fade',
 		)
 	);
 	?>

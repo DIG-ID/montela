@@ -86,7 +86,7 @@ $bx_title_id = wp_unique_id( 'section-bike-experiences-title-' );
 			<div class="section-bike-experiences__frame" aria-hidden="true"></div>
 
 			<?php if ( $bx_title || $bx_text ) : ?>
-				<div class="section-bike-experiences__copy">
+				<div class="section-bike-experiences__copy anim-fade-up">
 					<?php if ( $bx_title ) : ?>
 						<h2 id="<?php echo esc_attr( $bx_title_id ); ?>" class="title-h3 section-bike-experiences__title"><?php echo montela_text( $bx_title ); ?></h2>
 					<?php endif; ?>
@@ -104,7 +104,7 @@ $bx_title_id = wp_unique_id( 'section-bike-experiences-title-' );
 				</div>
 			<?php endif; ?>
 
-			<div class="section-bike-experiences__cards" data-activities-track>
+			<div class="section-bike-experiences__cards anim-fade-up anim-children" data-activities-track>
 				<?php
 				foreach ( $bx_cards as $bx_card ) :
 					get_template_part(

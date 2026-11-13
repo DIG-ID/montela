@@ -34,7 +34,8 @@ if ( ! $hz_image && ! $hz_title && ! $hz_text ) {
 
 $hz_title_id  = wp_unique_id( 'section-horizontal-title-' );
 $hz_title_tag = ( ! empty( $args['title_tag'] ) && in_array( $args['title_tag'], array( 'h2', 'h3', 'h4' ), true ) ) ? $args['title_tag'] : 'h2';
-$hz_img_class = 'section-horizontal__img' . ( ! empty( $args['image_class'] ) ? ' ' . $args['image_class'] : '' );
+// anim-parallax: the full-width photo drifts inside its frame (the figure clips it).
+$hz_img_class = 'section-horizontal__img anim-parallax' . ( ! empty( $args['image_class'] ) ? ' ' . $args['image_class'] : '' );
 $hz_has_link  = is_array( $hz_button ) && ! empty( $hz_button['url'] );
 ?>
 <section class="section-horizontal"<?php echo $hz_title ? ' aria-labelledby="' . esc_attr( $hz_title_id ) . '"' : ''; ?>>
@@ -57,7 +58,7 @@ $hz_has_link  = is_array( $hz_button ) && ! empty( $hz_button['url'] );
 			<?php endif; ?>
 
 			<?php if ( $hz_title || $hz_has_link ) : ?>
-				<div class="section-horizontal__head">
+				<div class="section-horizontal__head anim-fade-up">
 					<?php if ( $hz_title ) : ?>
 						<<?php echo esc_attr( $hz_title_tag ); ?> id="<?php echo esc_attr( $hz_title_id ); ?>" class="title-h3 section-horizontal__title">
 							<?php echo montela_text( $hz_title ); ?>
@@ -72,7 +73,7 @@ $hz_has_link  = is_array( $hz_button ) && ! empty( $hz_button['url'] );
 			<?php endif; ?>
 
 			<?php if ( $hz_text ) : ?>
-				<div class="body-text section-horizontal__text"><?php echo wp_kses_post( $hz_text ); ?></div>
+				<div class="body-text section-horizontal__text anim-fade-up"><?php echo wp_kses_post( $hz_text ); ?></div>
 			<?php endif; ?>
 		</div>
 	</div>

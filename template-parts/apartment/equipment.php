@@ -47,7 +47,7 @@ $equip_title_id = wp_unique_id( 'section-apartment-equipment-title-' );
 ?>
 <section class="theme-container section-apartment-equipment mt-11 md:mt-14 xl:mt-[77px] text-montela-walnut" aria-labelledby="<?php echo esc_attr( $equip_title_id ); ?>" style="--equipment-rows: <?php echo esc_attr( $equip_rows ); ?>">
 	<div class="theme-grid gap-y-6 md:gap-y-11 xl:gap-y-[50px]">
-		<h2 id="<?php echo esc_attr( $equip_title_id ); ?>" class="title-h4 col-span-full xl:col-start-2 xl:col-span-6 xl:row-start-1"><?php echo montela_text( $equip_title ); ?></h2>
+		<h2 id="<?php echo esc_attr( $equip_title_id ); ?>" class="title-h4 anim-fade-up col-span-full xl:col-start-2 xl:col-span-6 xl:row-start-1"><?php echo montela_text( $equip_title ); ?></h2>
 
 		<?php
 		get_template_part(
@@ -55,14 +55,14 @@ $equip_title_id = wp_unique_id( 'section-apartment-equipment-title-' );
 			null,
 			array(
 				'items'      => $equip_items,
-				'class'      => 'col-span-full grid grid-cols-subgrid gap-y-4 md:grid-flow-col md:grid-rows-[repeat(var(--equipment-rows),auto)] md:gap-y-[30px] xl:gap-y-4 xl:col-start-2 xl:col-span-6 xl:row-start-2 xl:self-start',
+				'class'      => 'anim-fade-up anim-children col-span-full grid grid-cols-subgrid gap-y-4 md:grid-flow-col md:grid-rows-[repeat(var(--equipment-rows),auto)] md:gap-y-[30px] xl:gap-y-4 xl:col-start-2 xl:col-span-6 xl:row-start-2 xl:self-start',
 				'item_class' => 'col-span-full md:col-span-3 grid-cols-[50px_1fr] gap-x-4 items-center xl:grid-cols-[68px_1fr] xl:gap-x-[17px]',
 			)
 		);
 		?>
 
 		<?php if ( $equip_image ) : ?>
-			<figure class="section-apartment-equipment__photo hidden xl:block xl:col-start-8 xl:col-span-4 xl:row-start-1 xl:row-span-2">
+			<figure class="section-apartment-equipment__photo anim-fade-right hidden xl:block xl:col-start-8 xl:col-span-4 xl:row-start-1 xl:row-span-2">
 				<?php
 				echo wp_get_attachment_image(
 					$equip_image,

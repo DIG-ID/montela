@@ -35,7 +35,7 @@ if ( ! $gd_items ) {
 ?>
 <div class="section-group-details pb-32 md:pb-48 text-montela-walnut">
 	<div class="theme-container">
-		<div class="theme-grid gap-y-5">
+		<div class="theme-grid gap-y-5 anim-fade-up anim-children">
 			<?php foreach ( $gd_items as $gd_item ) : ?>
 				<article class="info-box section-group-details__box col-span-full flex flex-col gap-6 pt-6 pb-6 pl-[21px] pr-4 md:col-span-3 md:row-span-2 md:grid md:grid-rows-subgrid md:pr-11 xl:col-span-5 xl:odd:col-start-2 xl:even:col-start-7 xl:gap-y-[26px] xl:pt-[22px] xl:pb-[46px] xl:pl-[22px] xl:pr-[22px]">
 					<?php if ( ! empty( $gd_item['title'] ) ) : ?>

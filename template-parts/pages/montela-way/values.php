@@ -32,10 +32,10 @@ $values_title_id = wp_unique_id( 'section-values-title-' );
 		<?php if ( $values_title || $values_text ) : ?>
 			<div class="theme-grid section-values__head">
 				<?php if ( $values_title ) : ?>
-					<h2 id="<?php echo esc_attr( $values_title_id ); ?>" class="title-h3 section-values__title"><?php echo montela_text( $values_title ); ?></h2>
+					<h2 id="<?php echo esc_attr( $values_title_id ); ?>" class="title-h3 section-values__title anim-fade-up"><?php echo montela_text( $values_title ); ?></h2>
 				<?php endif; ?>
 				<?php if ( $values_text ) : ?>
-					<p class="body-text section-values__text"><?php echo montela_text( $values_text ); ?></p>
+					<p class="body-text section-values__text anim-fade-up"><?php echo montela_text( $values_text ); ?></p>
 				<?php endif; ?>
 			</div>
 		<?php endif; ?>
@@ -47,7 +47,8 @@ $values_title_id = wp_unique_id( 'section-values-title-' );
 			?>
 			<div class="<?php echo esc_attr( $values_class ); ?>">
 				<?php if ( ! empty( $values_row['image'] ) ) : ?>
-					<figure class="section-values__photo">
+					<?php // Photo on the left, on the right in reversed rows (desktop): it slides in from its side. ?>
+					<figure class="section-values__photo <?php echo 1 === $values_index % 2 ? 'anim-fade-right' : 'anim-fade-left'; ?>">
 						<?php
 						echo wp_get_attachment_image(
 							$values_row['image'],
@@ -63,7 +64,7 @@ $values_title_id = wp_unique_id( 'section-values-title-' );
 				<?php endif; ?>
 
 				<?php if ( $values_texts ) : ?>
-					<div class="body-text section-values__texts">
+					<div class="body-text section-values__texts anim-fade-up anim-children">
 						<?php foreach ( $values_texts as $values_item ) : ?>
 							<div class="section-values__item">
 								<?php if ( ! empty( $values_item['title'] ) ) : ?>

@@ -40,7 +40,7 @@ $li_title_id = wp_unique_id( 'section-lounge-info-title-' );
 <section class="section-lounge-info text-montela-walnut"<?php echo $li_title ? ' aria-labelledby="' . esc_attr( $li_title_id ) . '"' : ''; ?>>
 	<div class="theme-container">
 		<div class="theme-grid section-lounge-info__grid gap-y-6 pb-6 md:pb-10 xl:pb-5 xl:items-stretch">
-			<div class="section-lounge-info__box col-span-full flex flex-col items-start border border-montela-walnut pt-[26px] pl-3 pr-3 pb-4 md:pt-[46px] md:pl-[22px] md:pr-[22px] md:pb-[26px] xl:col-span-5 xl:pt-[69px] xl:pl-[71px] xl:pr-[102px] xl:pb-[64px]">
+			<div class="section-lounge-info__box anim-fade-up col-span-full flex flex-col items-start border border-montela-walnut pt-[26px] pl-3 pr-3 pb-4 md:pt-[46px] md:pl-[22px] md:pr-[22px] md:pb-[26px] xl:col-span-5 xl:pt-[69px] xl:pl-[71px] xl:pr-[102px] xl:pb-[64px]">
 				<?php if ( $li_title ) : ?>
 					<h2 id="<?php echo esc_attr( $li_title_id ); ?>" class="title-h3 section-lounge-info__title">
 						<?php echo montela_text( $li_title ); ?>
@@ -71,7 +71,7 @@ $li_title_id = wp_unique_id( 'section-lounge-info-title-' );
 			</div>
 
 			<?php if ( $li_image ) : ?>
-				<figure class="section-lounge-info__photo col-span-full m-0 overflow-hidden aspect-[329/204] md:aspect-[706/292] xl:relative xl:aspect-auto xl:col-start-6 xl:col-span-7">
+				<figure class="section-lounge-info__photo anim-fade-right col-span-full m-0 overflow-hidden aspect-[329/204] md:aspect-[706/292] xl:relative xl:aspect-auto xl:col-start-6 xl:col-span-7">
 					<?php
 					echo wp_get_attachment_image(
 						$li_image,
@@ -95,7 +95,7 @@ $li_title_id = wp_unique_id( 'section-lounge-info-title-' );
 			null,
 			array(
 				'images' => $li_slider,
-				'class'  => 'photo-slider--subpage',
+				'class'  => 'photo-slider--subpage anim-fade',
 			)
 		);
 	endif;

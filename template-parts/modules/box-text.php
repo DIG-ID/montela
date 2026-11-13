@@ -102,19 +102,19 @@ $box_title_id = wp_unique_id( 'section-box-text-title-' );
 			<div class="section-box-text__box">
 				<div class="section-box-text__inner">
 					<?php if ( $box_eyebrow ) : ?>
-						<p class="title-h2 section-box-text__eyebrow"><?php echo montela_text( $box_eyebrow ); ?></p>
+						<p class="title-h2 section-box-text__eyebrow anim-fade-up"><?php echo montela_text( $box_eyebrow ); ?></p>
 					<?php endif; ?>
 
 					<?php if ( $box_title ) : ?>
-						<h2 id="<?php echo esc_attr( $box_title_id ); ?>" class="title-h3 section-box-text__title"><?php echo montela_text( $box_title ); ?></h2>
+						<h2 id="<?php echo esc_attr( $box_title_id ); ?>" class="title-h3 section-box-text__title anim-fade-up"><?php echo montela_text( $box_title ); ?></h2>
 					<?php endif; ?>
 
 					<?php if ( $box_text ) : ?>
-						<div class="section-box-text__text"><?php echo wp_kses_post( $box_text ); ?></div>
+						<div class="section-box-text__text anim-fade-up"><?php echo wp_kses_post( $box_text ); ?></div>
 					<?php endif; ?>
 
 					<?php if ( is_array( $box_button ) && ! empty( $box_button['url'] ) ) : ?>
-						<div class="section-box-text__button">
+						<div class="section-box-text__button anim-fade-up">
 							<?php
 							get_template_part(
 								'template-parts/components/button',
@@ -131,7 +131,7 @@ $box_title_id = wp_unique_id( 'section-box-text-title-' );
 						null,
 						array(
 							'items' => $box_items,
-							'class' => 'section-box-text__list',
+							'class' => 'section-box-text__list anim-fade-up anim-children',
 						)
 					);
 					?>

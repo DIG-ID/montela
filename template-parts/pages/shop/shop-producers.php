@@ -60,7 +60,7 @@ $spr_swiper = array(
 	<div class="theme-container">
 		<div class="theme-grid gap-y-11 xl:gap-y-[123px]" data-swiper-root>
 			<?php if ( $spr_title || $spr_text ) : ?>
-				<div class="section-shop-producers__head col-span-full grid grid-cols-subgrid gap-y-4 text-center md:gap-y-9 xl:col-start-2 xl:col-span-10 xl:items-end xl:text-left">
+				<div class="section-shop-producers__head anim-fade-up col-span-full grid grid-cols-subgrid gap-y-4 text-center md:gap-y-9 xl:col-start-2 xl:col-span-10 xl:items-end xl:text-left">
 					<?php if ( $spr_title ) : ?>
 						<h2 id="<?php echo esc_attr( $spr_title_id ); ?>" class="title-h3 section-shop-producers__title col-span-full xl:col-span-6">
 							<?php echo montela_text( $spr_title ); ?>
@@ -72,7 +72,7 @@ $spr_swiper = array(
 				</div>
 			<?php endif; ?>
 
-			<div class="section-shop-producers__slider col-span-full md:col-start-2 md:col-span-4 md:px-3 xl:col-start-2 xl:col-span-10 xl:row-start-2 xl:px-[82px]">
+			<div class="section-shop-producers__slider anim-fade-up col-span-full md:col-start-2 md:col-span-4 md:px-3 xl:col-start-2 xl:col-span-10 xl:row-start-2 xl:px-[82px]">
 				<div class="swiper section-shop-producers__swiper" data-swiper="<?php echo esc_attr( wp_json_encode( $spr_swiper ) ); ?>">
 					<div class="swiper-wrapper">
 						<?php foreach ( $spr_items as $spr_item ) : ?>

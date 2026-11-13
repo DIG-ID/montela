@@ -48,15 +48,15 @@ $apt_title_id = wp_unique_id( 'section-apartment-intro-title-' );
 <section class="theme-container section-apartment-intro mt-4 md:mt-11 xl:mt-[100px] text-montela-walnut"<?php echo $apt_title ? ' aria-labelledby="' . esc_attr( $apt_title_id ) . '"' : ''; ?>>
 	<div class="theme-grid gap-y-4 md:gap-y-0 pb-11 md:pb-14 xl:pb-[77px] border-b border-montela-sage">
 		<?php if ( $apt_title ) : ?>
-			<h2 id="<?php echo esc_attr( $apt_title_id ); ?>" class="title-intro col-span-full md:col-span-3 md:row-start-1 xl:col-start-2 xl:col-span-5"><?php echo montela_text( $apt_title ); ?></h2>
+			<h2 id="<?php echo esc_attr( $apt_title_id ); ?>" class="title-intro anim-fade-up col-span-full md:col-span-3 md:row-start-1 xl:col-start-2 xl:col-span-5"><?php echo montela_text( $apt_title ); ?></h2>
 		<?php endif; ?>
 
 		<?php if ( $apt_text ) : ?>
-			<div class="body-text section-apartment-intro__text col-span-full md:col-start-4 md:col-span-3 md:row-start-1 md:row-span-2 xl:col-start-8 xl:col-span-4"><?php echo wp_kses_post( $apt_text ); ?></div>
+			<div class="body-text section-apartment-intro__text anim-fade-up col-span-full md:col-start-4 md:col-span-3 md:row-start-1 md:row-span-2 xl:col-start-8 xl:col-span-4"><?php echo wp_kses_post( $apt_text ); ?></div>
 		<?php endif; ?>
 
 		<?php if ( $apt_buttons ) : ?>
-			<div class="col-span-full flex flex-col items-start gap-5 md:col-span-3 md:row-start-2 md:mt-[83px] xl:col-start-2 xl:col-span-5 xl:mt-[136px] xl:flex-row xl:flex-wrap">
+			<div class="anim-fade-up col-span-full flex flex-col items-start gap-5 md:col-span-3 md:row-start-2 md:mt-[83px] xl:col-start-2 xl:col-span-5 xl:mt-[136px] xl:flex-row xl:flex-wrap">
 				<?php
 				foreach ( $apt_buttons as $apt_button ) :
 					get_template_part(

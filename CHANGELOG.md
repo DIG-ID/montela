@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.60.0] — 2026-11-13
+### Added
+- Scroll animations on every page (text pages and Impressum excepted): titles and texts rise in, photos come in from their side, lists and cards in a staircase, sliders and maps fade in; large photo bands (image band, Horizontal, the Montela Weg history photo) move with a parallax.
+- 404 page: its own load entrance — the frame, the "404", the text and the button one after the other, then the header and the sticky button.
+
+### Fixed
+- Code standards: the last lint warnings cleared (font stylesheets, SVG upload filter, day trips section).
+
 ## [1.59.3] — 2026-11-13
 ### Changed
 - Apartments page (desktop): the card panel has 80px padding on every side, and the card text is at most 600px wide on every desktop screen (not only above 1080p).

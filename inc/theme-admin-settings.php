@@ -295,12 +295,11 @@ add_filter(
  * @param string       $file                      Full path to the file.
  * @param string       $filename                  The file name.
  * @param string[]     $mimes                     Allowed mime types.
- * @param string|false $real_mime                 Detected mime type.
  * @return array
  */
 add_filter(
 	'wp_check_filetype_and_ext',
-	function ( $wp_check_filetype_and_ext, $file, $filename, $mimes, $real_mime ) {
+	function ( $wp_check_filetype_and_ext, $file, $filename, $mimes ) {
 
 		if ( ! $wp_check_filetype_and_ext['type'] ) {
 			$check_filetype  = wp_check_filetype( $filename, $mimes );
@@ -319,7 +318,7 @@ add_filter(
 		return $wp_check_filetype_and_ext;
 	},
 	10,
-	5
+	4
 );
 
 // Disable comments completely.

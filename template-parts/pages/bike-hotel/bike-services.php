@@ -40,17 +40,17 @@ $bs_title_id = wp_unique_id( 'section-bike-services-title-' );
 	<div class="theme-container">
 		<div class="theme-grid">
 			<?php if ( $bs_title ) : ?>
-				<h2 id="<?php echo esc_attr( $bs_title_id ); ?>" class="title-h3 section-bike-services__title col-span-full max-w-[300px] md:max-w-none mb-9 md:mb-10 xl:mb-11 xl:col-start-2 xl:col-span-11"><?php echo montela_text( $bs_title ); ?></h2>
+				<h2 id="<?php echo esc_attr( $bs_title_id ); ?>" class="title-h3 section-bike-services__title anim-fade-up col-span-full max-w-[300px] md:max-w-none mb-9 md:mb-10 xl:mb-11 xl:col-start-2 xl:col-span-11"><?php echo montela_text( $bs_title ); ?></h2>
 			<?php endif; ?>
 
 			<div class="section-bike-services__body col-span-full grid grid-cols-1 gap-y-11 md:grid-cols-6 md:gap-x-5 md:gap-y-0 xl:grid-cols-12 xl:items-start">
 				<div class="section-bike-services__col section-bike-services__col--left contents xl:grid xl:grid-cols-subgrid xl:col-span-4 xl:gap-y-[138px]">
 					<?php if ( $bs_text ) : ?>
-						<p class="body-text section-bike-services__text order-1 md:col-span-3 md:row-start-1 md:max-w-[343px] xl:col-start-2 xl:col-span-3 xl:max-w-none"><?php echo montela_text( $bs_text ); ?></p>
+						<p class="body-text section-bike-services__text anim-fade-up order-1 md:col-span-3 md:row-start-1 md:max-w-[343px] xl:col-start-2 xl:col-span-3 xl:max-w-none"><?php echo montela_text( $bs_text ); ?></p>
 					<?php endif; ?>
 
 					<?php if ( $bs_image_tall ) : ?>
-						<figure class="section-bike-services__photo section-bike-services__photo--tall order-4 m-0 overflow-hidden aspect-[660/556] md:col-span-3 md:row-start-2 md:mt-5 md:aspect-auto md:h-[246px] xl:col-span-4 xl:mt-0 xl:h-auto xl:aspect-[3/4]">
+						<figure class="section-bike-services__photo section-bike-services__photo--tall anim-fade-left order-4 m-0 overflow-hidden aspect-[660/556] md:col-span-3 md:row-start-2 md:mt-5 md:aspect-auto md:h-[246px] xl:col-span-4 xl:mt-0 xl:h-auto xl:aspect-[3/4]">
 							<?php
 							echo wp_get_attachment_image(
 								$bs_image_tall,
@@ -68,7 +68,7 @@ $bs_title_id = wp_unique_id( 'section-bike-services-title-' );
 
 				<div class="section-bike-services__col section-bike-services__col--right contents xl:grid xl:grid-cols-subgrid xl:col-start-6 xl:col-span-7 xl:gap-y-[101px]">
 					<?php if ( $bs_image_wide ) : ?>
-						<figure class="section-bike-services__photo section-bike-services__photo--wide order-2 m-0 overflow-hidden h-[246px] md:col-start-4 md:col-span-3 md:row-start-1 xl:col-span-7 xl:h-auto xl:aspect-[1002/632]">
+						<figure class="section-bike-services__photo section-bike-services__photo--wide anim-fade-right order-2 m-0 overflow-hidden h-[246px] md:col-start-4 md:col-span-3 md:row-start-1 xl:col-span-7 xl:h-auto xl:aspect-[1002/632]">
 							<?php
 							echo wp_get_attachment_image(
 								$bs_image_wide,
@@ -89,7 +89,7 @@ $bs_title_id = wp_unique_id( 'section-bike-services-title-' );
 						null,
 						array(
 							'items'      => $bs_items,
-							'class'      => 'section-bike-services__list order-3 gap-9 md:col-span-6 md:row-start-3 md:mt-[88px] md:grid md:grid-cols-subgrid md:gap-x-5 md:gap-y-10 xl:col-span-7 xl:row-start-2 xl:mt-0 xl:gap-y-[72px]',
+							'class'      => 'section-bike-services__list anim-fade-up anim-children order-3 gap-9 md:col-span-6 md:row-start-3 md:mt-[88px] md:grid md:grid-cols-subgrid md:gap-x-5 md:gap-y-10 xl:col-span-7 xl:row-start-2 xl:mt-0 xl:gap-y-[72px]',
 							'item_class' => array( 'md:col-span-3 xl:col-start-1', 'md:col-span-3 xl:col-start-5' ),
 							'text_class' => 'max-w-[245px] md:max-w-none',
 						)

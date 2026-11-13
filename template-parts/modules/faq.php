@@ -63,7 +63,7 @@ $faq_title_id = $faq_uid . '-title';
 	<div class="theme-container">
 		<div class="theme-grid">
 			<div class="section-faq__head">
-				<div class="section-faq__copy">
+				<div class="section-faq__copy anim-fade-up">
 					<?php if ( $faq_title ) : ?>
 						<h2 id="<?php echo esc_attr( $faq_title_id ); ?>" class="title-h3 section-faq__title"><?php echo montela_text( $faq_title ); ?></h2>
 					<?php endif; ?>
@@ -73,12 +73,22 @@ $faq_title_id = $faq_uid . '-title';
 				</div>
 				<?php
 				if ( is_array( $faq_button ) ) :
-					get_template_part( 'template-parts/components/button', null, array_merge( $faq_button, array( 'style' => 'secondary' ) ) );
+					get_template_part(
+						'template-parts/components/button',
+						null,
+						array_merge(
+							$faq_button,
+							array(
+								'style' => 'secondary',
+								'class' => 'anim-fade-up',
+							)
+						)
+					);
 				endif;
 				?>
 			</div>
 
-			<div class="section-faq__list">
+			<div class="section-faq__list anim-fade-up anim-children">
 				<?php foreach ( $faq_items as $faq_item ) : ?>
 					<details class="section-faq__item" name="<?php echo esc_attr( $faq_uid ); ?>">
 						<summary class="section-faq__question">

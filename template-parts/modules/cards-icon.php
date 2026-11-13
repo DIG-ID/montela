@@ -128,15 +128,15 @@ if ( $cards_fixed ) {
 				<?php if ( $cards_title || $cards_text ) : ?>
 					<div class="section-cards-icon__head flex flex-col items-center text-center xl:max-w-[1217px] <?php echo esc_attr( $cards_head_gap ); ?>">
 						<?php if ( $cards_title ) : ?>
-							<h2 id="<?php echo esc_attr( $cards_title_id ); ?>" class="title-h3 section-cards-icon__title"><?php echo montela_text( $cards_title ); ?></h2>
+							<h2 id="<?php echo esc_attr( $cards_title_id ); ?>" class="title-h3 section-cards-icon__title anim-fade-up"><?php echo montela_text( $cards_title ); ?></h2>
 						<?php endif; ?>
 						<?php if ( $cards_text ) : ?>
-							<p class="body-text section-cards-icon__text xl:max-w-[957px]"><?php echo montela_text( $cards_text ); ?></p>
+							<p class="body-text section-cards-icon__text anim-fade-up xl:max-w-[957px]"><?php echo montela_text( $cards_text ); ?></p>
 						<?php endif; ?>
 					</div>
 				<?php endif; ?>
 
-				<div class="section-cards-icon__slider flex w-full flex-col items-center <?php echo esc_attr( $cards_nav_gap ); ?>">
+				<div class="section-cards-icon__slider anim-fade-up flex w-full flex-col items-center <?php echo esc_attr( $cards_nav_gap ); ?>">
 					<div class="swiper section-cards-icon__swiper" data-swiper="<?php echo esc_attr( wp_json_encode( $cards_swiper ) ); ?>">
 						<div class="swiper-wrapper">
 							<?php foreach ( $cards_items as $cards_item ) : ?>

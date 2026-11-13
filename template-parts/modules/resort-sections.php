@@ -42,11 +42,11 @@ if ( ! $rs_items ) {
 			$rs_reverse  = 1 === $rs_i % 2;
 			?>
 			<section class="theme-grid resort-block<?php echo $rs_reverse ? ' resort-block--reverse' : ''; ?> items-start gap-y-7 md:gap-y-11 xl:gap-y-[52px]<?php echo $rs_shown++ ? ' mt-32' : ''; ?>" aria-labelledby="<?php echo esc_attr( $rs_title_id ); ?>">
-				<h2 id="<?php echo esc_attr( $rs_title_id ); ?>" class="title-h3 resort-block__title col-span-full xl:col-start-2 xl:col-span-11">
+				<h2 id="<?php echo esc_attr( $rs_title_id ); ?>" class="title-h3 resort-block__title anim-fade-up col-span-full xl:col-start-2 xl:col-span-11">
 					<?php echo montela_text( $rs_item['title'] ); ?>
 				</h2>
 
-				<div class="resort-block__body col-span-full flex flex-col items-start gap-7 md:col-span-2 md:row-start-2 md:gap-11 <?php echo $rs_reverse ? 'md:col-start-5 xl:col-start-9 xl:col-span-4 xl:gap-[49px]' : 'xl:col-start-2 xl:col-span-3 xl:gap-16'; ?>">
+				<div class="resort-block__body anim-fade-up col-span-full flex flex-col items-start gap-7 md:col-span-2 md:row-start-2 md:gap-11 <?php echo $rs_reverse ? 'md:col-start-5 xl:col-start-9 xl:col-span-4 xl:gap-[49px]' : 'xl:col-start-2 xl:col-span-3 xl:gap-16'; ?>">
 					<?php if ( ! empty( $rs_item['text'] ) ) : ?>
 						<p class="body-text resort-block__text<?php echo $rs_reverse ? ' xl:max-w-[87.35%]' : ''; ?>"><?php echo nl2br( montela_text( $rs_item['text'] ) ); ?></p>
 					<?php endif; ?>
@@ -57,7 +57,7 @@ if ( ! $rs_items ) {
 					?>
 				</div>
 
-				<div class="resort-block__media col-span-full flex mt-4 aspect-[326/268] md:mt-0 md:col-span-4 md:row-start-2 md:gap-5 md:aspect-auto md:h-[385px] xl:col-span-8 xl:gap-[18px] xl:h-auto xl:aspect-[1206/600] <?php echo $rs_reverse ? 'md:col-start-1 md:flex-row-reverse xl:col-start-1' : 'xl:col-start-5'; ?>">
+				<div class="resort-block__media col-span-full flex mt-4 aspect-[326/268] md:mt-0 md:col-span-4 md:row-start-2 md:gap-5 md:aspect-auto md:h-[385px] xl:col-span-8 xl:gap-[18px] xl:h-auto xl:aspect-[1206/600] <?php echo $rs_reverse ? 'anim-fade-left md:col-start-1 md:flex-row-reverse xl:col-start-1' : 'anim-fade-right xl:col-start-5'; ?>">
 					<?php foreach ( array( 'image_inner', 'image_outer' ) as $rs_key ) : ?>
 						<?php if ( ! empty( $rs_item[ $rs_key ] ) ) : ?>
 							<div class="resort-block__photo min-w-0 h-full overflow-hidden flex-1 <?php echo 'image_inner' === $rs_key ? 'xl:flex-[522_1_0%]' : 'hidden md:block xl:flex-[666_1_0%]'; ?>">

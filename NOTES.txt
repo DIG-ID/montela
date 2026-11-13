@@ -955,6 +955,10 @@ o cliente.
              fade-up. Toca em cada abertura da homepage, não só na primeira
              da sessão. As classes estão nos módulos: outras páginas com os
              mesmos módulos também animam.
+             Desde a 1.60.0 em todas as páginas (menos AGB, Datenschutz e
+             Impressum): parallax também no Horizontal e na foto da
+             História (Montela Weg); a 404 tem uma entrada própria em CSS
+             (moldura, "404", texto e botão, depois header e sticky CTA).
   Porquê     pedido do Pedro (13.11.2026), para testar a biblioteca (A25).
   Confirma   Pedro / Daniel.
   Onde       assets/js/animations/reveal.js, _layout/_page-intro.sass,

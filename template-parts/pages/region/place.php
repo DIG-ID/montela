@@ -35,15 +35,15 @@ $place_title_id = wp_unique_id( 'section-place-title-' );
 	<div class="theme-container">
 		<div class="theme-grid section-place__grid">
 			<?php if ( $place_title ) : ?>
-				<h2 id="<?php echo esc_attr( $place_title_id ); ?>" class="title-h3 section-place__title"><?php echo montela_text( $place_title ); ?></h2>
+				<h2 id="<?php echo esc_attr( $place_title_id ); ?>" class="title-h3 section-place__title anim-fade-up"><?php echo montela_text( $place_title ); ?></h2>
 			<?php endif; ?>
 
 			<?php if ( $place_text ) : ?>
-				<p class="body-text section-place__text"><?php echo montela_text( $place_text ); ?></p>
+				<p class="body-text section-place__text anim-fade-up"><?php echo montela_text( $place_text ); ?></p>
 			<?php endif; ?>
 
 			<?php if ( $place_image_1 ) : ?>
-				<figure class="section-place__photo section-place__photo--1">
+				<figure class="section-place__photo section-place__photo--1 anim-fade-left">
 					<?php
 					echo wp_get_attachment_image(
 						$place_image_1,
@@ -64,13 +64,13 @@ $place_title_id = wp_unique_id( 'section-place-title-' );
 				null,
 				array(
 					'items' => $place_items,
-					'class' => 'section-place__list',
+					'class' => 'section-place__list anim-fade-up anim-children',
 				)
 			);
 			?>
 
 			<?php if ( $place_image_2 ) : ?>
-				<figure class="section-place__photo section-place__photo--2">
+				<figure class="section-place__photo section-place__photo--2 anim-fade-right">
 					<?php
 					echo wp_get_attachment_image(
 						$place_image_2,

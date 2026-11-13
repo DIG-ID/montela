@@ -35,7 +35,7 @@ $breakfast_title_id = wp_unique_id( 'section-breakfast-title-' );
 	<div class="theme-container">
 		<div class="theme-grid gap-y-3 md:gap-y-8 mb-5 md:mb-3 xl:mb-5">
 			<?php if ( $breakfast_title || $breakfast_text ) : ?>
-				<div class="section-breakfast__box col-span-full flex flex-col gap-6 border border-montela-walnut px-5 pt-6 pb-5 min-h-[92px] md:min-h-[304px] xl:col-span-4 xl:min-h-0 xl:px-5 xl:pt-[69px] xl:pb-10 2xl:pl-[71px] 2xl:pr-10">
+				<div class="section-breakfast__box anim-fade-up col-span-full flex flex-col gap-6 border border-montela-walnut px-5 pt-6 pb-5 min-h-[92px] md:min-h-[304px] xl:col-span-4 xl:min-h-0 xl:px-5 xl:pt-[69px] xl:pb-10 2xl:pl-[71px] 2xl:pr-10">
 					<?php if ( $breakfast_title ) : ?>
 						<h2 id="<?php echo esc_attr( $breakfast_title_id ); ?>" class="title-h3 section-breakfast__title"><?php echo montela_text( $breakfast_title ); ?></h2>
 					<?php endif; ?>
@@ -52,7 +52,7 @@ $breakfast_title_id = wp_unique_id( 'section-breakfast-title-' );
 					null,
 					array(
 						'images'     => $breakfast_images,
-						'class'      => 'photo-slider--subpage photo-slider--side col-span-full -mr-8 md:-mr-16 xl:col-start-5 xl:col-span-8 xl:-mr-[50px] min-w-0',
+						'class'      => 'photo-slider--subpage photo-slider--side anim-fade-right col-span-full -mr-8 md:-mr-16 xl:col-start-5 xl:col-span-8 xl:-mr-[50px] min-w-0',
 						'mobile_gap' => 20,
 					)
 				);

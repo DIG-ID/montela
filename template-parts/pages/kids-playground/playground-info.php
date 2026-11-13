@@ -40,7 +40,7 @@ $pi_title_id = wp_unique_id( 'section-playground-info-title-' );
 	<div class="theme-container">
 		<div class="theme-grid section-playground-info__grid gap-y-11 pb-11 md:gap-y-0 xl:gap-y-11">
 			<?php if ( $pi_title || $pi_text ) : ?>
-				<div class="section-playground-info__content col-span-full xl:col-start-8 xl:col-span-5 xl:row-start-1">
+				<div class="section-playground-info__content anim-fade-up col-span-full xl:col-start-8 xl:col-span-5 xl:row-start-1">
 					<?php if ( $pi_title ) : ?>
 						<h2 id="<?php echo esc_attr( $pi_title_id ); ?>" class="title-h3 section-playground-info__title xl:max-w-[660px]">
 							<?php echo montela_text( $pi_title ); ?>
@@ -54,7 +54,7 @@ $pi_title_id = wp_unique_id( 'section-playground-info-title-' );
 			<?php endif; ?>
 
 			<?php if ( $pi_image ) : ?>
-				<figure class="section-playground-info__photo col-span-full m-0 md:mt-[112px] xl:mt-0 overflow-hidden aspect-[329/246] md:aspect-[706/452] xl:aspect-[747/470] xl:col-start-2 xl:col-span-5 xl:row-start-1 xl:self-start">
+				<figure class="section-playground-info__photo anim-fade-left col-span-full m-0 md:mt-[112px] xl:mt-0 overflow-hidden aspect-[329/246] md:aspect-[706/452] xl:aspect-[747/470] xl:col-start-2 xl:col-span-5 xl:row-start-1 xl:self-start">
 					<?php
 					echo wp_get_attachment_image(
 						$pi_image,
@@ -75,7 +75,7 @@ $pi_title_id = wp_unique_id( 'section-playground-info-title-' );
 				null,
 				array(
 					'items'      => $pi_items,
-					'class'      => 'section-playground-info__list col-span-full gap-4 md:mt-11 md:gap-[72px] xl:mt-0 md:max-w-[467px] xl:max-w-none xl:col-start-2 xl:col-span-10 xl:grid xl:grid-cols-subgrid xl:gap-x-5 xl:gap-y-[126px] xl:pb-[14px]',
+					'class'      => 'section-playground-info__list anim-fade-up anim-children col-span-full gap-4 md:mt-11 md:gap-[72px] xl:mt-0 md:max-w-[467px] xl:max-w-none xl:col-start-2 xl:col-span-10 xl:grid xl:grid-cols-subgrid xl:gap-x-5 xl:gap-y-[126px] xl:pb-[14px]',
 					'item_class' => array( 'xl:col-span-3 xl:col-start-1', 'xl:col-span-3 xl:col-start-6' ),
 				)
 			);
@@ -90,7 +90,7 @@ $pi_title_id = wp_unique_id( 'section-playground-info-title-' );
 			null,
 			array(
 				'images' => $pi_slider,
-				'class'  => 'photo-slider--subpage',
+				'class'  => 'photo-slider--subpage anim-fade',
 			)
 		);
 	endif;

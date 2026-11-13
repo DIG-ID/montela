@@ -35,13 +35,13 @@ $future_title_id = wp_unique_id( 'section-future-title-' );
 		<div class="theme-grid section-future__grid">
 			<div class="section-future__copy">
 				<?php if ( $future_title ) : ?>
-					<h2 id="<?php echo esc_attr( $future_title_id ); ?>" class="title-h3 section-future__title"><?php echo montela_text( $future_title ); ?></h2>
+					<h2 id="<?php echo esc_attr( $future_title_id ); ?>" class="title-h3 section-future__title anim-fade-up"><?php echo montela_text( $future_title ); ?></h2>
 				<?php endif; ?>
 				<?php if ( $future_text ) : ?>
-					<p class="body-text section-future__text"><?php echo montela_text( $future_text ); ?></p>
+					<p class="body-text section-future__text anim-fade-up"><?php echo montela_text( $future_text ); ?></p>
 				<?php endif; ?>
 				<?php if ( $future_items ) : ?>
-					<ul class="body-text section-future__items">
+					<ul class="body-text section-future__items anim-fade-up anim-children">
 						<?php foreach ( $future_items as $future_item ) : ?>
 							<li><?php echo montela_text( $future_item ); ?></li>
 						<?php endforeach; ?>
@@ -50,7 +50,7 @@ $future_title_id = wp_unique_id( 'section-future-title-' );
 			</div>
 
 			<?php if ( $future_image ) : ?>
-				<figure class="section-future__photo">
+				<figure class="section-future__photo anim-fade-right">
 					<?php
 					echo wp_get_attachment_image(
 						$future_image,

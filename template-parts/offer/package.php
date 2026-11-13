@@ -36,7 +36,7 @@ $pkg_title_id = wp_unique_id( 'section-offer-package-title-' );
 		<div class="theme-container">
 			<div class="theme-grid section-offer-package__grid">
 				<?php if ( $pkg_image ) : ?>
-					<figure class="section-offer-package__photo">
+					<figure class="section-offer-package__photo anim-fade-left">
 						<?php
 						// Desktop only: display: none below, so lazy loading never fetches it there.
 						echo wp_get_attachment_image(
@@ -54,7 +54,7 @@ $pkg_title_id = wp_unique_id( 'section-offer-package-title-' );
 
 				<div class="section-offer-package__content">
 					<?php if ( $pkg_title ) : ?>
-						<h2 id="<?php echo esc_attr( $pkg_title_id ); ?>" class="title-h3 section-offer-package__title"><?php echo montela_text( $pkg_title ); ?></h2>
+						<h2 id="<?php echo esc_attr( $pkg_title_id ); ?>" class="title-h3 section-offer-package__title anim-fade-up"><?php echo montela_text( $pkg_title ); ?></h2>
 					<?php endif; ?>
 
 					<?php
@@ -63,7 +63,7 @@ $pkg_title_id = wp_unique_id( 'section-offer-package-title-' );
 						null,
 						array(
 							'items' => $pkg_items,
-							'class' => 'section-offer-package__list',
+							'class' => 'section-offer-package__list anim-fade-up anim-children',
 						)
 					);
 					?>
@@ -78,7 +78,7 @@ $pkg_title_id = wp_unique_id( 'section-offer-package-title-' );
 		null,
 		array(
 			'images' => $pkg_images,
-			'class'  => 'section-offer-package__slider',
+			'class'  => 'section-offer-package__slider anim-fade',
 		)
 	);
 	?>

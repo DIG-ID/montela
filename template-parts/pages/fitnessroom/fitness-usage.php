@@ -65,7 +65,7 @@ $fu_box_class = 'info-box section-fitness-usage__box flex flex-col pt-6 pb-6 pl-
 			null,
 			array(
 				'images' => $fu_slider,
-				'class'  => 'photo-slider--subpage',
+				'class'  => 'photo-slider--subpage anim-fade',
 			)
 		);
 	endif;
@@ -75,7 +75,7 @@ $fu_box_class = 'info-box section-fitness-usage__box flex flex-col pt-6 pb-6 pl-
 		<div class="theme-container<?php echo $fu_slider ? ' mt-32 md:mt-48' : ''; ?>">
 			<?php if ( $fu_items ) : ?>
 				<div class="theme-grid gap-y-5">
-					<div class="section-fitness-usage__column col-span-full flex flex-col gap-5 md:col-span-3 xl:col-start-2 xl:col-span-5">
+					<div class="section-fitness-usage__column anim-fade-up anim-children col-span-full flex flex-col gap-5 md:col-span-3 xl:col-start-2 xl:col-span-5">
 						<?php foreach ( $fu_items as $fu_i => $fu_item ) : ?>
 							<article class="<?php echo esc_attr( $fu_box_class . ' ' . ( isset( $fu_left_class[ $fu_i ] ) ? $fu_left_class[ $fu_i ] : 'gap-6 xl:gap-[38px]' ) ); ?> md:grow">
 								<?php if ( ! empty( $fu_item['title'] ) ) : ?>
@@ -89,7 +89,7 @@ $fu_box_class = 'info-box section-fitness-usage__box flex flex-col pt-6 pb-6 pl-
 					</div>
 
 					<?php if ( $fu_right ) : ?>
-						<article class="<?php echo esc_attr( $fu_box_class . ' ' . $fu_right_class ); ?> col-span-full md:col-span-3 xl:col-span-5">
+						<article class="<?php echo esc_attr( $fu_box_class . ' ' . $fu_right_class ); ?> anim-fade-up col-span-full md:col-span-3 xl:col-span-5">
 							<?php if ( ! empty( $fu_right['title'] ) ) : ?>
 								<h3 class="title-h4 section-fitness-usage__title max-w-[255px] md:max-w-[267px] xl:max-w-[425px]"><?php echo montela_text( $fu_right['title'] ); ?></h3>
 							<?php endif; ?>
@@ -102,7 +102,7 @@ $fu_box_class = 'info-box section-fitness-usage__box flex flex-col pt-6 pb-6 pl-
 			<?php endif; ?>
 
 			<?php if ( $fu_has_link ) : ?>
-				<div class="section-fitness-usage__button flex justify-center<?php echo $fu_items ? ' mt-5 md:mt-11' : ''; ?>">
+				<div class="section-fitness-usage__button anim-fade-up flex justify-center<?php echo $fu_items ? ' mt-5 md:mt-11' : ''; ?>">
 					<?php get_template_part( 'template-parts/components/button', null, array_merge( $fu_button, array( 'style' => 'secondary' ) ) ); ?>
 				</div>
 			<?php endif; ?>

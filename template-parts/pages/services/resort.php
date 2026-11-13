@@ -32,10 +32,10 @@ $resort_title_id = wp_unique_id( 'section-resort-title-' );
 	<div class="theme-container">
 		<div class="theme-grid gap-y-11">
 			<?php if ( $resort_title ) : ?>
-				<h2 id="<?php echo esc_attr( $resort_title_id ); ?>" class="title-h3 col-span-full xl:text-center"><?php echo montela_text( $resort_title ); ?></h2>
+				<h2 id="<?php echo esc_attr( $resort_title_id ); ?>" class="title-h3 anim-fade-up col-span-full xl:text-center"><?php echo montela_text( $resort_title ); ?></h2>
 			<?php endif; ?>
 
-			<ul class="col-span-full grid gap-y-3 xl:col-start-2 xl:col-span-10 xl:grid-cols-3 xl:gap-x-5">
+			<ul class="anim-fade-up anim-children col-span-full grid gap-y-3 xl:col-start-2 xl:col-span-10 xl:grid-cols-3 xl:gap-x-5">
 				<?php foreach ( $resort_items as $resort_item ) : ?>
 					<li class="flex flex-col">
 						<?php if ( ! empty( $resort_item['image'] ) ) : ?>

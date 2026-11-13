@@ -52,15 +52,15 @@ $season_class    = 'section-season' . ( count( $season_ids ) > 4 ? ' section-sea
 
 			<div class="section-season__copy">
 				<?php if ( $season_eyebrow ) : ?>
-					<p class="title-h2 section-season__eyebrow"><?php echo montela_text( $season_eyebrow ); ?></p>
+					<p class="title-h2 section-season__eyebrow anim-fade-up"><?php echo montela_text( $season_eyebrow ); ?></p>
 				<?php endif; ?>
 
 				<?php if ( $season_title ) : ?>
-					<h2 id="<?php echo esc_attr( $season_title_id ); ?>" class="title-h3 section-season__title"><?php echo montela_text( $season_title ); ?></h2>
+					<h2 id="<?php echo esc_attr( $season_title_id ); ?>" class="title-h3 section-season__title anim-fade-up"><?php echo montela_text( $season_title ); ?></h2>
 				<?php endif; ?>
 
 				<?php if ( $season_text ) : ?>
-					<p class="body-text section-season__text"><?php echo montela_text( $season_text ); ?></p>
+					<p class="body-text section-season__text anim-fade-up"><?php echo montela_text( $season_text ); ?></p>
 				<?php endif; ?>
 
 				<?php if ( count( $season_ids ) > 1 ) : ?>
@@ -73,7 +73,7 @@ $season_class    = 'section-season' . ( count( $season_ids ) > 4 ? ' section-sea
 
 			<div class="section-season__track" data-activities-track>
 				<?php foreach ( array_chunk( $season_ids, 4 ) as $season_page ) : ?>
-					<div class="section-season__page">
+					<div class="section-season__page anim-fade-up anim-children">
 						<?php
 						foreach ( $season_page as $season_id ) :
 							get_template_part( 'template-parts/components/card-activity', null, array( 'post_id' => $season_id ) );

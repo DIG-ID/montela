@@ -28,7 +28,7 @@ if ( ! $info_boxes ) {
 <section class="section-contact-info" aria-label="<?php esc_attr_e( 'Kontaktangaben', 'montela' ); ?>">
 	<div class="theme-container">
 		<div class="theme-grid">
-			<div class="section-contact-info__boxes">
+			<div class="section-contact-info__boxes anim-fade-up anim-children">
 				<?php foreach ( $info_boxes as $info_box ) : ?>
 					<div class="section-contact-info__box">
 						<?php if ( ! empty( $info_box['title'] ) ) : ?>

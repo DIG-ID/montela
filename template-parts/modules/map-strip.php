@@ -107,7 +107,7 @@ $strip_image_attr = array(
 <section class="section-map-strip" aria-labelledby="<?php echo esc_attr( $strip_title_id ); ?>" data-map-strip>
 	<h2 id="<?php echo esc_attr( $strip_title_id ); ?>" class="sr-only"><?php esc_html_e( 'Lageplan', 'montela' ); ?></h2>
 
-	<div class="section-map-strip__frame">
+	<div class="section-map-strip__frame anim-fade">
 		<?php foreach ( $strip_seasons as $strip_key => $strip_season ) : ?>
 			<?php $strip_is_current = $strip_key === $strip_current; ?>
 			<div class="section-map-strip__plane<?php echo $strip_is_current ? ' is-active' : ''; ?>" data-map-strip-layer="<?php echo esc_attr( $strip_key ); ?>"<?php echo $strip_is_current ? '' : ' inert'; ?>>

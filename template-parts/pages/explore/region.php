@@ -45,10 +45,10 @@ $region_photos = array(
 		<div class="section-region__grid">
 			<div class="section-region__copy">
 				<?php if ( $region_title ) : ?>
-					<h2 id="<?php echo esc_attr( $region_title_id ); ?>" class="title-h3 section-region__title"><?php echo montela_text( $region_title ); ?></h2>
+					<h2 id="<?php echo esc_attr( $region_title_id ); ?>" class="title-h3 section-region__title anim-fade-up"><?php echo montela_text( $region_title ); ?></h2>
 				<?php endif; ?>
 
-				<div class="section-region__body">
+				<div class="section-region__body anim-fade-up">
 					<?php if ( $region_text ) : ?>
 						<p class="body-text section-region__text"><?php echo montela_text( $region_text ); ?></p>
 					<?php endif; ?>
@@ -67,7 +67,8 @@ $region_photos = array(
 					continue;
 				}
 				?>
-				<figure class="section-region__photo section-region__photo--<?php echo esc_attr( $region_slot ); ?>">
+				<?php // The large photo sits on the right on desktop; the two small ones rise. ?>
+				<figure class="section-region__photo section-region__photo--<?php echo esc_attr( $region_slot ); ?> <?php echo 'large' === $region_slot ? 'anim-fade-right' : 'anim-fade-up'; ?>">
 					<?php
 					echo wp_get_attachment_image(
 						$region_photo[0],

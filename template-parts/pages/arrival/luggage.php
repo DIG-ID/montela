@@ -30,15 +30,15 @@ $luggage_title_id = wp_unique_id( 'section-luggage-title-' );
 	<div class="theme-container">
 		<div class="theme-grid section-luggage__grid">
 			<?php if ( $luggage_title ) : ?>
-				<h2 id="<?php echo esc_attr( $luggage_title_id ); ?>" class="title-h3 section-luggage__title"><?php echo montela_text( $luggage_title ); ?></h2>
+				<h2 id="<?php echo esc_attr( $luggage_title_id ); ?>" class="title-h3 section-luggage__title anim-fade-up"><?php echo montela_text( $luggage_title ); ?></h2>
 			<?php endif; ?>
 
 			<?php if ( $luggage_text ) : ?>
-				<div class="body-text section-luggage__text"><?php echo wp_kses_post( $luggage_text ); ?></div>
+				<div class="body-text section-luggage__text anim-fade-up"><?php echo wp_kses_post( $luggage_text ); ?></div>
 			<?php endif; ?>
 
 			<?php if ( is_array( $luggage_button ) ) : ?>
-				<div class="section-luggage__button">
+				<div class="section-luggage__button anim-fade-up">
 					<?php get_template_part( 'template-parts/components/button', null, array_merge( $luggage_button, array( 'style' => 'secondary' ) ) ); ?>
 				</div>
 			<?php endif; ?>

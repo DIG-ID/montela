@@ -38,17 +38,17 @@ $si_title_id = wp_unique_id( 'section-shop-info-title-' );
 	<div class="theme-container">
 		<div class="theme-grid section-shop-info__grid gap-y-8 pb-11 md:gap-y-11 xl:gap-y-16">
 			<?php if ( $si_title ) : ?>
-				<h2 id="<?php echo esc_attr( $si_title_id ); ?>" class="title-h3 section-shop-info__title col-span-full xl:col-start-2 xl:col-span-10">
+				<h2 id="<?php echo esc_attr( $si_title_id ); ?>" class="title-h3 section-shop-info__title anim-fade-up col-span-full xl:col-start-2 xl:col-span-10">
 					<?php echo montela_text( $si_title ); ?>
 				</h2>
 			<?php endif; ?>
 
 			<?php if ( $si_text ) : ?>
-				<p class="body-text section-shop-info__text col-span-full md:col-span-2 xl:col-start-2 xl:col-span-3"><?php echo montela_text( $si_text ); ?></p>
+				<p class="body-text section-shop-info__text anim-fade-up col-span-full md:col-span-2 xl:col-start-2 xl:col-span-3"><?php echo montela_text( $si_text ); ?></p>
 			<?php endif; ?>
 
 			<?php if ( $si_image ) : ?>
-				<figure class="section-shop-info__photo col-span-full order-first self-start m-0 md:self-stretch xl:self-start overflow-hidden aspect-[326/268] md:order-none md:col-start-3 md:col-span-4 md:aspect-[463/347] xl:col-start-5 xl:col-span-7 xl:aspect-[1053/600]">
+				<figure class="section-shop-info__photo anim-fade-right col-span-full order-first self-start m-0 md:self-stretch xl:self-start overflow-hidden aspect-[326/268] md:order-none md:col-start-3 md:col-span-4 md:aspect-[463/347] xl:col-start-5 xl:col-span-7 xl:aspect-[1053/600]">
 					<?php
 					echo wp_get_attachment_image(
 						$si_image,
@@ -72,7 +72,7 @@ $si_title_id = wp_unique_id( 'section-shop-info-title-' );
 			null,
 			array(
 				'images' => $si_slider,
-				'class'  => 'photo-slider--subpage',
+				'class'  => 'photo-slider--subpage anim-fade',
 			)
 		);
 	endif;

@@ -31,12 +31,12 @@ $gt_title_id = wp_unique_id( 'section-green-text-title-' );
 	<div class="theme-container">
 		<div class="theme-grid">
 			<?php if ( $gt_title ) : ?>
-				<h2 id="<?php echo esc_attr( $gt_title_id ); ?>" class="title-h3 section-green-text__title">
+				<h2 id="<?php echo esc_attr( $gt_title_id ); ?>" class="title-h3 section-green-text__title anim-fade-up">
 					<?php echo montela_text( $gt_title ); ?>
 				</h2>
 			<?php endif; ?>
 			<?php if ( $gt_text ) : ?>
-				<div class="body-text section-green-text__text max-w-[333px] md:max-w-none xl:max-w-[585px]"><?php echo wp_kses_post( $gt_text ); ?></div>
+				<div class="body-text section-green-text__text anim-fade-up max-w-[333px] md:max-w-none xl:max-w-[585px]"><?php echo wp_kses_post( $gt_text ); ?></div>
 			<?php endif; ?>
 		</div>
 	</div>

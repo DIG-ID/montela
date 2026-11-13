@@ -51,7 +51,7 @@ $info_title_id = wp_unique_id( 'section-activity-info-title-' );
 		<div class="section-activity-info__inner" data-activities-carousel>
 			<div class="section-activity-info__frame" aria-hidden="true"></div>
 
-			<div class="section-activity-info__copy">
+			<div class="section-activity-info__copy anim-fade-up">
 				<?php if ( $info_title ) : ?>
 					<h2 id="<?php echo esc_attr( $info_title_id ); ?>" class="title-h3 section-activity-info__title"><?php echo montela_text( $info_title ); ?></h2>
 				<?php endif; ?>
@@ -68,7 +68,7 @@ $info_title_id = wp_unique_id( 'section-activity-info-title-' );
 				<?php endif; ?>
 			</div>
 
-			<div class="section-activity-info__cards" data-activities-track>
+			<div class="section-activity-info__cards anim-fade-up anim-children" data-activities-track>
 				<?php
 				foreach ( $info_items as $info_item ) :
 					get_template_part(

@@ -50,7 +50,7 @@ $timeline_swiper   = array(
 	<h2 id="<?php echo esc_attr( $timeline_title_id ); ?>" class="sr-only"><?php esc_html_e( 'Unsere Geschichte, Jahr für Jahr', 'montela' ); ?></h2>
 
 	<div class="section-timeline__inner" data-swiper-root>
-		<div class="swiper section-timeline__swiper"<?php echo $timeline_many ? ' data-swiper="' . esc_attr( wp_json_encode( $timeline_swiper ) ) . '"' : ''; ?>>
+		<div class="swiper section-timeline__swiper anim-fade-up"<?php echo $timeline_many ? ' data-swiper="' . esc_attr( wp_json_encode( $timeline_swiper ) ) . '"' : ''; ?>>
 			<div class="swiper-wrapper">
 				<?php foreach ( $timeline_items as $timeline_item ) : ?>
 					<article class="swiper-slide section-timeline__slide">
