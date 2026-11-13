@@ -131,12 +131,63 @@ add_action( 'load-index.php', 'montela_dismiss_welcome_panel' );
 
 /**
  * Enqueues the custom login page stylesheet (wp-login.php screens only).
+ *
+ * After core's login styles (dependency): our rules have the same weight as
+ * core's, and on a tie the later stylesheet wins. WordPress 7.1 also loads
+ * the admin colour schemes here, which take over otherwise.
  */
 function montela_login_css() {
-	montela_vite_enqueue_style( 'admin-login-css', 'assets/sass/admin-login.sass' );
+	montela_vite_enqueue_style( 'admin-login-css', 'assets/sass/admin-login.sass', array( 'login' ) );
 }
 
 add_action( 'login_enqueue_scripts', 'montela_login_css', 10 );
+
+/**
+ * Routes wp_die() pages through montela_wp_die_handler(), so they get the
+ * login stylesheet. Only the default HTML handler is replaced: AJAX, JSON
+ * and XML-RPC answers, and any other plugin's handler, are left alone.
+ *
+ * @since 1.57.1
+ *
+ * @param callable $handler The wp_die() handler.
+ * @return callable
+ */
+function montela_wp_die_handler_filter( $handler ) {
+	return '_default_wp_die_handler' === $handler ? 'montela_wp_die_handler' : $handler;
+}
+add_filter( 'wp_die_handler', 'montela_wp_die_handler_filter' );
+
+/**
+ * The default wp_die() page with the login stylesheet added before </head>.
+ *
+ * The wp_die() page is printed at once — no enqueue, no hook in its
+ * <head> — and wp-login.php calls it before login_enqueue_scripts on some
+ * screens (?action=confirmaction, ?action=logout). Core's handler draws the
+ * page unchanged; an output buffer only adds the <link>. Inside wp-admin,
+ * where the page is already open, there's no </head> and nothing changes.
+ *
+ * @since 1.57.1
+ *
+ * @param string|WP_Error $message Error message or WP_Error object.
+ * @param string|int      $title   Optional. Error title or response code.
+ * @param string|array    $args    Optional. Arguments to control behavior.
+ * @return void
+ */
+function montela_wp_die_handler( $message, $title = '', $args = array() ) {
+	$href = function_exists( 'montela_vite_style_url' ) ? montela_vite_style_url( 'assets/sass/admin-login.sass' ) : '';
+
+	if ( $href ) {
+		ob_start(
+			static function ( $html ) use ( $href ) {
+				// The page bypasses the enqueue, so the tag is written here.
+				$link = '<link rel="stylesheet" id="admin-login-css" href="' . esc_url( $href ) . '" media="all" />'; // phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet
+				return preg_replace( '#</head>#i', $link . '</head>', $html, 1 );
+			}
+		);
+	}
+
+	_default_wp_die_handler( $message, $title, $args );
+}
 
 /**
  * Enqueues the custom admin stylesheet (wp-admin screens only).
@@ -144,7 +195,8 @@ add_action( 'login_enqueue_scripts', 'montela_login_css', 10 );
  * @since 1.9.0
  */
 function montela_admin_css() {
-	montela_vite_enqueue_style( 'admin-dashboard-css', 'assets/sass/admin-dashboard.sass' );
+	// After core's admin styles and colour scheme, so ours win the ties.
+	montela_vite_enqueue_style( 'admin-dashboard-css', 'assets/sass/admin-dashboard.sass', array( 'wp-admin', 'colors' ) );
 }
 
 add_action( 'admin_enqueue_scripts', 'montela_admin_css', 10 );

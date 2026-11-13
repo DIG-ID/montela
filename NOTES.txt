@@ -317,6 +317,183 @@ no ficheiro indicado em "No starter".
              .claude/rules/sass.md (Responsive).
   No Montela tailwind.config.js, .claude/rules/sass.md (1.54.3).
   Estado     POR PASSAR
+
+[2026-11-13] A20. CSS do admin perde para o core do WordPress (7.1)
+  Problema   no WordPress 7.1 o login ficou com o logótipo do WordPress, o
+             formulário, os inputs e os botões do core, e as cores do
+             esquema "Modern" (azul) em vez das nossas. As regras do
+             starter (.login h1 a, .wp-core-ui .button, body.login {--wp-
+             admin-theme-color}) têm a mesma especificidade das do core, e
+             num empate ganha o CSS que vem depois — e o nosso saía antes
+             (o enqueue não declarava dependências; o 7.1 passou a carregar
+             o admin-schemes.css também no login).
+  Regra      os CSS do admin dependem dos do core, para saírem depois e
+             ganharem os empates — no inc/theme-admin-settings.php:
+               montela_vite_enqueue_style( 'admin-login-css',
+                 'assets/sass/admin-login.sass', array( 'login' ) );
+               montela_vite_enqueue_style( 'admin-dashboard-css',
+                 'assets/sass/admin-dashboard.sass',
+                 array( 'wp-admin', 'colors' ) );
+             (o admin-bar já depende de 'admin-bar'). No _admin/_vars.sass,
+             as --wp-admin-theme-color* com a classe duplicada
+             (body.login.login, body.wp-admin.wp-admin) e as duas novas do
+             7.1: --wp-admin-theme-color-darker-10--rgb e -darker-20--rgb.
+             Para as dependências valerem também em dev, o
+             montela_vite_enqueue_style() (inc/vite.php) imprime em dev um
+             <link> normal para o servidor do Vite (wp_enqueue_style com as
+             mesmas $deps), em vez de um módulo JS: o Vite responde a um
+             pedido de folha de estilo com o CSS compilado e o cliente dele
+             troca o <link> a cada alteração (HMR, sem reload — testado). O
+             módulo era injectado pelo Vite no fim do <head>, fora da ordem
+             do WordPress — e antes do CSS do core sempre que o PHP imprime
+             avisos no <head> (WP_DEBUG_DISPLAY: o browser fecha o <head> aí
+             e o CSS do core cai no <body>). (Tentado antes: embrulhar os
+             parciais em :root — funciona, mas uma regra para o próprio
+             <html> deixa de apanhar (":root html"). Rejeitado.)
+  No starter inc/vite.php (montela_vite_enqueue_style),
+             inc/theme-admin-settings.php (montela_login_css,
+             montela_admin_css) e assets/sass/_admin/_vars.sass.
+  No Montela os mesmos ficheiros (1.57.1).
+  Estado     POR PASSAR
+
+[2026-11-13] A21. Paleta do admin: main + accent do projecto, dig.id só no widget
+  Problema   o _admin/_vars.sass do starter só tinha as cores da dig.id
+             ($primary-turquoise, $secondary-pink…), e com elas se pintavam
+             o admin e o login. Cada projecto acabava a escrever tons à mão
+             nos parciais (#3b3f38, #2e302c, #242523…), sem regra, com
+             texto escolhido a olho — no Montela o item activo do menu
+             ficou com texto creme sobre sage, 2.7:1. E mudar o admin para
+             as cores do projecto mudava também o widget da dig.id.
+  Regra      _admin/_vars.sass, por esta ordem:
+             1. Paleta do projecto — cópia das cores do tailwind.config.js,
+                mesmos nomes e valores ($<projecto>-*).
+             2. As cores do admin, escolhidas dessa paleta:
+                  $admin-main: …       // a cor principal / mais usada da marca
+                  $admin-accent: …     // botões, links e focos do WordPress
+                  $admin-highlight: …  // opcional (null) — hovers, destaques;
+                                       // admin-highlight() cai na accent
+                  $admin-surface: …    // o fundo: o neutro claro do projecto
+                                       // (o "papel"), ou $admin-main-100
+             3. A escala, misturada da main (100–300 com branco, 700–900
+                com preto; 500 = a main):
+                  $admin-main-100  92% branco  riscas das tabelas
+                  $admin-main-200  75% branco  bordas, separadores
+                  $admin-main-300  50% branco  hover de linhas, desactivados
+                  $admin-main-700  59% preto   menu
+                  $admin-main-800  68% preto   barra, submenus, login
+                  $admin-main-900  75% preto   dropdowns da barra
+                Usar como propriedade (background-color: $admin-main-700),
+                nunca em bg-[…] — as misturas têm decimais.
+             4. Contraste: contrast($a, $b) (WCAG, 1–21) e on($bg) — devolve
+                o texto claro ($<projecto>-cream / o claro do projecto) ou o
+                escuro ($admin-main-900) com melhor rácio, e dá @warn no
+                build se nenhum chegar a 4.5:1. Nos parciais, toda a cor de
+                texto sobre um fundo da paleta é on() desse fundo. @warn
+                também se o texto branco dos botões não tiver 4.5:1 sobre a
+                accent.
+                text-on($bg, $preferred): a cor preferida se passar, senão
+                on($bg) — para um destaque claro que só se lê no escuro.
+             5. dig.id — $digid-* (turquesa, rosa, preto, cinzentos), usadas
+                só no widget de boas-vindas: o mixin
+                admin-theme-color($color) gera as --wp-admin-theme-color*
+                (cor, dois tons, --rgb) e é aplicado duas vezes —
+                body.login.login / body.wp-admin.wp-admin com a accent, e
+                #<prefixo>_welcome com $digid-turquoise. As propriedades CSS
+                herdam-se: os botões do core no widget ficam dig.id sozinhos.
+             Um parcial _admin/_wp-ui.sass (no admin-dashboard.sass, antes
+             do _dashboard) pinta as superfícies do core e do ACF só com as
+             variáveis: fundo, bordas de caixas e tabelas, riscas e hover das
+             linhas, separadores, abas (core e ACF), texto secundário,
+             contadores do menu, notices neutras, button groups do ACF. Fica
+             igual em todos os projectos. Ficam como o core: bordas dos
+             campos (3.3:1, os tons claros não chegam ao 3:1) e as cores de
+             sucesso / aviso / erro. Regras do ACF com .wp-admin à frente e
+             os mesmos selectores longos do ACF (carrega depois do nosso).
+             No skill setup-project, um passo novo: ler as cores do
+             tailwind.config.js, copiá-las para o bloco 1, mostrá-las ao dev
+             com o contraste de cada uma (com branco e com o tom 900) e
+             perguntar a main, a accent, o highlight (opcional) e o surface
+             do admin; escrever as linhas do bloco 2 e correr o build (os @warn dizem logo se
+             a escolha não serve).
+  No starter assets/sass/_admin/_vars.sass, _wp-ui.sass (novo),
+             admin-dashboard.sass, _dashboard.sass, _admin-bar.sass,
+             _login.sass, _dashboard-widgets.sass (tooltip em $digid-*), e
+             o skill setup-project.
+  No Montela os mesmos ficheiros (1.57.1): main sage, accent walnut.
+  Estado     POR PASSAR
+
+[2026-11-13] A22. As páginas wp_die() ficam sem o estilo do login
+  Problema   ?action=logout, ?action=confirmaction e qualquer outro
+             wp_die() saíam com a caixa branca do WordPress: o wp_die()
+             imprime a página inteira de uma vez, sem enqueue nem hook no
+             <head>, e o wp-login.php chama-o antes do login_enqueue_scripts.
+             O body#error-page do _login.sass nunca chegava a carregar.
+  Regra      inc/vite.php: montela_vite_style_url( $entry ) — o URL de um
+             entry de estilo (servidor do Vite em dev, ficheiro com hash em
+             produção); o montela_vite_enqueue_style() usa-a. No
+             inc/theme-admin-settings.php, um filtro wp_die_handler troca só
+             o handler por omissão (_default_wp_die_handler) por um que
+             chama esse mesmo handler dentro de um ob_start() que acrescenta
+             o <link> do admin-login antes do </head>. No _login.sass: o
+             <html> com o tom 800, o <body> (que o core faz de cartão) no
+             $admin-surface, texto e links com on() / text-on().
+  No starter inc/vite.php, inc/theme-admin-settings.php,
+             assets/sass/_admin/_login.sass.
+  No Montela os mesmos ficheiros (1.57.1).
+  Estado     POR PASSAR
+
+[2026-11-13] A23. O build de produção apaga o dist/hot do servidor de dev
+  Problema   o npm run prod tem emptyOutDir: true e apaga o dist/ inteiro,
+             incluindo o dist/hot que o npm run dev escreve ao arrancar. Com
+             o servidor de dev ainda a correr, o PHP deixa de o ver e passa a
+             servir o CSS compilado — sem aviso: as alterações ao Sass
+             deixam de aparecer no browser. Aconteceu várias vezes nesta
+             sessão (cada deploy corre um build).
+  Regra      no vite.config.mjs, o build volta a escrever o dist/hot no fim
+             se o servidor de dev estiver vivo — um plugin com apply: 'build'
+             e closeBundle() que testa a porta (como já faz o PHP) e, se
+             responder, escreve a origem no dist/hot. Enquanto não existir:
+             no skill /deploy, depois do build, "se o servidor de dev
+             responde (curl …/@vite/client), repor o dist/hot", e no
+             CLAUDE.md (Build): "um npm run prod com o dev ligado apaga o
+             dist/hot — reiniciar o npm run dev ou repô-lo".
+  No starter vite.config.mjs (plugin wordpress()), skill /deploy (passo 6),
+             CLAUDE.md (Build).
+  No Montela reposto à mão nesta sessão; o vite.config.mjs não mudou.
+  Estado     POR PASSAR
+
+[2026-11-13] A24. Ajustes aos skills do starter (setup do admin, 1.57.1)
+  Resumo das mudanças a fazer nos skills por causa do A20–A23 — o código
+  está nas notas respectivas; aqui fica a lista do que cada skill passa a
+  fazer.
+  /setup-project
+    - Paleta do admin (A21): ler as cores do tailwind.config.js e copiá-las
+      para o bloco "Project palette" do _admin/_vars.sass (mesmos nomes e
+      valores, com o prefixo do projecto); mostrá-las ao dev com o contraste
+      de cada uma (com branco e com o tom 900) e perguntar: main, accent,
+      highlight (opcional — null) e surface (o neutro claro; senão
+      $admin-main-100); escrever as quatro linhas e correr o build — os
+      @warn de contraste dizem logo se uma escolha não serve.
+    - Renomear o widget (#<prefixo>_welcome) e o mixin admin-theme-color
+      aplicado nele com $digid-turquoise; as $digid-* não se tocam.
+    - Confirmar no fim, num browser: login, dashboard, uma lista, um ecrã
+      de edição com ACF e /wp-login.php?action=logout (o wp_die() — A22).
+  /deploy
+    - Passo 6: depois do npm run prod, se o servidor de dev responde, repor
+      o dist/hot (A23) — senão o dev do utilizador fica a servir o CSS
+      compilado.
+    - Passo 2: os CSS do admin dependem dos do core (A20); um deploy com
+      avisos de contraste no build (@warn "Admin palette…") não deve
+      avançar sem o dizer ao utilizador.
+  CLAUDE.md do starter
+    - Build: o montela_vite_enqueue_style() imprime <link> também em dev
+      (A20) e há montela_vite_style_url() para páginas fora do enqueue
+      (A22); o aviso do dist/hot (A23).
+    - Uma secção "Admin / backend": o _admin/_vars.sass manda (paleta e
+      contraste), o _wp-ui.sass não se edita por projecto, o _dashboard.sass
+      e o _admin-bar.sass são para o específico do projecto; a lista dos
+      ecrãs do login está no topo do _admin/_login.sass.
+  Estado     POR PASSAR
 ===============================================================================
 B. DECISÕES POR CONFIRMAR
 ===============================================================================

@@ -20,13 +20,16 @@
       @apply mt-2 mb-0 flex items-center gap-2
 
     // Disabled placeholder button with a CSS "coming soon" tooltip
-    // (text comes from the data-tooltip attribute).
+    // (text comes from the data-tooltip attribute). dig.id colours, like the
+    // buttons: it belongs to the agency's button (_vars.sass).
     &__soon
       @apply relative cursor-not-allowed opacity-60
 
       &::after
         content: attr(data-tooltip)
-        @apply absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-montela-walnut px-2 py-1 text-xs normal-case text-montela-cream
+        background-color: $digid-black
+        color: $digid-light-grey
+        @apply absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded px-2 py-1 text-xs normal-case
 
       &:hover::after,
       &:focus::after

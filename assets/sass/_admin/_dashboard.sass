@@ -2,11 +2,8 @@
 // Loaded on every admin screen via admin_enqueue_scripts (admin-dashboard bundle).
 // Keep this bundle lean: login screens never load it and vice versa.
 
-body
-  background-color: $primary-grey
-
 a
-  @apply text-[#0c9b97]
+  @apply text-montela-walnut
   &:hover,
   &:focus
     @apply text-montela-mustard
@@ -15,19 +12,24 @@ a
 #adminmenu,
 #adminmenuback,
 #adminmenuwrap
-  @apply bg-montela-walnut
+  background-color: $admin-main-700
 
 
 
 #adminmenu .wp-has-current-submenu .wp-submenu,
 #adminmenu .wp-has-current-submenu.opensub .wp-submenu,
 #adminmenu .wp-submenu
-  @apply bg-[#0c171c]
+  background-color: $admin-main-800
 
 
+// Current item and hover: the main colour, text and icon by contrast (core
+// paints them white — 2.7:1 on sage).
 #adminmenu
   li.wp-has-current-submenu a.wp-has-current-submenu
-    @apply bg-montela-mustard
+    background-color: $admin-main
+    color: on($admin-main)
+    div.wp-menu-image:before
+      color: on($admin-main)
 
 // Hover/open/focus state — mirror core's FULL selector group (colors.css
 // line ~330): a:hover paints the anchor itself on instant hover; the
@@ -36,8 +38,14 @@ a
 #adminmenu li.menu-top:hover,
 #adminmenu li.opensub > a.menu-top,
 #adminmenu li > a.menu-top:focus
-  @apply bg-montela-sage
+  background-color: $admin-main
+  color: on($admin-main)
+
+#adminmenu li.menu-top:hover div.wp-menu-image:before,
+#adminmenu li.opensub > a.menu-top div.wp-menu-image:before,
+#adminmenu li > a.menu-top:focus div.wp-menu-image:before
+  color: on($admin-main)
 
 
 .theme-browser .theme.active .theme-name
-  @apply bg-montela-walnut
+  background-color: $admin-main-800

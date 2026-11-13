@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.57.1] — 2026-11-13
+### Fixed
+- Login screen and wp-admin: the Montela styling (logo, form, buttons, colours) applies again on WordPress 7.1, where core's own styles had taken over.
+- Login screen: PHP notices printed by plugins no longer push the login form aside.
+- WordPress error pages (such as "really log out?" and expired links) take the login look instead of WordPress's plain white page.
+
+### Changed
+- wp-admin: cream background, walnut for WordPress's own buttons, links and focus rings, menu, admin bar and list-table stripes in shades of the theme's sage, sage for the current item and hover states, with dark text where cream didn't reach 4.5:1 contrast. Boxes, tables, tabs, ACF tabs and button groups and the menu's update counts take the Montela palette instead of WordPress's blue-greys. The dig.id welcome widget keeps the agency's turquoise buttons.
+
 ## [1.57.0] — 2026-11-13
 
 ### Added

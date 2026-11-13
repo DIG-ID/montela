@@ -1,5 +1,7 @@
 // Admin bar (#wpadminbar) — same markup on wp-admin and on the front end
 // (WP_Admin_Bar renders both), so these rules apply everywhere the bar shows.
+// Colours from the admin palette (_vars.sass); every text colour is on() its
+// background, so it keeps 4.5:1 whatever the project's main colour is.
 //
 // Selector groups mirror the core color scheme layer
 // (wp-admin/css/colors/{scheme}/colors.css, ~lines 449-545) — like the admin
@@ -11,20 +13,20 @@
 // Bar + top-level items (base state)
 // ---------------------------------------------------------------------------
 #wpadminbar
-  @apply bg-montela-walnut
+  background-color: $admin-main-800
 
 #wpadminbar .ab-item,
 #wpadminbar a.ab-item,
 #wpadminbar > #wp-toolbar span.ab-label,
 #wpadminbar > #wp-toolbar span.noticon
-  @apply text-montela-cream
+  color: on($admin-main-800)
 
 // Icons (dashicons live on ::before/::after pseudo-elements).
 #wpadminbar .ab-icon,
 #wpadminbar .ab-icon:before,
 #wpadminbar .ab-item:before,
 #wpadminbar .ab-item:after
-  @apply text-montela-cream
+  color: on($admin-main-800)
 
 // ---------------------------------------------------------------------------
 // Top-level items — hover / open (JS .hover class) / focus
@@ -34,32 +36,33 @@
 #wpadminbar.nojq .quicklinks .ab-top-menu > li > .ab-item:focus,
 #wpadminbar.nojs .ab-top-menu > li.menupop:hover > .ab-item,
 #wpadminbar .ab-top-menu > li.menupop.hover > .ab-item
-  @apply bg-montela-sage text-montela-cream
+  background-color: $admin-main
+  color: on($admin-main)
 
 // Labels and icons on the same states.
 #wpadminbar:not(.mobile) > #wp-toolbar li:hover span.ab-label,
 #wpadminbar:not(.mobile) > #wp-toolbar li.hover span.ab-label,
 #wpadminbar:not(.mobile) > #wp-toolbar a:focus span.ab-label
-  @apply text-montela-walnut
+  color: on($admin-main)
 
 #wpadminbar:not(.mobile) li:hover .ab-icon:before,
 #wpadminbar:not(.mobile) li:hover .ab-item:before,
 #wpadminbar:not(.mobile) li:hover .ab-item:after,
 #wpadminbar:not(.mobile) li:hover #adminbarsearch:before
-  @apply text-montela-cream
+  color: on($admin-main)
 
 // ---------------------------------------------------------------------------
 // Submenus (dropdowns)
 // ---------------------------------------------------------------------------
 #wpadminbar .menupop .ab-sub-wrapper
-  @apply bg-[#0c171c]
+  background-color: $admin-main-900
 
 // Submenu links — base state.
 #wpadminbar .ab-submenu .ab-item,
 #wpadminbar .quicklinks .menupop ul li a,
 #wpadminbar .quicklinks .menupop.hover ul li a,
 #wpadminbar.nojs .quicklinks .menupop:hover ul li a
-  @apply text-montela-cream
+  color: on($admin-main-900)
 
 // Submenu links — hover/focus (full core group, icons included).
 #wpadminbar .quicklinks .menupop ul li a:hover,
@@ -78,4 +81,5 @@
 #wpadminbar li .ab-item:focus .ab-icon:before,
 #wpadminbar li.hover .ab-icon:before,
 #wpadminbar li.hover .ab-item:before
-  @apply text-montela-sage
+  background-color: $admin-main
+  color: on($admin-main)

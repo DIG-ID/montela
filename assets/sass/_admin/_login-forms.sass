@@ -4,11 +4,11 @@
 
 .login
   form
-    @apply px-6 lg:px-12 py-10 bg-montela-cream rounded-lg flex flex-col gap-1
+    @apply px-6 lg:px-12 py-10 bg-montela-cream rounded-none flex flex-col gap-1
     label
       @apply text-montela-walnut text-xs uppercase mb-2
     .input
-      @apply rounded-[30px] bg-montela-cream text-montela-walnut border-montela-walnut px-4 py-2 leading-none mx-0 text-base
+      @apply rounded-none bg-montela-cream text-montela-walnut border-montela-walnut px-4 py-2 leading-none mx-0 text-base
 
     input[type=checkbox]
       @apply bg-montela-cream text-montela-walnut border-montela-walnut
@@ -42,12 +42,22 @@
 //Buttons
 .wp-core-ui
   .button
-    @apply text-xs uppercase rounded-[30px] transition-all duration-500 ease-in-out text-center bg-montela-walnut text-montela-cream border-montela-walnut hover:bg-montela-mustard hover:border-montela-mustard hover:text-montela-cream
+    @apply text-xs uppercase rounded-none transition-colors duration-500 ease-in-out text-center bg-montela-walnut text-montela-cream border-montela-walnut hover:bg-montela-sage hover:border-montela-sage hover:text-montela-cream
     &.button-large
      @apply text-xs leading-none min-h-[initial] py-4 md:px-16 w-full
   .button-primary
-    @apply bg-montela-sage border-montela-sage text-montela-walnut
+    @apply bg-montela-walnut border-montela-walnut text-montela-cream
   .button-secondary
-    @apply  bg-montela-cream border-montela-walnut text-montela-walnut hover:bg-montela-mustard hover:border-montela-mustard
+    @apply  bg-montela-cream border-montela-walnut text-montela-walnut hover:bg-montela-sage hover:border-montela-sage hover:text-montela-cream
+
+// Password toggle (eye): core keeps it transparent, inside the field — keep
+// the icon walnut and let it change colour only, not the button's box.
+.login .button.wp-hide-pw
+  @apply text-montela-walnut border-transparent hover:text-montela-sage hover:border-transparent focus:text-montela-sage
+
+// Dashicons have their own colour transition: inside a transitioning button
+// it restarts every frame and flickers. The button's transition is enough.
+.wp-core-ui .button .dashicons
+  @apply transition-none
 
 

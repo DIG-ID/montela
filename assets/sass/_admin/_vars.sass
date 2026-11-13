@@ -6,22 +6,139 @@
 // ---------------------------------------------------------------------------
 
 @use "sass:color"
+@use "sass:math"
 
-$primary-turquoise: #00CCCC
-$primary-grey: #F8F8F8
-$secondary-pink: #EA526C
-$secondary-black: #12232B
-$secondary-grey: #5B7376
+// dig.id — the agency's brand. Only in the welcome widget (#montela_welcome,
+// inc/theme-admin-settings.php): its buttons keep these colours on every
+// project, whatever the admin's colours are.
+$digid-turquoise: #00CCCC
+$digid-pink: #EA526C
+$digid-black: #12232B
+$digid-grey: #5B7376
+$digid-light-grey: #F8F8F8
+
+// Project palette — a copy of tailwind.config.js (same names and values;
+// Sass can't read them from there: change both). The rest of wp-admin and
+// the login use these.
+$montela-cream: #F8F8F2
+$montela-sage: #8F9B87
+$montela-mustard: #E2B529
+$montela-walnut: #4E3C2A
+
+// ---------------------------------------------------------------------------
+// The admin's two colours — chosen from the project palette above at setup
+// (the only two lines to change on a new project):
+// - main:   the brand's main / most used colour. Every shade of the admin
+//           (menu, admin bar, list tables, login) is mixed from it.
+// - accent: WordPress's own buttons, links and focus rings (white text on it).
+// - surface: the admin's page background — the project's light neutral
+//   (its "paper"), or $admin-main-100 when the palette has none.
+// - highlight (optional): a third colour for hovers and important
+//   highlights — `null` when the project has none; admin-highlight() then
+//   returns the accent, so partials work either way.
+// ---------------------------------------------------------------------------
+$admin-main: $montela-sage
+$admin-accent: $montela-walnut
+$admin-highlight: $montela-mustard
+$admin-surface: $montela-cream
+
+// The scale, mixed from the main colour: lighter with white, darker with
+// black (500 = $admin-main itself). Use as plain properties
+// (background-color: $admin-main-700): mixed colours can have decimals,
+// which break a Tailwind class like bg-[…].
+$admin-main-100: color.mix(#fff, $admin-main, 92%)  // ≈ #f6f7f5 — table stripes, soft panels
+$admin-main-200: color.mix(#fff, $admin-main, 75%)  // ≈ #e3e6e1 — borders, dividers
+$admin-main-300: color.mix(#fff, $admin-main, 50%)  // ≈ #c7cdc3 — hover rows, disabled
+$admin-main-700: color.mix(#000, $admin-main, 72%)  // ≈ #3b4037 — admin menu
+$admin-main-800: color.mix(#000, $admin-main, 80%)  // ≈ #2e322b — admin bar, submenus, login
+$admin-main-900: color.mix(#000, $admin-main, 90%)  // admin bar dropdowns, dark text
+
+// ---------------------------------------------------------------------------
+// Contrast (WCAG 2) — text colours are picked, not written: on($bg) returns
+// the light or the dark text colour, whichever reads better on $bg, and
+// warns in the build (npm run dev / prod) when neither reaches 4.5:1.
+// ---------------------------------------------------------------------------
+$admin-text-light: $montela-cream
+$admin-text-dark: $admin-main-900
+
+@function _luminance($c)
+  $lum: 0
+  $weights: ("red": 0.2126, "green": 0.7152, "blue": 0.0722)
+  @each $ch, $w in $weights
+    $v: math.div(color.channel($c, $ch, $space: rgb), 255)
+    @if $v <= 0.03928
+      $v: math.div($v, 12.92)
+    @else
+      $v: math.pow(math.div($v + 0.055, 1.055), 2.4)
+    $lum: $lum + $v * $w
+  @return $lum
+
+// Contrast ratio of two colours, 1 to 21.
+@function contrast($a, $b)
+  $la: _luminance($a)
+  $lb: _luminance($b)
+  @return math.div(math.max($la, $lb) + 0.05, math.min($la, $lb) + 0.05)
+
+// The text colour for a background.
+@function on($bg)
+  $light: contrast($bg, $admin-text-light)
+  $dark: contrast($bg, $admin-text-dark)
+  $pick: $admin-text-dark
+  @if $light >= $dark
+    $pick: $admin-text-light
+  @if math.max($light, $dark) < 4.5
+    @warn "Admin palette: no text colour reaches 4.5:1 on #{$bg} (best #{math.round(math.max($light, $dark) * 100) * 0.01}:1)."
+  @return $pick
+
+// The highlight colour, or the accent when the project has none.
+@function admin-highlight()
+  @if $admin-highlight == null
+    @return $admin-accent
+  @return $admin-highlight
+
+// $preferred as text on $bg when it reaches 4.5:1, otherwise on($bg) — for a
+// colour that only reads on some backgrounds (a light highlight reads on
+// the dark menu, not on the cream page): color: text-on($admin-main-700, admin-highlight())
+@function text-on($bg, $preferred)
+  @if contrast($bg, $preferred) >= 4.5
+    @return $preferred
+  @return on($bg)
+
+// WordPress puts white text on the accent (buttons).
+@if contrast($admin-accent, #fff) < 4.5
+  @warn "Admin palette: white text on the accent #{$admin-accent} is #{math.round(contrast($admin-accent, #fff) * 100) * 0.01}:1 — below 4.5:1. Choose a darker accent."
 
 // ---------------------------------------------------------------------------
 // WP core CSS custom properties (runtime) — WordPress 6.9+ colors buttons,
 // links and focus rings on login/admin with these variables (defined by
-// admin-schemes.css on body.admin-color-*). Redefining them here re-brands
-// the whole UI without styling individual elements.
+// admin-schemes.css on body.admin-color-*). Redefining them re-brands the
+// whole UI without styling individual elements — and, being inherited,
+// redefining them on an element re-brands only what's inside it (the
+// dig.id widget below).
+//
+// WordPress 7.1 loads admin-schemes.css on the login screen too, with the
+// same weight (body.admin-color-modern). The stylesheets load after core's
+// (dependencies in inc/theme-admin-settings.php); the doubled class is a
+// second guard. 7.1 also added the --rgb pair of both darker tones (shadows
+// and focus rings with alpha).
 // ---------------------------------------------------------------------------
-body.login,
-body.wp-admin
-  --wp-admin-theme-color: #{$primary-turquoise}
-  --wp-admin-theme-color--rgb: #{color.channel($primary-turquoise, "red", $space: rgb)}, #{color.channel($primary-turquoise, "green", $space: rgb)}, #{color.channel($primary-turquoise, "blue", $space: rgb)}
-  --wp-admin-theme-color-darker-10: #{color.adjust($primary-turquoise, $lightness: -5%)}
-  --wp-admin-theme-color-darker-20: #{color.adjust($primary-turquoise, $lightness: -10%)}
+@function _rgb-channels($c)
+  @return #{math.round(color.channel($c, "red", $space: rgb))}, #{math.round(color.channel($c, "green", $space: rgb))}, #{math.round(color.channel($c, "blue", $space: rgb))}
+
+// All six variables from one colour (darker tones 5 and 10 points down).
+@mixin admin-theme-color($color)
+  $darker-10: color.adjust($color, $lightness: -5%)
+  $darker-20: color.adjust($color, $lightness: -10%)
+  --wp-admin-theme-color: #{$color}
+  --wp-admin-theme-color--rgb: #{_rgb-channels($color)}
+  --wp-admin-theme-color-darker-10: #{$darker-10}
+  --wp-admin-theme-color-darker-10--rgb: #{_rgb-channels($darker-10)}
+  --wp-admin-theme-color-darker-20: #{$darker-20}
+  --wp-admin-theme-color-darker-20--rgb: #{_rgb-channels($darker-20)}
+
+body.login.login,
+body.wp-admin.wp-admin
+  @include admin-theme-color($admin-accent)
+
+#montela_welcome
+  @include admin-theme-color($digid-turquoise)
