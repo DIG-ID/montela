@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.57.0] — 2026-11-13
+
+### Added
+- Homepage hero with an image only (no video): the title lines are revealed left to right on page load. To be reviewed by the team.
+
 ## [1.56.2] — 2026-11-13
 
 ### Changed

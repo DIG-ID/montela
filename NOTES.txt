@@ -712,6 +712,19 @@ o cliente.
              assets/js/modules/map-strip.js, assets/sass/_modules/_map-strip.sass.
   Estado     POR CONFIRMAR
 
+[2026-11-13] B28. Hero da homepage só com imagem — animação de entrada do título
+  O quê      módulo Hero, variante home sem vídeo (.section-hero--reveal).
+  Figma      sem animação para este caso (a do Figma é só com vídeo).
+  Feito      cada linha revela-se da esquerda para a direita ao carregar
+             (máscara + 30px de deslize, 1,1s, 0,15s entre linhas, começa
+             aos 0,3s); todos os breakpoints; parada com "reduzir movimento".
+             Não corre na Unser Resort (animate false).
+  Porquê     teste pedido pelo Daniel (13.11.2026), para a equipa ver no
+             staging.
+  Confirma   equipa / designer.
+  Onde       template-parts/modules/hero.php, assets/sass/_modules/_hero.sass.
+  Estado     POR CONFIRMAR
+
 ===============================================================================
 C. ERROS NO FIGMA
 ===============================================================================

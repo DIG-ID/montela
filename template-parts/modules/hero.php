@@ -43,12 +43,19 @@ $hero_video   = get_field( $hero_prefix . 'section_hero_video', $hero_ctx );
 // title stays in place (Daniel, 2026-11-11).
 $hero_animate = $hero_is_home && $hero_video && ( ! isset( $args['animate'] ) || $args['animate'] );
 
+// Image only: a lighter entrance instead — each line revealed left to right
+// on page load (_hero.sass). Not on Unser Resort ('animate' => false).
+$hero_reveal = $hero_is_home && ! $hero_video && ( ! isset( $args['animate'] ) || $args['animate'] );
+
 $hero_class = 'section-hero';
 if ( $hero_is_home ) {
 	$hero_class .= ' section-hero--home';
 }
 if ( $hero_animate ) {
 	$hero_class .= ' section-hero--animated';
+}
+if ( $hero_reveal ) {
+	$hero_class .= ' section-hero--reveal';
 }
 
 $hero_image = get_field( $hero_prefix . 'section_hero_image', $hero_ctx );
