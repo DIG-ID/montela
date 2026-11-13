@@ -523,8 +523,9 @@ no ficheiro indicado em "No starter".
              overflow-x: clip no body em _base-styles.sass; CLAUDE.md, secção
              Build (bullet do animations.js) e .claude/rules/js.md.
   No Montela Os mesmos ficheiros (1.58.0). A entrada no load (header, cue,
-             sticky CTA) é CSS: _layout/_page-intro.sass + body class
-             has-page-intro — também para o starter, com a regra "animações
+             sticky CTA) é CSS: _layout/_page-intro.sass com
+             body:has(.section-hero) (sem lista de templates nem body class
+             em PHP — desde a 1.59.0) — também para o starter, com a regra "animações
              de load em CSS, nunca no JS atrasável (LCP / WP Rocket)".
              Armadilha que custou um teste: um comentário // na mesma linha
              de uma custom property no Sass fica DENTRO do valor

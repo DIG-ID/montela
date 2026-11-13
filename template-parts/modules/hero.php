@@ -18,12 +18,17 @@
  * - variant (string)     Optional. 'home' for the homepage exception (bigger
  *                        first line, title animation, see _hero.sass).
  *                        Chosen by the template, not by the editor.
- * - animate (bool)       Optional. With 'home': false keeps the big title in
- *                        place, without the title animation. Default true —
- *                        the animation is the homepage's only (Bruno,
- *                        2026-11-10); Unser Resort passes false. Plays only
- *                        when the hero has a video: with just an image the
- *                        title stays in place, as with false.
+ * - animate (bool)       Optional. With 'home': false turns off the video
+ *                        title animation (the big title wiped away, then
+ *                        small in the corner). Default true — it is the
+ *                        homepage's only (Bruno, 2026-11-10); Unser Resort
+ *                        passes false. Plays only when the hero has a video.
+ * - reveal  (bool)       Optional. false turns off the title entrance (each
+ *                        line revealed on load, _hero.sass), which every
+ *                        hero without the video animation plays. Default true.
+ *
+ * Every hero also moves with a parallax (anim-parallax), and its page plays
+ * the load entrance (_layout/_page-intro.sass).
  *
  * @package montela
  * @subpackage Section
@@ -43,9 +48,9 @@ $hero_video   = get_field( $hero_prefix . 'section_hero_video', $hero_ctx );
 // title stays in place (Daniel, 2026-11-11).
 $hero_animate = $hero_is_home && $hero_video && ( ! isset( $args['animate'] ) || $args['animate'] );
 
-// Image only: a lighter entrance instead — each line revealed left to right
-// on page load (_hero.sass). Not on Unser Resort ('animate' => false).
-$hero_reveal = $hero_is_home && ! $hero_video && ( ! isset( $args['animate'] ) || $args['animate'] );
+// Every other hero: each line revealed left to right on page load
+// (_hero.sass) — all pages since 1.59.0, Unser Resort included.
+$hero_reveal = ! $hero_animate && ( ! isset( $args['reveal'] ) || $args['reveal'] );
 
 $hero_class = 'section-hero';
 if ( $hero_is_home ) {
@@ -103,8 +108,8 @@ $hero_kses = montela_text_allowed_html();
 $hero_last = $hero_rendered ? array_key_last( $hero_rendered ) : 0;
 ?>
 <section class="<?php echo esc_attr( $hero_class ); ?>">
-	<?php // Homepage: the image lags behind the scroll (anim-parallax, assets/js/animations/reveal.js). ?>
-	<div class="section-hero__media<?php echo $hero_is_home ? ' anim-parallax' : ''; ?>" aria-hidden="true">
+	<?php // The image lags behind the scroll (anim-parallax, assets/js/animations/reveal.js). ?>
+	<div class="section-hero__media anim-parallax" aria-hidden="true">
 		<?php
 		if ( $hero_image ) :
 			// Decorative background and the page's LCP element: empty alt, loaded eagerly.

@@ -1,6 +1,6 @@
-// Page-load entrance — body.has-page-intro (the homepage; montela_page_intro()
-// in inc/theme-setup.php). Not in Figma: order from Pedro's sketch
-// (2026-11-13):
+// Page-load entrance — every page with a hero (body:has(.section-hero):
+// no list of templates; pages without one — text pages, 404 — don't play
+// it). Not in Figma: order from Pedro's sketch (2026-11-13):
 //   1. hero title — its own reveal, line by line (_hero.sass, starts 0.3s)
 //   2. header drops in from above
 //   3. scroll cue rises
@@ -29,7 +29,7 @@
   --intro-cta: 1.4s
 
 @media (prefers-reduced-motion: no-preference)
-  .has-page-intro
+  body:has(.section-hero)
     .header-main__inner
       animation: page-intro-down var(--intro-duration) var(--intro-ease) var(--intro-header) backwards
 

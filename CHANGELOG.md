@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.59.0] — 2026-11-13
+### Changed
+- Every page with a hero now opens like the homepage: the title comes in line by line, then the header, scroll cue and sticky button; the hero image moves with a parallax on scroll. Unser Resort included; pages without a hero (text pages, 404) are unchanged.
+
 ## [1.58.1] — 2026-11-13
 ### Changed
 - Dashboard: the Yoast SEO "Posts Overview" and "Wincher: Top Keyphrases" boxes are removed for every user.

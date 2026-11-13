@@ -16,7 +16,8 @@ if ( have_posts() ) :
 	while ( have_posts() ) :
 		the_post();
 		do_action( 'before_main_content' );
-			// Full-screen hero, same as the homepage's, without its title animation.
+			// Full-screen hero, same as the homepage's; with a video, no title wipe
+			// (the line-by-line entrance still plays).
 			get_template_part(
 				'template-parts/modules/hero',
 				null,

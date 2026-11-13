@@ -144,9 +144,10 @@
   to
     clip-path: inset(-25% -5% -25% -5%)
 
-// -- Homepage title entrance, image only (.section-hero--reveal) --
-// Not in Figma (Daniel, 13.11.2026). Without a video there is no title
-// animation above; instead each line is revealed left to right on page
+// -- Title entrance (.section-hero--reveal) --
+// Not in Figma (Daniel, 13.11.2026). Every hero without the video title
+// animation above — every page since 1.59.0 (Pedro); 'reveal' => false
+// turns it off. Each line is revealed left to right on page
 // load — a mask opening to the right while the line slides 30px in, lines
 // 150ms apart. Every breakpoint. Pure CSS, for the same reason as above;
 // with "reduce motion" the title just shows.
