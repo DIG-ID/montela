@@ -20,6 +20,8 @@ if ( have_posts() ) :
 			get_template_part( 'template-parts/modules/hero' );
 			get_template_part( 'template-parts/modules/intro' );
 			get_template_part( 'template-parts/pages/lounge-bar/lounge-info' );
+			// The map strip (Theme Settings, tab Map strip), under the footer's box.
+			get_template_part( 'template-parts/modules/map-strip' );
 		do_action( 'after_main_content' );
 	endwhile;
 endif;

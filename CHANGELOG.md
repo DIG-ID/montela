@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.56.1] — 2026-11-13
+
+### Added
+- Lounge & Bar and Shop: the map strip before the footer, as on Kids Playground.
+
 ## [1.56.0] — 2026-11-13
 
 ### Added

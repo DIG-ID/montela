@@ -76,7 +76,6 @@ alteração no `CHANGELOG.md`. Os nodes do Figma de cada template estão no
   Aufenthalt, Unsere Region e Unser Resort. As ilustrações e os pins estão
   nas Theme Settings (tab Map); no staging, preencher lá e em cada página o
   título / texto / features. Falta:
-  - Shop ("mapa adiado" no `CLAUDE.md`) — confirmar no Figma;
   - confirmar com o cliente o título do G do inverno e o F do verão (sem
     marcador na ilustração) — NOTES B26.
 - [ ] **Animações** — `assets/js/animations.js` ainda não tem animações do
