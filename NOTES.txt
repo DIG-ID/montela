@@ -494,6 +494,38 @@ no ficheiro indicado em "No starter".
       e o _admin-bar.sass são para o específico do projecto; a lista dos
       ecrãs do login está no topo do _admin/_login.sass.
   Estado     POR PASSAR
+
+-------------------------------------------------------------------------------
+[2026-11-13] A25. Biblioteca de animações por classes (reveal)
+  Problema   O animations.js do starter só traz o setup do GSAP/Lenis: cada
+             projecto reinventa as animações de entrada, e o caminho óbvio
+             (gsap.from() em tudo no domReady) dá o "flash" — com o Delay JS
+             do WP Rocket o script corre depois do primeiro paint, o texto
+             já visível some e volta a entrar.
+  Regra      "Animações de entrada por classe, com a biblioteca
+             assets/js/animations/reveal.js: anim-fade, anim-fade-up /
+             -down / -left / -right, anim-zoom-in; modificadores
+             anim-children (anima os filhos), anim-repeat (volta a esconder
+             ao subir), anim-out (desaparece ao sair por cima, com o
+             scroll); data-anim-delay / data-anim-duration. Velocidades no
+             objecto REVEAL no topo do ficheiro. Só se esconde o que está
+             abaixo do ecrã quando o script corre (nunca o que o visitante
+             já viu); o que entra no mesmo momento faz escada pela ordem de
+             leitura (ScrollTrigger.batch); com reduce motion, nada. O body
+             leva overflow-x: clip (as entradas laterais saem do ecrã)."
+  No starter assets/js/animations/reveal.js + a chamada no animations.js;
+             overflow-x: clip no body em _base-styles.sass; CLAUDE.md, secção
+             Build (bullet do animations.js) e .claude/rules/js.md.
+  No Montela Os mesmos ficheiros (1.58.0). A entrada no load (header, cue,
+             sticky CTA) é CSS: _layout/_page-intro.sass + body class
+             has-page-intro — também para o starter, com a regra "animações
+             de load em CSS, nunca no JS atrasável (LCP / WP Rocket)".
+             Armadilha que custou um teste: um comentário // na mesma linha
+             de uma custom property no Sass fica DENTRO do valor
+             (--x: 0.9s // nota) e a animação que a usa fica inválida, sem
+             erro. Regra para o sass.md: comentários das variáveis CSS na
+             linha de cima.
+  Estado     POR PASSAR
 ===============================================================================
 B. DECISÕES POR CONFIRMAR
 ===============================================================================
@@ -900,6 +932,26 @@ o cliente.
              staging.
   Confirma   equipa / designer.
   Onde       template-parts/modules/hero.php, assets/sass/_modules/_hero.sass.
+  Estado     POR CONFIRMAR
+
+
+[2026-11-13] B29. Animações da homepage — entradas, parallax e load
+  O quê      homepage: todas as secções e o hero.
+  Figma      sem animações.
+  Feito      entradas ao scroll em todas as secções (fade-up nos textos,
+             laterais nas fotos da galeria e no slider do Explore, escada
+             no que entra junto); parallax na imagem do hero (também na
+             Unser Resort, que usa a variante home); no load, a ordem do
+             esboço do Pedro: título → header a descer → cue → sticky CTA a
+             subir; parallax também na Image band (a foto desliza dentro
+             da faixa, ampliada 15%). O título mantém o reveal da B28, não um
+             fade-up. Toca em cada abertura da homepage, não só na primeira
+             da sessão. As classes estão nos módulos: outras páginas com os
+             mesmos módulos também animam.
+  Porquê     pedido do Pedro (13.11.2026), para testar a biblioteca (A25).
+  Confirma   Pedro / Daniel.
+  Onde       assets/js/animations/reveal.js, _layout/_page-intro.sass,
+             os módulos da homepage.
   Estado     POR CONFIRMAR
 
 ===============================================================================

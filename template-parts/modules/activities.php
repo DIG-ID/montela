@@ -113,7 +113,7 @@ $act_title_id = $act_uid . '-title';
 
 			<div class="section-activities__intro">
 				<?php if ( count( $act_seasons ) > 1 ) : ?>
-					<div class="section-activities__switch" role="tablist" aria-label="<?php esc_attr_e( 'Saison', 'montela' ); ?>" data-activities-tabs>
+					<div class="section-activities__switch anim-fade-up" role="tablist" aria-label="<?php esc_attr_e( 'Saison', 'montela' ); ?>" data-activities-tabs>
 						<?php foreach ( $act_seasons as $act_key => $act_season ) : ?>
 							<?php $act_is_current = $act_key === $act_current; ?>
 							<button
@@ -132,11 +132,11 @@ $act_title_id = $act_uid . '-title';
 
 				<div class="section-activities__copy">
 					<?php if ( $act_title ) : ?>
-						<h2 id="<?php echo esc_attr( $act_title_id ); ?>" class="title-h3 section-activities__title"><?php echo montela_text( $act_title ); ?></h2>
+						<h2 id="<?php echo esc_attr( $act_title_id ); ?>" class="title-h3 section-activities__title anim-fade-up"><?php echo montela_text( $act_title ); ?></h2>
 					<?php endif; ?>
 
 					<?php if ( $act_text ) : ?>
-						<p class="body-text section-activities__text"><?php echo montela_text( $act_text ); ?></p>
+						<p class="body-text section-activities__text anim-fade-up"><?php echo montela_text( $act_text ); ?></p>
 					<?php endif; ?>
 
 					<?php
@@ -165,7 +165,7 @@ $act_title_id = $act_uid . '-title';
 						</div>
 					<?php endif; ?>
 
-					<div class="section-activities__cards" data-activities-track>
+					<div class="section-activities__cards anim-fade-up anim-children" data-activities-track>
 						<?php
 						foreach ( $act_season['ids'] as $act_id ) :
 							get_template_part( 'template-parts/components/card-activity', null, array( 'post_id' => $act_id ) );

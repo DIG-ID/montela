@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.58.0] — 2026-11-13
+### Added
+- Scroll animations by class: sections fade and slide in as they reach the screen, one after the other when they arrive together; optional repeat, fade-out and parallax. Nothing is hidden that the visitor has already seen, and nothing moves with "reduce motion".
+- Homepage: every section animates in on scroll, the hero image and the image band move with a parallax, and on page load the header, scroll cue and sticky button come in after the hero title.
+
+### Fixed
+- No horizontal scroll from elements sliding in from the side on mobile.
+
 ## [1.57.1] — 2026-11-13
 ### Fixed
 - Login screen and wp-admin: the Montela styling (logo, form, buttons, colours) applies again on WordPress 7.1, where core's own styles had taken over.

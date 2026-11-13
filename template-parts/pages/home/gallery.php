@@ -36,13 +36,13 @@ $gal_title_id = wp_unique_id( 'section-gallery-title-' );
 	<div class="theme-container">
 		<div class="theme-grid section-gallery__grid">
 			<?php if ( $gal_title ) : ?>
-				<h2 id="<?php echo esc_attr( $gal_title_id ); ?>" class="title-h3 section-gallery__title">
+				<h2 id="<?php echo esc_attr( $gal_title_id ); ?>" class="title-h3 section-gallery__title anim-fade-up">
 					<?php echo montela_text( $gal_title ); ?>
 				</h2>
 			<?php endif; ?>
 
 			<?php if ( $gal_image_1 ) : ?>
-				<figure class="section-gallery__photo section-gallery__photo--1">
+				<figure class="section-gallery__photo section-gallery__photo--1 anim-fade-left">
 					<?php
 					echo wp_get_attachment_image(
 						$gal_image_1,
@@ -58,11 +58,11 @@ $gal_title_id = wp_unique_id( 'section-gallery-title-' );
 			<?php endif; ?>
 
 			<?php if ( $gal_text ) : ?>
-				<p class="body-text section-gallery__text"><?php echo montela_text( $gal_text ); ?></p>
+				<p class="body-text section-gallery__text anim-fade-up"><?php echo montela_text( $gal_text ); ?></p>
 			<?php endif; ?>
 
 			<?php if ( $gal_button ) : ?>
-				<div class="section-gallery__button">
+				<div class="section-gallery__button anim-fade-up">
 					<?php get_template_part( 'template-parts/components/button', null, array_merge( $gal_button, array( 'style' => 'secondary' ) ) ); ?>
 				</div>
 			<?php endif; ?>
@@ -73,13 +73,13 @@ $gal_title_id = wp_unique_id( 'section-gallery-title-' );
 				null,
 				array(
 					'items' => $gal_items,
-					'class' => 'section-gallery__list',
+					'class' => 'section-gallery__list anim-fade-up anim-children',
 				)
 			);
 			?>
 
 			<?php if ( $gal_image_2 ) : ?>
-				<figure class="section-gallery__photo section-gallery__photo--2">
+				<figure class="section-gallery__photo section-gallery__photo--2 anim-fade-right">
 					<?php
 					echo wp_get_attachment_image(
 						$gal_image_2,
@@ -102,7 +102,7 @@ $gal_title_id = wp_unique_id( 'section-gallery-title-' );
 		null,
 		array(
 			'images' => $gal_images,
-			'class'  => 'section-gallery__slider',
+			'class'  => 'section-gallery__slider anim-fade',
 		)
 	);
 	?>

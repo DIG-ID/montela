@@ -12,7 +12,12 @@ html
 // Arrow cursor over text too (text stays selectable). The cursor is
 // inherited, so fields that take typing get the I-beam back below; links and
 // buttons keep their pointer (browser default / the button rule).
+// overflow-x: clip — an element waiting to slide in from the side
+// (anim-fade-left / -right, assets/js/animations/reveal.js) sits past the
+// screen edge and would add a horizontal scroll on mobile. clip, not hidden:
+// it doesn't make the body a scroll container (position: sticky keeps working).
 body
+  overflow-x: clip
   font-family: var(--font-primary)
   color: var(--color-text)
   background-color: var(--color-bg)

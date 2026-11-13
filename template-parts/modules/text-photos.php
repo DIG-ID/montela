@@ -98,12 +98,12 @@ $apt_class = 'section-text-photos section-text-photos--' . ( 1 === $apt_count ? 
 	<div class="theme-container">
 		<div class="theme-grid section-text-photos__grid <?php echo esc_attr( $apt_cls['grid'] ); ?>">
 			<?php if ( $apt_title ) : ?>
-				<h2 id="<?php echo esc_attr( $apt_title_id ); ?>" class="title-h3 section-text-photos__title <?php echo esc_attr( $apt_cls['title'] ); ?>">
+				<h2 id="<?php echo esc_attr( $apt_title_id ); ?>" class="title-h3 section-text-photos__title anim-fade-up <?php echo esc_attr( $apt_cls['title'] ); ?>">
 					<?php echo montela_text( $apt_title ); ?>
 				</h2>
 			<?php endif; ?>
 
-			<div class="section-text-photos__content <?php echo esc_attr( $apt_cls['content'] ); ?>">
+			<div class="section-text-photos__content anim-fade-up <?php echo esc_attr( $apt_cls['content'] ); ?>">
 				<?php if ( $apt_text ) : ?>
 					<p class="<?php echo esc_attr( trim( 'body-text section-text-photos__text ' . $apt_cls['text'] ) ); ?>"><?php echo montela_text( $apt_text ); ?></p>
 				<?php endif; ?>
@@ -127,7 +127,7 @@ $apt_class = 'section-text-photos section-text-photos--' . ( 1 === $apt_count ? 
 			<?php if ( $apt_images ) : ?>
 				<div class="section-text-photos__photos <?php echo esc_attr( $apt_cls['photos'] ); ?>">
 					<?php foreach ( array_values( $apt_images ) as $apt_index => $apt_image ) : ?>
-						<figure class="section-text-photos__photo <?php echo esc_attr( $apt_cls['photo'][ $apt_index % count( $apt_cls['photo'] ) ] ); ?>">
+						<figure class="section-text-photos__photo anim-fade-up <?php echo esc_attr( $apt_cls['photo'][ $apt_index % count( $apt_cls['photo'] ) ] ); ?>">
 							<?php
 							echo wp_get_attachment_image(
 								$apt_image,

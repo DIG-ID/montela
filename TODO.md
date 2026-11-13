@@ -78,9 +78,12 @@ alteração no `CHANGELOG.md`. Os nodes do Figma de cada template estão no
   título / texto / features. Falta:
   - confirmar com o cliente o título do G do inverno e o F do verão (sem
     marcador na ilustração) — NOTES B26.
-- [ ] **Animações** — `assets/js/animations.js` ainda não tem animações do
-  projecto (só o setup do GSAP/Lenis). Lembrar: estados iniciais via
-  `gsap.from()`, nunca `opacity: 0` no CSS.
+- [ ] **Animações** — a biblioteca de entradas por classe está feita
+  (`assets/js/animations/reveal.js`, ver `CLAUDE.md` → Build). Falta:
+  - pôr as classes nas secções das outras páginas (a homepage está feita;
+    os módulos dela já as levam onde aparecerem);
+  - decidir se a entrada no load (`_page-intro.sass`) passa para as outras
+    páginas e se toca só na primeira visita da sessão.
 - [ ] **Estilo dos links inline** — `_typography.sass` tem a secção "Links" por
   definir a partir do design system.
 - [ ] **Timeline do Montela Weg** — os anos 2020–2026 ainda estão em Lorem

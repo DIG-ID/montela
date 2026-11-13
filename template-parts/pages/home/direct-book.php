@@ -26,7 +26,7 @@ $book_title_id = wp_unique_id( 'section-direct-book-title-' );
 <section class="section-direct-book"<?php echo $book_title ? ' aria-labelledby="' . esc_attr( $book_title_id ) . '"' : ''; ?>>
 	<div class="theme-container">
 		<?php if ( $book_title ) : ?>
-			<h2 id="<?php echo esc_attr( $book_title_id ); ?>" class="title-h3 section-direct-book__title"><?php echo montela_text( $book_title ); ?></h2>
+			<h2 id="<?php echo esc_attr( $book_title_id ); ?>" class="title-h3 section-direct-book__title anim-fade-up"><?php echo montela_text( $book_title ); ?></h2>
 		<?php endif; ?>
 
 		<?php
@@ -35,7 +35,7 @@ $book_title_id = wp_unique_id( 'section-direct-book-title-' );
 			null,
 			array(
 				'items' => $book_items,
-				'class' => 'section-direct-book__list',
+				'class' => 'section-direct-book__list anim-fade-up anim-children',
 			)
 		);
 		?>

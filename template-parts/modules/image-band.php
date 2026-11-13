@@ -28,14 +28,14 @@ if ( ! $band_image ) {
 	return;
 }
 ?>
-<figure class="section-image-band">
+<figure class="section-image-band anim-fade">
 	<?php
 	echo wp_get_attachment_image(
 		$band_image,
 		'full',
 		false,
 		array(
-			'class' => 'section-image-band__img',
+			'class' => 'section-image-band__img anim-parallax', // Drifts while the band crosses the screen (assets/js/animations/reveal.js).
 			'sizes' => '100vw',
 		)
 	);

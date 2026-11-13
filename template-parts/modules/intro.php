@@ -37,12 +37,12 @@ $intro_title_id = wp_unique_id( 'section-intro-title-' );
 		<div class="theme-grid">
 			<div class="section-intro__content">
 				<?php if ( $intro_title ) : ?>
-					<h2 id="<?php echo esc_attr( $intro_title_id ); ?>" class="title-intro section-intro__title">
+					<h2 id="<?php echo esc_attr( $intro_title_id ); ?>" class="title-intro section-intro__title anim-fade-up">
 						<?php echo montela_text( $intro_title ); ?>
 					</h2>
 				<?php endif; ?>
 				<?php if ( $intro_text ) : ?>
-					<p class="body-intro section-intro__text"><?php echo montela_text( $intro_text ); ?></p>
+					<p class="body-intro section-intro__text anim-fade-up"><?php echo montela_text( $intro_text ); ?></p>
 				<?php endif; ?>
 			</div>
 		</div>

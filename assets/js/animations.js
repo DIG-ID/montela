@@ -9,6 +9,7 @@
 // =============================================================================
 import { gsap, ScrollTrigger, lenis } from './gsap.js';
 import { domReady } from './utils/helpers.js';
+import { initReveal, initParallax, watchPageHeight } from './animations/reveal.js';
 
 // The mega menu (main.js) locks the page behind it: pause the smooth scroll.
 document.addEventListener('montela:menu', (event) => {
@@ -26,9 +27,11 @@ const SCROLL_CUE_FADE = 400;
 // Delayed by WP Rocket, this may run after DOMContentLoaded has fired.
 domReady(() => {
 
-  // ---------------------------------------------------
-  // Project-specific animations go here
-  // ---------------------------------------------------
+  // Scroll reveals by class (anim-fade-up…) — settings and the class list
+  // at the top of animations/reveal.js.
+  initReveal();
+  initParallax();
+  watchPageHeight();
 
   heroScrollCue();
 

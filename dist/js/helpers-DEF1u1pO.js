@@ -1,0 +1,1 @@
+function e(e,t=200){let n;return(...r)=>{clearTimeout(n),n=setTimeout(()=>e(...r),t)}}function t(e){document.readyState===`loading`?document.addEventListener(`DOMContentLoaded`,e):e()}export{t as n,e as t};

@@ -1,0 +1,50 @@
+// Page-load entrance — body.has-page-intro (the homepage; montela_page_intro()
+// in inc/theme-setup.php). Not in Figma: order from Pedro's sketch
+// (2026-11-13):
+//   1. hero title — its own reveal, line by line (_hero.sass, starts 0.3s)
+//   2. header drops in from above
+//   3. scroll cue rises
+//   4. sticky CTA rises
+//
+// CSS, not GSAP: animations.js may be delayed by WP Rocket until the first
+// interaction, and the hero is the page's LCP — a start state set by JS
+// would either flash (shown, hidden, animated) or wait for the visitor to
+// move the mouse. CSS applies before the first paint.
+//
+// Inner elements are animated, not .header-main or .sticky-cta: those have
+// their own animations / transitions (sticky header, CTA states). Fill mode
+// "backwards": the start state holds only until each one starts, then the
+// element is back to its CSS. "Reduce motion": no entrance.
+
+// -- Settings: every value of the entrance --
+// --intro-header / -cue / -cta: when each one starts, from page load.
+// (No comments after the values: in a custom property Sass keeps them, and
+// the animation becomes invalid.)
+:root
+  --intro-duration: 0.9s
+  --intro-ease: cubic-bezier(0.22, 1, 0.36, 1)
+  --intro-distance: 30px
+  --intro-header: 0.9s
+  --intro-cue: 1.2s
+  --intro-cta: 1.4s
+
+@media (prefers-reduced-motion: no-preference)
+  .has-page-intro
+    .header-main__inner
+      animation: page-intro-down var(--intro-duration) var(--intro-ease) var(--intro-header) backwards
+
+    .section-hero__scroll-icon
+      animation: page-intro-up var(--intro-duration) var(--intro-ease) var(--intro-cue) backwards
+
+    .sticky-cta__toggle
+      animation: page-intro-up var(--intro-duration) var(--intro-ease) var(--intro-cta) backwards
+
+@keyframes page-intro-down
+  from
+    opacity: 0
+    translate: 0 calc(-1 * var(--intro-distance))
+
+@keyframes page-intro-up
+  from
+    opacity: 0
+    translate: 0 var(--intro-distance)

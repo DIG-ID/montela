@@ -103,7 +103,8 @@ $hero_kses = montela_text_allowed_html();
 $hero_last = $hero_rendered ? array_key_last( $hero_rendered ) : 0;
 ?>
 <section class="<?php echo esc_attr( $hero_class ); ?>">
-	<div class="section-hero__media" aria-hidden="true">
+	<?php // Homepage: the image lags behind the scroll (anim-parallax, assets/js/animations/reveal.js). ?>
+	<div class="section-hero__media<?php echo $hero_is_home ? ' anim-parallax' : ''; ?>" aria-hidden="true">
 		<?php
 		if ( $hero_image ) :
 			// Decorative background and the page's LCP element: empty alt, loaded eagerly.

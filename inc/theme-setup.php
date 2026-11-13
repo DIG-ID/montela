@@ -111,3 +111,37 @@ function montela_header_dark_body_class( $classes ) {
 }
 
 add_filter( 'body_class', 'montela_header_dark_body_class' );
+
+if ( ! function_exists( 'montela_page_intro' ) ) :
+	/**
+	 * Whether the page plays the page-load entrance (header, scroll cue and
+	 * sticky CTA fading in after the hero title — _layout/_page-intro.sass).
+	 * Filterable: `montela_page_intro`.
+	 *
+	 * @since 1.58.0
+	 *
+	 * @return bool
+	 */
+	function montela_page_intro() {
+		return (bool) apply_filters( 'montela_page_intro', is_page_template( 'page-templates/page-home.php' ) );
+	}
+endif;
+
+/**
+ * Adds the `has-page-intro` body class where the page-load entrance plays
+ * (montela_page_intro()).
+ *
+ * @since 1.58.0
+ *
+ * @param string[] $classes Body classes.
+ * @return string[]
+ */
+function montela_page_intro_body_class( $classes ) {
+	if ( montela_page_intro() ) {
+		$classes[] = 'has-page-intro';
+	}
+
+	return $classes;
+}
+
+add_filter( 'body_class', 'montela_page_intro_body_class' );

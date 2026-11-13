@@ -166,15 +166,15 @@ $map_padding = ( isset( $args['padding_top'] ) && false === $args['padding_top']
 		<div class="theme-container">
 			<div class="theme-grid section-map__intro">
 				<?php if ( $map_title ) : ?>
-					<h2 id="<?php echo esc_attr( $map_title_id ); ?>" class="title-h3 section-map__title col-span-full <?php echo esc_attr( $map_title_class ); ?>"><?php echo montela_text( $map_title ); ?></h2>
+					<h2 id="<?php echo esc_attr( $map_title_id ); ?>" class="title-h3 section-map__title anim-fade-up col-span-full <?php echo esc_attr( $map_title_class ); ?>"><?php echo montela_text( $map_title ); ?></h2>
 				<?php endif; ?>
 
 				<?php if ( $map_text ) : ?>
-					<p class="body-text section-map__text col-span-full mt-10 md:col-span-5 md:mt-[72px] <?php echo esc_attr( $map_text_class ); ?>"><?php echo montela_text( $map_text ); ?></p>
+					<p class="body-text section-map__text anim-fade-up col-span-full mt-10 md:col-span-5 md:mt-[72px] <?php echo esc_attr( $map_text_class ); ?>"><?php echo montela_text( $map_text ); ?></p>
 				<?php endif; ?>
 
 				<?php if ( $map_has_button ) : ?>
-					<div class="section-map__button col-span-full mt-8 xl:col-start-2 xl:col-span-6 xl:row-start-2 xl:self-end xl:mt-5">
+					<div class="section-map__button anim-fade-up col-span-full mt-8 xl:col-start-2 xl:col-span-6 xl:row-start-2 xl:self-end xl:mt-5">
 						<?php get_template_part( 'template-parts/components/button', null, array_merge( $map_button, array( 'style' => 'secondary' ) ) ); ?>
 					</div>
 				<?php endif; ?>
@@ -184,7 +184,7 @@ $map_padding = ( isset( $args['padding_top'] ) && false === $args['padding_top']
 
 	<?php if ( $map_seasons ) : ?>
 		<?php // Below desktop the map takes the screen width, in a 12px cream border. ?>
-		<div class="section-map__frame mx-auto max-w-[1920px] px-3 xl:px-[50px]<?php echo $map_has_intro ? ' mt-10 md:mt-16 ' . esc_attr( $map_gap_class ) : ''; ?>">
+		<div class="section-map__frame anim-fade mx-auto max-w-[1920px] px-3 xl:px-[50px]<?php echo $map_has_intro ? ' mt-10 md:mt-16 ' . esc_attr( $map_gap_class ) : ''; ?>">
 			<div class="section-map__map" data-map>
 				<div class="section-map__viewport" data-map-viewport role="group" tabindex="0" aria-label="<?php esc_attr_e( 'Interaktive Karte. Mit den Zoom-Tasten vergrössern und zum Erkunden ziehen oder scrollen.', 'montela' ); ?>">
 					<div class="section-map__canvas" data-map-canvas>
@@ -263,7 +263,7 @@ $map_padding = ( isset( $args['padding_top'] ) && false === $args['padding_top']
 	<?php if ( $map_features ) : ?>
 		<?php // Tablet: 24px from the screen edges, wider than the container (Figma). ?>
 		<div class="section-map__features-wrap mx-auto max-w-[1920px] px-8 md:px-6 xl:px-[50px]<?php echo ( $map_has_intro || $map_seasons ) ? ' mt-10 md:mt-16 xl:mt-[30px]' : ''; ?>">
-			<ul class="section-map__features grid grid-cols-2 gap-6 p-6 md:grid-cols-6 md:gap-8 xl:flex xl:justify-between xl:gap-5 xl:px-10 xl:py-8 border border-solid border-montela-sage">
+			<ul class="section-map__features anim-fade-up anim-children grid grid-cols-2 gap-6 p-6 md:grid-cols-6 md:gap-8 xl:flex xl:justify-between xl:gap-5 xl:px-10 xl:py-8 border border-solid border-montela-sage">
 				<?php foreach ( $map_features as $map_feature ) : ?>
 					<?php
 					if ( empty( $map_feature['text'] ) ) {

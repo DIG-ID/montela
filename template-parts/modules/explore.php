@@ -92,7 +92,7 @@ if ( $exp_tablet ) {
 ?>
 <section class="section-explore<?php echo $exp_image ? '' : ' section-explore--no-photo'; ?>"<?php echo $exp_title ? ' aria-labelledby="' . esc_attr( $exp_title_id ) . '"' : ''; ?>>
 	<?php foreach ( $exp_sliders as $exp_slider ) : ?>
-		<div class="section-explore__slider<?php echo esc_attr( $exp_slider['class'] ); ?>" data-swiper-root>
+		<div class="section-explore__slider anim-fade-left<?php echo esc_attr( $exp_slider['class'] ); ?>" data-swiper-root>
 			<div class="swiper section-explore__swiper" data-swiper="<?php echo esc_attr( wp_json_encode( $exp_swiper ) ); ?>">
 				<div class="swiper-wrapper">
 					<?php foreach ( $exp_slider['slides'] as $exp_slide ) : ?>
@@ -125,15 +125,15 @@ if ( $exp_tablet ) {
 
 	<div class="section-explore__panel">
 		<?php if ( $exp_overline ) : ?>
-			<p class="title-h2 section-explore__overline"><?php echo montela_text( $exp_overline ); ?></p>
+			<p class="title-h2 section-explore__overline anim-fade-up"><?php echo montela_text( $exp_overline ); ?></p>
 		<?php endif; ?>
 
 		<?php if ( $exp_title ) : ?>
-			<h2 id="<?php echo esc_attr( $exp_title_id ); ?>" class="title-h3 section-explore__title"><?php echo montela_text( $exp_title ); ?></h2>
+			<h2 id="<?php echo esc_attr( $exp_title_id ); ?>" class="title-h3 section-explore__title anim-fade-up"><?php echo montela_text( $exp_title ); ?></h2>
 		<?php endif; ?>
 
 		<?php if ( $exp_image ) : ?>
-			<figure class="section-explore__photo">
+			<figure class="section-explore__photo anim-fade-up">
 				<?php
 				echo wp_get_attachment_image(
 					$exp_image,
@@ -149,12 +149,22 @@ if ( $exp_tablet ) {
 		<?php endif; ?>
 
 		<?php if ( $exp_text ) : ?>
-			<p class="body-text section-explore__text"><?php echo montela_text( $exp_text ); ?></p>
+			<p class="body-text section-explore__text anim-fade-up"><?php echo montela_text( $exp_text ); ?></p>
 		<?php endif; ?>
 
 		<?php
 		if ( $exp_button ) :
-			get_template_part( 'template-parts/components/button', null, array_merge( $exp_button, array( 'style' => 'outline' ) ) );
+			get_template_part(
+				'template-parts/components/button',
+				null,
+				array_merge(
+					$exp_button,
+					array(
+						'style' => 'outline',
+						'class' => 'anim-fade-up',
+					)
+				)
+			);
 		endif;
 		?>
 	</div>

@@ -87,10 +87,10 @@ $tst_swiper   = array(
 	<div class="theme-container">
 		<div class="section-testimonials__frame" data-swiper-root>
 			<?php if ( $tst_title ) : ?>
-				<h2 id="<?php echo esc_attr( $tst_title_id ); ?>" class="title-h2 section-testimonials__title"><?php echo montela_text( $tst_title ); ?></h2>
+				<h2 id="<?php echo esc_attr( $tst_title_id ); ?>" class="title-h2 section-testimonials__title anim-fade-up"><?php echo montela_text( $tst_title ); ?></h2>
 			<?php endif; ?>
 
-			<div class="swiper section-testimonials__swiper"<?php echo $tst_many ? ' data-swiper="' . esc_attr( wp_json_encode( $tst_swiper ) ) . '"' : ''; ?>>
+			<div class="swiper section-testimonials__swiper anim-fade"<?php echo $tst_many ? ' data-swiper="' . esc_attr( wp_json_encode( $tst_swiper ) ) . '"' : ''; ?>>
 				<div class="swiper-wrapper">
 					<?php foreach ( $tst_items as $tst_item ) : ?>
 						<figure class="swiper-slide section-testimonials__slide">
