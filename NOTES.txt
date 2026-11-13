@@ -426,6 +426,11 @@ no ficheiro indicado em "No starter".
              dos submenus em sage), em vez de a trocar pelo tom de texto
              como faz o text-on(). Notices: success e info com a barra no
              accent; warning e error ficam com as cores do core.
+             [2026-11-13] Fundo do login = foto do projecto num ficheiro do
+             tema (assets/images/login-bg.webp) sob o véu $login-veil
+             (_admin/_login.sass) — não ligado a um campo ACF. No starter:
+             uma imagem neutra no lugar, e o /setup-project pede para a
+             trocar (a foto principal do site, ~1920px, WebP < 300 KB).
   Estado     POR PASSAR
 
 [2026-11-13] A22. As páginas wp_die() ficam sem o estilo do login
@@ -963,6 +968,20 @@ o cliente.
   Confirma   Pedro / Daniel.
   Onde       assets/js/animations/reveal.js, _layout/_page-intro.sass,
              os módulos da homepage.
+  Estado     POR CONFIRMAR
+
+[2026-11-13] B30. Login com a foto do hero da homepage
+  O quê      ecrãs do wp-login.php e páginas wp_die().
+  Figma      sem design do login.
+  Feito      fundo = a foto do hero da homepage, como ficheiro do tema
+             (assets/images/login-bg.webp, 1920px, 157 KB), sob um véu da cor
+             do fundo do login ($admin-main-800) a 85% — mais escuro que o
+             véu walnut 40% do hero, para os links creme lerem a 4,5:1 mesmo
+             sobre o céu. Ficheiro e não o campo do hero (Pedro): nada a
+             partir se o conteúdo mudar; trocar o hero não troca o login.
+  Porquê     pedido do Pedro (13.11.2026).
+  Confirma   Pedro.
+  Onde       assets/images/login-bg.webp, _admin/_login.sass ($login-veil).
   Estado     POR CONFIRMAR
 
 ===============================================================================

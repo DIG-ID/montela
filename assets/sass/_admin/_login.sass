@@ -41,9 +41,25 @@ body.login
 // Login screen base — page background, #login card and logo.
 // Core markup (wp-login.php): body.login > #login > h1.wp-login-logo + form.
 // Core styles to override: wp-admin/css/login.css.
+// Background: a photo in the theme (assets/images/login-bg.webp — the
+// homepage hero's, 1920px; a new project swaps the file) under a veil of
+// the page colour at 85% (Pedro: the photo just a hint) — far darker than
+// the hero's walnut 40%; the cream links keep well over 4.5:1 even over
+// the sky (85% → about 9.7:1 on white; 75% was 5.7). A file,
+// not the hero field: nothing to break if the content changes. Vite copies
+// it to dist/ with a hash.
+$login-veil: rgba($admin-main-800, 0.90)
+
+=login-background
+  background-color: $admin-main-800
+  background-image: linear-gradient($login-veil, $login-veil), url("../../images/login-bg.webp")
+  background-size: cover
+  background-position: center
+  background-attachment: fixed
+
 .login
   @apply flex flex-col items-center justify-start min-h-svh px-4 text-montela-cream
-  background-color: $admin-main-800
+  +login-background
 
   #login
     @apply p-0 m-0 mt-16 lg:mt-32 w-full max-w-[320px] lg:max-w-[400px]
@@ -67,7 +83,7 @@ body.login
 // and links by contrast.
 // ---------------------------------------------------------------------------
 html:has(body#error-page)
-  background-color: $admin-main-800
+  +login-background
 
 body#error-page
   @apply mt-16 lg:mt-32 mx-4 md:mx-auto px-6 py-8 md:px-12 md:py-10 border-0 shadow-none

@@ -3,6 +3,10 @@
     "file": "js/helpers-DEF1u1pO.js",
     "name": "helpers"
   },
+  "assets/images/login-bg.webp": {
+    "file": "assets/login-bg-BEQQqzZ0.webp",
+    "src": "assets/images/login-bg.webp"
+  },
   "assets/js/animations.js": {
     "file": "js/animations-BDq5tA-6.js",
     "name": "animations",
@@ -106,7 +110,7 @@
     "isEntry": true
   },
   "assets/sass/admin-login.sass": {
-    "file": "css/admin-login-A8xDOGGx.css",
+    "file": "css/admin-login-CJiWsMn4.css",
     "name": "admin-login",
     "names": [
       "admin-login.css"
@@ -114,6 +118,7 @@
     "src": "assets/sass/admin-login.sass",
     "isEntry": true,
     "assets": [
+      "assets/login-bg-BEQQqzZ0.webp",
       "assets/logo-montela-BV_lRM2c.svg"
     ]
   },

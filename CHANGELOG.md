@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.60.1] — 2026-11-13
+### Changed
+- Login screen and WordPress error pages: the homepage hero photo as background, under a dark veil in the login colour.
+
 ## [1.60.0] — 2026-11-13
 ### Added
 - Scroll animations on every page (text pages and Impressum excepted): titles and texts rise in, photos come in from their side, lists and cards in a staircase, sliders and maps fade in; large photo bands (image band, Horizontal, the Montela Weg history photo) move with a parallax.
