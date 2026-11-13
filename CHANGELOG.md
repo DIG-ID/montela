@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.60.2] — 2026-11-13
+### Changed
+- Login screen: the background photo slightly more visible under the veil.
+- New theme screenshot (Appearance → Themes).
+
 ## [1.60.1] — 2026-11-13
 ### Changed
 - Login screen and WordPress error pages: the homepage hero photo as background, under a dark veil in the login colour.

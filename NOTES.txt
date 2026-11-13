@@ -975,7 +975,7 @@ o cliente.
   Figma      sem design do login.
   Feito      fundo = a foto do hero da homepage, como ficheiro do tema
              (assets/images/login-bg.webp, 1920px, 157 KB), sob um véu da cor
-             do fundo do login ($admin-main-800) a 85% — mais escuro que o
+             do fundo do login ($admin-main-800) a 86% — mais escuro que o
              véu walnut 40% do hero, para os links creme lerem a 4,5:1 mesmo
              sobre o céu. Ficheiro e não o campo do hero (Pedro): nada a
              partir se o conteúdo mudar; trocar o hero não troca o login.
