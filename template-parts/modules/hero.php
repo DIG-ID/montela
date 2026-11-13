@@ -108,7 +108,17 @@ $hero_kses = montela_text_allowed_html();
 $hero_last = $hero_rendered ? array_key_last( $hero_rendered ) : 0;
 ?>
 <section class="<?php echo esc_attr( $hero_class ); ?>">
-	<?php // The image lags behind the scroll (anim-parallax, assets/js/animations/reveal.js). ?>
+	<?php
+	/*
+	 * The image lags behind the scroll (anim-parallax, assets/js/animations/reveal.js).
+	 * Image and video fade in once loaded (_hero.sass): the load / loadeddata
+	 * handler on the element itself marks them — an attribute, not a script,
+	 * so WP Rocket's Delay JS doesn't hold it back; onerror too, so a failed
+	 * file never stays hidden. Without JavaScript, the <noscript> rule shows them.
+	 */
+	$hero_loaded = "this.classList.add('is-loaded')";
+	?>
+	<noscript><style>.section-hero__img,.section-hero__video{opacity:1;animation:none}</style></noscript>
 	<div class="section-hero__media anim-parallax" aria-hidden="true">
 		<?php
 		if ( $hero_image ) :
@@ -123,6 +133,8 @@ $hero_last = $hero_rendered ? array_key_last( $hero_rendered ) : 0;
 					'loading'       => 'eager',
 					'fetchpriority' => 'high',
 					'sizes'         => '100vw',
+					'onload'        => $hero_loaded,
+					'onerror'       => $hero_loaded,
 				)
 			);
 		endif;
@@ -132,7 +144,7 @@ $hero_last = $hero_rendered ? array_key_last( $hero_rendered ) : 0;
 			// the first frame (iOS Safari) show the image instead of black.
 			$hero_poster = $hero_image ? wp_get_attachment_image_url( $hero_image, 'full' ) : '';
 			?>
-			<video class="section-hero__video" autoplay muted loop playsinline preload="metadata"<?php echo $hero_poster ? ' poster="' . esc_url( $hero_poster ) . '"' : ''; ?>>
+			<video class="section-hero__video" autoplay muted loop playsinline preload="metadata" onloadeddata="<?php echo esc_attr( $hero_loaded ); ?>" onerror="<?php echo esc_attr( $hero_loaded ); ?>"<?php echo $hero_poster ? ' poster="' . esc_url( $hero_poster ) . '"' : ''; ?>>
 				<source src="<?php echo esc_url( $hero_video ); ?>" type="video/mp4">
 			</video>
 		<?php endif; ?>

@@ -537,6 +537,11 @@ no ficheiro indicado em "No starter".
              (--x: 0.9s // nota) e a animação que a usa fica inválida, sem
              erro. Regra para o sass.md: comentários das variáveis CSS na
              linha de cima.
+             Fade da imagem do hero (1.60.3): só quando o ficheiro chega —
+             onload/onerror no próprio <img> (atributo, não script: o Delay
+             JS do WP Rocket não o atrasa), opacity 0 até lá, fundo escuro
+             na secção e <noscript> a mostrar sem JS. Única excepção à regra
+             "nunca opacity: 0 no CSS".
   Estado     POR PASSAR
 ===============================================================================
 B. DECISÕES POR CONFIRMAR

@@ -36,6 +36,31 @@
 .section-hero__video
   @apply motion-reduce:hidden
 
+// -- Image / video fade-in once loaded (Pedro, 2026-11-13) --
+// A plain 0.6s fade, starting when the file has arrived (`is-loaded`, set by
+// the element's own load handler in hero.php) — a fade started on page load
+// would be over before a slow image arrives. Until then the hero is walnut
+// (the section's background), so the cream title reads from the first paint.
+// LCP: Chrome records the image at its first visible frame, one frame after
+// it loads — no measurable cost. The one exception to "no opacity: 0 in the
+// CSS": what reveals it is the element's own handler, not animations.js,
+// and <noscript> shows it without JavaScript. "Reduce motion": no fade.
+.section-hero
+  @apply bg-montela-walnut
+
+@media (prefers-reduced-motion: no-preference)
+  .section-hero__img:not(.is-loaded),
+  .section-hero__video:not(.is-loaded)
+    opacity: 0
+
+  .section-hero__img.is-loaded,
+  .section-hero__video.is-loaded
+    animation: hero-media-in 0.6s ease-out
+
+@keyframes hero-media-in
+  from
+    opacity: 0
+
 .section-hero__content
   @apply relative
 

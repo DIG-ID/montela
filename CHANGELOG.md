@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.60.3] — 2026-11-13
+### Changed
+- Hero: the image (and the video) fade in softly once loaded, over a walnut background instead of the page cream.
+- Theme screenshot in WebP (66 KB instead of 1 MB).
+
 ## [1.60.2] — 2026-11-13
 ### Changed
 - Login screen: the background photo slightly more visible under the veil.
