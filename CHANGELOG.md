@@ -11,6 +11,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.61.0] — 2026-11-16
+### Added
+- Anreise & Lage: the Google map loads only after consent — an overlay with a "Karte laden" button covers it until then. Ready for Cookiebot: with it on the page, the map follows the visitor's marketing consent.
+
+### Fixed
+- Angebote: the offer photo always fills its row (no cream strip under it when the panel is taller).
+- Services comparison: the title stays on three lines below 1920px.
+- Anreise: the "SBB Gepäcktransport" title no longer breaks mid-word below about 1650px.
+
+### Changed
+- Desktop screens from 1280 to 1535px (larger screens unchanged):
+  - Angebote: less side padding in the offer panels; Services comparison across the full container width, with shorter photos.
+  - Features: wider items with less space between rows.
+  - Single offer: wider title and price box (the price fits on one line); wider package list.
+  - Der Montela Weg: wider text columns and history title.
+
 ## [1.60.6] — 2026-11-16
 ### Fixed
 - Erkunden: the "Saas-Grund" title no longer runs over the large photo on desktops below 1920px.

@@ -73,9 +73,15 @@ $location_key = defined( 'MONTELA_GOOGLE_MAPS_KEY' ) ? trim( (string) MONTELA_GO
 $location_lat = get_field( 'section_location_lat' );
 $location_lng = get_field( 'section_location_lng' );
 $location_js  = $location_key && is_numeric( $location_lat ) && is_numeric( $location_lng );
-if ( $location_js ) {
+// Either map loads from Google only after consent (google-map.js), so the
+// module runs for the iframe too.
+if ( $location_js || $location_map ) {
 	montela_enqueue_module( 'google-map' );
 }
+
+// Consent overlay: link to the privacy policy when one is set
+// (Settings → Privacy).
+$location_privacy = get_privacy_policy_url();
 
 $location_title_id = wp_unique_id( 'section-location-title-' );
 /* translators: %s: place name or address shown on the map. */
@@ -105,13 +111,44 @@ $location_map_label = sprintf( __( 'Karte: %s', 'montela' ), $location_place ? $
 		?>
 	</div>
 
-	<?php if ( $location_js ) : ?>
+	<?php if ( $location_js || $location_map ) : ?>
 		<div class="section-location__map anim-fade">
-			<div class="section-location__canvas" role="region" aria-label="<?php echo esc_attr( $location_map_label ); ?>" data-google-map data-key="<?php echo esc_attr( $location_key ); ?>" data-lat="<?php echo esc_attr( $location_lat ); ?>" data-lng="<?php echo esc_attr( $location_lng ); ?>" data-language="<?php echo esc_attr( substr( determine_locale(), 0, 2 ) ); ?>" data-fallback="<?php echo esc_url( $location_map ); ?>" data-name="<?php echo esc_attr( $location_place ); ?>" data-address="<?php echo esc_attr( wp_json_encode( $location_address_lines ) ); ?>"></div>
-		</div>
-	<?php elseif ( $location_map ) : ?>
-		<div class="section-location__map anim-fade">
-			<iframe class="section-location__iframe" src="<?php echo esc_url( $location_map ); ?>" title="<?php echo esc_attr( $location_map_label ); ?>" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+			<?php
+			// Nothing from Google until consent: the JS map (key + coordinates)
+			// or, without them, the embed iframe — google-map.js builds it
+			// from data-fallback (no data-key = straight to the iframe).
+			?>
+			<?php
+			$location_data = array( 'data-fallback' => esc_url( $location_map ) );
+			if ( $location_js ) {
+				$location_data += array(
+					'data-key'      => $location_key,
+					'data-lat'      => $location_lat,
+					'data-lng'      => $location_lng,
+					'data-language' => substr( determine_locale(), 0, 2 ),
+					'data-name'     => $location_place,
+					'data-address'  => wp_json_encode( $location_address_lines ),
+				);
+			}
+			$location_attrs = '';
+			foreach ( $location_data as $location_attr => $location_value ) {
+				$location_attrs .= ' ' . $location_attr . '="' . esc_attr( $location_value ) . '"';
+			}
+			?>
+			<div class="section-location__canvas" role="region" aria-label="<?php echo esc_attr( $location_map_label ); ?>" data-google-map<?php echo $location_attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built from esc_attr() above. ?>></div>
+
+			<div class="section-location__consent" data-map-consent>
+				<p class="section-location__consent-text">
+					<?php esc_html_e( 'Die Karte wird von Google Maps geladen. Dabei werden Daten an Google übertragen.', 'montela' ); ?>
+					<?php if ( $location_privacy ) : ?>
+						<a href="<?php echo esc_url( $location_privacy ); ?>"><?php esc_html_e( 'Mehr in der Datenschutzerklärung', 'montela' ); ?></a>
+					<?php endif; ?>
+				</p>
+				<button class="btn btn-secondary section-location__consent-button" type="button" data-map-consent-accept>
+					<span class="btn__label"><?php esc_html_e( 'Karte laden', 'montela' ); ?></span>
+					<span class="btn__icon" aria-hidden="true"></span>
+				</button>
+			</div>
 		</div>
 	<?php endif; ?>
 </section>

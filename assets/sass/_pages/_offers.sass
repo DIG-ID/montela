@@ -11,6 +11,10 @@
 //            photo first. Panel padding 64px top and bottom; 130px at the
 //            sides (Figma's title box is 651px — 150px at 1920 — but that
 //            wraps the title a line earlier with a scrollbar)
+//            The photo fills the row (its image out of the flow), so a
+//            panel taller than 600px — the title on three lines below 1920
+//            — no longer leaves cream under the photo (Daniel, 16.11.2026).
+//            Side padding 64px from 1280 to 1535 (130 from 2xl).
 //
 // Panel, all centred: title (.title-h3), dates, duration, excerpt, button
 // (outline). Text 14/22, 18/25, 20/32. Gaps title → dates → duration →
@@ -25,7 +29,7 @@
   @apply flex flex-col xl:grid xl:grid-cols-2 xl:gap-x-5
 
 .offer-card__panel
-  @apply flex flex-col items-center text-center min-h-[501px] px-8 py-[34px] bg-montela-sage text-montela-cream md:min-h-[686px] md:px-[65px] md:py-[42px] xl:min-h-[600px] xl:px-[130px] xl:py-16
+  @apply flex flex-col items-center text-center min-h-[501px] px-8 py-[34px] bg-montela-sage text-montela-cream md:min-h-[686px] md:px-[65px] md:py-[42px] xl:min-h-[600px] xl:px-16 xl:py-16 2xl:px-[130px]
 
 .offer-card__dates,
 .offer-card__duration,
@@ -45,10 +49,10 @@
   @apply mt-3 md:mt-9 xl:mt-[50px]
 
 .offer-card__photo
-  @apply m-0 h-[180px] overflow-hidden md:h-[401px] xl:h-[600px]
+  @apply relative m-0 h-[180px] overflow-hidden md:h-[401px] xl:h-auto xl:min-h-[600px]
 
 .offer-card:nth-child(even) .offer-card__photo
   @apply xl:order-first
 
 .offer-card__img
-  @apply w-full h-full object-cover
+  @apply w-full h-full object-cover xl:absolute xl:inset-0

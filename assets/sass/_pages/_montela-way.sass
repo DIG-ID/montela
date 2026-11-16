@@ -2,6 +2,12 @@
 //
 // Spacing below each section: 192px from tablet, 128 on mobile (the mobile
 // frame draws 192 — kept at 128 like every other section on the site).
+//
+// 1280–1535 (Daniel, 16.11.2026), Figma's columns from 2xl: the values' text
+// columns take four columns instead of three; the history title takes cols
+// 2–8 (on 2–6 it ran five lines; it needs 620px for three) with its texts on
+// 9–12; the future copy takes 2–6 (the title's second line needs 480px) and
+// the photo 7–12.
 
 // -- Values (template-parts/pages/montela-way/values.php) --
 // Figma: desktop 5767:15933, tablet 5609:23696, mobile 5609:23697.
@@ -26,7 +32,7 @@
   @apply col-span-full xl:col-start-2 xl:col-span-7
 
 .section-values__text
-  @apply col-span-full md:max-w-[461px] xl:col-start-9 xl:col-span-3 xl:max-w-none
+  @apply col-span-full md:max-w-[461px] xl:col-start-9 xl:col-span-4 xl:max-w-none 2xl:col-start-9 2xl:col-span-3
 
 .section-values__row
   @apply mt-11 gap-y-5 items-end
@@ -47,7 +53,7 @@
   .section-values__photo
     @apply md:col-start-4 xl:col-start-6
   .section-values__texts
-    @apply md:col-start-1 xl:col-start-2 xl:col-span-3
+    @apply md:col-start-1 xl:col-start-2 xl:col-span-4 2xl:col-start-2 2xl:col-span-3
 
 // -- History (template-parts/pages/montela-way/history.php) --
 // Figma "Horizontal section": desktop 5767:15946, tablet 5767:15957, mobile
@@ -69,13 +75,13 @@
   @apply w-full h-full object-cover
 
 .section-history__title
-  @apply col-span-full mt-11 md:mt-6 xl:col-start-2 xl:col-span-5 xl:row-start-2 xl:row-span-2 xl:mt-11 xl:self-start
+  @apply col-span-full mt-11 md:mt-6 xl:col-start-2 xl:col-span-7 xl:row-start-2 xl:row-span-2 xl:mt-11 xl:self-start 2xl:col-start-2 2xl:col-span-5
 
 .section-history__text
-  @apply col-span-full mt-4 md:col-span-3 md:row-start-3 md:mt-11 xl:col-start-8 xl:col-span-4 xl:row-start-2
+  @apply col-span-full mt-4 md:col-span-3 md:row-start-3 md:mt-11 xl:col-start-9 xl:col-span-4 xl:row-start-2 2xl:col-start-8 2xl:col-span-4
 
 .section-history__highlight
-  @apply col-span-full mt-8 md:col-start-4 md:col-span-3 md:row-start-3 md:mt-11 xl:col-start-8 xl:col-span-4 xl:row-start-3
+  @apply col-span-full mt-8 md:col-start-4 md:col-span-3 md:row-start-3 md:mt-11 xl:col-start-9 xl:col-span-4 xl:row-start-3 2xl:col-start-8 2xl:col-span-4
 
 .section-history__highlight-title
   @apply font-bold
@@ -149,7 +155,7 @@
   @apply xl:items-end
 
 .section-future__copy
-  @apply col-span-full md:grid md:grid-cols-2 md:gap-x-5 xl:col-start-2 xl:col-span-4 xl:flex xl:flex-col
+  @apply col-span-full md:grid md:grid-cols-2 md:gap-x-5 xl:col-start-2 xl:col-span-5 xl:flex xl:flex-col 2xl:col-start-2 2xl:col-span-4
 
 .section-future__title
   @apply md:col-span-2
@@ -161,7 +167,7 @@
   @apply flex flex-col gap-[22px] mt-5 pl-[30px] list-disc md:gap-[25px] md:mt-11 xl:gap-8 xl:mt-[51px] xl:max-w-[471px]
 
 .section-future__photo
-  @apply col-span-full m-0 mt-5 aspect-[326/268] overflow-hidden md:mt-11 md:aspect-[702/476] xl:col-start-6 xl:col-span-7 xl:mt-0 xl:w-[95%] xl:aspect-[1001/648]
+  @apply col-span-full m-0 mt-5 aspect-[326/268] overflow-hidden md:mt-11 md:aspect-[702/476] xl:col-start-7 xl:col-span-6 xl:mt-0 xl:w-[95%] xl:aspect-[1001/648] 2xl:col-start-6 2xl:col-span-7
 
 .section-future__img
   @apply w-full h-full object-cover

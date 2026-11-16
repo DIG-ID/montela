@@ -1011,6 +1011,23 @@ o cliente.
   Onde       assets/images/login-bg.webp, _admin/_login.sass ($login-veil).
   Estado     POR CONFIRMAR
 
+[2026-11-16] B31. Consentimento antes do mapa da Anreise & Lage
+  O quê      overlay sobre o mapa ("Direkt zu Montela") até o visitante
+             aceitar: texto "Die Karte wird von Google Maps geladen. Dabei
+             werden Daten an Google übertragen." (+ "Mehr in der
+             Datenschutzerklärung" quando a página de privacidade está
+             definida em Settings → Privacy) e botão "Karte laden".
+  Figma      sem design nem texto: strings em de-CH escritas por nós.
+  Feito      nada do Google (API nem iframe) antes do sim. Sem Cookiebot, o
+             sim fica em localStorage; com Cookiebot, o mapa segue a
+             categoria "marketing" (CONSENT_CATEGORY em google-map.js) e o
+             botão regista-a no Cookiebot.
+  Porquê     pedido do Daniel (16.11.2026), a preparar o Cookiebot do live.
+  Confirma   Daniel / cliente — textos; no live, confirmar no scan do
+             Cookiebot em que categoria ficam os cookies do Google Maps.
+  Onde       pages/arrival/location.php, modules/google-map.js, _arrival.sass.
+  Estado     POR CONFIRMAR
+
 ===============================================================================
 C. ERROS NO FIGMA
 ===============================================================================

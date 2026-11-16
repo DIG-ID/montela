@@ -42,13 +42,16 @@
   @apply col-span-full mt-11 md:max-w-[462px] xl:col-start-8 xl:col-span-4 xl:row-start-1 xl:mt-0 xl:max-w-none
 
 // Two classes: beat the component's own layout (_icon-list.sass).
+// 1280–1535 (Daniel, 16.11.2026): items on five of the ten columns, 32px
+// from the icon and rows 80px apart — on four the text ran five or six
+// lines. Figma's 4 columns, 52px and 126px from 2xl.
 .section-features .section-features__list
-  @apply col-span-full mt-6 gap-[72px] md:mt-11 xl:col-start-2 xl:col-span-10 xl:mt-[172px] xl:grid xl:grid-cols-10 xl:gap-x-5 xl:gap-y-[126px]
+  @apply col-span-full mt-6 gap-[72px] md:mt-11 xl:col-start-2 xl:col-span-10 xl:mt-[172px] xl:grid xl:grid-cols-10 xl:gap-x-5 xl:gap-y-20 2xl:gap-y-[126px]
 
 .section-features .icon-list__item
-  @apply grid-cols-[52px_1fr] gap-x-[10px] md:grid-cols-[68px_1fr] md:max-w-[467px] md:gap-x-5 xl:col-span-4 xl:max-w-none xl:grid-cols-[102px_1fr] xl:gap-x-[52px]
+  @apply grid-cols-[52px_1fr] gap-x-[10px] md:grid-cols-[68px_1fr] md:max-w-[467px] md:gap-x-5 xl:col-span-5 xl:max-w-none xl:grid-cols-[102px_1fr] xl:gap-x-8 2xl:col-span-4 2xl:gap-x-[52px]
   &:nth-child(even)
-    @apply xl:col-start-7
+    @apply xl:col-start-6 2xl:col-start-7
 
 .section-features .icon-list__icon
   @apply flex items-center justify-center h-[67px] md:h-[68px] xl:h-[102px]

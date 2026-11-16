@@ -17,7 +17,13 @@
 // - The pin is an OverlayView, not a Marker (deprecated) nor an
 //   AdvancedMarkerElement (needs a cloud Map ID, which ignores `styles`).
 // - A key that fails (wrong, not enabled, wrong referrer) or a script that
-//   does not load falls back to the embed iframe (data-fallback).
+//   does not load falls back to the embed iframe (data-fallback). Without a
+//   key the template has no data-key: the iframe straight away.
+// - Consent first (since 1.61.0): nothing loads from Google — neither the
+//   API nor the iframe — until the visitor agrees. An overlay with a "load
+//   the map" button covers the box. With Cookiebot on the page the map
+//   follows its CONSENT_CATEGORY (the button records it in Cookiebot);
+//   without it, the button's yes is remembered in localStorage.
 // =============================================================================
 import { domReady } from '../utils/helpers.js';
 
@@ -175,6 +181,12 @@ function createPin(name, lines) {
  * @param {HTMLElement} el Map element.
  */
 async function initMap(el) {
+  // No key or coordinates: the embed iframe.
+  if (!el.dataset.key) {
+    fallback(el);
+    return;
+  }
+
   const position = { lat: Number(el.dataset.lat), lng: Number(el.dataset.lng) };
 
   try {
@@ -246,18 +258,124 @@ async function initMap(el) {
   }
 }
 
+// -----------------------------------------------------------------------------
+// Consent
+// -----------------------------------------------------------------------------
+
+/**
+ * The Cookiebot category the map needs. Google Maps sets Google's own
+ * cookies, which Cookiebot's scan usually files under "marketing" — if the
+ * live scan files them elsewhere, change it here ('preferences' or
+ * 'statistics').
+ */
+const CONSENT_CATEGORY = 'marketing';
+
+// Without a consent tool: the visitor's "load the map" is remembered here.
+const STORAGE_KEY = 'montela-maps-consent';
+
+/**
+ * Cookiebot, once its script has loaded.
+ *
+ * @returns {object|null}
+ */
+function cookiebot() {
+  return window.Cookiebot && window.Cookiebot.consent ? window.Cookiebot : null;
+}
+
+/**
+ * Whether the visitor has agreed to load Google Maps.
+ *
+ * @returns {boolean}
+ */
+function hasConsent() {
+  const cb = cookiebot();
+  if (cb) {
+    return Boolean(cb.consent[CONSENT_CATEGORY]);
+  }
+  try {
+    return window.localStorage.getItem(STORAGE_KEY) === '1';
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Records the visitor's yes: in Cookiebot (the category, keeping their other
+ * choices), or in localStorage when there is no Cookiebot.
+ */
+function giveConsent() {
+  const cb = cookiebot();
+  if (cb && typeof cb.submitCustomConsent === 'function') {
+    cb.submitCustomConsent(
+      CONSENT_CATEGORY === 'preferences' || Boolean(cb.consent.preferences),
+      CONSENT_CATEGORY === 'statistics' || Boolean(cb.consent.statistics),
+      CONSENT_CATEGORY === 'marketing' || Boolean(cb.consent.marketing)
+    );
+    return;
+  }
+  try {
+    window.localStorage.setItem(STORAGE_KEY, '1');
+  } catch {
+    // Storage blocked (private mode): the map still loads, for this page view.
+  }
+}
+
+/**
+ * Hides a map's consent overlay and draws the map (once).
+ *
+ * @param {HTMLElement} el Map element.
+ */
+function showMap(el) {
+  if (el.dataset.started) {
+    return;
+  }
+  el.dataset.started = '1';
+  el.closest('.section-location__map')?.querySelector('[data-map-consent]')?.setAttribute('hidden', '');
+  initMap(el);
+}
+
+/**
+ * Draws every map on the page — after the visitor's yes.
+ */
+function showAll() {
+  maps.forEach(showMap);
+}
+
+// Consent given or changed in Cookiebot's own banner.
+['CookiebotOnAccept', 'CookiebotOnConsentReady'].forEach((name) => {
+  window.addEventListener(name, () => {
+    if (hasConsent()) {
+      showAll();
+    }
+  });
+});
+
 domReady(() => {
   document.querySelectorAll('[data-google-map]').forEach((el) => {
     maps.push(el);
+
+    el.closest('.section-location__map')
+      ?.querySelector('[data-map-consent-accept]')
+      ?.addEventListener('click', () => {
+        giveConsent();
+        showAll();
+      });
+
+    // With consent, the map (and its API) loads only when it nears the
+    // viewport: it is the last section of the page.
     if (!('IntersectionObserver' in window)) {
-      initMap(el);
+      if (hasConsent()) {
+        showMap(el);
+      }
       return;
     }
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries.some((entry) => entry.isIntersecting)) {
           observer.disconnect();
-          initMap(el);
+          if (hasConsent()) {
+            showMap(el);
+          }
         }
       },
       { rootMargin: '400px 0px' }

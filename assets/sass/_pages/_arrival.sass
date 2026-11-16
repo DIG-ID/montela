@@ -16,8 +16,10 @@
 .section-luggage__grid
   @apply xl:items-center
 
+// Six columns (five in Figma): below about 1650px five broke "Gepäcktransport"
+// mid-word (Daniel, 16.11.2026). At 1920 the title fits either way.
 .section-luggage__title
-  @apply col-span-full xl:col-start-2 xl:col-span-5 xl:row-start-1
+  @apply col-span-full xl:col-start-2 xl:col-span-6 xl:row-start-1
 
 .section-luggage__text
   @apply col-span-full mt-11 md:max-w-[460px] xl:col-start-8 xl:col-span-4 xl:row-start-1 xl:row-span-2 xl:mt-0 xl:max-w-none
@@ -89,6 +91,21 @@
 .section-location__canvas
   @apply absolute inset-0 bg-montela-cream
 
+// Consent overlay (google-map.js): over the map box until the visitor
+// agrees to load Google Maps — a short note (with the privacy policy link)
+// and a sage button, centred in what shows (above the footer's box:
+// --map-covered, set below). Not in Figma (Daniel, 16.11.2026).
+.section-location__consent
+  @apply absolute inset-0 z-[1] flex flex-col items-center justify-center gap-6 px-8 text-center bg-montela-sage/15 text-montela-walnut
+  padding-bottom: var(--map-covered, 0px)
+  &[hidden]
+    @apply hidden
+
+.section-location__consent-text
+  @apply max-w-[420px] font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[16px] md:leading-[26px]
+  a
+    @apply underline underline-offset-2 hover:text-montela-sage
+
 // Its pin: the drop's tip on the coordinates. A button when there is an
 // address: hover, focus or tap shows the popup above it.
 .section-location__pin
@@ -122,7 +139,8 @@ body:has(.footer-main--has-cta) .main-content > .section-location:last-child
   // the box hides Google's logo and terms — accepted by Daniel (12.11.2026;
   // CLAUDE.md). --map-covered = the height the box covers: google-map.js
   // moves the pin up by half of it, to the middle of what shows.
-  .section-location__canvas
+  .section-location__canvas,
+  .section-location__consent
     @apply md:[--map-covered:160px] xl:[--map-covered:320px]
   .section-location__panel
     @apply xl:pb-[477px]

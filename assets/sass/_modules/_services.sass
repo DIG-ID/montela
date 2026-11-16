@@ -14,15 +14,21 @@
 // 14px apart, a mustard check (20 / 32px) 16px before the text. Text 14/22,
 // 18/25, 20/32. Plans stretch to the taller one.
 //
+// 1280–1535 (Daniel, 16.11.2026): the module takes all 12 columns, 40px
+// between title and text, photos 360px tall. Below 1920 the title column
+// keeps a minimum (660px, 700 from 2xl) so the title stays on three lines
+// (it ran four at 1280 and 1536).
+// Figma's columns 2–11, 110px and 467px from 2xl.
+//
 // Spacing below: 128px (mobile), 192 (tablet, desktop).
 .section-services
   @apply mb-[128px] md:mb-[192px] text-montela-walnut
 
 .section-services__inner
-  @apply col-span-full flex flex-col xl:col-start-2 xl:col-span-10
+  @apply col-span-full flex flex-col xl:col-start-1 xl:col-span-12 2xl:col-start-2 2xl:col-span-10
 
 .section-services__head
-  @apply flex flex-col gap-4 md:gap-6 xl:grid xl:grid-cols-[810fr_585fr] xl:gap-x-[110px]
+  @apply flex flex-col gap-4 md:gap-6 xl:grid xl:grid-cols-[minmax(660px,810fr)_585fr] xl:gap-x-10 2xl:grid-cols-[minmax(700px,810fr)_585fr] 2xl:gap-x-[110px]
 
 .section-services__intro
   @apply flex flex-col items-start gap-8 md:gap-6 xl:gap-[11px]
@@ -38,7 +44,7 @@
   @apply flex flex-col h-auto
 
 .section-services__photo
-  @apply m-0 h-[205px] overflow-hidden border border-montela-sage md:h-[467px]
+  @apply m-0 h-[205px] overflow-hidden border border-montela-sage md:h-[467px] xl:h-[360px] 2xl:h-[467px]
 
 .section-services__img
   @apply w-full h-full object-cover
