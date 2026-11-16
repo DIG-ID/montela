@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.61.1] — 2026-11-16
+
+### Fixed
+- Bike Hotel: the bike experience sections take the homepage Activities layout at 1280–1535px (wider cards, 40px apart).
+- Shop: the producer card buttons no longer run out of the cards at 1280–1535px.
+
 ## [1.61.0] — 2026-11-16
 ### Added
 - Anreise & Lage: the Google map loads only after consent — an overlay with a "Karte laden" button covers it until then. Ready for Cookiebot: with it on the page, the map follows the visitor's marketing consent.

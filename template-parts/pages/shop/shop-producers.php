@@ -72,13 +72,13 @@ $spr_swiper = array(
 				</div>
 			<?php endif; ?>
 
-			<div class="section-shop-producers__slider anim-fade-up col-span-full md:col-start-2 md:col-span-4 md:px-3 xl:col-start-2 xl:col-span-10 xl:row-start-2 xl:px-[82px]">
+			<div class="section-shop-producers__slider anim-fade-up col-span-full md:col-start-2 md:col-span-4 md:px-3 xl:col-start-2 xl:col-span-10 xl:row-start-2 xl:px-5 2xl:px-[82px]">
 				<div class="swiper section-shop-producers__swiper" data-swiper="<?php echo esc_attr( wp_json_encode( $spr_swiper ) ); ?>">
 					<div class="swiper-wrapper">
 						<?php foreach ( $spr_items as $spr_item ) : ?>
 							<div class="swiper-slide section-shop-producers__slide">
 								<?php $spr_link = ( ! empty( $spr_item['link']['url'] ) && ! empty( $spr_item['link']['title'] ) ) ? $spr_item['link'] : null; ?>
-								<article class="section-shop-producers__card flex flex-col h-full gap-2.5 border border-montela-sage shadow-[0_4px_4px_rgba(0,0,0,0.25)] pt-8 px-[31px] md:gap-4 md:py-8 md:px-11 xl:min-h-[410px] xl:gap-2.5 xl:pt-[47px] xl:pb-[26px] xl:pl-[42px] xl:pr-[41px]<?php echo $spr_link ? ' pb-8' : ' pb-4'; ?>">
+								<article class="section-shop-producers__card flex flex-col h-full gap-2.5 border border-montela-sage shadow-[0_4px_4px_rgba(0,0,0,0.25)] pt-8 px-[31px] md:gap-4 md:py-8 md:px-11 xl:min-h-[410px] xl:gap-2.5 xl:pt-[47px] xl:pb-[26px] xl:px-8 2xl:pl-[42px] 2xl:pr-[41px]<?php echo $spr_link ? ' pb-8' : ' pb-4'; ?>">
 									<?php if ( ! empty( $spr_item['title'] ) ) : ?>
 										<h3 class="title-h4 section-shop-producers__card-title"><?php echo montela_text( $spr_item['title'] ); ?></h3>
 									<?php endif; ?>

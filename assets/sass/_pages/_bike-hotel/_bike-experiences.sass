@@ -38,13 +38,14 @@
 // to page (Bruno) — see -- Arrows --. Arrows in the 'left' layout sit in the frame's top-right corner like
 // 'right' — not in the design.
 //
-// 1280–1535px (the frames only draw 1920; interpolated, not measured — Bruno,
-// 2026-11-05): with 94px between them the cards were 243px wide at 1280.
-// The gap grows with the viewport instead, 20px (the gutter) at 1280 to
-// 94px at 1920 (--bx-gap); the cards are 375px tall (the tablet height)
-// up to 1535, and the 'right' frame ends 46px higher with them, so its
-// bottom line still runs through the title panels. The 'left' copy takes
-// columns 8–12 up to 1535 (four columns broke its title into five lines).
+// 1280–1535px (the frames only draw 1920; not measured): the homepage
+// Activities module's layout (Bruno, 2026-11-16 — the 12-column split
+// squeezed the cards). Two tracks instead of the 12 columns: the copy
+// takes 27 parts and the cards 31 (540 / 620px at 1280), mirrored in the
+// 'left' layout; 40px between the cards, 360px tall. From 2xl, the Figma
+// columns, 94px apart, 421px tall. The 'right' frame ends 61px higher than
+// the Figma's 888, so its bottom line still runs through the first row's
+// title panels.
 //
 // Spacing (Bike Hotel, measured): mobile 128px above and below. Tablet:
 // 192px above 'right', 150px between the two, 175px below 'left'. Desktop:
@@ -61,9 +62,17 @@
   @apply md:mt-[150px] md:mb-[175px] xl:mt-32 xl:mb-48
 
 .section-bike-experiences__inner
-  @apply relative flex flex-col xl:grid xl:grid-cols-12 xl:gap-x-5 xl:items-start
-  // Space between the cards on desktop: 20px at 1280 → 94px at 1920.
-  --bx-gap: clamp(20px, calc(11.5625vw - 128px), 94px)
+  @apply relative flex flex-col xl:grid xl:gap-x-5 xl:items-start 2xl:grid-cols-12
+  // Space between the cards on desktop: 40px up to 1535, 94px from 2xl.
+  --bx-gap: 40px
+  @media (min-width: 1536px)
+    --bx-gap: 94px
+
+.section-bike-experiences--right .section-bike-experiences__inner
+  @apply xl:grid-cols-[minmax(0,27fr)_minmax(0,31fr)] 2xl:grid-cols-12
+
+.section-bike-experiences--left .section-bike-experiences__inner
+  @apply xl:grid-cols-[minmax(0,31fr)_minmax(0,27fr)] 2xl:grid-cols-12
 
 // -- Frame --
 .section-bike-experiences__frame
@@ -73,7 +82,7 @@
   @apply md:bottom-[60px] xl:bottom-auto
 
 .section-bike-experiences--right .section-bike-experiences__frame
-  @apply xl:left-[9.56%] xl:right-[7.33%] xl:h-[842px] 2xl:h-[888px]
+  @apply xl:left-[9.56%] xl:right-[7.33%] xl:h-[827px] 2xl:h-[888px]
 
 .section-bike-experiences--left .section-bike-experiences__frame
   @apply xl:left-[28.8%] xl:right-[17.22%]
@@ -84,10 +93,10 @@
   @apply relative flex flex-col items-start gap-[30px] bg-montela-cream pt-9 md:gap-11 md:pt-0 md:mt-[185px] md:max-w-[608px] xl:gap-[46px] xl:py-[45px] xl:row-start-1
 
 .section-bike-experiences--right .section-bike-experiences__copy
-  @apply xl:col-start-1 xl:col-span-5 xl:mt-[45px]
+  @apply xl:col-start-1 xl:col-span-1 xl:mt-[45px] 2xl:col-span-5
 
 .section-bike-experiences--left .section-bike-experiences__copy
-  @apply xl:col-start-8 xl:col-span-5 xl:mt-[155px] 2xl:col-start-9 2xl:col-span-4
+  @apply xl:col-start-2 xl:col-span-1 xl:mt-[155px] 2xl:col-start-9 2xl:col-span-4
 
 .section-bike-experiences__text
   @apply md:max-w-[585px]
@@ -119,13 +128,13 @@
 // Mobile: a horizontal scroll-snap track, one card per view. Tablet and
 // desktop: a 2 × 2 grid — or, paged, a two-row track of half-width columns.
 .section-bike-experiences__cards
-  @apply flex gap-5 mt-[89px] overflow-x-auto snap-x snap-mandatory md:mt-32 md:grid md:grid-cols-2 md:gap-x-5 md:gap-y-[22px] md:overflow-visible xl:row-start-1 xl:col-span-6 xl:gap-x-[var(--bx-gap)] xl:gap-y-[51px]
+  @apply flex gap-5 mt-[89px] overflow-x-auto snap-x snap-mandatory md:mt-32 md:grid md:grid-cols-2 md:gap-x-5 md:gap-y-[22px] md:overflow-visible xl:row-start-1 xl:col-span-1 xl:gap-x-[var(--bx-gap)] 2xl:col-span-6 xl:gap-y-[51px]
   scrollbar-width: none
   &::-webkit-scrollbar
     display: none
 
 .section-bike-experiences--right .section-bike-experiences__cards
-  @apply xl:col-start-7 xl:mt-[504px]
+  @apply xl:col-start-2 xl:mt-[504px] 2xl:col-start-7
 
 .section-bike-experiences--left .section-bike-experiences__cards
   @apply xl:col-start-1 xl:mt-[220px]
@@ -134,4 +143,4 @@
   @apply md:grid-cols-none md:grid-rows-2 md:grid-flow-col md:auto-cols-[calc((100%_-_20px)/2)] md:overflow-x-auto xl:auto-cols-[calc((100%_-_var(--bx-gap))/2)]
 
 .section-bike-experiences__cards .section-bike-experiences__card
-  @apply w-full shrink-0 snap-start xl:h-[375px] 2xl:h-[421px]
+  @apply w-full shrink-0 snap-start xl:h-[360px] 2xl:h-[421px]
