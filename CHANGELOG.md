@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.61.2] — 2026-11-16
+
+### Changed
+- Activity cards: on tablet, mobile and touch screens the excerpt always keeps its four lines (empty or not), so the photos are the same height across a row; Bike Hotel cards also keep two title lines.
+
 ## [1.61.1] — 2026-11-16
 
 ### Fixed

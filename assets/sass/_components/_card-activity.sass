@@ -39,6 +39,15 @@
 .card-activity__more-inner
   @apply min-h-0 overflow-hidden
 
+// Open layout: the excerpt always takes its four lines, so every panel is as
+// tall as a full one and the photos above match from card to card — as
+// on the homepage, where every excerpt reaches the clamp (Bruno,
+// 2026-11-16; before, a shorter excerpt gave its card a taller photo). A
+// section whose titles can break in two also reserves two title lines
+// (Bike Hotel, _bike-experiences.sass).
+.card-activity__excerpt
+  @apply min-h-[4lh]
+
 // Title: 19px below desktop (H4 is 20px) so the longer titles keep to one
 // line in the tablet and mobile cards — Bruno's call. Two classes to beat
 // .title-h4.
@@ -70,3 +79,7 @@
       @apply bg-montela-cream text-montela-sage pb-3 xl:pt-[21px] xl:pb-[21px]
     .card-activity__more
       @apply grid-rows-[0fr]
+  // The panel opens over the photo: no room to reserve.
+  .card-activity__excerpt,
+  .card-activity .card-activity__title
+    @apply min-h-0

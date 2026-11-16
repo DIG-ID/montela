@@ -86,6 +86,9 @@ $card_title_tag = ( ! empty( $args['title_tag'] ) && in_array( $args['title_tag'
 			<div class="card-activity__more-inner">
 				<?php if ( $card_excerpt ) : ?>
 					<p class="card-activity__excerpt"><?php echo montela_text( $card_excerpt ); ?></p>
+				<?php else : ?>
+					<?php // Empty, it still holds the excerpt's four lines: the photos match across the row. ?>
+					<div class="card-activity__excerpt" aria-hidden="true"></div>
 				<?php endif; ?>
 
 				<?php
