@@ -148,8 +148,15 @@
 // Open cards (below desktop, touch screens): two title lines reserved, as
 // some titles break in two ("Geführte Touren & Fahrtechnik"), so the photos
 // match across the row (Bruno, 2026-11-16).
+// The cards are one title line taller there (32px below desktop, 28 / 30 on
+// desktop), so the photos keep the homepage Activities' height.
 // Not where the panel opens over the photo (desktop with a mouse).
 .section-bike-experiences__card .card-activity__title
   @apply min-h-[2lh]
   @media (min-width: 1280px) and (hover: hover) and (pointer: fine)
     min-height: 0
+
+.section-bike-experiences__cards .section-bike-experiences__card
+  @apply h-[422px] md:h-[407px] xl:h-[388px] 2xl:h-[451px]
+  @media (min-width: 1280px) and (hover: hover) and (pointer: fine)
+    @apply xl:h-[360px] 2xl:h-[421px]

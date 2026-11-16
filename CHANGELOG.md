@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.61.3] — 2026-11-16
+
+### Fixed
+- Bike Hotel: the card photos match the homepage Activities height on tablet, mobile and touch screens.
+
 ## [1.61.2] — 2026-11-16
 
 ### Changed
