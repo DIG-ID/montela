@@ -17,6 +17,11 @@
 //            lower. Title → text → button 71px apart. The title box is 800px
 //            wide in Figma (its lines reach the photo's edge): it may run
 //            16px past its column.
+//            Below 1920 the copy column keeps a minimum — 490px (530 from
+//            2xl, where the title is bigger): the title needs it for three
+//            lines. Without it the column was 385px at 1280 (469 at 1536)
+//            and the title ran over the large photo (Daniel, 16.11.2026).
+//            At 1920 the column is 595 anyway: unchanged.
 //
 // Spacing: none above (the intro closes with its own padding); 192px below
 // on tablet and desktop, 128 on mobile — collapsing with the activities
@@ -27,7 +32,7 @@
   @apply mb-[128px] md:mb-[192px] text-montela-walnut
 
 .section-region__grid
-  @apply flex flex-col gap-16 md:grid md:grid-cols-2 md:gap-x-5 md:gap-y-[44px] xl:grid-cols-[595fr_1072fr] xl:gap-x-0 xl:gap-y-[77px] xl:pl-[calc((100%-220px)/12+20px)]
+  @apply flex flex-col gap-16 md:grid md:grid-cols-2 md:gap-x-5 md:gap-y-[44px] xl:grid-cols-[minmax(490px,595fr)_1072fr] xl:gap-x-0 2xl:grid-cols-[minmax(530px,595fr)_1072fr] xl:gap-y-[77px] xl:pl-[calc((100%-220px)/12+20px)]
 
 .section-region__copy
   @apply flex flex-col gap-16 md:contents xl:flex xl:col-start-1 xl:row-start-1 xl:self-end xl:gap-[71px]

@@ -124,7 +124,7 @@ if ( $cards_fixed ) {
 <section class="section-cards-icon section-cards-icon--<?php echo esc_attr( $cards_style . ( $cards_has_button ? ' section-cards-icon--button' : '' ) . ( $cards_fixed ? ' section-cards-icon--fixed' : '' ) . ' ' . $cards_class ); ?> text-montela-walnut"<?php echo $cards_title ? ' aria-labelledby="' . esc_attr( $cards_title_id ) . '"' : ''; ?>>
 	<div class="theme-container">
 		<div class="theme-grid">
-			<div class="section-cards-icon__inner col-span-full flex flex-col items-center gap-9 md:gap-11 xl:col-start-2 xl:col-span-10 xl:gap-24" data-swiper-root>
+			<div class="section-cards-icon__inner col-span-full flex flex-col items-center gap-9 md:gap-11 xl:col-start-1 xl:col-span-12 xl:gap-24 2xl:col-start-2 2xl:col-span-10" data-swiper-root>
 				<?php if ( $cards_title || $cards_text ) : ?>
 					<div class="section-cards-icon__head flex flex-col items-center text-center xl:max-w-[1217px] <?php echo esc_attr( $cards_head_gap ); ?>">
 						<?php if ( $cards_title ) : ?>

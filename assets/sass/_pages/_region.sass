@@ -42,15 +42,17 @@
 .section-place__photo--1
   @apply order-2 mt-9 aspect-[320/246] md:order-3 md:mt-11 md:aspect-[706/606] xl:mt-0 xl:col-start-2 xl:col-span-5 xl:row-start-1 xl:row-span-2 xl:aspect-[747/787]
 
+// 1280–1535: at least 64px under photo 1, and 32px between items (44 from
+// 2xl) — the list ran right up to the photo there (Daniel, 16.11.2026).
 .section-place__list
-  @apply order-5 mt-9 md:order-4 md:mt-11 xl:mt-0 xl:col-start-2 xl:col-span-4 xl:row-start-3 xl:self-end
+  @apply order-5 mt-9 md:order-4 md:mt-11 xl:mt-0 xl:pt-16 xl:col-start-2 xl:col-span-4 xl:row-start-3 xl:self-end 2xl:pt-0
 
 .section-place__photo--2
   @apply order-4 mt-8 aspect-[331/223] md:order-5 md:mt-11 md:aspect-[706/319] xl:mt-0 xl:col-start-8 xl:col-span-5 xl:row-start-3 xl:w-[88.4%] xl:aspect-[660/556]
 
 // -- The list (two classes beat the icon-list defaults) --
 .section-place .icon-list
-  @apply gap-4 md:gap-6 xl:gap-11
+  @apply gap-4 md:gap-6 xl:gap-8 2xl:gap-11
 
 .section-place .icon-list__item
   @apply grid-cols-[42px_1fr] gap-x-[30px] items-center md:grid-cols-[52px_1fr] md:gap-x-9 xl:grid-cols-[51px_1fr] xl:gap-x-6
@@ -75,7 +77,8 @@
 // tablet, 36 on mobile — and walnut arrows centred below it (hidden when
 // every card is in view).
 //
-//   Desktop  4 cards on columns 2–11, 20px apart (16 in Figma); fewer
+//   Desktop  4 cards on columns 2–11 (all 12 from 1280 to 1535, where
+//            ten made them 230px wide — Daniel, 16.11.2026), 20px apart (16 in Figma); fewer
 //            than four keep the same width, centred (centerInsufficientSlides
 //            in trips.php)
 //   Tablet   1 card, 468px wide, centred
@@ -89,7 +92,7 @@
   @apply mb-[128px] md:mb-[192px] text-montela-walnut
 
 .section-trips__inner
-  @apply col-span-full flex flex-col items-center xl:col-start-2 xl:col-span-10
+  @apply col-span-full flex flex-col items-center xl:col-start-1 xl:col-span-12 2xl:col-start-2 2xl:col-span-10
 
 .section-trips__head
   @apply flex flex-col items-center gap-6 text-center md:gap-4 xl:gap-6

@@ -18,6 +18,10 @@
 //            as the Activities section below, not the 20px gutter: both
 //            sections share the card size); copy on cols 9–12, 155px down,
 //            45px padding, on cream; no arrows
+//   1280–1535 (Daniel, 16.11.2026): cards on cols 1–7, 40px apart and
+//            360px tall (320px wide at 1280), so the hover button fits;
+//            the frame's left edge moves to 34% so it still runs behind the
+//            second column of cards
 //
 // Spacing: none above (Cards with icon closes with its own); 192px below
 // from tablet, 128 on mobile.
@@ -30,7 +34,7 @@
   @apply relative isolate flow-root xl:grid xl:grid-cols-12 xl:gap-x-5 xl:items-start
 
 .section-activity-info__frame
-  @apply absolute -z-10 border border-montela-sage -left-[7px] -right-[7px] top-[128px] bottom-[207px] md:left-[19.14%] md:right-[0.43%] md:top-0 md:bottom-[165px] xl:left-[28.8%] xl:right-[17.22%] xl:bottom-[226px]
+  @apply absolute -z-10 border border-montela-sage -left-[7px] -right-[7px] top-[128px] bottom-[207px] md:left-[19.14%] md:right-[0.43%] md:top-0 md:bottom-[165px] xl:left-[34%] xl:right-[17.22%] xl:bottom-[226px] 2xl:left-[28.8%]
 
 // -- Copy --
 .section-activity-info__copy
@@ -45,10 +49,10 @@
 
 // -- Cards --
 .section-activity-info__cards
-  @apply flex gap-5 mt-[133px] overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 md:gap-y-[22px] md:mt-32 md:overflow-visible xl:col-start-1 xl:col-span-6 xl:row-start-1 xl:mt-[220px] xl:gap-x-[94px] xl:gap-y-[51px]
+  @apply flex gap-5 mt-[133px] overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 md:gap-y-[22px] md:mt-32 md:overflow-visible xl:col-start-1 xl:col-span-7 xl:row-start-1 xl:mt-[220px] xl:gap-x-10 xl:gap-y-[51px] 2xl:col-start-1 2xl:col-span-6 2xl:gap-x-[94px]
   scrollbar-width: none
   &::-webkit-scrollbar
     display: none
 
 .section-activity-info__cards .card-activity
-  @apply w-full shrink-0 snap-start
+  @apply w-full shrink-0 snap-start xl:h-[360px] 2xl:h-[421px]

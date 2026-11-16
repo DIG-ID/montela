@@ -16,6 +16,12 @@
 //   Desktop  copy on the left half (716px, 45px down, 46px apart), the
 //            arrows top-right (level with the small title, 153px in from
 //            the right); a page of 2×2 cards on the right half, 504px down
+//   1280–1535 (Daniel, 16.11.2026), as the homepage Activities module: the
+//            cards' column takes 31 parts to the copy's 27 and the cards are
+//            40px apart and 360px tall, so the hover button fits (241px);
+//            the copy runs across both columns above the cards (it is 716px
+//            at most) and the frame's bottom edge moves up with the shorter
+//            cards (449px from the bottom instead of 510)
 //
 // Slider: the track scrolls by pages of four on tablet and desktop
 // (.section-season__page is a 2×2 grid) and by single cards on mobile (the
@@ -37,14 +43,14 @@
 // (negative z-index) inside this box, so the copy's cream background covers
 // it even where the copy isn't positioned (desktop, see the arrows below).
 .section-season__inner
-  @apply relative isolate flow-root xl:grid xl:grid-cols-2 xl:gap-x-5 xl:items-start
+  @apply relative isolate flow-root xl:grid xl:grid-cols-[minmax(0,27fr)_minmax(0,31fr)] xl:gap-x-5 xl:items-start 2xl:grid-cols-2
 
 .section-season__frame
-  @apply absolute -z-10 border border-montela-sage -left-[7px] -right-[7px] top-[128px] bottom-[207px] md:left-[19.14%] md:right-[0.43%] md:top-0 md:bottom-[557px] xl:left-[9.56%] xl:right-[7.33%] xl:bottom-[510px]
+  @apply absolute -z-10 border border-montela-sage -left-[7px] -right-[7px] top-[128px] bottom-[207px] md:left-[19.14%] md:right-[0.43%] md:top-0 md:bottom-[557px] xl:left-[9.56%] xl:right-[7.33%] xl:bottom-[449px] 2xl:bottom-[510px]
 
 // -- Copy --
 .section-season__copy
-  @apply relative flex flex-col items-start gap-[30px] py-9 bg-montela-cream md:mt-[185px] md:py-0 md:gap-11 md:max-w-[608px] xl:static xl:mt-[45px] xl:py-[45px] xl:gap-[46px] xl:max-w-[716px]
+  @apply relative flex flex-col items-start gap-[30px] py-9 bg-montela-cream md:mt-[185px] md:py-0 md:gap-11 md:max-w-[608px] xl:static xl:col-start-1 xl:col-span-2 xl:row-start-1 xl:mt-[45px] xl:py-[45px] xl:gap-[46px] xl:max-w-[716px] 2xl:col-start-1 2xl:col-span-1
 
 .section-season__text
   @apply md:max-w-[585px]
@@ -60,13 +66,13 @@
 
 // -- Cards --
 .section-season__track
-  @apply flex gap-5 mt-1 overflow-x-auto snap-x snap-mandatory md:mt-32 xl:mt-[504px]
+  @apply flex gap-5 mt-1 overflow-x-auto snap-x snap-mandatory md:mt-32 xl:col-start-2 xl:row-start-1 xl:mt-[504px]
   scrollbar-width: none
   &::-webkit-scrollbar
     display: none
 
 .section-season__page
-  @apply contents md:grid md:grid-cols-2 md:gap-x-5 md:gap-y-[22px] md:w-full md:shrink-0 md:snap-start xl:gap-x-[94px] xl:gap-y-[51px]
+  @apply contents md:grid md:grid-cols-2 md:gap-x-5 md:gap-y-[22px] md:w-full md:shrink-0 md:snap-start xl:gap-x-10 xl:gap-y-[51px] 2xl:gap-x-[94px]
 
 .section-season__track .card-activity
-  @apply w-full shrink-0 snap-start
+  @apply w-full shrink-0 snap-start xl:h-[360px] 2xl:h-[421px]

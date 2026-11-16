@@ -11,6 +11,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.60.6] — 2026-11-16
+### Fixed
+- Erkunden: the "Saas-Grund" title no longer runs over the large photo on desktops below 1920px.
+- Hero: a title line with a custom indent no longer breaks in two below 1920px — the indent scales with the screen (as set from 1920px).
+
+### Changed
+- Desktop screens from 1280 to 1535px (larger screens unchanged):
+  - Cards with icon and the day trip cards (Unsere Region) use the full container width.
+  - Aktivitäten: wider, shorter activity cards in the summer and winter sections, so the hover button fits.
+  - Single activities: wider, shorter info cards.
+  - Day trips: wider highlights with less space between rows.
+  - Unsere Region: more space above the Saas-Grund list.
+  - Text with photos (one photo): the text takes four columns, so the button no longer touches the photo; shorter photo.
+
 ## [1.60.5] — 2026-11-16
 ### Changed
 - Homepage on desktop screens from 1280 to 1535px: wider text columns (Direct booking, Premium Hotel Stay list and text, map title), shorter photos (apartments, photo slider), slimmer map feature icons, side padding in the Explore panel, and wider, shorter activity cards so the "Mehr erfahren" button fits. Larger screens are unchanged.

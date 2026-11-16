@@ -83,9 +83,13 @@
 .section-hero__line--indent
   @apply xl:ml-[128px]
 
-// Custom: the editor's indent in px, set inline as --hero-indent.
+// Custom: the editor's indent in px, set inline as --hero-indent (and
+// unitless as --hero-indent-n). Below 1920 it scales with the screen (the
+// px value is meant for 1920), never past the value set: at a fixed 475px,
+// Erkunden's third line had no room and broke in two at 1280 and 1536
+// (Daniel, 16.11.2026). At 1920 and up, the value as set.
 .section-hero__line--custom
-  @apply xl:ml-[var(--hero-indent,128px)]
+  @apply xl:ml-[min(var(--hero-indent,128px),calc(var(--hero-indent-n,128)*100vw/1920))]
 
 .section-hero__line--center
   @apply xl:text-center

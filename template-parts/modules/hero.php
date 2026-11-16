@@ -154,7 +154,7 @@ $hero_last = $hero_rendered ? array_key_last( $hero_rendered ) : 0;
 		<div class="theme-container section-hero__content">
 			<h1 class="title-h1 section-hero__title">
 				<?php foreach ( $hero_rendered as $hero_n => $hero_line ) : ?>
-					<span class="section-hero__line section-hero__line--<?php echo esc_attr( $hero_n ); ?><?php echo $hero_last === $hero_n ? ' section-hero__line--last' : ''; ?> section-hero__line--<?php echo esc_attr( $hero_line['align'] ); ?>"<?php echo null !== $hero_line['indent'] ? ' style="--hero-indent: ' . esc_attr( $hero_line['indent'] ) . 'px"' : ''; ?>><?php echo wp_kses( $hero_line['text'], $hero_kses ); ?></span>
+					<span class="section-hero__line section-hero__line--<?php echo esc_attr( $hero_n ); ?><?php echo $hero_last === $hero_n ? ' section-hero__line--last' : ''; ?> section-hero__line--<?php echo esc_attr( $hero_line['align'] ); ?>"<?php echo null !== $hero_line['indent'] ? ' style="--hero-indent: ' . esc_attr( $hero_line['indent'] ) . 'px; --hero-indent-n: ' . esc_attr( $hero_line['indent'] ) . '"' : ''; ?>><?php echo wp_kses( $hero_line['text'], $hero_kses ); ?></span>
 				<?php endforeach; ?>
 			</h1>
 		</div>
@@ -172,7 +172,7 @@ $hero_last = $hero_rendered ? array_key_last( $hero_rendered ) : 0;
 		<div class="theme-container section-hero__content">
 			<div class="title-h1 section-hero__title section-hero__title--intro" aria-hidden="true">
 				<?php foreach ( $hero_rendered as $hero_n => $hero_line ) : ?>
-					<span class="section-hero__line section-hero__line--<?php echo esc_attr( $hero_n ); ?><?php echo $hero_last === $hero_n ? ' section-hero__line--last' : ''; ?> section-hero__line--<?php echo esc_attr( $hero_line['align'] ); ?>"<?php echo null !== $hero_line['indent'] ? ' style="--hero-indent: ' . esc_attr( $hero_line['indent'] ) . 'px"' : ''; ?>><?php echo wp_kses( $hero_line['text'], $hero_kses ); ?></span>
+					<span class="section-hero__line section-hero__line--<?php echo esc_attr( $hero_n ); ?><?php echo $hero_last === $hero_n ? ' section-hero__line--last' : ''; ?> section-hero__line--<?php echo esc_attr( $hero_line['align'] ); ?>"<?php echo null !== $hero_line['indent'] ? ' style="--hero-indent: ' . esc_attr( $hero_line['indent'] ) . 'px; --hero-indent-n: ' . esc_attr( $hero_line['indent'] ) . '"' : ''; ?>><?php echo wp_kses( $hero_line['text'], $hero_kses ); ?></span>
 				<?php endforeach; ?>
 			</div>
 		</div>

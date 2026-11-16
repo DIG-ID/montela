@@ -9,7 +9,9 @@
 //   Desktop  photo (900×538) on columns 1–6, title and text (440px wide,
 //            46px below the title) on 8–12; the highlights 96px below, in
 //            two columns on 1–7 (6–12 in Figma, moved left — Daniel,
-//            2026-11-11; rows 121px apart); the slider 96px below
+//            2026-11-11; rows 121px apart); the slider 96px below.
+//            1280–1535: the highlights on 1–9, rows 64px apart — on seven
+//            columns each item ran five lines (Daniel, 16.11.2026)
 //
 // Highlights: the icon list — 68px icon column, 20px to the text; bold title
 // and text, 14/22, 17/23 and 18/30 (component defaults; Figma's desktop
@@ -36,10 +38,10 @@
   @apply w-full h-full object-cover
 
 .section-destination__list
-  @apply col-span-full mt-11 xl:col-start-1 xl:col-span-7 xl:row-start-3 xl:mt-24
+  @apply col-span-full mt-11 xl:col-start-1 xl:col-span-9 xl:row-start-3 xl:mt-24 2xl:col-start-1 2xl:col-span-7
 
 .section-destination .icon-list
-  @apply gap-4 md:gap-[72px] xl:grid xl:grid-cols-2 xl:gap-x-5 xl:gap-y-[121px]
+  @apply gap-4 md:gap-[72px] xl:grid xl:grid-cols-2 xl:gap-x-5 xl:gap-y-16 2xl:gap-y-[121px]
 
 .section-destination .icon-list__item
   @apply md:max-w-[467px] xl:max-w-[449px]
