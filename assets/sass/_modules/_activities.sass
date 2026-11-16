@@ -31,8 +31,12 @@
 .main-content > .section-activities:last-child
   @apply xl:mb-[152px]
 
+// 1280–1535: the intro takes 27 parts and the cards 31 (540 / 620px at
+// 1280), so a card is wide enough for its hover button ("Mehr erfahren" +
+// arrow, 241px) and the title keeps its three lines (it needs 540px) —
+// Daniel, 16.11.2026. Two halves from 2xl, as in Figma.
 .section-activities__inner
-  @apply relative xl:grid xl:grid-cols-2 xl:gap-x-5 xl:items-start
+  @apply relative xl:grid xl:grid-cols-[minmax(0,27fr)_minmax(0,31fr)] xl:gap-x-5 xl:items-start 2xl:grid-cols-2
 
 // Mobile: 7px past the container on each side, from 113px down to 207px
 // above the section's bottom (the cards' bottom), as on the Aktivitäten page.
@@ -134,16 +138,20 @@
 
 // Mobile: a horizontal scroll-snap track, one card per view. Tablet and
 // desktop: the 2×2 grid (403px cards 94px apart on desktop — the right
-// half is 900px wide at 1920).
+// half is 900px wide at 1920). 40px apart from 1280 to 1535, so the cards
+// keep some width (Daniel, 16.11.2026).
 .section-activities__cards
-  @apply flex gap-5 overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 md:gap-x-5 md:gap-y-[22px] md:overflow-visible xl:gap-x-[94px] xl:gap-y-[51px]
+  @apply flex gap-5 overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 md:gap-x-5 md:gap-y-[22px] md:overflow-visible xl:gap-x-10 xl:gap-y-[51px] 2xl:gap-x-[94px]
   scrollbar-width: none
   &::-webkit-scrollbar
     display: none
 
 // Cream box: hides the frame behind the card while its content fades in.
+// 360px tall from 1280 to 1535 (421 in Figma, from 2xl): the cards are
+// narrower there (Daniel, 16.11.2026). This module only — the card
+// component keeps 421 elsewhere.
 .section-activities__cards .card-activity
-  @apply w-full shrink-0 snap-start bg-montela-cream
+  @apply w-full shrink-0 snap-start bg-montela-cream xl:h-[360px] 2xl:h-[421px]
 
 // Mobile only: 30px under the button (the panel's top margin), 40px above
 // the card — the Aktivitäten page's spacing. Two classes: .slider-nav

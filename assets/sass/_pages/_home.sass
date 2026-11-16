@@ -23,8 +23,11 @@
 .section-direct-book__list
   @apply mt-10 md:mt-16 xl:mt-24 gap-[72px] md:max-w-[467px] xl:max-w-none xl:grid xl:grid-cols-12 xl:gap-x-5 xl:gap-y-[117px]
 
+// 1280–1535: items on cols 2–6 and 7–11 (text on 4 columns), so the text
+// doesn't run 5 lines in a narrow column; Figma's 2–5 / 8–11 from 2xl
+// (Daniel, 16.11.2026).
 .section-direct-book .icon-list__item
-  @apply grid-cols-[52px_1fr] gap-x-[10px] md:grid-cols-[68px_1fr] md:gap-x-5 xl:col-span-4 xl:grid-cols-4 xl:odd:col-start-2 xl:even:col-start-8
+  @apply grid-cols-[52px_1fr] gap-x-[10px] md:grid-cols-[68px_1fr] md:gap-x-5 xl:col-span-5 xl:grid-cols-5 xl:odd:col-start-2 xl:even:col-start-7 2xl:col-span-4 2xl:grid-cols-4 2xl:odd:col-start-2 2xl:even:col-start-8
 
 .section-direct-book .icon-list__icon
   @apply xl:justify-self-center xl:w-[102px]
@@ -38,7 +41,7 @@
   @apply w-full h-auto
 
 .section-direct-book .icon-list__text
-  @apply xl:col-span-3
+  @apply xl:col-span-4 2xl:col-span-3
 
 // -- Gallery ("Premium Hotel Stay") --------------------------------------------
 // Figma: desktop 5466:15471, tablet 5426:4383, mobile 5453:8475.
@@ -66,7 +69,7 @@
   @apply col-span-full order-1 md:mb-[128px] xl:mb-0 xl:col-start-8 xl:col-span-4 xl:row-start-1
 
 .section-gallery__text
-  @apply col-span-full order-3 md:order-2 md:col-span-5 md:mb-8 xl:mb-0 xl:col-start-8 xl:col-span-3 xl:row-start-2
+  @apply col-span-full order-3 md:order-2 md:col-span-5 md:mb-8 xl:mb-0 xl:col-start-8 xl:col-span-4 xl:row-start-2 2xl:col-start-8 2xl:col-span-3
 
 .section-gallery__button
   @apply col-span-full order-4 md:order-3 md:mb-16 xl:mb-0 xl:col-start-8 xl:col-span-4 xl:row-start-3
@@ -83,8 +86,10 @@
 .section-gallery__img
   @apply w-full h-full object-cover
 
+// 1280–1535: five columns and 48px between items — on three the text ran
+// 5–6 lines a column (Daniel, 16.11.2026); Figma's three / 72px from 2xl.
 .section-gallery__list
-  @apply col-span-full order-5 md:col-span-4 xl:col-start-2 xl:col-span-3 xl:row-start-5
+  @apply col-span-full order-5 md:col-span-4 xl:col-start-2 xl:col-span-5 xl:row-start-5 xl:gap-12 2xl:col-start-2 2xl:col-span-3 2xl:gap-[72px]
 
 // The gallery keeps its icons at the column width (68px), as built before the
 // icon-list default moved to a fixed 50px height — like Direct booking.

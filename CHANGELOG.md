@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.60.5] — 2026-11-16
+### Changed
+- Homepage on desktop screens from 1280 to 1535px: wider text columns (Direct booking, Premium Hotel Stay list and text, map title), shorter photos (apartments, photo slider), slimmer map feature icons, side padding in the Explore panel, and wider, shorter activity cards so the "Mehr erfahren" button fits. Larger screens are unchanged.
+
+### Fixed
+- Testimonials: the arrows no longer sit on the quote between 1280 and about 1700px.
+
 ## [1.60.4] — 2026-11-13
 ### Changed
 - Performance: every image below the hero loads lazily (the first ones after the hero were downloaded up front).

@@ -87,7 +87,8 @@ if ( 1 === $apt_count ) {
 		'text'    => '',
 		'button'  => '',
 		'photos'  => 'col-span-full md:col-start-4 md:col-span-3 xl:col-start-5 xl:col-span-7 flex flex-col gap-16 md:gap-5 xl:flex-row xl:gap-5',
-		'photo'   => array( 'aspect-[699/600] md:aspect-[360/246] xl:aspect-auto xl:h-[600px] xl:flex-1' ),
+		// 480px tall from 1280 to 1535, 600 (Figma) from 2xl.
+		'photo'   => array( 'aspect-[699/600] md:aspect-[360/246] xl:aspect-auto xl:h-[480px] 2xl:h-[600px] xl:flex-1' ),
 		'sizes'   => array( '(min-width: 1280px) 27vw, (min-width: 768px) 41vw, 100vw' ),
 	);
 }

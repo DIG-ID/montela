@@ -206,8 +206,10 @@
 
 // -- Features: icon + text in sage --
 // Figma: Roboto Medium 14/20 (16/20 on desktop), icons 64px.
+// 48px icons from 1280 to 1535, so the six texts fit in two lines; 64 from
+// 2xl (Daniel, 16.11.2026).
 .section-map__feature-icon
-  @apply block w-16 h-16 shrink-0 object-contain
+  @apply block w-16 h-16 shrink-0 object-contain xl:w-12 xl:h-12 2xl:w-16 2xl:h-16
 
 .section-map__feature-text
   @apply font-medium text-[14px] leading-[20px] tracking-[0.5px] text-montela-sage xl:text-[16px]

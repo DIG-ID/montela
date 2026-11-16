@@ -46,8 +46,10 @@
   @apply absolute z-10 bottom-[28px] left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-[58px] md:bottom-[35px] xl:bottom-auto xl:top-[76px] xl:right-[51px]
 
 // -- Panel --
+// 40px at the sides from 1280 to 1535: the 608px title would otherwise run
+// to the panel's edges (Daniel, 16.11.2026); none from 2xl, as in Figma.
 .section-explore__panel
-  @apply flex flex-col items-center text-center bg-montela-sage text-montela-cream px-8 pt-[52px] pb-[54px] md:px-16 md:pt-[76px] md:pb-[144px] xl:order-1 xl:px-0 xl:pb-[51px]
+  @apply flex flex-col items-center text-center bg-montela-sage text-montela-cream px-8 pt-[52px] pb-[54px] md:px-16 md:pt-[76px] md:pb-[144px] xl:order-1 xl:px-10 xl:pb-[51px] 2xl:px-0
 
 .section-explore__title
   @apply max-w-[701px] xl:max-w-[608px]

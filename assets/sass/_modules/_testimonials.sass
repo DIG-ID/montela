@@ -22,8 +22,12 @@
 .section-testimonials
   @apply mb-[128px] md:mb-[110px] xl:mb-[191px] text-montela-walnut
 
+// Desktop sides: the arrows and the padding grow with the screen, from 50 /
+// 110px at 1280 to Figma's 155 / 155 at 1920 — at a fixed 155 the arrows sat
+// on the quote below ~1700px. 20px between an arrow and the text throughout
+// (interpolated, not measured — Daniel, 16.11.2026).
 .section-testimonials__frame
-  @apply relative flex flex-col items-center justify-center text-center border border-montela-sage px-7 pt-[34px] pb-[33px] md:min-h-[596px] md:px-[89px] md:py-[89px] xl:min-h-[688px] xl:px-[155px] xl:py-[88px]
+  @apply relative flex flex-col items-center justify-center text-center border border-montela-sage px-7 pt-[34px] pb-[33px] md:min-h-[596px] md:px-[89px] md:py-[89px] xl:min-h-[688px] xl:px-[clamp(110px,calc(16.41vw-100px),155px)] xl:py-[88px]
 
 .section-testimonials__title
   @apply mb-[60px] max-w-[420px] xl:max-w-none
@@ -67,7 +71,7 @@
 // z-10: the slider spans the frame's full width and swiper.css gives it
 // z-index 1, which would sit on top of the arrows and swallow the clicks.
 .section-testimonials__frame .section-testimonials__nav
-  @apply z-10 justify-center mt-[60px] md:absolute md:inset-x-[45px] md:top-1/2 md:-translate-y-1/2 md:mt-0 md:justify-between md:pointer-events-none xl:inset-x-[155px]
+  @apply z-10 justify-center mt-[60px] md:absolute md:inset-x-[45px] md:top-1/2 md:-translate-y-1/2 md:mt-0 md:justify-between md:pointer-events-none xl:inset-x-[clamp(50px,calc(16.41vw-160px),155px)]
 
 .section-testimonials__nav .slider-nav__btn
   @apply pointer-events-auto

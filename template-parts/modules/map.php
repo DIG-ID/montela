@@ -145,7 +145,8 @@ $map_has_intro  = $map_title || $map_text || $map_has_button;
 
 // Desktop intro layout, from the content (see the file docblock).
 if ( $map_has_button ) {
-	$map_title_class = 'xl:col-start-2 xl:col-span-7 xl:max-w-[934px]';
+	// 10 columns from 1280 to 1535 (on 7 the title broke inside "Saas-Fee"), 7 from 2xl.
+	$map_title_class = 'xl:col-start-2 xl:col-span-10 xl:max-w-[934px] 2xl:col-start-2 2xl:col-span-7';
 	$map_text_class  = 'xl:col-start-8 xl:col-span-4 xl:row-start-2 xl:mt-5';
 	$map_gap_class   = 'xl:mt-[165px]';
 } elseif ( $map_text ) {
@@ -263,7 +264,7 @@ $map_padding = ( isset( $args['padding_top'] ) && false === $args['padding_top']
 	<?php if ( $map_features ) : ?>
 		<?php // Tablet: 24px from the screen edges, wider than the container (Figma). ?>
 		<div class="section-map__features-wrap mx-auto max-w-[1920px] px-8 md:px-6 xl:px-[50px]<?php echo ( $map_has_intro || $map_seasons ) ? ' mt-10 md:mt-16 xl:mt-[30px]' : ''; ?>">
-			<ul class="section-map__features anim-fade-up anim-children grid grid-cols-2 gap-6 p-6 md:grid-cols-6 md:gap-8 xl:flex xl:justify-between xl:gap-5 xl:px-10 xl:py-8 border border-solid border-montela-sage">
+			<ul class="section-map__features anim-fade-up anim-children grid grid-cols-2 gap-6 p-6 md:grid-cols-6 md:gap-8 xl:flex xl:justify-between xl:gap-5 xl:px-6 xl:py-8 2xl:px-10 border border-solid border-montela-sage">
 				<?php foreach ( $map_features as $map_feature ) : ?>
 					<?php
 					if ( empty( $map_feature['text'] ) ) {
