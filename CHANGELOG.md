@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.61.5] — 2026-11-17
+
+### Fixed
+- Aufenthalt, Apartments, Premium Stay, Leistungen and the apartment pages at 1280–1535px: apartment card, "Text with photos" (staggered) and Horizontal titles no longer break mid-word; wider title and list columns in the sage / cream bands, the Space list and the offer cards; tighter amenity list.
+- Kinderbereich and Bike Hotel at 1280–1535px: wider, closer-set icon lists.
+
 ## [1.61.4] — 2026-11-17
 
 ### Fixed

@@ -69,7 +69,7 @@ $ofc_swiper   = array(
 		<?php if ( $ofc_title || $ofc_text || $ofc_button ) : ?>
 			<div class="theme-grid gap-y-4 md:gap-y-6 xl:gap-y-[38px]">
 				<?php if ( $ofc_title ) : ?>
-					<h2 id="<?php echo esc_attr( $ofc_title_id ); ?>" class="title-h3 anim-fade-up col-span-full xl:col-start-2 xl:col-span-5 xl:row-start-1"><?php echo montela_text( $ofc_title ); ?></h2>
+					<h2 id="<?php echo esc_attr( $ofc_title_id ); ?>" class="title-h3 anim-fade-up col-span-full xl:col-start-2 xl:col-span-6 2xl:col-start-2 2xl:col-span-5 xl:row-start-1"><?php echo montela_text( $ofc_title ); ?></h2>
 				<?php endif; ?>
 
 				<?php if ( $ofc_text ) : ?>
@@ -77,7 +77,7 @@ $ofc_swiper   = array(
 				<?php endif; ?>
 
 				<?php if ( is_array( $ofc_button ) && ! empty( $ofc_button['url'] ) ) : ?>
-					<div class="anim-fade-up col-span-full xl:col-start-2 xl:col-span-5 xl:row-start-2">
+					<div class="anim-fade-up col-span-full xl:col-start-2 xl:col-span-6 2xl:col-start-2 2xl:col-span-5 xl:row-start-2">
 						<?php get_template_part( 'template-parts/components/button', null, array_merge( $ofc_button, array( 'style' => 'secondary' ) ) ); ?>
 					</div>
 				<?php endif; ?>

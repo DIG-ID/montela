@@ -71,14 +71,14 @@ if ( 1 === $apt_count ) {
 	// wrappers dissolve into the grid (xl:contents).
 	$apt_cls = array(
 		'grid'    => 'gap-y-16 md:gap-y-10 xl:gap-y-0 xl:grid-rows-[auto_1fr_auto_auto]',
-		'title'   => 'col-span-full xl:col-start-2 xl:col-span-4 xl:row-start-2 xl:self-end',
+		'title'   => 'col-span-full xl:col-start-2 xl:col-span-5 2xl:col-start-2 2xl:col-span-4 xl:row-start-2 xl:self-end',
 		'content' => 'col-span-full md:col-span-3 flex flex-col items-start gap-6 md:gap-10 xl:contents',
-		'text'    => 'xl:col-start-2 xl:col-span-3 xl:row-start-3 xl:mt-9',
+		'text'    => 'xl:col-start-2 xl:col-span-4 2xl:col-start-2 2xl:col-span-3 xl:row-start-3 xl:mt-9',
 		'button'  => 'xl:col-start-2 xl:col-span-4 xl:row-start-4 xl:justify-self-start xl:mt-11',
 		'photos'  => 'col-span-full md:col-start-4 md:col-span-3 flex flex-col gap-16 md:gap-5 xl:contents',
 		'photo'   => array(
 			'aspect-[699/600] md:aspect-[360/246] xl:col-start-2 xl:col-span-4 xl:row-start-1 xl:aspect-[593/455]',
-			'aspect-[699/600] md:aspect-[360/246] xl:col-start-7 xl:col-span-6 xl:row-start-2 xl:row-span-2 xl:aspect-[895/700]',
+			'aspect-[699/600] md:aspect-[360/246] xl:col-start-8 xl:col-span-5 2xl:col-start-7 2xl:col-span-6 xl:row-start-2 xl:row-span-2 xl:aspect-[895/700]',
 		),
 		'sizes'   => array( '(min-width: 1280px) 31vw, (min-width: 768px) 41vw, 100vw', '(min-width: 1280px) 47vw, (min-width: 768px) 41vw, 100vw' ),
 	);

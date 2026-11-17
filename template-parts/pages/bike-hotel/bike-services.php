@@ -89,7 +89,7 @@ $bs_title_id = wp_unique_id( 'section-bike-services-title-' );
 						null,
 						array(
 							'items'      => $bs_items,
-							'class'      => 'section-bike-services__list anim-fade-up anim-children order-3 gap-9 md:col-span-6 md:row-start-3 md:mt-[88px] md:grid md:grid-cols-subgrid md:gap-x-5 md:gap-y-10 xl:col-span-7 xl:row-start-2 xl:mt-0 xl:gap-y-[72px]',
+							'class'      => 'section-bike-services__list anim-fade-up anim-children order-3 gap-9 md:col-span-6 md:row-start-3 md:mt-[88px] md:grid md:grid-cols-subgrid md:gap-x-5 md:gap-y-10 xl:col-span-7 xl:row-start-2 xl:mt-0 xl:gap-y-12 2xl:gap-y-[72px]',
 							'item_class' => array( 'md:col-span-3 xl:col-start-1', 'md:col-span-3 xl:col-start-5' ),
 							'text_class' => 'max-w-[245px] md:max-w-none',
 						)

@@ -75,8 +75,8 @@ $pi_title_id = wp_unique_id( 'section-playground-info-title-' );
 				null,
 				array(
 					'items'      => $pi_items,
-					'class'      => 'section-playground-info__list anim-fade-up anim-children col-span-full gap-4 md:mt-11 md:gap-[72px] xl:mt-0 md:max-w-[467px] xl:max-w-none xl:col-start-2 xl:col-span-10 xl:grid xl:grid-cols-subgrid xl:gap-x-5 xl:gap-y-[126px] xl:pb-[14px]',
-					'item_class' => array( 'xl:col-span-3 xl:col-start-1', 'xl:col-span-3 xl:col-start-6' ),
+					'class'      => 'section-playground-info__list anim-fade-up anim-children col-span-full gap-4 md:mt-11 md:gap-[72px] xl:mt-0 md:max-w-[467px] xl:max-w-none xl:col-start-2 xl:col-span-10 xl:grid xl:grid-cols-subgrid xl:gap-x-5 xl:gap-y-20 2xl:gap-y-[126px] xl:pb-[14px]',
+					'item_class' => array( 'xl:col-span-4 xl:col-start-1 2xl:col-start-1 2xl:col-span-3', 'xl:col-span-4 xl:col-start-6 2xl:col-start-6 2xl:col-span-3' ),
 				)
 			);
 			?>

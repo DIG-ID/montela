@@ -56,7 +56,7 @@ $equip_title_id = wp_unique_id( 'section-apartment-equipment-title-' );
 			array(
 				'items'      => $equip_items,
 				'class'      => 'anim-fade-up anim-children col-span-full grid grid-cols-subgrid gap-y-4 md:grid-flow-col md:grid-rows-[repeat(var(--equipment-rows),auto)] md:gap-y-[30px] xl:gap-y-4 xl:col-start-2 xl:col-span-6 xl:row-start-2 xl:self-start',
-				'item_class' => 'col-span-full md:col-span-3 grid-cols-[50px_1fr] gap-x-4 items-center xl:grid-cols-[68px_1fr] xl:gap-x-[17px]',
+				'item_class' => 'col-span-full md:col-span-3 grid-cols-[50px_1fr] gap-x-4 items-center xl:grid-cols-[52px_1fr] xl:gap-x-3 2xl:grid-cols-[68px_1fr] 2xl:gap-x-[17px]',
 			)
 		);
 		?>

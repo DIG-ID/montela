@@ -66,7 +66,7 @@ if ( 'columns' === $space_layout ) {
 		'content' => 'xl:gap-[75px] xl:mt-[75px]',
 		'photo_1' => 'xl:mt-[75px]',
 		'photo_2' => 'aspect-[660/556] xl:mt-[75px]',
-		'list'    => 'md:gap-y-[72px] xl:col-start-7 xl:col-span-4 xl:max-w-[496px] xl:mt-[75px]',
+		'list'    => 'md:gap-y-[72px] xl:gap-y-12 2xl:gap-y-[72px] xl:col-start-7 xl:col-span-5 2xl:col-start-7 2xl:col-span-4 xl:max-w-[496px] xl:mt-[75px]',
 	);
 }
 
