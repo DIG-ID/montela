@@ -150,6 +150,8 @@
 // match across the row (Bruno, 2026-11-16).
 // The cards are one title line taller there (32px below desktop, 28 / 30 on
 // desktop), so the photos keep the homepage Activities' height.
+// On touch desktops the photo grows past the homepage one (105px at 1280
+// was too squat beside the tall frame — Bruno, 2026-11-16).
 // Not where the panel opens over the photo (desktop with a mouse).
 .section-bike-experiences__card .card-activity__title
   @apply min-h-[2lh]
@@ -157,6 +159,6 @@
     min-height: 0
 
 .section-bike-experiences__cards .section-bike-experiences__card
-  @apply h-[422px] md:h-[407px] xl:h-[388px] 2xl:h-[451px]
+  @apply h-[422px] md:h-[407px] xl:h-[470px] 2xl:h-[500px]
   @media (min-width: 1280px) and (hover: hover) and (pointer: fine)
     @apply xl:h-[360px] 2xl:h-[421px]

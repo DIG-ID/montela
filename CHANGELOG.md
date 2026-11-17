@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.61.4] — 2026-11-17
+
+### Fixed
+- Bike Hotel cards: taller photos on touch screens from 1280px.
+
 ## [1.61.3] — 2026-11-16
 
 ### Fixed
