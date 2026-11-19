@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.62.5] — 2026-11-19
+
+### Changed
+- Buttons wrap their label to two lines on screens up to 400px wide when it does not fit.
+
 ## [1.62.4] — 2026-11-19
 
 ### Fixed

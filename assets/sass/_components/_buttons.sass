@@ -41,10 +41,17 @@
     @apply m-auto w-[37px] h-[38px] bg-current
 
 // Long label: never wider than its container — the label wraps to a second
-// line only when the button would not fit (homepage "Premium Hotel Stay
-// entdecken" on mobile). The arrow box stretches with it.
+// line only when the button would not fit; the arrow box stretches with it.
+// Every button from 400px down (since 1.62.5); .btn--wrap does the same at
+// every width, for a button that needs it on wider screens.
 .btn--wrap
   @apply max-w-full
+  .btn__label
+    @apply min-w-0 whitespace-normal
+
+@media (max-width: 400px)
+  .btn
+    @apply max-w-full
   .btn__label
     @apply min-w-0 whitespace-normal
 

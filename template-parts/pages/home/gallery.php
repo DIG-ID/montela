@@ -64,7 +64,7 @@ $gal_title_id = wp_unique_id( 'section-gallery-title-' );
 			<?php if ( $gal_button ) : ?>
 				<div class="section-gallery__button anim-fade-up">
 					<?php
-					// Long labels ("Premium Hotel Stay entdecken") wrap on narrow screens.
+					// The long label ("Premium Hotel Stay entdecken") may wrap at any width, not only up to 400px.
 					get_template_part(
 						'template-parts/components/button',
 						null,
