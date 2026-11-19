@@ -63,7 +63,20 @@ $gal_title_id = wp_unique_id( 'section-gallery-title-' );
 
 			<?php if ( $gal_button ) : ?>
 				<div class="section-gallery__button anim-fade-up">
-					<?php get_template_part( 'template-parts/components/button', null, array_merge( $gal_button, array( 'style' => 'secondary' ) ) ); ?>
+					<?php
+					// Long labels ("Premium Hotel Stay entdecken") wrap on narrow screens.
+					get_template_part(
+						'template-parts/components/button',
+						null,
+						array_merge(
+							$gal_button,
+							array(
+								'style' => 'secondary',
+								'class' => 'btn--wrap',
+							)
+						)
+					);
+					?>
 				</div>
 			<?php endif; ?>
 

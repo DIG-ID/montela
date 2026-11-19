@@ -40,6 +40,14 @@
     // the 21×22 of the design.
     @apply m-auto w-[37px] h-[38px] bg-current
 
+// Long label: never wider than its container — the label wraps to a second
+// line only when the button would not fit (homepage "Premium Hotel Stay
+// entdecken" on mobile). The arrow box stretches with it.
+.btn--wrap
+  @apply max-w-full
+  .btn__label
+    @apply min-w-0 whitespace-normal
+
 // Down arrow (Lounge & Bar "Unsere Getränkekarte", Figma 5895:20879): the
 // same arrow turned a quarter.
 .btn--arrow-down .btn__icon::before

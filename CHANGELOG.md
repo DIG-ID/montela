@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.62.4] — 2026-11-19
+
+### Fixed
+- Homepage "Premium Hotel Stay" button wraps to two lines on narrow screens instead of overflowing (new `btn--wrap` button modifier).
+
 ## [1.62.3] — 2026-11-19
 
 ### Fixed
