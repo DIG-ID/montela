@@ -288,6 +288,28 @@
             "allow_in_bindings": 0
         },
         {
+            "key": "field_options_footer_newsletter_form",
+            "label": "Newsletter form",
+            "name": "footer_newsletter_form",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Shortcode of the Mailchimp for WP form, e.g. [mc4wp_form id=\"123\"] (MC4WP → Form). Empty = the plugin's default form.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "[mc4wp_form id=\"123\"]",
+            "prepend": "",
+            "append": "",
+            "allow_in_bindings": 0
+        },
+        {
             "key": "field_options_footer_address",
             "label": "Address",
             "name": "footer_address",
@@ -1383,6 +1405,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1794563512,
+    "modified": 1795077558,
     "acfml_field_group_mode": "advanced"
 }

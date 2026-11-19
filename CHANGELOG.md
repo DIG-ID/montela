@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.62.0] — 2026-11-19
+
+### Added
+- Theme Settings: "Newsletter form" field (Footer: Newsletter & contact) for the Mailchimp for WP form shortcode; empty uses the plugin's default form.
+
 ## [1.61.5] — 2026-11-17
 
 ### Fixed

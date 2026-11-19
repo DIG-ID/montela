@@ -11,7 +11,8 @@
  * - Theme Settings, "Footer: …" tabs (acf-json/group_options_theme_settings.json):
  *   call to action, newsletter text, address, phone, e-mail, socials,
  *   partner logos.
- * - Newsletter form: Mailchimp for WP (default form), when the plugin is active.
+ * - Newsletter form: Mailchimp for WP — the shortcode in Theme Settings
+ *   ("Newsletter form"), or the default form; none when the plugin is off.
  * - Menus: "Footer Menu" (one level, four per column) and "Legal Menu".
  *
  * @package montela
@@ -36,7 +37,13 @@ $footer_socials = array(
 );
 $footer_socials = array_filter( $footer_socials );
 
-$footer_has_form = function_exists( 'mc4wp_show_form' );
+// Newsletter form: the shortcode in the Theme Settings (one per language with
+// WPML), or the plugin's default form. Only Mailchimp for WP shortcodes.
+$footer_form_code = $footer_has_acf ? trim( (string) get_field( 'footer_newsletter_form', 'option' ) ) : '';
+if ( $footer_form_code && ! preg_match( '/^\[mc4wp_form\b[^\]]*\]$/', $footer_form_code ) ) {
+	$footer_form_code = '';
+}
+$footer_has_form = function_exists( 'mc4wp_show_form' ) && ( $footer_form_code || get_option( 'mc4wp_default_form_id' ) );
 ?>
 
 <footer class="footer-main<?php echo $footer_cta_title ? ' footer-main--has-cta' : ''; ?>">
@@ -88,7 +95,9 @@ $footer_has_form = function_exists( 'mc4wp_show_form' );
 						<p><?php echo montela_text( $footer_news_text ); ?></p>
 					<?php endif; ?>
 					<?php
-					if ( $footer_has_form ) {
+					if ( $footer_has_form && $footer_form_code ) {
+						echo do_shortcode( $footer_form_code ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- the plugin's form markup.
+					} elseif ( $footer_has_form ) {
 						mc4wp_show_form();
 					}
 					?>
