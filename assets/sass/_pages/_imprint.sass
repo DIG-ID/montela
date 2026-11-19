@@ -14,6 +14,8 @@
 // and its copy hand their rows to the row of boxes: icon, filler, title,
 // text), so a longer text lifts every title, not just its own. The row
 // of boxes carries the 500px height; the filler row takes the rest.
+// 1280–1535 (not designed): 24px in on both sides — at 47 / 45px the
+// address and the dig.id title broke on ~214px. The frame's padding from 2xl.
 // Sage hairline and a soft shadow. Title bold 20/32, one empty line, then
 // the lines 15/25.
 .section-imprint
@@ -23,7 +25,7 @@
   @apply col-span-full flex flex-col gap-6 md:items-center xl:col-start-2 xl:col-span-10 xl:grid xl:grid-cols-3 xl:grid-rows-[auto_minmax(44px,1fr)_auto_auto] xl:gap-x-5 xl:gap-y-0 xl:min-h-[500px]
 
 .section-imprint__box
-  @apply flex flex-col items-center gap-[72px] py-11 pl-[47px] pr-[45px] border border-montela-sage shadow-[0_4px_4px_rgba(0,0,0,0.25)] md:w-[461px] md:gap-11 xl:w-auto xl:grid xl:grid-rows-subgrid xl:items-start xl:row-span-4 xl:gap-0 xl:pt-[70px] xl:pb-14
+  @apply flex flex-col items-center gap-[72px] py-11 pl-[47px] pr-[45px] border border-montela-sage shadow-[0_4px_4px_rgba(0,0,0,0.25)] md:w-[461px] md:gap-11 xl:w-auto xl:grid xl:grid-rows-subgrid xl:items-start xl:row-span-4 xl:gap-0 xl:pt-[70px] xl:pb-14 xl:pl-6 xl:pr-6 2xl:pl-[47px] 2xl:pr-[45px]
 
 .section-imprint__icon
   @apply flex items-center justify-center h-[68px] xl:row-start-1

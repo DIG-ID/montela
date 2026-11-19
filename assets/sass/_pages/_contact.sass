@@ -11,12 +11,13 @@
 //   Desktop  three in a row on cols 2–11, as drawn: 462 / 326 / 460px with
 //            133px between (kept as proportions); 300px tall, content 23 /
 //            21px in; title 20/32, text 20/32
+//   1280–1535 (not designed): three equal boxes, 20px apart — with the
+//            frame's proportions and gaps the middle box was ~230px and the
+//            phone number broke in two. The frame's layout from 2xl.
 // One empty line between title and text, as in the frames. Walnut frame.
+// The boxes' layout is in the PHP (info.php).
 .section-contact-info
   @apply mb-[128px] md:mb-[192px] text-montela-walnut
-
-.section-contact-info__boxes
-  @apply col-span-full flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-x-5 md:gap-y-11 xl:col-start-2 xl:col-span-10 xl:grid-cols-[462fr_326fr_460fr] xl:gap-x-[8.8%]
 
 .section-contact-info__box
   @apply flex flex-col justify-center min-h-[215px] px-[35px] py-8 border border-montela-walnut md:justify-start md:min-h-[244px] md:px-9 md:pt-[18px] xl:min-h-[300px] xl:px-[21px] xl:pt-[23px]

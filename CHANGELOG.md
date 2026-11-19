@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.62.6] — 2026-11-19
+
+### Fixed
+- Info & Kontakt and Impressum boxes at 1280–1535px: the phone number, address and titles no longer break mid-line.
+
 ## [1.62.5] — 2026-11-19
 
 ### Changed
