@@ -36,9 +36,10 @@
 // so the theme styles it here. Template to paste there:
 //
 //   <input type="email" name="EMAIL" placeholder="E-Mail*" aria-label="E-Mail" autocomplete="email" required>
-//   <input type="submit" value="Anmelden">
+//   <button type="submit" class="btn btn-primary"><span class="btn__label">Anmelden</span><span class="btn__icon" aria-hidden="true"></span></button>
 //
-// The submit is visually hidden (Enter submits); it shows on keyboard focus.
+// The submit button is not in the Figma: the site's primary button, below
+// the field (see Newsletter).
 
 // -- Overlap: box over the sage -------------------------------------------------
 // Tablet and desktop: the sage starts 280px / 60px above the box's bottom
@@ -125,10 +126,23 @@
     @apply block w-full p-3 md:pt-0 md:pr-0 md:pl-[14px] bg-transparent border-0 border-b border-solid border-montela-cream rounded-none text-[14px] leading-[22px] md:text-[15px] md:leading-[25px] xl:text-[16px] xl:leading-[28px] 2xl:text-[18px] 2xl:leading-[30px] tracking-[0.5px] text-montela-cream placeholder:text-montela-cream placeholder:opacity-100
     &:focus
       @apply outline-none border-montela-mustard
+  // The field, then the submit below it: centred on mobile, left from
+  // tablet up, as the column's text.
+  .mc4wp-form-fields
+    @apply flex flex-col items-center md:items-start
+  // Submit (not in the Figma): the site's primary button, as far below the
+  // field as the field is below the text (48 / 42px).
+  .btn
+    @apply mt-12 md:mt-[42px]
+  // Fallback for a form still using <input type="submit">: the primary
+  // button's label, without the arrow box.
   input[type="submit"]
-    @apply sr-only
-    &:focus
-      @apply not-sr-only mt-4 px-4 py-2 bg-montela-cream text-montela-walnut font-bold uppercase text-[14px]
+    @apply mt-12 md:mt-[42px] px-[22px] py-[14px] bg-montela-walnut text-montela-cream font-primary font-bold text-[14px] leading-[16px] tracking-[0.84px] uppercase cursor-pointer drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)] transition-colors duration-300 ease-out
+    &:hover,
+    &:active
+      @apply bg-montela-mustard text-montela-walnut
+    &:focus-visible
+      @apply outline outline-2 outline-offset-4 outline-montela-mustard
   .mc4wp-response
     @apply mt-3
 

@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.62.1] — 2026-11-19
+
+### Changed
+- Footer newsletter form: visible submit button (the site's primary button) below the e-mail field. Update the form markup in MC4WP → Form (template in `_footer.sass`).
+
 ## [1.62.0] — 2026-11-19
 
 ### Added

@@ -1033,8 +1033,11 @@ o cliente.
              E-Mail, no footer de todas as páginas): as mensagens de
              resposta — "Vielen Dank! Bitte bestätigen Sie Ihre Anmeldung
              über den Link in der E-Mail…", e-mail inválido, já inscrito,
-             erro — e o botão escondido "Anmelden" (Enter submete).
-  Figma      só o campo "E-Mail*" (5895:18289); sem texto para as mensagens.
+             erro — e o botão "Anmelden" (escondido até 19.11.2026; agora
+             visível, o botão primary do site por baixo do campo, 48 / 42px —
+             o mesmo espaço entre o texto e o campo).
+  Figma      só o campo "E-Mail*" (5895:18289); sem botão nem texto para as
+             mensagens.
   Feito      mensagens em de-CH (Sie, ss), escritas por nós, no formulário
              (MC4WP → Form → Messages). Double opt-in ligado. O texto do
              honeypot ("Wenn du ein Mensch bist…", invisível) vem da tradução
