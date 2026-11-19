@@ -36,10 +36,10 @@
 // so the theme styles it here. Template to paste there:
 //
 //   <input type="email" name="EMAIL" placeholder="E-Mail*" aria-label="E-Mail" autocomplete="email" required>
-//   <button type="submit" class="btn btn-primary"><span class="btn__label">Anmelden</span><span class="btn__icon" aria-hidden="true"></span></button>
+//   <button type="submit" class="btn btn-outline"><span class="btn__label">Anmelden</span><span class="btn__icon" aria-hidden="true"></span></button>
 //
-// The submit button is not in the Figma: the site's primary button, below
-// the field (see Newsletter).
+// The submit button is not in the Figma: the site's cream button, full
+// width below the field (see Newsletter).
 
 // -- Overlap: box over the sage -------------------------------------------------
 // Tablet and desktop: the sage starts 280px / 60px above the box's bottom
@@ -130,17 +130,20 @@
   // tablet up, as the column's text.
   .mc4wp-form-fields
     @apply flex flex-col items-center md:items-start
-  // Submit (not in the Figma): the site's primary button, as far below the
-  // field as the field is below the text (48 / 42px).
+  // Submit (not in the Figma): the site's cream button (.btn-outline, as on
+  // the sage panels), as wide as the field and as far below it as the field
+  // is below the text (48 / 42px). The label takes the spare width.
   .btn
-    @apply mt-12 md:mt-[42px]
-  // Fallback for a form still using <input type="submit">: the primary
-  // button's label, without the arrow box.
+    @apply self-stretch mt-12 md:mt-[42px]
+    .btn__label
+      @apply flex-1
+  // Fallback for a form still using <input type="submit">: the cream
+  // button's label, full width, without the arrow box.
   input[type="submit"]
-    @apply mt-12 md:mt-[42px] px-[22px] py-[14px] bg-montela-walnut text-montela-cream font-primary font-bold text-[14px] leading-[16px] tracking-[0.84px] uppercase cursor-pointer drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)] transition-colors duration-300 ease-out
+    @apply self-stretch mt-12 md:mt-[42px] px-[22px] py-[14px] bg-montela-cream border-[0.5px] border-solid border-montela-walnut text-montela-sage font-primary font-bold text-[14px] leading-[16px] tracking-[0.84px] uppercase cursor-pointer drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)] transition-colors duration-300 ease-out
     &:hover,
     &:active
-      @apply bg-montela-mustard text-montela-walnut
+      @apply text-montela-mustard
     &:focus-visible
       @apply outline outline-2 outline-offset-4 outline-montela-mustard
   .mc4wp-response

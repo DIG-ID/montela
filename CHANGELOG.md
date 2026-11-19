@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.62.2] — 2026-11-19
+
+### Changed
+- Footer newsletter submit button: cream style, full width of the e-mail field. Form markup in MC4WP → Form now uses `btn btn-outline` (template in `_footer.sass`).
+
 ## [1.62.1] — 2026-11-19
 
 ### Changed
