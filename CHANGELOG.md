@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.62.3] — 2026-11-19
+
+### Fixed
+- Mega menu at 1280–1535px: labels stay on one line, the boxes match the photo height and the "+" is smaller and centred.
+
 ## [1.62.2] — 2026-11-19
 
 ### Changed

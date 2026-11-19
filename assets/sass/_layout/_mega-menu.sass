@@ -208,3 +208,42 @@
 
 .mega-menu__back-icon
   @apply shrink-0 w-[24.77px] h-[25.1px] bg-current rotate-180
+
+// -- Small desktop (1280–1535px) -------------------------------------------------
+// The frame's 902px of boxes shrank to 261px-wide boxes at 1280 and the
+// labels broke in two ("Anreise / & Lage"); the 130px rows also ran well
+// past the photo (Bruno, 2026-11-17). Here, not designed:
+// - no 83px indent (the container's 50px margin only), and the photo takes
+//   a fixed share of the row (45.1% after the 55px gap — 507px at 1280, the 623px it already has at 1536), so the
+//   boxes get the rest (299px at 1280);
+// - the box height follows the photo: three rows and their two 24px gaps
+//   are as tall as the photo (104px at 1280, ~130 at 1535);
+// - 20px type and tighter indents (24 / 20px), so the longest label
+//   ("Angebote & Packages", ~247px) stays on one line. The hover arrow is
+//   taken out of the flow (it shows on hover only) so it does not take the
+//   label's room.
+// cqw: the inner is the container, so the sizes follow its content width.
+@media (min-width: 1280px) and (max-width: 1535px)
+  .mega-menu__inner
+    @apply pl-[50px] [container-type:inline-size]
+    --mm-media: calc((100cqw - 55px) * 0.451)
+    --mm-row: calc((var(--mm-media) * 591 / 832 - 48px) / 3)
+
+  .mega-menu__media
+    @apply grow-0 shrink-0 basis-auto w-[var(--mm-media)]
+
+  .mega-menu__item,
+  .mega-menu__sub-link
+    @apply relative h-[var(--mm-row)] pl-6 pr-5 text-[20px]
+
+  .mega-menu__item .mega-menu__sub-icon,
+  .mega-menu__sub-link .mega-menu__sub-icon
+    @apply absolute right-5 top-1/2 -translate-y-1/2
+
+  .mega-menu__back
+    @apply pl-6
+
+  // The "+" in proportion to the 20px labels (44px was drawn for 24px), on
+  // the label's centre line.
+  .mega-menu__plus
+    @apply text-[34px] leading-none
