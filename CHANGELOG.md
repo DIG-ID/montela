@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.62.8] — 2026-11-20
+
+### Changed
+- Sticky header: the other languages open as cream buttons (as "Jetzt buchen"); the current language keeps the bordered box.
+
 ## [1.62.7] — 2026-11-20
 
 ### Fixed

@@ -242,10 +242,14 @@
   // instead of 128 / 137, about 47 / 51px tall; desktop keeps 137.
   .header-main__logo
     @apply w-[104px] md:w-[112px] xl:w-[137px]
-  // The open language boxes hang below the bar, over the page's cream:
-  // sage, as the bar, so the cream border and label stay visible.
+  // The other languages, once open, hang below the bar over the page: the
+  // header's cream buttons (as "Jetzt buchen" — cream, walnut label, drop
+  // shadow, mustard on hover; Daniel, 20.11.2026). The current language
+  // keeps the bordered box. The normal header is unchanged.
   .header-main__langs .header-main__lang
-    @apply bg-montela-sage
+    @apply bg-montela-cream border-montela-cream text-montela-walnut drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)]
+    &:hover
+      @apply bg-montela-mustard border-montela-mustard text-montela-walnut
 
 @keyframes header-drop
   from
