@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.62.7] — 2026-11-20
+
+### Fixed
+- Language switcher opened from the sticky header: sage boxes, visible over the page.
+
 ## [1.62.6] — 2026-11-19
 
 ### Fixed

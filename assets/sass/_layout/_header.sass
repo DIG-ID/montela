@@ -242,6 +242,10 @@
   // instead of 128 / 137, about 47 / 51px tall; desktop keeps 137.
   .header-main__logo
     @apply w-[104px] md:w-[112px] xl:w-[137px]
+  // The open language boxes hang below the bar, over the page's cream:
+  // sage, as the bar, so the cream border and label stay visible.
+  .header-main__langs .header-main__lang
+    @apply bg-montela-sage
 
 @keyframes header-drop
   from
