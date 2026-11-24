@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.63.2] — 2026-11-24
+
+### Changed
+- Sticky CTA back in the footer: it is hidden or shown with the switch in Theme Settings → Sticky CTA.
+
 ## [1.63.1] — 2026-11-24
 
 ### Changed
