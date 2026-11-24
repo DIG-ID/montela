@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.63.1] — 2026-11-24
+
+### Changed
+- Sticky CTA hidden for now (commented out in `footer.php`; its Theme Settings stay in place).
+
 ## [1.63.0] — 2026-11-24
 
 ### Added
