@@ -93,9 +93,13 @@ if ( ! $map_title && ! $map_seasons ) {
 	return;
 }
 
-// The season open on page load: winter from December to April, as in the
-// Activities module.
-$map_current = in_array( (int) wp_date( 'n' ), array( 12, 1, 2, 3, 4 ), true ) ? 'winter' : 'summer';
+// The season open on page load: Theme Settings → Map, "Season on load" —
+// summer, winter, or by date (winter from November to April — the
+// Activities module starts in December).
+$map_current = get_field( 'map_season', 'option' );
+if ( ! in_array( $map_current, array( 'summer', 'winter' ), true ) ) {
+	$map_current = in_array( (int) wp_date( 'n' ), array( 11, 12, 1, 2, 3, 4 ), true ) ? 'winter' : 'summer';
+}
 if ( ! isset( $map_seasons[ $map_current ] ) ) {
 	$map_current = array_key_first( $map_seasons );
 }

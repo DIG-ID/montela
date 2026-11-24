@@ -164,8 +164,10 @@ function initMap(map) {
   }
 
   /**
-   * Initial view: from tablet up the minimum zoom, centred — the Figma
-   * framing. Mobile starts zoomed in on the first pin.
+   * Initial view: from tablet up the minimum zoom, centred across and
+   * against the bottom of the artwork (Daniel, 24.11.2026 — it was
+   * centred both ways, as Figma frames it).
+   * Mobile starts zoomed in on the first pin.
    */
   function setInitialView() {
     if (zoomRaf) {
@@ -175,7 +177,7 @@ function initMap(map) {
     updateZoomMin();
 
     let focusX = 50;
-    let focusY = 50;
+    let focusY = 100; // Bottom edge: scrollTop is clamped to the maximum.
     let initialZoom = zoomMin;
 
     const firstPin = activeLayer()?.querySelector('[data-map-pin]');

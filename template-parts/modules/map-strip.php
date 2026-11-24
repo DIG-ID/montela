@@ -81,9 +81,14 @@ if ( ! $strip_seasons ) {
 	return;
 }
 
-// The season open on page load: winter from December to April, as in the
-// Map and Activities modules.
-$strip_current = in_array( (int) wp_date( 'n' ), array( 12, 1, 2, 3, 4 ), true ) ? 'winter' : 'summer';
+// The season open on page load: Theme Settings → Map strip, "Season on
+// load" (its own setting, not the Map's) — summer, winter, or by date
+// (winter from November to April, as in the Map — the Activities module
+// starts in December).
+$strip_current = get_field( 'map_strip_season', 'option' );
+if ( ! in_array( $strip_current, array( 'summer', 'winter' ), true ) ) {
+	$strip_current = in_array( (int) wp_date( 'n' ), array( 11, 12, 1, 2, 3, 4 ), true ) ? 'winter' : 'summer';
+}
 if ( ! isset( $strip_seasons[ $strip_current ] ) ) {
 	$strip_current = array_key_first( $strip_seasons );
 }

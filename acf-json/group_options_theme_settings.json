@@ -606,6 +606,32 @@
             "selected": 0
         },
         {
+            "key": "field_options_map_season",
+            "label": "Season on load",
+            "name": "map_season",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "The season the map opens on. By date: winter from November to April, summer the rest of the year. Without a winter map it always opens on summer.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "choices": {
+                "auto": "By date",
+                "summer": "Summer",
+                "winter": "Winter"
+            },
+            "default_value": "auto",
+            "return_format": "value",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "layout": "horizontal"
+        },
+        {
             "key": "field_options_map_image_summer",
             "label": "Summer — map",
             "name": "map_image_summer",
@@ -1002,6 +1028,32 @@
             "placement": "top",
             "endpoint": 0,
             "selected": 0
+        },
+        {
+            "key": "field_options_map_strip_season",
+            "label": "Season on load",
+            "name": "map_strip_season",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "The season the map strip opens on — set apart from the Map tab. By date: winter from November to April, summer the rest of the year. Without a winter map it always opens on summer.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "choices": {
+                "auto": "By date",
+                "summer": "Summer",
+                "winter": "Winter"
+            },
+            "default_value": "auto",
+            "return_format": "value",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "layout": "horizontal"
         },
         {
             "key": "field_options_map_strip_image_summer",
@@ -1405,6 +1457,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1795077558,
+    "modified": 1795515274,
     "acfml_field_group_mode": "advanced"
 }

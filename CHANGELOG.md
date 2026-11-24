@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.63.0] — 2026-11-24
+
+### Added
+- Theme Settings: "Season on load" for the Map and, separately, the Map strip (by date — winter from November to April —, summer or winter). Run ACF Sync on Theme Settings after deploying.
+
+### Changed
+- Map: opens against the bottom of the artwork on tablet and desktop (was centred).
+
 ## [1.62.8] — 2026-11-20
 
 ### Changed
