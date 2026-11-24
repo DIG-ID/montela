@@ -70,3 +70,13 @@ a
 
 .theme-browser .theme.active .theme-name
   background-color: $admin-main-800
+
+
+// Media Library, grid view: the filter bar stays in the flow above the grid.
+// Core has two equal rules for it — `.wp-filter { position: relative }`
+// (common.css) and `.media-toolbar { position: absolute }` (media-views.css) —
+// and the later one wins. When WordPress concatenates the admin styles
+// (load-styles.php, staging and live), media-views comes after common and
+// the bar covered the first row of images. Higher specificity, any order.
+.media-frame.mode-grid .media-toolbar.wp-filter
+  position: relative

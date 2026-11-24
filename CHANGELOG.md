@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.63.4] — 2026-11-24
+
+### Fixed
+- Media Library grid: the filter bar no longer covers the first row of images when WordPress concatenates the admin styles.
+
 ## [1.63.3] — 2026-11-24
 
 ### Changed
