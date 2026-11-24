@@ -248,6 +248,10 @@ Depois de editar um grupo noutro ambiente, usar **Sync** no admin.
   (`wpml_cf_preferences`): imagens e vídeo **copy** (`1`), o resto **translate**
   (`2`). Tabs não levam preferência; clones levam `1` (são contentores — os
   campos de um clone Seamless herdam a preferência definida no grupo do módulo).
+  Repeaters só têm Don't translate (`0`) / Copy (`1`) / Copy once (`3`). A lista
+  "Saas-Grund" da Unsere Region (`section_place_items`) está em **Don't
+  translate**: no staging, com Copy, uma linha nova em DE não chegava a EN/FR
+  (Novembro 2026). Cada língua tem a sua lista — uma linha nova entra à mão nas três.
 - Ao editar um JSON à mão, actualizar o `modified` (timestamp Unix), senão o ACF
   não oferece o Sync em ambientes onde o grupo já está na base de dados.
 - **Importar um grupo em local por WP-CLI** (em vez do Sync no admin): ir buscar o

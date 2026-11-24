@@ -214,7 +214,7 @@
                 "class": "",
                 "id": ""
             },
-            "wpml_cf_preferences": 1,
+            "wpml_cf_preferences": 0,
             "layout": "block",
             "pagination": 0,
             "min": 0,
@@ -541,7 +541,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "page-templates/page-region.php"
+                "value": "page-templates\/page-region.php"
             }
         ]
     ],
@@ -557,6 +557,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1794478750,
+    "modified": 1795543598,
     "acfml_field_group_mode": "advanced"
 }

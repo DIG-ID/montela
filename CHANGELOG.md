@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.63.3] — 2026-11-24
+
+### Changed
+- Unsere Region, Saas-Grund list: each language keeps its own list (the WPML preference of the repeater is now "Don't translate"). Run ACF Sync on "Page — Our Region" after deploying.
+
 ## [1.63.2] — 2026-11-24
 
 ### Changed
