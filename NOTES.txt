@@ -565,6 +565,27 @@ no ficheiro indicado em "No starter".
   No Montela inc/performance.php (1.60.4).
   Estado     POR PASSAR
 
+-------------------------------------------------------------------------------
+[2026-11-25] A27. Ficheiros de desenvolvimento fora do servidor
+  Problema   À beira do go live: o deploy (WP Pusher, ZIP do GitHub) levava
+             para o servidor o .claude/, o .vscode/, o CLAUDE.md, o NOTES.txt,
+             o TODO.md e as configs de build — tudo dentro de
+             /wp-content/themes/<tema>/, acessível pela web (no staging só
+             não se via por causa da password). Notas internas com decisões
+             e nomes. Tirá-los do git não serve: o .claude/ é partilhado
+             pela equipa.
+  Regra      "Ficheiros só de desenvolvimento ficam no repo e saem do deploy
+             com export-ignore no .gitattributes (.claude, .vscode, .md/.txt
+             de notas, configs de build e lint, .gitignore/.gitattributes).
+             Nunca o CHANGELOG, o style.css, o screenshot, o acf-json, o dist
+             nem os assets que o PHP lê. Confirmar com
+             git archive HEAD | tar -t."
+  No starter .gitattributes + CLAUDE.md (secção Build, deploy) + skill
+             /deploy (verificar a lista quando entra um ficheiro novo na raiz).
+  No Montela .gitattributes (1.63.6) — confirmado por FTP no staging: o
+             WP Pusher respeita o export-ignore e limpa a pasta no deploy.
+  Estado     POR PASSAR
+
 ===============================================================================
 B. DECISÕES POR CONFIRMAR
 ===============================================================================
