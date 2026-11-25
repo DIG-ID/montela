@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.63.7] — 2026-11-25
+
+### Fixed
+- Leistungen: the breakfast box no longer has a much larger top padding than side padding between 1280 and 1535px.
+
 ## [1.63.6] — 2026-11-25
 
 ### Security
