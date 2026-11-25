@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.63.5] — 2026-11-25
+
+### Changed
+- New Montela logo ("Apartment-Hotel & Resort", with stars) in the header, the footer, the 404 page and the admin login; same cream colour, walnut on the 404.
+
 ## [1.63.4] — 2026-11-24
 
 ### Fixed

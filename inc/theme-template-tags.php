@@ -67,9 +67,9 @@ function montela_logo() {
 	} else {
 		?>
 		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="site-logo" rel="home">
-			<img class="site-logo__img" src="<?php echo esc_url( get_theme_file_uri( '/assets/svg/logo-montela.svg' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" width="137" height="62">
+			<img class="site-logo__img" src="<?php echo esc_url( get_theme_file_uri( '/assets/svg/logo-montela.svg' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" width="137" height="64">
 			<?php if ( function_exists( 'montela_header_dark' ) && montela_header_dark() ) : ?>
-				<img class="site-logo__img site-logo__img--dark" src="<?php echo esc_url( get_theme_file_uri( '/assets/svg/logo-montela-walnut.svg' ) ); ?>" alt="" width="137" height="62">
+				<img class="site-logo__img site-logo__img--dark" src="<?php echo esc_url( get_theme_file_uri( '/assets/svg/logo-montela-walnut.svg' ) ); ?>" alt="" width="137" height="64">
 			<?php endif; ?>
 		</a>
 		<?php

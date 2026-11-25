@@ -82,7 +82,7 @@ $footer_has_form = function_exists( 'mc4wp_show_form' ) && ( $footer_form_code |
 	<div class="footer-main__body">
 
 		<a class="footer-main__logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-			<img src="<?php echo esc_url( get_theme_file_uri( '/assets/svg/logo-montela.svg' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" width="187" height="85" loading="lazy">
+			<img src="<?php echo esc_url( get_theme_file_uri( '/assets/svg/logo-montela.svg' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" width="187" height="87" loading="lazy">
 		</a>
 
 		<div class="theme-container footer-main__content">
