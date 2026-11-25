@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.63.6] — 2026-11-25
+
+### Security
+- Development-only files (AI and editor settings, internal notes, build and lint configs) are no longer deployed to the server; they stay in the repository.
+
 ## [1.63.5] — 2026-11-25
 
 ### Changed

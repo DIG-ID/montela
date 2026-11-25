@@ -100,6 +100,7 @@ npm run php:fix
   - o build apaga os ficheiros com hash antigos — incluir também essas remoções no commit (`git add -A dist`);
   - confirmar que `dist/.vite/manifest.json` foi regenerado e que não existe `dist/hot` (marcador do servidor de dev, gitignored);
   - verificação pós-deploy: os assets carregam com nomes com hash novos (cache-busting via `inc/vite.php` + manifest).
+  - **Ficheiros só de desenvolvimento não vão para o servidor** (desde a 1.63.6): `.claude/`, `.vscode/`, os `.md` / `.txt` de notas, as configs de build e lint estão marcados `export-ignore` no `.gitattributes` — ficam no repo, mas o ZIP do GitHub (o que o deploy instala) não os leva. Um ficheiro novo só de desenvolvimento na raiz entra nessa lista. Confirmar com `git archive HEAD | tar -t`.
 
 ---
 
