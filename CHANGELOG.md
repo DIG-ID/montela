@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.63.9] — 2026-11-26
+### Added
+- Google Tag Manager (GTM-NJ8PKLBK) on the live domain (montela.ch) only — not on staging or local copies.
+
 ## [1.63.8] — 2026-11-26
 
 ### Changed
