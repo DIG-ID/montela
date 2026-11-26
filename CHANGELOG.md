@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.63.8] — 2026-11-26
+
+### Changed
+- Map on touch screens: one finger now scrolls the page past the map (a hint says to use two fingers); two fingers move and zoom the map. In fullscreen one finger still moves it.
+
 ## [1.63.7] — 2026-11-25
 
 ### Fixed

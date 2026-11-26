@@ -29,11 +29,21 @@
     .section-map__viewport
       @apply h-full aspect-auto
 
-// The scrolling frame: pan = native scroll, no visible scrollbars. One
-// finger pans natively; the pinch is handled in map.js.
+// The scrolling frame: pan = native scroll, no visible scrollbars. Two
+// fingers pan and pinch (map.js).
+// Touch screens (pointer: coarse): the frame does not scroll natively, so
+// one finger scrolls the page past the map instead of getting stuck on it
+// (Bruno, 26.11.2026); map.js still moves it (scrollLeft / scrollTop work
+// with overflow hidden). In fullscreen one finger pans it again.
 .section-map__viewport
   @apply h-[696px] xl:h-auto xl:aspect-[1814/720] overflow-auto overscroll-contain cursor-grab select-none
   touch-action: pan-x pan-y
+  @media (pointer: coarse)
+    @apply overflow-hidden
+    touch-action: pan-y
+    .section-map__map:fullscreen &
+      @apply overflow-auto
+      touch-action: pan-x pan-y
   scrollbar-width: none
   &::-webkit-scrollbar
     display: none
@@ -96,11 +106,19 @@
     opacity: 0
     transform: scale(0.7)
 
-// -- Wheel hint: the wheel used before the map was clicked --
+// -- Hint: the wheel used before the map was clicked, or one finger on touch --
 .section-map__hint
   @apply absolute left-1/2 top-1/2 z-[4] px-5 py-[10px] -translate-x-1/2 -translate-y-1/2 bg-montela-walnut/85 text-montela-cream text-center text-[16px] leading-[22px] tracking-[0.5px] pointer-events-none opacity-0 transition-opacity duration-300
   &.is-visible
     @apply opacity-100
+
+// Two messages: the wheel one (mouse) and the one-finger one (touch).
+.section-map__hint-touch,
+.section-map__hint.is-touch .section-map__hint-wheel
+  @apply hidden
+
+.section-map__hint.is-touch .section-map__hint-touch
+  @apply inline
 
 // -- Controls: white 48px circles, top right --
 // From the frame's edge: 30 / 37px (mobile), 34 / 38px (tablet), 53 / 57px

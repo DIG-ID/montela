@@ -209,7 +209,10 @@ $map_padding = ( isset( $args['padding_top'] ) && false === $args['padding_top']
 					</div>
 				</div>
 
-				<div class="section-map__hint" data-map-hint aria-hidden="true"><?php esc_html_e( 'Klicken Sie auf die Karte, um mit dem Mausrad zu zoomen', 'montela' ); ?></div>
+				<div class="section-map__hint" data-map-hint aria-hidden="true">
+					<span class="section-map__hint-wheel"><?php esc_html_e( 'Klicken Sie auf die Karte, um mit dem Mausrad zu zoomen', 'montela' ); ?></span>
+					<span class="section-map__hint-touch"><?php esc_html_e( 'Verwenden Sie zwei Finger, um die Karte zu bewegen', 'montela' ); ?></span>
+				</div>
 
 				<div class="section-map__controls" role="group" aria-label="<?php esc_attr_e( 'Kartensteuerung', 'montela' ); ?>">
 					<button class="section-map__control" type="button" data-map-zoom-in aria-label="<?php esc_attr_e( 'Vergrössern', 'montela' ); ?>">

@@ -2,8 +2,10 @@
 // Map module — enqueued by template-parts/modules/map.php:
 //   montela_enqueue_module( 'map' );
 //
-// Pan  = native scroll of the viewport (both axes; momentum and touch for
-//        free) + drag with the mouse.
+// Pan  = native scroll of the viewport (both axes) + drag with the mouse.
+//        On touch screens two fingers pan (one finger scrolls the page past
+//        the map, with a hint — Bruno, 26.11.2026: the page got stuck on
+//        the map on phones); in fullscreen one finger pans natively too.
 // Zoom = the canvas width in % — the pins sit in % of the artwork, so they
 //        follow it. Buttons, wheel (towards the cursor) and pinch.
 //
@@ -152,17 +154,6 @@ function initMap(map) {
     }
   }
 
-  /** Instant zoom (pinch: the fingers drive the motion). */
-  function setZoomImmediate(next, originX, originY) {
-    if (zoomRaf) {
-      window.cancelAnimationFrame(zoomRaf);
-      zoomRaf = null;
-    }
-    targetZoom = clampZoom(next);
-    applyZoom(targetZoom, originX, originY);
-    updateZoomButtons();
-  }
-
   /**
    * Initial view: from tablet up the minimum zoom, centred across and
    * against the bottom of the artwork (Daniel, 24.11.2026 — it was
@@ -219,13 +210,19 @@ function initMap(map) {
     }
   }
 
-  function showHint() {
+  /**
+   * Shows the hint for a while.
+   *
+   * @param {string} type 'wheel' (mouse) or 'touch' (one finger).
+   */
+  function showHint(type = 'wheel') {
     if (!hint) {
       return;
     }
+    hint.classList.toggle('is-touch', type === 'touch');
     hint.classList.add('is-visible');
     window.clearTimeout(hintTimer);
-    hintTimer = window.setTimeout(() => hint.classList.remove('is-visible'), 1500);
+    hintTimer = window.setTimeout(() => hint.classList.remove('is-visible'), type === 'touch' ? 2000 : 1500);
   }
 
   map.addEventListener('pointerdown', (event) => {
@@ -256,29 +253,85 @@ function initMap(map) {
   }, { passive: false });
 
   // ---------------------------------------------------------------------------
-  // Pinch zoom + mouse drag-to-pan (Pointer Events)
+  // Touch: two fingers pan and pinch (Touch Events — preventDefault keeps the
+  // page from scrolling or zooming). One finger is left to the browser: it
+  // scrolls the page (CSS, pointer: coarse — the viewport does not scroll
+  // natively there) or, in fullscreen, pans the map.
   // ---------------------------------------------------------------------------
 
-  const activePointers = new Map();
-  let pinchStartDistance = 0;
-  let pinchStartZoom = 1;
+  let pinchStart = null;
+  let touchHintShown = false;
+
+  const touchMidpoint = (touches) => {
+    const rect = viewport.getBoundingClientRect();
+    return {
+      x: (touches[0].clientX + touches[1].clientX) / 2 - rect.left,
+      y: (touches[0].clientY + touches[1].clientY) / 2 - rect.top,
+    };
+  };
+  const touchDistance = (touches) => Math.hypot(
+    touches[0].clientX - touches[1].clientX,
+    touches[0].clientY - touches[1].clientY,
+  );
+
+  viewport.addEventListener('touchstart', (event) => {
+    touchHintShown = false;
+    if (event.touches.length !== 2) {
+      pinchStart = null;
+      return;
+    }
+    if (zoomRaf) {
+      window.cancelAnimationFrame(zoomRaf);
+      zoomRaf = null;
+    }
+    const mid = touchMidpoint(event.touches);
+    // The artwork point under the fingers, kept under them while they move.
+    pinchStart = {
+      distance: touchDistance(event.touches) || 1,
+      zoom,
+      ratioX: (viewport.scrollLeft + mid.x) / canvas.offsetWidth,
+      ratioY: (viewport.scrollTop + mid.y) / canvas.offsetHeight,
+    };
+  }, { passive: true });
+
+  viewport.addEventListener('touchmove', (event) => {
+    if (event.touches.length === 2 && pinchStart) {
+      if (event.cancelable) {
+        event.preventDefault();
+      }
+      const mid = touchMidpoint(event.touches);
+      zoom = clampZoom(pinchStart.zoom * (touchDistance(event.touches) / pinchStart.distance));
+      targetZoom = zoom;
+      canvas.style.width = `${zoom * 100}%`;
+      viewport.scrollLeft = pinchStart.ratioX * canvas.offsetWidth - mid.x;
+      viewport.scrollTop = pinchStart.ratioY * canvas.offsetHeight - mid.y;
+      updateZoomButtons();
+      upgradeImageSizes();
+      return;
+    }
+    // One finger outside fullscreen: the page scrolls; say how to move the map.
+    if (event.touches.length === 1 && fullscreenElement() !== map && !touchHintShown) {
+      touchHintShown = true;
+      showHint('touch');
+    }
+  }, { passive: false });
+
+  const endTouch = (event) => {
+    if (event.touches.length < 2) {
+      pinchStart = null;
+    }
+  };
+  viewport.addEventListener('touchend', endTouch);
+  viewport.addEventListener('touchcancel', endTouch);
+
+  // ---------------------------------------------------------------------------
+  // Mouse drag-to-pan (Pointer Events)
+  // ---------------------------------------------------------------------------
+
   let dragStart = null;
 
-  const pinchDistance = () => {
-    const [a, b] = [...activePointers.values()];
-    return Math.hypot(a.x - b.x, a.y - b.y);
-  };
-
   viewport.addEventListener('pointerdown', (event) => {
-    activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
-
-    if (event.pointerType === 'touch' && activePointers.size === 2) {
-      pinchStartDistance = pinchDistance();
-      pinchStartZoom = zoom;
-    }
-
-    // Mouse drag-to-pan (touch panning is the native scroll). Not on a pin,
-    // or the click would never reach it.
+    // Not on a pin, or the click would never reach it.
     if (event.pointerType === 'mouse' && event.button === 0 && !event.target.closest('button, a')) {
       event.preventDefault();
       viewport.setPointerCapture(event.pointerId);
@@ -293,21 +346,6 @@ function initMap(map) {
   });
 
   viewport.addEventListener('pointermove', (event) => {
-    if (!activePointers.has(event.pointerId)) {
-      return;
-    }
-    activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
-
-    if (event.pointerType === 'touch' && activePointers.size === 2 && pinchStartDistance > 0) {
-      const rect = viewport.getBoundingClientRect();
-      const [a, b] = [...activePointers.values()];
-      setZoomImmediate(
-        pinchStartZoom * (pinchDistance() / pinchStartDistance),
-        (a.x + b.x) / 2 - rect.left,
-        (a.y + b.y) / 2 - rect.top,
-      );
-    }
-
     if (dragStart && event.pointerType === 'mouse') {
       viewport.scrollLeft = dragStart.scrollLeft - (event.clientX - dragStart.x);
       viewport.scrollTop = dragStart.scrollTop - (event.clientY - dragStart.y);
@@ -315,10 +353,6 @@ function initMap(map) {
   });
 
   const releasePointer = (event) => {
-    activePointers.delete(event.pointerId);
-    if (activePointers.size < 2) {
-      pinchStartDistance = 0;
-    }
     if (event.pointerType === 'mouse') {
       dragStart = null;
       viewport.classList.remove('is-dragging');
