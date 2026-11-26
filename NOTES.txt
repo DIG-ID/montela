@@ -586,6 +586,21 @@ no ficheiro indicado em "No starter".
              WP Pusher respeita o export-ignore e limpa a pasta no deploy.
   Estado     POR PASSAR
 
+-------------------------------------------------------------------------------
+[2026-11-26] A28. Tamanhos de letra em rem desde o início
+  Problema   O tema inteiro tinha os font-size e line-height em px (as
+             classes de tipografia e ~540 ajustes por secção, em 42
+             ficheiros): o tamanho de letra que a pessoa escolhe no browser
+             era ignorado, apesar do html { font-size: 100% }. Convertido de
+             uma vez com um script na 1.63.10 (CSS compilado idêntico).
+  Regra      "Tamanhos de letra e alturas de linha em rem (px do Figma ÷ 16:
+             text-[1.875rem] para 30px), no SASS e nas classes do PHP,
+             também dentro de clamp(). O valor em px fica no comentário.
+             tracking em px; leading sem unidade fica como está."
+  No starter .claude/rules/sass.md (secção @apply) + _typography.sass.
+  No Montela .claude/rules/sass.md, _components/_typography.sass (1.63.10).
+  Estado     POR PASSAR
+
 ===============================================================================
 B. DECISÕES POR CONFIRMAR
 ===============================================================================

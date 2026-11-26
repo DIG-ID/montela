@@ -31,10 +31,11 @@ Componentes e regras custom no SASS constroem-se com utilitários Tailwind via *
 
 ```sass
 .title-main
-  @apply font-primary font-medium tracking-[0.3px] text-[30px] leading-[34px] md:text-[56px] md:leading-[60px] xl:text-[76px] xl:leading-[80px]
+  @apply font-primary font-medium tracking-[0.3px] text-[1.875rem] leading-[2.125rem] md:text-[3.5rem] md:leading-[3.75rem] xl:text-[4.75rem] xl:leading-[5rem]
 ```
 
-- Uma classe = uma linha `@apply` com os utilitários; usar **valores arbitrários** quando não há token (`text-[82px]`, `leading-[100px]`, `tracking-[0.5px]`).
+- Uma classe = uma linha `@apply` com os utilitários; usar **valores arbitrários** quando não há token (`text-[5.125rem]`, `leading-[6.25rem]`, `tracking-[0.5px]`).
+- **Tamanhos de letra e alturas de linha em `rem`** (desde a 1.63.10), no SASS e nas classes do PHP: seguem o tamanho de letra que a pessoa escolheu no browser. Converter o valor do Figma com px ÷ 16 (`30px` → `text-[1.875rem]`) e deixar o valor em px no comentário. Também dentro de `clamp()`. Alturas de linha sem unidade (`leading-[0.95]`) ficam como estão; o `tracking` fica em px.
 - **Responsive** com os breakpoints por omissão do Tailwind, nunca redefinidos no `tailwind.config.js` — só acrescentados acima do `2xl` (`extend.screens`): `3xl` 1921 (acima de 1080p — um ecrã 1080p, o canvas do Figma, fica de fora) e `4xl` 2561 (acima de 1440p — um ecrã 2560 fica de fora), para ecrãs grandes onde o layout de 1920 fica perdido. Usar só quando é preciso; o design não tem frames para eles. Vocabulário: **mobile** < `md` (768) · **tablet** entre `md` e `xl` · **desktop** ≥ `xl` (1280). Mobile-first: valor base, depois `xl:`; só usar `md:` quando o design dá um valor próprio para tablet.
 - **Tipografia sem cor** — as classes de título/texto não trazem cor; define-se no container para os filhos (incl. `<p>` do wpautop) herdarem. Excepção: links inline.
 - Fonte via os tokens `font-primary` / `font-secondary` do `tailwind.config.js`.

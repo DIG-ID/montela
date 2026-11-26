@@ -65,13 +65,13 @@
   @apply relative
 
 .section-hero__line
-  @apply block xl:text-[93px] xl:leading-[81px] 2xl:text-[123px] 2xl:leading-[111px]
+  @apply block xl:text-[5.8125rem] xl:leading-[5.0625rem] 2xl:text-[7.6875rem] 2xl:leading-[6.9375rem]
 
 // 1280–1535: line 1 bigger on every hero (120/95), the others 93/81 —
 // Daniel, 2026-11-11. From 1536 the Figma sizes (123/111; home line 1
 // 150/125).
 .section-hero__line.section-hero__line--1
-  @apply xl:text-[120px] xl:leading-[95px] 2xl:text-[123px] 2xl:leading-[111px]
+  @apply xl:text-[7.5rem] xl:leading-[5.9375rem] 2xl:text-[7.6875rem] 2xl:leading-[6.9375rem]
 
 .section-hero__line--last
   @apply italic
@@ -100,7 +100,7 @@
 // -- Homepage exception ($args['variant'] = 'home') --
 
 .section-hero--home .section-hero__line.section-hero__line--1
-  @apply 2xl:text-[150px] 2xl:leading-[125px]
+  @apply 2xl:text-[9.375rem] 2xl:leading-[7.8125rem]
 
 .section-hero--home .section-hero__line--last
   @apply not-italic xl:italic
@@ -125,7 +125,7 @@
 
 // Three classes: beat the homepage line sizes above.
 .section-hero--home .section-hero__title--end .section-hero__line
-  @apply text-[70px] leading-[65px] not-italic
+  @apply text-[4.375rem] leading-[4.0625rem] not-italic
 
 .section-hero--home .section-hero__title--end .section-hero__line--last
   @apply italic

@@ -108,7 +108,7 @@
 
 // -- Hint: the wheel used before the map was clicked, or one finger on touch --
 .section-map__hint
-  @apply absolute left-1/2 top-1/2 z-[4] px-5 py-[10px] -translate-x-1/2 -translate-y-1/2 bg-montela-walnut/85 text-montela-cream text-center text-[16px] leading-[22px] tracking-[0.5px] pointer-events-none opacity-0 transition-opacity duration-300
+  @apply absolute left-1/2 top-1/2 z-[4] px-5 py-[10px] -translate-x-1/2 -translate-y-1/2 bg-montela-walnut/85 text-montela-cream text-center text-[1rem] leading-[1.375rem] tracking-[0.5px] pointer-events-none opacity-0 transition-opacity duration-300
   &.is-visible
     @apply opacity-100
 
@@ -154,7 +154,7 @@
   @apply absolute z-[5] flex right-[37px] bottom-12 md:right-[38px] xl:right-[57px] xl:bottom-[52px] gap-1 p-1 xl:gap-4 xl:p-[6px] rounded-[81px] xl:rounded-[38px] bg-montela-sage drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)]
 
 .section-map__season
-  @apply flex items-center justify-center gap-1.5 xl:gap-2 xl:w-[150px] px-3 py-1 xl:px-4 xl:py-[6px] border-0 rounded-[32px] bg-transparent font-light text-[14px] leading-[22px] md:text-[16px] md:leading-[24px] xl:text-[20px] xl:leading-[32px] tracking-[0.5px] text-montela-cream cursor-pointer whitespace-nowrap transition-colors duration-300 motion-reduce:transition-none
+  @apply flex items-center justify-center gap-1.5 xl:gap-2 xl:w-[150px] px-3 py-1 xl:px-4 xl:py-[6px] border-0 rounded-[32px] bg-transparent font-light text-[0.875rem] leading-[1.375rem] md:text-[1rem] md:leading-[1.5rem] xl:text-[1.25rem] xl:leading-[2rem] tracking-[0.5px] text-montela-cream cursor-pointer whitespace-nowrap transition-colors duration-300 motion-reduce:transition-none
   &::before
     content: ""
     @apply w-[18px] h-[18px] md:w-[22px] md:h-[22px] xl:w-8 xl:h-8 shrink-0 bg-current
@@ -206,16 +206,16 @@
 
 // Title 25/30 (18/28 on mobile), 16px to the text, 30px to the button.
 .section-map__popup-title
-  @apply pr-6 font-normal text-[18px] leading-[28px] tracking-[1px] md:text-[25px] md:leading-[30px]
+  @apply pr-6 font-normal text-[1.125rem] leading-[1.75rem] tracking-[1px] md:text-[1.5625rem] md:leading-[1.875rem]
 
 // Figma: mobile 18/25, tablet and desktop the "Text" style (20/32 in the
 // frame; 18/30 in this theme from 1536, 16/28 from 1280 — B25).
 .section-map__popup-text
-  @apply mt-4 font-light text-[18px] leading-[25px] tracking-[0.5px] md:text-[20px] md:leading-[32px] xl:text-[16px] xl:leading-[28px] 2xl:text-[18px] 2xl:leading-[30px]
+  @apply mt-4 font-light text-[1.125rem] leading-[1.5625rem] tracking-[0.5px] md:text-[1.25rem] md:leading-[2rem] xl:text-[1rem] xl:leading-[1.75rem] 2xl:text-[1.125rem] 2xl:leading-[1.875rem]
 
 // Sage box, 237px, no arrow (Figma); hover as the theme's buttons.
 .section-map__popup-button
-  @apply flex items-center justify-center w-[237px] max-w-full mt-[30px] py-3 px-4 bg-montela-sage font-bold text-[14px] leading-[16px] tracking-[0.84px] uppercase text-montela-cream transition-colors duration-300
+  @apply flex items-center justify-center w-[237px] max-w-full mt-[30px] py-3 px-4 bg-montela-sage font-bold text-[0.875rem] leading-[1rem] tracking-[0.84px] uppercase text-montela-cream transition-colors duration-300
   &:hover,
   &:active
     @apply bg-montela-mustard text-montela-walnut
@@ -230,4 +230,4 @@
   @apply block w-16 h-16 shrink-0 object-contain xl:w-12 xl:h-12 2xl:w-16 2xl:h-16
 
 .section-map__feature-text
-  @apply font-medium text-[14px] leading-[20px] tracking-[0.5px] text-montela-sage xl:text-[16px]
+  @apply font-medium text-[0.875rem] leading-[1.25rem] tracking-[0.5px] text-montela-sage xl:text-[1rem]

@@ -25,10 +25,10 @@
     @apply md:col-span-2 md:justify-center xl:col-span-1 xl:justify-start
 
 .section-contact-info__title
-  @apply mb-[22px] font-primary font-bold tracking-[0.5px] text-[12px] leading-[20px] md:mb-[25px] md:text-[18px] md:leading-[28px] xl:mb-[31px] xl:text-[16px] xl:leading-[28px] 2xl:text-[18px] 2xl:leading-[30px]
+  @apply mb-[22px] font-primary font-bold tracking-[0.5px] text-[0.75rem] leading-[1.25rem] md:mb-[25px] md:text-[1.125rem] md:leading-[1.75rem] xl:mb-[31px] xl:text-[1rem] xl:leading-[1.75rem] 2xl:text-[1.125rem] 2xl:leading-[1.875rem]
 
 .section-contact-info__text
-  @apply font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] md:text-[18px] md:leading-[25px] xl:text-[16px] xl:leading-[28px] 2xl:text-[18px] 2xl:leading-[30px]
+  @apply font-primary font-light tracking-[0.5px] text-[0.875rem] leading-[1.375rem] md:text-[1.125rem] md:leading-[1.5625rem] xl:text-[1rem] xl:leading-[1.75rem] 2xl:text-[1.125rem] 2xl:leading-[1.875rem]
   a
     @apply hover:text-montela-sage
 
@@ -105,7 +105,7 @@
   .wpcf7-email,
   .wpcf7-tel,
   .wpcf7-textarea
-    @apply block w-full h-[60px] px-3 border border-montela-sage bg-transparent font-primary font-light tracking-[0.5px] text-[14px] leading-[22px] text-montela-walnut placeholder:text-montela-walnut md:h-20 md:px-3 md:text-[18px] md:leading-[25px] xl:px-[27px] xl:text-[20px] xl:leading-[30px]
+    @apply block w-full h-[60px] px-3 border border-montela-sage bg-transparent font-primary font-light tracking-[0.5px] text-[0.875rem] leading-[1.375rem] text-montela-walnut placeholder:text-montela-walnut md:h-20 md:px-3 md:text-[1.125rem] md:leading-[1.5625rem] xl:px-[27px] xl:text-[1.25rem] xl:leading-[1.875rem]
     &:focus
       @apply outline outline-2 outline-offset-2 outline-montela-mustard
 
@@ -114,7 +114,7 @@
 
   // 22px label padding + 2px gap + 45px arrow box on the right.
   .wpcf7-submit
-    @apply pl-[22px] pr-[69px] py-[14px] bg-montela-sage text-montela-cream font-primary font-bold text-[14px] leading-[16px] tracking-[0.84px] uppercase cursor-pointer transition-colors duration-300 ease-out
+    @apply pl-[22px] pr-[69px] py-[14px] bg-montela-sage text-montela-cream font-primary font-bold text-[0.875rem] leading-[1rem] tracking-[0.84px] uppercase cursor-pointer transition-colors duration-300 ease-out
     &:hover,
     &:active
       @apply bg-montela-mustard text-montela-walnut
@@ -125,10 +125,10 @@
     @apply absolute left-full top-1/2 -translate-y-1/2 ml-3
 
   .wpcf7-not-valid-tip
-    @apply mt-1 font-primary text-[12px] leading-[16px] text-red-700 md:absolute md:left-0 md:top-full
+    @apply mt-1 font-primary text-[0.75rem] leading-[1rem] text-red-700 md:absolute md:left-0 md:top-full
 
   // CF7's own stylesheet insets this box (margin: 2em .5em 1em) with a more
   // specific selector; this one matches it. The border colour stays the
   // plugin's — it signals the state (sent, invalid, failed).
   .wpcf7 form .wpcf7-response-output
-    @apply mx-0 mt-8 mb-0 px-4 py-3 font-primary text-[14px] leading-[22px] md:mt-11
+    @apply mx-0 mt-8 mb-0 px-4 py-3 font-primary text-[0.875rem] leading-[1.375rem] md:mt-11

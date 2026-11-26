@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/) (`MAJOR.M
 
 ---
 
+## [1.63.10] — 2026-11-26
+
+### Changed
+- Font sizes and line heights are now in rem across the theme, so text follows the visitor's browser font size setting. No visual change at the default size.
+
 ## [1.63.9] — 2026-11-26
 ### Added
 - Google Tag Manager (GTM-NJ8PKLBK) on the live domain (montela.ch) only — not on staging or local copies.

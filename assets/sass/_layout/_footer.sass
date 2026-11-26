@@ -71,13 +71,13 @@
 // The tablet frame keeps the desktop H3 size here (90/80), not the
 // tablet one (80/76). Two classes to beat .title-h3, emitted after this file.
 .footer-main .footer-main__cta-title
-  @apply md:text-[90px] md:leading-[80px] xl:text-[82px] xl:leading-[72px] 2xl:text-[90px] 2xl:leading-[80px] xl:shrink xl:basis-[787px]
+  @apply md:text-[5.625rem] md:leading-[5rem] xl:text-[5.125rem] xl:leading-[4.5rem] 2xl:text-[5.625rem] 2xl:leading-[5rem] xl:shrink xl:basis-[787px]
 
 .footer-main__cta-row
   @apply flex flex-col gap-11 md:flex-row md:items-end md:justify-between md:gap-16 xl:items-start xl:grow xl:justify-between xl:gap-7
 
 .footer-main__cta-text
-  @apply text-[12px] leading-[20px] md:text-[length:inherit] md:leading-[inherit] md:flex-1 md:max-w-[361px] xl:max-w-none xl:flex-none xl:shrink xl:basis-[439px]
+  @apply text-[0.75rem] leading-[1.25rem] md:text-[length:inherit] md:leading-[inherit] md:flex-1 md:max-w-[361px] xl:max-w-none xl:flex-none xl:shrink xl:basis-[439px]
 
 .footer-main__cta-btn
   @apply shrink-0 self-start md:self-auto xl:self-start
@@ -89,7 +89,7 @@
 // the footer (the Explore module as the last section, _explore.sass) —
 // including its Swiper, which swiper.css puts at z-index 1.
 .footer-main__body
-  @apply relative z-[1] flex flex-col items-center bg-montela-sage text-montela-cream font-primary font-light text-[14px] leading-[22px] md:text-[15px] md:leading-[25px] xl:text-[16px] xl:leading-[28px] 2xl:text-[18px] 2xl:leading-[30px] tracking-[0.5px] pt-24 pb-24 md:pt-16 md:pb-0 xl:pt-[128px]
+  @apply relative z-[1] flex flex-col items-center bg-montela-sage text-montela-cream font-primary font-light text-[0.875rem] leading-[1.375rem] md:text-[0.9375rem] md:leading-[1.5625rem] xl:text-[1rem] xl:leading-[1.75rem] 2xl:text-[1.125rem] 2xl:leading-[1.875rem] tracking-[0.5px] pt-24 pb-24 md:pt-16 md:pb-0 xl:pt-[128px]
   // Sage behind the box: 60px up (desktop), 280px (tablet) — see Overlap.
   // Desktop: the logo is 128px from the top of the sage, so 68px below the
   // box (Figma 5895:20059) — the overlap is part of the 128. Tablet: the
@@ -123,7 +123,7 @@
   > p
     @apply text-center md:text-left
   input[type="email"]
-    @apply block w-full p-3 md:pt-0 md:pr-0 md:pl-[14px] bg-transparent border-0 border-b border-solid border-montela-cream rounded-none text-[14px] leading-[22px] md:text-[15px] md:leading-[25px] xl:text-[16px] xl:leading-[28px] 2xl:text-[18px] 2xl:leading-[30px] tracking-[0.5px] text-montela-cream placeholder:text-montela-cream placeholder:opacity-100
+    @apply block w-full p-3 md:pt-0 md:pr-0 md:pl-[14px] bg-transparent border-0 border-b border-solid border-montela-cream rounded-none text-[0.875rem] leading-[1.375rem] md:text-[0.9375rem] md:leading-[1.5625rem] xl:text-[1rem] xl:leading-[1.75rem] 2xl:text-[1.125rem] 2xl:leading-[1.875rem] tracking-[0.5px] text-montela-cream placeholder:text-montela-cream placeholder:opacity-100
     &:focus
       @apply outline-none border-montela-mustard
   // The field, then the submit below it: centred on mobile, left from
@@ -140,7 +140,7 @@
   // Fallback for a form still using <input type="submit">: the cream
   // button's label, full width, without the arrow box.
   input[type="submit"]
-    @apply self-stretch mt-12 md:mt-[42px] px-[22px] py-[14px] bg-montela-cream border-[0.5px] border-solid border-montela-walnut text-montela-sage font-primary font-bold text-[14px] leading-[16px] tracking-[0.84px] uppercase cursor-pointer drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)] transition-colors duration-300 ease-out
+    @apply self-stretch mt-12 md:mt-[42px] px-[22px] py-[14px] bg-montela-cream border-[0.5px] border-solid border-montela-walnut text-montela-sage font-primary font-bold text-[0.875rem] leading-[1rem] tracking-[0.84px] uppercase cursor-pointer drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)] transition-colors duration-300 ease-out
     &:hover,
     &:active
       @apply text-montela-mustard
